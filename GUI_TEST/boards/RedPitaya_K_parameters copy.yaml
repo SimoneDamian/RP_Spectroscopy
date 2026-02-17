@@ -40,8 +40,13 @@ writeable_parameters:
 
   offset_a:
     hardware_name: offset_a
+    gui_name: Offset channel A
+    description: The vertical offset for channel A in volts.
+    type: int
     initial_value: -0.0035 # This is the offset for the CH1 input, 0.0 means no offset correction
-    scaling: 8191.0
+    min_value: -1
+    max_value: 1
+    scaling: 8191
 
   invert_a:
     hardware_name: invert_a
