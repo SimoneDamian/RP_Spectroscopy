@@ -50,7 +50,7 @@ writeable_parameters:
 
   invert_a:
     hardware_name: invert_a
-    gui_name: Invert channel a
+    gui_name: Invert channel A
     description: A boolean indicating whether the channel A data should be inverted.
     type: bool
     initial_value: false # True if you want to invert the CH1 input signal, False otherwise
@@ -110,83 +110,137 @@ writeable_parameters:
 
   offset_b:
     hardware_name: offset_b
+    gui_name: Offset channel B
+    description: The vertical offset for channel B in volts.
+    type: float
     initial_value: 0.0 # This is the offset for the CH2 input,
-    scaling: 1.0
+    min_value: -1
+    max_value: 1
+    scaling: 8191
 
   invert_b:
     hardware_name: invert_b
-    initial_value: false # True if you want to invert the CH2 input signal, False
+    gui_name: Invert channel B
+    description: A boolean indicating whether the channel B data should be inverted.
+    type: bool
+    initial_value: false # True if you want to invert the CH2 input signal, False otherwise
     scaling:
 
   filter_automatic_b:
     hardware_name: filter_automatic_b
+    gui_name: Automatic Filter B
+    description: After demodulation of the signal, Linien may apply up to two IIR filters. `filter_automatic` is a boolean indicating whether Linien should automatically determine suitable filter for a given modulation frequency or whether the user may configure the filters himself. If automatic mode is enabled, two low pass filters are installed with a frequency of half the modulation frequency.
+    type: bool
     initial_value: false # True if you want to use the automatic filter, False otherwise
     scaling:
 
   filter_1_enabled_b:
     hardware_name: filter_1_enabled_b
+    gui_name: Filter 1 enabled on channel B.
+    description: Should this filter be enabled? Note that disabling a filter does not bypass it as this would change the propagation time of the signal through the FPGA which is unfavorable as it leads to a mismatch of the demodulation phase. Instead, a filter with unity gain is installed.
+    type: bool
     initial_value: true # True if you want to use the first low-pass filter, False
     scaling:
 
   filter_1_type_b:
     hardware_name: filter_1_type_b
-    initial_value: 0.0 # 0 for Low-pass, 1 for High-pass
-    scaling: 1.0
+    gui_name: Filter 1 type on channel B.
+    description: Either `LOW_PASS` (0) or `HIGH_PASS` (1) of linien_common.common.FilterType` enum class.
+    type: int
+    initial_value: 0 # 0 for Low-pass, 1 for High-pass
+    scaling: 1
 
   filter_2_enabled_b:
     hardware_name: filter_2_enabled_b
+    gui_name: Filter 2 enabled on channel B.
+    description: Should this filter be enabled? Note that disabling a filter does not bypass it as this would change the propagation time of the signal through the FPGA which is unfavorable as it leads to a mismatch of the demodulation phase. Instead, a filter with unity gain is installed.
+    type: bool
     initial_value: true # True if you want to use the second low-pass filter, False
     scaling:
 
   filter_2_type_b:
     hardware_name: filter_2_type_b
-    initial_value: 0.0 # 0 for Low-pass, 1 for High-pass
-    scaling: 1.0
+    gui_name: Filter 2 type on channel B.
+    description: Either `LOW_PASS` (0) or `HIGH_PASS` (1) of linien_common.common.FilterType` enum class.
+    type: int
+    initial_value: 0 # 0 for Low-pass, 1 for High-pass
+    scaling: 1
 
 
   ### OUTPUT CHANNELS SETUP ###
   # These are the analog_outs you physically connect from your device to the actual setup
   big_offset:
     hardware_name: analog_out_1
+    gui_name: Big offset
+    description: The center of the sweep ramp in volts. (Pay attention to the proportionality constant applied in the analog summator)
+    type: float
     initial_value: 0.93
-    scaling: 18204. # This is approx 1.0 / ANALOG_OUT_V
+    min: 0
+    max: 1.8
+    scaling: 18204 # This is approx 1.0 / ANALOG_OUT_V
 
   small_offset:
     hardware_name: analog_out_2
+    gui_interface: Small offset
+    description: The center of the sweep ramp in volts. (Pay attention to the proportionality constant applied in the analog summator)
+    type: float
     initial_value: 0.0
-    scaling: 18204. # This is approx 1.0 / ANALOG_OUT_V
+    min: 0
+    max: 1.8
+    scaling: 18204 # This is approx 1.0 / ANALOG_OUT_V
 
   modulation_channel:
     hardware_name: mod_channel
+    gui_name: Modulation channel
+    description: Configures the output of the modulation frequency. A value of 0 means FAST OUT 1 and a value of 1 corresponds to FAST OUT 2
+    type: int
     initial_value: 0 # 0 for CH1, 1 for CH2, 2 for ANALOG_OUT_0
     scaling:      # scaling must be None for channel selection parameters  
 
   sweep_channel:
     hardware_name: sweep_channel
+    gui_name: Sweep channel
+    description: Configures the output of the scan sweep: 0 for FAST OUT 1, 1 for FAST OUT 2 and 2 for ANALOG OUT 0 (slow channel).
+    type: int
     initial_value: 1 # 0 for CH1, 1 for CH2, 2 for ANALOG_OUT_0
     scaling:
 
   control_channel:
     hardware_name: control_channel
+    gui_name: Control channel
+    description: Configures the output of the lock signal. A value of 0 means FAST OUT 1 and a value of 1 corresponds to FAST OUT 2
+    type: int
     initial_value: 1 # 0 for CH1, 1 for CH2, 2 for ANALOG_OUT_0
     scaling:
 
   polarity_fast_out1:
     hardware_name: polarity_fast_out1
+    gui_name: Polarity fast out 1
+    description: Defines whether tuning the voltage up correspond to tuning the laser frequency up or down. Setting these values correctly is only required when using both, a fast out and a the slow output for PID.
+    type: int
     initial_value: 0 # 0 if when signal increases laser frequency increases, 1 if it decreases (NB absolute value not true, important is relative value to slow output)
     scaling:      # scaling must be None for Option Parameters
   polarity_fast_out2:
     hardware_name: polarity_fast_out2
+    gui_name: Polarity fast out 2
+    description: Defines whether tuning the voltage up correspond to tuning the laser frequency up or down. Setting these values correctly is only required when using both, a fast out and a the slow output for PID.
+    type: int
     initial_value: 0 # 0 if when signal increases laser frequency increases, 1 if it decreases (NB absolute value not true, important is relative value to slow output)
     scaling:
 
   slow_control_channel:
     hardware_name: slow_control_channel
+    gui_name: Slow control channel
+    description: Configures the output of the slow PID control: 0 for FAST OUT 1, 1 for FAST OUT 2 and 2 for ANALOG OUT 0 (slow channel).
+    type: int
     initial_value: 2 # 0 for CH1, 1 for CH2, 2 for ANALOG_OUT_0
     scaling:
 
   polarity_analog_out0:
     hardware_name: polarity_analog_out0
+    gui_name: Polarity analog out 0
+    description: Defines whether tuning the voltage up correspond to tuning the laser frequency up or down. Setting these values correctly is only required when using both, a fast out and a the slow output for PID.
+    type: int
     initial_value: 0 # 0 if when signal increases laser frequency increases, 1 if it decreases (NB absolute value not true, important is relative value to slow output)
     scaling:
 
@@ -195,28 +249,53 @@ writeable_parameters:
   # These parameters control the modulation of the laser frequency
   modulation_amplitude:
     hardware_name: modulation_amplitude
+    gui_name: Modulation amplitude
+    description: The amplitude of the modulation in Vpp.
+    type: float
     initial_value: 0.5
+    min: 0
+    max: 2
     scaling: 4095.75  # This is value of Vpp constant
 
   modulation_frequency:
     hardware_name: modulation_frequency
+    gui_name: Modulation frequency
+    description: Frequency of the modulation in MHz.
+    type: float
     initial_value: 0.05
-    scaling: 33554432.0 # This is the value of MHz constant
+    min: 0
+    max: 50
+    scaling: 33554432 # This is the value of MHz constant
 
   ### SWEEP SETUP ###
   sweep_amplitude:
     hardware_name: sweep_amplitude
-    initial_value: 1.0 # This is the amplitude of the sweep signal as a percentage of the maximum output voltage of the sweep channel
+    gui_name: Sweep amplitude
+    description: Amplitude of the sweep in Vpp. The maximum depends on the output channel selected (2 V for fast outputs (range +/- 1 V) and 0.9 V for slow outputs (range 0 V to 1.8 V)). That means an amplitude of 1.0 corresponds to the full sweep range in both cases.
+    type: float
+    initial_value: 1 # This is the amplitude of the sweep signal as a percentage of the maximum output voltage of the sweep channel
+    min: 0.001
+    max: 1
     scaling: 1.0
 
   sweep_center:
     hardware_name: sweep_center
+    gui_name: Sweep center
+    description: The center position of the sweep. If a fast output is used for the sweep this is the sweep center position in volts. If the slow output is used the interval [-1, +1] of this parameter is mapped to the interval [0V, +1.8V].
+    type: float
     initial_value: 0.0 # center the sweep on the 0V of the channel
+    min: -1
+    max: 1
     scaling: 1.0
 
   sweep_speed:
     hardware_name: sweep_speed
+    gui_name: Sweep speed
+    description: The sweep speed in internal units. The actual speed is given by f_real = 3.8 kHz / (2 ** sweep_speed). Allowed values are [0, ..., 15]
+    type: int
     initial_value: 8 # n means (3.8 kHz / 2**n), eg n=12 means 0.92 Hz
+    min: 0
+    max: 15
     scaling:
 
 
