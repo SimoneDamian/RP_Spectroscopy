@@ -42,7 +42,7 @@ writeable_parameters:
     hardware_name: offset_a
     gui_name: Offset channel A
     description: The vertical offset for channel A in volts.
-    type: int
+    type: float
     initial_value: -0.0035 # This is the offset for the CH1 input, 0.0 means no offset correction
     min_value: -1
     max_value: 1
@@ -50,40 +50,63 @@ writeable_parameters:
 
   invert_a:
     hardware_name: invert_a
+    gui_name: Invert channel a
+    description: A boolean indicating whether the channel A data should be inverted.
+    type: bool
     initial_value: false # True if you want to invert the CH1 input signal, False otherwise
     scaling:
 
   filter_automatic_a:
     hardware_name: filter_automatic_a
+    gui_name: Automatic Filter A
+    description: After demodulation of the signal, Linien may apply up to two IIR filters. `filter_automatic` is a boolean indicating whether Linien should automatically determine suitable filter for a given modulation frequency or whether the user may configure the filters himself. If automatic mode is enabled, two low pass filters are installed with a frequency of half the modulation frequency.
+    type: bool
     initial_value: false # True if you want to use the automatic filter, False otherwise
     scaling:
 
   filter_1_enabled_a:
     hardware_name: filter_1_enabled_a
+    gui_name: Filter 1 enabled on channel A.
+    description: Should this filter be enabled? Note that disabling a filter does not bypass it as this would change the propagation time of the signal through the FPGA which is unfavorable as it leads to a mismatch of the demodulation phase. Instead, a filter with unity gain is installed.
+    type: bool
     initial_value: true # True if you want to use the first low-pass filter, False otherwise
     scaling:
 
   filter_1_type_a:
     hardware_name: filter_1_type_a
-    initial_value: 0.0 # 0 for Low-pass, 1 for High-pass
-    scaling: 1.0
+    gui_name: Filter 1 type on channel A.
+    description: Either `LOW_PASS` (0) or `HIGH_PASS` (1) of linien_common.common.FilterType` enum class.
+    type: int
+    initial_value: 0 # 0 for Low-pass, 1 for High-pass
+    scaling: 1
 
   filter_2_enabled_a:
     hardware_name: filter_2_enabled_a
+    gui_name: Filter 2 enabled on channel A.
+    description: Should this filter be enabled? Note that disabling a filter does not bypass it as this would change the propagation time of the signal through the FPGA which is unfavorable as it leads to a mismatch of the demodulation phase. Instead, a filter with unity gain is installed.
+    type: bool
     initial_value: true # True if you want to use the second low-pass filter, False otherwise
     scaling:
 
   filter_2_type_a:
     hardware_name: filter_2_type_a
-    initial_value: 0.0 # 0 for Low-pass, 1 for High-pass
-    scaling: 1.0
+    gui_name: Filter 2 type on channel A.
+    description: Either `LOW_PASS` (0) or `HIGH_PASS` (1) of linien_common.common.FilterType` enum class.
+    type: int
+    initial_value: 0 # 0 for Low-pass, 1 for High-pass
+    scaling: 1
 
   # Should not need to change
   # Now I set the CH2 input to have no offset correction, no signal inversion, and two low-pass filters
   demodulation_multiplier_b:
     hardware_name: demodulation_multiplier_b
-    initial_value: 1.0 # This is the multiplier for the demodulation signal
-    scaling: 1.0
+    gui_name: Demodulation Multiplier B
+    description: This parameter allows for multi-f (e.g. 3f or 5f) demodulation. Default value is 1, indicating that 1f demodulation is used.
+    type: int
+    initial_value: 1 # This is the multiplier for the demodulation signal, 1.0 looking for modulation frequency
+    min_value: 0
+    max_value: 15
+    scaling: 1
 
   offset_b:
     hardware_name: offset_b
