@@ -15,6 +15,8 @@ writeable_parameters:
     description: If True, the two input channels are mixed together. If False, only CH1 is used.
     type: bool
     initial_value: false
+    min:
+    max:
     scaling:
     units:
 
@@ -24,8 +26,8 @@ writeable_parameters:
     description: Goes from -128 to +128, -128 means only CH1, 128 means only CH2, 0 means equal mixing of both channels. Useful only if Dual Channel is enabled.
     type: int
     initial_value: -128 # goes from -128 to +128, -128 means only CH1, 128 means only CH2, 0 means equal mixing of both channels
-    min_value: -128
-    max_value: 128
+    min: -128
+    max: 128
     scaling: 1
     units:
 
@@ -36,8 +38,8 @@ writeable_parameters:
     description: This parameter allows for multi-f (e.g. 3f or 5f) demodulation. Default value is 1, indicating that 1f demodulation is used.
     type: int
     initial_value: 1
-    min_value: 0
-    max_value: 15
+    min: 0
+    max: 15
     scaling: 1
     units:
 
@@ -47,8 +49,8 @@ writeable_parameters:
     description: The vertical offset for CH1 in volts.
     type: float
     initial_value: -0.0035
-    min_value: -1
-    max_value: 1
+    min: -1
+    max: 1
     scaling: 8191
     units: V
 
@@ -58,6 +60,8 @@ writeable_parameters:
     description: A boolean indicating whether the CH1 data should be inverted.
     type: bool
     initial_value: false
+    min:
+    max:
     scaling:
     units:
 
@@ -67,6 +71,8 @@ writeable_parameters:
     description: After demodulation of the signal, Linien may apply up to two IIR filters. `filter_automatic` is a boolean indicating whether Linien should automatically determine suitable filter for a given modulation frequency or whether the user may configure the filters himself. If automatic mode is enabled, two low pass filters are installed with a frequency of half the modulation frequency.
     type: bool
     initial_value: false
+    min:
+    max:
     scaling:
     units:
 
@@ -76,6 +82,8 @@ writeable_parameters:
     description: Should this filter be enabled? Note that disabling a filter does not bypass it as this would change the propagation time of the signal through the FPGA which is unfavorable as it leads to a mismatch of the demodulation phase. Instead, a filter with unity gain is installed.
     type: bool
     initial_value: true
+    min:
+    max:
     scaling:
     units:
 
@@ -85,6 +93,8 @@ writeable_parameters:
     description: Either `LOW_PASS` (0) or `HIGH_PASS` (1) of linien_common.common.FilterType` enum class.
     type: int
     initial_value: 0
+    min:
+    max:
     scaling: 1
     units:
 
@@ -94,6 +104,8 @@ writeable_parameters:
     description: Should this filter be enabled? Note that disabling a filter does not bypass it as this would change the propagation time of the signal through the FPGA which is unfavorable as it leads to a mismatch of the demodulation phase. Instead, a filter with unity gain is installed.
     type: bool
     initial_value: true
+    min:
+    max:
     scaling:
     units:
 
@@ -103,6 +115,8 @@ writeable_parameters:
     description: Either `LOW_PASS` (0) or `HIGH_PASS` (1) of linien_common.common.FilterType` enum class.
     type: int
     initial_value: 0
+    min:
+    max:
     scaling: 1
     units:
 
@@ -113,8 +127,8 @@ writeable_parameters:
     description: This parameter allows for multi-f (e.g. 3f or 5f) demodulation. Default value is 1, indicating that 1f demodulation is used.
     type: int
     initial_value: 1
-    min_value: 0
-    max_value: 15
+    min: 0
+    max: 15
     scaling: 1
     units:
 
@@ -124,8 +138,8 @@ writeable_parameters:
     description: The vertical offset for CH2 in volts.
     type: float
     initial_value: 0.0
-    min_value: -1
-    max_value: 1
+    min: -1
+    max: 1
     scaling: 8191
     units: V
 
@@ -135,6 +149,8 @@ writeable_parameters:
     description: A boolean indicating whether the CH2 data should be inverted.
     type: bool
     initial_value: false
+    min:
+    max:
     scaling:
     units:
 
@@ -144,6 +160,8 @@ writeable_parameters:
     description: After demodulation of the signal, Linien may apply up to two IIR filters. `filter_automatic` is a boolean indicating whether Linien should automatically determine suitable filter for a given modulation frequency or whether the user may configure the filters himself. If automatic mode is enabled, two low pass filters are installed with a frequency of half the modulation frequency.
     type: bool
     initial_value: false
+    min:
+    max:
     scaling:
     units:
 
@@ -153,6 +171,8 @@ writeable_parameters:
     description: Should this filter be enabled? Note that disabling a filter does not bypass it as this would change the propagation time of the signal through the FPGA which is unfavorable as it leads to a mismatch of the demodulation phase. Instead, a filter with unity gain is installed.
     type: bool
     initial_value: true
+    min:
+    max:
     scaling:
     units:
 
@@ -162,6 +182,8 @@ writeable_parameters:
     description: Either `LOW_PASS` (0) or `HIGH_PASS` (1) of linien_common.common.FilterType` enum class.
     type: int
     initial_value: 0
+    min:
+    max:
     scaling: 1
     units:
 
@@ -171,6 +193,8 @@ writeable_parameters:
     description: Should this filter be enabled? Note that disabling a filter does not bypass it as this would change the propagation time of the signal through the FPGA which is unfavorable as it leads to a mismatch of the demodulation phase. Instead, a filter with unity gain is installed.
     type: bool
     initial_value: true
+    min:
+    max:
     scaling:
     units:
 
@@ -180,6 +204,8 @@ writeable_parameters:
     description: Either `LOW_PASS` (0) or `HIGH_PASS` (1) of linien_common.common.FilterType` enum class.
     type: int
     initial_value: 0
+    min:
+    max:
     scaling: 1
     units:
 
@@ -214,6 +240,8 @@ writeable_parameters:
     description: Configures the output of the modulation frequency. A value of 0 means FAST OUT 1 and a value of 1 corresponds to FAST OUT 2
     type: int
     initial_value: 0
+    min:
+    max:
     scaling:
     units:
 
@@ -223,6 +251,8 @@ writeable_parameters:
     description: Configures the output of the scan sweep. 0 for FAST OUT 1, 1 for FAST OUT 2 and 2 for ANALOG OUT 0 (slow channel).
     type: int
     initial_value: 1
+    min:
+    max:
     scaling:
     units:
 
@@ -232,6 +262,8 @@ writeable_parameters:
     description: Configures the output of the lock signal. A value of 0 means FAST OUT 1 and a value of 1 corresponds to FAST OUT 2
     type: int
     initial_value: 1
+    min:
+    max:
     scaling:
     units:
 
@@ -241,6 +273,8 @@ writeable_parameters:
     description: Defines whether tuning the voltage up correspond to tuning the laser frequency up or down. Setting these values correctly is only required when using both, a fast out and a the slow output for PID.
     type: int
     initial_value: 0
+    min:
+    max:
     scaling:
     units:
   
@@ -250,6 +284,8 @@ writeable_parameters:
     description: Defines whether tuning the voltage up correspond to tuning the laser frequency up or down. Setting these values correctly is only required when using both, a fast out and a the slow output for PID.
     type: int
     initial_value: 0
+    min:
+    max:
     scaling:
     units:
 
@@ -259,6 +295,8 @@ writeable_parameters:
     description: Configures the output of the slow PID control. 0 for FAST OUT 1, 1 for FAST OUT 2 and 2 for ANALOG OUT 0 (slow channel).
     type: int
     initial_value: 2
+    min:
+    max:
     scaling:
     units:
 
@@ -268,6 +306,8 @@ writeable_parameters:
     description: Defines whether tuning the voltage up correspond to tuning the laser frequency up or down. Setting these values correctly is only required when using both, a fast out and a the slow output for PID.
     type: int
     initial_value: 0
+    min:
+    max:
     scaling:
     units:
 
@@ -349,6 +389,8 @@ writeable_parameters:
     description: The filter frequency in units of Hz.
     type: float
     initial_value: 10000.0
+    min:
+    max:
     scaling: 1.0  # Hz
     units: Hz
 
@@ -358,6 +400,8 @@ writeable_parameters:
     description: The filter frequency in units of Hz.
     type: float
     initial_value: 10000.0
+    min:
+    max:
     scaling: 1.0  # Hz
     units: Hz
 
@@ -401,6 +445,8 @@ writeable_parameters:
     description: Whether the PID on ANALOG_OUT 0 is enabled.
     type: bool
     initial_value: true  # True if PID control on slow channel is enabled, False otherwise
+    min:
+    max:
     scaling:
     units:
 
@@ -423,6 +469,8 @@ writeable_parameters:
     description: Record of control signal should be kept for how long? In seconds.
     type: int
     initial_value: 60 # Length of control signal history buffer in seconds
+    min:
+    max:
     scaling: 1 # Control signal history buffer size
     units: s
 
