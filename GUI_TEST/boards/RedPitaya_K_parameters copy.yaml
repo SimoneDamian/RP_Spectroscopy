@@ -496,72 +496,112 @@ advanced_settings:
   unlock_detection:
     ui_label: "Unlock Detection Logic"
     events:
-      detect_unlock: true
-      automatic_relock: true
+      gui_name: Unlock and relock
+      detect_unlock:
+        gui_name: Detect unlock
+        description: The program is able to autodetect an unlock event. You can choose to use this feature or not.
+        enabled: true
+      automatic_relock:
+        gui_name: Automatic relock
+        description: The program is able to automatically relock the signal when an unlock event is detected. You can choose to use this feature or not.
+        enabled: true
 
     fast_control:
+      gui_name: Fast control
       fluctuations:
+        gui_name: Fast control fluctuations
+        description: The program is able to detect an unlock event based on the fluctuations of the fast control signal. You can choose to use this feature or not and you can tune the threshold of the detection.
         enabled: true
         threshold: 0.1
       saturation:
+        gui_name: Fast control saturation
+        description: The program is able to detect an unlock event based on the saturation of the fast control signal. You can choose to use this feature or not.
         enabled: true
 
     slow_control:
+      gui_name: Slow control
       fluctuations:
+        gui_name: Slow control fluctuations
+        description: The program is able to detect an unlock event based on the fluctuations of the slow control signal. You can choose to use this feature or not and you can tune the threshold of the detection.
         enabled: true
         threshold: 0.1
       saturation:
+        gui_name: Slow control saturation
+        description: The program is able to detect an unlock event based on the saturation of the slow control signal. You can choose to use this feature or not.
         enabled: true
 
     monitor_signal:
+      gui_name: Monitor signal
       drift:
+        gui_name: Monitor signal drift
+        description: The program is able to detect an unlock event based on the drift of the monitor signal. You can choose to use this feature or not and you can tune the number of points used for the detection.
         enabled: true
         num_points: 100
 
   # --- GUI SETTINGS ---
   gui_visualization:
-    ui_label: "Plotting & Refresh"
+    ui_label: "Plotting"
 
     history_length:
+      gui_name: History length
+      description: The history length of the fast and slow control signals. You see the history when the laser is locked.
       fast: 10
       slow: 3600
       unit: "s"
 
     fast_control_signal_derivative:
-      show: true
+      gui_name: Show fast control signal derivative
+      description: The program is able to show the derivative of the fast control signal. You can choose to use this feature or not. Useful to tune the threshold of the fast control signal fluctuations.
+      enabled: true
 
     slow_control_signal_derivative:
-      show: true
+      gui_name: Show slow control signal derivative
+      description: The program is able to show the derivative of the slow control signal. You can choose to use this feature or not. Useful to tune the threshold of the slow control signal fluctuations.
+      enabled: true
 
   # --- AUTOLOCK SETTINGS ---
   autolock_settings:
     ui_label: "Autolock Settings"
 
     mode:
-      value: "ROBUST"
+      gui_name: Autolock mode
+      description: The ROBUST algorithm runs on FPGA and analyzes the peak shapes in order to turn on the lock at the right sweep position. It is able to cope with a high amount of jitter as it runs completely on the FPGA, i.e. no delays due to communication between CPU and FPGA occur. The SIMPLE algorithm uses a simple calculation of auto-correlation on the CPU which is then used to specify at which point of the sweep the lock should start. This algorithm is less complex than the first one and may be used if you experience problems with jitter-tolerant mode. As it requires some communication between CPU and FPGA which causes some delay, it may have problems if the line jitters a lot.
+      value: ROBUST
       options:
       - SIMPLE
       - ROBUST
     determine_offset:
-      value: false
+      gui_name: Autodetermine offset
+      description: If this checkbox is ticked, the autolock will adapt the y-offset of the signal such that the middle between minimum and maximum is at the zero crossing. This is especially useful if you have a large background signal (e.g. the Doppler background in FMS spectroscopy).
+      enabled: false
 
   # --- AUTOMATIC CENTERING SETTINGS ---
   autocenter_settings:
     ui_label: "Autocenter Settings"
 
     jitter_threshold:
+      gui_name: Jitter threshold
+      description: JITTER THRESHOLD DESCRIPTION
       value: 0.05 # Threshold for jitter detection
 
     threshold_count:
+      gui_name: Threshold count
+      description: THRESHOLD COUNT DESCRIPTION
       value: 5
 
     offset_big_jump:
+      gui_name: Offset big jump
+      description: OFFSET BIG JUMP DESCRIPTION
       value: 0.04
 
     offset_small_jump:
+      gui_name: Offset small jump
+      description: OFFSET SMALL JUMP DESCRIPTION
       value: 0.01
 
     offset_try_list:
+      gui_name: Offset try list
+      description: OFFSET TRY LIST DESCRIPTION
       value:
       - 0.0
       - 1.0
@@ -570,13 +610,20 @@ advanced_settings:
       - -2.0
       - 3.0
       - -3.0
+      
     correlation_minimum:
+      gui_name: Correlation minimum
+      description: CORRELATION MINIMUM DESCRIPTION
       value: 0.5
 
     length_match_minimum:
+      gui_name: Length match minimum
+      description: LENGTH MATCH MINIMUM DESCRIPTION
       value: 0.5
 
     proportion_free_space_left:
+      gui_name: Proportion free space left
+      description: PROPORTION FREE SPACE LEFT DESCRIPTION
       value: 0.5
 
 ##########################################
