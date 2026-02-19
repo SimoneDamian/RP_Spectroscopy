@@ -103,6 +103,12 @@ class GeneralManager:
 
         # Connection for live data plotting
         self.laser.sig_data_ready.connect(self.window.page_laser.plot_panel.update_plot)
+        self.laser.sig_data_ready.connect(self.on_data_ready)
+
+        # Scan page signals
+        self.window.page_laser.page_scan.sig_start_scan.connect(self.laser.start_scan)
+        self.window.page_laser.page_scan.sig_stop_scan.connect(self.laser.stop_scan)
+        self.window.page_laser.page_scan.sig_back.connect(self.laser.start_sweep)
 
         # Connection for advanced settings
         #  - Direct to QWidget slot for GUI (auto-connection ensures GUI thread)
@@ -187,6 +193,18 @@ class GeneralManager:
         """
         self.advanced_settings = settings
         self.logger.info("Advanced settings updated from GUI.")
+
+    @Slot(dict)
+    def on_data_ready(self, packet):
+        """
+        Listens to every data packet. When a SCAN packet indicates
+        the last step, re-enable the ScanPage buttons.
+        """
+        if packet.get("mode") == "SCAN":
+            step = packet.get("step_index", 0)
+            total = packet.get("total_steps", 1)
+            if step + 1 >= total:
+                self.window.page_laser.page_scan.set_scan_finished()
 
     def save_advanced_settings(self):
         """

@@ -4,6 +4,7 @@ from .controller import LockController
 from PySide6.QtCore import QObject, Signal, Slot, QTimer
 import os
 import logging
+import numpy as np
 
 class LaserManager(QObject):
     sig_connected = Signal()

@@ -6552,3 +6552,10 @@
 2026-02-13 10:53:38 - LaserManager - INFO - LaserManager setup complete. Control loop started.
 2026-02-13 10:53:38 - LaserManager - INFO - Advanced settings updated.
 2026-02-13 16:00:49 - LaserManager - INFO - Control loop timer stopped.
+2026-02-19 12:08:51 - LaserManager - INFO - LaserManager initialized.
+2026-02-19 12:08:55 - LaserManager - INFO - LaserManager setup complete. Control loop started.
+2026-02-19 12:08:55 - LaserManager - INFO - Advanced settings updated.
+2026-02-19 12:09:22 - LaserManager - INFO - Initiating scan: 0.9V -> 1.0V (10 pts)
+2026-02-19 12:09:39 - LaserManager - INFO - Scan completed successfully.
+2026-02-19 12:10:05 - LaserManager - INFO - Sweep started by user.
+2026-02-19 12:15:37 - LaserManager - INFO - Control loop timer stopped.
