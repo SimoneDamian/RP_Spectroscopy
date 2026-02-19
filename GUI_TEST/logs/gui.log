@@ -1098,3 +1098,11 @@
 2026-02-19 12:08:46 - GUI - INFO - Updating reference lines table with 3 items.
 2026-02-19 12:08:49 - GUI - INFO - Connection button clicked. Starting transition...
 2026-02-19 12:08:50 - GUI - INFO - Transition complete. Requesting Connection Page.
+2026-02-19 12:20:57 - GUI - INFO - GUI MainWindow initialized.
+2026-02-19 12:20:57 - GUI - INFO - InitialPage initialized.
+2026-02-19 12:20:57 - GUI - INFO - ConnectionPage initialized.
+2026-02-19 12:20:57 - GUI - INFO - AddBoardPage initialized.
+2026-02-19 12:20:57 - GUI - INFO - ReferenceLinesPage initialized.
+2026-02-19 12:20:57 - GUI - INFO - Updating reference lines table with 3 items.
+2026-02-19 12:20:58 - GUI - INFO - Connection button clicked. Starting transition...
+2026-02-19 12:20:58 - GUI - INFO - Transition complete. Requesting Connection Page.

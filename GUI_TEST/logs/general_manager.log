@@ -974,3 +974,18 @@
 2026-02-19 12:15:35 - GeneralManager - INFO - GeneralManager shutting down...
 2026-02-19 12:15:37 - GeneralManager - INFO - Advanced settings saved to /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/RedPitaya_K_parameters.yaml
 2026-02-19 12:15:37 - GeneralManager - INFO - GeneralManager shut down.
+2026-02-19 12:20:57 - GeneralManager - INFO - GeneralManager starting up...
+2026-02-19 12:20:57 - GeneralManager - INFO - ServiceManager initialized.
+2026-02-19 12:20:57 - GeneralManager - INFO - ServiceManager moved to thread.
+2026-02-19 12:20:57 - GeneralManager - INFO - MainWindow initialized.
+2026-02-19 12:20:57 - GeneralManager - INFO - ServiceManager injected into ReferenceLinesPage.
+2026-02-19 12:20:57 - GeneralManager - INFO - ServiceManager thread started.
+2026-02-19 12:21:01 - GeneralManager - INFO - Connecting to RedPitaya_K...
+2026-02-19 12:21:01 - GeneralManager - INFO - LaserManager initialized.
+2026-02-19 12:21:01 - GeneralManager - INFO - LaserManager moved to thread.
+2026-02-19 12:21:01 - GeneralManager - INFO - LaserManager thread started.
+2026-02-19 12:21:01 - GeneralManager - INFO - Advanced settings stored in GeneralManager.
+2026-02-19 12:21:04 - GeneralManager - INFO - Parameters loaded into GUI.
+2026-02-19 12:24:13 - GeneralManager - INFO - GeneralManager shutting down...
+2026-02-19 12:24:15 - GeneralManager - ERROR - Failed to save advanced settings: 'NoneType' object is not subscriptable
+2026-02-19 12:24:15 - GeneralManager - INFO - GeneralManager shut down.

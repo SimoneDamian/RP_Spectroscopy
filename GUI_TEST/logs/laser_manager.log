@@ -6559,3 +6559,11 @@
 2026-02-19 12:09:39 - LaserManager - INFO - Scan completed successfully.
 2026-02-19 12:10:05 - LaserManager - INFO - Sweep started by user.
 2026-02-19 12:15:37 - LaserManager - INFO - Control loop timer stopped.
+2026-02-19 12:21:01 - LaserManager - INFO - LaserManager initialized.
+2026-02-19 12:21:04 - LaserManager - INFO - LaserManager setup complete. Control loop started.
+2026-02-19 12:21:04 - LaserManager - INFO - Advanced settings updated.
+2026-02-19 12:21:39 - LaserManager - INFO - Initiating scan: 0.9V -> 1.0V (15 pts)
+2026-02-19 12:22:03 - LaserManager - INFO - Scan completed successfully.
+2026-02-19 12:22:11 - LaserManager - INFO - Sweep started by user.
+2026-02-19 12:24:14 - LaserManager - ERROR - Failed to save parameters: cannot represent an object: 1.0
+2026-02-19 12:24:15 - LaserManager - INFO - Control loop timer stopped.
