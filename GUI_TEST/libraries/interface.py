@@ -1,8 +1,6 @@
 from .logging_config import setup_logging
 import os
 import logging
-import yaml
-from ruamel.yaml import YAML
 import sys
 import pickle
 import numpy as np
@@ -55,148 +53,50 @@ class HardwareInterface():
 
     def _basic_configure(self):
         """
-        Configures the RedPitaya with the basic configuration (this will get updated each time the
-        program is turned off) and loads the other fundamental parameters.
+        Configures the RedPitaya with the basic configuration.
+        Note: Parameter loading is no longer done here — it happens when
+        the ServiceManager sends the parameters dict via signal chain.
         """
-
-        self.logger.info("Loading RedPitaya initial configurationparameters...")
-
-        self.load_RedPitaya_parameters()
-
-        #self.load_advanced_settings()
-
-        #self.load_additional_hardware_parameters()
+        self.logger.info("Basic configuration complete. Waiting for parameters from ServiceManager...")
+        self.writeable_params = {}
+        self.readable_params = {}
 
         # setup the autolock mode
         #self.client.parameters.autolock_mode_preference.value = AutolockMode.ROBUST # use robust autolock mode
         #self.client.parameters.autolock_determine_offset.value = False # do not determine offset automatically
         #self.client.connection.root.write_registers()
 
-    def load_RedPitaya_parameters(self):
+    def load_parameters_from_dict(self, params_dict):
         """
-        Load writeable and readable parameters from a YAML config file and create corresponding parameter objects. It also
-        writes the initial values of the writeable parameters to the device only once at the end of the loading procedure.   
-        """
+        Load writeable and readable parameters from an already-parsed dict
+        (provided by ServiceManager) and create corresponding parameter objects.
+        Writes initial values to the device at the end.
         
-        board_config_file_path = self.config.get('paths', {}).get('hardware', './boards')
-        board_config_file = os.path.join(board_config_file_path, f"{self.board['name']}_parameters.yaml")
-
-        if not os.path.exists(board_config_file):
-            raise FileNotFoundError(f"Parameter config file not found: {board_config_file}")
-
-        with open(board_config_file, 'r') as f:
-            config = yaml.safe_load(f)
+        Args:
+            params_dict: dict with 'writeable_parameters' and 'readable_parameters' keys,
+                         each containing the parameter definitions from YAML.
+        """
+        self.logger.info("Loading parameters from dict...")
 
         self.writeable_params = {}
-        for name, entry in config.get("writeable_parameters", {}).items():
+        for name, entry in params_dict.get("writeable_parameters", {}).items():
             self.logger.debug(f"Loading writeable parameter {name} with hardware name {entry['hardware_name']}, initial value {entry['initial_value']}, scaling {entry['scaling']}")
             self.writeable_params[name] = WriteableParameter(
                 name=entry["hardware_name"],
                 initial_value=entry["initial_value"],
                 scaling=entry["scaling"],
-                client = self.client
+                client=self.client
             )
 
         self.readable_params = {}
-        for name,entry in config.get("readable_parameters", {}).items():
+        for name, entry in params_dict.get("readable_parameters", {}).items():
             self.readable_params[name] = ReadableParameter(
                 name=entry['hardware_name'],
-                client = self.client
+                client=self.client
             )
 
         self.write_registers()
-
-    def load_default_RedPitaya_parameters(self):
-        """
-        Load writeable and readable parameters from a YAML config file and create corresponding parameter objects. It also
-        writes the initial values of the writeable parameters to the device only once at the end of the loading procedure.   
-        """
-        
-        board_config_file_path = self.config.get('paths', {}).get('hardware', './boards')
-        board_config_file = os.path.join(board_config_file_path, f"{self.board['name']}_parameters_default.yaml")
-
-        if not os.path.exists(board_config_file):
-            raise FileNotFoundError(f"Parameter config file not found: {board_config_file}")
-
-        with open(board_config_file, 'r') as f:
-            config = yaml.safe_load(f)
-
-        self.writeable_params = {}
-        for name, entry in config.get("writeable_parameters", {}).items():
-            self.logger.debug(f"Loading writeable parameter {name} with hardware name {entry['hardware_name']}, initial value {entry['initial_value']}, scaling {entry['scaling']}")
-            self.writeable_params[name] = WriteableParameter(
-                name=entry["hardware_name"],
-                initial_value=entry["initial_value"],
-                scaling=entry["scaling"],
-                client = self.client
-            )
-
-        self.readable_params = {}
-        for name,entry in config.get("readable_parameters", {}).items():
-            self.readable_params[name] = ReadableParameter(
-                name=entry['hardware_name'],
-                client = self.client
-            )
-
-        self.write_registers()
-
-    def write_registers(self):
-        self.client.connection.root.write_registers()
-
-    def start_sweep(self):
-        self.client.connection.root.start_sweep()
-
-    def check_for_changed_parameters(self):
-        self.client.parameters.check_for_changed_parameters()
-        
-    def save_RedPitaya_parameters_before_closing(self):
-        """
-        Reads the original YAML, updates the writeable parameters 
-        with their current values, and saves it back preserving comments
-        and other parameters.
-        """
-
-        yaml = YAML()
-        yaml.preserve_quotes = True
-        
-        # 1. Read the full existing file structure
-        # We read the file again to ensure we have the full tree with comments
-        board_config_file_path = self.config.get('paths', {}).get('hardware', './boards')
-        board_config_file = os.path.join(board_config_file_path, f"{self.board['name']}_parameters.yaml")
-
-        if not os.path.exists(board_config_file):
-            raise FileNotFoundError(f"Parameter config file not found: {board_config_file}")
-
-        with open(board_config_file, 'r') as f:
-            full_config = yaml.load(f)
-
-        # 2. Update ONLY the writeable parameters
-        # We iterate through your active python objects and update the YAML structure
-        if 'writeable_parameters' in full_config:
-            for name, param_obj in self.writeable_params.items():
-                
-                # Check if this parameter exists in the file structure
-                if name in full_config['writeable_parameters']:
-                    
-                    # Update the 'initial_value' in the YAML to match the current state
-                    current_val = self.writeable_params[name].value
-
-                    # Convert numpy types to native Python for YAML serialization
-                    if hasattr(current_val, 'item'):
-                        current_val = current_val.item()
-                    
-                    full_config['writeable_parameters'][name]['initial_value'] = current_val
-                    
-                    self.logger.info(f"Updated {name} to {current_val} in config.")
-
-        # 3. Write to a temporary file first, then rename to avoid
-        #    data loss if the dump fails partway through.
-        tmp_file = board_config_file + '.tmp'
-        with open(tmp_file, 'w') as f:
-            yaml.dump(full_config, f)
-        os.replace(tmp_file, board_config_file)
-            
-        self.logger.info(f"Configuration saved successfully to {board_config_file}")
+        self.logger.info(f"Parameters loaded: {len(self.writeable_params)} writeable, {len(self.readable_params)} readable.")
 
     def get_sweep(self):
         """

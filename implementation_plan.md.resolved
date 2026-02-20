@@ -1,0 +1,120 @@
+# Move Parameter Reading/Writing from Interface to Service Manager
+
+Move all YAML-based parameter reading, writing, saving, and default-loading from [HardwareInterface](file:///home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/interface.py#17-232) (interface.py) to [ServiceManager](file:///home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/service_manager.py#13-440) (service_manager.py). Parameters flow through the same chain as advanced settings: **ServiceManager → GeneralManager → LaserManager → Interface**.
+
+## Current Architecture
+
+```mermaid
+graph LR
+    SM["ServiceManager<br/>(YAML: advanced only)"]
+    GM["GeneralManager"]
+    LM["LaserManager"]
+    IF["Interface<br/>(YAML: params R/W)"]
+    GUI["ParametersPage"]
+    GM -- reaches into --> IF
+    IF -- reads/writes YAML --> YAML["boardname_parameters.yaml"]
+    GM -- populates --> GUI
+```
+
+## Proposed Architecture
+
+```mermaid
+graph LR
+    SM["ServiceManager<br/>(YAML: advanced + params)"]
+    GM["GeneralManager"]
+    LM["LaserManager"]
+    IF["Interface<br/>(no YAML access)"]
+    GUI["ParametersPage"]
+    SM -- sig_parameters_loaded --> GM
+    GM -- sig_parameters_loaded --> LM
+    GM -- populates --> GUI
+    LM -- passes dict --> IF
+    IF -- creates Writeable/ReadableParam --> HW["Hardware"]
+    SM -- reads/writes YAML --> YAML["boardname_parameters.yaml"]
+    GUI -- sig_parameter_changed --> GM
+    GM -- forwards --> LM
+    LM -- set_value --> IF
+```
+
+## Proposed Changes
+
+### Service Manager
+#### [MODIFY] [service_manager.py](file:///home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/service_manager.py)
+
+1. **Add new signal**: `sig_parameters_loaded = Signal(dict)` — emits the full parameters dict (both `writeable_parameters` and `readable_parameters` sections from the YAML).
+2. **Add [load_parameters(board)](file:///home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/gui/laser_controller_page.py#141-183)** method (mirroring [load_advanced_settings](file:///home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/service_manager.py#362-384)): reads the [_parameters.yaml](file:///home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/RedPitaya_K_parameters.yaml) file, extracts `writeable_parameters` and `readable_parameters` dicts, stores them in `self.current_parameters`, emits `sig_parameters_loaded`.
+3. **Add `load_default_parameters(board)`** method: same as above but reads from [_parameters_default.yaml](file:///home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/RedPitaya_K_parameters_default.yaml).
+4. **Add [save_parameters(params_dict)](file:///home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py#172-182)** method: receives the current writeable parameter values dict from GeneralManager, reads the YAML with `ruamel.yaml` (preserving comments), updates only `initial_value` fields, writes back safely via temp-file rename (like the current [save_RedPitaya_parameters_before_closing](file:///home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/interface.py#152-200) in interface.py).
+5. **Store `self.current_board`** so the save method knows which file to write to.
+
+---
+
+### General Manager
+#### [MODIFY] [general_manager.py](file:///home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/general_manager.py)
+
+1. **Store parameters dict** in `self.parameters = {}` (analogous to `self.advanced_settings`).
+2. **Wire `sig_parameters_loaded`**: connect `services.sig_parameters_loaded` to:
+   - `self.on_parameters_loaded` — stores the dict locally
+   - `self.laser.load_parameters` — sends to LaserManager
+3. **Wire ParametersPage GUI edits**: connect `page_parameters.sig_parameter_changed` to forward the changed value to `laser.set_parameter_value`.
+4. **`on_parameters_loaded(params_dict)`**: stores locally, populates `page_parameters` via a new method that accepts a plain dict rather than [WriteableParameter](file:///home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/interface.py#249-292) objects.
+5. **[on_laser_connected](file:///home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/general_manager.py#147-163)** — remove the code that reaches into `self.laser.interface.writeable_params`. Instead, trigger `self.services.load_parameters(board)` which will propagate through signals.
+6. **[on_parameters_updated](file:///home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/general_manager.py#164-176)** — similarly driven by `sig_parameters_loaded` (after a default restore).
+7. **Wire default restore button**: connect to `services.load_default_parameters(board)` instead of `laser.restore_default_parameters`.
+8. **Cleanup**: call `self.services.save_parameters(current_values_dict)` instead of `QMetaObject.invokeMethod(self.laser, "save_parameters", ...)`. The current values are obtained from `self.laser` (via a new method `get_current_parameter_values()`).
+
+---
+
+### Laser Manager
+#### [MODIFY] [laser_manager.py](file:///home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py)
+
+1. **Add `sig_parameters_ready = Signal()`** — emitted after the Interface has created its [WriteableParameter](file:///home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/interface.py#249-292)/[ReadableParameter](file:///home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/interface.py#233-248) objects from the dict.
+2. **Add [load_parameters(params_dict)](file:///home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/gui/laser_controller_page.py#141-183)** slot: receives the parameters dict, forwards it to `self.interface.load_parameters_from_dict(params_dict)`, then emits `sig_parameters_ready`.
+3. **Add `set_parameter_value(param_name, value)`** slot: calls `self.interface.set_value(param_name, value)`.
+4. **Add `get_current_parameter_values()`**: returns a dict of `{name: current_value}` from `self.interface.writeable_params`.
+5. **Remove** [restore_default_parameters](file:///home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py#159-171) and [save_parameters](file:///home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py#172-182) methods (these are now handled by ServiceManager).
+
+---
+
+### Interface
+#### [MODIFY] [interface.py](file:///home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/interface.py)
+
+1. **Replace [load_RedPitaya_parameters()](file:///home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/interface.py#75-108)** with **`load_parameters_from_dict(params_dict)`**: receives the already-parsed dict (same structure as YAML sections), creates [WriteableParameter](file:///home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/interface.py#249-292) and [ReadableParameter](file:///home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/interface.py#233-248) objects, calls [write_registers()](file:///home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/interface.py#143-145). No YAML reading.
+2. **Remove** [load_default_RedPitaya_parameters()](file:///home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/interface.py#109-142), [save_RedPitaya_parameters_before_closing()](file:///home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/interface.py#152-200) — all YAML I/O moves to ServiceManager.
+3. **[_basic_configure()](file:///home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/interface.py#56-74)**: now calls `load_parameters_from_dict()` — but only once the parameters arrive. We change this so [_basic_configure](file:///home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/interface.py#56-74) no longer calls [load_RedPitaya_parameters](file:///home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/interface.py#75-108); instead, parameter loading happens when the LaserManager receives the dict via signal.
+4. **Keep** [set_value](file:///home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/interface.py#221-232), [get_sweep](file:///home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/interface.py#201-220), [write_registers](file:///home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/interface.py#143-145), and the [WriteableParameter](file:///home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/interface.py#249-292)/[ReadableParameter](file:///home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/interface.py#233-248) classes unchanged.
+
+---
+
+### Laser Controller Page (ParametersPage)
+#### [MODIFY] [laser_controller_page.py](file:///home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/gui/laser_controller_page.py)
+
+1. **Add signal** `sig_parameter_changed = Signal(str, object)` — emits [(param_name, new_value)](file:///home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py#37-45) when user edits a value in the table.
+2. **Modify [load_parameters](file:///home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/gui/laser_controller_page.py#141-183)** to accept a plain dict (from YAML) instead of [WriteableParameter](file:///home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/interface.py#249-292) objects. The table columns become: Variable Name, Hardware Name, Value, Scaling (same columns, but data from a dict not from objects).
+3. **Modify [on_cell_changed](file:///home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/gui/laser_controller_page.py#184-220)** to emit `sig_parameter_changed` instead of directly calling `param.set_value()`.
+
+---
+
+## Data Flow Summary
+
+| Action | Flow |
+|---|---|
+| **Board connected** | GM calls `services.load_parameters(board)` → SM reads YAML → emits `sig_parameters_loaded(dict)` → GM stores + populates GUI, forwards to LM → LM calls `interface.load_parameters_from_dict(dict)` |
+| **User edits value** | ParametersPage emits `sig_parameter_changed(name, val)` → GM receives, updates local dict → forwards to LM → LM calls `interface.set_value(name, val)` |
+| **Restore defaults** | GM calls `services.load_default_parameters(board)` → same flow as "Board connected" but from [_default.yaml](file:///home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/RedPitaya_K_parameters_default.yaml) |
+| **App closes** | GM collects current values from LM (`get_current_parameter_values()`) → calls `services.save_parameters(board, values_dict)` → SM writes to YAML |
+
+## Verification Plan
+
+### Manual Verification
+
+Since these changes deeply involve hardware communication (RedPitaya via Linien), automated unit tests are impractical without mocking the entire hardware stack. I recommend running the application and verifying:
+
+1. **Launch the app**, select a board, and connect — the **Parameters page** should show all parameters from YAML with correct names, values, and scaling.
+2. **Edit a parameter value** in the GUI table — confirm in the logs (`laser_manager.log`, `interface.log`) that the new value is forwarded to the hardware.
+3. **Click "Default settings"** — confirm the table reloads with values from [_parameters_default.yaml](file:///home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/RedPitaya_K_parameters_default.yaml).
+4. **Close the app** — open the [_parameters.yaml](file:///home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/RedPitaya_K_parameters.yaml) file and confirm modified values are persisted.
+5. **Relaunch** — confirm the persisted values appear in the Parameters table.
+
+> [!IMPORTANT]
+> Could you suggest any other testing scenario you'd like covered, or confirm that the manual testing flow above is sufficient?

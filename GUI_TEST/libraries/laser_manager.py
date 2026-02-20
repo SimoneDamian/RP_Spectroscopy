@@ -8,7 +8,7 @@ import numpy as np
 
 class LaserManager(QObject):
     sig_connected = Signal()
-    sig_parameters_updated = Signal()
+    sig_parameters_ready = Signal()
     sig_data_ready = Signal(dict)
 
     def __init__(self, config, board):
@@ -156,29 +156,42 @@ class LaserManager(QObject):
         self.state = "SWEEP"
         self.logger.info("Sweep started by user.")
 
-    @Slot()
-    def restore_default_parameters(self):
+    @Slot(dict)
+    def load_parameters(self, params_dict):
         """
-        Reloads the default parameters from the config file and updates the interface.
+        Receives the parameters dict from ServiceManager (via GeneralManager)
+        and forwards it to the Interface to create hardware parameter objects.
         """
         if self.interface:
             try:
-                self.interface.load_default_RedPitaya_parameters()
-                self.logger.info("Default parameters restored.")
-                self.sig_parameters_updated.emit()
+                self.interface.load_parameters_from_dict(params_dict)
+                self.logger.info("Parameters loaded into Interface.")
+                self.sig_parameters_ready.emit()
             except Exception as e:
-                self.logger.error(f"Failed to restore default parameters: {e}")
+                self.logger.error(f"Failed to load parameters into Interface: {e}")
+        else:
+            self.logger.warning("Cannot load parameters: Interface not initialized.")
 
-    @Slot()
-    def save_parameters(self):
+    @Slot(str, object)
+    def set_parameter_value(self, param_name, value):
         """
-        Saves current parameters back to the YAML file.
+        Sets a single parameter value on the hardware (called when user edits GUI).
         """
         if self.interface:
             try:
-                self.interface.save_RedPitaya_parameters_before_closing()
+                self.interface.set_value(param_name, value)
+                self.logger.debug(f"Set parameter {param_name} to {value}")
             except Exception as e:
-                self.logger.error(f"Failed to save parameters: {e}")
+                self.logger.error(f"Failed to set parameter {param_name}: {e}")
+
+    def get_current_parameter_values(self):
+        """
+        Returns a dict of {param_name: current_value} for all writeable parameters.
+        Used by GeneralManager when saving parameters on app close.
+        """
+        if self.interface and hasattr(self.interface, 'writeable_params'):
+            return {name: param.value for name, param in self.interface.writeable_params.items()}
+        return {}
 
     @Slot(dict)
     def set_advanced_settings(self, settings):
