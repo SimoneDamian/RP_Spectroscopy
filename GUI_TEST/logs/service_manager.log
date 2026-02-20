@@ -928,3 +928,50 @@
 2026-02-19 12:20:57 - ServiceManager - INFO - Loading boards...
 2026-02-19 12:20:57 - ServiceManager - INFO - Found 3 devices.
 2026-02-19 12:21:01 - ServiceManager - INFO - Loaded advanced settings for 'RedPitaya_K' (4 groups).
+2026-02-19 18:33:23 - ServiceManager - INFO - ServiceManager initializing...
+2026-02-19 18:33:23 - ServiceManager - INFO - ServiceManager looking for board list at: /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/board_list.yaml
+2026-02-19 18:33:23 - ServiceManager - INFO - ServiceManager looking for reference lines at: /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/reference_lines/reference_lines_inventory.yaml
+2026-02-19 18:33:23 - ServiceManager - INFO - Grafana client initialized.
+2026-02-19 18:33:23 - ServiceManager - INFO - ServiceManager initialization completed.
+2026-02-19 18:33:23 - ServiceManager - INFO - Loading boards...
+2026-02-19 18:33:23 - ServiceManager - INFO - Found 3 devices.
+2026-02-19 18:33:39 - ServiceManager - ERROR - Failed to load advanced settings: 'NoneType' object has no attribute 'get'
+2026-02-19 18:35:10 - ServiceManager - INFO - ServiceManager initializing...
+2026-02-19 18:35:10 - ServiceManager - INFO - ServiceManager looking for board list at: /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/board_list.yaml
+2026-02-19 18:35:10 - ServiceManager - INFO - ServiceManager looking for reference lines at: /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/reference_lines/reference_lines_inventory.yaml
+2026-02-19 18:35:10 - ServiceManager - INFO - Grafana client initialized.
+2026-02-19 18:35:10 - ServiceManager - INFO - ServiceManager initialization completed.
+2026-02-19 18:35:10 - ServiceManager - INFO - Loading boards...
+2026-02-19 18:35:10 - ServiceManager - INFO - Found 3 devices.
+2026-02-19 18:35:14 - ServiceManager - ERROR - Failed to load advanced settings: 'NoneType' object has no attribute 'get'
+2026-02-19 18:38:27 - ServiceManager - INFO - ServiceManager initializing...
+2026-02-19 18:38:27 - ServiceManager - INFO - ServiceManager looking for board list at: /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/board_list.yaml
+2026-02-19 18:38:27 - ServiceManager - INFO - ServiceManager looking for reference lines at: /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/reference_lines/reference_lines_inventory.yaml
+2026-02-19 18:38:27 - ServiceManager - INFO - Grafana client initialized.
+2026-02-19 18:38:27 - ServiceManager - INFO - ServiceManager initialization completed.
+2026-02-19 18:38:27 - ServiceManager - INFO - Loading boards...
+2026-02-19 18:38:27 - ServiceManager - INFO - Found 3 devices.
+2026-02-19 18:38:30 - ServiceManager - INFO - Loaded advanced settings for 'RedPitaya_K' (4 groups).
+2026-02-19 18:40:00 - ServiceManager - INFO - ServiceManager initializing...
+2026-02-19 18:40:00 - ServiceManager - INFO - ServiceManager looking for board list at: /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/board_list.yaml
+2026-02-19 18:40:00 - ServiceManager - INFO - ServiceManager looking for reference lines at: /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/reference_lines/reference_lines_inventory.yaml
+2026-02-19 18:40:00 - ServiceManager - INFO - Grafana client initialized.
+2026-02-19 18:40:00 - ServiceManager - INFO - ServiceManager initialization completed.
+2026-02-19 18:40:00 - ServiceManager - INFO - Loading boards...
+2026-02-19 18:40:00 - ServiceManager - INFO - Found 3 devices.
+2026-02-20 09:19:00 - ServiceManager - INFO - ServiceManager initializing...
+2026-02-20 09:19:00 - ServiceManager - INFO - ServiceManager looking for board list at: /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/board_list.yaml
+2026-02-20 09:19:00 - ServiceManager - INFO - ServiceManager looking for reference lines at: /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/reference_lines/reference_lines_inventory.yaml
+2026-02-20 09:19:00 - ServiceManager - INFO - Grafana client initialized.
+2026-02-20 09:19:00 - ServiceManager - INFO - ServiceManager initialization completed.
+2026-02-20 09:19:00 - ServiceManager - INFO - Loading boards...
+2026-02-20 09:19:00 - ServiceManager - INFO - Found 3 devices.
+2026-02-20 09:22:07 - ServiceManager - INFO - Loaded advanced settings for 'RedPitaya_K' (4 groups).
+2026-02-20 09:23:39 - ServiceManager - INFO - ServiceManager initializing...
+2026-02-20 09:23:39 - ServiceManager - INFO - ServiceManager looking for board list at: /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/board_list.yaml
+2026-02-20 09:23:39 - ServiceManager - INFO - ServiceManager looking for reference lines at: /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/reference_lines/reference_lines_inventory.yaml
+2026-02-20 09:23:39 - ServiceManager - INFO - Grafana client initialized.
+2026-02-20 09:23:39 - ServiceManager - INFO - ServiceManager initialization completed.
+2026-02-20 09:23:39 - ServiceManager - INFO - Loading boards...
+2026-02-20 09:23:39 - ServiceManager - INFO - Found 3 devices.
+2026-02-20 09:23:42 - ServiceManager - INFO - Loaded advanced settings for 'RedPitaya_K' (4 groups).

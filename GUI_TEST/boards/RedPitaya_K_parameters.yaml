@@ -1,0 +1,365 @@
+##########################################
+########## REDPITAYA PARAMETERS ##########
+##########################################
+# Divided into:
+#    writeable: user can change them through the interface
+#    readable: user can only read them through the interface
+
+writeable_parameters:
+
+  ### INPUT CHANNELS SETUP ###
+  # Should not need to change, just make sure you connect the spectroscopy device to CH1
+  dual_channel:
+    hardware_name: dual_channel
+    initial_value: false # True if you want to use dual channel mode, ie mix CH1 and CH2, False if you want to use only CH1
+    scaling:      # scaling must be None for True/False parameters
+  channel_mixing:
+    hardware_name: channel_mixing
+    initial_value: -128 # goes from -128 to +128, -128 means only CH1, 128 means only CH2, 0 means equal mixing of both channels
+    scaling:
+
+  # Should not need to change
+  # Now I set the CH1 input to have no offset correction, no signal inversion, and two low-pass filters
+  demodulation_multiplier_a:
+    hardware_name: demodulation_multiplier_a
+    initial_value: 1.0 # This is the multiplier for the demodulation signal, 1.0 looking for modulation frequency
+    scaling: 1.0
+
+  offset_a:
+    hardware_name: offset_a
+    initial_value: 0.0 # This is the offset for the CH1 input, 0.0 means no offset correction
+    scaling: 8191.0
+
+  invert_a:
+    hardware_name: invert_a
+    initial_value: false # True if you want to invert the CH1 input signal, False otherwise
+    scaling:
+
+  filter_automatic_a:
+    hardware_name: filter_automatic_a
+    initial_value: false # True if you want to use the automatic filter, False otherwise
+    scaling:
+
+  filter_1_enabled_a:
+    hardware_name: filter_1_enabled_a
+    initial_value: true # True if you want to use the first low-pass filter, False otherwise
+    scaling:
+
+  filter_1_type_a:
+    hardware_name: filter_1_type_a
+    initial_value: 0.0 # 0 for Low-pass, 1 for High-pass
+    scaling: 1.0
+
+  filter_2_enabled_a:
+    hardware_name: filter_2_enabled_a
+    initial_value: true # True if you want to use the second low-pass filter, False otherwise
+    scaling:
+
+  filter_2_type_a:
+    hardware_name: filter_2_type_a
+    initial_value: 0.0 # 0 for Low-pass, 1 for High-pass
+    scaling: 1.0
+
+  # Should not need to change
+  # Now I set the CH2 input to have no offset correction, no signal inversion, and two low-pass filters
+  demodulation_multiplier_b:
+    hardware_name: demodulation_multiplier_b
+    initial_value: 1.0 # This is the multiplier for the demodulation signal
+    scaling: 1.0
+
+  offset_b:
+    hardware_name: offset_b
+    initial_value: 0.0 # This is the offset for the CH2 input,
+    scaling: 1.0
+
+  invert_b:
+    hardware_name: invert_b
+    initial_value: false # True if you want to invert the CH2 input signal, False
+    scaling:
+
+  filter_automatic_b:
+    hardware_name: filter_automatic_b
+    initial_value: false # True if you want to use the automatic filter, False otherwise
+    scaling:
+
+  filter_1_enabled_b:
+    hardware_name: filter_1_enabled_b
+    initial_value: true # True if you want to use the first low-pass filter, False
+    scaling:
+
+  filter_1_type_b:
+    hardware_name: filter_1_type_b
+    initial_value: 0.0 # 0 for Low-pass, 1 for High-pass
+    scaling: 1.0
+
+  filter_2_enabled_b:
+    hardware_name: filter_2_enabled_b
+    initial_value: true # True if you want to use the second low-pass filter, False
+    scaling:
+
+  filter_2_type_b:
+    hardware_name: filter_2_type_b
+    initial_value: 0.0 # 0 for Low-pass, 1 for High-pass
+    scaling: 1.0
+
+
+  ### OUTPUT CHANNELS SETUP ###
+  # These are the analog_outs you physically connect from your device to the actual setup
+  big_offset:
+    hardware_name: analog_out_1
+    initial_value: 0.93
+    scaling: 18204. # This is approx 1.0 / ANALOG_OUT_V
+
+  small_offset:
+    hardware_name: analog_out_2
+    initial_value: 0.0
+    scaling: 18204. # This is approx 1.0 / ANALOG_OUT_V
+
+  modulation_channel:
+    hardware_name: mod_channel
+    initial_value: 0 # 0 for CH1, 1 for CH2, 2 for ANALOG_OUT_0
+    scaling:      # scaling must be None for channel selection parameters  
+
+  sweep_channel:
+    hardware_name: sweep_channel
+    initial_value: 1 # 0 for CH1, 1 for CH2, 2 for ANALOG_OUT_0
+    scaling:
+
+  control_channel:
+    hardware_name: control_channel
+    initial_value: 1 # 0 for CH1, 1 for CH2, 2 for ANALOG_OUT_0
+    scaling:
+
+  polarity_fast_out1:
+    hardware_name: polarity_fast_out1
+    initial_value: 0 # 0 if when signal increases laser frequency increases, 1 if it decreases (NB absolute value not true, important is relative value to slow output)
+    scaling:      # scaling must be None for Option Parameters
+  polarity_fast_out2:
+    hardware_name: polarity_fast_out2
+    initial_value: 0 # 0 if when signal increases laser frequency increases, 1 if it decreases (NB absolute value not true, important is relative value to slow output)
+    scaling:
+
+  slow_control_channel:
+    hardware_name: slow_control_channel
+    initial_value: 2 # 0 for CH1, 1 for CH2, 2 for ANALOG_OUT_0
+    scaling:
+
+  polarity_analog_out0:
+    hardware_name: polarity_analog_out0
+    initial_value: 0 # 0 if when signal increases laser frequency increases, 1 if it decreases (NB absolute value not true, important is relative value to slow output)
+    scaling:
+
+
+  ### MODULATION SETUP ###
+  # These parameters control the modulation of the laser frequency
+  modulation_amplitude:
+    hardware_name: modulation_amplitude
+    initial_value: 0.5
+    scaling: 4095.75  # This is value of Vpp constant
+
+  modulation_frequency:
+    hardware_name: modulation_frequency
+    initial_value: 0.05
+    scaling: 33554432.0 # This is the value of MHz constant
+
+  ### SWEEP SETUP ###
+  sweep_amplitude:
+    hardware_name: sweep_amplitude
+    initial_value: 1.0 # This is the amplitude of the sweep signal as a percentage of the maximum output voltage of the sweep channel
+    scaling: 1.0
+
+  sweep_center:
+    hardware_name: sweep_center
+    initial_value: 0.0 # center the sweep on the 0V of the channel
+    scaling: 1.0
+
+  sweep_speed:
+    hardware_name: sweep_speed
+    initial_value: 8 # n means (3.8 kHz / 2**n), eg n=12 means 0.92 Hz
+    scaling:
+
+
+  ### SIGNAL PROCESSING SETUP ###
+  # These parameters control the signal processing of the spectroscopy signal, namely the demolutaion phase and filters
+  phase:
+    hardware_name: demodulation_phase_a
+    initial_value: 150.0
+    scaling: 1.0  # degrees
+
+  filter_1_frequency:
+    hardware_name: filter_1_frequency_a
+    initial_value: 10000.0
+    scaling: 1.0  # Hz
+
+  filter_2_frequency:
+    hardware_name: filter_2_frequency_a
+    initial_value: 10000.0
+    scaling: 1.0  # Hz
+
+  ### PID CONTROL SETUP ###
+  pid_p:
+    hardware_name: p
+    initial_value: 2000.0
+    scaling: 1.0  # PID proportional gain
+
+  pid_i:
+    hardware_name: i
+    initial_value: 100.0
+    scaling: 1.0  # PID integral gain
+
+  pid_d:
+    hardware_name: d
+    initial_value: 1.0
+    scaling: 1.0  # PID derivative gain
+
+  pid_on_slow_enabled:
+    hardware_name: pid_on_slow_enabled
+    initial_value: true  # True if PID control on slow channel is enabled, False otherwise
+    scaling:
+
+  pid_slow_strength:
+    hardware_name: pid_on_slow_strength
+    initial_value: 10.0
+    scaling: 1.0  # PID strength on slow control
+
+  ### SIGNAL HISTORY SETUP ###
+  # Should not need to change
+  control_history_length:
+    hardware_name: control_signal_history_length
+    initial_value: 60.0 # Length of control signal history buffer in seconds
+    scaling: 1.0  # Control signal history buffer size
+
+readable_parameters:
+  sweep_signal:
+    hardware_name: to_plot
+
+  control_signal_history:
+    hardware_name: control_signal_history
+
+  monitor_signal_history:
+    hardware_name: monitor_signal_history
+
+#######################################
+########## ADVANCED SETTINGS ##########
+#######################################
+# Settings used for both the GUI and the algorithms that can
+# be modified through the GUI
+
+advanced_settings:
+
+  # --- UNLOCK DETECTION LOGIC ---
+  unlock_detection:
+    ui_label: "Unlock Detection Logic"
+    events:
+      detect_unlock: true
+      automatic_relock: true
+
+    fast_control:
+      fluctuations:
+        enabled: true
+        threshold: 0.1
+      saturation:
+        enabled: true
+
+    slow_control:
+      fluctuations:
+        enabled: true
+        threshold: 0.1
+      saturation:
+        enabled: true
+
+    monitor_signal:
+      drift:
+        enabled: true
+        num_points: 100
+
+  # --- GUI SETTINGS ---
+  gui_visualization:
+    ui_label: "Plotting & Refresh"
+
+    history_length:
+      fast: 5
+      slow: 3600
+      unit: "s"
+
+    fast_control_signal_derivative:
+      show: true
+
+    slow_control_signal_derivative:
+      show: true
+
+  # --- AUTOLOCK SETTINGS ---
+  autolock_settings:
+    ui_label: "Autolock Settings"
+
+    mode:
+      value: "ROBUST"
+      options:
+      - SIMPLE
+      - ROBUST
+    determine_offset:
+      value: false
+
+  # --- AUTOMATIC CENTERING SETTINGS ---
+  autocenter_settings:
+    ui_label: "Autocenter Settings"
+
+    jitter_threshold:
+      value: 0.05 # Threshold for jitter detection
+
+    threshold_count:
+      value: 5
+
+    offset_big_jump:
+      value: 0.04
+
+    offset_small_jump:
+      value: 0.01
+
+    offset_try_list:
+      value:
+      - 0.0
+      - 1.0
+      - -1.0
+      - 2.0
+      - -2.0
+      - 3.0
+      - -3.0
+    correlation_minimum:
+      value: 0.5
+
+    length_match_minimum:
+      value: 0.5
+
+    proportion_free_space_left:
+      value: 0.5
+
+##########################################
+########## HARDWARE INFORMATION ##########
+##########################################
+# Informations about the hardware (circuits) divided in circuits.
+# In each circuit is shown:
+#   - hardware_name: the name of the port in the datasheet of the circuit
+#   - RedPitaya_connected_output: the name of the RedPitaya output that is connected to this port
+#   - RedPitaya_connected_parameter: the name of the RedPitaya parameter that is connected to this port. If
+#     None it means that there is no writeable parameter connected to this port, that is when the parameter is entirely
+#     controlled by the RP or if it has multiple parameters that control it that are not listed here.
+
+summator_circuit:
+  slow_in_1:
+    hardware_name: slow_in_1
+    RedPitaya_connected_output: analog_out_0
+    RedPitaya_connected_parameter: None
+    gain: 1.0
+
+  slow_in_2:
+    hardware_name: slow_in_2
+    RedPitaya_connected_output: analog_out_1
+    RedPitaya_connected_parameter: big_offset
+    gain: 2.0
+
+  fast_in:
+    hardware_name: fast_in
+    RedPitaya_connected_output: fast_out_1
+    RedPitaya_connected_parameter: None
+    gain: 1.0
