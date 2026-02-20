@@ -107,7 +107,7 @@ writeable_parameters:
   # These are the analog_outs you physically connect from your device to the actual setup
   big_offset:
     hardware_name: analog_out_1
-    initial_value: 0.96
+    initial_value: 0.95
     scaling: 18204. # This is approx 1.0 / ANALOG_OUT_V
 
   small_offset:
@@ -325,7 +325,6 @@ advanced_settings:
       - -2.0
       - 3.0
       - -3.0
-
     correlation_minimum:
       value: 0.5
 

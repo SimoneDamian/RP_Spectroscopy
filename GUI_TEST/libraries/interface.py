@@ -98,6 +98,15 @@ class HardwareInterface():
         self.write_registers()
         self.logger.info(f"Parameters loaded: {len(self.writeable_params)} writeable, {len(self.readable_params)} readable.")
 
+    def write_registers(self):
+        self.client.connection.root.write_registers()
+
+    def start_sweep(self):
+        self.client.connection.root.start_sweep()
+
+    def check_for_changed_parameters(self):
+        self.client.parameters.check_for_changed_parameters()
+
     def get_sweep(self):
         """
         Neglectiing the mixing channel for simplicity.

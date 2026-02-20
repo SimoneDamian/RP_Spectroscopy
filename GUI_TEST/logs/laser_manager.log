@@ -6633,3 +6633,70 @@
 2026-02-20 12:20:01 - LaserManager - INFO - Scan completed successfully.
 2026-02-20 12:20:07 - LaserManager - INFO - Sweep started by user.
 2026-02-20 12:20:17 - LaserManager - INFO - Control loop timer stopped.
+2026-02-20 17:13:06 - LaserManager - INFO - LaserManager initialized.
+2026-02-20 17:13:24 - LaserManager - INFO - LaserManager initialized.
+2026-02-20 17:26:46 - LaserManager - INFO - LaserManager initialized.
+2026-02-20 17:26:49 - LaserManager - INFO - LaserManager setup complete. Control loop started.
+2026-02-20 17:26:49 - LaserManager - INFO - Advanced settings updated.
+2026-02-20 17:26:50 - LaserManager - ERROR - Failed to load parameters into Interface: 'HardwareInterface' object has no attribute 'write_registers'
+2026-02-20 17:26:50 - LaserManager - ERROR - Failed to set parameter big_offset: 'HardwareInterface' object has no attribute 'write_registers'
+2026-02-20 17:26:50 - LaserManager - ERROR - Failed to set parameter channel_mixing: 'HardwareInterface' object has no attribute 'write_registers'
+2026-02-20 17:26:51 - LaserManager - ERROR - Failed to set parameter control_channel: 'HardwareInterface' object has no attribute 'write_registers'
+2026-02-20 17:26:51 - LaserManager - ERROR - Failed to set parameter control_history_length: 'HardwareInterface' object has no attribute 'write_registers'
+2026-02-20 17:26:51 - LaserManager - ERROR - Failed to set parameter demodulation_multiplier_a: 'HardwareInterface' object has no attribute 'write_registers'
+2026-02-20 17:26:51 - LaserManager - ERROR - Failed to set parameter demodulation_multiplier_b: 'HardwareInterface' object has no attribute 'write_registers'
+2026-02-20 17:26:51 - LaserManager - ERROR - Failed to set parameter filter_1_frequency: 'HardwareInterface' object has no attribute 'write_registers'
+2026-02-20 17:26:51 - LaserManager - ERROR - Failed to set parameter filter_1_type_a: 'HardwareInterface' object has no attribute 'write_registers'
+2026-02-20 17:26:51 - LaserManager - ERROR - Failed to set parameter filter_1_type_b: 'HardwareInterface' object has no attribute 'write_registers'
+2026-02-20 17:26:52 - LaserManager - ERROR - Failed to set parameter filter_2_frequency: 'HardwareInterface' object has no attribute 'write_registers'
+2026-02-20 17:26:52 - LaserManager - ERROR - Failed to set parameter filter_2_type_a: 'HardwareInterface' object has no attribute 'write_registers'
+2026-02-20 17:26:52 - LaserManager - ERROR - Failed to set parameter filter_2_type_b: 'HardwareInterface' object has no attribute 'write_registers'
+2026-02-20 17:26:52 - LaserManager - ERROR - Failed to set parameter modulation_amplitude: 'HardwareInterface' object has no attribute 'write_registers'
+2026-02-20 17:26:52 - LaserManager - ERROR - Failed to set parameter modulation_channel: 'HardwareInterface' object has no attribute 'write_registers'
+2026-02-20 17:26:52 - LaserManager - ERROR - Failed to set parameter modulation_frequency: 'HardwareInterface' object has no attribute 'write_registers'
+2026-02-20 17:26:52 - LaserManager - ERROR - Failed to set parameter offset_a: 'HardwareInterface' object has no attribute 'write_registers'
+2026-02-20 17:26:53 - LaserManager - ERROR - Failed to set parameter offset_b: 'HardwareInterface' object has no attribute 'write_registers'
+2026-02-20 17:26:53 - LaserManager - ERROR - Failed to set parameter phase: 'HardwareInterface' object has no attribute 'write_registers'
+2026-02-20 17:26:53 - LaserManager - ERROR - Failed to set parameter pid_d: 'HardwareInterface' object has no attribute 'write_registers'
+2026-02-20 17:26:53 - LaserManager - ERROR - Failed to set parameter pid_i: 'HardwareInterface' object has no attribute 'write_registers'
+2026-02-20 17:26:53 - LaserManager - ERROR - Failed to set parameter pid_p: 'HardwareInterface' object has no attribute 'write_registers'
+2026-02-20 17:26:53 - LaserManager - ERROR - Failed to set parameter pid_slow_strength: 'HardwareInterface' object has no attribute 'write_registers'
+2026-02-20 17:26:53 - LaserManager - ERROR - Failed to set parameter polarity_analog_out0: 'HardwareInterface' object has no attribute 'write_registers'
+2026-02-20 17:26:54 - LaserManager - ERROR - Failed to set parameter polarity_fast_out1: 'HardwareInterface' object has no attribute 'write_registers'
+2026-02-20 17:26:54 - LaserManager - ERROR - Failed to set parameter polarity_fast_out2: 'HardwareInterface' object has no attribute 'write_registers'
+2026-02-20 17:26:54 - LaserManager - ERROR - Failed to set parameter slow_control_channel: 'HardwareInterface' object has no attribute 'write_registers'
+2026-02-20 17:26:54 - LaserManager - ERROR - Failed to set parameter small_offset: 'HardwareInterface' object has no attribute 'write_registers'
+2026-02-20 17:26:54 - LaserManager - ERROR - Failed to set parameter sweep_amplitude: 'HardwareInterface' object has no attribute 'write_registers'
+2026-02-20 17:26:54 - LaserManager - ERROR - Failed to set parameter sweep_center: 'HardwareInterface' object has no attribute 'write_registers'
+2026-02-20 17:26:54 - LaserManager - ERROR - Failed to set parameter sweep_channel: 'HardwareInterface' object has no attribute 'write_registers'
+2026-02-20 17:26:55 - LaserManager - ERROR - Failed to set parameter sweep_speed: 'HardwareInterface' object has no attribute 'write_registers'
+2026-02-20 17:27:14 - LaserManager - INFO - Control loop timer stopped.
+2026-02-20 17:33:25 - LaserManager - INFO - LaserManager initialized.
+2026-02-20 17:33:29 - LaserManager - INFO - LaserManager setup complete. Control loop started.
+2026-02-20 17:33:29 - LaserManager - INFO - Advanced settings updated.
+2026-02-20 17:33:29 - LaserManager - INFO - Parameters loaded into Interface.
+2026-02-20 17:33:40 - LaserManager - INFO - Control loop timer stopped.
+2026-02-20 17:35:24 - LaserManager - INFO - LaserManager initialized.
+2026-02-20 17:35:27 - LaserManager - INFO - LaserManager setup complete. Control loop started.
+2026-02-20 17:35:27 - LaserManager - INFO - Advanced settings updated.
+2026-02-20 17:35:28 - LaserManager - INFO - Parameters loaded into Interface.
+2026-02-20 17:36:14 - LaserManager - INFO - Control loop timer stopped.
+2026-02-20 17:36:33 - LaserManager - INFO - LaserManager initialized.
+2026-02-20 17:36:36 - LaserManager - INFO - LaserManager setup complete. Control loop started.
+2026-02-20 17:36:36 - LaserManager - INFO - Advanced settings updated.
+2026-02-20 17:36:36 - LaserManager - INFO - Parameters loaded into Interface.
+2026-02-20 17:37:07 - LaserManager - INFO - Control loop timer stopped.
+2026-02-20 17:37:46 - LaserManager - INFO - LaserManager initialized.
+2026-02-20 17:37:49 - LaserManager - INFO - LaserManager setup complete. Control loop started.
+2026-02-20 17:37:49 - LaserManager - INFO - Advanced settings updated.
+2026-02-20 17:37:50 - LaserManager - INFO - Parameters loaded into Interface.
+2026-02-20 17:38:12 - LaserManager - INFO - Parameters loaded into Interface.
+2026-02-20 17:38:34 - LaserManager - INFO - Control loop timer stopped.
+2026-02-20 17:39:27 - LaserManager - INFO - LaserManager initialized.
+2026-02-20 17:39:30 - LaserManager - INFO - LaserManager setup complete. Control loop started.
+2026-02-20 17:39:30 - LaserManager - INFO - Advanced settings updated.
+2026-02-20 17:39:31 - LaserManager - INFO - Parameters loaded into Interface.
+2026-02-20 17:40:13 - LaserManager - INFO - Initiating scan: 0.9V -> 0.95V (10 pts)
+2026-02-20 17:40:29 - LaserManager - INFO - Scan completed successfully.
+2026-02-20 17:40:35 - LaserManager - INFO - Sweep started by user.
+2026-02-20 17:40:44 - LaserManager - INFO - Control loop timer stopped.
