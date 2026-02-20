@@ -1066,3 +1066,108 @@
 2026-02-20 09:25:16 - GeneralManager - INFO - GeneralManager shutting down...
 2026-02-20 09:25:18 - GeneralManager - INFO - Advanced settings saved to /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/RedPitaya_K_parameters.yaml
 2026-02-20 09:25:18 - GeneralManager - INFO - GeneralManager shut down.
+2026-02-20 11:05:29 - GeneralManager - INFO - GeneralManager starting up...
+2026-02-20 11:05:29 - GeneralManager - INFO - ServiceManager initialized.
+2026-02-20 11:05:29 - GeneralManager - INFO - ServiceManager moved to thread.
+2026-02-20 11:05:29 - GeneralManager - INFO - MainWindow initialized.
+2026-02-20 11:05:29 - GeneralManager - INFO - ServiceManager injected into ReferenceLinesPage.
+2026-02-20 11:05:29 - GeneralManager - INFO - ServiceManager thread started.
+2026-02-20 11:05:32 - GeneralManager - INFO - Connecting to RedPitaya_K...
+2026-02-20 11:05:32 - GeneralManager - INFO - LaserManager initialized.
+2026-02-20 11:05:32 - GeneralManager - INFO - LaserManager moved to thread.
+2026-02-20 11:05:32 - GeneralManager - INFO - LaserManager thread started.
+2026-02-20 11:05:32 - GeneralManager - INFO - Advanced settings stored in GeneralManager.
+2026-02-20 11:05:36 - GeneralManager - INFO - Parameters loaded into GUI.
+2026-02-20 11:05:54 - GeneralManager - INFO - GeneralManager shutting down...
+2026-02-20 11:05:56 - GeneralManager - INFO - Advanced settings saved to /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/RedPitaya_K_parameters.yaml
+2026-02-20 11:05:56 - GeneralManager - INFO - GeneralManager shut down.
+2026-02-20 11:08:16 - GeneralManager - INFO - GeneralManager starting up...
+2026-02-20 11:08:16 - GeneralManager - INFO - ServiceManager initialized.
+2026-02-20 11:08:16 - GeneralManager - INFO - ServiceManager moved to thread.
+2026-02-20 11:08:16 - GeneralManager - INFO - MainWindow initialized.
+2026-02-20 11:08:16 - GeneralManager - INFO - ServiceManager injected into ReferenceLinesPage.
+2026-02-20 11:08:16 - GeneralManager - INFO - ServiceManager thread started.
+2026-02-20 11:08:20 - GeneralManager - INFO - Connecting to RedPitaya_K...
+2026-02-20 11:08:20 - GeneralManager - INFO - LaserManager initialized.
+2026-02-20 11:08:20 - GeneralManager - INFO - LaserManager moved to thread.
+2026-02-20 11:08:20 - GeneralManager - INFO - LaserManager thread started.
+2026-02-20 11:08:20 - GeneralManager - INFO - Advanced settings stored in GeneralManager.
+2026-02-20 11:08:24 - GeneralManager - INFO - Parameters loaded into GUI.
+2026-02-20 11:12:33 - GeneralManager - INFO - GeneralManager shutting down...
+2026-02-20 11:12:35 - GeneralManager - ERROR - Failed to save advanced settings: 'NoneType' object is not subscriptable
+2026-02-20 11:12:35 - GeneralManager - INFO - GeneralManager shut down.
+2026-02-20 11:15:32 - GeneralManager - INFO - GeneralManager starting up...
+2026-02-20 11:15:32 - GeneralManager - INFO - ServiceManager initialized.
+2026-02-20 11:15:32 - GeneralManager - INFO - ServiceManager moved to thread.
+2026-02-20 11:15:32 - GeneralManager - INFO - MainWindow initialized.
+2026-02-20 11:15:32 - GeneralManager - INFO - ServiceManager injected into ReferenceLinesPage.
+2026-02-20 11:15:32 - GeneralManager - INFO - ServiceManager thread started.
+2026-02-20 11:15:36 - GeneralManager - INFO - Connecting to RedPitaya_K...
+2026-02-20 11:15:36 - GeneralManager - INFO - LaserManager initialized.
+2026-02-20 11:15:36 - GeneralManager - INFO - LaserManager moved to thread.
+2026-02-20 11:15:36 - GeneralManager - INFO - LaserManager thread started.
+2026-02-20 11:15:36 - GeneralManager - INFO - Advanced settings stored in GeneralManager.
+2026-02-20 11:15:39 - GeneralManager - INFO - Parameters loaded into GUI.
+2026-02-20 11:15:52 - GeneralManager - INFO - GeneralManager shutting down...
+2026-02-20 11:15:54 - GeneralManager - INFO - Advanced settings saved to /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/RedPitaya_K_parameters.yaml
+2026-02-20 11:15:54 - GeneralManager - INFO - GeneralManager shut down.
+2026-02-20 11:15:59 - GeneralManager - INFO - GeneralManager starting up...
+2026-02-20 11:15:59 - GeneralManager - INFO - ServiceManager initialized.
+2026-02-20 11:15:59 - GeneralManager - INFO - ServiceManager moved to thread.
+2026-02-20 11:15:59 - GeneralManager - INFO - MainWindow initialized.
+2026-02-20 11:15:59 - GeneralManager - INFO - ServiceManager injected into ReferenceLinesPage.
+2026-02-20 11:15:59 - GeneralManager - INFO - ServiceManager thread started.
+2026-02-20 11:16:02 - GeneralManager - INFO - Connecting to RedPitaya_K...
+2026-02-20 11:16:02 - GeneralManager - INFO - LaserManager initialized.
+2026-02-20 11:16:02 - GeneralManager - INFO - LaserManager moved to thread.
+2026-02-20 11:16:02 - GeneralManager - INFO - LaserManager thread started.
+2026-02-20 11:16:02 - GeneralManager - INFO - Advanced settings stored in GeneralManager.
+2026-02-20 11:16:06 - GeneralManager - INFO - Parameters loaded into GUI.
+2026-02-20 11:17:25 - GeneralManager - INFO - GeneralManager shutting down...
+2026-02-20 11:17:27 - GeneralManager - ERROR - Failed to save advanced settings: 'NoneType' object is not subscriptable
+2026-02-20 11:17:27 - GeneralManager - INFO - GeneralManager shut down.
+2026-02-20 11:18:17 - GeneralManager - INFO - GeneralManager starting up...
+2026-02-20 11:18:17 - GeneralManager - INFO - ServiceManager initialized.
+2026-02-20 11:18:17 - GeneralManager - INFO - ServiceManager moved to thread.
+2026-02-20 11:18:17 - GeneralManager - INFO - MainWindow initialized.
+2026-02-20 11:18:17 - GeneralManager - INFO - ServiceManager injected into ReferenceLinesPage.
+2026-02-20 11:18:17 - GeneralManager - INFO - ServiceManager thread started.
+2026-02-20 11:18:21 - GeneralManager - INFO - Connecting to RedPitaya_K...
+2026-02-20 11:18:21 - GeneralManager - INFO - LaserManager initialized.
+2026-02-20 11:18:21 - GeneralManager - INFO - LaserManager moved to thread.
+2026-02-20 11:18:21 - GeneralManager - INFO - LaserManager thread started.
+2026-02-20 11:18:21 - GeneralManager - INFO - Advanced settings stored in GeneralManager.
+2026-02-20 11:18:25 - GeneralManager - INFO - Parameters loaded into GUI.
+2026-02-20 11:19:18 - GeneralManager - INFO - GeneralManager shutting down...
+2026-02-20 11:19:20 - GeneralManager - INFO - Advanced settings saved to /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/RedPitaya_K_parameters.yaml
+2026-02-20 11:19:20 - GeneralManager - INFO - GeneralManager shut down.
+2026-02-20 11:19:46 - GeneralManager - INFO - GeneralManager starting up...
+2026-02-20 11:19:46 - GeneralManager - INFO - ServiceManager initialized.
+2026-02-20 11:19:46 - GeneralManager - INFO - ServiceManager moved to thread.
+2026-02-20 11:19:46 - GeneralManager - INFO - MainWindow initialized.
+2026-02-20 11:19:46 - GeneralManager - INFO - ServiceManager injected into ReferenceLinesPage.
+2026-02-20 11:19:46 - GeneralManager - INFO - ServiceManager thread started.
+2026-02-20 11:19:49 - GeneralManager - INFO - Connecting to RedPitaya_K...
+2026-02-20 11:19:49 - GeneralManager - INFO - LaserManager initialized.
+2026-02-20 11:19:49 - GeneralManager - INFO - LaserManager moved to thread.
+2026-02-20 11:19:49 - GeneralManager - INFO - LaserManager thread started.
+2026-02-20 11:19:49 - GeneralManager - INFO - Advanced settings stored in GeneralManager.
+2026-02-20 11:19:53 - GeneralManager - INFO - Parameters loaded into GUI.
+2026-02-20 11:20:58 - GeneralManager - INFO - GeneralManager shutting down...
+2026-02-20 11:21:00 - GeneralManager - ERROR - Failed to save advanced settings: 'NoneType' object is not subscriptable
+2026-02-20 11:21:00 - GeneralManager - INFO - GeneralManager shut down.
+2026-02-20 12:18:10 - GeneralManager - INFO - GeneralManager starting up...
+2026-02-20 12:18:10 - GeneralManager - INFO - ServiceManager initialized.
+2026-02-20 12:18:10 - GeneralManager - INFO - ServiceManager moved to thread.
+2026-02-20 12:18:11 - GeneralManager - INFO - MainWindow initialized.
+2026-02-20 12:18:11 - GeneralManager - INFO - ServiceManager injected into ReferenceLinesPage.
+2026-02-20 12:18:11 - GeneralManager - INFO - ServiceManager thread started.
+2026-02-20 12:18:13 - GeneralManager - INFO - Connecting to RedPitaya_K...
+2026-02-20 12:18:13 - GeneralManager - INFO - LaserManager initialized.
+2026-02-20 12:18:13 - GeneralManager - INFO - LaserManager moved to thread.
+2026-02-20 12:18:13 - GeneralManager - INFO - LaserManager thread started.
+2026-02-20 12:18:13 - GeneralManager - INFO - Advanced settings stored in GeneralManager.
+2026-02-20 12:18:17 - GeneralManager - INFO - Parameters loaded into GUI.
+2026-02-20 12:20:15 - GeneralManager - INFO - GeneralManager shutting down...
+2026-02-20 12:20:17 - GeneralManager - INFO - Advanced settings saved to /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/RedPitaya_K_parameters.yaml
+2026-02-20 12:20:17 - GeneralManager - INFO - GeneralManager shut down.

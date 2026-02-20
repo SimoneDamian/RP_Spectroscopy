@@ -179,15 +179,22 @@ class HardwareInterface():
                 if name in full_config['writeable_parameters']:
                     
                     # Update the 'initial_value' in the YAML to match the current state
-                    current_val = self.writeable_params[name].value 
+                    current_val = self.writeable_params[name].value
+
+                    # Convert numpy types to native Python for YAML serialization
+                    if hasattr(current_val, 'item'):
+                        current_val = current_val.item()
                     
                     full_config['writeable_parameters'][name]['initial_value'] = current_val
                     
                     self.logger.info(f"Updated {name} to {current_val} in config.")
 
-        # 3. Write everything back to the file
-        with open(board_config_file, 'w') as f:
+        # 3. Write to a temporary file first, then rename to avoid
+        #    data loss if the dump fails partway through.
+        tmp_file = board_config_file + '.tmp'
+        with open(tmp_file, 'w') as f:
             yaml.dump(full_config, f)
+        os.replace(tmp_file, board_config_file)
             
         self.logger.info(f"Configuration saved successfully to {board_config_file}")
 
@@ -260,6 +267,9 @@ class WriteableParameter(ReadableParameter):
             self.get_attribute().value = self.value
 
     def set_value(self, value):
+        # Convert numpy scalars to native Python types
+        if hasattr(value, 'item'):
+            value = value.item()
         self.value = value
         if self.scaling is not None:
             if self.scaling == 1:
