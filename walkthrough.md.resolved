@@ -1,0 +1,49 @@
+# Parameter R/W Migration — Walkthrough
+
+## Changes Made
+
+### [laser_controller_page.py](file:///Users/simone/Desktop/Università/Trento/Master_theses/RP_Spectroscopy/GUI_TEST/gui/laser_controller_page.py)
+
+**[ParametersPage](file:///Users/simone/Desktop/Universit%C3%A0/Trento/Master_theses/RP_Spectroscopy/GUI_TEST/gui/laser_controller_page.py#94-232) class** — Decoupled from hardware layer:
+
+- Added `sig_parameter_changed = Signal(str, object)` — emitted when user edits a value
+- [load_parameters()](file:///Users/simone/Desktop/Universit%C3%A0/Trento/Master_theses/RP_Spectroscopy/GUI_TEST/gui/laser_controller_page.py#141-183) now accepts a plain dict from YAML (with `writeable_parameters` key) instead of [WriteableParameter](file:///Users/simone/Desktop/Universit%C3%A0/Trento/Master_theses/RP_Spectroscopy/GUI_TEST/libraries/interface.py#149-192) objects
+- [on_cell_changed()](file:///Users/simone/Desktop/Universit%C3%A0/Trento/Master_theses/RP_Spectroscopy/GUI_TEST/gui/laser_controller_page.py#185-217) emits `sig_parameter_changed` instead of calling `param.set_value()` directly
+
+render_diffs(file:///Users/simone/Desktop/Università/Trento/Master_theses/RP_Spectroscopy/GUI_TEST/gui/laser_controller_page.py)
+
+---
+
+### [general_manager.py](file:///Users/simone/Desktop/Università/Trento/Master_theses/RP_Spectroscopy/GUI_TEST/libraries/general_manager.py)
+
+**Signal wiring** in [connect_to_board()](file:///Users/simone/Desktop/Universit%C3%A0/Trento/Master_theses/RP_Spectroscopy/GUI_TEST/libraries/general_manager.py#79-158):
+- `sig_parameters_loaded` → [on_parameters_loaded](file:///Users/simone/Desktop/Universit%C3%A0/Trento/Master_theses/RP_Spectroscopy/GUI_TEST/libraries/general_manager.py#167-176) (stores + populates GUI) + `laser.load_parameters`
+- `sig_parameter_changed` → `laser.set_parameter_value`
+- Defaults button → `services.load_default_parameters(board)` (was `laser.restore_default_parameters`)
+- Triggers `services.load_parameters(board)` alongside [load_advanced_settings](file:///Users/simone/Desktop/Universit%C3%A0/Trento/Master_theses/RP_Spectroscopy/GUI_TEST/libraries/service_manager.py#467-489)
+
+**Simplified methods:**
+- [on_laser_connected()](file:///Users/simone/Desktop/Universit%C3%A0/Trento/Master_theses/RP_Spectroscopy/GUI_TEST/libraries/general_manager.py#159-166) — no longer reaches into `interface.writeable_params`
+- New [on_parameters_loaded(dict)](file:///Users/simone/Desktop/Universit%C3%A0/Trento/Master_theses/RP_Spectroscopy/GUI_TEST/libraries/general_manager.py#167-176) replaces old [on_parameters_updated()](file:///Users/simone/Desktop/Universit%C3%A0/Trento/Master_theses/RP_Spectroscopy/GUI_TEST/libraries/general_manager.py#164-176)
+- [cleanup()](file:///Users/simone/Desktop/Universit%C3%A0/Trento/Master_theses/RP_Spectroscopy/GUI_TEST/libraries/general_manager.py#254-277) — uses `services.save_parameters()` directly instead of `QMetaObject.invokeMethod`
+
+render_diffs(file:///Users/simone/Desktop/Università/Trento/Master_theses/RP_Spectroscopy/GUI_TEST/libraries/general_manager.py)
+
+## Data Flow (Complete)
+
+| Action | Flow |
+|---|---|
+| **Board connected** | GM calls `services.load_parameters(board)` → SM reads YAML → emits `sig_parameters_loaded(dict)` → GM stores + populates GUI, LM calls `interface.load_parameters_from_dict(dict)` |
+| **User edits value** | ParametersPage emits `sig_parameter_changed(name, val)` → LM calls `interface.set_value(name, val)` |
+| **Restore defaults** | GM calls `services.load_default_parameters(board)` → same flow as "Board connected" but from `_default.yaml` |
+| **App closes** | GM collects values from LM → calls `services.save_parameters(board, values_dict)` → SM writes to YAML |
+
+## Verification
+
+> [!IMPORTANT]
+> These changes require manual testing with the RedPitaya hardware. The recommended test flow:
+> 1. Launch app, connect to a board → Parameters page should populate from YAML
+> 2. Edit a parameter → check logs for forwarding to hardware
+> 3. Click "Default settings" → table reloads from `_default.yaml`
+> 4. Close app → verify `_parameters.yaml` has updated values
+> 5. Relaunch → verify persisted values appear
