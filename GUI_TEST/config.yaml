@@ -13,13 +13,13 @@ app:
 paths:
 
   # Where the application saves text logs (errors, events)
-  logs: "/home/bec3/Desktop/Simone_Damian/Serafini/GUI_TEST/logs"
+  logs: "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/logs"
   
   # Where the application saves the reference lines
-  reference_lines: "/home/bec3/Desktop/Simone_Damian/Serafini/GUI_TEST/reference_lines"
+  reference_lines: "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/reference_lines"
   
   # Path to hardware definitions
-  hardware: "/home/bec3/Desktop/Simone_Damian/Serafini/GUI_TEST/boards"
+  hardware: "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards"
 
 # --- NETWORK SERVICES ---
 services:

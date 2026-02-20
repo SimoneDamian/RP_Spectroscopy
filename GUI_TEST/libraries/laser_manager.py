@@ -4,6 +4,7 @@ from .controller import LockController
 from PySide6.QtCore import QObject, Signal, Slot, QTimer
 import os
 import logging
+import numpy as np
 
 class LaserManager(QObject):
     sig_connected = Signal()
@@ -114,7 +115,7 @@ class LaserManager(QObject):
         # 1. Check if we are done
         if self.scan_index >= len(self.scan_voltages):
             self.logger.info("Scan completed successfully.")
-            self.state = "SWEEP"
+            self.state = "IDLE"
             return
 
         # 2. Get the target voltage for this step

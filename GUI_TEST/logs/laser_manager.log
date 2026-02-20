@@ -6552,3 +6552,40 @@
 2026-02-13 10:53:38 - LaserManager - INFO - LaserManager setup complete. Control loop started.
 2026-02-13 10:53:38 - LaserManager - INFO - Advanced settings updated.
 2026-02-13 16:00:49 - LaserManager - INFO - Control loop timer stopped.
+2026-02-19 12:08:51 - LaserManager - INFO - LaserManager initialized.
+2026-02-19 12:08:55 - LaserManager - INFO - LaserManager setup complete. Control loop started.
+2026-02-19 12:08:55 - LaserManager - INFO - Advanced settings updated.
+2026-02-19 12:09:22 - LaserManager - INFO - Initiating scan: 0.9V -> 1.0V (10 pts)
+2026-02-19 12:09:39 - LaserManager - INFO - Scan completed successfully.
+2026-02-19 12:10:05 - LaserManager - INFO - Sweep started by user.
+2026-02-19 12:15:37 - LaserManager - INFO - Control loop timer stopped.
+2026-02-19 12:21:01 - LaserManager - INFO - LaserManager initialized.
+2026-02-19 12:21:04 - LaserManager - INFO - LaserManager setup complete. Control loop started.
+2026-02-19 12:21:04 - LaserManager - INFO - Advanced settings updated.
+2026-02-19 12:21:39 - LaserManager - INFO - Initiating scan: 0.9V -> 1.0V (15 pts)
+2026-02-19 12:22:03 - LaserManager - INFO - Scan completed successfully.
+2026-02-19 12:22:11 - LaserManager - INFO - Sweep started by user.
+2026-02-19 12:24:14 - LaserManager - ERROR - Failed to save parameters: cannot represent an object: 1.0
+2026-02-19 12:24:15 - LaserManager - INFO - Control loop timer stopped.
+2026-02-19 18:33:39 - LaserManager - INFO - LaserManager initialized.
+2026-02-19 18:33:42 - LaserManager - ERROR - Failed to initialize HardwareInterface and Controller: 'NoneType' object has no attribute 'get'
+2026-02-19 18:35:14 - LaserManager - INFO - LaserManager initialized.
+2026-02-19 18:35:17 - LaserManager - ERROR - Failed to initialize HardwareInterface and Controller: 'NoneType' object has no attribute 'get'
+2026-02-19 18:38:30 - LaserManager - INFO - LaserManager initialized.
+2026-02-19 18:38:34 - LaserManager - INFO - LaserManager setup complete. Control loop started.
+2026-02-19 18:38:34 - LaserManager - INFO - Advanced settings updated.
+2026-02-19 18:39:25 - LaserManager - INFO - Initiating scan: 0.9V -> 1.0V (10 pts)
+2026-02-19 18:39:41 - LaserManager - INFO - Scan completed successfully.
+2026-02-19 18:39:55 - LaserManager - ERROR - Failed to save parameters: cannot represent an object: 1.0
+2026-02-19 18:39:55 - LaserManager - INFO - Control loop timer stopped.
+2026-02-20 09:22:07 - LaserManager - INFO - LaserManager initialized.
+2026-02-20 09:22:37 - LaserManager - INFO - LaserManager setup complete. Control loop started.
+2026-02-20 09:22:37 - LaserManager - INFO - Advanced settings updated.
+2026-02-20 09:23:12 - LaserManager - INFO - Control loop timer stopped.
+2026-02-20 09:23:42 - LaserManager - INFO - LaserManager initialized.
+2026-02-20 09:23:46 - LaserManager - INFO - LaserManager setup complete. Control loop started.
+2026-02-20 09:23:46 - LaserManager - INFO - Advanced settings updated.
+2026-02-20 09:24:15 - LaserManager - INFO - Initiating scan: 0.9V -> 0.95V (5 pts)
+2026-02-20 09:24:23 - LaserManager - INFO - Scan completed successfully.
+2026-02-20 09:24:33 - LaserManager - INFO - Sweep started by user.
+2026-02-20 09:25:18 - LaserManager - INFO - Control loop timer stopped.

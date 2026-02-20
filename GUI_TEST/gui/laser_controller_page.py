@@ -1,7 +1,9 @@
-from PySide6.QtWidgets import (QWidget, QVBoxLayout, QLabel, QSplitter, QStackedWidget, 
-                               QPushButton, QFrame, QHBoxLayout, QSizePolicy, QTableWidget, 
-                               QTableWidgetItem, QHeaderView, QMessageBox)
+from PySide6.QtWidgets import (QWidget, QVBoxLayout, QLabel, QSplitter, QStackedWidget,
+                               QPushButton, QFrame, QHBoxLayout, QSizePolicy, QTableWidget,
+                               QTableWidgetItem, QHeaderView, QMessageBox, QLineEdit,
+                               QFormLayout)
 from PySide6.QtCore import Qt, Slot, Signal
+from PySide6.QtGui import QDoubleValidator, QIntValidator
 from gui.plot_panel import PlotPanel
 from gui.advanced_settings_page import AdvancedSettingsPage
 
@@ -228,6 +230,98 @@ class ParametersPage(SubPageContainer):
         if reply == QMessageBox.Yes:
             self.sig_restore_defaults.emit()
                 
+class ScanPage(QWidget):
+    """
+    Scan sub-page with voltage-range inputs and start/stop controls.
+    """
+    sig_start_scan = Signal(float, float, int)
+    sig_stop_scan = Signal()
+    sig_back = Signal()
+
+    def __init__(self):
+        super().__init__()
+        layout = QVBoxLayout(self)
+        layout.setContentsMargins(10, 10, 10, 10)
+        layout.setSpacing(10)
+
+        # --- Title ---
+        lbl_title = QLabel("Scan")
+        lbl_title.setAlignment(Qt.AlignCenter)
+        lbl_title.setStyleSheet("font-size: 18px; font-weight: bold; margin-bottom: 20px;")
+        layout.addWidget(lbl_title)
+
+        # --- Input row ---
+        form_layout = QFormLayout()
+        form_layout.setHorizontalSpacing(12)
+        form_layout.setVerticalSpacing(8)
+
+        self.input_start_v = QLineEdit("0.05")
+        self.input_start_v.setValidator(QDoubleValidator())
+        form_layout.addRow("Start voltage:", self.input_start_v)
+
+        self.input_end_v = QLineEdit("1.75")
+        self.input_end_v.setValidator(QDoubleValidator())
+        form_layout.addRow("End voltage:", self.input_end_v)
+
+        self.input_num_pts = QLineEdit("40")
+        self.input_num_pts.setValidator(QIntValidator(1, 100000))
+        form_layout.addRow("Number of points:", self.input_num_pts)
+
+        layout.addLayout(form_layout)
+
+        # --- Button row: Start / Stop ---
+        btn_row = QHBoxLayout()
+        self.btn_start_scan = QPushButton("Start scan")
+        self.btn_stop_scan = QPushButton("Stop scan")
+        self.btn_stop_scan.setEnabled(False)
+        btn_row.addWidget(self.btn_start_scan)
+        btn_row.addWidget(self.btn_stop_scan)
+        layout.addLayout(btn_row)
+
+        # Spacer to push back button to the bottom
+        layout.addStretch()
+
+        # --- Back button ---
+        self.btn_back = QPushButton("Back")
+        self.btn_back.setFixedWidth(120)
+        btn_back_container = QHBoxLayout()
+        btn_back_container.addStretch()
+        btn_back_container.addWidget(self.btn_back)
+        btn_back_container.addStretch()
+        layout.addLayout(btn_back_container)
+
+        # --- Internal wiring ---
+        self.btn_start_scan.clicked.connect(self._on_start_clicked)
+        self.btn_stop_scan.clicked.connect(self._on_stop_clicked)
+        self.btn_back.clicked.connect(self.sig_back.emit)
+
+    def _on_start_clicked(self):
+        try:
+            start_v = float(self.input_start_v.text())
+            end_v = float(self.input_end_v.text())
+            num_pts = int(self.input_num_pts.text())
+        except ValueError:
+            return  # Ignore if inputs are invalid
+
+        # Disable start + back, enable stop
+        self.btn_start_scan.setEnabled(False)
+        self.btn_back.setEnabled(False)
+        self.btn_stop_scan.setEnabled(True)
+
+        self.sig_start_scan.emit(start_v, end_v, num_pts)
+
+    def _on_stop_clicked(self):
+        self.sig_stop_scan.emit()
+        self.set_scan_finished()
+
+    @Slot()
+    def set_scan_finished(self):
+        """Re-enable buttons after scan completes or is stopped."""
+        self.btn_start_scan.setEnabled(True)
+        self.btn_back.setEnabled(True)
+        self.btn_stop_scan.setEnabled(False)
+
+
 class LaserControllerPage(QWidget):
     def __init__(self, logger):
         super().__init__()
@@ -250,7 +344,7 @@ class LaserControllerPage(QWidget):
         # 2. Sub Pages
         self.page_parameters = ParametersPage() # REAL PAGE
         self.page_advanced = AdvancedSettingsPage()
-        self.page_scan = SubPageContainer("Scan")
+        self.page_scan = ScanPage()
         self.page_centering = SubPageContainer("Line Centering")
         self.page_manual = SubPageContainer("Manual Lock")
         self.page_auto = SubPageContainer("Auto-lock")
@@ -283,7 +377,7 @@ class LaserControllerPage(QWidget):
         # Back Buttons -> Menu
         self.page_parameters.sig_back.connect(self.go_to_menu)
         self.page_advanced.sig_back.connect(self.go_to_menu)
-        self.page_scan.sig_back.connect(self.go_to_menu)
+        self.page_scan.sig_back.connect(self.on_scan_back)
         self.page_centering.sig_back.connect(self.go_to_menu)
         self.page_manual.sig_back.connect(self.go_to_menu)
         self.page_auto.sig_back.connect(self.go_to_menu)
@@ -316,6 +410,11 @@ class LaserControllerPage(QWidget):
     def go_to_menu(self):
         self.left_stack.setCurrentWidget(self.menu_page)
         
+    @Slot()
+    def on_scan_back(self):
+        """Return to menu from scan page. start_sweep is wired via GeneralManager."""
+        self.left_stack.setCurrentWidget(self.menu_page)
+
     @Slot()
     def on_reflines_clicked(self):
         self.logger.info("Reference Lines button clicked - (No Action implemented)")
