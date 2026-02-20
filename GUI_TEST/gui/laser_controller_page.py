@@ -93,6 +93,7 @@ class SubPageContainer(QWidget):
 
 class ParametersPage(SubPageContainer):
     sig_restore_defaults = Signal()
+    sig_parameter_changed = Signal(str, object)  # (param_name, new_value)
 
     def __init__(self, title="Parameters"):
         super().__init__(title)
@@ -138,16 +139,16 @@ class ParametersPage(SubPageContainer):
         # This ensures the table expands to fill available space
         layout.insertWidget(1, content_widget, 1)
         
-    def load_parameters(self, writeable_params):
+    def load_parameters(self, params_dict):
         """
-        Populate the table with WriteableParameter objects.
-        writeable_params: dict of name -> WriteableParameter
+        Populate the table from a plain dict (from YAML writeable_parameters section).
+        params_dict: dict with 'writeable_parameters' key containing {name: {hardware_name, initial_value, scaling}}
         """
-        self.params = writeable_params
+        self.params = params_dict.get('writeable_parameters', {})
         self._is_populating = True
         self.table.setRowCount(0)
         
-        for name, param in self.params.items():
+        for name, entry in self.params.items():
             row = self.table.rowCount()
             self.table.insertRow(row)
             
@@ -157,13 +158,12 @@ class ParametersPage(SubPageContainer):
             self.table.setItem(row, 0, item_name)
             
             # 1: Hardware Name
-            item_hw = QTableWidgetItem(str(param.name))
+            item_hw = QTableWidgetItem(str(entry.get('hardware_name', '')))
             item_hw.setFlags(item_hw.flags() & ~Qt.ItemIsEditable) # Read Only
             self.table.setItem(row, 1, item_hw)
             
             # 2: Value
-            # We assume value is float/int, display as string using 3 decimal places if float
-            val = param.value
+            val = entry.get('initial_value', 0)
             if isinstance(val, float):
                 val_str = f"{val:.6g}" # Use general format
             else:
@@ -174,8 +174,9 @@ class ParametersPage(SubPageContainer):
             self.table.setItem(row, 2, item_val)
             
             # 3: Scaling
-            scaling = param.scaling if param.scaling is not None else "None"
-            item_scale = QTableWidgetItem(str(scaling))
+            scaling = entry.get('scaling', None)
+            scaling_str = str(scaling) if scaling is not None else "None"
+            item_scale = QTableWidgetItem(scaling_str)
             item_scale.setFlags(item_scale.flags() & ~Qt.ItemIsEditable)
             self.table.setItem(row, 3, item_scale)
             
@@ -194,28 +195,24 @@ class ParametersPage(SubPageContainer):
         new_val_str = item.text()
         
         if param_name in self.params:
-            param = self.params[param_name]
+            entry = self.params[param_name]
             try:
                 # Convert string back to float/int
-                # We try float first because it handles "2.0" correctly
                 val_float = float(new_val_str)
                 
                 # Check if we should convert to int
                 # If scaling is None, it implies it might be an index or boolean-like int
-                # If scaling is defined, it usually implies a continuous physical value (float)
-                # We also check if the float value is effectively an integer
-                if param.scaling is None and val_float.is_integer():
+                scaling = entry.get('scaling', None)
+                if scaling is None and val_float.is_integer():
                      new_val = int(val_float)
                 else:
                      new_val = val_float
 
-                # Update the parameter object
-                param.set_value(new_val)
-                # print(f"Updated {param_name} to {new_val}") 
+                # Emit signal instead of directly calling param.set_value()
+                self.sig_parameter_changed.emit(param_name, new_val)
                 
             except ValueError:
-                # Handle invalid input? Reset to old value?
-                # For now just print error or ignore
+                # Handle invalid input — ignore for now
                 pass
 
     @Slot()
