@@ -73,6 +73,63 @@ class SweepPlotHandler(BasePlotHandler):
         if monitor is not None:
             self.curve_monitor.setData(x, np.asarray(monitor))
 
+class ManualLockingPlotHandler(BasePlotHandler):
+    """
+    Handles the MANUAL_LOCKING mode visualization.
+    Shows two vertically-stacked plots sharing the same x-axis:
+      - Top:    error_signal   (blue)
+      - Bottom: monitor_signal (orange)
+      - In addition it shows the vertical lines associated with the lock region selected by the user.
+    """
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        layout = QVBoxLayout(self)
+        layout.setContentsMargins(0, 0, 0, 0)
+        layout.setSpacing(4)
+
+        # --- Top plot: Error Signal ---
+        self.plot_error = pg.PlotWidget(title="Error Signal")
+        self.plot_error.setBackground('k')
+        self.plot_error.showGrid(x=True, y=True, alpha=0.3)
+        self.plot_error.getPlotItem().setLabel('left', 'Error Signal')
+        self.plot_error.getPlotItem().getAxis('bottom').enableAutoSIPrefix(False)
+        self.plot_error.getPlotItem().getAxis('left').enableAutoSIPrefix(False)
+        self.curve_error = self.plot_error.plot(pen=pg.mkPen('c', width=1.5))
+
+        # --- Bottom plot: Monitor Signal ---
+        self.plot_monitor = pg.PlotWidget(title="Monitor Signal")
+        self.plot_monitor.setBackground('k')
+        self.plot_monitor.showGrid(x=True, y=True, alpha=0.3)
+        self.plot_monitor.getPlotItem().setLabel('left', 'Monitor Signal')
+        self.plot_monitor.getPlotItem().setLabel('bottom', 'Voltage', units='V')
+        self.plot_monitor.getPlotItem().getAxis('bottom').enableAutoSIPrefix(False)
+        self.plot_monitor.getPlotItem().getAxis('left').enableAutoSIPrefix(False)
+        self.curve_monitor = self.plot_monitor.plot(pen=pg.mkPen(color=(255, 165, 0), width=1.5))
+
+        # Link x-axes so zooming/panning is synchronised
+        self.plot_monitor.setXLink(self.plot_error)
+
+        # Hide the x-axis label on the top plot (shared axis)
+        self.plot_error.getPlotItem().setLabel('bottom', '')
+
+        layout.addWidget(self.plot_error)
+        layout.addWidget(self.plot_monitor)
+
+    def update(self, packet: dict):
+        x = packet.get("x")
+        error = packet.get("error_signal")
+        monitor = packet.get("monitor_signal")
+
+        if x is None:
+            return
+
+        # Convert to numpy arrays if they aren't already
+        x = np.asarray(x)
+        if error is not None:
+            self.curve_error.setData(x, np.asarray(error))
+        if monitor is not None:
+            self.curve_monitor.setData(x, np.asarray(monitor))
+
 
 class ScanPlotHandler(BasePlotHandler):
     """
@@ -201,6 +258,7 @@ class PlotPanel(QWidget):
         # Register default handlers
         self.register_handler("SWEEP", SweepPlotHandler())
         self.register_handler("SCAN", ScanPlotHandler())
+        self.register_handler("SETUP_MANUAL_LOCK", ManualLockingPlotHandler())
 
     def register_handler(self, mode: str, handler: BasePlotHandler):
         """Register a plot handler for a given FSM mode."""

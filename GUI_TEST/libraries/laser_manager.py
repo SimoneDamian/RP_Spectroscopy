@@ -5,6 +5,8 @@ from PySide6.QtCore import QObject, Signal, Slot, QTimer
 import os
 import logging
 import numpy as np
+from linien_common.common import ANALOG_OUT_V, Vpp
+import pickle
 
 class LaserManager(QObject):
     sig_connected = Signal()
@@ -72,19 +74,21 @@ class LaserManager(QObject):
         if self.state == "IDLE":
             pass
         elif self.state == "SWEEP":
-            self.get_and_send_sweep()
+            self.get_and_send_sweep("SWEEP")
         elif self.state == "SCAN":
             self.handle_scan_step()
+        elif self.state == "SETUP_MANUAL_LOCK":
+            self.get_and_send_sweep("SETUP_MANUAL_LOCK")
         else:
             self.logger.warning(f"Unknown state: {self.state}")
 
-    @Slot()
-    def get_and_send_sweep(self):
+    @Slot(str)
+    def get_and_send_sweep(self, mode):
 
         sweep_signal = self.interface.get_sweep()
 
         packet = {
-            "mode": "SWEEP",
+            "mode": mode,
             "x": sweep_signal["x"],
             "error_signal": sweep_signal["error_signal"],
             "monitor_signal": sweep_signal["monitor_signal"]
@@ -208,3 +212,33 @@ class LaserManager(QObject):
         """
         self.advanced_settings = settings
         self.logger.info("Advanced settings updated.")
+
+    @Slot(float, float, dict)
+    def start_manual_locking(self, x0, x1, sweep_data):
+        self.interface.wait_for_lock_status(False) #wait until the laser is unlocked
+
+        expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_data['error_signal'], sweep_data['monitor_signal'], x0, x1)
+        self.expected_lock_monitor_signal_point = expected_lock_monitor_signal_point
+        #print("Expected lock monitor signal point:", expected_lock_monitor_signal_point)
+
+        self.interface.client.connection.root.start_autolock(x0, x1, pickle.dumps(sweep_data['error_signal']*2*Vpp))
+
+        try:
+            self.interface.wait_for_lock_status(True)
+            self.logger.info("Locking the laser worked! \\o/")
+        except Exception:
+            self.logger.warning("Locking the laser failed :(")
+            return
+
+    def find_monitor_signal_peak(self, error_signal, monitor_signal, x0, x1):
+        error_signal_selected_region = error_signal[x0:x1]
+        monitor_signal_selected_region = monitor_signal[x0:x1]
+
+        maximum_error_index = np.argmax(error_signal_selected_region)
+        minimum_error_index = np.argmin(error_signal_selected_region)
+
+        if minimum_error_index < maximum_error_index:
+            #slope is positive so I have to look for a minimum in the monitor signal
+            return [x0 + np.argmin(monitor_signal_selected_region), monitor_signal_selected_region[np.argmin(monitor_signal_selected_region)]]
+        else:
+            return [x0 + np.argmax(monitor_signal_selected_region), monitor_signal_selected_region[np.argmax(monitor_signal_selected_region)]]

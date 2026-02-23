@@ -1,6 +1,7 @@
 from PySide6.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QLabel,
                                 QGroupBox, QScrollArea, QPushButton,
-                                QTableWidget, QTableWidgetItem, QHeaderView, QMessageBox)
+                                QTableWidget, QTableWidgetItem, QHeaderView, QMessageBox,
+                                QCheckBox, QLineEdit, QFrame)
 from PySide6.QtCore import Qt, Signal, Slot
 from copy import deepcopy
 
@@ -80,6 +81,15 @@ class AdvancedSettingsPage(QWidget):
                 continue
             ui_label = group_data.get("ui_label", group_key)
 
+            if group_key == "unlock_detection":
+                group_box = self._build_unlock_detection_group(group_key, group_data)
+                self._scroll_layout.addWidget(group_box)
+                continue
+            elif group_key == "gui_visualization":
+                group_box = self._build_gui_visualization_group(group_key, group_data)
+                self._scroll_layout.addWidget(group_box)
+                continue
+
             group_box = QGroupBox(ui_label)
             gbox_layout = QVBoxLayout(group_box)
 
@@ -120,6 +130,129 @@ class AdvancedSettingsPage(QWidget):
     # ------------------------------------------------------------------
     # Helpers
     # ------------------------------------------------------------------
+
+    def _build_unlock_detection_group(self, group_key, group_data):
+        ui_label = group_data.get("ui_label", "Unlock Detection Logic")
+        group_box = QGroupBox(ui_label)
+        gbox_layout = QVBoxLayout(group_box)
+        gbox_layout.setSpacing(10)
+
+        for sub_key, sub_data in group_data.items():
+            if sub_key == "ui_label" or not isinstance(sub_data, dict):
+                continue
+                
+            gui_name = sub_data.get("gui_name", sub_key)
+            header_lbl = QLabel(gui_name)
+            header_lbl.setStyleSheet("font-weight: bold; margin-top: 5px;")
+            gbox_layout.addWidget(header_lbl)
+            
+            # Horizontal line separator
+            line = QFrame()
+            line.setFrameShape(QFrame.HLine)
+            line.setFrameShadow(QFrame.Sunken)
+            gbox_layout.addWidget(line)
+            
+            for item_key, item_data in sub_data.items():
+                if item_key == "gui_name" or not isinstance(item_data, dict):
+                    continue
+                    
+                item_gui_name = item_data.get("gui_name", item_key)
+                description = item_data.get("description", "")
+                
+                row_layout = QHBoxLayout()
+                lbl = QLabel(item_gui_name)
+                if description:
+                    lbl.setToolTip(description)
+                row_layout.addWidget(lbl)
+                
+                row_layout.addStretch()
+                
+                dot_path = f"{sub_key}.{item_key}"
+                
+                if "enabled" in item_data:
+                    cb = QCheckBox()
+                    cb.setChecked(item_data["enabled"])
+                    # Use lambda with default args to capture current loop variables
+                    cb.toggled.connect(lambda checked, gk=group_key, dp=f"{dot_path}.enabled": self._on_form_widget_changed(gk, dp, checked))
+                    row_layout.addWidget(cb)
+                    
+                if "threshold" in item_data:
+                    le = QLineEdit(str(item_data["threshold"]))
+                    le.setFixedWidth(80)
+                    le.editingFinished.connect(lambda gk=group_key, dp=f"{dot_path}.threshold", w=le: self._on_form_widget_changed(gk, dp, w.text()))
+                    row_layout.addWidget(le)
+                elif "num_points" in item_data:
+                    le = QLineEdit(str(item_data["num_points"]))
+                    le.setFixedWidth(80)
+                    le.editingFinished.connect(lambda gk=group_key, dp=f"{dot_path}.num_points", w=le: self._on_form_widget_changed(gk, dp, w.text()))
+                    row_layout.addWidget(le)
+                    
+                gbox_layout.addLayout(row_layout)
+                
+        return group_box
+
+    def _build_gui_visualization_group(self, group_key, group_data):
+        ui_label = group_data.get("ui_label", "Plotting")
+        group_box = QGroupBox(ui_label)
+        gbox_layout = QVBoxLayout(group_box)
+        gbox_layout.setSpacing(10)
+
+        for sub_key, sub_data in group_data.items():
+            if sub_key == "ui_label" or not isinstance(sub_data, dict):
+                continue
+                
+            gui_name = sub_data.get("gui_name", sub_key)
+            header_lbl = QLabel(gui_name)
+            header_lbl.setStyleSheet("font-weight: bold; margin-top: 5px;")
+            gbox_layout.addWidget(header_lbl)
+            
+            # Horizontal line separator
+            line = QFrame()
+            line.setFrameShape(QFrame.HLine)
+            line.setFrameShadow(QFrame.Sunken)
+            gbox_layout.addWidget(line)
+            
+            # Row for the item
+            row_layout = QHBoxLayout()
+            item_gui_name = sub_data.get("gui_name", sub_key)
+            description = sub_data.get("description", "")
+            
+            lbl = QLabel(item_gui_name)
+            if description:
+                lbl.setToolTip(description)
+            row_layout.addWidget(lbl)
+            row_layout.addStretch()
+            
+            # Check for specific entries
+            if "enabled" in sub_data:
+                cb = QCheckBox()
+                cb.setChecked(sub_data["enabled"])
+                cb.toggled.connect(lambda checked, gk=group_key, dp=f"{sub_key}.enabled": self._on_form_widget_changed(gk, dp, checked))
+                row_layout.addWidget(cb)
+                
+            for num_key in ["fast", "slow"]:
+                if num_key in sub_data:
+                    row_layout.addWidget(QLabel(f"{num_key}:"))
+                    le = QLineEdit(str(sub_data[num_key]))
+                    le.setFixedWidth(60)
+                    le.editingFinished.connect(lambda gk=group_key, dp=f"{sub_key}.{num_key}", w=le: self._on_form_widget_changed(gk, dp, w.text()))
+                    row_layout.addWidget(le)
+                    
+            if "unit" in sub_data:
+                row_layout.addWidget(QLabel(sub_data["unit"]))
+                
+            gbox_layout.addLayout(row_layout)
+            
+        return group_box
+
+    def _on_form_widget_changed(self, group_key, dot_path, raw_value):
+        """Handle edits from custom form widgets (QCheckBox, QLineEdit)."""
+        if self._is_populating:
+            return
+            
+        new_val = self._parse_value(raw_value) if isinstance(raw_value, str) else raw_value
+        self._set_nested(self._settings[group_key], dot_path, new_val)
+        self.sig_advanced_setting_changed.emit(deepcopy(self._settings))
 
     def _flatten(self, data: dict, prefix: str, rows: list):
         """

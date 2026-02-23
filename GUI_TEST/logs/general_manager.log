@@ -1411,3 +1411,71 @@
 2026-02-23 14:12:30 - GeneralManager - INFO - GeneralManager shutting down...
 2026-02-23 14:12:31 - GeneralManager - INFO - Advanced settings saved to /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/RedPitaya_K_parameters.yaml
 2026-02-23 14:12:31 - GeneralManager - INFO - GeneralManager shut down.
+2026-02-23 15:04:08 - GeneralManager - INFO - GeneralManager starting up...
+2026-02-23 15:04:08 - GeneralManager - INFO - ServiceManager initialized.
+2026-02-23 15:04:08 - GeneralManager - INFO - ServiceManager moved to thread.
+2026-02-23 15:04:08 - GeneralManager - INFO - MainWindow initialized.
+2026-02-23 15:04:08 - GeneralManager - INFO - ServiceManager injected into ReferenceLinesPage.
+2026-02-23 15:04:08 - GeneralManager - INFO - ServiceManager thread started.
+2026-02-23 15:04:11 - GeneralManager - INFO - Connecting to RedPitaya_K...
+2026-02-23 15:04:11 - GeneralManager - INFO - LaserManager initialized.
+2026-02-23 15:04:12 - GeneralManager - INFO - LaserManager moved to thread.
+2026-02-23 15:04:12 - GeneralManager - INFO - LaserManager thread started.
+2026-02-23 15:04:12 - GeneralManager - INFO - Advanced settings stored in GeneralManager.
+2026-02-23 15:04:12 - GeneralManager - INFO - Parameters loaded into GUI.
+2026-02-23 15:04:15 - GeneralManager - INFO - Laser connected. Parameters will arrive via sig_parameters_loaded.
+2026-02-23 15:05:45 - GeneralManager - INFO - Advanced settings updated from GUI.
+2026-02-23 15:05:51 - GeneralManager - INFO - Advanced settings updated from GUI.
+2026-02-23 15:05:58 - GeneralManager - INFO - GeneralManager shutting down...
+2026-02-23 15:05:59 - GeneralManager - INFO - Advanced settings saved to /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/RedPitaya_K_parameters.yaml
+2026-02-23 15:05:59 - GeneralManager - INFO - GeneralManager shut down.
+2026-02-23 15:06:23 - GeneralManager - INFO - GeneralManager starting up...
+2026-02-23 15:06:23 - GeneralManager - INFO - ServiceManager initialized.
+2026-02-23 15:06:23 - GeneralManager - INFO - ServiceManager moved to thread.
+2026-02-23 15:06:23 - GeneralManager - INFO - MainWindow initialized.
+2026-02-23 15:06:23 - GeneralManager - INFO - ServiceManager injected into ReferenceLinesPage.
+2026-02-23 15:06:23 - GeneralManager - INFO - ServiceManager thread started.
+2026-02-23 15:06:26 - GeneralManager - INFO - Connecting to RedPitaya_K...
+2026-02-23 15:06:26 - GeneralManager - INFO - LaserManager initialized.
+2026-02-23 15:06:26 - GeneralManager - INFO - LaserManager moved to thread.
+2026-02-23 15:06:26 - GeneralManager - INFO - LaserManager thread started.
+2026-02-23 15:06:26 - GeneralManager - INFO - Advanced settings stored in GeneralManager.
+2026-02-23 15:06:26 - GeneralManager - INFO - Parameters loaded into GUI.
+2026-02-23 15:06:30 - GeneralManager - INFO - Laser connected. Parameters will arrive via sig_parameters_loaded.
+2026-02-23 15:06:58 - GeneralManager - INFO - Advanced settings updated from GUI.
+2026-02-23 15:07:00 - GeneralManager - INFO - Advanced settings updated from GUI.
+2026-02-23 15:27:09 - GeneralManager - INFO - GeneralManager shutting down...
+2026-02-23 15:27:11 - GeneralManager - INFO - Advanced settings saved to /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/RedPitaya_K_parameters.yaml
+2026-02-23 15:27:11 - GeneralManager - INFO - GeneralManager shut down.
+2026-02-23 15:27:22 - GeneralManager - INFO - GeneralManager starting up...
+2026-02-23 15:27:22 - GeneralManager - INFO - ServiceManager initialized.
+2026-02-23 15:27:22 - GeneralManager - INFO - ServiceManager moved to thread.
+2026-02-23 15:27:22 - GeneralManager - INFO - MainWindow initialized.
+2026-02-23 15:27:22 - GeneralManager - INFO - ServiceManager injected into ReferenceLinesPage.
+2026-02-23 15:27:22 - GeneralManager - INFO - ServiceManager thread started.
+2026-02-23 15:27:25 - GeneralManager - INFO - Connecting to RedPitaya_K...
+2026-02-23 15:27:25 - GeneralManager - INFO - LaserManager initialized.
+2026-02-23 15:27:25 - GeneralManager - INFO - LaserManager moved to thread.
+2026-02-23 15:27:25 - GeneralManager - INFO - LaserManager thread started.
+2026-02-23 15:27:26 - GeneralManager - INFO - Advanced settings stored in GeneralManager.
+2026-02-23 15:27:26 - GeneralManager - INFO - Parameters loaded into GUI.
+2026-02-23 15:27:29 - GeneralManager - INFO - Laser connected. Parameters will arrive via sig_parameters_loaded.
+2026-02-23 15:28:28 - GeneralManager - INFO - GeneralManager shutting down...
+2026-02-23 15:28:29 - GeneralManager - INFO - Advanced settings saved to /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/RedPitaya_K_parameters.yaml
+2026-02-23 15:28:29 - GeneralManager - INFO - GeneralManager shut down.
+2026-02-23 16:23:56 - GeneralManager - INFO - GeneralManager starting up...
+2026-02-23 16:23:56 - GeneralManager - INFO - ServiceManager initialized.
+2026-02-23 16:23:56 - GeneralManager - INFO - ServiceManager moved to thread.
+2026-02-23 16:23:56 - GeneralManager - INFO - MainWindow initialized.
+2026-02-23 16:23:56 - GeneralManager - INFO - ServiceManager injected into ReferenceLinesPage.
+2026-02-23 16:23:56 - GeneralManager - INFO - ServiceManager thread started.
+2026-02-23 16:23:59 - GeneralManager - INFO - Connecting to RedPitaya_K...
+2026-02-23 16:23:59 - GeneralManager - INFO - LaserManager initialized.
+2026-02-23 16:23:59 - GeneralManager - INFO - LaserManager moved to thread.
+2026-02-23 16:23:59 - GeneralManager - INFO - LaserManager thread started.
+2026-02-23 16:23:59 - GeneralManager - INFO - Advanced settings stored in GeneralManager.
+2026-02-23 16:23:59 - GeneralManager - INFO - Parameters loaded into GUI.
+2026-02-23 16:24:03 - GeneralManager - INFO - Laser connected. Parameters will arrive via sig_parameters_loaded.
+2026-02-23 16:25:40 - GeneralManager - INFO - GeneralManager shutting down...
+2026-02-23 16:25:41 - GeneralManager - INFO - Advanced settings saved to /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/RedPitaya_K_parameters.yaml
+2026-02-23 16:25:41 - GeneralManager - INFO - GeneralManager shut down.
