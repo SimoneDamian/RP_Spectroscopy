@@ -1,7 +1,7 @@
 from PySide6.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QLabel,
                                 QGroupBox, QScrollArea, QPushButton,
                                 QTableWidget, QTableWidgetItem, QHeaderView, QMessageBox,
-                                QCheckBox, QLineEdit, QFrame)
+                                QCheckBox, QLineEdit, QFrame, QComboBox)
 from PySide6.QtCore import Qt, Signal, Slot
 from copy import deepcopy
 
@@ -87,6 +87,14 @@ class AdvancedSettingsPage(QWidget):
                 continue
             elif group_key == "gui_visualization":
                 group_box = self._build_gui_visualization_group(group_key, group_data)
+                self._scroll_layout.addWidget(group_box)
+                continue
+            elif group_key == "autolock_settings":
+                group_box = self._build_autolock_group(group_key, group_data)
+                self._scroll_layout.addWidget(group_box)
+                continue
+            elif group_key == "autocenter_settings":
+                group_box = self._build_autocenter_group(group_key, group_data)
                 self._scroll_layout.addWidget(group_box)
                 continue
 
@@ -241,6 +249,86 @@ class AdvancedSettingsPage(QWidget):
             if "unit" in sub_data:
                 row_layout.addWidget(QLabel(sub_data["unit"]))
                 
+            gbox_layout.addLayout(row_layout)
+            
+        return group_box
+
+    def _build_autolock_group(self, group_key, group_data):
+        ui_label = group_data.get("ui_label", "Autolock Settings")
+        group_box = QGroupBox(ui_label)
+        gbox_layout = QVBoxLayout(group_box)
+        gbox_layout.setSpacing(10)
+
+        # Mode row
+        if "mode" in group_data:
+            mode_data = group_data["mode"]
+            row_layout = QHBoxLayout()
+            lbl = QLabel(mode_data.get("gui_name", "Autolock mode"))
+            if "description" in mode_data:
+                lbl.setToolTip(mode_data["description"])
+            row_layout.addWidget(lbl)
+            row_layout.addStretch()
+            
+            combo = QComboBox()
+            if "options" in mode_data:
+                combo.addItems([str(opt) for opt in mode_data["options"]])
+            
+            current_val = str(mode_data.get("value", ""))
+            idx = combo.findText(current_val)
+            if idx >= 0:
+                combo.setCurrentIndex(idx)
+            
+            combo.activated.connect(lambda _, gk=group_key, dp="mode.value", c=combo: self._on_form_widget_changed(gk, dp, c.currentText()))
+            row_layout.addWidget(combo)
+            gbox_layout.addLayout(row_layout)
+
+        # Determine offset row
+        if "determine_offset" in group_data:
+            off_data = group_data["determine_offset"]
+            row_layout = QHBoxLayout()
+            lbl = QLabel(off_data.get("gui_name", "Autodetermine offset"))
+            if "description" in off_data:
+                lbl.setToolTip(off_data["description"])
+            row_layout.addWidget(lbl)
+            row_layout.addStretch()
+            
+            cb = QCheckBox()
+            cb.setChecked(off_data.get("enabled", False))
+            cb.toggled.connect(lambda checked, gk=group_key, dp="determine_offset.enabled": self._on_form_widget_changed(gk, dp, checked))
+            row_layout.addWidget(cb)
+            gbox_layout.addLayout(row_layout)
+
+        return group_box
+
+    def _build_autocenter_group(self, group_key, group_data):
+        ui_label = group_data.get("ui_label", "Autocenter Settings")
+        group_box = QGroupBox(ui_label)
+        gbox_layout = QVBoxLayout(group_box)
+        gbox_layout.setSpacing(10)
+
+        for item_key, item_data in group_data.items():
+            if item_key == "ui_label" or not isinstance(item_data, dict):
+                continue
+                
+            row_layout = QHBoxLayout()
+            gui_name = item_data.get("gui_name", item_key)
+            lbl = QLabel(gui_name)
+            if "description" in item_data:
+                lbl.setToolTip(item_data["description"])
+            row_layout.addWidget(lbl)
+            
+            val = item_data.get("value", "")
+            # Handle lists (like offset_try_list) by showing as comma-separated
+            if isinstance(val, list):
+                val_str = ", ".join(map(str, val))
+            else:
+                val_str = str(val)
+                
+            le = QLineEdit(val_str)
+            le.setMinimumWidth(150)
+            le.editingFinished.connect(lambda gk=group_key, dp=f"{item_key}.value", w=le: self._on_form_widget_changed(gk, dp, w.text()))
+            row_layout.addWidget(le, 1)
+            
             gbox_layout.addLayout(row_layout)
             
         return group_box
