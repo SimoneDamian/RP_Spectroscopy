@@ -102,7 +102,15 @@ class ParametersPage(SubPageContainer):
         self.table = QTableWidget()
         self.table.setColumnCount(5)
         self.table.setHorizontalHeaderLabels(["Name", "Value", "Units", "Min", "Max"])
-        self.table.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        
+        # Configure column resizing
+        header = self.table.horizontalHeader()
+        header.setSectionResizeMode(0, QHeaderView.Stretch)          # Name column expands
+        header.setSectionResizeMode(1, QHeaderView.ResizeToContents) # Value column fits content
+        header.setSectionResizeMode(2, QHeaderView.ResizeToContents) # Units column fits content
+        header.setSectionResizeMode(3, QHeaderView.ResizeToContents) # Min column fits content
+        header.setSectionResizeMode(4, QHeaderView.ResizeToContents) # Max column fits content
+        
         self.table.setAlternatingRowColors(True)
         
         # Connect cell changed signal (for edits)
@@ -170,6 +178,7 @@ class ParametersPage(SubPageContainer):
                 val_str = str(val)
             item_val = QTableWidgetItem(val_str)
             item_val.setData(Qt.UserRole, name)  # Store dict key for lookup
+            item_val.setTextAlignment(Qt.AlignCenter)
             self.table.setItem(row, 1, item_val)
             
             # 2: Units — read-only
@@ -177,6 +186,7 @@ class ParametersPage(SubPageContainer):
             units_str = str(units) if units is not None else ""
             item_units = QTableWidgetItem(units_str)
             item_units.setFlags(item_units.flags() & ~Qt.ItemIsEditable)
+            item_units.setTextAlignment(Qt.AlignCenter)
             self.table.setItem(row, 2, item_units)
             
             # 3: Min — read-only
@@ -184,6 +194,7 @@ class ParametersPage(SubPageContainer):
             min_str = str(min_val) if min_val is not None else ""
             item_min = QTableWidgetItem(min_str)
             item_min.setFlags(item_min.flags() & ~Qt.ItemIsEditable)
+            item_min.setTextAlignment(Qt.AlignCenter)
             self.table.setItem(row, 3, item_min)
             
             # 4: Max — read-only
@@ -191,6 +202,7 @@ class ParametersPage(SubPageContainer):
             max_str = str(max_val) if max_val is not None else ""
             item_max = QTableWidgetItem(max_str)
             item_max.setFlags(item_max.flags() & ~Qt.ItemIsEditable)
+            item_max.setTextAlignment(Qt.AlignCenter)
             self.table.setItem(row, 4, item_max)
             
         self._is_populating = False
