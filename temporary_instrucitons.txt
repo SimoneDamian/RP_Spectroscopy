@@ -1,18 +1,7 @@
------ New advanced settings page instructions -----
-I rewritten the advanced settings part of the .yaml file linked to the specific board one connects to (have a look at @RedPitaya_K_parameters.yaml). This file is red in the load_default_advanced_settings method contained in the service_manager.py file. I want you to check if with these new modifications the file can still be red.
-I want to modify the visualization of these settings in the @advanced_settings_page.py. I still want a scrollable list of QGroupBox widgets, one per ui_label group found in the advanced_settings section of the board YAML but now with a specific format for each group.
-For the unlock_detection group: the title is the ui_label one. Then I want a kind of separator between each one of the other elements (events, fast_control, slow_control, monitor_signal), each one named by its gui_name. Inside each section I want a row with the gui_name, a checkbox if there is an enabled entry and a textbox if there is a threshold or another kind of numerical entry. As before, the only thing that the user is allowed to modify is the enabled status, the num_points and the threshold entries.
-I will give you indications on how to modify the other entries when I will see the result of this first mod.
-
-For the gui_visualization group: The title of the group is the ui_label. Then I want a kind of separator between each one of the other elements (history_length, fast_control_signal_derivative, slow_control_signal_derivative), each one named by its gui_name. Inside each section I want a row with the gui_name, a checkbox if there is an enabled entry and a textbox if there is a threshold or another kind of numerical entry. As before, the only thing that the user is allowed to modify is the enabled status and the numerical values.
-
-that contains a checkbox for the enabled entries and a textbox for the fast and slow history_lengths (followed by the units, non editable). Only the fast, slow and enabled entries can be modified by the user.
-
-For the autolock_settings group: The title of the group is the ui_label. In this case I want only two rows, one for mode and one for determine_offset, each one with its gui_name. Then, in the mode row I want a dropdown menu from which the user can choose between the available options. For the determine_offset I want only a checkbox for the enabled value.
-For the autocenter_settings group: The title of the group is the ui_label. For each element (jitter_threshold, threshold_count, offset_big_jump, offset_small_jump, offset_try_list, correlation_minimum, length_match_minimum, proportion_free_space_left) I want a drop-down menu labeled with the associated gui_name that contains a textbox where the user can modify the value of the parameter.
-In addition, I want the user to be able to see the "description" of a setting when the arrow stays on it.
-
 ----- Manual lock instructions -----
+I want to implement the manual locking functionality on the app. Some parts of what I describe here have been already implemented. When the user in the MenuPage of the @laser_controller_page.py clicks on the "Manual lock" button this has to trigger different things. 1) The Finite State Machine of the Laser Manager is switched to the SETUP_MANUAL_LOCK state that will send to the GUI a package of data with the "mode" "SETUP_MANUAL_LOCK". The GUI will handle it through the ManualLockingPlotHandler that is the same of the SWEEP mode apart from the fact that it has to show two red vertical lines at the points x0 and x1 (specified later in the text). 2) The left part of the page (the stack) has to open the 
+
+
 Main Menu -> Manual lock button -> left page as drawings, right page with the plots as in the SWEEP state but with the addition of a red vertical line for the x0 and x1 with a red area between them. ManualLockingPlotHandler already implemented but without vertical lines.
 When start lock button pressed: start locking procedure showing on the right the "Start locking procedure..." and on the left returning to the main menu, the FSM of the LM is set to IDLE.
 When the check_for_lock_status gives True, the FSM is set on the LOCKED mode that will send to the GUI the package with the infos to show  on the right in the locking monitor.
