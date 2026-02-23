@@ -6714,3 +6714,14 @@
 2026-02-23 09:43:04 - LaserManager - INFO - Scan completed successfully.
 2026-02-23 09:43:39 - LaserManager - INFO - Sweep started by user.
 2026-02-23 11:18:20 - LaserManager - INFO - Control loop timer stopped.
+2026-02-23 11:36:25 - LaserManager - INFO - LaserManager initialized.
+2026-02-23 11:36:28 - LaserManager - INFO - LaserManager setup complete. Control loop started.
+2026-02-23 11:36:28 - LaserManager - INFO - Advanced settings updated.
+2026-02-23 11:36:29 - LaserManager - INFO - Parameters loaded into Interface.
+2026-02-23 11:40:53 - LaserManager - INFO - Control loop timer stopped.
+2026-02-23 11:41:09 - LaserManager - INFO - LaserManager initialized.
+2026-02-23 11:41:12 - LaserManager - INFO - LaserManager setup complete. Control loop started.
+2026-02-23 11:41:12 - LaserManager - INFO - Advanced settings updated.
+2026-02-23 11:41:13 - LaserManager - INFO - Parameters loaded into Interface.
+2026-02-23 11:43:05 - LaserManager - INFO - Sweep started by user.
+2026-02-23 11:48:00 - LaserManager - INFO - Control loop timer stopped.

@@ -100,8 +100,8 @@ class ParametersPage(SubPageContainer):
         
         # --- Table Setup ---
         self.table = QTableWidget()
-        self.table.setColumnCount(4)
-        self.table.setHorizontalHeaderLabels(["Variable Name", "Hardware Name", "Value", "Scaling"])
+        self.table.setColumnCount(5)
+        self.table.setHorizontalHeaderLabels(["Name", "Value", "Units", "Min", "Max"])
         self.table.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
         self.table.setAlternatingRowColors(True)
         
@@ -142,7 +142,8 @@ class ParametersPage(SubPageContainer):
     def load_parameters(self, params_dict):
         """
         Populate the table from a plain dict (from YAML writeable_parameters section).
-        params_dict: dict with 'writeable_parameters' key containing {name: {hardware_name, initial_value, scaling}}
+        params_dict: dict with 'writeable_parameters' key containing
+        {name: {hardware_name, gui_name, description, type, initial_value, min, max, scaling, units}}
         """
         self.params = params_dict.get('writeable_parameters', {})
         self._is_populating = True
@@ -152,33 +153,45 @@ class ParametersPage(SubPageContainer):
             row = self.table.rowCount()
             self.table.insertRow(row)
             
-            # 0: Variable Name (Key in dict)
-            item_name = QTableWidgetItem(name)
-            item_name.setFlags(item_name.flags() & ~Qt.ItemIsEditable) # Read Only
+            # 0: Name (gui_name from YAML) — read-only, with tooltip
+            gui_name = entry.get('gui_name', name)
+            item_name = QTableWidgetItem(str(gui_name))
+            item_name.setFlags(item_name.flags() & ~Qt.ItemIsEditable)  # Read Only
+            description = entry.get('description', '')
+            if description:
+                item_name.setToolTip(str(description))
             self.table.setItem(row, 0, item_name)
             
-            # 1: Hardware Name
-            item_hw = QTableWidgetItem(str(entry.get('hardware_name', '')))
-            item_hw.setFlags(item_hw.flags() & ~Qt.ItemIsEditable) # Read Only
-            self.table.setItem(row, 1, item_hw)
-            
-            # 2: Value
+            # 1: Value (initial_value) — editable
             val = entry.get('initial_value', 0)
             if isinstance(val, float):
-                val_str = f"{val:.6g}" # Use general format
+                val_str = f"{val:.6g}"  # Use general format
             else:
                 val_str = str(val)
-                
             item_val = QTableWidgetItem(val_str)
-            item_val.setData(Qt.UserRole, name) # Store key for lookup
-            self.table.setItem(row, 2, item_val)
+            item_val.setData(Qt.UserRole, name)  # Store dict key for lookup
+            self.table.setItem(row, 1, item_val)
             
-            # 3: Scaling
-            scaling = entry.get('scaling', None)
-            scaling_str = str(scaling) if scaling is not None else "None"
-            item_scale = QTableWidgetItem(scaling_str)
-            item_scale.setFlags(item_scale.flags() & ~Qt.ItemIsEditable)
-            self.table.setItem(row, 3, item_scale)
+            # 2: Units — read-only
+            units = entry.get('units', None)
+            units_str = str(units) if units is not None else ""
+            item_units = QTableWidgetItem(units_str)
+            item_units.setFlags(item_units.flags() & ~Qt.ItemIsEditable)
+            self.table.setItem(row, 2, item_units)
+            
+            # 3: Min — read-only
+            min_val = entry.get('min', None)
+            min_str = str(min_val) if min_val is not None else ""
+            item_min = QTableWidgetItem(min_str)
+            item_min.setFlags(item_min.flags() & ~Qt.ItemIsEditable)
+            self.table.setItem(row, 3, item_min)
+            
+            # 4: Max — read-only
+            max_val = entry.get('max', None)
+            max_str = str(max_val) if max_val is not None else ""
+            item_max = QTableWidgetItem(max_str)
+            item_max.setFlags(item_max.flags() & ~Qt.ItemIsEditable)
+            self.table.setItem(row, 4, item_max)
             
         self._is_populating = False
 
@@ -186,8 +199,8 @@ class ParametersPage(SubPageContainer):
         if self._is_populating:
             return
             
-        # Only care about Value column (index 2)
-        if column != 2:
+        # Only care about Value column (index 1)
+        if column != 1:
             return
             
         item = self.table.item(row, column)
@@ -196,17 +209,15 @@ class ParametersPage(SubPageContainer):
         
         if param_name in self.params:
             entry = self.params[param_name]
+            param_type = entry.get('type', 'float')
             try:
-                # Convert string back to float/int
-                val_float = float(new_val_str)
-                
-                # Check if we should convert to int
-                # If scaling is None, it implies it might be an index or boolean-like int
-                scaling = entry.get('scaling', None)
-                if scaling is None and val_float.is_integer():
-                     new_val = int(val_float)
+                if param_type == 'bool':
+                    # Accept common boolean string representations
+                    new_val = new_val_str.strip().lower() in ('true', '1', 'yes')
+                elif param_type == 'int':
+                    new_val = int(float(new_val_str))
                 else:
-                     new_val = val_float
+                    new_val = float(new_val_str)
 
                 # Emit signal instead of directly calling param.set_value()
                 self.sig_parameter_changed.emit(param_name, new_val)
