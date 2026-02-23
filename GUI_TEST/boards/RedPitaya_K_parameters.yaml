@@ -27,7 +27,7 @@ writeable_parameters:
 
   offset_a:
     hardware_name: offset_a
-    initial_value: 0.0 # This is the offset for the CH1 input, 0.0 means no offset correction
+    initial_value: 0.03 # This is the offset for the CH1 input, 0.0 means no offset correction
     scaling: 8191.0
 
   invert_a:
@@ -154,12 +154,12 @@ writeable_parameters:
   # These parameters control the modulation of the laser frequency
   modulation_amplitude:
     hardware_name: modulation_amplitude
-    initial_value: 0.5
+    initial_value: 1.0
     scaling: 4095.75  # This is value of Vpp constant
 
   modulation_frequency:
     hardware_name: modulation_frequency
-    initial_value: 0.05
+    initial_value: 0.03
     scaling: 33554432.0 # This is the value of MHz constant
 
   ### SWEEP SETUP ###
@@ -183,17 +183,17 @@ writeable_parameters:
   # These parameters control the signal processing of the spectroscopy signal, namely the demolutaion phase and filters
   phase:
     hardware_name: demodulation_phase_a
-    initial_value: 150.0
+    initial_value: 170.0
     scaling: 1.0  # degrees
 
   filter_1_frequency:
     hardware_name: filter_1_frequency_a
-    initial_value: 10000.0
+    initial_value: 1000.0
     scaling: 1.0  # Hz
 
   filter_2_frequency:
     hardware_name: filter_2_frequency_a
-    initial_value: 10000.0
+    initial_value: 8000.0
     scaling: 1.0  # Hz
 
   ### PID CONTROL SETUP ###
