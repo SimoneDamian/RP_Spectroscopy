@@ -112,10 +112,16 @@ class LaserManager(QObject):
         """
         Performs exactly ONE step of the scan.
         """
+
+        # 0. If it is the first scan, save the initial center of the sweep, in order to return to that one at the end of the sweep
+        if self.scan_index == 0:
+            self.initial_center = self.interface.writeable_params['big_offset'].value
+
         # 1. Check if we are done
         if self.scan_index >= len(self.scan_voltages):
             self.logger.info("Scan completed successfully.")
             self.state = "IDLE"
+            self.interface.set_value('big_offset', self.initial_center)
             return
 
         # 2. Get the target voltage for this step
@@ -148,6 +154,8 @@ class LaserManager(QObject):
     @Slot()
     def stop_scan(self):
         if self.state == "SCAN":
+            if self.initial_center is not None:
+                self.interface.set_value('big_offset', self.initial_center)
             self.state = "IDLE"
             self.logger.info("Scan aborted by user.")
 

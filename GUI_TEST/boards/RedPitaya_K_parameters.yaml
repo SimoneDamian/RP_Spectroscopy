@@ -52,7 +52,7 @@ writeable_parameters:
     gui_name: Offset CH1
     description: The vertical offset for CH1 in volts.
     type: float
-    initial_value: 0.03
+    initial_value: 0.0
     min: -1
     max: 1
     scaling: 8191
@@ -413,7 +413,7 @@ writeable_parameters:
     description: The sweep speed in internal units. The actual speed is given by
       f_real = 3.8 kHz / (2 ** sweep_speed). Allowed values are [0, ..., 15]
     type: int
-    initial_value: 8 # n means (3.8 kHz / 2**n), eg n=12 means 0.92 Hz
+    initial_value: 9 # n means (3.8 kHz / 2**n), eg n=12 means 0.92 Hz
     min: 0
     max: 15
     scaling:
@@ -426,7 +426,7 @@ writeable_parameters:
     gui_name: Demodulation phase
     description: The demodulation phase for channel A in degree.
     type: float
-    initial_value: 170.0
+    initial_value: 150.0
     min: 0
     max: 360
     scaling: 1.0  # degrees
@@ -437,7 +437,7 @@ writeable_parameters:
     gui_name: Filter 1 frequency
     description: The filter frequency in units of Hz.
     type: float
-    initial_value: 1000.0
+    initial_value: 2000.0
     min:
     max:
     scaling: 1.0  # Hz
@@ -448,7 +448,7 @@ writeable_parameters:
     gui_name: Filter 2 frequency
     description: The filter frequency in units of Hz.
     type: float
-    initial_value: 10000.0
+    initial_value: 2000.0
     min:
     max:
     scaling: 1.0  # Hz

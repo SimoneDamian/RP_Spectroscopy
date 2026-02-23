@@ -6735,3 +6735,23 @@
 2026-02-23 12:06:41 - LaserManager - INFO - Advanced settings updated.
 2026-02-23 12:06:42 - LaserManager - INFO - Parameters loaded into Interface.
 2026-02-23 12:08:57 - LaserManager - INFO - Control loop timer stopped.
+2026-02-23 12:21:14 - LaserManager - INFO - LaserManager initialized.
+2026-02-23 12:21:17 - LaserManager - INFO - LaserManager setup complete. Control loop started.
+2026-02-23 12:21:17 - LaserManager - INFO - Advanced settings updated.
+2026-02-23 12:21:19 - LaserManager - INFO - Parameters loaded into Interface.
+2026-02-23 13:10:33 - LaserManager - INFO - Sweep started by user.
+2026-02-23 13:11:10 - LaserManager - INFO - Initiating scan: 0.05V -> 1.75V (40 pts)
+2026-02-23 13:11:12 - LaserManager - INFO - Scan aborted by user.
+2026-02-23 13:11:17 - LaserManager - INFO - Sweep started by user.
+2026-02-23 13:12:07 - LaserManager - INFO - Initiating scan: 0.9V -> 1.0V (10 pts)
+2026-02-23 13:12:29 - LaserManager - INFO - Scan completed successfully.
+2026-02-23 13:12:45 - LaserManager - INFO - Sweep started by user.
+2026-02-23 14:04:22 - LaserManager - INFO - Control loop timer stopped.
+2026-02-23 14:04:31 - LaserManager - INFO - LaserManager initialized.
+2026-02-23 14:04:34 - LaserManager - INFO - LaserManager setup complete. Control loop started.
+2026-02-23 14:04:34 - LaserManager - INFO - Advanced settings updated.
+2026-02-23 14:04:35 - LaserManager - INFO - Parameters loaded into Interface.
+2026-02-23 14:05:11 - LaserManager - INFO - Initiating scan: 0.85V -> 0.9V (7 pts)
+2026-02-23 14:05:25 - LaserManager - INFO - Scan completed successfully.
+2026-02-23 14:05:38 - LaserManager - INFO - Sweep started by user.
+2026-02-23 14:12:31 - LaserManager - INFO - Control loop timer stopped.
