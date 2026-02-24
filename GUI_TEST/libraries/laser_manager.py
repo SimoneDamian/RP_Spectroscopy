@@ -79,8 +79,16 @@ class LaserManager(QObject):
             self.handle_scan_step()
         elif self.state == "SETUP_MANUAL_LOCK":
             self.get_and_send_sweep("SETUP_MANUAL_LOCK")
+        elif self.state == "MANUAL_LOCKING":
+            self.handle_manual_locking()
+        elif self.state == "LOCKED":
+            self.handle_locked_state()
         else:
             self.logger.warning(f"Unknown state: {self.state}")
+
+    @Slot(str)
+    def set_state(self, state):
+        self.state = state
 
     @Slot(str)
     def get_and_send_sweep(self, mode):
@@ -235,21 +243,45 @@ class LaserManager(QObject):
         self.advanced_settings = settings
         self.logger.info("Advanced settings updated.")
 
-    @Slot(float, float, dict)
+    def handle_manual_locking(self):
+        """
+        Handles what to send to the GUI while the system tries to lock manually.
+        """
+
+        packet = {
+            "mode": self.state,
+            "text": "Trying to lock the laser..."
+        }
+
+        self.sig_data_ready.emit(packet)
+
+    def handle_locked_state(self):
+        """
+        Handles the locked state of the laser sending the History to the GUI and detecting unlock events if required.
+        """
+        packet = {
+            "mode": self.state,
+            "text": "Laser is locked!"
+        }
+
+        self.sig_data_ready.emit(packet)
+
+    @Slot(int, int, dict)
     def start_manual_locking(self, x0, x1, sweep_data):
-        self.interface.wait_for_lock_status(False) #wait until the laser is unlocked
+        self.interface.wait_for_lock_status(False)
 
         expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_data['error_signal'], sweep_data['monitor_signal'], x0, x1)
         self.expected_lock_monitor_signal_point = expected_lock_monitor_signal_point
-        #print("Expected lock monitor signal point:", expected_lock_monitor_signal_point)
 
         self.interface.client.connection.root.start_autolock(x0, x1, pickle.dumps(sweep_data['error_signal']*2*Vpp))
 
         try:
             self.interface.wait_for_lock_status(True)
             self.logger.info("Locking the laser worked! \\o/")
+            self.state = "LOCKED"
         except Exception:
             self.logger.warning("Locking the laser failed :(")
+            self.state = "SWEEP"
             return
 
     def find_monitor_signal_peak(self, error_signal, monitor_signal, x0, x1):

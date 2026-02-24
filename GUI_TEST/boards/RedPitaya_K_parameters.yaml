@@ -41,7 +41,7 @@ writeable_parameters:
     description: This parameter allows for multi-f (e.g. 3f or 5f) demodulation.
       Default value is 1, indicating that 1f demodulation is used.
     type: int
-    initial_value: 1
+    initial_value: 0
     min: 0
     max: 15
     scaling: 1
@@ -144,7 +144,7 @@ writeable_parameters:
     description: This parameter allows for multi-f (e.g. 3f or 5f) demodulation.
       Default value is 1, indicating that 1f demodulation is used.
     type: int
-    initial_value: 1
+    initial_value: 0
     min: 0
     max: 15
     scaling: 1
@@ -361,7 +361,7 @@ writeable_parameters:
     gui_name: Modulation amplitude
     description: The amplitude of the modulation in Vpp.
     type: float
-    initial_value: 1.0
+    initial_value: 0.1
     min: 0
     max: 2
     scaling: 4095.75  # This is value of Vpp constant
@@ -372,7 +372,7 @@ writeable_parameters:
     gui_name: Modulation frequency
     description: Frequency of the modulation in MHz.
     type: float
-    initial_value: 0.03
+    initial_value: 0.005
     min: 0
     max: 50
     scaling: 33554432 # This is the value of MHz constant
@@ -413,7 +413,7 @@ writeable_parameters:
     description: The sweep speed in internal units. The actual speed is given by
       f_real = 3.8 kHz / (2 ** sweep_speed). Allowed values are [0, ..., 15]
     type: int
-    initial_value: 8 # n means (3.8 kHz / 2**n), eg n=12 means 0.92 Hz
+    initial_value: 9 # n means (3.8 kHz / 2**n), eg n=12 means 0.92 Hz
     min: 0
     max: 15
     scaling:
@@ -426,7 +426,7 @@ writeable_parameters:
     gui_name: Demodulation phase
     description: The demodulation phase for channel A in degree.
     type: float
-    initial_value: 150.0
+    initial_value: 180.0
     min: 0
     max: 360
     scaling: 1.0  # degrees
@@ -437,7 +437,7 @@ writeable_parameters:
     gui_name: Filter 1 frequency
     description: The filter frequency in units of Hz.
     type: float
-    initial_value: 2000.0
+    initial_value: 500.0
     min:
     max:
     scaling: 1.0  # Hz
@@ -448,7 +448,7 @@ writeable_parameters:
     gui_name: Filter 2 frequency
     description: The filter frequency in units of Hz.
     type: float
-    initial_value: 2000.0
+    initial_value: 500.0
     min:
     max:
     scaling: 1.0  # Hz
