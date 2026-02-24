@@ -209,7 +209,7 @@ class LaserManager(QObject):
         if self.interface:
             try:
                 self.interface.set_value(param_name, value)
-                self.logger.debug(f"Set parameter {param_name} to {value}")
+                self.logger.info(f"Set parameter {param_name} to {value}")
             except Exception as e:
                 self.logger.error(f"Failed to set parameter {param_name}: {e}")
 
