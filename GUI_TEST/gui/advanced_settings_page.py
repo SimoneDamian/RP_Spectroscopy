@@ -19,8 +19,9 @@ class AdvancedSettingsPage(QWidget):
     sig_advanced_setting_changed = Signal(dict)
     sig_restore_defaults = Signal()
 
-    def __init__(self):
+    def __init__(self, logger=None):
         super().__init__()
+        self.logger = logger
         self._settings = {}       # deep copy of the live settings dict
         self._is_populating = False
 
@@ -342,6 +343,44 @@ class AdvancedSettingsPage(QWidget):
         self._set_nested(self._settings[group_key], dot_path, new_val)
         self.sig_advanced_setting_changed.emit(deepcopy(self._settings))
 
+        # Log the change
+        if self.logger:
+            gui_name = self._get_gui_name(group_key, dot_path)
+            self.logger.info(f"Advanced setting changed: {gui_name} = {new_val}")
+
+    def _get_gui_name(self, group_key, dot_path):
+        """Helper to find the gui_name for a given group and dot_path."""
+        try:
+            d = self._settings[group_key]
+            keys = dot_path.split(".")
+            # The gui_name can be at the leaf level (for autolock_settings and autocenter_settings)
+            # or one level above (for unlock_detection and gui_visualization)
+            # Let's try to find it.
+            
+            # 1. Try leaf directory gui_name (e.g. for autolock mode)
+            leaf_key = keys[0]
+            if len(keys) > 1:
+                 # Check if the middle keys represent a subgroup with a gui_name
+                 # For unlock_detection, it's group.subgroup.item.value/enabled
+                 # dot_path will be something like "fast_control.threshold"
+                 sub = d.get(keys[0], {})
+                 if isinstance(sub, dict) and "gui_name" in sub:
+                     # This might be the group name (e.g. "Fast control")
+                     # But we want the item name (e.g. "Threshold")
+                     item = sub.get(keys[1], {})
+                     if isinstance(item, dict) and "gui_name" in item:
+                         return item["gui_name"]
+                     return sub["gui_name"] + " -> " + keys[1]
+            
+            # Simple fallback for autolock/autocenter
+            item = d.get(keys[0], {})
+            if isinstance(item, dict) and "gui_name" in item:
+                return item["gui_name"]
+            
+            return dot_path
+        except:
+            return dot_path
+
     def _flatten(self, data: dict, prefix: str, rows: list):
         """
         Recursively walk a nested dict and produce (dot_path, leaf_value) tuples.
@@ -391,6 +430,11 @@ class AdvancedSettingsPage(QWidget):
         self._set_nested(self._settings[group_key], dot_path, new_val)
 
         self.sig_advanced_setting_changed.emit(deepcopy(self._settings))
+
+        # Log the change
+        if self.logger:
+            gui_name = self._get_gui_name(group_key, dot_path)
+            self.logger.info(f"Advanced setting changed (table): {gui_name} = {new_val}")
 
     @staticmethod
     def _parse_value(text: str):

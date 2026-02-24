@@ -127,7 +127,7 @@ class GeneralManager:
             self.window.page_laser.page_advanced.load_advanced_settings
         )
         #  - Direct to LaserManager slot (auto-connection ensures laser thread)
-        self.services.sig_advanced_settings_loaded.connect(self.laser.set_advanced_settings)
+        self.services.sig_advanced_settings_loaded.connect(self.laser.load_advanced_settings)
         #  - Non-QObject storage (runs in emitter's thread, but only stores a dict)
         self.services.sig_advanced_settings_loaded.connect(self.on_advanced_settings_loaded)
         #  - GUI edits -> forward to laser + local storage
@@ -135,7 +135,7 @@ class GeneralManager:
             self.on_advanced_setting_changed
         )
         self.window.page_laser.page_advanced.sig_advanced_setting_changed.connect(
-            self.laser.set_advanced_settings
+            self.laser.load_advanced_settings
         )
         
         # Connection for Default Advanced Settings Button

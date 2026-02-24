@@ -95,8 +95,9 @@ class ParametersPage(SubPageContainer):
     sig_restore_defaults = Signal()
     sig_parameter_changed = Signal(str, object)  # (param_name, new_value)
 
-    def __init__(self, title="Parameters"):
+    def __init__(self, logger, title="Parameters"):
         super().__init__(title)
+        self.logger = logger
         
         # --- Table Setup ---
         self.table = QTableWidget()
@@ -234,6 +235,11 @@ class ParametersPage(SubPageContainer):
                 # Emit signal instead of directly calling param.set_value()
                 self.sig_parameter_changed.emit(param_name, new_val)
                 
+                # Log the change
+                gui_name = entry.get('gui_name', param_name)
+                if self.logger:
+                    self.logger.info(f"Parameter changed: {gui_name} = {new_val}")
+                
             except ValueError:
                 # Handle invalid input — ignore for now
                 pass
@@ -362,8 +368,8 @@ class LaserControllerPage(QWidget):
         self.left_stack.addWidget(self.menu_page)
         
         # 2. Sub Pages
-        self.page_parameters = ParametersPage() # REAL PAGE
-        self.page_advanced = AdvancedSettingsPage()
+        self.page_parameters = ParametersPage(self.logger) # REAL PAGE
+        self.page_advanced = AdvancedSettingsPage(self.logger)
         self.page_scan = ScanPage()
         self.page_centering = SubPageContainer("Line Centering")
         self.page_manual = SubPageContainer("Manual Lock")

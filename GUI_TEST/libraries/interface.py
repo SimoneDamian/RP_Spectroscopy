@@ -145,10 +145,16 @@ class HardwareInterface():
             "ROBUST": AutolockMode.ROBUST
         }
 
-        self.client.parameters.autolock_mode_preference.value = mode_map[advanced_settings["mode"]]
-        self.client.parameters.autolock_determine_offset.value = advanced_settings["determine_offset"]
+        autolock = advanced_settings.get("autolock_settings", {})
+        
+        # Access nested value/enabled fields
+        mode_str = autolock.get("mode", {}).get("value", "ROBUST")
+        determine_offset = autolock.get("determine_offset", {}).get("enabled", False)
+
+        self.client.parameters.autolock_mode_preference.value = mode_map.get(mode_str, AutolockMode.ROBUST)
+        self.client.parameters.autolock_determine_offset.value = determine_offset
         self.client.connection.root.write_registers()
-        self.logger.info(f"Autolock mode set to {advanced_settings['mode']} and determine offset set to {advanced_settings['determine_offset']}")
+        self.logger.info(f"Autolock mode set to {mode_str} and determine offset set to {determine_offset}")
 
 class ReadableParameter:
     def __init__(self, name, client):
