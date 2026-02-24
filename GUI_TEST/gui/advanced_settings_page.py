@@ -1,6 +1,7 @@
 from PySide6.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QLabel,
                                 QGroupBox, QScrollArea, QPushButton,
-                                QTableWidget, QTableWidgetItem, QHeaderView, QMessageBox)
+                                QTableWidget, QTableWidgetItem, QHeaderView, QMessageBox,
+                                QCheckBox, QLineEdit, QFrame, QComboBox)
 from PySide6.QtCore import Qt, Signal, Slot
 from copy import deepcopy
 
@@ -18,8 +19,9 @@ class AdvancedSettingsPage(QWidget):
     sig_advanced_setting_changed = Signal(dict)
     sig_restore_defaults = Signal()
 
-    def __init__(self):
+    def __init__(self, logger=None):
         super().__init__()
+        self.logger = logger
         self._settings = {}       # deep copy of the live settings dict
         self._is_populating = False
 
@@ -80,6 +82,23 @@ class AdvancedSettingsPage(QWidget):
                 continue
             ui_label = group_data.get("ui_label", group_key)
 
+            if group_key == "unlock_detection":
+                group_box = self._build_unlock_detection_group(group_key, group_data)
+                self._scroll_layout.addWidget(group_box)
+                continue
+            elif group_key == "gui_visualization":
+                group_box = self._build_gui_visualization_group(group_key, group_data)
+                self._scroll_layout.addWidget(group_box)
+                continue
+            elif group_key == "autolock_settings":
+                group_box = self._build_autolock_group(group_key, group_data)
+                self._scroll_layout.addWidget(group_box)
+                continue
+            elif group_key == "autocenter_settings":
+                group_box = self._build_autocenter_group(group_key, group_data)
+                self._scroll_layout.addWidget(group_box)
+                continue
+
             group_box = QGroupBox(ui_label)
             gbox_layout = QVBoxLayout(group_box)
 
@@ -120,6 +139,247 @@ class AdvancedSettingsPage(QWidget):
     # ------------------------------------------------------------------
     # Helpers
     # ------------------------------------------------------------------
+
+    def _build_unlock_detection_group(self, group_key, group_data):
+        ui_label = group_data.get("ui_label", "Unlock Detection Logic")
+        group_box = QGroupBox(ui_label)
+        gbox_layout = QVBoxLayout(group_box)
+        gbox_layout.setSpacing(10)
+
+        for sub_key, sub_data in group_data.items():
+            if sub_key == "ui_label" or not isinstance(sub_data, dict):
+                continue
+                
+            gui_name = sub_data.get("gui_name", sub_key)
+            header_lbl = QLabel(gui_name)
+            header_lbl.setStyleSheet("font-weight: bold; margin-top: 5px;")
+            gbox_layout.addWidget(header_lbl)
+            
+            # Horizontal line separator
+            line = QFrame()
+            line.setFrameShape(QFrame.HLine)
+            line.setFrameShadow(QFrame.Sunken)
+            gbox_layout.addWidget(line)
+            
+            for item_key, item_data in sub_data.items():
+                if item_key == "gui_name" or not isinstance(item_data, dict):
+                    continue
+                    
+                item_gui_name = item_data.get("gui_name", item_key)
+                description = item_data.get("description", "")
+                
+                row_layout = QHBoxLayout()
+                lbl = QLabel(item_gui_name)
+                if description:
+                    lbl.setToolTip(description)
+                row_layout.addWidget(lbl)
+                
+                row_layout.addStretch()
+                
+                dot_path = f"{sub_key}.{item_key}"
+                
+                if "enabled" in item_data:
+                    cb = QCheckBox()
+                    cb.setChecked(item_data["enabled"])
+                    # Use lambda with default args to capture current loop variables
+                    cb.toggled.connect(lambda checked, gk=group_key, dp=f"{dot_path}.enabled": self._on_form_widget_changed(gk, dp, checked))
+                    row_layout.addWidget(cb)
+                    
+                if "threshold" in item_data:
+                    le = QLineEdit(str(item_data["threshold"]))
+                    le.setFixedWidth(80)
+                    le.editingFinished.connect(lambda gk=group_key, dp=f"{dot_path}.threshold", w=le: self._on_form_widget_changed(gk, dp, w.text()))
+                    row_layout.addWidget(le)
+                elif "num_points" in item_data:
+                    le = QLineEdit(str(item_data["num_points"]))
+                    le.setFixedWidth(80)
+                    le.editingFinished.connect(lambda gk=group_key, dp=f"{dot_path}.num_points", w=le: self._on_form_widget_changed(gk, dp, w.text()))
+                    row_layout.addWidget(le)
+                    
+                gbox_layout.addLayout(row_layout)
+                
+        return group_box
+
+    def _build_gui_visualization_group(self, group_key, group_data):
+        ui_label = group_data.get("ui_label", "Plotting")
+        group_box = QGroupBox(ui_label)
+        gbox_layout = QVBoxLayout(group_box)
+        gbox_layout.setSpacing(10)
+
+        for sub_key, sub_data in group_data.items():
+            if sub_key == "ui_label" or not isinstance(sub_data, dict):
+                continue
+                
+            gui_name = sub_data.get("gui_name", sub_key)
+            header_lbl = QLabel(gui_name)
+            header_lbl.setStyleSheet("font-weight: bold; margin-top: 5px;")
+            gbox_layout.addWidget(header_lbl)
+            
+            # Horizontal line separator
+            line = QFrame()
+            line.setFrameShape(QFrame.HLine)
+            line.setFrameShadow(QFrame.Sunken)
+            gbox_layout.addWidget(line)
+            
+            # Row for the item
+            row_layout = QHBoxLayout()
+            item_gui_name = sub_data.get("gui_name", sub_key)
+            description = sub_data.get("description", "")
+            
+            lbl = QLabel(item_gui_name)
+            if description:
+                lbl.setToolTip(description)
+            row_layout.addWidget(lbl)
+            row_layout.addStretch()
+            
+            # Check for specific entries
+            if "enabled" in sub_data:
+                cb = QCheckBox()
+                cb.setChecked(sub_data["enabled"])
+                cb.toggled.connect(lambda checked, gk=group_key, dp=f"{sub_key}.enabled": self._on_form_widget_changed(gk, dp, checked))
+                row_layout.addWidget(cb)
+                
+            for num_key in ["fast", "slow"]:
+                if num_key in sub_data:
+                    row_layout.addWidget(QLabel(f"{num_key}:"))
+                    le = QLineEdit(str(sub_data[num_key]))
+                    le.setFixedWidth(60)
+                    le.editingFinished.connect(lambda gk=group_key, dp=f"{sub_key}.{num_key}", w=le: self._on_form_widget_changed(gk, dp, w.text()))
+                    row_layout.addWidget(le)
+                    
+            if "unit" in sub_data:
+                row_layout.addWidget(QLabel(sub_data["unit"]))
+                
+            gbox_layout.addLayout(row_layout)
+            
+        return group_box
+
+    def _build_autolock_group(self, group_key, group_data):
+        ui_label = group_data.get("ui_label", "Autolock Settings")
+        group_box = QGroupBox(ui_label)
+        gbox_layout = QVBoxLayout(group_box)
+        gbox_layout.setSpacing(10)
+
+        # Mode row
+        if "mode" in group_data:
+            mode_data = group_data["mode"]
+            row_layout = QHBoxLayout()
+            lbl = QLabel(mode_data.get("gui_name", "Autolock mode"))
+            if "description" in mode_data:
+                lbl.setToolTip(mode_data["description"])
+            row_layout.addWidget(lbl)
+            row_layout.addStretch()
+            
+            combo = QComboBox()
+            if "options" in mode_data:
+                combo.addItems([str(opt) for opt in mode_data["options"]])
+            
+            current_val = str(mode_data.get("value", ""))
+            idx = combo.findText(current_val)
+            if idx >= 0:
+                combo.setCurrentIndex(idx)
+            
+            combo.activated.connect(lambda _, gk=group_key, dp="mode.value", c=combo: self._on_form_widget_changed(gk, dp, c.currentText()))
+            row_layout.addWidget(combo)
+            gbox_layout.addLayout(row_layout)
+
+        # Determine offset row
+        if "determine_offset" in group_data:
+            off_data = group_data["determine_offset"]
+            row_layout = QHBoxLayout()
+            lbl = QLabel(off_data.get("gui_name", "Autodetermine offset"))
+            if "description" in off_data:
+                lbl.setToolTip(off_data["description"])
+            row_layout.addWidget(lbl)
+            row_layout.addStretch()
+            
+            cb = QCheckBox()
+            cb.setChecked(off_data.get("enabled", False))
+            cb.toggled.connect(lambda checked, gk=group_key, dp="determine_offset.enabled": self._on_form_widget_changed(gk, dp, checked))
+            row_layout.addWidget(cb)
+            gbox_layout.addLayout(row_layout)
+
+        return group_box
+
+    def _build_autocenter_group(self, group_key, group_data):
+        ui_label = group_data.get("ui_label", "Autocenter Settings")
+        group_box = QGroupBox(ui_label)
+        gbox_layout = QVBoxLayout(group_box)
+        gbox_layout.setSpacing(10)
+
+        for item_key, item_data in group_data.items():
+            if item_key == "ui_label" or not isinstance(item_data, dict):
+                continue
+                
+            row_layout = QHBoxLayout()
+            gui_name = item_data.get("gui_name", item_key)
+            lbl = QLabel(gui_name)
+            if "description" in item_data:
+                lbl.setToolTip(item_data["description"])
+            row_layout.addWidget(lbl)
+            
+            val = item_data.get("value", "")
+            # Handle lists (like offset_try_list) by showing as comma-separated
+            if isinstance(val, list):
+                val_str = ", ".join(map(str, val))
+            else:
+                val_str = str(val)
+                
+            le = QLineEdit(val_str)
+            le.setMinimumWidth(150)
+            le.editingFinished.connect(lambda gk=group_key, dp=f"{item_key}.value", w=le: self._on_form_widget_changed(gk, dp, w.text()))
+            row_layout.addWidget(le, 1)
+            
+            gbox_layout.addLayout(row_layout)
+            
+        return group_box
+
+    def _on_form_widget_changed(self, group_key, dot_path, raw_value):
+        """Handle edits from custom form widgets (QCheckBox, QLineEdit)."""
+        if self._is_populating:
+            return
+            
+        new_val = self._parse_value(raw_value) if isinstance(raw_value, str) else raw_value
+        self._set_nested(self._settings[group_key], dot_path, new_val)
+        self.sig_advanced_setting_changed.emit(deepcopy(self._settings))
+
+        # Log the change
+        if self.logger:
+            gui_name = self._get_gui_name(group_key, dot_path)
+            self.logger.info(f"Advanced setting changed: {gui_name} = {new_val}")
+
+    def _get_gui_name(self, group_key, dot_path):
+        """Helper to find the gui_name for a given group and dot_path."""
+        try:
+            d = self._settings[group_key]
+            keys = dot_path.split(".")
+            # The gui_name can be at the leaf level (for autolock_settings and autocenter_settings)
+            # or one level above (for unlock_detection and gui_visualization)
+            # Let's try to find it.
+            
+            # 1. Try leaf directory gui_name (e.g. for autolock mode)
+            leaf_key = keys[0]
+            if len(keys) > 1:
+                 # Check if the middle keys represent a subgroup with a gui_name
+                 # For unlock_detection, it's group.subgroup.item.value/enabled
+                 # dot_path will be something like "fast_control.threshold"
+                 sub = d.get(keys[0], {})
+                 if isinstance(sub, dict) and "gui_name" in sub:
+                     # This might be the group name (e.g. "Fast control")
+                     # But we want the item name (e.g. "Threshold")
+                     item = sub.get(keys[1], {})
+                     if isinstance(item, dict) and "gui_name" in item:
+                         return item["gui_name"]
+                     return sub["gui_name"] + " -> " + keys[1]
+            
+            # Simple fallback for autolock/autocenter
+            item = d.get(keys[0], {})
+            if isinstance(item, dict) and "gui_name" in item:
+                return item["gui_name"]
+            
+            return dot_path
+        except:
+            return dot_path
 
     def _flatten(self, data: dict, prefix: str, rows: list):
         """
@@ -170,6 +430,11 @@ class AdvancedSettingsPage(QWidget):
         self._set_nested(self._settings[group_key], dot_path, new_val)
 
         self.sig_advanced_setting_changed.emit(deepcopy(self._settings))
+
+        # Log the change
+        if self.logger:
+            gui_name = self._get_gui_name(group_key, dot_path)
+            self.logger.info(f"Advanced setting changed (table): {gui_name} = {new_val}")
 
     @staticmethod
     def _parse_value(text: str):

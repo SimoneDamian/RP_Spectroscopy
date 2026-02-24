@@ -26,6 +26,7 @@ class GeneralManager:
         self.logger.info("GeneralManager starting up...")
 
         self.advanced_settings = {}
+        self.parameters = {}
         self.current_board = None
 
         self.services = ServiceManager(self.cfg)
@@ -98,8 +99,18 @@ class GeneralManager:
         # Disconnect previous backend connections to avoid duplicates (safeguard)
         self._safe_disconnect(self.window.page_laser.page_parameters.sig_restore_defaults)
             
-        self.window.page_laser.page_parameters.sig_restore_defaults.connect(self.laser.restore_default_parameters)
-        self.laser.sig_parameters_updated.connect(self.on_parameters_updated)
+        self.window.page_laser.page_parameters.sig_restore_defaults.connect(
+            lambda: self.services.load_default_parameters(self.current_board)
+        )
+
+        # Connection for parameters: ServiceManager -> GUI + LaserManager
+        self.services.sig_parameters_loaded.connect(self.on_parameters_loaded)
+        self.services.sig_parameters_loaded.connect(self.laser.load_parameters)
+
+        # Connection for GUI parameter edits -> LaserManager
+        self.window.page_laser.page_parameters.sig_parameter_changed.connect(
+            self.laser.set_parameter_value
+        )
 
         # Connection for live data plotting
         self.laser.sig_data_ready.connect(self.window.page_laser.plot_panel.update_plot)
@@ -116,7 +127,7 @@ class GeneralManager:
             self.window.page_laser.page_advanced.load_advanced_settings
         )
         #  - Direct to LaserManager slot (auto-connection ensures laser thread)
-        self.services.sig_advanced_settings_loaded.connect(self.laser.set_advanced_settings)
+        self.services.sig_advanced_settings_loaded.connect(self.laser.load_advanced_settings)
         #  - Non-QObject storage (runs in emitter's thread, but only stores a dict)
         self.services.sig_advanced_settings_loaded.connect(self.on_advanced_settings_loaded)
         #  - GUI edits -> forward to laser + local storage
@@ -124,7 +135,7 @@ class GeneralManager:
             self.on_advanced_setting_changed
         )
         self.window.page_laser.page_advanced.sig_advanced_setting_changed.connect(
-            self.laser.set_advanced_settings
+            self.laser.load_advanced_settings
         )
         
         # Connection for Default Advanced Settings Button
@@ -140,39 +151,28 @@ class GeneralManager:
         self.window.page_laser.set_connecting_state()
         self.window.go_to_laser_controller()
 
-        # Trigger loading advanced settings from YAML (via ServiceManager)
+        # Trigger loading advanced settings and parameters from YAML (via ServiceManager)
         self.current_board = board
         self.services.load_advanced_settings(board)
+        self.services.load_parameters(board)
 
     @Slot()
     def on_laser_connected(self):
         """
         Called when laser manager is fully connected.
-        Populate the parameters table.
+        Parameters are loaded separately via sig_parameters_loaded signal chain.
         """
-        # We access the interface params. 
-        # Note: self.laser.interface might be in use by the thread.
-        # But reading the dict of params structure is likely fine once setup is done.
-        
-        if self.laser.interface and hasattr(self.laser.interface, 'writeable_params'):
-            params = self.laser.interface.writeable_params
-            self.window.page_laser.page_parameters.load_parameters(params)
-            self.logger.info("Parameters loaded into GUI.")
-        else:
-            self.logger.warning("Could not load parameters: Interface not ready or no params.")
+        self.logger.info("Laser connected. Parameters will arrive via sig_parameters_loaded.")
 
-    @Slot()
-    def on_parameters_updated(self):
+    @Slot(dict)
+    def on_parameters_loaded(self, params_dict):
         """
-        Called when parameters are updated (e.g. defaults restored).
-        Refreshes the GUI table.
+        Called when parameters are loaded (initial connect or defaults restored).
+        Stores dict locally and populates the GUI table.
         """
-        if self.laser.interface and hasattr(self.laser.interface, 'writeable_params'):
-            params = self.laser.interface.writeable_params
-            self.window.page_laser.page_parameters.load_parameters(params)
-            self.logger.info("Parameters refreshed from defaults.")
-        else:
-            self.logger.warning("Could not refresh parameters: Interface not ready.")
+        self.parameters = params_dict
+        self.window.page_laser.page_parameters.load_parameters(params_dict)
+        self.logger.info("Parameters loaded into GUI.")
 
     @Slot(dict)
     def on_advanced_settings_loaded(self, settings):
@@ -258,11 +258,12 @@ class GeneralManager:
         
         if hasattr(self, 'lsr_thread') and self.lsr_thread.isRunning():
             # Stop the timer before quitting the thread
-            # We use QMetaObject.invokeMethod to call the slot in the thread context
-            from PySide6.QtCore import QMetaObject, Qt, Q_ARG
+            from PySide6.QtCore import QMetaObject, Qt
             
-            # 1. Save parameters to YAML
-            QMetaObject.invokeMethod(self.laser, "save_parameters", Qt.BlockingQueuedConnection)
+            # 1. Save parameters to YAML via ServiceManager
+            if hasattr(self, 'laser') and self.current_board:
+                current_values = self.laser.get_current_parameter_values()
+                self.services.save_parameters(self.current_board, current_values)
             
             # 2. Stop the control loop timer
             QMetaObject.invokeMethod(self.laser, "stop", Qt.BlockingQueuedConnection)

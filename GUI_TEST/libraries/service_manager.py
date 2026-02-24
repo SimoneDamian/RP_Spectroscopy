@@ -1,6 +1,7 @@
 from PySide6.QtCore import QObject, Signal, Slot
 import os
 import yaml
+from ruamel.yaml import YAML
 import logging
 import numpy as np
 import influxdb_client
@@ -14,6 +15,7 @@ class ServiceManager(QObject):
     sig_board_list_updated = Signal(list) 
     sig_reflines_updated = Signal(list)
     sig_advanced_settings_loaded = Signal(dict)
+    sig_parameters_loaded = Signal(dict)
     sig_error = Signal(str)
 
     def __init__(self, config):
@@ -356,6 +358,111 @@ class ServiceManager(QObject):
              return None, None
 
     # ---- Redpitaya parameters configuration ----
+
+    @Slot(dict)
+    def load_parameters(self, board):
+        """Read writeable_parameters and readable_parameters from the board's parameter YAML."""
+        board_name = board.get('name', '')
+        hardware_path = self.config.get('paths', {}).get('hardware', './boards')
+        if not os.path.isabs(hardware_path):
+            base_dir = os.path.dirname(os.path.abspath(__file__))
+            hardware_path = os.path.join(base_dir, hardware_path)
+
+        param_file = os.path.join(hardware_path, f"{board_name}_parameters.yaml")
+        if not os.path.exists(param_file):
+            self.logger.error(f"Parameter file not found: {param_file}")
+            return
+
+        try:
+            with open(param_file, 'r') as f:
+                data = yaml.safe_load(f)
+            params = {
+                'writeable_parameters': data.get('writeable_parameters', {}),
+                'readable_parameters': data.get('readable_parameters', {})
+            }
+            self.logger.info(f"Loaded parameters for '{board_name}' "
+                            f"({len(params['writeable_parameters'])} writeable, "
+                            f"{len(params['readable_parameters'])} readable).")
+            self.sig_parameters_loaded.emit(params)
+        except Exception as e:
+            self.logger.error(f"Failed to load parameters: {e}")
+
+    @Slot(dict)
+    def load_default_parameters(self, board):
+        """Read parameters from the board's default parameter YAML."""
+        board_name = board.get('name', '')
+        hardware_path = self.config.get('paths', {}).get('hardware', './boards')
+        if not os.path.isabs(hardware_path):
+            base_dir = os.path.dirname(os.path.abspath(__file__))
+            hardware_path = os.path.join(base_dir, hardware_path)
+
+        param_file = os.path.join(hardware_path, f"{board_name}_parameters_default.yaml")
+        if not os.path.exists(param_file):
+            self.logger.error(f"Default parameter file not found: {param_file}")
+            return
+
+        try:
+            with open(param_file, 'r') as f:
+                data = yaml.safe_load(f)
+            params = {
+                'writeable_parameters': data.get('writeable_parameters', {}),
+                'readable_parameters': data.get('readable_parameters', {})
+            }
+            self.logger.info(f"Loaded default parameters for '{board_name}' "
+                            f"({len(params['writeable_parameters'])} writeable, "
+                            f"{len(params['readable_parameters'])} readable).")
+            self.sig_parameters_loaded.emit(params)
+        except Exception as e:
+            self.logger.error(f"Failed to load default parameters: {e}")
+
+    def save_parameters(self, board, current_values):
+        """
+        Save the current writeable parameter values back into the board's YAML,
+        preserving comments and structure using ruamel.yaml.
+        
+        Args:
+            board: dict with at least 'name' key
+            current_values: dict of {param_name: current_value}
+        """
+        board_name = board.get('name', '')
+        hardware_path = self.config.get('paths', {}).get('hardware', './boards')
+        if not os.path.isabs(hardware_path):
+            base_dir = os.path.dirname(os.path.abspath(__file__))
+            hardware_path = os.path.join(base_dir, hardware_path)
+
+        param_file = os.path.join(hardware_path, f"{board_name}_parameters.yaml")
+        if not os.path.exists(param_file):
+            self.logger.error(f"Cannot save parameters: {param_file} not found.")
+            return
+
+        try:
+            yml = YAML()
+            yml.preserve_quotes = True
+
+            with open(param_file, 'r') as f:
+                full_config = yml.load(f)
+
+            # Update ONLY the writeable parameters' initial_value fields
+            if 'writeable_parameters' in full_config:
+                for name, current_val in current_values.items():
+                    if name in full_config['writeable_parameters']:
+                        # Convert numpy types to native Python for YAML serialization
+                        if hasattr(current_val, 'item'):
+                            current_val = current_val.item()
+                        full_config['writeable_parameters'][name]['initial_value'] = current_val
+                        self.logger.info(f"Updated {name} to {current_val} in config.")
+
+            # Write to a temporary file first, then rename
+            tmp_file = param_file + '.tmp'
+            with open(tmp_file, 'w') as f:
+                yml.dump(full_config, f)
+            os.replace(tmp_file, param_file)
+
+            self.logger.info(f"Parameters saved successfully to {param_file}")
+        except Exception as e:
+            self.logger.error(f"Failed to save parameters: {e}")
+
+    # ---- Redpitaya advanced settings configuration ----
 
     @Slot(dict)
     def load_advanced_settings(self, board):

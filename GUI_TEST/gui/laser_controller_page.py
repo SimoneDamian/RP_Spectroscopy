@@ -93,15 +93,25 @@ class SubPageContainer(QWidget):
 
 class ParametersPage(SubPageContainer):
     sig_restore_defaults = Signal()
+    sig_parameter_changed = Signal(str, object)  # (param_name, new_value)
 
-    def __init__(self, title="Parameters"):
+    def __init__(self, logger, title="Parameters"):
         super().__init__(title)
+        self.logger = logger
         
         # --- Table Setup ---
         self.table = QTableWidget()
-        self.table.setColumnCount(4)
-        self.table.setHorizontalHeaderLabels(["Variable Name", "Hardware Name", "Value", "Scaling"])
-        self.table.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        self.table.setColumnCount(5)
+        self.table.setHorizontalHeaderLabels(["Name", "Value", "Units", "Min", "Max"])
+        
+        # Configure column resizing
+        header = self.table.horizontalHeader()
+        header.setSectionResizeMode(0, QHeaderView.Stretch)          # Name column expands
+        header.setSectionResizeMode(1, QHeaderView.ResizeToContents) # Value column fits content
+        header.setSectionResizeMode(2, QHeaderView.ResizeToContents) # Units column fits content
+        header.setSectionResizeMode(3, QHeaderView.ResizeToContents) # Min column fits content
+        header.setSectionResizeMode(4, QHeaderView.ResizeToContents) # Max column fits content
+        
         self.table.setAlternatingRowColors(True)
         
         # Connect cell changed signal (for edits)
@@ -138,46 +148,63 @@ class ParametersPage(SubPageContainer):
         # This ensures the table expands to fill available space
         layout.insertWidget(1, content_widget, 1)
         
-    def load_parameters(self, writeable_params):
+    def load_parameters(self, params_dict):
         """
-        Populate the table with WriteableParameter objects.
-        writeable_params: dict of name -> WriteableParameter
+        Populate the table from a plain dict (from YAML writeable_parameters section).
+        params_dict: dict with 'writeable_parameters' key containing
+        {name: {hardware_name, gui_name, description, type, initial_value, min, max, scaling, units}}
         """
-        self.params = writeable_params
+        self.params = params_dict.get('writeable_parameters', {})
         self._is_populating = True
         self.table.setRowCount(0)
         
-        for name, param in self.params.items():
+        for name, entry in self.params.items():
             row = self.table.rowCount()
             self.table.insertRow(row)
             
-            # 0: Variable Name (Key in dict)
-            item_name = QTableWidgetItem(name)
-            item_name.setFlags(item_name.flags() & ~Qt.ItemIsEditable) # Read Only
+            # 0: Name (gui_name from YAML) — read-only, with tooltip
+            gui_name = entry.get('gui_name', name)
+            item_name = QTableWidgetItem(str(gui_name))
+            item_name.setFlags(item_name.flags() & ~Qt.ItemIsEditable)  # Read Only
+            description = entry.get('description', '')
+            if description:
+                item_name.setToolTip(str(description))
             self.table.setItem(row, 0, item_name)
             
-            # 1: Hardware Name
-            item_hw = QTableWidgetItem(str(param.name))
-            item_hw.setFlags(item_hw.flags() & ~Qt.ItemIsEditable) # Read Only
-            self.table.setItem(row, 1, item_hw)
-            
-            # 2: Value
-            # We assume value is float/int, display as string using 3 decimal places if float
-            val = param.value
+            # 1: Value (initial_value) — editable
+            val = entry.get('initial_value', 0)
             if isinstance(val, float):
-                val_str = f"{val:.6g}" # Use general format
+                val_str = f"{val:.6g}"  # Use general format
             else:
                 val_str = str(val)
-                
             item_val = QTableWidgetItem(val_str)
-            item_val.setData(Qt.UserRole, name) # Store key for lookup
-            self.table.setItem(row, 2, item_val)
+            item_val.setData(Qt.UserRole, name)  # Store dict key for lookup
+            item_val.setTextAlignment(Qt.AlignCenter)
+            self.table.setItem(row, 1, item_val)
             
-            # 3: Scaling
-            scaling = param.scaling if param.scaling is not None else "None"
-            item_scale = QTableWidgetItem(str(scaling))
-            item_scale.setFlags(item_scale.flags() & ~Qt.ItemIsEditable)
-            self.table.setItem(row, 3, item_scale)
+            # 2: Units — read-only
+            units = entry.get('units', None)
+            units_str = str(units) if units is not None else ""
+            item_units = QTableWidgetItem(units_str)
+            item_units.setFlags(item_units.flags() & ~Qt.ItemIsEditable)
+            item_units.setTextAlignment(Qt.AlignCenter)
+            self.table.setItem(row, 2, item_units)
+            
+            # 3: Min — read-only
+            min_val = entry.get('min', None)
+            min_str = str(min_val) if min_val is not None else ""
+            item_min = QTableWidgetItem(min_str)
+            item_min.setFlags(item_min.flags() & ~Qt.ItemIsEditable)
+            item_min.setTextAlignment(Qt.AlignCenter)
+            self.table.setItem(row, 3, item_min)
+            
+            # 4: Max — read-only
+            max_val = entry.get('max', None)
+            max_str = str(max_val) if max_val is not None else ""
+            item_max = QTableWidgetItem(max_str)
+            item_max.setFlags(item_max.flags() & ~Qt.ItemIsEditable)
+            item_max.setTextAlignment(Qt.AlignCenter)
+            self.table.setItem(row, 4, item_max)
             
         self._is_populating = False
 
@@ -185,8 +212,8 @@ class ParametersPage(SubPageContainer):
         if self._is_populating:
             return
             
-        # Only care about Value column (index 2)
-        if column != 2:
+        # Only care about Value column (index 1)
+        if column != 1:
             return
             
         item = self.table.item(row, column)
@@ -194,28 +221,27 @@ class ParametersPage(SubPageContainer):
         new_val_str = item.text()
         
         if param_name in self.params:
-            param = self.params[param_name]
+            entry = self.params[param_name]
+            param_type = entry.get('type', 'float')
             try:
-                # Convert string back to float/int
-                # We try float first because it handles "2.0" correctly
-                val_float = float(new_val_str)
-                
-                # Check if we should convert to int
-                # If scaling is None, it implies it might be an index or boolean-like int
-                # If scaling is defined, it usually implies a continuous physical value (float)
-                # We also check if the float value is effectively an integer
-                if param.scaling is None and val_float.is_integer():
-                     new_val = int(val_float)
+                if param_type == 'bool':
+                    # Accept common boolean string representations
+                    new_val = new_val_str.strip().lower() in ('true', '1', 'yes')
+                elif param_type == 'int':
+                    new_val = int(float(new_val_str))
                 else:
-                     new_val = val_float
+                    new_val = float(new_val_str)
 
-                # Update the parameter object
-                param.set_value(new_val)
-                # print(f"Updated {param_name} to {new_val}") 
+                # Emit signal instead of directly calling param.set_value()
+                self.sig_parameter_changed.emit(param_name, new_val)
+                
+                # Log the change
+                gui_name = entry.get('gui_name', param_name)
+                if self.logger:
+                    self.logger.info(f"Parameter changed: {gui_name} = {new_val}")
                 
             except ValueError:
-                # Handle invalid input? Reset to old value?
-                # For now just print error or ignore
+                # Handle invalid input — ignore for now
                 pass
 
     @Slot()
@@ -342,8 +368,8 @@ class LaserControllerPage(QWidget):
         self.left_stack.addWidget(self.menu_page)
         
         # 2. Sub Pages
-        self.page_parameters = ParametersPage() # REAL PAGE
-        self.page_advanced = AdvancedSettingsPage()
+        self.page_parameters = ParametersPage(self.logger) # REAL PAGE
+        self.page_advanced = AdvancedSettingsPage(self.logger)
         self.page_scan = ScanPage()
         self.page_centering = SubPageContainer("Line Centering")
         self.page_manual = SubPageContainer("Manual Lock")
