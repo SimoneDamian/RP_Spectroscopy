@@ -121,6 +121,10 @@ class GeneralManager:
         self.window.page_laser.page_scan.sig_stop_scan.connect(self.laser.stop_scan)
         self.window.page_laser.page_scan.sig_back.connect(self.laser.start_sweep)
 
+        # Manual Lock signals
+        self.window.page_laser.sig_request_setup_manual_lock.connect(self.laser.setup_manual_lock)
+        self.window.page_laser.sig_request_start_sweep.connect(self.laser.start_sweep)
+
         # Connection for advanced settings
         #  - Direct to QWidget slot for GUI (auto-connection ensures GUI thread)
         self.services.sig_advanced_settings_loaded.connect(

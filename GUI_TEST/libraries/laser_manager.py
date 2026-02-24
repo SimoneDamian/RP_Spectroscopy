@@ -168,6 +168,11 @@ class LaserManager(QObject):
         self.state = "SWEEP"
         self.logger.info("Sweep started by user.")
 
+    @Slot()
+    def setup_manual_lock(self):
+        self.state = "SETUP_MANUAL_LOCK"
+        self.logger.info("FSM switched to SETUP_MANUAL_LOCK.")
+
     @Slot(dict)
     def load_parameters(self, params_dict):
         """

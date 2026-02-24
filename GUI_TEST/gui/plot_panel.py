@@ -106,6 +106,13 @@ class ManualLockingPlotHandler(BasePlotHandler):
         self.plot_monitor.getPlotItem().getAxis('left').enableAutoSIPrefix(False)
         self.curve_monitor = self.plot_monitor.plot(pen=pg.mkPen(color=(255, 165, 0), width=1.5))
 
+        # --- Region Selection ---
+        self.region = pg.LinearRegionItem(brush=pg.mkBrush(255, 0, 0, 50), pen=pg.mkPen('r', width=2))
+        self.region.setZValue(10)
+        self.plot_error.addItem(self.region)
+        # We don't want it to be draggable by the user for now as boundaries are set via textboxes
+        self.region.setMovable(False)
+
         # Link x-axes so zooming/panning is synchronised
         self.plot_monitor.setXLink(self.plot_error)
 
@@ -114,6 +121,10 @@ class ManualLockingPlotHandler(BasePlotHandler):
 
         layout.addWidget(self.plot_error)
         layout.addWidget(self.plot_monitor)
+
+    def set_region(self, x0, x1):
+        """Sets the visible boundaries of the lock region."""
+        self.region.setRegion([x0, x1])
 
     def update(self, packet: dict):
         x = packet.get("x")
@@ -129,6 +140,7 @@ class ManualLockingPlotHandler(BasePlotHandler):
             self.curve_error.setData(x, np.asarray(error))
         if monitor is not None:
             self.curve_monitor.setData(x, np.asarray(monitor))
+
 
 
 class ScanPlotHandler(BasePlotHandler):
