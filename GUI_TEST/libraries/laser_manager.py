@@ -184,6 +184,23 @@ class LaserManager(QObject):
         else:
             self.logger.warning("Cannot load parameters: Interface not initialized.")
 
+    @Slot(dict)
+    def load_advanced_settings(self, settings_dict):
+        """
+        Receives the advanced settings dict from ServiceManager (via GeneralManager)
+        and forwards come of them to the Interface to initialize it correctly.
+        """
+        self.advanced_settings = settings_dict
+        
+        if self.interface:
+            try:
+                self.interface.set_advanced_settings(settings_dict)
+                self.logger.info("Advanced settings loaded into Interface.")
+            except Exception as e:
+                self.logger.error(f"Failed to load advanced settings into Interface: {e}")
+        else:
+            self.logger.warning("Cannot load advanced settings: Interface not initialized.")
+
     @Slot(str, object)
     def set_parameter_value(self, param_name, value):
         """

@@ -8,6 +8,7 @@ from time import sleep
 
 from linien_client.device import Device
 from linien_client.connection import LinienClient
+from linien_common.common import AutolockMode
 
 from linien_common.common import ANALOG_OUT_V, Vpp
 
@@ -60,11 +61,6 @@ class HardwareInterface():
         self.logger.info("Basic configuration complete. Waiting for parameters from ServiceManager...")
         self.writeable_params = {}
         self.readable_params = {}
-
-        # setup the autolock mode
-        #self.client.parameters.autolock_mode_preference.value = AutolockMode.ROBUST # use robust autolock mode
-        #self.client.parameters.autolock_determine_offset.value = False # do not determine offset automatically
-        #self.client.connection.root.write_registers()
 
     def load_parameters_from_dict(self, params_dict):
         """
@@ -138,6 +134,21 @@ class HardwareInterface():
         else:
             self.logger.error(f"Parameter {param_name} not found among writeable parameters.")
             raise KeyError(f"Parameter {param_name} not found among writeable parameters.")
+
+    def set_advanced_settings(self, advanced_settings):
+        """
+        Sets the advanced settings for the autolock.
+        """
+
+        mode_map = {
+            "SIMPLE": AutolockMode.SIMPLE,
+            "ROBUST": AutolockMode.ROBUST
+        }
+
+        self.client.parameters.autolock_mode_preference.value = mode_map[advanced_settings["mode"]]
+        self.client.parameters.autolock_determine_offset.value = advanced_settings["determine_offset"]
+        self.client.connection.root.write_registers()
+        self.logger.info(f"Autolock mode set to {advanced_settings['mode']} and determine offset set to {advanced_settings['determine_offset']}")
 
 class ReadableParameter:
     def __init__(self, name, client):
