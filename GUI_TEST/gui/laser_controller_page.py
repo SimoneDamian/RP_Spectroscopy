@@ -1,3 +1,4 @@
+import numpy as np
 from PySide6.QtWidgets import (QWidget, QVBoxLayout, QLabel, QSplitter, QStackedWidget,
                                QPushButton, QFrame, QHBoxLayout, QSizePolicy, QTableWidget,
                                QTableWidgetItem, QHeaderView, QMessageBox, QLineEdit,
@@ -353,7 +354,7 @@ class ManualLockPage(SubPageContainer):
     Manual Lock sub-page for setting lock region boundaries.
     """
     sig_region_changed = Signal(float, float)
-    sig_start_lock = Signal()
+    sig_start_lock = Signal(float, float)
 
     def __init__(self, title="Manual Lock"):
         super().__init__(title)
@@ -404,7 +405,15 @@ class ManualLockPage(SubPageContainer):
         # --- Internal wiring ---
         self.input_x0.textChanged.connect(self._on_inputs_changed)
         self.input_x1.textChanged.connect(self._on_inputs_changed)
-        self.btn_start_lock.clicked.connect(self.sig_start_lock.emit)
+        self.btn_start_lock.clicked.connect(self._on_start_lock_clicked)
+
+    def _on_start_lock_clicked(self):
+        try:
+            x0 = float(self.input_x0.text())
+            x1 = float(self.input_x1.text())
+            self.sig_start_lock.emit(x0, x1)
+        except ValueError:
+            pass
 
     def _on_inputs_changed(self):
         try:
@@ -418,6 +427,8 @@ class ManualLockPage(SubPageContainer):
 class LaserControllerPage(QWidget):
     sig_request_setup_manual_lock = Signal()
     sig_request_start_sweep = Signal()
+    sig_request_set_state = Signal(str)
+    sig_request_start_manual_locking = Signal(int, int, dict)
 
     def __init__(self, logger):
         super().__init__()
@@ -428,6 +439,8 @@ class LaserControllerPage(QWidget):
         
         splitter = QSplitter(Qt.Horizontal)
         main_layout.addWidget(splitter)
+        
+        self.latest_sweep_data = None
         
         # --- LEFT PANEL: Navigation Stack ---
         self.left_stack = QStackedWidget()
@@ -484,6 +497,9 @@ class LaserControllerPage(QWidget):
         self.page_manual.sig_region_changed.connect(
             lambda x0, x1: self.plot_panel._handlers["SETUP_MANUAL_LOCK"].set_region(x0, x1)
         )
+        self.page_manual.sig_start_lock.connect(self.on_start_lock_clicked)
+        
+        self.plot_panel.sig_unlock_requested.connect(self.on_unlock_requested)
 
         
         # Set Splitter Ratios (Left smaller, Right larger)
@@ -519,6 +535,15 @@ class LaserControllerPage(QWidget):
         """Return to menu from scan page. start_sweep is wired via GeneralManager."""
         self.left_stack.setCurrentWidget(self.menu_page)
 
+    def handle_data(self, packet):
+        """Pre-processor for data packets before they go to the plot panel."""
+        mode = packet.get("mode")
+        if mode in ("SWEEP", "SETUP_MANUAL_LOCK"):
+            self.latest_sweep_data = packet
+        
+        # Forward to plot panel
+        self.plot_panel.update_plot(packet)
+
     @Slot()
     def on_reflines_clicked(self):
         self.logger.info("Reference Lines button clicked - (No Action implemented)")
@@ -541,3 +566,28 @@ class LaserControllerPage(QWidget):
         """Return to menu from manual lock page."""
         self.left_stack.setCurrentWidget(self.menu_page)
         self.sig_request_start_sweep.emit()
+
+    @Slot(float, float)
+    def on_start_lock_clicked(self, x0, x1):
+        """Triggered when "Start lock" is clicked in ManualLockPage."""
+        if self.latest_sweep_data is None:
+            self.logger.warning("Cannot start lock: No sweep data received yet.")
+            return
+        
+        x_data = np.asarray(self.latest_sweep_data['x'])
+        # Find closest indices
+        idx0 = np.argmin(np.abs(x_data - x0))
+        idx1 = np.argmin(np.abs(x_data - x1))
+        
+        # Ensure idx0 < idx1
+        if idx0 > idx1:
+            idx0, idx1 = idx1, idx0
+            
+        self.sig_request_set_state.emit("MANUAL_LOCKING")
+        self.sig_request_start_manual_locking.emit(int(idx0), int(idx1), self.latest_sweep_data)
+        self.left_stack.setCurrentWidget(self.menu_page)
+
+    @Slot()
+    def on_unlock_requested(self):
+        """Triggered when "Unlock" is clicked in PlotPanel."""
+        self.sig_request_set_state.emit("SWEEP")

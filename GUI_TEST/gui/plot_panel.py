@@ -1,8 +1,8 @@
 import pyqtgraph as pg
 import numpy as np
 from PySide6.QtWidgets import (QWidget, QVBoxLayout, QStackedWidget, QLabel,
-                                QScrollArea, QProgressBar)
-from PySide6.QtCore import Qt, Slot, QTimer
+                                QScrollArea, QProgressBar, QPushButton)
+from PySide6.QtCore import Qt, Slot, QTimer, Signal
 
 
 class BasePlotHandler(QWidget):
@@ -142,6 +142,24 @@ class ManualLockingPlotHandler(BasePlotHandler):
             self.curve_monitor.setData(x, np.asarray(monitor))
 
 
+class MessagePlotHandler(BasePlotHandler):
+    """
+    Handles modes that only display a status message (e.g., MANUAL_LOCKING, LOCKED).
+    """
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        layout = QVBoxLayout(self)
+        self.lbl_message = QLabel("Message")
+        self.lbl_message.setAlignment(Qt.AlignCenter)
+        self.lbl_message.setStyleSheet("font-size: 24px; font-weight: bold; color: #aaa;")
+        layout.addWidget(self.lbl_message)
+
+    def update(self, packet: dict):
+        text = packet.get("text", "")
+        self.lbl_message.setText(text)
+
+
+
 
 class ScanPlotHandler(BasePlotHandler):
     """
@@ -251,13 +269,35 @@ class PlotPanel(QWidget):
 
     To add a new mode, create a BasePlotHandler subclass and register it.
     """
+    sig_unlock_requested = Signal()
+
     def __init__(self, parent=None):
         super().__init__(parent)
         layout = QVBoxLayout(self)
         layout.setContentsMargins(0, 0, 0, 0)
 
         self._stack = QStackedWidget()
-        layout.addWidget(self._stack)
+        layout.addWidget(self._stack, 1)
+
+        # --- Unlock Button (Hidden by default) ---
+        self.btn_unlock = QPushButton("Unlock")
+        self.btn_unlock.setFixedHeight(40)
+        self.btn_unlock.setStyleSheet("""
+            QPushButton {
+                background-color: #d32f2f;
+                color: white;
+                font-weight: bold;
+                font-size: 16px;
+                border: none;
+                border-radius: 4px;
+            }
+            QPushButton:hover {
+                background-color: #b71c1c;
+            }
+        """)
+        self.btn_unlock.setVisible(False)
+        self.btn_unlock.clicked.connect(self.sig_unlock_requested.emit)
+        layout.addWidget(self.btn_unlock)
 
         self._handlers: dict[str, BasePlotHandler] = {}
 
@@ -271,6 +311,10 @@ class PlotPanel(QWidget):
         self.register_handler("SWEEP", SweepPlotHandler())
         self.register_handler("SCAN", ScanPlotHandler())
         self.register_handler("SETUP_MANUAL_LOCK", ManualLockingPlotHandler())
+        
+        status_handler = MessagePlotHandler()
+        self.register_handler("MANUAL_LOCKING", status_handler)
+        self.register_handler("LOCKED", status_handler)
 
     def register_handler(self, mode: str, handler: BasePlotHandler):
         """Register a plot handler for a given FSM mode."""
@@ -282,6 +326,10 @@ class PlotPanel(QWidget):
         """Route a data packet to the appropriate handler."""
         mode = packet.get("mode")
         handler = self._handlers.get(mode)
+        
+        # Toggle Unlock button visibility
+        self.btn_unlock.setVisible(mode == "LOCKED")
+
         if handler:
             self._stack.setCurrentWidget(handler)
             handler.update(packet)

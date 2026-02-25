@@ -156,6 +156,29 @@ class HardwareInterface():
         self.client.connection.root.write_registers()
         self.logger.info(f"Autolock mode set to {mode_str} and determine offset set to {determine_offset}")
 
+    def wait_for_lock_status(self, should_be_locked):
+        """
+        Wait until the laser reaches the desired lock state.
+        """
+        counter = 0
+        while True:
+            print("checking lock status...")
+            self.logger.info("checking lock status...")
+            to_plot = pickle.loads(self.client.parameters.to_plot.value)
+
+            #print(f"to_plot keys: {list(to_plot.keys())}")
+
+            is_locked = "error_signal" in to_plot
+
+            if is_locked == should_be_locked:
+                break
+
+            counter += 1
+            if counter > 10:
+                raise Exception("waited too long")
+
+            sleep(1)
+
 class ReadableParameter:
     def __init__(self, name, client):
         self.name = name

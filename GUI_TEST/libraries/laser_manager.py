@@ -247,7 +247,7 @@ class LaserManager(QObject):
         """
         Handles what to send to the GUI while the system tries to lock manually.
         """
-
+        self.logger.info("Handling manual locking...")
         packet = {
             "mode": self.state,
             "text": "Trying to lock the laser..."
@@ -259,6 +259,7 @@ class LaserManager(QObject):
         """
         Handles the locked state of the laser sending the History to the GUI and detecting unlock events if required.
         """
+        self.logger.info("Laser is locked!")
         packet = {
             "mode": self.state,
             "text": "Laser is locked!"
@@ -268,6 +269,7 @@ class LaserManager(QObject):
 
     @Slot(int, int, dict)
     def start_manual_locking(self, x0, x1, sweep_data):
+        self.logger.info("Starting manual locking...")
         self.interface.wait_for_lock_status(False)
 
         expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_data['error_signal'], sweep_data['monitor_signal'], x0, x1)

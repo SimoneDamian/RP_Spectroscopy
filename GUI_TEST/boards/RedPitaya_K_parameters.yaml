@@ -87,7 +87,7 @@ writeable_parameters:
 
   filter_1_enabled_a:
     hardware_name: filter_1_enabled_a
-    gui_name: Filter 1 enabled on CH1.
+    gui_name: Filter 1 enabled on CH1
     description: Should this filter be enabled? Note that disabling a filter 
       does not bypass it as this would change the propagation time of the signal
       through the FPGA which is unfavorable as it leads to a mismatch of the 
@@ -101,7 +101,7 @@ writeable_parameters:
 
   filter_1_type_a:
     hardware_name: filter_1_type_a
-    gui_name: Filter 1 type on CH1.
+    gui_name: Filter 1 type on CH1
     description: Either `LOW_PASS` (0) or `HIGH_PASS` (1) of 
       linien_common.common.FilterType` enum class.
     type: int
@@ -113,7 +113,7 @@ writeable_parameters:
 
   filter_2_enabled_a:
     hardware_name: filter_2_enabled_a
-    gui_name: Filter 2 enabled on CH1.
+    gui_name: Filter 2 enabled on CH1
     description: Should this filter be enabled? Note that disabling a filter 
       does not bypass it as this would change the propagation time of the signal
       through the FPGA which is unfavorable as it leads to a mismatch of the 
@@ -127,7 +127,7 @@ writeable_parameters:
 
   filter_2_type_a:
     hardware_name: filter_2_type_a
-    gui_name: Filter 2 type on CH1.
+    gui_name: Filter 2 type on CH1
     description: Either `LOW_PASS` (0) or `HIGH_PASS` (1) of 
       linien_common.common.FilterType` enum class.
     type: int
@@ -140,7 +140,7 @@ writeable_parameters:
   # Now I set the CH2 input to have no offset correction, no signal inversion, and two low-pass filters
   demodulation_multiplier_b:
     hardware_name: demodulation_multiplier_b
-    gui_name: Demodulation Multiplier B
+    gui_name: Demodulation Multiplier CH2
     description: This parameter allows for multi-f (e.g. 3f or 5f) demodulation.
       Default value is 1, indicating that 1f demodulation is used.
     type: int
@@ -190,7 +190,7 @@ writeable_parameters:
 
   filter_1_enabled_b:
     hardware_name: filter_1_enabled_b
-    gui_name: Filter 1 enabled on CH2.
+    gui_name: Filter 1 enabled on CH2
     description: Should this filter be enabled? Note that disabling a filter 
       does not bypass it as this would change the propagation time of the signal
       through the FPGA which is unfavorable as it leads to a mismatch of the 
@@ -204,7 +204,7 @@ writeable_parameters:
 
   filter_1_type_b:
     hardware_name: filter_1_type_b
-    gui_name: Filter 1 type on CH2.
+    gui_name: Filter 1 type on CH2
     description: Either `LOW_PASS` (0) or `HIGH_PASS` (1) of 
       linien_common.common.FilterType` enum class.
     type: int
@@ -216,7 +216,7 @@ writeable_parameters:
 
   filter_2_enabled_b:
     hardware_name: filter_2_enabled_b
-    gui_name: Filter 2 enabled on CH2.
+    gui_name: Filter 2 enabled on CH2
     description: Should this filter be enabled? Note that disabling a filter 
       does not bypass it as this would change the propagation time of the signal
       through the FPGA which is unfavorable as it leads to a mismatch of the 
@@ -230,7 +230,7 @@ writeable_parameters:
 
   filter_2_type_b:
     hardware_name: filter_2_type_b
-    gui_name: Filter 2 type on CH2.
+    gui_name: Filter 2 type on CH2
     description: Either `LOW_PASS` (0) or `HIGH_PASS` (1) of 
       linien_common.common.FilterType` enum class.
     type: int
@@ -249,7 +249,7 @@ writeable_parameters:
     description: The center of the sweep ramp in volts. (Pay attention to the 
       proportionality constant applied in the analog summator)
     type: float
-    initial_value: 0.96
+    initial_value: 0.931
     min: 0
     max: 1.8
     scaling: 18204 # This is approx 1.0 / ANALOG_OUT_V
@@ -372,7 +372,7 @@ writeable_parameters:
     gui_name: Modulation frequency
     description: Frequency of the modulation in MHz.
     type: float
-    initial_value: 0.005
+    initial_value: 0.03
     min: 0
     max: 50
     scaling: 33554432 # This is the value of MHz constant
@@ -437,7 +437,7 @@ writeable_parameters:
     gui_name: Filter 1 frequency
     description: The filter frequency in units of Hz.
     type: float
-    initial_value: 500.0
+    initial_value: 700.0
     min:
     max:
     scaling: 1.0  # Hz
@@ -448,7 +448,7 @@ writeable_parameters:
     gui_name: Filter 2 frequency
     description: The filter frequency in units of Hz.
     type: float
-    initial_value: 500.0
+    initial_value: 700.0
     min:
     max:
     scaling: 1.0  # Hz
@@ -461,7 +461,7 @@ writeable_parameters:
     description: Proportional part of PID parameters. Range is [0, 8191]. In 
       order to change sign of PID parameters, use `target_slope_rising`.
     type: int
-    initial_value: 2000
+    initial_value: 100
     min: 0
     max: 8191
     scaling: 1  # PID proportional gain
@@ -473,7 +473,7 @@ writeable_parameters:
     description: Integral part of PID parameters. Range is [0, 8191]. In order 
       to change sign of PID parameters, use `target_slope_rising`
     type: int
-    initial_value: 100
+    initial_value: 0
     min: 0
     max: 8191
     scaling: 1  # PID integral gain
@@ -485,7 +485,7 @@ writeable_parameters:
     description: Derivative part of PID parameters. Range is [0, 8191]. In order
       to change sign of PID parameters, use `target_slope_rising`
     type: int
-    initial_value: 1
+    initial_value: 0
     min: 0
     max: 8191
     scaling: 1  # PID derivative gain
@@ -508,10 +508,21 @@ writeable_parameters:
     description: Strength of the slow PID. This strength corresponds to the 
       strength of the integrator. Maximum value is 8191.
     type: int
-    initial_value: 10
+    initial_value: 1
     min: 0
     max: 8191
     scaling: 1  # PID strength on slow control
+    units:
+
+  target_slope_rising:
+    hardware_name: target_slope_rising
+    gui_name: Target slope rising
+    description: A boolean that inverts the sign of the PID parameters.
+    type: bool
+    initial_value: false
+    min:
+    max:
+    scaling:
     units:
 
   ### SIGNAL HISTORY SETUP ###
@@ -647,7 +658,7 @@ advanced_settings:
         may be used if you experience problems with jitter-tolerant mode. As it 
         requires some communication between CPU and FPGA which causes some 
         delay, it may have problems if the line jitters a lot.
-      value: ROBUST
+      value: SIMPLE
       options:
       - SIMPLE
       - ROBUST

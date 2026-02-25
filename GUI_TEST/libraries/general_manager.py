@@ -113,7 +113,7 @@ class GeneralManager:
         )
 
         # Connection for live data plotting
-        self.laser.sig_data_ready.connect(self.window.page_laser.plot_panel.update_plot)
+        self.laser.sig_data_ready.connect(self.window.page_laser.handle_data)
         self.laser.sig_data_ready.connect(self.on_data_ready)
 
         # Scan page signals
@@ -124,6 +124,8 @@ class GeneralManager:
         # Manual Lock signals
         self.window.page_laser.sig_request_setup_manual_lock.connect(self.laser.setup_manual_lock)
         self.window.page_laser.sig_request_start_sweep.connect(self.laser.start_sweep)
+        self.window.page_laser.sig_request_set_state.connect(self.laser.set_state)
+        self.window.page_laser.sig_request_start_manual_locking.connect(self.laser.start_manual_locking)
 
         # Connection for advanced settings
         #  - Direct to QWidget slot for GUI (auto-connection ensures GUI thread)

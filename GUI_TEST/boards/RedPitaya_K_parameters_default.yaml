@@ -12,7 +12,8 @@ writeable_parameters:
   dual_channel:
     hardware_name: dual_channel
     gui_name: Dual Channel
-    description: If True, the two input channels are mixed together. If False, only CH1 is used.
+    description: If True, the two input channels are mixed together. If False, 
+      only CH1 is used.
     type: bool
     initial_value: false
     min:
@@ -23,7 +24,9 @@ writeable_parameters:
   channel_mixing:
     hardware_name: channel_mixing
     gui_name: Channel Mixing
-    description: Goes from -128 to +128, -128 means only CH1, 128 means only CH2, 0 means equal mixing of both channels. Useful only if Dual Channel is enabled.
+    description: Goes from -128 to +128, -128 means only CH1, 128 means only 
+      CH2, 0 means equal mixing of both channels. Useful only if Dual Channel is
+      enabled.
     type: int
     initial_value: -128 # goes from -128 to +128, -128 means only CH1, 128 means only CH2, 0 means equal mixing of both channels
     min: -128
@@ -35,9 +38,10 @@ writeable_parameters:
   demodulation_multiplier_a:
     hardware_name: demodulation_multiplier_a
     gui_name: Demodulation Multiplier CH1
-    description: This parameter allows for multi-f (e.g. 3f or 5f) demodulation. Default value is 1, indicating that 1f demodulation is used.
+    description: This parameter allows for multi-f (e.g. 3f or 5f) demodulation.
+      Default value is 1, indicating that 1f demodulation is used.
     type: int
-    initial_value: 1
+    initial_value: 0
     min: 0
     max: 15
     scaling: 1
@@ -48,7 +52,7 @@ writeable_parameters:
     gui_name: Offset CH1
     description: The vertical offset for CH1 in volts.
     type: float
-    initial_value: -0.0035
+    initial_value: 0.0
     min: -1
     max: 1
     scaling: 8191
@@ -68,7 +72,12 @@ writeable_parameters:
   filter_automatic_a:
     hardware_name: filter_automatic_a
     gui_name: Automatic Filter CH1
-    description: After demodulation of the signal, Linien may apply up to two IIR filters. `filter_automatic` is a boolean indicating whether Linien should automatically determine suitable filter for a given modulation frequency or whether the user may configure the filters himself. If automatic mode is enabled, two low pass filters are installed with a frequency of half the modulation frequency.
+    description: After demodulation of the signal, Linien may apply up to two 
+      IIR filters. `filter_automatic` is a boolean indicating whether Linien 
+      should automatically determine suitable filter for a given modulation 
+      frequency or whether the user may configure the filters himself. If 
+      automatic mode is enabled, two low pass filters are installed with a 
+      frequency of half the modulation frequency.
     type: bool
     initial_value: false
     min:
@@ -78,8 +87,11 @@ writeable_parameters:
 
   filter_1_enabled_a:
     hardware_name: filter_1_enabled_a
-    gui_name: Filter 1 enabled on CH1.
-    description: Should this filter be enabled? Note that disabling a filter does not bypass it as this would change the propagation time of the signal through the FPGA which is unfavorable as it leads to a mismatch of the demodulation phase. Instead, a filter with unity gain is installed.
+    gui_name: Filter 1 enabled on CH1
+    description: Should this filter be enabled? Note that disabling a filter 
+      does not bypass it as this would change the propagation time of the signal
+      through the FPGA which is unfavorable as it leads to a mismatch of the 
+      demodulation phase. Instead, a filter with unity gain is installed.
     type: bool
     initial_value: true
     min:
@@ -89,8 +101,9 @@ writeable_parameters:
 
   filter_1_type_a:
     hardware_name: filter_1_type_a
-    gui_name: Filter 1 type on CH1.
-    description: Either `LOW_PASS` (0) or `HIGH_PASS` (1) of linien_common.common.FilterType` enum class.
+    gui_name: Filter 1 type on CH1
+    description: Either `LOW_PASS` (0) or `HIGH_PASS` (1) of 
+      linien_common.common.FilterType` enum class.
     type: int
     initial_value: 0
     min:
@@ -100,8 +113,11 @@ writeable_parameters:
 
   filter_2_enabled_a:
     hardware_name: filter_2_enabled_a
-    gui_name: Filter 2 enabled on CH1.
-    description: Should this filter be enabled? Note that disabling a filter does not bypass it as this would change the propagation time of the signal through the FPGA which is unfavorable as it leads to a mismatch of the demodulation phase. Instead, a filter with unity gain is installed.
+    gui_name: Filter 2 enabled on CH1
+    description: Should this filter be enabled? Note that disabling a filter 
+      does not bypass it as this would change the propagation time of the signal
+      through the FPGA which is unfavorable as it leads to a mismatch of the 
+      demodulation phase. Instead, a filter with unity gain is installed.
     type: bool
     initial_value: true
     min:
@@ -111,8 +127,9 @@ writeable_parameters:
 
   filter_2_type_a:
     hardware_name: filter_2_type_a
-    gui_name: Filter 2 type on CH1.
-    description: Either `LOW_PASS` (0) or `HIGH_PASS` (1) of linien_common.common.FilterType` enum class.
+    gui_name: Filter 2 type on CH1
+    description: Either `LOW_PASS` (0) or `HIGH_PASS` (1) of 
+      linien_common.common.FilterType` enum class.
     type: int
     initial_value: 0
     min:
@@ -123,10 +140,11 @@ writeable_parameters:
   # Now I set the CH2 input to have no offset correction, no signal inversion, and two low-pass filters
   demodulation_multiplier_b:
     hardware_name: demodulation_multiplier_b
-    gui_name: Demodulation Multiplier B
-    description: This parameter allows for multi-f (e.g. 3f or 5f) demodulation. Default value is 1, indicating that 1f demodulation is used.
+    gui_name: Demodulation Multiplier CH2
+    description: This parameter allows for multi-f (e.g. 3f or 5f) demodulation.
+      Default value is 1, indicating that 1f demodulation is used.
     type: int
-    initial_value: 1
+    initial_value: 0
     min: 0
     max: 15
     scaling: 1
@@ -157,7 +175,12 @@ writeable_parameters:
   filter_automatic_b:
     hardware_name: filter_automatic_b
     gui_name: Automatic Filter CH2
-    description: After demodulation of the signal, Linien may apply up to two IIR filters. `filter_automatic` is a boolean indicating whether Linien should automatically determine suitable filter for a given modulation frequency or whether the user may configure the filters himself. If automatic mode is enabled, two low pass filters are installed with a frequency of half the modulation frequency.
+    description: After demodulation of the signal, Linien may apply up to two 
+      IIR filters. `filter_automatic` is a boolean indicating whether Linien 
+      should automatically determine suitable filter for a given modulation 
+      frequency or whether the user may configure the filters himself. If 
+      automatic mode is enabled, two low pass filters are installed with a 
+      frequency of half the modulation frequency.
     type: bool
     initial_value: false
     min:
@@ -167,8 +190,11 @@ writeable_parameters:
 
   filter_1_enabled_b:
     hardware_name: filter_1_enabled_b
-    gui_name: Filter 1 enabled on CH2.
-    description: Should this filter be enabled? Note that disabling a filter does not bypass it as this would change the propagation time of the signal through the FPGA which is unfavorable as it leads to a mismatch of the demodulation phase. Instead, a filter with unity gain is installed.
+    gui_name: Filter 1 enabled on CH2
+    description: Should this filter be enabled? Note that disabling a filter 
+      does not bypass it as this would change the propagation time of the signal
+      through the FPGA which is unfavorable as it leads to a mismatch of the 
+      demodulation phase. Instead, a filter with unity gain is installed.
     type: bool
     initial_value: true
     min:
@@ -178,8 +204,9 @@ writeable_parameters:
 
   filter_1_type_b:
     hardware_name: filter_1_type_b
-    gui_name: Filter 1 type on CH2.
-    description: Either `LOW_PASS` (0) or `HIGH_PASS` (1) of linien_common.common.FilterType` enum class.
+    gui_name: Filter 1 type on CH2
+    description: Either `LOW_PASS` (0) or `HIGH_PASS` (1) of 
+      linien_common.common.FilterType` enum class.
     type: int
     initial_value: 0
     min:
@@ -189,8 +216,11 @@ writeable_parameters:
 
   filter_2_enabled_b:
     hardware_name: filter_2_enabled_b
-    gui_name: Filter 2 enabled on CH2.
-    description: Should this filter be enabled? Note that disabling a filter does not bypass it as this would change the propagation time of the signal through the FPGA which is unfavorable as it leads to a mismatch of the demodulation phase. Instead, a filter with unity gain is installed.
+    gui_name: Filter 2 enabled on CH2
+    description: Should this filter be enabled? Note that disabling a filter 
+      does not bypass it as this would change the propagation time of the signal
+      through the FPGA which is unfavorable as it leads to a mismatch of the 
+      demodulation phase. Instead, a filter with unity gain is installed.
     type: bool
     initial_value: true
     min:
@@ -200,8 +230,9 @@ writeable_parameters:
 
   filter_2_type_b:
     hardware_name: filter_2_type_b
-    gui_name: Filter 2 type on CH2.
-    description: Either `LOW_PASS` (0) or `HIGH_PASS` (1) of linien_common.common.FilterType` enum class.
+    gui_name: Filter 2 type on CH2
+    description: Either `LOW_PASS` (0) or `HIGH_PASS` (1) of 
+      linien_common.common.FilterType` enum class.
     type: int
     initial_value: 0
     min:
@@ -215,9 +246,10 @@ writeable_parameters:
   big_offset:
     hardware_name: analog_out_1
     gui_name: Big offset
-    description: The center of the sweep ramp in volts. (Pay attention to the proportionality constant applied in the analog summator)
+    description: The center of the sweep ramp in volts. (Pay attention to the 
+      proportionality constant applied in the analog summator)
     type: float
-    initial_value: 0.93
+    initial_value: 0.931
     min: 0
     max: 1.8
     scaling: 18204 # This is approx 1.0 / ANALOG_OUT_V
@@ -226,7 +258,8 @@ writeable_parameters:
   small_offset:
     hardware_name: analog_out_2
     gui_name: Small offset
-    description: The center of the sweep ramp in volts. (Pay attention to the proportionality constant applied in the analog summator)
+    description: The center of the sweep ramp in volts. (Pay attention to the 
+      proportionality constant applied in the analog summator)
     type: float
     initial_value: 0.0
     min: 0
@@ -237,7 +270,8 @@ writeable_parameters:
   modulation_channel:
     hardware_name: mod_channel
     gui_name: Modulation channel
-    description: Configures the output of the modulation frequency. A value of 0 means FAST OUT 1 and a value of 1 corresponds to FAST OUT 2
+    description: Configures the output of the modulation frequency. A value of 0
+      means FAST OUT 1 and a value of 1 corresponds to FAST OUT 2
     type: int
     initial_value: 0
     min:
@@ -248,7 +282,8 @@ writeable_parameters:
   sweep_channel:
     hardware_name: sweep_channel
     gui_name: Sweep channel
-    description: Configures the output of the scan sweep. 0 for FAST OUT 1, 1 for FAST OUT 2 and 2 for ANALOG OUT 0 (slow channel).
+    description: Configures the output of the scan sweep. 0 for FAST OUT 1, 1 
+      for FAST OUT 2 and 2 for ANALOG OUT 0 (slow channel).
     type: int
     initial_value: 1
     min:
@@ -259,7 +294,8 @@ writeable_parameters:
   control_channel:
     hardware_name: control_channel
     gui_name: Control channel
-    description: Configures the output of the lock signal. A value of 0 means FAST OUT 1 and a value of 1 corresponds to FAST OUT 2
+    description: Configures the output of the lock signal. A value of 0 means 
+      FAST OUT 1 and a value of 1 corresponds to FAST OUT 2
     type: int
     initial_value: 1
     min:
@@ -270,18 +306,21 @@ writeable_parameters:
   polarity_fast_out1:
     hardware_name: polarity_fast_out1
     gui_name: Polarity fast out 1
-    description: Defines whether tuning the voltage up correspond to tuning the laser frequency up or down. Setting these values correctly is only required when using both, a fast out and a the slow output for PID.
+    description: Defines whether tuning the voltage up correspond to tuning the 
+      laser frequency up or down. Setting these values correctly is only 
+      required when using both, a fast out and a the slow output for PID.
     type: int
     initial_value: 0
     min:
     max:
     scaling:
     units:
-  
   polarity_fast_out2:
     hardware_name: polarity_fast_out2
     gui_name: Polarity fast out 2
-    description: Defines whether tuning the voltage up correspond to tuning the laser frequency up or down. Setting these values correctly is only required when using both, a fast out and a the slow output for PID.
+    description: Defines whether tuning the voltage up correspond to tuning the 
+      laser frequency up or down. Setting these values correctly is only 
+      required when using both, a fast out and a the slow output for PID.
     type: int
     initial_value: 0
     min:
@@ -292,7 +331,8 @@ writeable_parameters:
   slow_control_channel:
     hardware_name: slow_control_channel
     gui_name: Slow control channel
-    description: Configures the output of the slow PID control. 0 for FAST OUT 1, 1 for FAST OUT 2 and 2 for ANALOG OUT 0 (slow channel).
+    description: Configures the output of the slow PID control. 0 for FAST OUT 
+      1, 1 for FAST OUT 2 and 2 for ANALOG OUT 0 (slow channel).
     type: int
     initial_value: 2
     min:
@@ -303,7 +343,9 @@ writeable_parameters:
   polarity_analog_out0:
     hardware_name: polarity_analog_out0
     gui_name: Polarity analog out 0
-    description: Defines whether tuning the voltage up correspond to tuning the laser frequency up or down. Setting these values correctly is only required when using both, a fast out and a the slow output for PID.
+    description: Defines whether tuning the voltage up correspond to tuning the 
+      laser frequency up or down. Setting these values correctly is only 
+      required when using both, a fast out and a the slow output for PID.
     type: int
     initial_value: 0
     min:
@@ -319,7 +361,7 @@ writeable_parameters:
     gui_name: Modulation amplitude
     description: The amplitude of the modulation in Vpp.
     type: float
-    initial_value: 0.5
+    initial_value: 0.1
     min: 0
     max: 2
     scaling: 4095.75  # This is value of Vpp constant
@@ -330,7 +372,7 @@ writeable_parameters:
     gui_name: Modulation frequency
     description: Frequency of the modulation in MHz.
     type: float
-    initial_value: 0.05
+    initial_value: 0.03
     min: 0
     max: 50
     scaling: 33554432 # This is the value of MHz constant
@@ -340,9 +382,12 @@ writeable_parameters:
   sweep_amplitude:
     hardware_name: sweep_amplitude
     gui_name: Sweep amplitude
-    description: Amplitude of the sweep in Vpp. The maximum depends on the output channel selected (2 V for fast outputs (range +/- 1 V) and 0.9 V for slow outputs (range 0 V to 1.8 V)). That means an amplitude of 1.0 corresponds to the full sweep range in both cases.
+    description: Amplitude of the sweep in Vpp. The maximum depends on the 
+      output channel selected (2 V for fast outputs (range +/- 1 V) and 0.9 V 
+      for slow outputs (range 0 V to 1.8 V)). That means an amplitude of 1.0 
+      corresponds to the full sweep range in both cases.
     type: float
-    initial_value: 1
+    initial_value: 1.0
     min: 0.001
     max: 1
     scaling: 1.0
@@ -351,7 +396,10 @@ writeable_parameters:
   sweep_center:
     hardware_name: sweep_center
     gui_name: Sweep center
-    description: The center position of the sweep. If a fast output is used for the sweep this is the sweep center position in volts. If the slow output is used the interval [-1, +1] of this parameter is mapped to the interval [0V, +1.8V].
+    description: The center position of the sweep. If a fast output is used for 
+      the sweep this is the sweep center position in volts. If the slow output 
+      is used the interval [-1, +1] of this parameter is mapped to the interval 
+      [0V, +1.8V].
     type: float
     initial_value: 0.0 # center the sweep on the 0V of the channel
     min: -1
@@ -362,9 +410,10 @@ writeable_parameters:
   sweep_speed:
     hardware_name: sweep_speed
     gui_name: Sweep speed
-    description: The sweep speed in internal units. The actual speed is given by f_real = 3.8 kHz / (2 ** sweep_speed). Allowed values are [0, ..., 15]
+    description: The sweep speed in internal units. The actual speed is given by
+      f_real = 3.8 kHz / (2 ** sweep_speed). Allowed values are [0, ..., 15]
     type: int
-    initial_value: 8 # n means (3.8 kHz / 2**n), eg n=12 means 0.92 Hz
+    initial_value: 9 # n means (3.8 kHz / 2**n), eg n=12 means 0.92 Hz
     min: 0
     max: 15
     scaling:
@@ -377,7 +426,7 @@ writeable_parameters:
     gui_name: Demodulation phase
     description: The demodulation phase for channel A in degree.
     type: float
-    initial_value: 150.0
+    initial_value: 180.0
     min: 0
     max: 360
     scaling: 1.0  # degrees
@@ -388,7 +437,7 @@ writeable_parameters:
     gui_name: Filter 1 frequency
     description: The filter frequency in units of Hz.
     type: float
-    initial_value: 10000.0
+    initial_value: 700.0
     min:
     max:
     scaling: 1.0  # Hz
@@ -399,7 +448,7 @@ writeable_parameters:
     gui_name: Filter 2 frequency
     description: The filter frequency in units of Hz.
     type: float
-    initial_value: 10000.0
+    initial_value: 700.0
     min:
     max:
     scaling: 1.0  # Hz
@@ -409,35 +458,38 @@ writeable_parameters:
   pid_p:
     hardware_name: p
     gui_name: PID P
-    description: Proportional part of PID parameters. Range is [0, 8191]. In order to change sign of PID parameters, use `target_slope_rising`.
-    type: int
-    initial_value: 2000
-    min: 0
-    max: 8191
-    scaling: 1  # PID proportional gain
-    units: 
-
-  pid_i:
-    hardware_name: i
-    gui_name: PID I
-    description: Integral part of PID parameters. Range is [0, 8191]. In order to change sign of PID parameters, use `target_slope_rising`
+    description: Proportional part of PID parameters. Range is [0, 8191]. In 
+      order to change sign of PID parameters, use `target_slope_rising`.
     type: int
     initial_value: 100
     min: 0
     max: 8191
+    scaling: 1  # PID proportional gain
+    units:
+
+  pid_i:
+    hardware_name: i
+    gui_name: PID I
+    description: Integral part of PID parameters. Range is [0, 8191]. In order 
+      to change sign of PID parameters, use `target_slope_rising`
+    type: int
+    initial_value: 0
+    min: 0
+    max: 8191
     scaling: 1  # PID integral gain
-    units: 
+    units:
 
   pid_d:
     hardware_name: d
     gui_name: PID D
-    description: Derivative part of PID parameters. Range is [0, 8191]. In order to change sign of PID parameters, use `target_slope_rising`
+    description: Derivative part of PID parameters. Range is [0, 8191]. In order
+      to change sign of PID parameters, use `target_slope_rising`
     type: int
-    initial_value: 1
+    initial_value: 0
     min: 0
     max: 8191
     scaling: 1  # PID derivative gain
-    units: 
+    units:
 
   pid_on_slow_enabled:
     hardware_name: pid_on_slow_enabled
@@ -453,20 +505,33 @@ writeable_parameters:
   pid_slow_strength:
     hardware_name: pid_on_slow_strength
     gui_name: PID slow strength
-    description: Strength of the slow PID. This strength corresponds to the strength of the integrator. Maximum value is 8191.
+    description: Strength of the slow PID. This strength corresponds to the 
+      strength of the integrator. Maximum value is 8191.
     type: int
-    initial_value: 10
+    initial_value: 1
     min: 0
     max: 8191
     scaling: 1  # PID strength on slow control
-    units: 
+    units:
+
+  target_slope_rising:
+    hardware_name: target_slope_rising
+    gui_name: Target slope rising
+    description: A boolean that inverts the sign of the PID parameters.
+    type: bool
+    initial_value: false
+    min:
+    max:
+    scaling:
+    units:
 
   ### SIGNAL HISTORY SETUP ###
   # Should not need to change
   control_history_length:
     hardware_name: control_signal_history_length
     gui_name: Control history length
-    description: Record of control signal should be kept for how long? In seconds.
+    description: Record of control signal should be kept for how long? In 
+      seconds.
     type: int
     initial_value: 60 # Length of control signal history buffer in seconds
     min:
@@ -499,42 +564,55 @@ advanced_settings:
       gui_name: Unlock and relock
       detect_unlock:
         gui_name: Detect unlock
-        description: The program is able to autodetect an unlock event. You can choose to use this feature or not.
+        description: The program is able to autodetect an unlock event. You can 
+          choose to use this feature or not.
         enabled: true
       automatic_relock:
         gui_name: Automatic relock
-        description: The program is able to automatically relock the signal when an unlock event is detected. You can choose to use this feature or not.
+        description: The program is able to automatically relock the signal when
+          an unlock event is detected. You can choose to use this feature or 
+          not.
         enabled: true
 
     fast_control:
       gui_name: Fast control
       fluctuations:
         gui_name: Fast control fluctuations
-        description: The program is able to detect an unlock event based on the fluctuations of the fast control signal. You can choose to use this feature or not and you can tune the threshold of the detection.
+        description: The program is able to detect an unlock event based on the 
+          fluctuations of the fast control signal. You can choose to use this 
+          feature or not and you can tune the threshold of the detection.
         enabled: true
         threshold: 0.1
       saturation:
         gui_name: Fast control saturation
-        description: The program is able to detect an unlock event based on the saturation of the fast control signal. You can choose to use this feature or not.
+        description: The program is able to detect an unlock event based on the 
+          saturation of the fast control signal. You can choose to use this 
+          feature or not.
         enabled: true
 
     slow_control:
       gui_name: Slow control
       fluctuations:
         gui_name: Slow control fluctuations
-        description: The program is able to detect an unlock event based on the fluctuations of the slow control signal. You can choose to use this feature or not and you can tune the threshold of the detection.
+        description: The program is able to detect an unlock event based on the 
+          fluctuations of the slow control signal. You can choose to use this 
+          feature or not and you can tune the threshold of the detection.
         enabled: true
         threshold: 0.1
       saturation:
         gui_name: Slow control saturation
-        description: The program is able to detect an unlock event based on the saturation of the slow control signal. You can choose to use this feature or not.
+        description: The program is able to detect an unlock event based on the 
+          saturation of the slow control signal. You can choose to use this 
+          feature or not.
         enabled: true
 
     monitor_signal:
       gui_name: Monitor signal
       drift:
         gui_name: Monitor signal drift
-        description: The program is able to detect an unlock event based on the drift of the monitor signal. You can choose to use this feature or not and you can tune the number of points used for the detection.
+        description: The program is able to detect an unlock event based on the 
+          drift of the monitor signal. You can choose to use this feature or not
+          and you can tune the number of points used for the detection.
         enabled: true
         num_points: 100
 
@@ -544,19 +622,24 @@ advanced_settings:
 
     history_length:
       gui_name: History length
-      description: The history length of the fast and slow control signals. You see the history when the laser is locked.
+      description: The history length of the fast and slow control signals. You 
+        see the history when the laser is locked.
       fast: 10
       slow: 3600
       unit: "s"
 
     fast_control_signal_derivative:
       gui_name: Show fast control signal derivative
-      description: The program is able to show the derivative of the fast control signal. You can choose to use this feature or not. Useful to tune the threshold of the fast control signal fluctuations.
+      description: The program is able to show the derivative of the fast 
+        control signal. You can choose to use this feature or not. Useful to 
+        tune the threshold of the fast control signal fluctuations.
       enabled: true
 
     slow_control_signal_derivative:
       gui_name: Show slow control signal derivative
-      description: The program is able to show the derivative of the slow control signal. You can choose to use this feature or not. Useful to tune the threshold of the slow control signal fluctuations.
+      description: The program is able to show the derivative of the slow 
+        control signal. You can choose to use this feature or not. Useful to 
+        tune the threshold of the slow control signal fluctuations.
       enabled: true
 
   # --- AUTOLOCK SETTINGS ---
@@ -565,14 +648,26 @@ advanced_settings:
 
     mode:
       gui_name: Autolock mode
-      description: The ROBUST algorithm runs on FPGA and analyzes the peak shapes in order to turn on the lock at the right sweep position. It is able to cope with a high amount of jitter as it runs completely on the FPGA, i.e. no delays due to communication between CPU and FPGA occur. The SIMPLE algorithm uses a simple calculation of auto-correlation on the CPU which is then used to specify at which point of the sweep the lock should start. This algorithm is less complex than the first one and may be used if you experience problems with jitter-tolerant mode. As it requires some communication between CPU and FPGA which causes some delay, it may have problems if the line jitters a lot.
-      value: ROBUST
+      description: The ROBUST algorithm runs on FPGA and analyzes the peak 
+        shapes in order to turn on the lock at the right sweep position. It is 
+        able to cope with a high amount of jitter as it runs completely on the 
+        FPGA, i.e. no delays due to communication between CPU and FPGA occur. 
+        The SIMPLE algorithm uses a simple calculation of auto-correlation on 
+        the CPU which is then used to specify at which point of the sweep the 
+        lock should start. This algorithm is less complex than the first one and
+        may be used if you experience problems with jitter-tolerant mode. As it 
+        requires some communication between CPU and FPGA which causes some 
+        delay, it may have problems if the line jitters a lot.
+      value: SIMPLE
       options:
       - SIMPLE
       - ROBUST
     determine_offset:
       gui_name: Autodetermine offset
-      description: If this checkbox is ticked, the autolock will adapt the y-offset of the signal such that the middle between minimum and maximum is at the zero crossing. This is especially useful if you have a large background signal (e.g. the Doppler background in FMS spectroscopy).
+      description: If this checkbox is ticked, the autolock will adapt the 
+        y-offset of the signal such that the middle between minimum and maximum 
+        is at the zero crossing. This is especially useful if you have a large 
+        background signal (e.g. the Doppler background in FMS spectroscopy).
       enabled: false
 
   # --- AUTOMATIC CENTERING SETTINGS ---
@@ -610,7 +705,6 @@ advanced_settings:
       - -2.0
       - 3.0
       - -3.0
-      
     correlation_minimum:
       gui_name: Correlation minimum
       description: CORRELATION MINIMUM DESCRIPTION
