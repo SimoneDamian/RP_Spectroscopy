@@ -102,7 +102,10 @@ class LaserManager(QObject):
             "monitor_signal": sweep_signal["monitor_signal"]
         }
 
+        self.logger.info(f"first error_signal data: {sweep_signal['error_signal'][0:20]}")
+
         self.sig_data_ready.emit(packet)
+
 
     @Slot(float, float, int)
     def start_scan(self, start_voltage=0.05, stop_voltage=1.75, num_points=40):

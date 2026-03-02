@@ -2277,3 +2277,7 @@
 2026-01-29 14:12:08 - LaserLockingController - INFO - Line LINE_K_D2 is centered at offset 0.9285714285714283.
 2026-01-29 14:12:13 - LaserLockingController - INFO - Locking the laser worked \o/
 2026-01-29 14:12:15 - LaserLockingController - INFO - Exiting centering and locking procedure.
+2026-02-25 14:52:56 - LaserLockingController - INFO - LaserLockController initialized successfully.
+2026-02-25 14:53:57 - LaserLockingController - INFO - Starting scan from 0.9V to 1.0V with 10 points.
+2026-02-25 14:54:13 - LaserLockingController - INFO - Scan completed successfully.
+2026-02-26 18:21:44 - LaserLockingController - INFO - LaserLockController initialized successfully.

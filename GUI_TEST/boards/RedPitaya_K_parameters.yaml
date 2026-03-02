@@ -41,7 +41,7 @@ writeable_parameters:
     description: This parameter allows for multi-f (e.g. 3f or 5f) demodulation.
       Default value is 1, indicating that 1f demodulation is used.
     type: int
-    initial_value: 0
+    initial_value: 1
     min: 0
     max: 15
     scaling: 1
@@ -119,7 +119,7 @@ writeable_parameters:
       through the FPGA which is unfavorable as it leads to a mismatch of the 
       demodulation phase. Instead, a filter with unity gain is installed.
     type: bool
-    initial_value: true
+    initial_value: false
     min:
     max:
     scaling:
@@ -196,7 +196,7 @@ writeable_parameters:
       through the FPGA which is unfavorable as it leads to a mismatch of the 
       demodulation phase. Instead, a filter with unity gain is installed.
     type: bool
-    initial_value: true
+    initial_value: false
     min:
     max:
     scaling:
@@ -249,7 +249,7 @@ writeable_parameters:
     description: The center of the sweep ramp in volts. (Pay attention to the 
       proportionality constant applied in the analog summator)
     type: float
-    initial_value: 0.931
+    initial_value: 0.95
     min: 0
     max: 1.8
     scaling: 18204 # This is approx 1.0 / ANALOG_OUT_V
@@ -413,7 +413,7 @@ writeable_parameters:
     description: The sweep speed in internal units. The actual speed is given by
       f_real = 3.8 kHz / (2 ** sweep_speed). Allowed values are [0, ..., 15]
     type: int
-    initial_value: 9 # n means (3.8 kHz / 2**n), eg n=12 means 0.92 Hz
+    initial_value: 10 # n means (3.8 kHz / 2**n), eg n=12 means 0.92 Hz
     min: 0
     max: 15
     scaling:
@@ -437,7 +437,7 @@ writeable_parameters:
     gui_name: Filter 1 frequency
     description: The filter frequency in units of Hz.
     type: float
-    initial_value: 700.0
+    initial_value: 2000.0
     min:
     max:
     scaling: 1.0  # Hz
@@ -448,7 +448,7 @@ writeable_parameters:
     gui_name: Filter 2 frequency
     description: The filter frequency in units of Hz.
     type: float
-    initial_value: 700.0
+    initial_value: 0.0
     min:
     max:
     scaling: 1.0  # Hz
@@ -461,7 +461,7 @@ writeable_parameters:
     description: Proportional part of PID parameters. Range is [0, 8191]. In 
       order to change sign of PID parameters, use `target_slope_rising`.
     type: int
-    initial_value: 100
+    initial_value: 2000
     min: 0
     max: 8191
     scaling: 1  # PID proportional gain
@@ -473,7 +473,7 @@ writeable_parameters:
     description: Integral part of PID parameters. Range is [0, 8191]. In order 
       to change sign of PID parameters, use `target_slope_rising`
     type: int
-    initial_value: 0
+    initial_value: 100
     min: 0
     max: 8191
     scaling: 1  # PID integral gain
@@ -485,7 +485,7 @@ writeable_parameters:
     description: Derivative part of PID parameters. Range is [0, 8191]. In order
       to change sign of PID parameters, use `target_slope_rising`
     type: int
-    initial_value: 0
+    initial_value: 1
     min: 0
     max: 8191
     scaling: 1  # PID derivative gain
@@ -508,7 +508,7 @@ writeable_parameters:
     description: Strength of the slow PID. This strength corresponds to the 
       strength of the integrator. Maximum value is 8191.
     type: int
-    initial_value: 1
+    initial_value: 0
     min: 0
     max: 8191
     scaling: 1  # PID strength on slow control
@@ -519,7 +519,7 @@ writeable_parameters:
     gui_name: Target slope rising
     description: A boolean that inverts the sign of the PID parameters.
     type: bool
-    initial_value: false
+    initial_value: true
     min:
     max:
     scaling:

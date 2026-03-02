@@ -2282,3 +2282,1089 @@
 2026-02-25 13:37:51 - HardwareInterface - INFO - checking lock status...
 2026-02-25 13:37:52 - HardwareInterface - INFO - checking lock status...
 2026-02-25 13:37:53 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:04:03 - HardwareInterface - INFO - Attempting connection via RedPitaya_K address (192.168.1.159:18862)
+2026-02-25 15:04:08 - HardwareInterface - INFO - Connected to device RedPitaya_K
+2026-02-25 15:04:08 - HardwareInterface - INFO - Basic configuration complete. Waiting for parameters from ServiceManager...
+2026-02-25 15:04:08 - HardwareInterface - INFO - HardwareInterface initialized.
+2026-02-25 15:04:08 - HardwareInterface - INFO - Autolock mode set to SIMPLE and determine offset set to False
+2026-02-25 15:04:08 - HardwareInterface - INFO - Loading parameters from dict...
+2026-02-25 15:04:09 - HardwareInterface - INFO - Parameters loaded: 42 writeable, 3 readable.
+2026-02-25 15:29:50 - HardwareInterface - INFO - Attempting connection via RedPitaya_K address (192.168.1.159:18862)
+2026-02-25 15:29:53 - HardwareInterface - INFO - Connected to device RedPitaya_K
+2026-02-25 15:29:53 - HardwareInterface - INFO - Basic configuration complete. Waiting for parameters from ServiceManager...
+2026-02-25 15:29:53 - HardwareInterface - INFO - HardwareInterface initialized.
+2026-02-25 15:29:54 - HardwareInterface - INFO - Autolock mode set to SIMPLE and determine offset set to False
+2026-02-25 15:29:54 - HardwareInterface - INFO - Loading parameters from dict...
+2026-02-25 15:29:55 - HardwareInterface - INFO - Parameters loaded: 42 writeable, 3 readable.
+2026-02-25 15:35:41 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:35:41 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:35:42 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:36:16 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:36:16 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:36:17 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:36:18 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:37:17 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:37:17 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:37:18 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:37:19 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:37:58 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:37:58 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:37:59 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:38:00 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:42:22 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:42:23 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:42:24 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:42:25 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:43:02 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:43:02 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:43:03 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:44:19 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:44:20 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:44:21 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:44:38 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:44:38 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:44:39 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:45:39 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:45:40 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:45:41 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:46:13 - HardwareInterface - INFO - Autolock mode set to ROBUST and determine offset set to False
+2026-02-25 15:46:25 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:46:25 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:46:26 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:46:27 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:46:28 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:46:29 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:46:30 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:47:02 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:47:03 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:47:04 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:47:05 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:47:06 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:47:07 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:47:08 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:48:12 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:48:13 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:48:14 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:48:15 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:48:16 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:48:17 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:48:18 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:49:41 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:49:41 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:49:43 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:49:44 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:49:45 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:49:46 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:49:47 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:49:48 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:49:49 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:49:50 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:49:51 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:49:52 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:50:02 - HardwareInterface - INFO - Autolock mode set to SIMPLE and determine offset set to False
+2026-02-25 15:50:10 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:50:10 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:50:11 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:50:12 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:50:43 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:50:43 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:50:44 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:50:45 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:55:59 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:56:00 - HardwareInterface - INFO - checking lock status...
+2026-02-25 15:56:01 - HardwareInterface - INFO - checking lock status...
+2026-02-25 16:03:52 - HardwareInterface - INFO - checking lock status...
+2026-02-25 16:03:52 - HardwareInterface - INFO - checking lock status...
+2026-02-25 16:03:53 - HardwareInterface - INFO - checking lock status...
+2026-02-25 16:04:29 - HardwareInterface - INFO - checking lock status...
+2026-02-25 16:04:29 - HardwareInterface - INFO - checking lock status...
+2026-02-25 16:04:30 - HardwareInterface - INFO - checking lock status...
+2026-02-25 16:04:51 - HardwareInterface - INFO - checking lock status...
+2026-02-25 16:04:52 - HardwareInterface - INFO - checking lock status...
+2026-02-25 16:04:53 - HardwareInterface - INFO - checking lock status...
+2026-02-25 16:20:25 - HardwareInterface - INFO - checking lock status...
+2026-02-25 16:20:25 - HardwareInterface - INFO - checking lock status...
+2026-02-25 16:20:26 - HardwareInterface - INFO - checking lock status...
+2026-02-25 16:24:58 - HardwareInterface - INFO - checking lock status...
+2026-02-25 16:24:59 - HardwareInterface - INFO - checking lock status...
+2026-02-25 16:25:00 - HardwareInterface - INFO - checking lock status...
+2026-02-25 16:26:18 - HardwareInterface - INFO - checking lock status...
+2026-02-25 16:26:18 - HardwareInterface - INFO - checking lock status...
+2026-02-25 16:26:19 - HardwareInterface - INFO - checking lock status...
+2026-02-25 16:31:40 - HardwareInterface - INFO - checking lock status...
+2026-02-25 16:31:40 - HardwareInterface - INFO - checking lock status...
+2026-02-25 16:31:41 - HardwareInterface - INFO - checking lock status...
+2026-02-25 16:46:28 - HardwareInterface - INFO - checking lock status...
+2026-02-25 16:46:28 - HardwareInterface - INFO - checking lock status...
+2026-02-25 16:46:29 - HardwareInterface - INFO - checking lock status...
+2026-02-25 16:46:50 - HardwareInterface - INFO - checking lock status...
+2026-02-25 16:46:50 - HardwareInterface - INFO - checking lock status...
+2026-02-25 16:46:51 - HardwareInterface - INFO - checking lock status...
+2026-02-25 17:56:34 - HardwareInterface - INFO - Attempting connection via RedPitaya_K address (192.168.1.159:18862)
+2026-02-25 17:56:38 - HardwareInterface - INFO - Connected to device RedPitaya_K
+2026-02-25 17:56:38 - HardwareInterface - INFO - Basic configuration complete. Waiting for parameters from ServiceManager...
+2026-02-25 17:56:38 - HardwareInterface - INFO - HardwareInterface initialized.
+2026-02-25 17:56:38 - HardwareInterface - INFO - Autolock mode set to SIMPLE and determine offset set to False
+2026-02-25 17:56:38 - HardwareInterface - INFO - Loading parameters from dict...
+2026-02-25 17:56:40 - HardwareInterface - INFO - Parameters loaded: 42 writeable, 3 readable.
+2026-02-25 18:26:52 - HardwareInterface - INFO - Attempting connection via RedPitaya_K address (192.168.1.159:18862)
+2026-02-25 18:27:21 - HardwareInterface - INFO - Connected to device RedPitaya_K
+2026-02-25 18:27:21 - HardwareInterface - INFO - Basic configuration complete. Waiting for parameters from ServiceManager...
+2026-02-25 18:27:21 - HardwareInterface - INFO - HardwareInterface initialized.
+2026-02-25 18:27:21 - HardwareInterface - INFO - Autolock mode set to SIMPLE and determine offset set to False
+2026-02-25 18:27:21 - HardwareInterface - INFO - Loading parameters from dict...
+2026-02-25 18:27:22 - HardwareInterface - INFO - Parameters loaded: 42 writeable, 3 readable.
+2026-02-26 08:23:43 - HardwareInterface - INFO - Attempting connection via RedPitaya_K address (192.168.1.159:18862)
+2026-02-26 08:24:13 - HardwareInterface - INFO - Connected to device RedPitaya_K
+2026-02-26 08:24:13 - HardwareInterface - INFO - Basic configuration complete. Waiting for parameters from ServiceManager...
+2026-02-26 08:24:13 - HardwareInterface - INFO - HardwareInterface initialized.
+2026-02-26 08:24:13 - HardwareInterface - INFO - Autolock mode set to SIMPLE and determine offset set to False
+2026-02-26 08:24:13 - HardwareInterface - INFO - Loading parameters from dict...
+2026-02-26 08:24:13 - HardwareInterface - INFO - Parameters loaded: 42 writeable, 3 readable.
+2026-02-26 11:00:29 - HardwareInterface - INFO - Attempting connection via RedPitaya_K address (192.168.1.159:18862)
+2026-02-26 11:00:59 - HardwareInterface - INFO - Connected to device RedPitaya_K
+2026-02-26 11:00:59 - HardwareInterface - INFO - Basic configuration complete. Waiting for parameters from ServiceManager...
+2026-02-26 11:00:59 - HardwareInterface - INFO - HardwareInterface initialized.
+2026-02-26 11:00:59 - HardwareInterface - INFO - Autolock mode set to SIMPLE and determine offset set to False
+2026-02-26 11:00:59 - HardwareInterface - INFO - Loading parameters from dict...
+2026-02-26 11:01:00 - HardwareInterface - INFO - Parameters loaded: 42 writeable, 3 readable.
+2026-02-26 11:50:07 - HardwareInterface - INFO - checking lock status...
+2026-02-26 11:50:07 - HardwareInterface - INFO - checking lock status...
+2026-02-26 11:50:08 - HardwareInterface - INFO - checking lock status...
+2026-02-26 11:58:55 - HardwareInterface - INFO - checking lock status...
+2026-02-26 11:58:55 - HardwareInterface - INFO - checking lock status...
+2026-02-26 11:58:56 - HardwareInterface - INFO - checking lock status...
+2026-02-26 12:01:05 - HardwareInterface - INFO - checking lock status...
+2026-02-26 12:01:05 - HardwareInterface - INFO - checking lock status...
+2026-02-26 12:01:06 - HardwareInterface - INFO - checking lock status...
+2026-02-26 17:23:36 - HardwareInterface - INFO - Attempting connection via RedPitaya_K address (192.168.1.159:18862)
+2026-02-26 17:24:06 - HardwareInterface - INFO - Connected to device RedPitaya_K
+2026-02-26 17:24:06 - HardwareInterface - INFO - Basic configuration complete. Waiting for parameters from ServiceManager...
+2026-02-26 17:24:06 - HardwareInterface - INFO - HardwareInterface initialized.
+2026-02-26 17:24:06 - HardwareInterface - INFO - Autolock mode set to SIMPLE and determine offset set to False
+2026-02-26 17:24:06 - HardwareInterface - INFO - Loading parameters from dict...
+2026-02-26 17:24:07 - HardwareInterface - INFO - Parameters loaded: 42 writeable, 3 readable.
+2026-02-26 17:44:18 - HardwareInterface - INFO - checking lock status...
+2026-02-26 17:44:18 - HardwareInterface - INFO - checking lock status...
+2026-02-26 17:44:19 - HardwareInterface - INFO - checking lock status...
+2026-02-26 17:45:27 - HardwareInterface - INFO - checking lock status...
+2026-02-26 17:45:28 - HardwareInterface - INFO - checking lock status...
+2026-02-26 17:45:29 - HardwareInterface - INFO - checking lock status...
+2026-02-27 11:12:32 - HardwareInterface - INFO - Attempting connection via RedPitaya_K address (192.168.1.159:18862)
+2026-02-27 11:13:02 - HardwareInterface - INFO - Connected to device RedPitaya_K
+2026-02-27 11:13:02 - HardwareInterface - INFO - Basic configuration complete. Waiting for parameters from ServiceManager...
+2026-02-27 11:13:02 - HardwareInterface - INFO - HardwareInterface initialized.
+2026-02-27 11:13:03 - HardwareInterface - INFO - Autolock mode set to SIMPLE and determine offset set to False
+2026-02-27 11:13:03 - HardwareInterface - INFO - Loading parameters from dict...
+2026-02-27 11:13:04 - HardwareInterface - INFO - Parameters loaded: 42 writeable, 3 readable.
+2026-02-27 11:27:07 - HardwareInterface - INFO - checking lock status...
+2026-02-27 11:27:07 - HardwareInterface - INFO - checking lock status...
+2026-02-27 11:27:08 - HardwareInterface - INFO - checking lock status...
+2026-02-27 11:28:00 - HardwareInterface - INFO - checking lock status...
+2026-02-27 11:28:01 - HardwareInterface - INFO - checking lock status...
+2026-02-27 11:28:02 - HardwareInterface - INFO - checking lock status...
+2026-02-27 11:29:33 - HardwareInterface - INFO - checking lock status...
+2026-02-27 11:29:33 - HardwareInterface - INFO - checking lock status...
+2026-02-27 11:29:34 - HardwareInterface - INFO - checking lock status...
+2026-03-02 09:04:03 - HardwareInterface - INFO - Attempting connection via RedPitaya_K address (192.168.1.159:18862)
+2026-03-02 09:04:32 - HardwareInterface - INFO - Connected to device RedPitaya_K
+2026-03-02 09:04:32 - HardwareInterface - INFO - Basic configuration complete. Waiting for parameters from ServiceManager...
+2026-03-02 09:04:32 - HardwareInterface - INFO - HardwareInterface initialized.
+2026-03-02 09:04:32 - HardwareInterface - INFO - Autolock mode set to SIMPLE and determine offset set to False
+2026-03-02 09:04:32 - HardwareInterface - INFO - Loading parameters from dict...
+2026-03-02 09:04:33 - HardwareInterface - INFO - Parameters loaded: 42 writeable, 3 readable.
+2026-03-02 12:34:25 - HardwareInterface - INFO - Attempting connection via RedPitaya_K address (192.168.1.159:18862)
+2026-03-02 12:34:27 - HardwareInterface - INFO - Connected to device RedPitaya_K
+2026-03-02 12:34:27 - HardwareInterface - INFO - Basic configuration complete. Waiting for parameters from ServiceManager...
+2026-03-02 12:34:27 - HardwareInterface - INFO - HardwareInterface initialized.
+2026-03-02 12:34:28 - HardwareInterface - INFO - Autolock mode set to SIMPLE and determine offset set to False
+2026-03-02 12:34:28 - HardwareInterface - INFO - Loading parameters from dict...
+2026-03-02 12:34:29 - HardwareInterface - INFO - Parameters loaded: 42 writeable, 3 readable.
+2026-03-02 12:37:46 - HardwareInterface - INFO - checking lock status...
+2026-03-02 12:37:46 - HardwareInterface - INFO - checking lock status...
+2026-03-02 12:37:47 - HardwareInterface - INFO - checking lock status...
+2026-03-02 12:38:40 - HardwareInterface - INFO - checking lock status...
+2026-03-02 12:38:40 - HardwareInterface - INFO - checking lock status...
+2026-03-02 12:38:41 - HardwareInterface - INFO - checking lock status...
+2026-03-02 12:43:53 - HardwareInterface - INFO - checking lock status...
+2026-03-02 12:43:53 - HardwareInterface - INFO - checking lock status...
+2026-03-02 12:43:54 - HardwareInterface - INFO - checking lock status...
+2026-03-02 12:45:02 - HardwareInterface - INFO - checking lock status...
+2026-03-02 12:45:02 - HardwareInterface - INFO - checking lock status...
+2026-03-02 12:45:03 - HardwareInterface - INFO - checking lock status...
+2026-03-02 13:36:27 - HardwareInterface - INFO - Attempting connection via RedPitaya_K address (192.168.1.159:18862)
+2026-03-02 13:36:30 - HardwareInterface - INFO - Connected to device RedPitaya_K
+2026-03-02 13:36:30 - HardwareInterface - INFO - Basic configuration complete. Waiting for parameters from ServiceManager...
+2026-03-02 13:36:30 - HardwareInterface - INFO - HardwareInterface initialized.
+2026-03-02 13:36:30 - HardwareInterface - INFO - Autolock mode set to SIMPLE and determine offset set to False
+2026-03-02 13:36:30 - HardwareInterface - INFO - Loading parameters from dict...
+2026-03-02 13:36:31 - HardwareInterface - INFO - Parameters loaded: 42 writeable, 3 readable.
+2026-03-02 13:43:49 - HardwareInterface - INFO - Attempting connection via RedPitaya_K address (192.168.1.159:18862)
+2026-03-02 13:43:52 - HardwareInterface - INFO - Connected to device RedPitaya_K
+2026-03-02 13:43:52 - HardwareInterface - INFO - Basic configuration complete. Waiting for parameters from ServiceManager...
+2026-03-02 13:43:52 - HardwareInterface - INFO - HardwareInterface initialized.
+2026-03-02 13:43:52 - HardwareInterface - INFO - Autolock mode set to SIMPLE and determine offset set to False
+2026-03-02 13:43:52 - HardwareInterface - INFO - Loading parameters from dict...
+2026-03-02 13:43:54 - HardwareInterface - INFO - Parameters loaded: 42 writeable, 3 readable.
+2026-03-02 14:24:50 - HardwareInterface - INFO - Attempting connection via RedPitaya_K address (192.168.1.159:18862)
+2026-03-02 14:24:52 - HardwareInterface - INFO - Connected to device RedPitaya_K
+2026-03-02 14:24:52 - HardwareInterface - INFO - Basic configuration complete. Waiting for parameters from ServiceManager...
+2026-03-02 14:24:52 - HardwareInterface - INFO - HardwareInterface initialized.
+2026-03-02 14:24:53 - HardwareInterface - INFO - Autolock mode set to SIMPLE and determine offset set to False
+2026-03-02 14:24:53 - HardwareInterface - INFO - Loading parameters from dict...
+2026-03-02 14:24:53 - HardwareInterface - INFO - Parameters loaded: 42 writeable, 3 readable.
+2026-03-02 16:27:35 - HardwareInterface - INFO - Attempting connection via RedPitaya_K address (192.168.1.159:18862)
+2026-03-02 16:27:37 - HardwareInterface - INFO - Connected to device RedPitaya_K
+2026-03-02 16:27:37 - HardwareInterface - INFO - Basic configuration complete. Waiting for parameters from ServiceManager...
+2026-03-02 16:27:37 - HardwareInterface - INFO - HardwareInterface initialized.
+2026-03-02 16:27:37 - HardwareInterface - INFO - Autolock mode set to SIMPLE and determine offset set to False
+2026-03-02 16:27:37 - HardwareInterface - INFO - Loading parameters from dict...
+2026-03-02 16:27:38 - HardwareInterface - INFO - Parameters loaded: 42 writeable, 3 readable.
+2026-03-02 16:49:10 - HardwareInterface - INFO - Attempting connection via RedPitaya_K address (192.168.1.159:18862)
+2026-03-02 16:49:14 - HardwareInterface - INFO - Connected to device RedPitaya_K
+2026-03-02 16:49:14 - HardwareInterface - INFO - Basic configuration complete. Waiting for parameters from ServiceManager...
+2026-03-02 16:49:14 - HardwareInterface - INFO - HardwareInterface initialized.
+2026-03-02 16:49:14 - HardwareInterface - INFO - Autolock mode set to SIMPLE and determine offset set to False
+2026-03-02 16:49:14 - HardwareInterface - INFO - Loading parameters from dict...
+2026-03-02 16:49:16 - HardwareInterface - INFO - Parameters loaded: 42 writeable, 3 readable.
+2026-03-02 16:54:11 - HardwareInterface - INFO - Attempting connection via RedPitaya_K address (192.168.1.159:18862)
+2026-03-02 16:54:15 - HardwareInterface - INFO - Connected to device RedPitaya_K
+2026-03-02 16:54:15 - HardwareInterface - INFO - Basic configuration complete. Waiting for parameters from ServiceManager...
+2026-03-02 16:54:15 - HardwareInterface - INFO - HardwareInterface initialized.
+2026-03-02 16:54:15 - HardwareInterface - INFO - Autolock mode set to SIMPLE and determine offset set to False
+2026-03-02 16:54:15 - HardwareInterface - INFO - Loading parameters from dict...
+2026-03-02 16:54:17 - HardwareInterface - INFO - Parameters loaded: 42 writeable, 3 readable.
+2026-03-02 16:54:47 - HardwareInterface - INFO - Slept for 0.5389473684210526 seconds
+2026-03-02 16:54:49 - HardwareInterface - INFO - Slept for 0.5389473684210526 seconds
+2026-03-02 16:54:51 - HardwareInterface - INFO - Slept for 0.5389473684210526 seconds
+2026-03-02 16:54:53 - HardwareInterface - INFO - Slept for 0.5389473684210526 seconds
+2026-03-02 16:54:54 - HardwareInterface - INFO - Slept for 0.5389473684210526 seconds
+2026-03-02 16:54:56 - HardwareInterface - INFO - Slept for 0.5389473684210526 seconds
+2026-03-02 16:54:58 - HardwareInterface - INFO - Slept for 0.5389473684210526 seconds
+2026-03-02 16:54:59 - HardwareInterface - INFO - Slept for 0.5389473684210526 seconds
+2026-03-02 16:55:01 - HardwareInterface - INFO - Slept for 0.5389473684210526 seconds
+2026-03-02 16:55:02 - HardwareInterface - INFO - Slept for 0.5389473684210526 seconds
+2026-03-02 16:55:04 - HardwareInterface - INFO - Slept for 0.5389473684210526 seconds
+2026-03-02 16:55:05 - HardwareInterface - INFO - Slept for 0.5389473684210526 seconds
+2026-03-02 16:55:07 - HardwareInterface - INFO - Slept for 0.5389473684210526 seconds
+2026-03-02 16:55:09 - HardwareInterface - INFO - Slept for 0.5389473684210526 seconds
+2026-03-02 16:55:10 - HardwareInterface - INFO - Slept for 0.5389473684210526 seconds
+2026-03-02 16:55:12 - HardwareInterface - INFO - Slept for 0.5389473684210526 seconds
+2026-03-02 16:55:13 - HardwareInterface - INFO - Slept for 0.5389473684210526 seconds
+2026-03-02 16:55:15 - HardwareInterface - INFO - Slept for 0.5389473684210526 seconds
+2026-03-02 16:55:16 - HardwareInterface - INFO - Slept for 0.5389473684210526 seconds
+2026-03-02 16:55:18 - HardwareInterface - INFO - Slept for 0.5389473684210526 seconds
+2026-03-02 16:55:20 - HardwareInterface - INFO - Slept for 0.5389473684210526 seconds
+2026-03-02 16:55:21 - HardwareInterface - INFO - Slept for 0.5389473684210526 seconds
+2026-03-02 16:55:23 - HardwareInterface - INFO - Slept for 0.5389473684210526 seconds
+2026-03-02 16:55:25 - HardwareInterface - INFO - Slept for 0.5389473684210526 seconds
+2026-03-02 16:55:26 - HardwareInterface - INFO - Slept for 0.5389473684210526 seconds
+2026-03-02 16:55:28 - HardwareInterface - INFO - Slept for 0.5389473684210526 seconds
+2026-03-02 16:55:29 - HardwareInterface - INFO - Slept for 0.5389473684210526 seconds
+2026-03-02 16:55:31 - HardwareInterface - INFO - Slept for 0.5389473684210526 seconds
+2026-03-02 16:55:33 - HardwareInterface - INFO - Slept for 0.5389473684210526 seconds
+2026-03-02 16:55:35 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:55:36 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:55:37 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:55:39 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:55:40 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:55:41 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:55:43 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:55:44 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:55:45 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:55:46 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:55:48 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:55:49 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:55:50 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:55:52 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:55:53 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:55:54 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:55:56 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:55:57 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:55:59 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:56:00 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:56:01 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:56:03 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:56:04 - HardwareInterface - INFO - Slept for 0.5389473684210526 seconds
+2026-03-02 16:56:06 - HardwareInterface - INFO - Slept for 0.5389473684210526 seconds
+2026-03-02 16:56:07 - HardwareInterface - INFO - Slept for 0.5389473684210526 seconds
+2026-03-02 16:56:09 - HardwareInterface - INFO - Slept for 0.5389473684210526 seconds
+2026-03-02 16:56:11 - HardwareInterface - INFO - Slept for 0.5389473684210526 seconds
+2026-03-02 16:56:12 - HardwareInterface - INFO - Slept for 0.5389473684210526 seconds
+2026-03-02 16:56:14 - HardwareInterface - INFO - Slept for 0.5389473684210526 seconds
+2026-03-02 16:56:16 - HardwareInterface - INFO - Slept for 0.5389473684210526 seconds
+2026-03-02 16:56:17 - HardwareInterface - INFO - Slept for 0.5389473684210526 seconds
+2026-03-02 16:56:19 - HardwareInterface - INFO - Slept for 0.5389473684210526 seconds
+2026-03-02 16:56:20 - HardwareInterface - INFO - Slept for 0.5389473684210526 seconds
+2026-03-02 16:56:22 - HardwareInterface - INFO - Slept for 0.5389473684210526 seconds
+2026-03-02 16:56:24 - HardwareInterface - INFO - Slept for 0.5389473684210526 seconds
+2026-03-02 16:56:25 - HardwareInterface - INFO - Slept for 0.5389473684210526 seconds
+2026-03-02 16:56:27 - HardwareInterface - INFO - Slept for 0.5389473684210526 seconds
+2026-03-02 16:56:28 - HardwareInterface - INFO - Slept for 0.5389473684210526 seconds
+2026-03-02 16:56:30 - HardwareInterface - INFO - Slept for 0.5389473684210526 seconds
+2026-03-02 16:56:32 - HardwareInterface - INFO - Slept for 0.5389473684210526 seconds
+2026-03-02 16:56:33 - HardwareInterface - INFO - Slept for 0.5389473684210526 seconds
+2026-03-02 16:56:35 - HardwareInterface - INFO - Slept for 0.5389473684210526 seconds
+2026-03-02 16:56:37 - HardwareInterface - INFO - Slept for 0.5389473684210526 seconds
+2026-03-02 16:56:38 - HardwareInterface - INFO - Slept for 0.5389473684210526 seconds
+2026-03-02 16:56:40 - HardwareInterface - INFO - Slept for 0.5389473684210526 seconds
+2026-03-02 16:56:41 - HardwareInterface - INFO - Slept for 0.5389473684210526 seconds
+2026-03-02 16:56:43 - HardwareInterface - INFO - Slept for 0.5389473684210526 seconds
+2026-03-02 16:56:58 - HardwareInterface - INFO - Attempting connection via RedPitaya_K address (192.168.1.159:18862)
+2026-03-02 16:57:02 - HardwareInterface - INFO - Connected to device RedPitaya_K
+2026-03-02 16:57:02 - HardwareInterface - INFO - Basic configuration complete. Waiting for parameters from ServiceManager...
+2026-03-02 16:57:02 - HardwareInterface - INFO - HardwareInterface initialized.
+2026-03-02 16:57:02 - HardwareInterface - INFO - Autolock mode set to SIMPLE and determine offset set to False
+2026-03-02 16:57:02 - HardwareInterface - INFO - Loading parameters from dict...
+2026-03-02 16:57:03 - HardwareInterface - INFO - Parameters loaded: 42 writeable, 3 readable.
+2026-03-02 16:57:32 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:57:34 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:57:35 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:57:36 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:57:38 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:57:39 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:57:40 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:57:41 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:57:43 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:57:44 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:57:45 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:57:47 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:57:48 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:57:49 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:57:51 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:57:52 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:57:53 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:57:55 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:57:56 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:57:57 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:57:59 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:58:00 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:58:01 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:58:03 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:58:04 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:58:05 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:58:07 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:58:08 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:58:09 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:58:11 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:58:12 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:58:13 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:58:14 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:58:16 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:58:17 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:58:18 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:58:20 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:58:21 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:58:22 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:58:24 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:58:25 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:58:26 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:58:28 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:58:29 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:58:30 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:58:32 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:58:33 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:58:34 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:58:36 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:58:37 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:58:38 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:58:40 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:58:41 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:58:42 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:58:44 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:58:45 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:58:46 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:58:48 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:58:49 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:58:50 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:58:52 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:58:53 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:58:54 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:58:55 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:58:57 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:58:58 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:58:59 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:59:01 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:59:02 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:59:03 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:59:05 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:59:06 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:59:08 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:59:09 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:59:10 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:59:12 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:59:13 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:59:14 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:59:15 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:59:17 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:59:18 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:59:20 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:59:21 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:59:22 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:59:23 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:59:25 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:59:26 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:59:27 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:59:29 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:59:30 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:59:31 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:59:33 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:59:34 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:59:35 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:59:37 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:59:38 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:59:39 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:59:41 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:59:42 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:59:43 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:59:44 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:59:46 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:59:47 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:59:48 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:59:50 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:59:51 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:59:52 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:59:54 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:59:55 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:59:56 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:59:58 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 16:59:59 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:00:00 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:00:02 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:00:03 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:00:04 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:00:06 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:00:07 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:00:08 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:00:10 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:00:11 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:00:12 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:00:13 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:00:15 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:00:16 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:00:18 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:00:19 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:00:20 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:00:21 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:00:23 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:00:24 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:00:25 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:00:27 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:00:28 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:00:29 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:00:30 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:00:32 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:00:33 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:00:34 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:00:35 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:00:37 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:00:38 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:00:40 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:00:41 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:00:42 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:00:44 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:00:45 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:00:46 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:00:47 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:00:49 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:00:50 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:00:51 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:00:53 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:00:54 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:00:55 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:00:57 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:00:58 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:00:59 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:01:00 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:01:02 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:01:03 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:01:05 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:01:06 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:01:07 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:01:09 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:01:10 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:01:11 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:01:12 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:01:14 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:01:15 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:01:16 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:01:18 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:01:19 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:01:20 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:01:21 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:01:23 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:01:24 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:01:25 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:01:27 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:01:28 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:01:29 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:01:31 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:01:32 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:01:33 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:01:35 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:01:36 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:01:37 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:01:38 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:01:40 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:01:41 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:01:42 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:01:44 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:01:45 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:01:46 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:01:48 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:01:49 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:01:50 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:01:51 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:01:53 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:01:54 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:01:56 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:01:57 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:01:58 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:02:00 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:02:01 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:02:02 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:02:03 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:02:05 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:02:06 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:02:07 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:02:09 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:02:10 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:02:11 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:02:13 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:02:14 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:02:15 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:02:16 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:02:18 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:02:19 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:02:21 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:02:22 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:02:23 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:02:24 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:02:26 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:02:27 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:02:28 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:02:29 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:02:31 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:02:32 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:02:34 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:02:35 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:02:36 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:02:38 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:02:39 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:02:40 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:02:42 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:02:43 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:02:44 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:02:46 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:02:47 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:02:48 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:02:50 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:02:51 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:02:52 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:02:54 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:02:55 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:02:56 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:02:58 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:02:59 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:03:00 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:03:01 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:03:03 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:03:04 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:03:05 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:03:07 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:03:08 - HardwareInterface - INFO - Slept for 0.2694736842105263 seconds
+2026-03-02 17:03:18 - HardwareInterface - INFO - Attempting connection via RedPitaya_K address (192.168.1.159:18862)
+2026-03-02 17:03:22 - HardwareInterface - INFO - Connected to device RedPitaya_K
+2026-03-02 17:03:22 - HardwareInterface - INFO - Basic configuration complete. Waiting for parameters from ServiceManager...
+2026-03-02 17:03:22 - HardwareInterface - INFO - HardwareInterface initialized.
+2026-03-02 17:03:22 - HardwareInterface - INFO - Autolock mode set to SIMPLE and determine offset set to False
+2026-03-02 17:03:22 - HardwareInterface - INFO - Loading parameters from dict...
+2026-03-02 17:03:23 - HardwareInterface - INFO - Parameters loaded: 42 writeable, 3 readable.
+2026-03-02 17:03:50 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:03:54 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:03:55 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:03:56 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:03:56 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:03:57 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:03:58 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:03:59 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:00 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:01 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:02 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:03 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:04 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:05 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:06 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:07 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:08 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:09 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:09 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:10 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:11 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:12 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:13 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:14 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:15 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:16 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:17 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:18 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:19 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:20 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:20 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:21 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:22 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:23 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:24 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:25 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:26 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:27 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:28 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:29 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:30 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:31 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:31 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:32 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:33 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:34 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:35 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:36 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:37 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:38 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:39 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:40 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:41 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:42 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:43 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:43 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:44 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:45 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:46 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:47 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:48 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:49 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:50 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:51 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:52 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:53 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:54 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:54 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:55 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:56 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:57 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:58 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:04:59 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:00 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:01 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:02 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:03 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:04 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:04 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:05 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:06 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:07 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:08 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:09 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:10 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:11 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:12 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:13 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:13 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:14 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:15 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:16 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:17 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:18 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:19 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:20 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:21 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:22 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:23 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:24 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:25 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:26 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:27 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:27 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:28 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:29 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:30 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:31 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:32 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:33 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:34 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:35 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:36 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:37 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:37 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:38 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:39 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:40 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:41 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:42 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:43 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:44 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:45 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:46 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:46 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:47 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:48 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:49 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:50 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:51 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:52 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:53 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:54 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:55 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:56 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:57 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:58 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:59 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:05:59 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:00 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:01 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:02 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:03 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:04 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:05 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:06 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:07 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:08 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:09 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:10 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:10 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:11 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:12 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:13 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:14 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:15 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:16 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:17 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:18 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:19 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:20 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:20 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:21 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:22 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:23 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:24 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:25 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:26 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:27 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:28 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:29 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:30 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:31 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:31 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:32 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:33 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:34 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:35 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:36 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:37 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:38 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:39 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:40 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:41 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:42 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:43 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:44 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:44 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:45 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:46 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:47 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:48 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:49 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:50 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:51 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:52 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:53 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:54 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:55 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:56 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:56 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:57 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:58 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:06:59 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:00 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:01 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:02 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:03 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:04 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:04 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:05 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:06 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:07 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:08 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:09 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:10 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:11 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:12 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:13 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:14 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:14 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:15 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:16 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:17 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:18 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:19 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:20 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:21 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:22 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:23 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:24 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:25 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:26 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:27 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:28 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:29 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:30 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:31 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:31 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:32 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:33 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:34 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:35 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:36 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:37 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:38 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:39 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:40 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:41 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:42 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:42 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:43 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:44 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:45 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:46 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:47 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:48 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:49 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:50 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:51 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:52 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:53 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:53 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:54 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:55 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:56 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:57 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:58 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:07:59 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:00 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:01 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:01 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:02 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:03 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:04 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:05 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:06 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:07 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:08 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:09 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:10 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:11 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:12 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:13 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:13 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:14 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:15 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:16 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:17 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:18 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:19 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:20 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:21 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:22 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:23 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:24 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:25 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:26 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:27 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:27 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:28 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:29 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:30 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:31 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:32 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:33 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:34 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:35 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:36 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:37 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:38 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:39 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:39 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:40 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:41 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:42 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:43 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:44 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:45 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:46 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:47 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:48 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:49 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:50 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:51 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:51 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:52 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:53 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:54 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:55 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:56 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:57 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:58 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:59 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:08:59 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:00 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:01 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:02 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:03 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:04 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:05 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:06 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:07 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:08 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:09 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:09 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:10 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:11 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:12 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:13 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:14 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:15 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:16 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:17 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:18 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:19 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:20 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:20 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:21 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:22 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:23 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:24 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:25 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:26 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:27 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:28 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:29 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:30 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:31 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:32 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:33 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:33 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:34 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:35 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:36 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:37 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:38 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:39 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:40 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:41 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:41 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:42 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:43 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:44 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:45 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:46 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:47 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:48 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:49 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:50 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:51 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:51 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:52 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:53 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:54 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:55 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:56 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:57 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:58 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:09:59 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:10:00 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:10:01 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:10:01 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:10:02 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:10:03 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:10:04 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:10:05 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:10:06 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:10:07 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:10:08 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:10:09 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:10:10 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:10:11 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:10:12 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:10:13 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:10:13 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:10:14 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:10:15 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:10:16 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:10:17 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:10:18 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:10:26 - HardwareInterface - INFO - Attempting connection via RedPitaya_K address (192.168.1.159:18862)
+2026-03-02 17:10:30 - HardwareInterface - INFO - Connected to device RedPitaya_K
+2026-03-02 17:10:30 - HardwareInterface - INFO - Basic configuration complete. Waiting for parameters from ServiceManager...
+2026-03-02 17:10:30 - HardwareInterface - INFO - HardwareInterface initialized.
+2026-03-02 17:10:30 - HardwareInterface - INFO - Autolock mode set to SIMPLE and determine offset set to False
+2026-03-02 17:10:30 - HardwareInterface - INFO - Loading parameters from dict...
+2026-03-02 17:10:32 - HardwareInterface - INFO - Parameters loaded: 42 writeable, 3 readable.
+2026-03-02 17:10:59 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:03 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:04 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:05 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:06 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:06 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:07 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:08 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:09 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:10 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:11 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:12 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:13 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:14 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:15 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:16 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:16 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:17 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:18 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:19 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:20 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:21 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:22 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:23 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:24 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:25 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:26 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:27 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:27 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:28 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:29 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:30 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:31 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:32 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:33 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:34 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:35 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:36 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:37 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:38 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:39 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:40 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:41 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:41 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:42 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:43 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:44 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:45 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:46 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:47 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:48 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:49 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:50 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:50 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:51 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:52 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:53 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:54 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:55 - HardwareInterface - INFO - get_sweep started
+2026-03-02 17:11:56 - HardwareInterface - INFO - get_sweep started

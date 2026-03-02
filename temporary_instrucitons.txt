@@ -1,5 +1,5 @@
-start locking procedure showing on the right the "Start locking procedure..." and on the left returning to the main menu, the FSM of the LM is set to IDLE.
-When the check_for_lock_status gives True, the FSM is set on the LOCKED mode that will send to the GUI the package with the infos to show  on the right in the locking monitor.
+I have a problem with the refresh time of the plot of the sweep in my GUI. When the Finite State Machine of the Laser Manager is in the SWEEP state it gets the sweep data from the RedPitaya from the interface and sents it to the UGI that visualize it. Now, if I set the sweep frequency to 8 (15Hz) 
+
 When the FSM is in the LOCKED state the lock_check method is triggered at each cycle. It has to: check the lock status with the selected methods, send the histories to the GUI. If the lock is lost, the FST should pass in the SWEEP mode.
 The history is managed by the LaserManager, It receives the history from the Interface and it fills the actual history that is shown to the user with the appropriate length.
 AT THIS POINT I THINK THAT IT IS BETTER TO FIX THE REQUEST TIME OF THE REDPITAYA HISTORY DATA (FIXED BY THE CYCLE TIME) AND THEN ADJUST THE LOCAL HISTORY ACCORDINGLY.
