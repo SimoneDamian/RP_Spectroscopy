@@ -361,7 +361,7 @@ writeable_parameters:
     gui_name: Modulation amplitude
     description: The amplitude of the modulation in Vpp.
     type: float
-    initial_value: 0.1
+    initial_value: 0.3
     min: 0
     max: 2
     scaling: 4095.75  # This is value of Vpp constant
@@ -413,7 +413,7 @@ writeable_parameters:
     description: The sweep speed in internal units. The actual speed is given by
       f_real = 3.8 kHz / (2 ** sweep_speed). Allowed values are [0, ..., 15]
     type: int
-    initial_value: 10 # n means (3.8 kHz / 2**n), eg n=12 means 0.92 Hz
+    initial_value: 8  # n means (3.8 kHz / 2**n), eg n=12 means 0.92 Hz
     min: 0
     max: 15
     scaling:
@@ -437,7 +437,7 @@ writeable_parameters:
     gui_name: Filter 1 frequency
     description: The filter frequency in units of Hz.
     type: float
-    initial_value: 2000.0
+    initial_value: 1000.0
     min:
     max:
     scaling: 1.0  # Hz

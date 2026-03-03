@@ -1,0 +1,123 @@
+# Sweep Refresh Issue: Root Cause Analysis & How Linien Solves It
+
+## Your Problem in a Nutshell
+
+When `sweep_frequency` is set to **8** (15 Hz), one full sweep period is **~67 ms** — much shorter than your 1-second polling interval. By the time your GUI polls, a *fresh, complete* sweep has always been captured. But at **9** (~8 Hz, period ~125 ms) and especially **10** (~3.7 Hz, period ~270 ms), the sweep period approaches or exceeds the time between your [start_sweep()](file:///home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py#177-181) call and the immediate [check_for_changed_parameters()](file:///home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/interface.py#103-105) read that follows. You end up **reading stale data** — the same buffer from the *previous* acquisition — because the new sweep hasn't finished yet.
+
+---
+
+## Your Current Architecture (the problem)
+
+In your [interface.py](file:///home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/interface.py#L106-L127), [get_sweep()](file:///home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/interface.py#106-128) does this:
+
+```python
+def get_sweep(self):
+    self.start_sweep()                  # 1. Tell server to rearm acquisition
+    self.check_for_changed_parameters() # 2. Immediately poll for data
+    to_plot = pickle.loads(...)         # 3. Read whatever is in the buffer
+```
+
+The critical problem is **step 2 happens immediately after step 1** — there is no mechanism to wait for a *new, complete* sweep to actually be captured. With slow sweeps, the scope hasn't triggered yet by the time you read, so you get the **same old data** every time.
+
+> [!IMPORTANT]
+> You even had a commented-out sleep in this function (`sleep(waiting_time)`) that would have partially addressed this. But a sleep is a fragile workaround — linien does it much more robustly.
+
+---
+
+## How Linien Solves It: Three Key Mechanisms
+
+### 1. Server-Side Continuous Acquisition Loop with Trigger Checking
+
+In [acquisition.py](file:///home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/linien_original_library/linien-server/linien_server/acquisition.py#L86-L142), linien runs a **continuous background thread** ([_acquisition_loop](file:///home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/linien_original_library/linien-server/linien_server/acquisition.py#86-142)) on the Red Pitaya:
+
+```python
+def _acquisition_loop(self, stop_event, pause_event, skip_next_data_event):
+    while not stop_event.is_set():
+        # ... process CSR queue ...
+
+        # KEY: Check that the scope has actually triggered!
+        if not (self.red_pitaya.scope.read(0x1 << 2) & 0x4) <= 0:
+            sleep(0.05)
+            continue  # <-- Wait until a REAL trigger has occurred
+
+        data = self.read_data()           # Read COMPLETE sweep data
+        self.data = pickle.dumps(data)
+        self.data_hash = random()         # Mark data as NEW
+        self.program_acquisition_and_rearm()  # Rearm for next sweep
+```
+
+**The trigger check on line 112 is crucial**: it reads the scope's status register and only proceeds when the hardware confirms data is ready. No guessing, no sleeping for a fixed time. It *polls the hardware* until the trigger fires.
+
+### 2. Hash-Based Change Detection (No Stale Data)
+
+When the GUI (via the server's [_push_acquired_data_to_parameters](file:///home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/linien_original_library/linien-server/linien_server/server.py#191-245) loop in [server.py](file:///home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/linien_original_library/linien-server/linien_server/server.py#L191-L244)) fetches data, it uses a **hash** to detect whether data has actually changed:
+
+```python
+def _push_acquired_data_to_parameters(self, stop_event):
+    last_hash = None
+    while not stop_event.is_set():
+        (new_data_returned, new_hash, ..., new_data, data_uuid
+        ) = self.registers.acquisition.exposed_return_data(last_hash)
+
+        if new_data_returned:
+            last_hash = new_hash
+            # Only update to_plot when data is genuinely new
+            self.parameters.to_plot.value = new_data
+        sleep(0.05)
+```
+
+And in [acquisition.py L241-253](file:///home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/linien_original_library/linien-server/linien_server/acquisition.py#L241-L253):
+
+```python
+def exposed_return_data(self, last_hash):
+    data_not_changed = self.data_hash == last_hash
+    if data_not_changed or no_data_available or self.pause_event.is_set():
+        return False, None, None, None, None  # <-- "no new data"
+    else:
+        return True, self.data_hash, ..., self.data, ...  # <-- "here's fresh data"
+```
+
+**This guarantees the GUI never sees stale data.** If the sweep hasn't completed yet, `data_hash` hasn't changed, so [exposed_return_data](file:///home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/linien_original_library/linien-server/linien_server/acquisition.py#241-254) returns `False` and the pusher loop simply waits.
+
+### 3. Pause/Continue + Skip-First-Sweep on Parameter Changes
+
+When parameters change (like sweep speed), linien doesn't just blindly read the next buffer. In [acquisition.py L291-305](file:///home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/linien_original_library/linien-server/linien_server/acquisition.py#L291-L305):
+
+```python
+def exposed_continue_acquisition(self, uuid):
+    self.program_acquisition_and_rearm()
+    sleep(0.01)
+    self.data_hash = None    # Invalidate old data
+    self.data = None
+    self.pause_event.clear()
+    self.data_uuid = uuid
+    # Skip first sweep after parameter change (may be incomplete)
+    self.skip_next_data_event.set()
+```
+
+This ensures:
+- Old stale data is thrown away (`data_hash = None`)
+- The first sweep after a parameter change is **skipped** (it might have been recorded mid-change)
+- A new UUID prevents data from a previous "session" from leaking through
+
+---
+
+## Summary: Architecture Comparison
+
+| Aspect | Your Code | Linien |
+|--------|-----------|--------|
+| **Data acquisition** | Client calls [start_sweep()](file:///home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py#177-181) then immediately reads | Server-side background thread waits for hardware trigger |
+| **Freshness check** | None — reads whatever is in the buffer | Hash-based — only updates when data changes |
+| **Trigger detection** | None | Reads scope status register (`0x4` flag) |
+| **After param change** | No protection | Pauses acquisition, skips first (possibly incomplete) sweep, invalidates stale data |
+| **Data flow** | Client pull (poll `to_plot` parameter) | Server push (background thread writes to `to_plot`, client gets notified via parameter callbacks) |
+
+---
+
+## Practical Fix Options for Your Code
+
+1. **Quick fix**: Uncomment and use the `sleep(waiting_time)` in [get_sweep()](file:///home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/interface.py#106-128), sleeping for **at least one full sweep period** after [start_sweep()](file:///home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py#177-181) before reading. This is what you had started. The formula [(2^sweep_speed) / 3.8kHz](file:///home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/linien_original_library/linien-server/linien_server/server.py#362-364) gives the sweep period. Sleep for ~1.5× that.
+
+2. **Better fix**: Check the scope trigger status register in a loop before reading data (like linien does on acquisition.py line 112): `self.red_pitaya.scope.read(0x1 << 2) & 0x4`. This requires exposing scope register access through your rpyc interface.
+
+3. **Best fix (linien's approach)**: Move to a server-pushed, hash-based model.  Have the server continuously acquire in background, and only update `to_plot` when new data is *actually* available. Your client then just reads `to_plot` — if it hasn't changed, show the last frame; if it has, update the plot.
