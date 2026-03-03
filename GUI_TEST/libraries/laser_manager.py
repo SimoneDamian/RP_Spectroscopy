@@ -99,6 +99,7 @@ class LaserManager(QObject):
             "mode": mode,
             "x": sweep_signal["x"],
             "error_signal": sweep_signal["error_signal"],
+            "error_signal_strength": sweep_signal["error_signal_strength"],
             "monitor_signal": sweep_signal["monitor_signal"]
         }
 

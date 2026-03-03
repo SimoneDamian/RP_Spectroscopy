@@ -15,8 +15,7 @@ class BasePlotHandler(QWidget):
 
     def update(self, packet: dict):
         raise NotImplementedError("Subclasses must implement update()")
-
-
+    
 class SweepPlotHandler(BasePlotHandler):
     """
     Handles the SWEEP mode visualization.
@@ -32,44 +31,61 @@ class SweepPlotHandler(BasePlotHandler):
 
         # --- Top plot: Error Signal ---
         self.plot_error = pg.PlotWidget(title="Error Signal")
-        self.plot_error.setBackground('k')
-        self.plot_error.showGrid(x=True, y=True, alpha=0.3)
-        self.plot_error.getPlotItem().setLabel('left', 'Error Signal')
-        self.plot_error.getPlotItem().getAxis('bottom').enableAutoSIPrefix(False)
-        self.plot_error.getPlotItem().getAxis('left').enableAutoSIPrefix(False)
-        self.curve_error = self.plot_error.plot(pen=pg.mkPen('c', width=1.5))
+        self.setup_plot(self.plot_error, "Error Signal")
 
-        # --- Bottom plot: Monitor Signal ---
+        self.zero_line = pg.InfiniteLine(pos=0, angle=0, pen=pg.mkPen(color=(128, 128, 128), width=2))
+        self.plot_error.addItem(self.zero_line)
+        self.zero_line.setZValue(0) # Keep it above the fill but below the signal line
+        
+        self.curve_error = self.plot_error.plot(pen=pg.mkPen('c', width=1.5))
+        
+        self.curve_error_strength_pos = pg.PlotDataItem() 
+        self.curve_error_strength_neg = pg.PlotDataItem() 
+
+        # 3. Create the Fill between (+) and (-)
+        self.fill_error = pg.FillBetweenItem(
+            self.curve_error_strength_pos, 
+            self.curve_error_strength_neg, 
+            brush=(0, 255, 255, 60) # Semi-transparent Cyan
+        )
+        self.plot_error.addItem(self.fill_error)
+
+        # --- Bottom plot: Monitor Signal (Remains standard) ---
         self.plot_monitor = pg.PlotWidget(title="Monitor Signal")
-        self.plot_monitor.setBackground('k')
-        self.plot_monitor.showGrid(x=True, y=True, alpha=0.3)
-        self.plot_monitor.getPlotItem().setLabel('left', 'Monitor Signal')
-        self.plot_monitor.getPlotItem().setLabel('bottom', 'Voltage', units='V')
-        self.plot_monitor.getPlotItem().getAxis('bottom').enableAutoSIPrefix(False)
-        self.plot_monitor.getPlotItem().getAxis('left').enableAutoSIPrefix(False)
+        self.setup_plot(self.plot_monitor, "Monitor Signal", "Voltage", "V")
         self.curve_monitor = self.plot_monitor.plot(pen=pg.mkPen(color=(255, 165, 0), width=1.5))
 
-        # Link x-axes so zooming/panning is synchronised
         self.plot_monitor.setXLink(self.plot_error)
-
-        # Hide the x-axis label on the top plot (shared axis)
-        self.plot_error.getPlotItem().setLabel('bottom', '')
-
         layout.addWidget(self.plot_error)
         layout.addWidget(self.plot_monitor)
+
+    def setup_plot(self, widget, left_label, bottom_label=None, units=None):
+        widget.setBackground('k')
+        widget.showGrid(x=True, y=True, alpha=0.3)
+        pi = widget.getPlotItem()
+        pi.setLabel('left', left_label)
+        if bottom_label:
+            pi.setLabel('bottom', bottom_label, units=units)
+        pi.getAxis('bottom').enableAutoSIPrefix(False)
+        pi.getAxis('left').enableAutoSIPrefix(False)
 
     def update(self, packet: dict):
         x = packet.get("x")
         error = packet.get("error_signal")
+        error_strength = packet.get("error_signal_strength")
         monitor = packet.get("monitor_signal")
 
         if x is None:
             return
 
-        # Convert to numpy arrays if they aren't already
         x = np.asarray(x)
+
         if error is not None:
-            self.curve_error.setData(x, np.asarray(error))
+            err_data = np.asarray(error)
+            self.curve_error.setData(x, err_data)
+            self.curve_error_strength_pos.setData(x, error_strength)
+            self.curve_error_strength_neg.setData(x, -error_strength)
+
         if monitor is not None:
             self.curve_monitor.setData(x, np.asarray(monitor))
 
@@ -77,9 +93,8 @@ class ManualLockingPlotHandler(BasePlotHandler):
     """
     Handles the MANUAL_LOCKING mode visualization.
     Shows two vertically-stacked plots sharing the same x-axis:
-      - Top:    error_signal   (blue)
+      - Top:    error_signal (cyan line) + strength (red fill)
       - Bottom: monitor_signal (orange)
-      - In addition it shows the vertical lines associated with the lock region selected by the user.
     """
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -89,55 +104,82 @@ class ManualLockingPlotHandler(BasePlotHandler):
 
         # --- Top plot: Error Signal ---
         self.plot_error = pg.PlotWidget(title="Error Signal")
-        self.plot_error.setBackground('k')
-        self.plot_error.showGrid(x=True, y=True, alpha=0.3)
-        self.plot_error.getPlotItem().setLabel('left', 'Error Signal')
-        self.plot_error.getPlotItem().getAxis('bottom').enableAutoSIPrefix(False)
-        self.plot_error.getPlotItem().getAxis('left').enableAutoSIPrefix(False)
+        self.setup_plot_style(self.plot_error, left_label='Error Signal')
+
+        self.zero_line = pg.InfiniteLine(pos=0, angle=0, pen=pg.mkPen(color=(128, 128, 128), width=2))
+        self.plot_error.addItem(self.zero_line)
+        self.zero_line.setZValue(0) # Keep it above the fill but below the signal line
+        
+        # 1. Main Error Signal Line
         self.curve_error = self.plot_error.plot(pen=pg.mkPen('c', width=1.5))
+        self.curve_error.setZValue(20) # Keep line on top
+
+        # 2. Strength boundaries (invisible data containers)
+        self.curve_strength_pos = pg.PlotDataItem() 
+        self.curve_strength_neg = pg.PlotDataItem() 
+
+        # 3. Strength Fill (Semi-transparent Red)
+        self.fill_strength = pg.FillBetweenItem(
+            self.curve_strength_pos, 
+            self.curve_strength_neg, 
+            brush=(0, 255, 255, 60)
+        )
+        self.plot_error.addItem(self.fill_strength)
+        self.fill_strength.setZValue(-10) # Keep fill behind grid/lines
 
         # --- Bottom plot: Monitor Signal ---
         self.plot_monitor = pg.PlotWidget(title="Monitor Signal")
-        self.plot_monitor.setBackground('k')
-        self.plot_monitor.showGrid(x=True, y=True, alpha=0.3)
-        self.plot_monitor.getPlotItem().setLabel('left', 'Monitor Signal')
-        self.plot_monitor.getPlotItem().setLabel('bottom', 'Voltage', units='V')
-        self.plot_monitor.getPlotItem().getAxis('bottom').enableAutoSIPrefix(False)
-        self.plot_monitor.getPlotItem().getAxis('left').enableAutoSIPrefix(False)
+        self.setup_plot_style(self.plot_monitor, left_label='Monitor Signal', 
+                              bottom_label='Voltage', units='V')
         self.curve_monitor = self.plot_monitor.plot(pen=pg.mkPen(color=(255, 165, 0), width=1.5))
 
-        # --- Region Selection ---
-        self.region = pg.LinearRegionItem(brush=pg.mkBrush(255, 0, 0, 50), pen=pg.mkPen('r', width=2))
-        self.region.setZValue(10)
+        # --- Region Selection (already red, stays as is) ---
+        self.region = pg.LinearRegionItem(brush=pg.mkBrush(255, 0, 0, 40), pen=pg.mkPen('r', width=1))
+        self.region.setZValue(5)
         self.plot_error.addItem(self.region)
-        # We don't want it to be draggable by the user for now as boundaries are set via textboxes
         self.region.setMovable(False)
 
-        # Link x-axes so zooming/panning is synchronised
+        # Link x-axes
         self.plot_monitor.setXLink(self.plot_error)
-
-        # Hide the x-axis label on the top plot (shared axis)
         self.plot_error.getPlotItem().setLabel('bottom', '')
 
         layout.addWidget(self.plot_error)
         layout.addWidget(self.plot_monitor)
 
+    def setup_plot_style(self, widget, left_label, bottom_label=None, units=None):
+        """Helper to standardize plot appearance"""
+        widget.setBackground('k')
+        widget.showGrid(x=True, y=True, alpha=0.3)
+        pi = widget.getPlotItem()
+        pi.setLabel('left', left_label)
+        if bottom_label:
+            pi.setLabel('bottom', bottom_label, units=units)
+        pi.getAxis('bottom').enableAutoSIPrefix(False)
+        pi.getAxis('left').enableAutoSIPrefix(False)
+
     def set_region(self, x0, x1):
-        """Sets the visible boundaries of the lock region."""
         self.region.setRegion([x0, x1])
 
     def update(self, packet: dict):
         x = packet.get("x")
         error = packet.get("error_signal")
+        strength = packet.get("error_signal_strength")
         monitor = packet.get("monitor_signal")
 
         if x is None:
             return
 
-        # Convert to numpy arrays if they aren't already
         x = np.asarray(x)
+        
         if error is not None:
             self.curve_error.setData(x, np.asarray(error))
+            
+        if strength is not None:
+            s_data = np.asarray(strength)
+            # Update the fill boundaries
+            self.curve_strength_pos.setData(x, s_data)
+            self.curve_strength_neg.setData(x, -s_data)
+
         if monitor is not None:
             self.curve_monitor.setData(x, np.asarray(monitor))
 

@@ -116,6 +116,8 @@ class HardwareInterface():
         self.check_for_changed_parameters()
         to_plot = pickle.loads(self.readable_params["sweep_signal"].get_remote_value())
         error_signal = np.array(to_plot["error_signal_1"]/(2*Vpp))
+        error_signal_quadrature = np.array(to_plot['error_signal_1_quadrature'])/(2*Vpp)
+        error_signal_strength = np.sqrt(error_signal**2 + error_signal_quadrature**2)
         monitor_signal = np.array(to_plot["monitor_signal"]/(2*Vpp))
         sweep_signal = {}
         sweep_center = self.writeable_params["sweep_center"].get_remote_value()
@@ -123,7 +125,9 @@ class HardwareInterface():
         sweep_scan = np.linspace(sweep_center - sweep_range, sweep_center + sweep_range, len(error_signal))
         sweep_signal['x'] = sweep_scan
         sweep_signal['error_signal'] = error_signal
+        sweep_signal['error_signal_strength'] = error_signal_strength
         sweep_signal['monitor_signal'] = monitor_signal
+        
         return sweep_signal
 
     def set_value(self, param_name, value):
