@@ -7,6 +7,7 @@ import logging
 import numpy as np
 from linien_common.common import ANALOG_OUT_V, Vpp
 import pickle
+from time import sleep
 
 class LaserManager(QObject):
     sig_connected = Signal()
@@ -146,6 +147,9 @@ class LaserManager(QObject):
         # 3. Hardware Interaction (Blocking only for this small step)
         # self.logger.debug(f"Scanning point {self.scan_index}: {target_v:.3f}V")
         self.interface.set_value('big_offset', target_v)
+
+        waiting_time = ((2.0**self.interface.writeable_params["sweep_speed"].get_remote_value())/(3.8e3))
+        sleep(waiting_time)
         
         current_sweep = self.interface.get_sweep()
         
