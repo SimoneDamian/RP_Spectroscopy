@@ -102,7 +102,7 @@ class LaserManager(QObject):
             "monitor_signal": sweep_signal["monitor_signal"]
         }
 
-        self.logger.info(f"first error_signal data: {sweep_signal['error_signal'][0:20]}")
+        #self.logger.info(f"first error_signal data: {sweep_signal['error_signal'][0:20]}")
 
         self.sig_data_ready.emit(packet)
 

@@ -107,12 +107,12 @@ class HardwareInterface():
         """
         Neglectiing the mixing channel for simplicity.
         """
-        self.start_sweep()
+        #self.start_sweep()
         #print("Sweep_speed ", self.writeable_params["sweep_speed"].get_remote_value())
         #waiting_time = ((2.0**self.writeable_params["sweep_speed"].get_remote_value())/(3.8e3))
         #sleep(waiting_time) #wait 3 sweep periods
         #self.logger.info(f"Slept for {waiting_time} seconds")
-        self.logger.info("get_sweep started")
+        #self.logger.info("get_sweep started")
         self.check_for_changed_parameters()
         to_plot = pickle.loads(self.readable_params["sweep_signal"].get_remote_value())
         error_signal = np.array(to_plot["error_signal_1"]/(2*Vpp))

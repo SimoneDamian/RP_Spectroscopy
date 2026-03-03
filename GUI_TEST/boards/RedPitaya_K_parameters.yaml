@@ -413,7 +413,7 @@ writeable_parameters:
     description: The sweep speed in internal units. The actual speed is given by
       f_real = 3.8 kHz / (2 ** sweep_speed). Allowed values are [0, ..., 15]
     type: int
-    initial_value: 8  # n means (3.8 kHz / 2**n), eg n=12 means 0.92 Hz
+    initial_value: 10 # n means (3.8 kHz / 2**n), eg n=12 means 0.92 Hz
     min: 0
     max: 15
     scaling:

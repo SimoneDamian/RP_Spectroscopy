@@ -7,7 +7,7 @@ app:
   name: "LaserLockingApp"
   version: "1.0.0"
   debug_mode: true           # If true, print verbose logs to console
-  update_interval_ms: 1000     # How often the GUI updates plots
+  update_interval_ms: 500     # How often the GUI updates plots
 
 # --- FILE PATHS ---
 paths:
