@@ -116,6 +116,9 @@ class GeneralManager:
         self.laser.sig_data_ready.connect(self.window.page_laser.handle_data)
         self.laser.sig_data_ready.connect(self.on_data_ready)
 
+        # Connection for Grafana
+        self.laser.sig_grafana_data_ready.connect(self.services.send_point_to_grafana)
+
         # Scan page signals
         self.window.page_laser.page_scan.sig_start_scan.connect(self.laser.start_scan)
         self.window.page_laser.page_scan.sig_stop_scan.connect(self.laser.stop_scan)

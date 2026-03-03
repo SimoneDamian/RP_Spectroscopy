@@ -522,6 +522,7 @@ class ServiceManager(QObject):
     # GRAFANA METHODS
     # -------------------------------------------------------------------------
 
+    @Slot(dict)
     def send_point_to_grafana(self, packet):
 
         p = Point("Locking_data") \
@@ -534,20 +535,27 @@ class ServiceManager(QObject):
 
             if packet["FSM_state"] == "IDLE":
                 p.field("FSM_state", 0)
+                p.tag("FSM_state", "IDLE")
             elif packet["FSM_state"] == "SWEEP":
                 p.field("FSM_state", 1)
+                p.tag("FSM_state", "SWEEP")
             elif packet["FSM_state"] == "SCAN":
                 p.field("FSM_state", 2)
+                p.tag("FSM_state", "SCAN")
             elif packet["FSM_state"] == "SETUP_MANUAL_LOCK":
                 p.field("FSM_state", 3)
+                p.tag("FSM_state", "SETUP_MANUAL_LOCK")
             elif packet["FSM_state"] == "MANUAL_LOCKING":
                 p.field("FSM_state", 4)
+                p.tag("FSM_state", "MANUAL_LOCKING")
             elif packet["FSM_state"] == "LOCKED":
                 p.field("FSM_state", 5)
+                p.tag("FSM_state", "LOCKED")
 
-        self.write_grafana_api.write(bucket=self.grafana_config['bucket'], org=self.grafana_config['org'], record=p)
-
-        #self.logger.info(f"Point sent to Grafana.")
+        try:
+            self.write_grafana_api.write(bucket=self.grafana_config['bucket'], org=self.grafana_config['org'], record=p)
+        except Exception as e:
+            self.logger.error(f"Failed to send data to Grafana: {e}")
 
     def close_grafana_client(self):
         self.grafana_client.close()

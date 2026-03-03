@@ -13,6 +13,7 @@ class LaserManager(QObject):
     sig_connected = Signal()
     sig_parameters_ready = Signal()
     sig_data_ready = Signal(dict)
+    sig_grafana_data_ready = Signal(dict)
 
     def __init__(self, config, board):
         super().__init__()
@@ -53,6 +54,7 @@ class LaserManager(QObject):
         """
         try:
             self.interface = HardwareInterface(self.cfg, self.board)
+            #self.interface.start_sweep()
             self.controller = LockController(self.interface)
 
             #Setup internal Timer for the control loop
@@ -78,6 +80,8 @@ class LaserManager(QObject):
             "board_name": self.board['name'],
             "FSM_state": self.state
         }
+
+        self.sig_grafana_data_ready.emit(packet)
 
         
 
