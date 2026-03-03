@@ -52,7 +52,7 @@ writeable_parameters:
     gui_name: Offset CH1
     description: The vertical offset for CH1 in volts.
     type: float
-    initial_value: 0.0
+    initial_value: 0.013
     min: -1
     max: 1
     scaling: 8191
@@ -426,7 +426,7 @@ writeable_parameters:
     gui_name: Demodulation phase
     description: The demodulation phase for channel A in degree.
     type: float
-    initial_value: 180.0
+    initial_value: 200.0
     min: 0
     max: 360
     scaling: 1.0  # degrees
@@ -508,7 +508,7 @@ writeable_parameters:
     description: Strength of the slow PID. This strength corresponds to the 
       strength of the integrator. Maximum value is 8191.
     type: int
-    initial_value: 0
+    initial_value: 1
     min: 0
     max: 8191
     scaling: 1  # PID strength on slow control
@@ -624,7 +624,7 @@ advanced_settings:
       gui_name: History length
       description: The history length of the fast and slow control signals. You 
         see the history when the laser is locked.
-      fast: 10
+      fast: 600
       slow: 3600
       unit: "s"
 
@@ -658,7 +658,7 @@ advanced_settings:
         may be used if you experience problems with jitter-tolerant mode. As it 
         requires some communication between CPU and FPGA which causes some 
         delay, it may have problems if the line jitters a lot.
-      value: SIMPLE
+      value: ROBUST
       options:
       - SIMPLE
       - ROBUST

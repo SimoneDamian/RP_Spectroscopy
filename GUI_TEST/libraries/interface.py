@@ -4,14 +4,16 @@ import logging
 import sys
 import pickle
 import numpy as np
-from time import sleep
+from time import sleep, time
 
 from linien_client.device import Device
 from linien_client.connection import LinienClient
 from linien_common.common import AutolockMode
 
 from linien_common.common import ANALOG_OUT_V, Vpp
-
+from scipy.ndimage import gaussian_filter1d
+import matplotlib.dates as mdates
+from datetime import datetime
 
 class HardwareInterface():
     """
@@ -179,6 +181,143 @@ class HardwareInterface():
                 raise Exception("waited too long")
 
             sleep(1)
+
+    def init_history_buffers(self, fast_length_s, slow_length_s):
+        """
+        Initializes local circular buffers for accumulating history data
+        beyond the Red Pitaya's fixed-length buffer.
+
+        Args:
+            fast_length_s: max age (seconds) for monitor & fast-control buffers.
+            slow_length_s: max age (seconds) for slow-control buffers.
+        """
+        self._fast_length_s = fast_length_s
+        self._slow_length_s = slow_length_s
+
+        # Fast-window buffers (monitor + fast control)
+        self._buf_fast_control_times = []   # unix timestamps
+        self._buf_fast_control_values = []  # scaled values
+        self._buf_monitor_times = []        # unix timestamps
+        self._buf_monitor_values = []       # scaled values
+
+        # Slow-window buffers
+        self._buf_slow_control_times = []   # unix timestamps
+        self._buf_slow_control_values = []  # scaled values
+
+        self.logger.info(
+            f"History buffers initialized: fast={fast_length_s}s, slow={slow_length_s}s"
+        )
+
+    # ------------------------------------------------------------------ #
+    #  Internal helpers for the circular-buffer logic                     #
+    # ------------------------------------------------------------------ #
+    def _append_new(self, buf_times, buf_values, new_times, new_values):
+        """
+        Append only data points whose timestamps are strictly newer
+        than the latest entry already in the buffer.
+        """
+        if len(buf_times) == 0:
+            buf_times.extend(new_times.tolist())
+            buf_values.extend(new_values.tolist())
+        else:
+            last_t = buf_times[-1]
+            mask = new_times > last_t
+            if mask.any():
+                buf_times.extend(new_times[mask].tolist())
+                buf_values.extend(new_values[mask].tolist())
+
+    @staticmethod
+    def _trim_buffer(buf_times, buf_values, max_age_s):
+        """
+        Remove entries older than *max_age_s* seconds from the current time.
+        Operates in-place on the two parallel lists.
+        """
+        if len(buf_times) == 0:
+            return
+        cutoff = time() - max_age_s
+        # Find first index that is >= cutoff
+        idx = 0
+        for i, t in enumerate(buf_times):
+            if t >= cutoff:
+                idx = i
+                break
+        else:
+            # All entries are older than cutoff
+            idx = len(buf_times)
+        if idx > 0:
+            del buf_times[:idx]
+            del buf_values[:idx]
+
+    def get_history(self):
+        """
+        Fetches new history data from the Red Pitaya, appends it to the
+        local circular buffers, trims to the configured time windows, and
+        returns the buffered data as numpy arrays.
+        """
+        control_signal_history = self.readable_params["control_signal_history"].get_remote_value()
+        monitor_signal_history = self.readable_params["monitor_signal_history"].get_remote_value()
+
+        # --- Raw RP data → numpy ---
+        raw_fc_times  = np.array(control_signal_history["times"])
+        raw_fc_values = np.array(control_signal_history["values"]) / (2 * Vpp)
+        raw_sc_times  = np.array(control_signal_history["slow_times"])
+        raw_sc_values = np.array(control_signal_history["slow_values"]) * ANALOG_OUT_V
+        raw_mon_times = np.array(monitor_signal_history["times"])
+        raw_mon_values = np.array(monitor_signal_history["values"]) / (2 * Vpp)
+
+        # --- Append only new points to local buffers ---
+        self._append_new(self._buf_fast_control_times,  self._buf_fast_control_values,  raw_fc_times,  raw_fc_values)
+        self._append_new(self._buf_monitor_times,       self._buf_monitor_values,       raw_mon_times, raw_mon_values)
+        self._append_new(self._buf_slow_control_times,  self._buf_slow_control_values,  raw_sc_times,  raw_sc_values)
+
+        # --- Trim to configured window ---
+        self._trim_buffer(self._buf_fast_control_times, self._buf_fast_control_values, self._fast_length_s)
+        self._trim_buffer(self._buf_monitor_times,      self._buf_monitor_values,      self._fast_length_s)
+        self._trim_buffer(self._buf_slow_control_times, self._buf_slow_control_values, self._slow_length_s)
+
+        # --- Build output dict (numpy arrays) ---
+        temp_dict = {}
+
+        fc_times = np.array(self._buf_fast_control_times)
+        fc_values = np.array(self._buf_fast_control_values)
+        temp_dict['fast_control_values'] = fc_values
+        temp_dict['fast_control_times_unix'] = fc_times
+
+        # Derivative of fast control
+        sigma = 5
+        if len(fc_times) >= 2:
+            dt = fc_times[-1] - fc_times[-2]
+            if dt > 0:
+                d_control = np.diff(gaussian_filter1d(fc_values, sigma=sigma)) / dt
+            else:
+                d_control = np.zeros(max(len(fc_values) - 1, 0))
+        else:
+            d_control = np.array([])
+        temp_dict['d_fast_control_values'] = d_control
+
+        sc_times = np.array(self._buf_slow_control_times)
+        sc_values = np.array(self._buf_slow_control_values)
+        temp_dict['slow_control_values'] = sc_values
+        temp_dict['slow_control_times_unix'] = sc_times
+
+        # Derivative of slow control
+        if len(sc_times) >= 2:
+            dt_slow = sc_times[-1] - sc_times[-2]
+            if dt_slow > 0:
+                d_slow = np.diff(gaussian_filter1d(sc_values, sigma=sigma)) / dt_slow
+            else:
+                d_slow = np.zeros(max(len(sc_values) - 1, 0))
+        else:
+            d_slow = np.array([])
+        temp_dict['d_slow_control_values'] = d_slow
+
+        mon_times = np.array(self._buf_monitor_times)
+        mon_values = np.array(self._buf_monitor_values)
+        temp_dict['monitor_values'] = mon_values
+        temp_dict['monitor_times_unix'] = mon_times
+
+        self.history = temp_dict
+        return temp_dict
 
 class ReadableParameter:
     def __init__(self, name, client):

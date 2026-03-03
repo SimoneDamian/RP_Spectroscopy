@@ -1,5 +1,6 @@
 import pyqtgraph as pg
 import numpy as np
+from time import time
 from PySide6.QtWidgets import (QWidget, QVBoxLayout, QStackedWidget, QLabel,
                                 QScrollArea, QProgressBar, QPushButton)
 from PySide6.QtCore import Qt, Slot, QTimer, Signal
@@ -201,6 +202,80 @@ class MessagePlotHandler(BasePlotHandler):
         self.lbl_message.setText(text)
 
 
+class LockingMonitorPlotHandler(BasePlotHandler):
+    """
+    Handles the LOCKED mode visualization.
+    Shows three vertically-stacked real-time plots (oscilloscope roll mode):
+      - Top:    Monitor Signal
+      - Middle: Fast Control Signal
+      - Bottom: Slow Control Signal
+    X-axis displays relative time (seconds ago).
+    """
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        layout = QVBoxLayout(self)
+        layout.setContentsMargins(0, 0, 0, 0)
+        layout.setSpacing(4)
+
+        # --- Top plot: Monitor Signal ---
+        self.plot_monitor = pg.PlotWidget(title="Monitor Signal")
+        self._setup_plot(self.plot_monitor, "Monitor Signal")
+        self.curve_monitor = self.plot_monitor.plot(
+            pen=pg.mkPen(color=(255, 165, 0), width=1.5)  # orange
+        )
+
+        # --- Middle plot: Fast Control Signal ---
+        self.plot_fast = pg.PlotWidget(title="Fast Control Signal")
+        self._setup_plot(self.plot_fast, "Fast Control")
+        self.curve_fast = self.plot_fast.plot(
+            pen=pg.mkPen('c', width=1.5)  # cyan
+        )
+
+        # --- Bottom plot: Slow Control Signal ---
+        self.plot_slow = pg.PlotWidget(title="Slow Control Signal")
+        self._setup_plot(self.plot_slow, "Slow Control", bottom_label="Time", units="s")
+        self.curve_slow = self.plot_slow.plot(
+            pen=pg.mkPen(color=(0, 200, 83), width=1.5)  # green
+        )
+
+        layout.addWidget(self.plot_monitor)
+        layout.addWidget(self.plot_fast)
+        layout.addWidget(self.plot_slow)
+
+    @staticmethod
+    def _setup_plot(widget, left_label, bottom_label=None, units=None):
+        widget.setBackground('k')
+        widget.showGrid(x=True, y=True, alpha=0.3)
+        pi = widget.getPlotItem()
+        pi.setLabel('left', left_label)
+        if bottom_label:
+            pi.setLabel('bottom', bottom_label, units=units)
+        pi.getAxis('bottom').enableAutoSIPrefix(False)
+        pi.getAxis('left').enableAutoSIPrefix(False)
+
+    def update(self, packet: dict):
+        now = time()
+
+        # --- Monitor ---
+        mon_times = packet.get("monitor_times_unix")
+        mon_vals  = packet.get("monitor_values")
+        if mon_times is not None and mon_vals is not None and len(mon_times) > 0:
+            t_rel = np.asarray(mon_times) - now  # negative = seconds ago
+            self.curve_monitor.setData(t_rel, np.asarray(mon_vals))
+
+        # --- Fast Control ---
+        fc_times = packet.get("fast_control_times_unix")
+        fc_vals  = packet.get("fast_control_values")
+        if fc_times is not None and fc_vals is not None and len(fc_times) > 0:
+            t_rel = np.asarray(fc_times) - now
+            self.curve_fast.setData(t_rel, np.asarray(fc_vals))
+
+        # --- Slow Control ---
+        sc_times = packet.get("slow_control_times_unix")
+        sc_vals  = packet.get("slow_control_values")
+        if sc_times is not None and sc_vals is not None and len(sc_times) > 0:
+            t_rel = np.asarray(sc_times) - now
+            self.curve_slow.setData(t_rel, np.asarray(sc_vals))
 
 
 class ScanPlotHandler(BasePlotHandler):
@@ -354,9 +429,8 @@ class PlotPanel(QWidget):
         self.register_handler("SCAN", ScanPlotHandler())
         self.register_handler("SETUP_MANUAL_LOCK", ManualLockingPlotHandler())
         
-        status_handler = MessagePlotHandler()
-        self.register_handler("MANUAL_LOCKING", status_handler)
-        self.register_handler("LOCKED", status_handler)
+        self.register_handler("MANUAL_LOCKING", MessagePlotHandler())
+        self.register_handler("LOCKED", LockingMonitorPlotHandler())
 
     def register_handler(self, mode: str, handler: BasePlotHandler):
         """Register a plot handler for a given FSM mode."""

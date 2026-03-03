@@ -72,6 +72,15 @@ class LaserManager(QObject):
         Runs every x seconds and decides what to do
         based on the current state of the Finite State Machine.
         """
+
+        packet = {
+            "mode": "Send_FSM_state",
+            "board_name": self.board['name'],
+            "FSM_state": self.state
+        }
+
+        
+
         if self.state == "IDLE":
             pass
         elif self.state == "SWEEP":
@@ -267,13 +276,20 @@ class LaserManager(QObject):
         """
         Handles the locked state of the laser sending the History to the GUI and detecting unlock events if required.
         """
-        self.logger.info("Laser is locked!")
-        packet = {
-            "mode": self.state,
-            "text": "Laser is locked!"
-        }
-
-        self.sig_data_ready.emit(packet)
+        try:
+            history = self.interface.get_history()
+            packet = {
+                "mode": self.state,
+                **history
+            }
+            self.sig_data_ready.emit(packet)
+        except Exception as e:
+            self.logger.error(f"Failed to get history: {e}")
+            packet = {
+                "mode": self.state,
+                "text": "Laser is locked! (history unavailable)"
+            }
+            self.sig_data_ready.emit(packet)
 
     @Slot(int, int, dict)
     def start_manual_locking(self, x0, x1, sweep_data):
@@ -288,6 +304,14 @@ class LaserManager(QObject):
         try:
             self.interface.wait_for_lock_status(True)
             self.logger.info("Locking the laser worked! \\o/")
+
+            # Initialize history buffers from advanced settings
+            gui_vis = self.advanced_settings.get("gui_visualization", {})
+            hist_cfg = gui_vis.get("history_length", {})
+            fast_s = hist_cfg.get("fast", 600)
+            slow_s = hist_cfg.get("slow", 3600)
+            self.interface.init_history_buffers(fast_s, slow_s)
+
             self.state = "LOCKED"
         except Exception:
             self.logger.warning("Locking the laser failed :(")

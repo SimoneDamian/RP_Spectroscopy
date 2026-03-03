@@ -522,22 +522,32 @@ class ServiceManager(QObject):
     # GRAFANA METHODS
     # -------------------------------------------------------------------------
 
-    def send_point_to_grafana(self, board_name, line_name, lock_status, param_a, param_b, big_offset):
-        
-        p = Point("laser_lock_monitor") \
-            .tag("board", board_name) \
-            .tag("line", line_name) \
-            .field("lock_status", lock_status)\
-            .time(time.time_ns(), WritePrecision.NS)
+    def send_point_to_grafana(self, packet):
 
-        if lock_status == 1:
-            p.field("param_a", param_a)
-            p.field("param_b", param_b)
-            p.field("big_offset", big_offset)
+        p = Point("Locking_data") \
+            .tag("board", packet["board_name"]) \
+            .time(time.time_ns(), WritePrecision.NS)
+        
+        mode = packet.get("mode")
+        
+        if mode == "Send_FSM_state":
+
+            if packet["FSM_state"] == "IDLE":
+                p.field("FSM_state", 0)
+            elif packet["FSM_state"] == "SWEEP":
+                p.field("FSM_state", 1)
+            elif packet["FSM_state"] == "SCAN":
+                p.field("FSM_state", 2)
+            elif packet["FSM_state"] == "SETUP_MANUAL_LOCK":
+                p.field("FSM_state", 3)
+            elif packet["FSM_state"] == "MANUAL_LOCKING":
+                p.field("FSM_state", 4)
+            elif packet["FSM_state"] == "LOCKED":
+                p.field("FSM_state", 5)
 
         self.write_grafana_api.write(bucket=self.grafana_config['bucket'], org=self.grafana_config['org'], record=p)
 
-        self.logger.info(f"Point sent to Grafana.")
+        #self.logger.info(f"Point sent to Grafana.")
 
     def close_grafana_client(self):
         self.grafana_client.close()
