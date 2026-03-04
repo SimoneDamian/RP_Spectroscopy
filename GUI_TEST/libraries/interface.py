@@ -131,7 +131,7 @@ class HardwareInterface():
         """
         self.check_for_changed_parameters()
         to_plot = pickle.loads(self.readable_params["sweep_signal"].get_remote_value())
-        self.logger.info(f"Entries of the sweep: {list(to_plot.keys())}")
+        #self.logger.info(f"Entries of the sweep: {list(to_plot.keys())}")
         try:
             error_signal = np.array(to_plot["error_signal_1"]/(2*Vpp))
             error_signal_quadrature = np.array(to_plot['error_signal_1_quadrature'])/(2*Vpp)

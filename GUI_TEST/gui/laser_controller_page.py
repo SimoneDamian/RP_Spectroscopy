@@ -7,6 +7,7 @@ from PySide6.QtCore import Qt, Slot, Signal
 from PySide6.QtGui import QDoubleValidator, QIntValidator
 from gui.plot_panel import PlotPanel
 from gui.advanced_settings_page import AdvancedSettingsPage
+from gui.reference_lines_page import ReferenceLinesPage
 
 
 
@@ -453,6 +454,7 @@ class LaserControllerPage(QWidget):
         # 2. Sub Pages
         self.page_parameters = ParametersPage(self.logger) # REAL PAGE
         self.page_advanced = AdvancedSettingsPage(self.logger)
+        self.page_reflines = ReferenceLinesPage(self.logger)
         self.page_scan = ScanPage()
         self.page_centering = SubPageContainer("Line Centering")
         self.page_manual = ManualLockPage()
@@ -461,6 +463,7 @@ class LaserControllerPage(QWidget):
         
         self.left_stack.addWidget(self.page_parameters)
         self.left_stack.addWidget(self.page_advanced)
+        self.left_stack.addWidget(self.page_reflines)
         self.left_stack.addWidget(self.page_scan)
         self.left_stack.addWidget(self.page_centering)
         self.left_stack.addWidget(self.page_manual)
@@ -489,6 +492,7 @@ class LaserControllerPage(QWidget):
         self.page_parameters.sig_back.connect(self.go_to_menu)
         self.page_advanced.sig_back.connect(self.go_to_menu)
         self.page_scan.sig_back.connect(self.on_scan_back)
+        self.page_reflines.sig_request_back.connect(self.go_to_menu)
         self.page_centering.sig_back.connect(self.go_to_menu)
         self.page_manual.sig_back.connect(self.on_manual_back)
         self.page_auto.sig_back.connect(self.go_to_menu)
@@ -546,7 +550,8 @@ class LaserControllerPage(QWidget):
 
     @Slot()
     def on_reflines_clicked(self):
-        self.logger.info("Reference Lines button clicked - (No Action implemented)")
+        self.logger.info("Reference Lines button clicked - opening ReferenceLinesPage.")
+        self.left_stack.setCurrentWidget(self.page_reflines)
 
     @Slot()
     def on_manual_clicked(self):

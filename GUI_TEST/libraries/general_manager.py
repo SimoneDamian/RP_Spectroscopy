@@ -94,6 +94,9 @@ class GeneralManager:
         # In PySide/Qt, default connection type is AutoConnection which handles this automatically
         self.laser.sig_connected.connect(self.window.page_laser.set_connected_state)
         self.laser.sig_connected.connect(self.on_laser_connected)
+        self.laser.sig_connected.connect(
+            lambda: self.window.page_laser.page_reflines.btn_add.setEnabled(True)
+        )
         
         # Connection for Default Settings Button
         # Disconnect previous backend connections to avoid duplicates (safeguard)
@@ -164,6 +167,9 @@ class GeneralManager:
         self.current_board = board
         self.services.load_advanced_settings(board)
         self.services.load_parameters(board)
+
+        # Inject ServiceManager into laser controller's ReferenceLinesPage
+        self.window.page_laser.page_reflines.set_service_manager(self.services)
 
     @Slot()
     def on_laser_connected(self):
