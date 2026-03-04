@@ -135,6 +135,7 @@ class GeneralManager:
         self.window.page_laser.sig_request_trace.connect(self.laser.get_sweep_from_scan)
         self.laser.sig_trace_ready.connect(add_ref_page.update_trace)
         add_ref_page.sig_back.connect(self.laser.start_sweep)
+        add_ref_page.sig_save.connect(self.services.add_reference_line)
 
         # Manual Lock signals
         self.window.page_laser.sig_request_setup_manual_lock.connect(self.laser.setup_manual_lock)

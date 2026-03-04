@@ -268,6 +268,80 @@ class ServiceManager(QObject):
         else:
             self.logger.warning(f"Reference line '{old_name}' not found for modification.")
 
+    @Slot(dict)
+    def add_reference_line(self, data):
+        self.logger.info(f"Adding new reference line '{data.get('name', 'Unnamed')}'...")
+        inventory = self._read_reflines_yaml()
+        current_list = inventory.get('lines', [])
+
+        import time
+        from datetime import datetime
+
+        trace = data.get('trace_data')
+        if not trace or 'x' not in trace or 'error_signal' not in trace:
+            self.logger.error("No trace data provided to save.")
+            self.sig_error.emit("Cannot save: No scan trace loaded.")
+            return
+
+        x_arr = np.array(trace['x'])
+        y_arr = np.array(trace['error_signal'])
+
+        try:
+            ref_left = float(data['ref_left'])
+            ref_right = float(data['ref_right'])
+            lock_min = float(data['lock_min'])
+            lock_max = float(data['lock_max'])
+            scan_center = float(data['scan_center'])
+        except ValueError:
+            self.logger.error("Invalid numerical limits provided.")
+            self.sig_error.emit("Cannot save: Invalid numerical values.")
+            return
+
+        start_idx = np.argmin(np.abs(x_arr - ref_left))
+        stop_idx = np.argmin(np.abs(x_arr - ref_right))
+        
+        if start_idx > stop_idx:
+            start_idx, stop_idx = stop_idx, start_idx
+            
+        x_cut = x_arr[start_idx:stop_idx]
+        y_cut = y_arr[start_idx:stop_idx]
+
+        timestamp = time.strftime("%Y%m%d_%H%M%S")
+        created_date = time.strftime("%Y-%m-%d %H:%M:%S")
+
+        board = data.get('board', 'Unknown')
+        name = data.get('name', 'Unnamed_Line')
+        
+        file_name_base = f"{name}_{board}_{timestamp}"
+        file_name_full = file_name_base + '.npy'
+        
+        npy_path = os.path.join(os.path.dirname(self.reflines_list_path), file_name_full)
+        
+        try:
+            np.savetxt(npy_path, np.column_stack((x_cut, y_cut)))
+            self.logger.info(f"Saved numpy data to {npy_path}")
+        except Exception as e:
+            self.logger.error(f"Failed to save {npy_path}: {e}")
+            self.sig_error.emit(f"Failed to save data file: {e}")
+            return
+            
+        new_item = {
+            'name': name,
+            'board': board,
+            'file_name': file_name_base,
+            'lock_region': [lock_min, lock_max],
+            'scan_center': scan_center,
+            'created': created_date,
+            'modified': created_date,
+            'polarity': data.get('polarity', '')
+        }
+        
+        current_list.append(new_item)
+        inventory['lines'] = current_list
+        self._save_reflines_yaml(inventory)
+        
+        self.sig_reflines_updated.emit(current_list)
+
     @Slot(str)
     def duplicate_reference_line(self, name_to_copy):
         self.logger.info(f"Duplicating reference line '{name_to_copy}'...")

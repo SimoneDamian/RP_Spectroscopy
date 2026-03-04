@@ -222,6 +222,7 @@ class AddReferenceLinePage(QWidget):
     @Slot(dict)
     def update_trace(self, trace_data):
         """Called by the backend to plot the requested trace."""
+        self.current_trace_data = trace_data
         x = trace_data.get("x")
         y = trace_data.get("error_signal")
         if x is not None and y is not None:
@@ -239,7 +240,8 @@ class AddReferenceLinePage(QWidget):
             "ref_right": self.input_ref_right.text(),
             "lock_min": self.input_lock_min.text(),
             "lock_max": self.input_lock_max.text(),
-            "polarity": self.input_polarity.text()
+            "polarity": self.input_polarity.text(),
+            "trace_data": getattr(self, "current_trace_data", None)
         }
         self.sig_save.emit(data)
 
