@@ -79,6 +79,7 @@ class GeneralManager:
     def connect_to_board(self, board):
         board_name = board.get('name', 'Unknown')
         self.logger.info(f"Connecting to {board_name}...")
+        self.window.page_laser.page_add_refline.set_board_name(board_name)
 
         self.laser = LaserManager(self.cfg, board)
         self.logger.info("LaserManager initialized.")

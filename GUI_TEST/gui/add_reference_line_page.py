@@ -242,3 +242,8 @@ class AddReferenceLinePage(QWidget):
             "polarity": self.input_polarity.text()
         }
         self.sig_save.emit(data)
+
+    @Slot(str)
+    def set_board_name(self, board_name):
+        """Sets the board name displayed on the form."""
+        self.lbl_board.setText(board_name)
