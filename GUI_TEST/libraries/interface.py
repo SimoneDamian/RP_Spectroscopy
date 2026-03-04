@@ -147,7 +147,7 @@ class HardwareInterface():
             sweep_signal['monitor_signal'] = monitor_signal
             return sweep_signal
         except Exception as e:
-            self.logger.error(f"Failed to get sweep: {e}")
+            self.logger.warning(f"Failed to get sweep: {e}")
             return None
 
     def set_value(self, param_name, value):

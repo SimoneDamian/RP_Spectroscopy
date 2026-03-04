@@ -127,6 +127,14 @@ class GeneralManager:
         self.window.page_laser.page_scan.sig_stop_scan.connect(self.laser.stop_scan)
         self.window.page_laser.page_scan.sig_back.connect(self.laser.start_sweep)
 
+        # Add Reference Line signals
+        add_ref_page = self.window.page_laser.page_add_refline
+        add_ref_page.sig_start_scan.connect(self.laser.start_scan)
+        add_ref_page.sig_stop_scan.connect(self.laser.stop_scan)
+        self.window.page_laser.sig_request_trace.connect(self.laser.get_sweep_from_scan)
+        self.laser.sig_trace_ready.connect(add_ref_page.update_trace)
+        add_ref_page.sig_back.connect(self.laser.start_sweep)
+
         # Manual Lock signals
         self.window.page_laser.sig_request_setup_manual_lock.connect(self.laser.setup_manual_lock)
         self.window.page_laser.sig_request_start_sweep.connect(self.laser.start_sweep)
@@ -220,6 +228,7 @@ class GeneralManager:
             total = packet.get("total_steps", 1)
             if step + 1 >= total:
                 self.window.page_laser.page_scan.set_scan_finished()
+                self.window.page_laser.page_add_refline.set_scan_finished()
 
     def save_advanced_settings(self):
         """

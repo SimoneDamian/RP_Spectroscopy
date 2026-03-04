@@ -14,6 +14,7 @@ class LaserManager(QObject):
     sig_parameters_ready = Signal()
     sig_data_ready = Signal(dict)
     sig_grafana_data_ready = Signal(dict)
+    sig_trace_ready = Signal(dict)
 
     def __init__(self, config, board):
         super().__init__()
@@ -192,6 +193,25 @@ class LaserManager(QObject):
 
         # 6. Increment for the next loop tick
         self.scan_index += 1
+
+    @Slot(float)
+    def get_sweep_from_scan(self, v_center):
+        """
+        Gets the trace from the existing scan results that matches `v_center` closest,
+        and emits it so the GUI can plot it.
+        """
+        if not hasattr(self, 'scan_voltages') or not hasattr(self, 'scan_results') or len(self.scan_results) == 0:
+            self.logger.warning("No scan data available to get trace from.")
+            return
+
+        # Handle the case where the scan is still running or finished early (results length < voltages length)
+        available_pts = len(self.scan_results)
+        available_volts = self.scan_voltages[:available_pts]
+
+        idx = (np.abs(available_volts - v_center)).argmin()
+        matching_trace = self.scan_results[idx]
+        
+        self.sig_trace_ready.emit(matching_trace)
 
     @Slot()
     def stop_scan(self):
