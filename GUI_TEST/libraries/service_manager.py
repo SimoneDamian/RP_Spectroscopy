@@ -551,6 +551,9 @@ class ServiceManager(QObject):
             elif packet["FSM_state"] == "LOCKED":
                 p.field("FSM_state", 5)
                 p.tag("FSM_state", "LOCKED")
+            elif packet["FSM_state"] == "OFF":
+                p.field("FSM_state", 6)
+                p.tag("FSM_state", "OFF")
 
         try:
             self.write_grafana_api.write(bucket=self.grafana_config['bucket'], org=self.grafana_config['org'], record=p)

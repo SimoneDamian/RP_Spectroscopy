@@ -276,7 +276,21 @@ class GeneralManager:
                 target[key] = val
 
     def cleanup(self):
+
+        if self.current_board:
+            packet = {
+                "mode": "Send_FSM_state",
+                "board_name": self.current_board.get('name', 'Unknown'),
+                "FSM_state": "OFF"
+            }
+            try:
+                # Direct call to ensure it's sent before the thread quits
+                self.services.send_point_to_grafana(packet)
+            except Exception as e:
+                self.logger.error(f"Failed to send OFF state to Grafana: {e}")
+
         self.logger.info("GeneralManager shutting down...")
+
         self.svc_thread.quit()
         self.svc_thread.wait()
         

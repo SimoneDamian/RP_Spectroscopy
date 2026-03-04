@@ -30,6 +30,7 @@ class LaserManager(QObject):
 
         self.state = "SWEEP"
         self.advanced_settings = {}
+        self.old_state = "OFF"
         
         # Setup Logging
         log_path = self.cfg.get('paths', {}).get('logs', './logs')
@@ -76,13 +77,18 @@ class LaserManager(QObject):
         based on the current state of the Finite State Machine.
         """
 
-        packet = {
-            "mode": "Send_FSM_state",
-            "board_name": self.board['name'],
-            "FSM_state": self.state
-        }
+        if self.state != self.old_state:
+            self.logger.info(f"State changed from {self.old_state} to {self.state}")
 
-        self.sig_grafana_data_ready.emit(packet)
+            packet = {
+                "mode": "Send_FSM_state",
+                "board_name": self.board['name'],
+                "FSM_state": self.state
+            }
+
+            self.sig_grafana_data_ready.emit(packet)
+
+        self.old_state = self.state
 
         
 
