@@ -52,7 +52,7 @@ writeable_parameters:
     gui_name: Offset CH1
     description: The vertical offset for CH1 in volts.
     type: float
-    initial_value: 0.013
+    initial_value: -0.1
     min: -1
     max: 1
     scaling: 8191
@@ -426,7 +426,7 @@ writeable_parameters:
     gui_name: Demodulation phase
     description: The demodulation phase for channel A in degree.
     type: float
-    initial_value: 250.0
+    initial_value: 235.0
     min: 0
     max: 360
     scaling: 1.0  # degrees

@@ -430,6 +430,7 @@ class PlotPanel(QWidget):
         self.register_handler("SETUP_MANUAL_LOCK", ManualLockingPlotHandler())
         
         self.register_handler("MANUAL_LOCKING", MessagePlotHandler())
+        self.register_handler("TEXT", MessagePlotHandler())
         self.register_handler("LOCKED", LockingMonitorPlotHandler())
 
     def register_handler(self, mode: str, handler: BasePlotHandler):

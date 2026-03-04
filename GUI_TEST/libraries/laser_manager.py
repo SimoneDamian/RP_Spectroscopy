@@ -103,19 +103,28 @@ class LaserManager(QObject):
     @Slot(str)
     def set_state(self, state):
         self.state = state
+        if state == "SWEEP":
+            self.interface.stop_lock()
+            #self.interface.wait_for_lock_status(False)
 
     @Slot(str)
     def get_and_send_sweep(self, mode):
 
         sweep_signal = self.interface.get_sweep()
 
-        packet = {
-            "mode": mode,
-            "x": sweep_signal["x"],
-            "error_signal": sweep_signal["error_signal"],
-            "error_signal_strength": sweep_signal["error_signal_strength"],
-            "monitor_signal": sweep_signal["monitor_signal"]
-        }
+        if sweep_signal is None:
+            packet = {
+                "mode": "TEXT",
+                "text": "Starting the sweep..."
+            }
+        else:
+            packet = {
+                "mode": mode,
+                "x": sweep_signal["x"],
+                "error_signal": sweep_signal["error_signal"],
+                "error_signal_strength": sweep_signal["error_signal_strength"],
+                "monitor_signal": sweep_signal["monitor_signal"]
+            }
 
         #self.logger.info(f"first error_signal data: {sweep_signal['error_signal'][0:20]}")
 

@@ -99,32 +99,56 @@ class HardwareInterface():
     def write_registers(self):
         self.client.connection.root.write_registers()
 
+    def stop_lock(self):
+        """
+        Properly stop the lock and return to sweep mode.
+        Mirrors linien GUI's on_stop_lock: first stop the autolock task,
+        then call exposed_start_sweep() which sets lock=False and restarts acquisition.
+        """
+        # 1. Stop the autolock task (same as linien GUI's on_stop_lock)
+        try:
+            task = self.client.parameters.task.value
+            if task is not None:
+                task.stop()
+                self.client.parameters.task.value = None
+                self.logger.info("Autolock task stopped.")
+        except Exception as e:
+            self.logger.warning(f"Could not stop autolock task: {e}")
+
+        # 2. Start sweep (sets lock=False, resets combined_offset, restarts acquisition)
+        self.client.connection.root.exposed_start_sweep()
+        self.logger.info("Lock stopped, sweep restarted.")
+
     def start_sweep(self):
-        self.client.connection.root.start_sweep()
+        self.client.connection.root.exposed_start_sweep()
 
     def check_for_changed_parameters(self):
         self.client.parameters.check_for_changed_parameters()
 
     def get_sweep(self):
         """
-        Neglectiing the mixing channel for simplicity.
+        Neglecting the mixing channel for simplicity.
         """
         self.check_for_changed_parameters()
         to_plot = pickle.loads(self.readable_params["sweep_signal"].get_remote_value())
-        error_signal = np.array(to_plot["error_signal_1"]/(2*Vpp))
-        error_signal_quadrature = np.array(to_plot['error_signal_1_quadrature'])/(2*Vpp)
-        error_signal_strength = np.sqrt(error_signal**2 + error_signal_quadrature**2)
-        monitor_signal = np.array(to_plot["monitor_signal"]/(2*Vpp))
-        sweep_signal = {}
-        sweep_center = self.writeable_params["sweep_center"].get_remote_value()
-        sweep_range = self.writeable_params["sweep_amplitude"].get_remote_value()
-        sweep_scan = np.linspace(sweep_center - sweep_range, sweep_center + sweep_range, len(error_signal))
-        sweep_signal['x'] = sweep_scan
-        sweep_signal['error_signal'] = error_signal
-        sweep_signal['error_signal_strength'] = error_signal_strength
-        sweep_signal['monitor_signal'] = monitor_signal
-        
-        return sweep_signal
+        self.logger.info(f"Entries of the sweep: {list(to_plot.keys())}")
+        try:
+            error_signal = np.array(to_plot["error_signal_1"]/(2*Vpp))
+            error_signal_quadrature = np.array(to_plot['error_signal_1_quadrature'])/(2*Vpp)
+            error_signal_strength = np.sqrt(error_signal**2 + error_signal_quadrature**2)
+            monitor_signal = np.array(to_plot["monitor_signal"]/(2*Vpp))
+            sweep_signal = {}
+            sweep_center = self.writeable_params["sweep_center"].get_remote_value()
+            sweep_range = self.writeable_params["sweep_amplitude"].get_remote_value()
+            sweep_scan = np.linspace(sweep_center - sweep_range, sweep_center + sweep_range, len(error_signal))
+            sweep_signal['x'] = sweep_scan
+            sweep_signal['error_signal'] = error_signal
+            sweep_signal['error_signal_strength'] = error_signal_strength
+            sweep_signal['monitor_signal'] = monitor_signal
+            return sweep_signal
+        except Exception as e:
+            self.logger.error(f"Failed to get sweep: {e}")
+            return None
 
     def set_value(self, param_name, value):
         """
@@ -165,11 +189,10 @@ class HardwareInterface():
         """
         counter = 0
         while True:
-            print("checking lock status...")
+            #print("checking lock status...")
             self.logger.info("checking lock status...")
             to_plot = pickle.loads(self.client.parameters.to_plot.value)
-
-            #print(f"to_plot keys: {list(to_plot.keys())}")
+            self.logger.info(f"to_plot keys: {list(to_plot.keys())}")
 
             is_locked = "error_signal" in to_plot
 
