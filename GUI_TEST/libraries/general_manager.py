@@ -7,6 +7,7 @@ import os
 from .logging_config import setup_logging
 from ruamel.yaml import YAML
 import warnings
+import schedule
 
 
 class GeneralManager:
@@ -87,6 +88,7 @@ class GeneralManager:
         self.lsr_thread = QThread()
         self.laser.moveToThread(self.lsr_thread)
         self.logger.info("LaserManager moved to thread.")
+        schedule.every(5).minutes.do(self.laser.send_grafana_state)
         
         # Connect started signal to setup method to ensure it runs in the thread
         self.lsr_thread.started.connect(self.laser.setup)

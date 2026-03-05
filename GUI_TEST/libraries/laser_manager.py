@@ -43,6 +43,17 @@ class LaserManager(QObject):
         self.logger.info("LaserManager initialized.")
 
     @Slot()
+    def send_grafana_state(self):
+        self.logger.info(f"Sending FSM state: {self.state}")
+        packet = {
+            "mode": "Send_FSM_state",
+            "board_name": self.board['name'],
+            "FSM_state": self.state
+        }
+
+        self.sig_grafana_data_ready.emit(packet)
+
+    @Slot()
     def stop(self):
         """
         Stops the control loop timer
@@ -81,6 +92,14 @@ class LaserManager(QObject):
 
         if self.state != self.old_state:
             self.logger.info(f"State changed from {self.old_state} to {self.state}")
+            
+            packet = {
+                "mode": "Send_FSM_state",
+                "board_name": self.board['name'],
+                "FSM_state": self.old_state
+            }
+
+            self.sig_grafana_data_ready.emit(packet)
 
             packet = {
                 "mode": "Send_FSM_state",

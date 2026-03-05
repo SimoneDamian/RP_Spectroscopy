@@ -633,14 +633,14 @@ advanced_settings:
       description: The program is able to show the derivative of the fast 
         control signal. You can choose to use this feature or not. Useful to 
         tune the threshold of the fast control signal fluctuations.
-      enabled: true
+      enabled: false
 
     slow_control_signal_derivative:
       gui_name: Show slow control signal derivative
       description: The program is able to show the derivative of the slow 
         control signal. You can choose to use this feature or not. Useful to 
         tune the threshold of the slow control signal fluctuations.
-      enabled: true
+      enabled: false
 
   # --- AUTOLOCK SETTINGS ---
   autolock_settings:

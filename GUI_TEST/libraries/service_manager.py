@@ -598,39 +598,35 @@ class ServiceManager(QObject):
 
     @Slot(dict)
     def send_point_to_grafana(self, packet):
-
         p = Point("Locking_data") \
             .tag("board", packet["board_name"]) \
             .time(time.time_ns(), WritePrecision.NS)
         
-        mode = packet.get("mode")
-        
-        if mode == "Send_FSM_state":
-
-            if packet["FSM_state"] == "IDLE":
-                p.field("FSM_state", 0)
-                p.tag("FSM_state", "IDLE")
-            elif packet["FSM_state"] == "SWEEP":
-                p.field("FSM_state", 1)
-                p.tag("FSM_state", "SWEEP")
-            elif packet["FSM_state"] == "SCAN":
-                p.field("FSM_state", 2)
-                p.tag("FSM_state", "SCAN")
-            elif packet["FSM_state"] == "SETUP_MANUAL_LOCK":
-                p.field("FSM_state", 3)
-                p.tag("FSM_state", "SETUP_MANUAL_LOCK")
-            elif packet["FSM_state"] == "MANUAL_LOCKING":
-                p.field("FSM_state", 4)
-                p.tag("FSM_state", "MANUAL_LOCKING")
-            elif packet["FSM_state"] == "LOCKED":
-                p.field("FSM_state", 5)
-                p.tag("FSM_state", "LOCKED")
-            elif packet["FSM_state"] == "OFF":
-                p.field("FSM_state", 6)
-                p.tag("FSM_state", "OFF")
+        if packet.get("mode") == "Send_FSM_state":
+            # Map states to integers
+            state_map = {
+                "IDLE": 0,
+                "SWEEP": 1,
+                "SCAN": 2,
+                "SETUP_MANUAL_LOCK": 3,
+                "MANUAL_LOCKING": 4,
+                "LOCKED": 5,
+                "OFF": 6
+            }
+            
+            current_state = packet.get("FSM_state")
+            
+            if current_state in state_map:
+                # Use distinct names to avoid InfluxDB collisions
+                p.field("state_code", state_map[current_state])
+                p.tag("state_name", current_state)
 
         try:
-            self.write_grafana_api.write(bucket=self.grafana_config['bucket'], org=self.grafana_config['org'], record=p)
+            self.write_grafana_api.write(
+                bucket=self.grafana_config['bucket'], 
+                org=self.grafana_config['org'], 
+                record=p
+            )
         except Exception as e:
             self.logger.error(f"Failed to send data to Grafana: {e}")
 
