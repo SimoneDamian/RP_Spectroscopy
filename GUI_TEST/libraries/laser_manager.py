@@ -1,6 +1,7 @@
 from .logging_config import setup_logging
 from .interface import HardwareInterface
 from .controller import LockController
+from .signal_analysis import SignalAnalysis
 from PySide6.QtCore import QObject, Signal, Slot, QTimer
 import os
 import logging
@@ -27,6 +28,7 @@ class LaserManager(QObject):
         self.interface = None 
         self.controller = None 
         self.timer = None
+        self.signal_analysis = SignalAnalysis(config)
 
         self.state = "SWEEP"
         self.advanced_settings = {}
@@ -139,15 +141,25 @@ class LaserManager(QObject):
 
 
     @Slot(float, float, int)
-    def start_scan(self, start_voltage=0.05, stop_voltage=1.75, num_points=40):
+    def start_scan(self, start_voltage=0.05, stop_voltage=1.75, num_points=40, calculate_correlation=False):
         """
         Initializes the scan variables and enters the SCAN state.
         This function returns immediately (Non-blocking).
         """
+        self.calculate_correlation = calculate_correlation
+        if self.calculate_correlation:
+            num_points = int((stop_voltage - start_voltage) / 0.02) #maybe sweep_amplitude/(ref_line_width*100)
+            self.scan_voltages = np.linspace(start_voltage, stop_voltage, num_points)
+            self.correlations = np.zeros(num_points)
+            self.amplitudes = np.zeros(num_points)
+            self.len_matches = np.zeros(num_points)
+            self.offsets = np.zeros(num_points)
+        else:
+            self.scan_voltages = np.linspace(start_voltage, stop_voltage, num_points)
+
+
         self.logger.info(f"Initiating scan: {start_voltage}V -> {stop_voltage}V ({num_points} pts)")
         
-        # 1. Pre-calculate the voltage array
-        self.scan_voltages = np.linspace(start_voltage, stop_voltage, num_points)
         self.scan_index = 0
         self.scan_results = [] # Buffer to store accumulated results
         
@@ -185,8 +197,6 @@ class LaserManager(QObject):
         # 4. Store Data
         self.scan_results.append(current_sweep)
         
-        # 5. Emit Partial Result (The "Old + New" requirement)
-        # We send the specific index so the GUI knows where to plot it
         packet = {
             "mode": "SCAN",
             "step_index": self.scan_index,
@@ -195,6 +205,20 @@ class LaserManager(QObject):
             "scan_data": self.scan_results, # Sends all accumulated data
             "latest_sweep": current_sweep   # Sends just the newest trace
         }
+
+        if self.calculate_correlation:
+            r_coeff, len_window, offset, amplitude = self.signal_analysis.find_correlation({'x': current_sweep['x'], 'y': current_sweep['error_signal']}, reference_signal)
+            self.correlations[self.scan_index] = r_coeff
+            self.amplitudes[self.scan_index] = amplitude
+            self.len_matches[self.scan_index] = len_window
+            self.offsets[self.scan_index] = offset
+            self.logger.debug(f"Correlation at {target_v}V: {r_coeff}, Length of match: {len_window}, offset with respect to the reference signal: {offset}")
+            packet.update({
+                "correlations": self.correlations
+            })
+        # 5. Emit Partial Result (The "Old + New" requirement)
+        # We send the specific index so the GUI knows where to plot it
+        
         self.sig_data_ready.emit(packet)
 
         # 6. Increment for the next loop tick
