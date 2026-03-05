@@ -29404,3 +29404,116 @@
 2026-03-05 12:10:42 - LaserManager - INFO - Sweep started by user.
 2026-03-05 12:10:42 - LaserManager - INFO - State changed from IDLE to SWEEP
 2026-03-05 12:24:31 - LaserManager - INFO - Control loop timer stopped.
+2026-03-05 12:31:01 - LaserManager - INFO - LaserManager initialized.
+2026-03-05 12:31:05 - LaserManager - INFO - LaserManager setup complete. Control loop started.
+2026-03-05 12:31:05 - LaserManager - INFO - Advanced settings loaded into Interface.
+2026-03-05 12:31:07 - LaserManager - INFO - Parameters loaded into Interface.
+2026-03-05 12:31:07 - LaserManager - INFO - Set parameter big_offset to 0.95
+2026-03-05 12:31:07 - LaserManager - INFO - Set parameter channel_mixing to -128
+2026-03-05 12:31:08 - LaserManager - INFO - Set parameter control_channel to 1
+2026-03-05 12:31:08 - LaserManager - INFO - Set parameter control_history_length to 60
+2026-03-05 12:31:08 - LaserManager - INFO - Set parameter demodulation_multiplier_a to 1
+2026-03-05 12:31:09 - LaserManager - INFO - Set parameter demodulation_multiplier_b to 0
+2026-03-05 12:31:09 - LaserManager - INFO - Set parameter dual_channel to False
+2026-03-05 12:31:10 - LaserManager - INFO - Set parameter filter_1_enabled_a to True
+2026-03-05 12:31:10 - LaserManager - INFO - Set parameter filter_1_enabled_b to False
+2026-03-05 12:31:11 - LaserManager - INFO - Set parameter filter_1_frequency to 1000.0
+2026-03-05 12:31:11 - LaserManager - INFO - Set parameter filter_1_type_a to 0
+2026-03-05 12:31:12 - LaserManager - INFO - Set parameter filter_1_type_b to 0
+2026-03-05 12:31:12 - LaserManager - INFO - Set parameter filter_2_enabled_a to False
+2026-03-05 12:31:13 - LaserManager - INFO - Set parameter filter_2_enabled_b to True
+2026-03-05 12:31:13 - LaserManager - INFO - Set parameter filter_2_frequency to 0.0
+2026-03-05 12:31:14 - LaserManager - INFO - Set parameter filter_2_type_a to 0
+2026-03-05 12:31:14 - LaserManager - INFO - Set parameter filter_2_type_b to 0
+2026-03-05 12:31:15 - LaserManager - INFO - Set parameter filter_automatic_a to False
+2026-03-05 12:31:15 - LaserManager - INFO - Set parameter filter_automatic_b to False
+2026-03-05 12:31:15 - LaserManager - INFO - Set parameter invert_a to False
+2026-03-05 12:31:16 - LaserManager - INFO - Set parameter invert_b to False
+2026-03-05 12:31:16 - LaserManager - INFO - Set parameter modulation_amplitude to 0.3
+2026-03-05 12:31:17 - LaserManager - INFO - Set parameter modulation_channel to 0
+2026-03-05 12:31:17 - LaserManager - INFO - Set parameter modulation_frequency to 0.035
+2026-03-05 12:31:18 - LaserManager - INFO - Set parameter offset_a to -0.1
+2026-03-05 12:31:18 - LaserManager - INFO - Set parameter offset_b to 0.0
+2026-03-05 12:31:19 - LaserManager - INFO - Set parameter phase to 235.0
+2026-03-05 12:31:19 - LaserManager - INFO - Set parameter pid_d to 1
+2026-03-05 12:31:19 - LaserManager - INFO - Set parameter pid_i to 100
+2026-03-05 12:31:20 - LaserManager - INFO - Set parameter pid_on_slow_enabled to True
+2026-03-05 12:31:20 - LaserManager - INFO - Set parameter pid_p to 2000
+2026-03-05 12:31:21 - LaserManager - INFO - Set parameter pid_slow_strength to 3
+2026-03-05 12:31:21 - LaserManager - INFO - Set parameter polarity_analog_out0 to 0
+2026-03-05 12:31:22 - LaserManager - INFO - Set parameter polarity_fast_out1 to 0
+2026-03-05 12:31:22 - LaserManager - INFO - Set parameter polarity_fast_out2 to 0
+2026-03-05 12:31:23 - LaserManager - INFO - Set parameter slow_control_channel to 2
+2026-03-05 12:31:23 - LaserManager - INFO - Set parameter small_offset to 0.0
+2026-03-05 12:31:24 - LaserManager - INFO - Set parameter sweep_amplitude to 1.0
+2026-03-05 12:31:24 - LaserManager - INFO - Set parameter sweep_center to 0.0
+2026-03-05 12:31:24 - LaserManager - INFO - Set parameter sweep_channel to 1
+2026-03-05 12:31:25 - LaserManager - INFO - Set parameter sweep_speed to 10
+2026-03-05 12:31:26 - LaserManager - INFO - Set parameter target_slope_rising to True
+2026-03-05 12:31:26 - LaserManager - INFO - State changed from OFF to SWEEP
+2026-03-05 12:31:51 - LaserManager - INFO - Initiating scan: 0.85V -> 1.0V (7 pts)
+2026-03-05 12:31:51 - LaserManager - INFO - State changed from SWEEP to SCAN
+2026-03-05 12:32:02 - LaserManager - INFO - Scan completed successfully.
+2026-03-05 12:32:02 - LaserManager - INFO - State changed from SCAN to IDLE
+2026-03-05 12:32:46 - LaserManager - INFO - Sweep started by user.
+2026-03-05 12:32:47 - LaserManager - INFO - State changed from IDLE to SWEEP
+2026-03-05 12:33:18 - LaserManager - INFO - Sweep started by user.
+2026-03-05 12:33:20 - LaserManager - INFO - Control loop timer stopped.
+2026-03-05 12:40:40 - LaserManager - INFO - LaserManager initialized.
+2026-03-05 12:40:43 - LaserManager - INFO - LaserManager setup complete. Control loop started.
+2026-03-05 12:40:44 - LaserManager - INFO - Advanced settings loaded into Interface.
+2026-03-05 12:40:45 - LaserManager - INFO - Parameters loaded into Interface.
+2026-03-05 12:40:45 - LaserManager - INFO - Set parameter big_offset to 0.95
+2026-03-05 12:40:46 - LaserManager - INFO - Set parameter channel_mixing to -128
+2026-03-05 12:40:46 - LaserManager - INFO - Set parameter control_channel to 1
+2026-03-05 12:40:47 - LaserManager - INFO - Set parameter control_history_length to 60
+2026-03-05 12:40:47 - LaserManager - INFO - Set parameter demodulation_multiplier_a to 1
+2026-03-05 12:40:48 - LaserManager - INFO - Set parameter demodulation_multiplier_b to 0
+2026-03-05 12:40:48 - LaserManager - INFO - Set parameter dual_channel to False
+2026-03-05 12:40:49 - LaserManager - INFO - Set parameter filter_1_enabled_a to True
+2026-03-05 12:40:49 - LaserManager - INFO - Set parameter filter_1_enabled_b to False
+2026-03-05 12:40:50 - LaserManager - INFO - Set parameter filter_1_frequency to 1000.0
+2026-03-05 12:40:50 - LaserManager - INFO - Set parameter filter_1_type_a to 0
+2026-03-05 12:40:50 - LaserManager - INFO - Set parameter filter_1_type_b to 0
+2026-03-05 12:40:51 - LaserManager - INFO - Set parameter filter_2_enabled_a to False
+2026-03-05 12:40:51 - LaserManager - INFO - Set parameter filter_2_enabled_b to True
+2026-03-05 12:40:52 - LaserManager - INFO - Set parameter filter_2_frequency to 0.0
+2026-03-05 12:40:52 - LaserManager - INFO - Set parameter filter_2_type_a to 0
+2026-03-05 12:40:53 - LaserManager - INFO - Set parameter filter_2_type_b to 0
+2026-03-05 12:40:53 - LaserManager - INFO - Set parameter filter_automatic_a to False
+2026-03-05 12:40:54 - LaserManager - INFO - Set parameter filter_automatic_b to False
+2026-03-05 12:40:54 - LaserManager - INFO - Set parameter invert_a to False
+2026-03-05 12:40:55 - LaserManager - INFO - Set parameter invert_b to False
+2026-03-05 12:40:55 - LaserManager - INFO - Set parameter modulation_amplitude to 0.3
+2026-03-05 12:40:56 - LaserManager - INFO - Set parameter modulation_channel to 0
+2026-03-05 12:40:56 - LaserManager - INFO - Set parameter modulation_frequency to 0.035
+2026-03-05 12:40:57 - LaserManager - INFO - Set parameter offset_a to -0.1
+2026-03-05 12:40:57 - LaserManager - INFO - Set parameter offset_b to 0.0
+2026-03-05 12:40:57 - LaserManager - INFO - Set parameter phase to 235.0
+2026-03-05 12:40:58 - LaserManager - INFO - Set parameter pid_d to 1
+2026-03-05 12:40:59 - LaserManager - INFO - Set parameter pid_i to 100
+2026-03-05 12:40:59 - LaserManager - INFO - Set parameter pid_on_slow_enabled to True
+2026-03-05 12:41:00 - LaserManager - INFO - Set parameter pid_p to 2000
+2026-03-05 12:41:00 - LaserManager - INFO - Set parameter pid_slow_strength to 3
+2026-03-05 12:41:01 - LaserManager - INFO - Set parameter polarity_analog_out0 to 0
+2026-03-05 12:41:01 - LaserManager - INFO - Set parameter polarity_fast_out1 to 0
+2026-03-05 12:41:01 - LaserManager - INFO - Set parameter polarity_fast_out2 to 0
+2026-03-05 12:41:02 - LaserManager - INFO - Set parameter slow_control_channel to 2
+2026-03-05 12:41:02 - LaserManager - INFO - Set parameter small_offset to 0.0
+2026-03-05 12:41:03 - LaserManager - INFO - Set parameter sweep_amplitude to 1.0
+2026-03-05 12:41:03 - LaserManager - INFO - Set parameter sweep_center to 0.0
+2026-03-05 12:41:04 - LaserManager - INFO - Set parameter sweep_channel to 1
+2026-03-05 12:41:04 - LaserManager - INFO - Set parameter sweep_speed to 10
+2026-03-05 12:41:05 - LaserManager - INFO - Set parameter target_slope_rising to True
+2026-03-05 12:41:05 - LaserManager - INFO - State changed from OFF to SWEEP
+2026-03-05 12:41:29 - LaserManager - INFO - Initiating scan: 0.85V -> 1.0V (7 pts)
+2026-03-05 12:41:29 - LaserManager - INFO - State changed from SWEEP to SCAN
+2026-03-05 12:41:40 - LaserManager - INFO - Scan completed successfully.
+2026-03-05 12:41:40 - LaserManager - INFO - State changed from SCAN to IDLE
+2026-03-05 12:41:56 - LaserManager - INFO - Set parameter big_offset to 0.94
+2026-03-05 12:41:58 - LaserManager - INFO - Sweep started by user.
+2026-03-05 12:41:59 - LaserManager - INFO - State changed from IDLE to SWEEP
+2026-03-05 12:42:18 - LaserManager - INFO - Set parameter big_offset to 0.94
+2026-03-05 12:42:25 - LaserManager - INFO - Set parameter big_offset to 0.9
+2026-03-05 12:42:30 - LaserManager - INFO - Sweep started by user.
+2026-03-05 12:42:44 - LaserManager - INFO - Control loop timer stopped.

@@ -6,7 +6,7 @@ from PySide6.QtCore import Qt, Signal, Slot
 from PySide6.QtGui import QDoubleValidator
 
 class LineCenteringPage(QWidget):
-    sig_start_scan = Signal(float, float)
+    sig_start_scan = Signal(float, float, int, bool, dict)
     sig_stop_scan = Signal()
     sig_center = Signal(float)
     sig_back = Signal()
@@ -86,17 +86,21 @@ class LineCenteringPage(QWidget):
         btn_row.addWidget(self.btn_stop_scan)
         layout.addLayout(btn_row)
 
-        # --- Plot 2: Will be filled later ---
-        self.plot_scan = pg.PlotWidget(title="Live Scan")
-        self.plot_scan.setBackground('w')
-        self.plot_scan.showGrid(x=True, y=True)
-        self.plot_scan.setMinimumHeight(200)
-        self.plot_scan_item = self.plot_scan.getPlotItem()
-        self.plot_scan_item.setLabel('bottom', 'V', units='V')
-        self.plot_scan_item.setLabel('left', 'Signal')
-        self.plot_scan_item.getAxis('bottom').enableAutoSIPrefix(False)
-        self.plot_scan_item.getAxis('left').enableAutoSIPrefix(False)
-        layout.addWidget(self.plot_scan)
+        # --- Plot 2: Correlations ---
+        self.plot_corr = pg.PlotWidget(title="Correlations")
+        self.plot_corr.setBackground('w')
+        self.plot_corr.showGrid(x=True, y=True)
+        self.plot_corr.setMinimumHeight(200)
+        self.plot_corr_item = self.plot_corr.getPlotItem()
+        self.plot_corr_item.setLabel('bottom', 'V', units='V')
+        self.plot_corr_item.setLabel('left', 'Correlation')
+        self.plot_corr_item.getAxis('bottom').enableAutoSIPrefix(False)
+        self.plot_corr_item.getAxis('left').enableAutoSIPrefix(False)
+        self.curve_corr = self.plot_corr_item.plot(pen='g', symbol='o', symbolSize=5)
+        layout.addWidget(self.plot_corr)
+        
+        self.corr_x = []
+        self.corr_y = []
 
         # --- Center Here Row ---
         center_row = QHBoxLayout()
@@ -169,12 +173,43 @@ class LineCenteringPage(QWidget):
             end_v = float(self.input_end_v.text())
         except ValueError:
             return
+            
+        index = self.combo_refline.currentIndex()
+        if index <= 0 or not self.service_manager:
+            return
+            
+        selected_name = self.combo_refline.itemText(index)
+        item_data = next((i for i in self.current_reference_data if i['name'] == selected_name), None)
+        if not item_data: return
+        filename = item_data.get('file_name', item_data.get('file', item_data.get('name', '')))
+        x, y = self.service_manager.get_reference_line_data(filename)
+        if x is None or y is None: return
 
         self.btn_start_scan.setEnabled(False)
         self.btn_back.setEnabled(False)
         self.btn_stop_scan.setEnabled(True)
+        
+        self.corr_x = []
+        self.corr_y = []
+        self.curve_corr.setData([], [])
 
-        self.sig_start_scan.emit(start_v, end_v)
+        self.sig_start_scan.emit(start_v, end_v, 40, True, {'x': x, 'y': y})
+
+    @Slot(dict)
+    def handle_data(self, packet):
+        if packet.get("mode") == "SCAN" and "correlations" in packet:
+            step = packet.get("step_index", 0)
+            if step == len(self.corr_x):
+                current_v = packet.get("current_voltage", 0.0)
+                corr_val = packet["correlations"][step]
+                
+                self.corr_x.append(current_v)
+                self.corr_y.append(corr_val)
+                self.curve_corr.setData(self.corr_x, self.corr_y)
+                
+                if len(self.corr_y) > 0:
+                    max_idx = np.argmax(self.corr_y)
+                    self.input_center.setText(f"{self.corr_x[max_idx]:.4f}")
 
     def _on_stop_scan(self):
         self.sig_stop_scan.emit()

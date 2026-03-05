@@ -141,11 +141,12 @@ class LaserManager(QObject):
 
 
     @Slot(float, float, int)
-    def start_scan(self, start_voltage=0.05, stop_voltage=1.75, num_points=40, calculate_correlation=False):
+    def start_scan(self, start_voltage=0.05, stop_voltage=1.75, num_points=40, calculate_correlation=False, reference_signal=None):
         """
         Initializes the scan variables and enters the SCAN state.
         This function returns immediately (Non-blocking).
         """
+        self.reference_signal = reference_signal
         self.calculate_correlation = calculate_correlation
         if self.calculate_correlation:
             num_points = int((stop_voltage - start_voltage) / 0.02) #maybe sweep_amplitude/(ref_line_width*100)
@@ -207,7 +208,7 @@ class LaserManager(QObject):
         }
 
         if self.calculate_correlation:
-            r_coeff, len_window, offset, amplitude = self.signal_analysis.find_correlation({'x': current_sweep['x'], 'y': current_sweep['error_signal']}, reference_signal)
+            r_coeff, len_window, offset, amplitude = self.signal_analysis.find_correlation({'x': current_sweep['x'], 'y': current_sweep['error_signal']}, self.reference_signal)
             self.correlations[self.scan_index] = r_coeff
             self.amplitudes[self.scan_index] = amplitude
             self.len_matches[self.scan_index] = len_window

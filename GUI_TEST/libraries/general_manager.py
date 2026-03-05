@@ -129,6 +129,17 @@ class GeneralManager:
         self.window.page_laser.page_scan.sig_stop_scan.connect(self.laser.stop_scan)
         self.window.page_laser.page_scan.sig_back.connect(self.laser.start_sweep)
 
+        # Line Centering signals
+        self.window.page_laser.page_centering.sig_start_scan.connect(
+            lambda start, stop, pts, calc, ref: self.laser.start_scan(start, stop, pts, calc, ref)
+        )
+        self.window.page_laser.page_centering.sig_stop_scan.connect(self.laser.stop_scan)
+        self.window.page_laser.page_centering.sig_back.connect(self.laser.start_sweep)
+        self.laser.sig_data_ready.connect(self.window.page_laser.page_centering.handle_data)
+        self.window.page_laser.page_centering.sig_center.connect(
+            lambda val: self.laser.set_parameter_value("big_offset", val)
+        )
+
         # Add Reference Line signals
         add_ref_page = self.window.page_laser.page_add_refline
         add_ref_page.sig_start_scan.connect(self.laser.start_scan)
@@ -233,6 +244,7 @@ class GeneralManager:
             if step + 1 >= total:
                 self.window.page_laser.page_scan.set_scan_finished()
                 self.window.page_laser.page_add_refline.set_scan_finished()
+                self.window.page_laser.page_centering.set_scan_finished()
 
     def save_advanced_settings(self):
         """
