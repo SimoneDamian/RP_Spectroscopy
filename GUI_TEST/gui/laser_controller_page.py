@@ -9,6 +9,7 @@ from gui.plot_panel import PlotPanel
 from gui.advanced_settings_page import AdvancedSettingsPage
 from gui.reference_lines_page import ReferenceLinesPage
 from gui.add_reference_line_page import AddReferenceLinePage
+from gui.line_centering_page import LineCenteringPage
 
 
 
@@ -459,7 +460,7 @@ class LaserControllerPage(QWidget):
         self.page_reflines = ReferenceLinesPage(self.logger)
         self.page_add_refline = AddReferenceLinePage()
         self.page_scan = ScanPage()
-        self.page_centering = SubPageContainer("Line Centering")
+        self.page_centering = LineCenteringPage(self.logger)
         self.page_manual = ManualLockPage()
         self.page_auto = SubPageContainer("Auto-lock")
 

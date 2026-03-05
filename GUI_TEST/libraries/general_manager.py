@@ -57,7 +57,8 @@ class GeneralManager:
         
         # Inject ServiceManager into ReferenceLinesPage
         self.window.page_reflines.set_service_manager(self.services)
-        self.logger.info("ServiceManager injected into ReferenceLinesPage.")
+        self.window.page_laser.page_centering.set_service_manager(self.services)
+        self.logger.info("ServiceManager injected into ReferenceLinesPage and LineCenteringPage.")
 
         self.svc_thread.start()
         self.logger.info("ServiceManager thread started.")
@@ -180,6 +181,7 @@ class GeneralManager:
 
         # Inject ServiceManager into laser controller's ReferenceLinesPage
         self.window.page_laser.page_reflines.set_service_manager(self.services)
+        self.window.page_laser.page_centering.set_service_manager(self.services)
 
     @Slot()
     def on_laser_connected(self):
