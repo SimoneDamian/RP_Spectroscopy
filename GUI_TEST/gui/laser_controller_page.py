@@ -248,6 +248,24 @@ class ParametersPage(SubPageContainer):
                 # Handle invalid input — ignore for now
                 pass
 
+    @Slot(str, object)
+    def update_parameter(self, param_name, new_val):
+        """Updates the value of a specific parameter in the table."""
+        if param_name not in self.params:
+            return
+            
+        for row in range(self.table.rowCount()):
+            item_val = self.table.item(row, 1)
+            if item_val and item_val.data(Qt.UserRole) == param_name:
+                self._is_populating = True
+                if isinstance(new_val, float):
+                    val_str = f"{new_val:.6g}"
+                else:
+                    val_str = str(new_val)
+                item_val.setText(val_str)
+                self._is_populating = False
+                break
+
     @Slot()
     def on_defaults_clicked(self):
         """

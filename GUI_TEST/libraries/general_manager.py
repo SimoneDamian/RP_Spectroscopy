@@ -136,9 +136,12 @@ class GeneralManager:
         self.window.page_laser.page_centering.sig_stop_scan.connect(self.laser.stop_scan)
         self.window.page_laser.page_centering.sig_back.connect(self.laser.start_sweep)
         self.laser.sig_data_ready.connect(self.window.page_laser.page_centering.handle_data)
-        self.window.page_laser.page_centering.sig_center.connect(
-            lambda val: self.laser.set_parameter_value("big_offset", val)
-        )
+        
+        def _on_center(val):
+            self.laser.set_parameter_value("big_offset", val)
+            self.window.page_laser.page_parameters.update_parameter("big_offset", val)
+            
+        self.window.page_laser.page_centering.sig_center.connect(_on_center)
 
         # Add Reference Line signals
         add_ref_page = self.window.page_laser.page_add_refline
