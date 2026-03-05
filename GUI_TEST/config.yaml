@@ -31,7 +31,7 @@ services:
 
   # Grafana (via InfluxDB): For long-term monitoring
   grafana:
-    bucket: locking_parameters
-    org: lab_bec1
-    url: http://localhost:8086
-    token: VG0O9fEgoMWlKrn83VwaoU6w3IhfP3l-WJqF0kQCArYT2MdwPK-rgO68oH7_awXlnYyDYzCWDbOsbdY4kkJ0UA==
+    bucket: "LockingApp"
+    org: "lab_bec"
+    url: "http://localhost:8086"
+    token: "VG0O9fEgoMWlKrn83VwaoU6w3IhfP3l-WJqF0kQCArYT2MdwPK-rgO68oH7_awXlnYyDYzCWDbOsbdY4kkJ0UA=="

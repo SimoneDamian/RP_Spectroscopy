@@ -1,3 +1,4 @@
+import numpy as np
 from PySide6.QtWidgets import (QWidget, QVBoxLayout, QLabel, QSplitter, QStackedWidget,
                                QPushButton, QFrame, QHBoxLayout, QSizePolicy, QTableWidget,
                                QTableWidgetItem, QHeaderView, QMessageBox, QLineEdit,
@@ -6,6 +7,8 @@ from PySide6.QtCore import Qt, Slot, Signal
 from PySide6.QtGui import QDoubleValidator, QIntValidator
 from gui.plot_panel import PlotPanel
 from gui.advanced_settings_page import AdvancedSettingsPage
+from gui.reference_lines_page import ReferenceLinesPage
+from gui.add_reference_line_page import AddReferenceLinePage
 
 
 
@@ -348,7 +351,88 @@ class ScanPage(QWidget):
         self.btn_stop_scan.setEnabled(False)
 
 
+class ManualLockPage(SubPageContainer):
+    """
+    Manual Lock sub-page for setting lock region boundaries.
+    """
+    sig_region_changed = Signal(float, float)
+    sig_start_lock = Signal(float, float)
+
+    def __init__(self, title="Manual Lock"):
+        super().__init__(title)
+        
+        # --- Description Text ---
+        self.lbl_desc = QLabel(
+            "Choose the boundaries of the lock region. Keep in mid that the lock point "
+            "will be determined by the zero-crossing point between a minimum and a maximum "
+            "of the error signal inside the lock region."
+        )
+        self.lbl_desc.setWordWrap(True)
+        self.lbl_desc.setStyleSheet("margin-bottom: 10px;")
+
+        # --- Input row ---
+        form_layout = QFormLayout()
+        form_layout.setHorizontalSpacing(12)
+        form_layout.setVerticalSpacing(8)
+
+        self.input_x0 = QLineEdit("0.0")
+        self.input_x0.setValidator(QDoubleValidator())
+        form_layout.addRow("Left boundary:", self.input_x0)
+
+        self.input_x1 = QLineEdit("1.0")
+        self.input_x1.setValidator(QDoubleValidator())
+        form_layout.addRow("Right boundary:", self.input_x1)
+
+        # --- Start Lock Button ---
+        self.btn_start_lock = QPushButton("Start lock")
+        
+        # Add to layout (insert before the back button/stretch)
+        layout = self.layout()
+        
+        # Remove the default stretch item at index 1
+        item = layout.takeAt(1)
+        if item:
+            del item
+
+        content_widget = QWidget()
+        content_layout = QVBoxLayout(content_widget)
+        content_layout.setContentsMargins(0, 0, 0, 0)
+        content_layout.addWidget(self.lbl_desc)
+        content_layout.addLayout(form_layout)
+        content_layout.addWidget(self.btn_start_lock)
+        content_layout.addStretch() # Push everything up
+        
+        layout.insertWidget(1, content_widget, 1)
+
+        # --- Internal wiring ---
+        self.input_x0.textChanged.connect(self._on_inputs_changed)
+        self.input_x1.textChanged.connect(self._on_inputs_changed)
+        self.btn_start_lock.clicked.connect(self._on_start_lock_clicked)
+
+    def _on_start_lock_clicked(self):
+        try:
+            x0 = float(self.input_x0.text())
+            x1 = float(self.input_x1.text())
+            self.sig_start_lock.emit(x0, x1)
+        except ValueError:
+            pass
+
+    def _on_inputs_changed(self):
+        try:
+            x0 = float(self.input_x0.text())
+            x1 = float(self.input_x1.text())
+            self.sig_region_changed.emit(x0, x1)
+        except ValueError:
+            pass
+
+
 class LaserControllerPage(QWidget):
+    sig_request_setup_manual_lock = Signal()
+    sig_request_start_sweep = Signal()
+    sig_request_set_state = Signal(str)
+    sig_request_start_manual_locking = Signal(int, int, dict)
+    sig_request_trace = Signal(float) # for AddReferenceLinePage
+
     def __init__(self, logger):
         super().__init__()
         self.logger = logger
@@ -358,6 +442,8 @@ class LaserControllerPage(QWidget):
         
         splitter = QSplitter(Qt.Horizontal)
         main_layout.addWidget(splitter)
+        
+        self.latest_sweep_data = None
         
         # --- LEFT PANEL: Navigation Stack ---
         self.left_stack = QStackedWidget()
@@ -370,13 +456,18 @@ class LaserControllerPage(QWidget):
         # 2. Sub Pages
         self.page_parameters = ParametersPage(self.logger) # REAL PAGE
         self.page_advanced = AdvancedSettingsPage(self.logger)
+        self.page_reflines = ReferenceLinesPage(self.logger)
+        self.page_add_refline = AddReferenceLinePage()
         self.page_scan = ScanPage()
         self.page_centering = SubPageContainer("Line Centering")
-        self.page_manual = SubPageContainer("Manual Lock")
+        self.page_manual = ManualLockPage()
         self.page_auto = SubPageContainer("Auto-lock")
+
         
         self.left_stack.addWidget(self.page_parameters)
         self.left_stack.addWidget(self.page_advanced)
+        self.left_stack.addWidget(self.page_reflines)
+        self.left_stack.addWidget(self.page_add_refline)
         self.left_stack.addWidget(self.page_scan)
         self.left_stack.addWidget(self.page_centering)
         self.left_stack.addWidget(self.page_manual)
@@ -394,8 +485,9 @@ class LaserControllerPage(QWidget):
         self.menu_page.sig_go_advanced.connect(lambda: self.left_stack.setCurrentWidget(self.page_advanced))
         self.menu_page.sig_go_scan.connect(lambda: self.left_stack.setCurrentWidget(self.page_scan))
         self.menu_page.sig_go_centering.connect(lambda: self.left_stack.setCurrentWidget(self.page_centering))
-        self.menu_page.sig_go_manual.connect(lambda: self.left_stack.setCurrentWidget(self.page_manual))
+        self.menu_page.sig_go_manual.connect(self.on_manual_clicked)
         self.menu_page.sig_go_auto.connect(lambda: self.left_stack.setCurrentWidget(self.page_auto))
+
         
         # Reference lines currently does nothing
         self.menu_page.sig_go_reflines.connect(self.on_reflines_clicked)
@@ -404,9 +496,29 @@ class LaserControllerPage(QWidget):
         self.page_parameters.sig_back.connect(self.go_to_menu)
         self.page_advanced.sig_back.connect(self.go_to_menu)
         self.page_scan.sig_back.connect(self.on_scan_back)
+        self.page_reflines.sig_request_back.connect(self.go_to_menu)
+        
+        # Reference Lines -> Add Reference Line
+        self.page_reflines.btn_add.clicked.connect(
+            lambda: self.left_stack.setCurrentWidget(self.page_add_refline)
+        )
+        self.page_add_refline.sig_back.connect(
+            lambda: self.left_stack.setCurrentWidget(self.page_reflines)
+        )
+        self.page_add_refline.sig_request_scan_trace.connect(self.sig_request_trace.emit)
+        
         self.page_centering.sig_back.connect(self.go_to_menu)
-        self.page_manual.sig_back.connect(self.go_to_menu)
+        self.page_manual.sig_back.connect(self.on_manual_back)
         self.page_auto.sig_back.connect(self.go_to_menu)
+        
+        # Manual Lock updates
+        self.page_manual.sig_region_changed.connect(
+            lambda x0, x1: self.plot_panel._handlers["SETUP_MANUAL_LOCK"].set_region(x0, x1)
+        )
+        self.page_manual.sig_start_lock.connect(self.on_start_lock_clicked)
+        
+        self.plot_panel.sig_unlock_requested.connect(self.on_unlock_requested)
+
         
         # Set Splitter Ratios (Left smaller, Right larger)
         splitter.setStretchFactor(0, 1)
@@ -441,6 +553,60 @@ class LaserControllerPage(QWidget):
         """Return to menu from scan page. start_sweep is wired via GeneralManager."""
         self.left_stack.setCurrentWidget(self.menu_page)
 
+    def handle_data(self, packet):
+        """Pre-processor for data packets before they go to the plot panel."""
+        mode = packet.get("mode")
+        if mode in ("SWEEP", "SETUP_MANUAL_LOCK"):
+            self.latest_sweep_data = packet
+        
+        # Forward to plot panel
+        self.plot_panel.update_plot(packet)
+
     @Slot()
     def on_reflines_clicked(self):
-        self.logger.info("Reference Lines button clicked - (No Action implemented)")
+        self.logger.info("Reference Lines button clicked - opening ReferenceLinesPage.")
+        self.left_stack.setCurrentWidget(self.page_reflines)
+
+    @Slot()
+    def on_manual_clicked(self):
+        """Called when "Manual lock" is clicked in Menu."""
+        self.left_stack.setCurrentWidget(self.page_manual)
+        self.sig_request_setup_manual_lock.emit()
+        # Notify PlotPanel handler of initial values if any
+        try:
+            x0 = float(self.page_manual.input_x0.text())
+            x1 = float(self.page_manual.input_x1.text())
+            self.plot_panel._handlers["SETUP_MANUAL_LOCK"].set_region(x0, x1)
+        except ValueError:
+            pass
+
+    @Slot()
+    def on_manual_back(self):
+        """Return to menu from manual lock page."""
+        self.left_stack.setCurrentWidget(self.menu_page)
+        self.sig_request_start_sweep.emit()
+
+    @Slot(float, float)
+    def on_start_lock_clicked(self, x0, x1):
+        """Triggered when "Start lock" is clicked in ManualLockPage."""
+        if self.latest_sweep_data is None:
+            self.logger.warning("Cannot start lock: No sweep data received yet.")
+            return
+        
+        x_data = np.asarray(self.latest_sweep_data['x'])
+        # Find closest indices
+        idx0 = np.argmin(np.abs(x_data - x0))
+        idx1 = np.argmin(np.abs(x_data - x1))
+        
+        # Ensure idx0 < idx1
+        if idx0 > idx1:
+            idx0, idx1 = idx1, idx0
+            
+        self.sig_request_set_state.emit("MANUAL_LOCKING")
+        self.sig_request_start_manual_locking.emit(int(idx0), int(idx1), self.latest_sweep_data)
+        self.left_stack.setCurrentWidget(self.menu_page)
+
+    @Slot()
+    def on_unlock_requested(self):
+        """Triggered when "Unlock" is clicked in PlotPanel."""
+        self.sig_request_set_state.emit("SWEEP")

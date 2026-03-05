@@ -1,8 +1,9 @@
 import pyqtgraph as pg
 import numpy as np
+from time import time
 from PySide6.QtWidgets import (QWidget, QVBoxLayout, QStackedWidget, QLabel,
-                                QScrollArea, QProgressBar)
-from PySide6.QtCore import Qt, Slot, QTimer
+                                QScrollArea, QProgressBar, QPushButton)
+from PySide6.QtCore import Qt, Slot, QTimer, Signal
 
 
 class BasePlotHandler(QWidget):
@@ -15,8 +16,7 @@ class BasePlotHandler(QWidget):
 
     def update(self, packet: dict):
         raise NotImplementedError("Subclasses must implement update()")
-
-
+    
 class SweepPlotHandler(BasePlotHandler):
     """
     Handles the SWEEP mode visualization.
@@ -32,44 +32,61 @@ class SweepPlotHandler(BasePlotHandler):
 
         # --- Top plot: Error Signal ---
         self.plot_error = pg.PlotWidget(title="Error Signal")
-        self.plot_error.setBackground('k')
-        self.plot_error.showGrid(x=True, y=True, alpha=0.3)
-        self.plot_error.getPlotItem().setLabel('left', 'Error Signal')
-        self.plot_error.getPlotItem().getAxis('bottom').enableAutoSIPrefix(False)
-        self.plot_error.getPlotItem().getAxis('left').enableAutoSIPrefix(False)
-        self.curve_error = self.plot_error.plot(pen=pg.mkPen('c', width=1.5))
+        self.setup_plot(self.plot_error, "Error Signal")
 
-        # --- Bottom plot: Monitor Signal ---
+        self.zero_line = pg.InfiniteLine(pos=0, angle=0, pen=pg.mkPen(color=(128, 128, 128), width=2))
+        self.plot_error.addItem(self.zero_line)
+        self.zero_line.setZValue(0) # Keep it above the fill but below the signal line
+        
+        self.curve_error = self.plot_error.plot(pen=pg.mkPen('c', width=1.5))
+        
+        self.curve_error_strength_pos = pg.PlotDataItem() 
+        self.curve_error_strength_neg = pg.PlotDataItem() 
+
+        # 3. Create the Fill between (+) and (-)
+        self.fill_error = pg.FillBetweenItem(
+            self.curve_error_strength_pos, 
+            self.curve_error_strength_neg, 
+            brush=(0, 255, 255, 60) # Semi-transparent Cyan
+        )
+        self.plot_error.addItem(self.fill_error)
+
+        # --- Bottom plot: Monitor Signal (Remains standard) ---
         self.plot_monitor = pg.PlotWidget(title="Monitor Signal")
-        self.plot_monitor.setBackground('k')
-        self.plot_monitor.showGrid(x=True, y=True, alpha=0.3)
-        self.plot_monitor.getPlotItem().setLabel('left', 'Monitor Signal')
-        self.plot_monitor.getPlotItem().setLabel('bottom', 'Voltage', units='V')
-        self.plot_monitor.getPlotItem().getAxis('bottom').enableAutoSIPrefix(False)
-        self.plot_monitor.getPlotItem().getAxis('left').enableAutoSIPrefix(False)
+        self.setup_plot(self.plot_monitor, "Monitor Signal", "Voltage", "V")
         self.curve_monitor = self.plot_monitor.plot(pen=pg.mkPen(color=(255, 165, 0), width=1.5))
 
-        # Link x-axes so zooming/panning is synchronised
         self.plot_monitor.setXLink(self.plot_error)
-
-        # Hide the x-axis label on the top plot (shared axis)
-        self.plot_error.getPlotItem().setLabel('bottom', '')
-
         layout.addWidget(self.plot_error)
         layout.addWidget(self.plot_monitor)
+
+    def setup_plot(self, widget, left_label, bottom_label=None, units=None):
+        widget.setBackground('k')
+        widget.showGrid(x=True, y=True, alpha=0.3)
+        pi = widget.getPlotItem()
+        pi.setLabel('left', left_label)
+        if bottom_label:
+            pi.setLabel('bottom', bottom_label, units=units)
+        pi.getAxis('bottom').enableAutoSIPrefix(False)
+        pi.getAxis('left').enableAutoSIPrefix(False)
 
     def update(self, packet: dict):
         x = packet.get("x")
         error = packet.get("error_signal")
+        error_strength = packet.get("error_signal_strength")
         monitor = packet.get("monitor_signal")
 
         if x is None:
             return
 
-        # Convert to numpy arrays if they aren't already
         x = np.asarray(x)
+
         if error is not None:
-            self.curve_error.setData(x, np.asarray(error))
+            err_data = np.asarray(error)
+            self.curve_error.setData(x, err_data)
+            self.curve_error_strength_pos.setData(x, error_strength)
+            self.curve_error_strength_neg.setData(x, -error_strength)
+
         if monitor is not None:
             self.curve_monitor.setData(x, np.asarray(monitor))
 
@@ -77,9 +94,8 @@ class ManualLockingPlotHandler(BasePlotHandler):
     """
     Handles the MANUAL_LOCKING mode visualization.
     Shows two vertically-stacked plots sharing the same x-axis:
-      - Top:    error_signal   (blue)
+      - Top:    error_signal (cyan line) + strength (red fill)
       - Bottom: monitor_signal (orange)
-      - In addition it shows the vertical lines associated with the lock region selected by the user.
     """
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -89,46 +105,177 @@ class ManualLockingPlotHandler(BasePlotHandler):
 
         # --- Top plot: Error Signal ---
         self.plot_error = pg.PlotWidget(title="Error Signal")
-        self.plot_error.setBackground('k')
-        self.plot_error.showGrid(x=True, y=True, alpha=0.3)
-        self.plot_error.getPlotItem().setLabel('left', 'Error Signal')
-        self.plot_error.getPlotItem().getAxis('bottom').enableAutoSIPrefix(False)
-        self.plot_error.getPlotItem().getAxis('left').enableAutoSIPrefix(False)
+        self.setup_plot_style(self.plot_error, left_label='Error Signal')
+
+        self.zero_line = pg.InfiniteLine(pos=0, angle=0, pen=pg.mkPen(color=(128, 128, 128), width=2))
+        self.plot_error.addItem(self.zero_line)
+        self.zero_line.setZValue(0) # Keep it above the fill but below the signal line
+        
+        # 1. Main Error Signal Line
         self.curve_error = self.plot_error.plot(pen=pg.mkPen('c', width=1.5))
+        self.curve_error.setZValue(20) # Keep line on top
+
+        # 2. Strength boundaries (invisible data containers)
+        self.curve_strength_pos = pg.PlotDataItem() 
+        self.curve_strength_neg = pg.PlotDataItem() 
+
+        # 3. Strength Fill (Semi-transparent Red)
+        self.fill_strength = pg.FillBetweenItem(
+            self.curve_strength_pos, 
+            self.curve_strength_neg, 
+            brush=(0, 255, 255, 60)
+        )
+        self.plot_error.addItem(self.fill_strength)
+        self.fill_strength.setZValue(-10) # Keep fill behind grid/lines
 
         # --- Bottom plot: Monitor Signal ---
         self.plot_monitor = pg.PlotWidget(title="Monitor Signal")
-        self.plot_monitor.setBackground('k')
-        self.plot_monitor.showGrid(x=True, y=True, alpha=0.3)
-        self.plot_monitor.getPlotItem().setLabel('left', 'Monitor Signal')
-        self.plot_monitor.getPlotItem().setLabel('bottom', 'Voltage', units='V')
-        self.plot_monitor.getPlotItem().getAxis('bottom').enableAutoSIPrefix(False)
-        self.plot_monitor.getPlotItem().getAxis('left').enableAutoSIPrefix(False)
+        self.setup_plot_style(self.plot_monitor, left_label='Monitor Signal', 
+                              bottom_label='Voltage', units='V')
         self.curve_monitor = self.plot_monitor.plot(pen=pg.mkPen(color=(255, 165, 0), width=1.5))
 
-        # Link x-axes so zooming/panning is synchronised
-        self.plot_monitor.setXLink(self.plot_error)
+        # --- Region Selection (already red, stays as is) ---
+        self.region = pg.LinearRegionItem(brush=pg.mkBrush(255, 0, 0, 40), pen=pg.mkPen('r', width=1))
+        self.region.setZValue(5)
+        self.plot_error.addItem(self.region)
+        self.region.setMovable(False)
 
-        # Hide the x-axis label on the top plot (shared axis)
+        # Link x-axes
+        self.plot_monitor.setXLink(self.plot_error)
         self.plot_error.getPlotItem().setLabel('bottom', '')
 
         layout.addWidget(self.plot_error)
         layout.addWidget(self.plot_monitor)
 
+    def setup_plot_style(self, widget, left_label, bottom_label=None, units=None):
+        """Helper to standardize plot appearance"""
+        widget.setBackground('k')
+        widget.showGrid(x=True, y=True, alpha=0.3)
+        pi = widget.getPlotItem()
+        pi.setLabel('left', left_label)
+        if bottom_label:
+            pi.setLabel('bottom', bottom_label, units=units)
+        pi.getAxis('bottom').enableAutoSIPrefix(False)
+        pi.getAxis('left').enableAutoSIPrefix(False)
+
+    def set_region(self, x0, x1):
+        self.region.setRegion([x0, x1])
+
     def update(self, packet: dict):
         x = packet.get("x")
         error = packet.get("error_signal")
+        strength = packet.get("error_signal_strength")
         monitor = packet.get("monitor_signal")
 
         if x is None:
             return
 
-        # Convert to numpy arrays if they aren't already
         x = np.asarray(x)
+        
         if error is not None:
             self.curve_error.setData(x, np.asarray(error))
+            
+        if strength is not None:
+            s_data = np.asarray(strength)
+            # Update the fill boundaries
+            self.curve_strength_pos.setData(x, s_data)
+            self.curve_strength_neg.setData(x, -s_data)
+
         if monitor is not None:
             self.curve_monitor.setData(x, np.asarray(monitor))
+
+
+class MessagePlotHandler(BasePlotHandler):
+    """
+    Handles modes that only display a status message (e.g., MANUAL_LOCKING, LOCKED).
+    """
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        layout = QVBoxLayout(self)
+        self.lbl_message = QLabel("Message")
+        self.lbl_message.setAlignment(Qt.AlignCenter)
+        self.lbl_message.setStyleSheet("font-size: 24px; font-weight: bold; color: #aaa;")
+        layout.addWidget(self.lbl_message)
+
+    def update(self, packet: dict):
+        text = packet.get("text", "")
+        self.lbl_message.setText(text)
+
+
+class LockingMonitorPlotHandler(BasePlotHandler):
+    """
+    Handles the LOCKED mode visualization.
+    Shows three vertically-stacked real-time plots (oscilloscope roll mode):
+      - Top:    Monitor Signal
+      - Middle: Fast Control Signal
+      - Bottom: Slow Control Signal
+    X-axis displays relative time (seconds ago).
+    """
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        layout = QVBoxLayout(self)
+        layout.setContentsMargins(0, 0, 0, 0)
+        layout.setSpacing(4)
+
+        # --- Top plot: Monitor Signal ---
+        self.plot_monitor = pg.PlotWidget(title="Monitor Signal")
+        self._setup_plot(self.plot_monitor, "Monitor Signal")
+        self.curve_monitor = self.plot_monitor.plot(
+            pen=pg.mkPen(color=(255, 165, 0), width=1.5)  # orange
+        )
+
+        # --- Middle plot: Fast Control Signal ---
+        self.plot_fast = pg.PlotWidget(title="Fast Control Signal")
+        self._setup_plot(self.plot_fast, "Fast Control")
+        self.curve_fast = self.plot_fast.plot(
+            pen=pg.mkPen('c', width=1.5)  # cyan
+        )
+
+        # --- Bottom plot: Slow Control Signal ---
+        self.plot_slow = pg.PlotWidget(title="Slow Control Signal")
+        self._setup_plot(self.plot_slow, "Slow Control", bottom_label="Time", units="s")
+        self.curve_slow = self.plot_slow.plot(
+            pen=pg.mkPen(color=(0, 200, 83), width=1.5)  # green
+        )
+
+        layout.addWidget(self.plot_monitor)
+        layout.addWidget(self.plot_fast)
+        layout.addWidget(self.plot_slow)
+
+    @staticmethod
+    def _setup_plot(widget, left_label, bottom_label=None, units=None):
+        widget.setBackground('k')
+        widget.showGrid(x=True, y=True, alpha=0.3)
+        pi = widget.getPlotItem()
+        pi.setLabel('left', left_label)
+        if bottom_label:
+            pi.setLabel('bottom', bottom_label, units=units)
+        pi.getAxis('bottom').enableAutoSIPrefix(False)
+        pi.getAxis('left').enableAutoSIPrefix(False)
+
+    def update(self, packet: dict):
+        now = time()
+
+        # --- Monitor ---
+        mon_times = packet.get("monitor_times_unix")
+        mon_vals  = packet.get("monitor_values")
+        if mon_times is not None and mon_vals is not None and len(mon_times) > 0:
+            t_rel = np.asarray(mon_times) - now  # negative = seconds ago
+            self.curve_monitor.setData(t_rel, np.asarray(mon_vals))
+
+        # --- Fast Control ---
+        fc_times = packet.get("fast_control_times_unix")
+        fc_vals  = packet.get("fast_control_values")
+        if fc_times is not None and fc_vals is not None and len(fc_times) > 0:
+            t_rel = np.asarray(fc_times) - now
+            self.curve_fast.setData(t_rel, np.asarray(fc_vals))
+
+        # --- Slow Control ---
+        sc_times = packet.get("slow_control_times_unix")
+        sc_vals  = packet.get("slow_control_values")
+        if sc_times is not None and sc_vals is not None and len(sc_times) > 0:
+            t_rel = np.asarray(sc_times) - now
+            self.curve_slow.setData(t_rel, np.asarray(sc_vals))
 
 
 class ScanPlotHandler(BasePlotHandler):
@@ -239,13 +386,35 @@ class PlotPanel(QWidget):
 
     To add a new mode, create a BasePlotHandler subclass and register it.
     """
+    sig_unlock_requested = Signal()
+
     def __init__(self, parent=None):
         super().__init__(parent)
         layout = QVBoxLayout(self)
         layout.setContentsMargins(0, 0, 0, 0)
 
         self._stack = QStackedWidget()
-        layout.addWidget(self._stack)
+        layout.addWidget(self._stack, 1)
+
+        # --- Unlock Button (Hidden by default) ---
+        self.btn_unlock = QPushButton("Unlock")
+        self.btn_unlock.setFixedHeight(40)
+        self.btn_unlock.setStyleSheet("""
+            QPushButton {
+                background-color: #d32f2f;
+                color: white;
+                font-weight: bold;
+                font-size: 16px;
+                border: none;
+                border-radius: 4px;
+            }
+            QPushButton:hover {
+                background-color: #b71c1c;
+            }
+        """)
+        self.btn_unlock.setVisible(False)
+        self.btn_unlock.clicked.connect(self.sig_unlock_requested.emit)
+        layout.addWidget(self.btn_unlock)
 
         self._handlers: dict[str, BasePlotHandler] = {}
 
@@ -259,6 +428,10 @@ class PlotPanel(QWidget):
         self.register_handler("SWEEP", SweepPlotHandler())
         self.register_handler("SCAN", ScanPlotHandler())
         self.register_handler("SETUP_MANUAL_LOCK", ManualLockingPlotHandler())
+        
+        self.register_handler("MANUAL_LOCKING", MessagePlotHandler())
+        self.register_handler("TEXT", MessagePlotHandler())
+        self.register_handler("LOCKED", LockingMonitorPlotHandler())
 
     def register_handler(self, mode: str, handler: BasePlotHandler):
         """Register a plot handler for a given FSM mode."""
@@ -270,6 +443,10 @@ class PlotPanel(QWidget):
         """Route a data packet to the appropriate handler."""
         mode = packet.get("mode")
         handler = self._handlers.get(mode)
+        
+        # Toggle Unlock button visibility
+        self.btn_unlock.setVisible(mode == "LOCKED")
+
         if handler:
             self._stack.setCurrentWidget(handler)
             handler.update(packet)

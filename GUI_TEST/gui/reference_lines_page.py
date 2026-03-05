@@ -23,19 +23,14 @@ class ReferenceLinesPage(QWidget):
         layout = QVBoxLayout(self)
 
         # --- Header ---
-        header_layout = QHBoxLayout()
-        
-        title = QLabel("Reference Lines Management")
-        title.setStyleSheet("font-size: 20px; font-weight: bold;")
+        title = QLabel("Reference Lines")
         title.setAlignment(Qt.AlignCenter)
-        
-        header_layout.addWidget(title)
-        
-        layout.addLayout(header_layout)
+        title.setStyleSheet("font-size: 18px; font-weight: bold; margin-bottom: 20px;")
+        layout.addWidget(title, 0)
 
         # --- Main Splitter ---
         self.splitter = QSplitter(Qt.Horizontal)
-        layout.addWidget(self.splitter)
+        layout.addWidget(self.splitter, 1)
 
         # --- Left Side: List Table ---
         self.table_list = QTableWidget()
@@ -114,7 +109,7 @@ class ReferenceLinesPage(QWidget):
         btn_layout.addWidget(self.btn_save)
         btn_layout.addWidget(self.btn_cancel)
         
-        layout.addLayout(btn_layout)
+        layout.addLayout(btn_layout, 0)
 
         # --- Connections ---
         self.btn_back.clicked.connect(self.sig_request_back.emit)

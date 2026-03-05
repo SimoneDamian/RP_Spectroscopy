@@ -190,3 +190,5 @@ IndexError: too many indices for array: array is 1-dimensional, but 2 were index
 2026-01-29 13:47:02 - DataHandler - INFO - Saved reference line: REFERENCE_LINE_K_D2.npy
 2026-01-29 13:47:02 - DataHandler - INFO - All reference lines loaded successfully.
 2026-01-29 13:50:41 - DataHandler - INFO - All reference lines loaded successfully.
+2026-02-25 14:52:56 - DataHandler - INFO - All reference lines loaded successfully.
+2026-02-26 18:21:44 - DataHandler - INFO - All reference lines loaded successfully.

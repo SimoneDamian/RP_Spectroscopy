@@ -79,6 +79,7 @@ class GeneralManager:
     def connect_to_board(self, board):
         board_name = board.get('name', 'Unknown')
         self.logger.info(f"Connecting to {board_name}...")
+        self.window.page_laser.page_add_refline.set_board_name(board_name)
 
         self.laser = LaserManager(self.cfg, board)
         self.logger.info("LaserManager initialized.")
@@ -94,6 +95,9 @@ class GeneralManager:
         # In PySide/Qt, default connection type is AutoConnection which handles this automatically
         self.laser.sig_connected.connect(self.window.page_laser.set_connected_state)
         self.laser.sig_connected.connect(self.on_laser_connected)
+        self.laser.sig_connected.connect(
+            lambda: self.window.page_laser.page_reflines.btn_add.setEnabled(True)
+        )
         
         # Connection for Default Settings Button
         # Disconnect previous backend connections to avoid duplicates (safeguard)
@@ -113,13 +117,31 @@ class GeneralManager:
         )
 
         # Connection for live data plotting
-        self.laser.sig_data_ready.connect(self.window.page_laser.plot_panel.update_plot)
+        self.laser.sig_data_ready.connect(self.window.page_laser.handle_data)
         self.laser.sig_data_ready.connect(self.on_data_ready)
+
+        # Connection for Grafana
+        self.laser.sig_grafana_data_ready.connect(self.services.send_point_to_grafana)
 
         # Scan page signals
         self.window.page_laser.page_scan.sig_start_scan.connect(self.laser.start_scan)
         self.window.page_laser.page_scan.sig_stop_scan.connect(self.laser.stop_scan)
         self.window.page_laser.page_scan.sig_back.connect(self.laser.start_sweep)
+
+        # Add Reference Line signals
+        add_ref_page = self.window.page_laser.page_add_refline
+        add_ref_page.sig_start_scan.connect(self.laser.start_scan)
+        add_ref_page.sig_stop_scan.connect(self.laser.stop_scan)
+        self.window.page_laser.sig_request_trace.connect(self.laser.get_sweep_from_scan)
+        self.laser.sig_trace_ready.connect(add_ref_page.update_trace)
+        add_ref_page.sig_back.connect(self.laser.start_sweep)
+        add_ref_page.sig_save.connect(self.services.add_reference_line)
+
+        # Manual Lock signals
+        self.window.page_laser.sig_request_setup_manual_lock.connect(self.laser.setup_manual_lock)
+        self.window.page_laser.sig_request_start_sweep.connect(self.laser.start_sweep)
+        self.window.page_laser.sig_request_set_state.connect(self.laser.set_state)
+        self.window.page_laser.sig_request_start_manual_locking.connect(self.laser.start_manual_locking)
 
         # Connection for advanced settings
         #  - Direct to QWidget slot for GUI (auto-connection ensures GUI thread)
@@ -155,6 +177,9 @@ class GeneralManager:
         self.current_board = board
         self.services.load_advanced_settings(board)
         self.services.load_parameters(board)
+
+        # Inject ServiceManager into laser controller's ReferenceLinesPage
+        self.window.page_laser.page_reflines.set_service_manager(self.services)
 
     @Slot()
     def on_laser_connected(self):
@@ -205,6 +230,7 @@ class GeneralManager:
             total = packet.get("total_steps", 1)
             if step + 1 >= total:
                 self.window.page_laser.page_scan.set_scan_finished()
+                self.window.page_laser.page_add_refline.set_scan_finished()
 
     def save_advanced_settings(self):
         """
@@ -252,7 +278,21 @@ class GeneralManager:
                 target[key] = val
 
     def cleanup(self):
+
+        if self.current_board:
+            packet = {
+                "mode": "Send_FSM_state",
+                "board_name": self.current_board.get('name', 'Unknown'),
+                "FSM_state": "OFF"
+            }
+            try:
+                # Direct call to ensure it's sent before the thread quits
+                self.services.send_point_to_grafana(packet)
+            except Exception as e:
+                self.logger.error(f"Failed to send OFF state to Grafana: {e}")
+
         self.logger.info("GeneralManager shutting down...")
+
         self.svc_thread.quit()
         self.svc_thread.wait()
         

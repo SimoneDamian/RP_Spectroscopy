@@ -7,11 +7,14 @@ import logging
 import numpy as np
 from linien_common.common import ANALOG_OUT_V, Vpp
 import pickle
+from time import sleep
 
 class LaserManager(QObject):
     sig_connected = Signal()
     sig_parameters_ready = Signal()
     sig_data_ready = Signal(dict)
+    sig_grafana_data_ready = Signal(dict)
+    sig_trace_ready = Signal(dict)
 
     def __init__(self, config, board):
         super().__init__()
@@ -27,6 +30,7 @@ class LaserManager(QObject):
 
         self.state = "SWEEP"
         self.advanced_settings = {}
+        self.old_state = "OFF"
         
         # Setup Logging
         log_path = self.cfg.get('paths', {}).get('logs', './logs')
@@ -52,6 +56,7 @@ class LaserManager(QObject):
         """
         try:
             self.interface = HardwareInterface(self.cfg, self.board)
+            #self.interface.start_sweep()
             self.controller = LockController(self.interface)
 
             #Setup internal Timer for the control loop
@@ -71,6 +76,22 @@ class LaserManager(QObject):
         Runs every x seconds and decides what to do
         based on the current state of the Finite State Machine.
         """
+
+        if self.state != self.old_state:
+            self.logger.info(f"State changed from {self.old_state} to {self.state}")
+
+            packet = {
+                "mode": "Send_FSM_state",
+                "board_name": self.board['name'],
+                "FSM_state": self.state
+            }
+
+            self.sig_grafana_data_ready.emit(packet)
+
+        self.old_state = self.state
+
+        
+
         if self.state == "IDLE":
             pass
         elif self.state == "SWEEP":
@@ -79,22 +100,43 @@ class LaserManager(QObject):
             self.handle_scan_step()
         elif self.state == "SETUP_MANUAL_LOCK":
             self.get_and_send_sweep("SETUP_MANUAL_LOCK")
+        elif self.state == "MANUAL_LOCKING":
+            self.handle_manual_locking()
+        elif self.state == "LOCKED":
+            self.handle_locked_state()
         else:
             self.logger.warning(f"Unknown state: {self.state}")
+
+    @Slot(str)
+    def set_state(self, state):
+        self.state = state
+        if state == "SWEEP":
+            self.interface.stop_lock()
+            #self.interface.wait_for_lock_status(False)
 
     @Slot(str)
     def get_and_send_sweep(self, mode):
 
         sweep_signal = self.interface.get_sweep()
 
-        packet = {
-            "mode": mode,
-            "x": sweep_signal["x"],
-            "error_signal": sweep_signal["error_signal"],
-            "monitor_signal": sweep_signal["monitor_signal"]
-        }
+        if sweep_signal is None:
+            packet = {
+                "mode": "TEXT",
+                "text": "Starting the sweep..."
+            }
+        else:
+            packet = {
+                "mode": mode,
+                "x": sweep_signal["x"],
+                "error_signal": sweep_signal["error_signal"],
+                "error_signal_strength": sweep_signal["error_signal_strength"],
+                "monitor_signal": sweep_signal["monitor_signal"]
+            }
+
+        #self.logger.info(f"first error_signal data: {sweep_signal['error_signal'][0:20]}")
 
         self.sig_data_ready.emit(packet)
+
 
     @Slot(float, float, int)
     def start_scan(self, start_voltage=0.05, stop_voltage=1.75, num_points=40):
@@ -134,6 +176,9 @@ class LaserManager(QObject):
         # 3. Hardware Interaction (Blocking only for this small step)
         # self.logger.debug(f"Scanning point {self.scan_index}: {target_v:.3f}V")
         self.interface.set_value('big_offset', target_v)
+
+        waiting_time = ((2.0**self.interface.writeable_params["sweep_speed"].get_remote_value())/(3.8e3))
+        sleep(waiting_time)
         
         current_sweep = self.interface.get_sweep()
         
@@ -155,6 +200,25 @@ class LaserManager(QObject):
         # 6. Increment for the next loop tick
         self.scan_index += 1
 
+    @Slot(float)
+    def get_sweep_from_scan(self, v_center):
+        """
+        Gets the trace from the existing scan results that matches `v_center` closest,
+        and emits it so the GUI can plot it.
+        """
+        if not hasattr(self, 'scan_voltages') or not hasattr(self, 'scan_results') or len(self.scan_results) == 0:
+            self.logger.warning("No scan data available to get trace from.")
+            return
+
+        # Handle the case where the scan is still running or finished early (results length < voltages length)
+        available_pts = len(self.scan_results)
+        available_volts = self.scan_voltages[:available_pts]
+
+        idx = (np.abs(available_volts - v_center)).argmin()
+        matching_trace = self.scan_results[idx]
+        
+        self.sig_trace_ready.emit(matching_trace)
+
     @Slot()
     def stop_scan(self):
         if self.state == "SCAN":
@@ -167,6 +231,11 @@ class LaserManager(QObject):
     def start_sweep(self):
         self.state = "SWEEP"
         self.logger.info("Sweep started by user.")
+
+    @Slot()
+    def setup_manual_lock(self):
+        self.state = "SETUP_MANUAL_LOCK"
+        self.logger.info("FSM switched to SETUP_MANUAL_LOCK.")
 
     @Slot(dict)
     def load_parameters(self, params_dict):
@@ -230,21 +299,62 @@ class LaserManager(QObject):
         self.advanced_settings = settings
         self.logger.info("Advanced settings updated.")
 
-    @Slot(float, float, dict)
+    def handle_manual_locking(self):
+        """
+        Handles what to send to the GUI while the system tries to lock manually.
+        """
+        self.logger.info("Handling manual locking...")
+        packet = {
+            "mode": self.state,
+            "text": "Trying to lock the laser..."
+        }
+
+        self.sig_data_ready.emit(packet)
+
+    def handle_locked_state(self):
+        """
+        Handles the locked state of the laser sending the History to the GUI and detecting unlock events if required.
+        """
+        try:
+            history = self.interface.get_history()
+            packet = {
+                "mode": self.state,
+                **history
+            }
+            self.sig_data_ready.emit(packet)
+        except Exception as e:
+            self.logger.error(f"Failed to get history: {e}")
+            packet = {
+                "mode": self.state,
+                "text": "Laser is locked! (history unavailable)"
+            }
+            self.sig_data_ready.emit(packet)
+
+    @Slot(int, int, dict)
     def start_manual_locking(self, x0, x1, sweep_data):
-        self.interface.wait_for_lock_status(False) #wait until the laser is unlocked
+        self.logger.info("Starting manual locking...")
+        self.interface.wait_for_lock_status(False)
 
         expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_data['error_signal'], sweep_data['monitor_signal'], x0, x1)
         self.expected_lock_monitor_signal_point = expected_lock_monitor_signal_point
-        #print("Expected lock monitor signal point:", expected_lock_monitor_signal_point)
 
         self.interface.client.connection.root.start_autolock(x0, x1, pickle.dumps(sweep_data['error_signal']*2*Vpp))
 
         try:
             self.interface.wait_for_lock_status(True)
             self.logger.info("Locking the laser worked! \\o/")
+
+            # Initialize history buffers from advanced settings
+            gui_vis = self.advanced_settings.get("gui_visualization", {})
+            hist_cfg = gui_vis.get("history_length", {})
+            fast_s = hist_cfg.get("fast", 600)
+            slow_s = hist_cfg.get("slow", 3600)
+            self.interface.init_history_buffers(fast_s, slow_s)
+
+            self.state = "LOCKED"
         except Exception:
             self.logger.warning("Locking the laser failed :(")
+            self.state = "SWEEP"
             return
 
     def find_monitor_signal_peak(self, error_signal, monitor_signal, x0, x1):
