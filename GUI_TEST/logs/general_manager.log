@@ -3141,3 +3141,62 @@
 2026-03-05 12:48:01 - GeneralManager - INFO - GeneralManager shutting down...
 2026-03-05 12:48:02 - GeneralManager - INFO - Advanced settings saved to /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/RedPitaya_K_parameters.yaml
 2026-03-05 12:48:02 - GeneralManager - INFO - GeneralManager shut down.
+2026-03-05 12:49:36 - GeneralManager - INFO - GeneralManager starting up...
+2026-03-05 12:49:36 - GeneralManager - INFO - ServiceManager initialized.
+2026-03-05 12:49:36 - GeneralManager - INFO - ServiceManager moved to thread.
+2026-03-05 12:49:36 - GeneralManager - INFO - MainWindow initialized.
+2026-03-05 12:49:36 - GeneralManager - INFO - ServiceManager injected into ReferenceLinesPage and LineCenteringPage.
+2026-03-05 12:49:36 - GeneralManager - INFO - ServiceManager thread started.
+2026-03-05 12:49:39 - GeneralManager - INFO - Connecting to RedPitaya_K...
+2026-03-05 12:49:39 - GeneralManager - INFO - LaserManager initialized.
+2026-03-05 12:49:39 - GeneralManager - INFO - LaserManager moved to thread.
+2026-03-05 12:49:39 - GeneralManager - INFO - LaserManager thread started.
+2026-03-05 12:49:39 - GeneralManager - INFO - Advanced settings stored in GeneralManager.
+2026-03-05 12:49:39 - GeneralManager - INFO - Parameters loaded into GUI.
+2026-03-05 12:49:43 - GeneralManager - INFO - Laser connected. Parameters will arrive via sig_parameters_loaded.
+2026-03-05 14:06:23 - GeneralManager - INFO - GeneralManager shutting down...
+2026-03-05 14:06:24 - GeneralManager - INFO - Advanced settings saved to /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/RedPitaya_K_parameters.yaml
+2026-03-05 14:06:24 - GeneralManager - INFO - GeneralManager shut down.
+2026-03-05 15:08:39 - GeneralManager - INFO - GeneralManager starting up...
+2026-03-05 15:08:39 - GeneralManager - INFO - ServiceManager initialized.
+2026-03-05 15:08:39 - GeneralManager - INFO - ServiceManager moved to thread.
+2026-03-05 15:10:44 - GeneralManager - INFO - GeneralManager starting up...
+2026-03-05 15:10:44 - GeneralManager - INFO - ServiceManager initialized.
+2026-03-05 15:10:44 - GeneralManager - INFO - ServiceManager moved to thread.
+2026-03-05 15:10:44 - GeneralManager - INFO - MainWindow initialized.
+2026-03-05 15:10:44 - GeneralManager - INFO - ServiceManager injected into ReferenceLinesPage and LineCenteringPage.
+2026-03-05 15:10:44 - GeneralManager - INFO - ServiceManager thread started.
+2026-03-05 15:10:50 - GeneralManager - INFO - Connecting to RedPitaya_K...
+2026-03-05 15:10:50 - GeneralManager - INFO - LaserManager initialized.
+2026-03-05 15:10:50 - GeneralManager - INFO - LaserManager moved to thread.
+2026-03-05 15:10:50 - GeneralManager - INFO - LaserManager thread started.
+2026-03-05 15:10:50 - GeneralManager - INFO - Advanced settings stored in GeneralManager.
+2026-03-05 15:10:50 - GeneralManager - INFO - Parameters loaded into GUI.
+2026-03-05 15:10:53 - GeneralManager - INFO - Laser connected. Parameters will arrive via sig_parameters_loaded.
+2026-03-05 15:26:10 - GeneralManager - INFO - Advanced settings updated from GUI.
+2026-03-05 15:26:14 - GeneralManager - INFO - Advanced settings updated from GUI.
+2026-03-05 15:26:16 - GeneralManager - INFO - Advanced settings updated from GUI.
+2026-03-05 15:26:17 - GeneralManager - INFO - Advanced settings updated from GUI.
+2026-03-05 15:26:54 - GeneralManager - INFO - GeneralManager shutting down...
+2026-03-05 15:26:55 - GeneralManager - INFO - Advanced settings saved to /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/RedPitaya_K_parameters.yaml
+2026-03-05 15:26:55 - GeneralManager - INFO - GeneralManager shut down.
+2026-03-05 15:28:17 - GeneralManager - INFO - GeneralManager starting up...
+2026-03-05 15:28:17 - GeneralManager - INFO - ServiceManager initialized.
+2026-03-05 15:28:17 - GeneralManager - INFO - ServiceManager moved to thread.
+2026-03-05 15:28:18 - GeneralManager - INFO - MainWindow initialized.
+2026-03-05 15:28:18 - GeneralManager - INFO - ServiceManager injected into ReferenceLinesPage and LineCenteringPage.
+2026-03-05 15:28:18 - GeneralManager - INFO - ServiceManager thread started.
+2026-03-05 15:28:23 - GeneralManager - INFO - Connecting to RedPitaya_K...
+2026-03-05 15:28:23 - GeneralManager - INFO - LaserManager initialized.
+2026-03-05 15:28:23 - GeneralManager - INFO - LaserManager moved to thread.
+2026-03-05 15:28:23 - GeneralManager - INFO - LaserManager thread started.
+2026-03-05 15:28:23 - GeneralManager - INFO - Advanced settings stored in GeneralManager.
+2026-03-05 15:28:23 - GeneralManager - INFO - Parameters loaded into GUI.
+2026-03-05 15:28:27 - GeneralManager - INFO - Laser connected. Parameters will arrive via sig_parameters_loaded.
+2026-03-05 15:29:48 - GeneralManager - INFO - Advanced settings updated from GUI.
+2026-03-05 15:29:49 - GeneralManager - INFO - Advanced settings updated from GUI.
+2026-03-05 15:29:51 - GeneralManager - INFO - Advanced settings updated from GUI.
+2026-03-05 15:29:52 - GeneralManager - INFO - Advanced settings updated from GUI.
+2026-03-05 15:30:29 - GeneralManager - INFO - GeneralManager shutting down...
+2026-03-05 15:30:30 - GeneralManager - INFO - Advanced settings saved to /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/RedPitaya_K_parameters.yaml
+2026-03-05 15:30:30 - GeneralManager - INFO - GeneralManager shut down.

@@ -342,8 +342,15 @@ class LaserManager(QObject):
         """
         try:
             history = self.interface.get_history()
+            
+            gui_vis = self.advanced_settings.get("gui_visualization", {})
+            show_fast_deriv = gui_vis.get("fast_control_signal_derivative", {}).get("enabled", False)
+            show_slow_deriv = gui_vis.get("slow_control_signal_derivative", {}).get("enabled", False)
+
             packet = {
                 "mode": self.state,
+                "show_fast_deriv": show_fast_deriv,
+                "show_slow_deriv": show_slow_deriv,
                 **history
             }
             self.sig_data_ready.emit(packet)
@@ -379,7 +386,7 @@ class LaserManager(QObject):
             self.state = "LOCKED"
         except Exception:
             self.logger.warning("Locking the laser failed :(")
-            self.state = "SWEEP"
+            self.set_state("SWEEP")
             return
 
     def find_monitor_signal_peak(self, error_signal, monitor_signal, x0, x1):

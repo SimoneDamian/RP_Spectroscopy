@@ -230,6 +230,25 @@ class LockingMonitorPlotHandler(BasePlotHandler):
         self.curve_fast = self.plot_fast.plot(
             pen=pg.mkPen('c', width=1.5)  # cyan
         )
+        
+        # Derivative for fast control
+        self.plot_fast.showAxis('right')
+        axis_right_fast = self.plot_fast.getAxis('right')
+        axis_right_fast.setLabel('Derivative', color='r')
+        axis_right_fast.setPen(color='r')
+        axis_right_fast.setTextPen('r')
+        self.fast_deriv_vb = pg.ViewBox()
+        self.plot_fast.scene().addItem(self.fast_deriv_vb)
+        self.plot_fast.getAxis('right').linkToView(self.fast_deriv_vb)
+        p_fast_vb = self.plot_fast.getViewBox()
+        self.fast_deriv_vb.setXLink(p_fast_vb)
+        self.curve_fast_deriv = pg.PlotCurveItem(pen=pg.mkPen('r', width=1.0, style=Qt.DashLine))
+        self.fast_deriv_vb.addItem(self.curve_fast_deriv)
+
+        def update_fast_vb():
+            self.fast_deriv_vb.setGeometry(p_fast_vb.sceneBoundingRect())
+            self.fast_deriv_vb.linkedViewChanged(p_fast_vb, self.fast_deriv_vb.XAxis)
+        p_fast_vb.sigResized.connect(update_fast_vb)
 
         # --- Bottom plot: Slow Control Signal ---
         self.plot_slow = pg.PlotWidget(title="Slow Control Signal")
@@ -237,6 +256,25 @@ class LockingMonitorPlotHandler(BasePlotHandler):
         self.curve_slow = self.plot_slow.plot(
             pen=pg.mkPen(color=(0, 200, 83), width=1.5)  # green
         )
+        
+        # Derivative for slow control
+        self.plot_slow.showAxis('right')
+        axis_right_slow = self.plot_slow.getAxis('right')
+        axis_right_slow.setLabel('Derivative', color='r')
+        axis_right_slow.setPen(color='r')
+        axis_right_slow.setTextPen('r')
+        self.slow_deriv_vb = pg.ViewBox()
+        self.plot_slow.scene().addItem(self.slow_deriv_vb)
+        self.plot_slow.getAxis('right').linkToView(self.slow_deriv_vb)
+        p_slow_vb = self.plot_slow.getViewBox()
+        self.slow_deriv_vb.setXLink(p_slow_vb)
+        self.curve_slow_deriv = pg.PlotCurveItem(pen=pg.mkPen('r', width=1.0, style=Qt.DashLine))
+        self.slow_deriv_vb.addItem(self.curve_slow_deriv)
+
+        def update_slow_vb():
+            self.slow_deriv_vb.setGeometry(p_slow_vb.sceneBoundingRect())
+            self.slow_deriv_vb.linkedViewChanged(p_slow_vb, self.slow_deriv_vb.XAxis)
+        p_slow_vb.sigResized.connect(update_slow_vb)
 
         layout.addWidget(self.plot_monitor)
         layout.addWidget(self.plot_fast)
@@ -266,16 +304,38 @@ class LockingMonitorPlotHandler(BasePlotHandler):
         # --- Fast Control ---
         fc_times = packet.get("fast_control_times_unix")
         fc_vals  = packet.get("fast_control_values")
+        fc_deriv = packet.get("d_fast_control_values")
+        show_fast_deriv = packet.get("show_fast_deriv", False)
+        
         if fc_times is not None and fc_vals is not None and len(fc_times) > 0:
             t_rel = np.asarray(fc_times) - now
             self.curve_fast.setData(t_rel, np.asarray(fc_vals))
+            
+            if show_fast_deriv and fc_deriv is not None and len(fc_deriv) > 0 and len(t_rel) > 1:
+                self.curve_fast_deriv.setData(t_rel[1:], np.asarray(fc_deriv))
+                self.curve_fast_deriv.setVisible(True)
+                self.plot_fast.showAxis('right')
+            else:
+                self.curve_fast_deriv.setVisible(False)
+                self.plot_fast.hideAxis('right')
 
         # --- Slow Control ---
         sc_times = packet.get("slow_control_times_unix")
         sc_vals  = packet.get("slow_control_values")
+        sc_deriv = packet.get("d_slow_control_values")
+        show_slow_deriv = packet.get("show_slow_deriv", False)
+        
         if sc_times is not None and sc_vals is not None and len(sc_times) > 0:
             t_rel = np.asarray(sc_times) - now
             self.curve_slow.setData(t_rel, np.asarray(sc_vals))
+            
+            if show_slow_deriv and sc_deriv is not None and len(sc_deriv) > 0 and len(t_rel) > 1:
+                self.curve_slow_deriv.setData(t_rel[1:], np.asarray(sc_deriv))
+                self.curve_slow_deriv.setVisible(True)
+                self.plot_slow.showAxis('right')
+            else:
+                self.curve_slow_deriv.setVisible(False)
+                self.plot_slow.hideAxis('right')
 
 
 class ScanPlotHandler(BasePlotHandler):
