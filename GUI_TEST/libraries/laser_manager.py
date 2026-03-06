@@ -111,10 +111,6 @@ class LaserManager(QObject):
 
         self.old_state = self.state
 
-        #self.send_grafana_state()
-
-        
-
         if self.state == "IDLE":
             pass
         elif self.state == "SWEEP":
@@ -127,6 +123,8 @@ class LaserManager(QObject):
             self.handle_manual_locking()
         elif self.state == "LOCKED":
             self.handle_locked_state()
+        elif self.state == "DEMOD_PHASE_OPTIMIZATION":
+            self.handle_demod_phase_optimization_step()
         else:
             self.logger.warning(f"Unknown state: {self.state}")
 
@@ -246,6 +244,121 @@ class LaserManager(QObject):
         # 6. Increment for the next loop tick
         self.scan_index += 1
 
+    @Slot()
+    def start_demod_phase_optimization(self):
+        """
+        Initializes the phase scan variables and enters the DEMOD_PHASE_OPTIMIZATION state.
+        This function returns immediately (Non-blocking).
+        """
+
+        self.logger.info(f"Initiating demod phase optimization...")
+        
+        self.phase_scan_index = 0
+        self.scan_phases = np.linspace(0, 180, 90)
+        self.phase_scan_results = [] # Buffer to store accumulated results
+        #self.scan_phases = []
+        self.phase_right_extreme = 180
+        self.ratio_right_extreme = 0
+        self.phase_left_extreme = 0
+        self.ratio_left_extreme = 0
+        self.ratio_results = []
+        
+        # 2. Change State -> The control_loop will take over from here
+        self.state = "DEMOD_PHASE_OPTIMIZATION"
+
+    def handle_demod_phase_optimization_step(self):
+        """
+        Performs exactly ONE phase optimization step of the scan.
+        """
+
+        # 0. If it is the first scan, save the initial phase value, in order to return to that one if the optimization does not work
+        if self.phase_scan_index == 0:
+            self.initial_phase = self.interface.writeable_params['demodulation_phase_a'].value
+            #calculate the initial ratios for 0 and 180
+            # for target_phase in [0, 180]:
+            #     self.scan_phases.append(target_phase)
+            #     self.interface.set_value('demodulation_phase_a', target_phase)
+            #     waiting_time = ((2.0**self.interface.writeable_params["sweep_speed"].get_remote_value())/(3.8e3))
+            #     sleep(waiting_time)
+            #     current_sweep = self.interface.get_sweep()
+            #     self.phase_scan_results.append(current_sweep)
+            #     ratio = self.calculate_ratio(current_sweep)
+            #     self.ratio_results.append(ratio)
+            #     packet = {
+            #         "mode": "DEMOD_PHASE_OPTIMIZATION",
+            #         "step_index": self.phase_scan_index,
+            #         "current_phase": target_phase,
+            #         "phases": self.scan_phases,
+            #         "scan_data": self.phase_scan_results, # Sends all accumulated data
+            #         "latest_sweep": current_sweep,   # Sends just the newest trace
+            #         "ratio": ratio,
+            #         "ratio_data": self.ratio_results
+            #     }
+        
+            #     self.sig_data_ready.emit(packet)
+
+            # self.ratio_right_extreme = self.ratio_results[-1]
+            # self.ratio_left_extreme = self.ratio_results[0]
+
+        # 1. Check if we are done
+        # if (self.phase_right_extreme - self.phase_left_extreme < 1):
+        #     self.logger.info("Phase scan completed successfully.")
+        #     self.state = "IDLE"
+        #     self.interface.set_value('demodulation_phase_a', self.initial_phase)
+        #     return
+        if self.phase_scan_index >= len(self.scan_phases):
+            self.logger.info("Phase scan completed successfully.")
+            self.state = "IDLE"
+            self.interface.set_value('demodulation_phase_a', self.initial_phase)
+            return
+
+        # 2. Get the target voltage for this step
+        target_phase = self.scan_phases[self.phase_scan_index]
+        
+        # 3. Hardware Interaction (Blocking only for this small step)
+        self.interface.set_value('demodulation_phase_a', target_phase)
+
+        waiting_time = ((2.0**self.interface.writeable_params["sweep_speed"].get_remote_value())/(3.8e3))
+        sleep(waiting_time)
+        
+        current_sweep = self.interface.get_sweep()
+        
+        # 4. Store Data
+        self.phase_scan_results.append(current_sweep)
+
+        ratio = self.calculate_ratio(current_sweep)
+        self.ratio_results.append(ratio)
+        # 5. Emit Partial Result (The "Old + New" requirement)
+        # We send the specific index so the GUI knows where to plot it
+        packet = {
+            "mode": "DEMOD_PHASE_OPTIMIZATION",
+            "step_index": self.phase_scan_index,
+            "current_phase": target_phase,
+            "phases": self.scan_phases,
+            "scan_data": self.phase_scan_results, # Sends all accumulated data
+            "latest_sweep": current_sweep,   # Sends just the newest trace
+            "ratio": ratio,
+            "ratio_data": self.ratio_results
+        }
+        
+        self.sig_data_ready.emit(packet)
+
+        # 6. Increment for the next loop tick and substitute the new extreme
+        self.phase_scan_index += 1
+
+
+    def calculate_ratio(self, sweep):
+        """
+        Calculates the ratio between the maximum amplitudes of the signal and its strength
+        in order to find the optimal phase for the demodulation.
+        """
+        
+        signal_amplitude = np.max(sweep['error_signal']) - np.min(sweep['error_signal'])
+        signal_strength = np.max(sweep['error_signal_strength']) - np.min(sweep['error_signal_strength'])
+        ratio = np.abs(signal_amplitude / signal_strength)
+
+        return ratio
+
     @Slot(float)
     def get_sweep_from_scan(self, v_center):
         """
@@ -272,6 +385,11 @@ class LaserManager(QObject):
                 self.interface.set_value('big_offset', self.initial_center)
             self.state = "IDLE"
             self.logger.info("Scan aborted by user.")
+        if self.state == "DEMOD_PHASE_OPTIMIZATION":
+            if self.initial_phase is not None:
+                self.interface.set_value('demodulation_phase_a', self.initial_phase)
+            self.state = "IDLE"
+            self.logger.info("Demod phase optimization aborted by user.")
 
     @Slot()
     def start_sweep(self):
