@@ -111,6 +111,8 @@ class LaserManager(QObject):
 
         self.old_state = self.state
 
+        #self.send_grafana_state()
+
         
 
         if self.state == "IDLE":

@@ -598,28 +598,28 @@ class ServiceManager(QObject):
 
     @Slot(dict)
     def send_point_to_grafana(self, packet):
-        p = Point("Locking_data") \
-            .tag("board", packet["board_name"]) \
+        p = Point("FSM_status") \
+            .tag("board_name", packet["board_name"]) \
             .time(time.time_ns(), WritePrecision.NS)
         
         if packet.get("mode") == "Send_FSM_state":
             # Map states to integers
             state_map = {
-                "IDLE": 0,
-                "SWEEP": 1,
-                "SCAN": 2,
-                "SETUP_MANUAL_LOCK": 3,
-                "MANUAL_LOCKING": 4,
-                "LOCKED": 5,
-                "OFF": 6
+                "IDLE": "IDLE",
+                "SWEEP": "SWEEP",
+                "SCAN": "SCAN",
+                "SETUP_MANUAL_LOCK": "SETUP MANUAL LOCK",
+                "MANUAL_LOCKING": "MANUAL LOCKING",
+                "LOCKED": "LOCKED",
+                "OFF": "OFF"
             }
             
             current_state = packet.get("FSM_state")
             
             if current_state in state_map:
                 # Use distinct names to avoid InfluxDB collisions
-                p.field("state_code", state_map[current_state])
-                p.tag("state_name", current_state)
+                #p.field("state_code", state_map[current_state])
+                p.field("state", state_map[current_state])
 
         try:
             self.write_grafana_api.write(
