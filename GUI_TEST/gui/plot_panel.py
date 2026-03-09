@@ -223,6 +223,7 @@ class LockingMonitorPlotHandler(BasePlotHandler):
         self.curve_monitor = self.plot_monitor.plot(
             pen=pg.mkPen(color=(255, 165, 0), width=1.5)  # orange
         )
+        self.mon_stats_text, self.mon_mean_line, self.mon_std_upper, self.mon_std_lower = self._add_stats_elements(self.plot_monitor)
 
         # --- Middle plot: Fast Control Signal ---
         self.plot_fast = pg.PlotWidget(title="Fast Control Signal")
@@ -230,6 +231,7 @@ class LockingMonitorPlotHandler(BasePlotHandler):
         self.curve_fast = self.plot_fast.plot(
             pen=pg.mkPen('c', width=1.5)  # cyan
         )
+        self.fast_stats_text, self.fast_mean_line, self.fast_std_upper, self.fast_std_lower = self._add_stats_elements(self.plot_fast)
         
         # Derivative for fast control
         self.plot_fast.showAxis('right')
@@ -256,6 +258,7 @@ class LockingMonitorPlotHandler(BasePlotHandler):
         self.curve_slow = self.plot_slow.plot(
             pen=pg.mkPen(color=(0, 200, 83), width=1.5)  # green
         )
+        self.slow_stats_text, self.slow_mean_line, self.slow_std_upper, self.slow_std_lower = self._add_stats_elements(self.plot_slow)
         
         # Derivative for slow control
         self.plot_slow.showAxis('right')
@@ -291,6 +294,33 @@ class LockingMonitorPlotHandler(BasePlotHandler):
         pi.getAxis('bottom').enableAutoSIPrefix(False)
         pi.getAxis('left').enableAutoSIPrefix(False)
 
+    def _add_stats_elements(self, plot_widget):
+        mean_line = pg.InfiniteLine(angle=0, pen=pg.mkPen('y', style=Qt.DashLine, width=1))
+        std_upper = pg.InfiniteLine(angle=0, pen=pg.mkPen((255, 255, 0, 100), style=Qt.DotLine))
+        std_lower = pg.InfiniteLine(angle=0, pen=pg.mkPen((255, 255, 0, 100), style=Qt.DotLine))
+        
+        plot_widget.addItem(mean_line)
+        plot_widget.addItem(std_upper)
+        plot_widget.addItem(std_lower)
+        
+        stats_text = pg.TextItem("", anchor=(0, 1), color=(255, 255, 0))
+        plot_widget.addItem(stats_text)
+        
+        return stats_text, mean_line, std_upper, std_lower
+
+    def _update_stats_elements(self, x_arr, vals_arr, stats_text, mean_line, std_upper, std_lower):
+        if len(vals_arr) == 0 or len(x_arr) == 0:
+            return
+        mean_val = np.mean(vals_arr)
+        std_val = np.std(vals_arr)
+        
+        stats_text.setText(f"Mean: {mean_val:.4g}\nStd: {std_val:.4g}")
+        stats_text.setPos(x_arr[0], np.max(vals_arr))
+        
+        mean_line.setValue(mean_val)
+        std_upper.setValue(mean_val + std_val)
+        std_lower.setValue(mean_val - std_val)
+
     def update(self, packet: dict):
         now = time()
 
@@ -298,8 +328,10 @@ class LockingMonitorPlotHandler(BasePlotHandler):
         mon_times = packet.get("monitor_times_unix")
         mon_vals  = packet.get("monitor_values")
         if mon_times is not None and mon_vals is not None and len(mon_times) > 0:
+            mon_arr = np.asarray(mon_vals)
             t_rel = np.asarray(mon_times) - now  # negative = seconds ago
-            self.curve_monitor.setData(t_rel, np.asarray(mon_vals))
+            self.curve_monitor.setData(t_rel, mon_arr)
+            self._update_stats_elements(t_rel, mon_arr, self.mon_stats_text, self.mon_mean_line, self.mon_std_upper, self.mon_std_lower)
 
         # --- Fast Control ---
         fc_times = packet.get("fast_control_times_unix")
@@ -308,8 +340,10 @@ class LockingMonitorPlotHandler(BasePlotHandler):
         show_fast_deriv = packet.get("show_fast_deriv", False)
         
         if fc_times is not None and fc_vals is not None and len(fc_times) > 0:
+            fc_arr = np.asarray(fc_vals)
             t_rel = np.asarray(fc_times) - now
-            self.curve_fast.setData(t_rel, np.asarray(fc_vals))
+            self.curve_fast.setData(t_rel, fc_arr)
+            self._update_stats_elements(t_rel, fc_arr, self.fast_stats_text, self.fast_mean_line, self.fast_std_upper, self.fast_std_lower)
             
             if show_fast_deriv and fc_deriv is not None and len(fc_deriv) > 0 and len(t_rel) > 1:
                 self.curve_fast_deriv.setData(t_rel[1:], np.asarray(fc_deriv))
@@ -326,8 +360,10 @@ class LockingMonitorPlotHandler(BasePlotHandler):
         show_slow_deriv = packet.get("show_slow_deriv", False)
         
         if sc_times is not None and sc_vals is not None and len(sc_times) > 0:
+            sc_arr = np.asarray(sc_vals)
             t_rel = np.asarray(sc_times) - now
-            self.curve_slow.setData(t_rel, np.asarray(sc_vals))
+            self.curve_slow.setData(t_rel, sc_arr)
+            self._update_stats_elements(t_rel, sc_arr, self.slow_stats_text, self.slow_mean_line, self.slow_std_upper, self.slow_std_lower)
             
             if show_slow_deriv and sc_deriv is not None and len(sc_deriv) > 0 and len(t_rel) > 1:
                 self.curve_slow_deriv.setData(t_rel[1:], np.asarray(sc_deriv))

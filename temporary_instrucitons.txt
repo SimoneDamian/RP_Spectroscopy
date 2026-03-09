@@ -12,8 +12,10 @@ When the "Set" button is pressed, it has to change the demodulation phase as the
 ----- Grafana embed implementation -----
 I want to add on every single page of the GUI, a vertical Qsplit. At the bottom of this, I want an implementation of grafana as in the @gui_grafana_embed.py. I don't know if it is better to use another thread to handle this or it can be handled by the GeneralManager (@general_manager.py).
 
+----- GUI parameters division by field -----
+
+
 ----- Statistics in the locked state -----
 When the state of the Finite State Mchine in @laser_manager.py is "LOCKED", the Laser Managers sends to the GUI a packet that contains the history of the monitor and of the control signals. I want to display on each plot also the mean and the standard deviation of the associated signal. Is there a clever way to let pyqtgraph handle this or is te Laser Manager that has to send this additional information to the GUI that simply plots it?
 
------ Strength also in the scan plots -----
-When the GUI (@plot_panel.py) receives a packet from the Laser Manager (@laser_manager.py) with the "SWEEP" label it plots, in addition to the error signal, also its strength as you can see in lines 33 to 52. I want to plot this feature also in the ScanPlotHandler (@plot_panel.py)
+
