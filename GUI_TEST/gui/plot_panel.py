@@ -414,11 +414,32 @@ class ScanPlotHandler(BasePlotHandler):
         plot_widget.getPlotItem().getAxis('left').enableAutoSIPrefix(False)
         plot_widget.setFixedHeight(self.PLOT_HEIGHT)
 
+        zero_line = pg.InfiniteLine(pos=0, angle=0, pen=pg.mkPen(color=(128, 128, 128), width=2))
+        plot_widget.addItem(zero_line)
+        zero_line.setZValue(0)
+
         x = latest_sweep.get("x")
         error = latest_sweep.get("error_signal")
-        if x is not None and error is not None:
-            plot_widget.plot(np.asarray(x), np.asarray(error),
-                            pen=pg.mkPen('c', width=1.5))
+        error_strength = latest_sweep.get("error_signal_strength")
+        
+        if x is not None:
+            x_arr = np.asarray(x)
+            if error is not None:
+                curve_error = plot_widget.plot(x_arr, np.asarray(error),
+                                               pen=pg.mkPen('c', width=1.5))
+                curve_error.setZValue(20)
+                
+            if error_strength is not None:
+                s_data = np.asarray(error_strength)
+                curve_strength_pos = pg.PlotDataItem(x_arr, s_data)
+                curve_strength_neg = pg.PlotDataItem(x_arr, -s_data)
+                fill_strength = pg.FillBetweenItem(
+                    curve_strength_pos, 
+                    curve_strength_neg, 
+                    brush=(0, 255, 255, 60)
+                )
+                plot_widget.addItem(fill_strength)
+                fill_strength.setZValue(-10)
 
         # Insert before the trailing stretch
         self._scroll_layout.insertWidget(self._scroll_layout.count() - 1,
