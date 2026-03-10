@@ -299,12 +299,14 @@ class LockingMonitorPlotHandler(BasePlotHandler):
         std_upper = pg.InfiniteLine(angle=0, pen=pg.mkPen((255, 255, 0, 100), style=Qt.DotLine))
         std_lower = pg.InfiniteLine(angle=0, pen=pg.mkPen((255, 255, 0, 100), style=Qt.DotLine))
         
-        plot_widget.addItem(mean_line)
-        plot_widget.addItem(std_upper)
-        plot_widget.addItem(std_lower)
+        vb = plot_widget.getViewBox()
+        vb.addItem(mean_line, ignoreBounds=True)
+        vb.addItem(std_upper, ignoreBounds=True)
+        vb.addItem(std_lower, ignoreBounds=True)
         
-        stats_text = pg.TextItem("", anchor=(0, 1), color=(255, 255, 0))
-        plot_widget.addItem(stats_text)
+        # anchor=(1,0) means text's top-right corner is at (x,y), so it stays within plot
+        stats_text = pg.TextItem("", anchor=(1, 0), color=(255, 255, 0), fill=(0, 0, 0, 150))
+        vb.addItem(stats_text, ignoreBounds=True)
         
         return stats_text, mean_line, std_upper, std_lower
 
@@ -314,8 +316,11 @@ class LockingMonitorPlotHandler(BasePlotHandler):
         mean_val = np.mean(vals_arr)
         std_val = np.std(vals_arr)
         
-        stats_text.setText(f"Mean: {mean_val:.4g}\nStd: {std_val:.4g}")
-        stats_text.setPos(x_arr[0], np.max(vals_arr))
+        stats_text.setText(f"Mean: {mean_val:.4g}\nStd:  {std_val:.4g}")
+        
+        # Position at the right edge, top of the current view
+        xr, yr = stats_text.getViewBox().viewRange()
+        stats_text.setPos(xr[1], yr[1])
         
         mean_line.setValue(mean_val)
         std_upper.setValue(mean_val + std_val)
