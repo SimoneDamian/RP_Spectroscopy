@@ -223,6 +223,7 @@ class LockingMonitorPlotHandler(BasePlotHandler):
         self.curve_monitor = self.plot_monitor.plot(
             pen=pg.mkPen(color=(255, 165, 0), width=1.5)  # orange
         )
+        self.mon_stats_text, self.mon_mean_line, self.mon_std_upper, self.mon_std_lower = self._add_stats_elements(self.plot_monitor)
 
         # --- Middle plot: Fast Control Signal ---
         self.plot_fast = pg.PlotWidget(title="Fast Control Signal")
@@ -230,6 +231,26 @@ class LockingMonitorPlotHandler(BasePlotHandler):
         self.curve_fast = self.plot_fast.plot(
             pen=pg.mkPen('c', width=1.5)  # cyan
         )
+        self.fast_stats_text, self.fast_mean_line, self.fast_std_upper, self.fast_std_lower = self._add_stats_elements(self.plot_fast)
+        
+        # Derivative for fast control
+        self.plot_fast.showAxis('right')
+        axis_right_fast = self.plot_fast.getAxis('right')
+        axis_right_fast.setLabel('Derivative', color='r')
+        axis_right_fast.setPen(color='r')
+        axis_right_fast.setTextPen('r')
+        self.fast_deriv_vb = pg.ViewBox()
+        self.plot_fast.scene().addItem(self.fast_deriv_vb)
+        self.plot_fast.getAxis('right').linkToView(self.fast_deriv_vb)
+        p_fast_vb = self.plot_fast.getViewBox()
+        self.fast_deriv_vb.setXLink(p_fast_vb)
+        self.curve_fast_deriv = pg.PlotCurveItem(pen=pg.mkPen('r', width=1.0, style=Qt.DashLine))
+        self.fast_deriv_vb.addItem(self.curve_fast_deriv)
+
+        def update_fast_vb():
+            self.fast_deriv_vb.setGeometry(p_fast_vb.sceneBoundingRect())
+            self.fast_deriv_vb.linkedViewChanged(p_fast_vb, self.fast_deriv_vb.XAxis)
+        p_fast_vb.sigResized.connect(update_fast_vb)
 
         # --- Bottom plot: Slow Control Signal ---
         self.plot_slow = pg.PlotWidget(title="Slow Control Signal")
@@ -237,6 +258,26 @@ class LockingMonitorPlotHandler(BasePlotHandler):
         self.curve_slow = self.plot_slow.plot(
             pen=pg.mkPen(color=(0, 200, 83), width=1.5)  # green
         )
+        self.slow_stats_text, self.slow_mean_line, self.slow_std_upper, self.slow_std_lower = self._add_stats_elements(self.plot_slow)
+        
+        # Derivative for slow control
+        self.plot_slow.showAxis('right')
+        axis_right_slow = self.plot_slow.getAxis('right')
+        axis_right_slow.setLabel('Derivative', color='r')
+        axis_right_slow.setPen(color='r')
+        axis_right_slow.setTextPen('r')
+        self.slow_deriv_vb = pg.ViewBox()
+        self.plot_slow.scene().addItem(self.slow_deriv_vb)
+        self.plot_slow.getAxis('right').linkToView(self.slow_deriv_vb)
+        p_slow_vb = self.plot_slow.getViewBox()
+        self.slow_deriv_vb.setXLink(p_slow_vb)
+        self.curve_slow_deriv = pg.PlotCurveItem(pen=pg.mkPen('r', width=1.0, style=Qt.DashLine))
+        self.slow_deriv_vb.addItem(self.curve_slow_deriv)
+
+        def update_slow_vb():
+            self.slow_deriv_vb.setGeometry(p_slow_vb.sceneBoundingRect())
+            self.slow_deriv_vb.linkedViewChanged(p_slow_vb, self.slow_deriv_vb.XAxis)
+        p_slow_vb.sigResized.connect(update_slow_vb)
 
         layout.addWidget(self.plot_monitor)
         layout.addWidget(self.plot_fast)
@@ -253,6 +294,38 @@ class LockingMonitorPlotHandler(BasePlotHandler):
         pi.getAxis('bottom').enableAutoSIPrefix(False)
         pi.getAxis('left').enableAutoSIPrefix(False)
 
+    def _add_stats_elements(self, plot_widget):
+        mean_line = pg.InfiniteLine(angle=0, pen=pg.mkPen('y', style=Qt.DashLine, width=1))
+        std_upper = pg.InfiniteLine(angle=0, pen=pg.mkPen((255, 255, 0, 100), style=Qt.DotLine))
+        std_lower = pg.InfiniteLine(angle=0, pen=pg.mkPen((255, 255, 0, 100), style=Qt.DotLine))
+        
+        vb = plot_widget.getViewBox()
+        vb.addItem(mean_line, ignoreBounds=True)
+        vb.addItem(std_upper, ignoreBounds=True)
+        vb.addItem(std_lower, ignoreBounds=True)
+        
+        # anchor=(1,0) means text's top-right corner is at (x,y), so it stays within plot
+        stats_text = pg.TextItem("", anchor=(1, 0), color=(255, 255, 0), fill=(0, 0, 0, 150))
+        vb.addItem(stats_text, ignoreBounds=True)
+        
+        return stats_text, mean_line, std_upper, std_lower
+
+    def _update_stats_elements(self, x_arr, vals_arr, stats_text, mean_line, std_upper, std_lower):
+        if len(vals_arr) == 0 or len(x_arr) == 0:
+            return
+        mean_val = np.mean(vals_arr)
+        std_val = np.std(vals_arr)
+        
+        stats_text.setText(f"Mean: {mean_val:.4g}\nStd:  {std_val:.4g}")
+        
+        # Position at the right edge, top of the current view
+        xr, yr = stats_text.getViewBox().viewRange()
+        stats_text.setPos(xr[1], yr[1])
+        
+        mean_line.setValue(mean_val)
+        std_upper.setValue(mean_val + std_val)
+        std_lower.setValue(mean_val - std_val)
+
     def update(self, packet: dict):
         now = time()
 
@@ -260,22 +333,50 @@ class LockingMonitorPlotHandler(BasePlotHandler):
         mon_times = packet.get("monitor_times_unix")
         mon_vals  = packet.get("monitor_values")
         if mon_times is not None and mon_vals is not None and len(mon_times) > 0:
+            mon_arr = np.asarray(mon_vals)
             t_rel = np.asarray(mon_times) - now  # negative = seconds ago
-            self.curve_monitor.setData(t_rel, np.asarray(mon_vals))
+            self.curve_monitor.setData(t_rel, mon_arr)
+            self._update_stats_elements(t_rel, mon_arr, self.mon_stats_text, self.mon_mean_line, self.mon_std_upper, self.mon_std_lower)
 
         # --- Fast Control ---
         fc_times = packet.get("fast_control_times_unix")
         fc_vals  = packet.get("fast_control_values")
+        fc_deriv = packet.get("d_fast_control_values")
+        show_fast_deriv = packet.get("show_fast_deriv", False)
+        
         if fc_times is not None and fc_vals is not None and len(fc_times) > 0:
+            fc_arr = np.asarray(fc_vals)
             t_rel = np.asarray(fc_times) - now
-            self.curve_fast.setData(t_rel, np.asarray(fc_vals))
+            self.curve_fast.setData(t_rel, fc_arr)
+            self._update_stats_elements(t_rel, fc_arr, self.fast_stats_text, self.fast_mean_line, self.fast_std_upper, self.fast_std_lower)
+            
+            if show_fast_deriv and fc_deriv is not None and len(fc_deriv) > 0 and len(t_rel) > 1:
+                self.curve_fast_deriv.setData(t_rel[1:], np.asarray(fc_deriv))
+                self.curve_fast_deriv.setVisible(True)
+                self.plot_fast.showAxis('right')
+            else:
+                self.curve_fast_deriv.setVisible(False)
+                self.plot_fast.hideAxis('right')
 
         # --- Slow Control ---
         sc_times = packet.get("slow_control_times_unix")
         sc_vals  = packet.get("slow_control_values")
+        sc_deriv = packet.get("d_slow_control_values")
+        show_slow_deriv = packet.get("show_slow_deriv", False)
+        
         if sc_times is not None and sc_vals is not None and len(sc_times) > 0:
+            sc_arr = np.asarray(sc_vals)
             t_rel = np.asarray(sc_times) - now
-            self.curve_slow.setData(t_rel, np.asarray(sc_vals))
+            self.curve_slow.setData(t_rel, sc_arr)
+            self._update_stats_elements(t_rel, sc_arr, self.slow_stats_text, self.slow_mean_line, self.slow_std_upper, self.slow_std_lower)
+            
+            if show_slow_deriv and sc_deriv is not None and len(sc_deriv) > 0 and len(t_rel) > 1:
+                self.curve_slow_deriv.setData(t_rel[1:], np.asarray(sc_deriv))
+                self.curve_slow_deriv.setVisible(True)
+                self.plot_slow.showAxis('right')
+            else:
+                self.curve_slow_deriv.setVisible(False)
+                self.plot_slow.hideAxis('right')
 
 
 class ScanPlotHandler(BasePlotHandler):
@@ -354,11 +455,32 @@ class ScanPlotHandler(BasePlotHandler):
         plot_widget.getPlotItem().getAxis('left').enableAutoSIPrefix(False)
         plot_widget.setFixedHeight(self.PLOT_HEIGHT)
 
+        zero_line = pg.InfiniteLine(pos=0, angle=0, pen=pg.mkPen(color=(128, 128, 128), width=2))
+        plot_widget.addItem(zero_line)
+        zero_line.setZValue(0)
+
         x = latest_sweep.get("x")
         error = latest_sweep.get("error_signal")
-        if x is not None and error is not None:
-            plot_widget.plot(np.asarray(x), np.asarray(error),
-                            pen=pg.mkPen('c', width=1.5))
+        error_strength = latest_sweep.get("error_signal_strength")
+        
+        if x is not None:
+            x_arr = np.asarray(x)
+            if error is not None:
+                curve_error = plot_widget.plot(x_arr, np.asarray(error),
+                                               pen=pg.mkPen('c', width=1.5))
+                curve_error.setZValue(20)
+                
+            if error_strength is not None:
+                s_data = np.asarray(error_strength)
+                curve_strength_pos = pg.PlotDataItem(x_arr, s_data)
+                curve_strength_neg = pg.PlotDataItem(x_arr, -s_data)
+                fill_strength = pg.FillBetweenItem(
+                    curve_strength_pos, 
+                    curve_strength_neg, 
+                    brush=(0, 255, 255, 60)
+                )
+                plot_widget.addItem(fill_strength)
+                fill_strength.setZValue(-10)
 
         # Insert before the trailing stretch
         self._scroll_layout.insertWidget(self._scroll_layout.count() - 1,

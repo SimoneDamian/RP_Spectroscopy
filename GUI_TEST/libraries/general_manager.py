@@ -7,6 +7,7 @@ import os
 from .logging_config import setup_logging
 from ruamel.yaml import YAML
 import warnings
+import schedule
 
 
 class GeneralManager:
@@ -57,7 +58,8 @@ class GeneralManager:
         
         # Inject ServiceManager into ReferenceLinesPage
         self.window.page_reflines.set_service_manager(self.services)
-        self.logger.info("ServiceManager injected into ReferenceLinesPage.")
+        self.window.page_laser.page_centering.set_service_manager(self.services)
+        self.logger.info("ServiceManager injected into ReferenceLinesPage and LineCenteringPage.")
 
         self.svc_thread.start()
         self.logger.info("ServiceManager thread started.")
@@ -86,6 +88,7 @@ class GeneralManager:
         self.lsr_thread = QThread()
         self.laser.moveToThread(self.lsr_thread)
         self.logger.info("LaserManager moved to thread.")
+        #schedule.every(5).minutes.do(self.laser.send_grafana_state)
         
         # Connect started signal to setup method to ensure it runs in the thread
         self.lsr_thread.started.connect(self.laser.setup)
@@ -127,6 +130,20 @@ class GeneralManager:
         self.window.page_laser.page_scan.sig_start_scan.connect(self.laser.start_scan)
         self.window.page_laser.page_scan.sig_stop_scan.connect(self.laser.stop_scan)
         self.window.page_laser.page_scan.sig_back.connect(self.laser.start_sweep)
+
+        # Line Centering signals
+        self.window.page_laser.page_centering.sig_start_scan.connect(
+            lambda start, stop, pts, calc, ref: self.laser.start_scan(start, stop, pts, calc, ref)
+        )
+        self.window.page_laser.page_centering.sig_stop_scan.connect(self.laser.stop_scan)
+        self.window.page_laser.page_centering.sig_back.connect(self.laser.start_sweep)
+        self.laser.sig_data_ready.connect(self.window.page_laser.page_centering.handle_data)
+        
+        def _on_center(val):
+            self.laser.set_parameter_value("big_offset", val)
+            self.window.page_laser.page_parameters.update_parameter("big_offset", val)
+            
+        self.window.page_laser.page_centering.sig_center.connect(_on_center)
 
         # Add Reference Line signals
         add_ref_page = self.window.page_laser.page_add_refline
@@ -180,6 +197,7 @@ class GeneralManager:
 
         # Inject ServiceManager into laser controller's ReferenceLinesPage
         self.window.page_laser.page_reflines.set_service_manager(self.services)
+        self.window.page_laser.page_centering.set_service_manager(self.services)
 
     @Slot()
     def on_laser_connected(self):
@@ -231,6 +249,7 @@ class GeneralManager:
             if step + 1 >= total:
                 self.window.page_laser.page_scan.set_scan_finished()
                 self.window.page_laser.page_add_refline.set_scan_finished()
+                self.window.page_laser.page_centering.set_scan_finished()
 
     def save_advanced_settings(self):
         """
