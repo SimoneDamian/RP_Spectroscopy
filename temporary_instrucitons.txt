@@ -14,8 +14,3 @@ I want to add on every single page of the GUI, a vertical Qsplit. At the bottom 
 
 ----- GUI parameters division by field -----
 
-
------ Statistics in the locked state -----
-When the state of the Finite State Mchine in @laser_manager.py is "LOCKED", the Laser Managers sends to the GUI a packet that contains the history of the monitor and of the control signals. I want to display on each plot also the mean and the standard deviation of the associated signal. Is there a clever way to let pyqtgraph handle this or is te Laser Manager that has to send this additional information to the GUI that simply plots it?
-
-
