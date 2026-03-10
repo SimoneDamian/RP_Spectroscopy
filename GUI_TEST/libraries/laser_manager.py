@@ -125,6 +125,8 @@ class LaserManager(QObject):
             self.handle_locked_state()
         elif self.state == "DEMOD_PHASE_OPTIMIZATION":
             self.handle_demod_phase_optimization_step()
+        elif self.state == "JITTER_CHECK":
+            self.handle_center_for_jitter_step()
         else:
             self.logger.warning(f"Unknown state: {self.state}")
 
@@ -160,13 +162,14 @@ class LaserManager(QObject):
 
 
     @Slot(float, float, int)
-    def start_scan(self, start_voltage=0.05, stop_voltage=1.75, num_points=40, calculate_correlation=False, reference_signal=None):
+    def start_scan(self, start_voltage=0.05, stop_voltage=1.75, num_points=40, calculate_correlation=False, reference_signal=None, autolock=False):
         """
         Initializes the scan variables and enters the SCAN state.
         This function returns immediately (Non-blocking).
         """
         self.reference_signal = reference_signal
         self.calculate_correlation = calculate_correlation
+        self.autolock = autolock
         if self.calculate_correlation:
             num_points = int((stop_voltage - start_voltage) / 0.02) #maybe sweep_amplitude/(ref_line_width*100)
             self.scan_voltages = np.linspace(start_voltage, stop_voltage, num_points)
@@ -197,10 +200,14 @@ class LaserManager(QObject):
 
         # 1. Check if we are done
         if self.scan_index >= len(self.scan_voltages):
-            self.logger.info("Scan completed successfully.")
-            self.state = "IDLE"
-            self.interface.set_value('big_offset', self.initial_center)
-            return
+            if self.autolock:
+                self.set_optimal_scan_center()
+                self.start_center_for_jitter()
+            else:
+                self.logger.info("Scan completed successfully.")
+                self.state = "IDLE"
+                self.interface.set_value('big_offset', self.initial_center)
+                return
 
         # 2. Get the target voltage for this step
         target_v = self.scan_voltages[self.scan_index]
@@ -358,6 +365,55 @@ class LaserManager(QObject):
         ratio = np.abs(signal_amplitude / signal_strength)
 
         return ratio
+
+    @Slot()
+    def start_autolock(self, start_voltage=0.05, stop_voltage=1.75, reference_signal=None):
+        self.logger.info("Starting autolock, scan for the line...")
+
+        #init of the variables
+        self.reference_line_width = reference_signal['x'][-1] - reference_signal['x'][0]
+        self.index_sweep_center_try = 0
+        self.correlations = []
+        self.shifts = []
+        self.times = []
+        self.amplitudes = []
+        self.line_outside_arr = []
+        self.line_outside = True 
+        self.frequence_stable = False
+        self.cnt = 0
+
+        #call of a scan with the autolock option
+        self.start_scan(start_voltage=start_voltage, stop_voltage=stop_voltage, reference_signal=reference_signal, calculate_correlation=True, autolock=True)
+
+    def set_optimal_scan_center(self):
+        self.logger.info("Setting the optimal scan center...")
+        self.optimal_scan_center = self.scan_voltages[np.argmax(self.correlations)]
+        self.set_parameter_value('big_offset', self.optimal_scan_center)
+        sleep(1)
+        return
+        
+
+    def start_center_for_jitter(self):
+        self.logger.info("Starting the jitter check loop...")
+
+        #init vairables from the ones the user can find on the GUI
+        self.jitter_threshold = self.advanced_settings['jitter_threshold'].value()
+        self.threshold_count = self.advanced_settings['threshold_count'].value()
+        self.offset_big_jump = self.advanced_settings['offset_big_jump'].value() 
+        self.offset_small_jump = self.advanced_settings['offset_small_jump'].value()
+        self.offset_try_list = self.advanced_settings['offset_try_list'].value()
+        self.correlation_minimum = self.advanced_settings['correlation_minimum'].value()
+        self.length_match_minimum = self.advanced_settings['length_match_minimum'].value()
+        self.proportion_free_space_left = self.advanced_settings['proportion_free_space_left'].value()
+
+        #init the loop variables
+
+        self.state = "JITTER_CHECK"
+
+    def handle_center_for_jitter_step(self):
+        self.state = "SWEEP"
+        return
+        
 
     @Slot(float)
     def get_sweep_from_scan(self, v_center):
