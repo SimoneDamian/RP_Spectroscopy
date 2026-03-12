@@ -218,6 +218,10 @@ class LaserManager(QObject):
 
         waiting_time = ((2.0**self.interface.writeable_params["sweep_speed"].get_remote_value())/(3.8e3))
         sleep(waiting_time)
+
+        if self.scan_index == 0:
+            # Sometimes the last sweep remains in the buffer
+            current_sweep = self.interface.get_sweep()
         
         current_sweep = self.interface.get_sweep()
         
@@ -261,7 +265,7 @@ class LaserManager(QObject):
         self.logger.info(f"Initiating demod phase optimization...")
         
         self.phase_scan_index = 0
-        self.scan_phases = np.linspace(0, 180, 90)
+        self.scan_phases = np.linspace(0, 180, 30)
         self.phase_scan_results = [] # Buffer to store accumulated results
         #self.scan_phases = []
         self.phase_right_extreme = 180
@@ -280,7 +284,8 @@ class LaserManager(QObject):
 
         # 0. If it is the first scan, save the initial phase value, in order to return to that one if the optimization does not work
         if self.phase_scan_index == 0:
-            self.initial_phase = self.interface.writeable_params['demodulation_phase_a'].value
+            current_params = self.get_current_parameter_values()
+            self.initial_phase = current_params.get('phase', 0.0)
             #calculate the initial ratios for 0 and 180
             # for target_phase in [0, 180]:
             #     self.scan_phases.append(target_phase)
@@ -316,17 +321,21 @@ class LaserManager(QObject):
         if self.phase_scan_index >= len(self.scan_phases):
             self.logger.info("Phase scan completed successfully.")
             self.state = "IDLE"
-            self.interface.set_value('demodulation_phase_a', self.initial_phase)
+            self.set_parameter_value('phase', self.initial_phase)
             return
 
         # 2. Get the target voltage for this step
         target_phase = self.scan_phases[self.phase_scan_index]
         
         # 3. Hardware Interaction (Blocking only for this small step)
-        self.interface.set_value('demodulation_phase_a', target_phase)
+        self.set_parameter_value('phase', target_phase)
 
         waiting_time = ((2.0**self.interface.writeable_params["sweep_speed"].get_remote_value())/(3.8e3))
         sleep(waiting_time)
+
+        if self.phase_scan_index == 0:
+            # Sometimes the last sweep remains in the buffer
+            current_sweep = self.interface.get_sweep()
         
         current_sweep = self.interface.get_sweep()
         
@@ -443,7 +452,7 @@ class LaserManager(QObject):
             self.logger.info("Scan aborted by user.")
         if self.state == "DEMOD_PHASE_OPTIMIZATION":
             if self.initial_phase is not None:
-                self.interface.set_value('demodulation_phase_a', self.initial_phase)
+                self.set_parameter_value('phase', self.initial_phase)
             self.state = "IDLE"
             self.logger.info("Demod phase optimization aborted by user.")
 

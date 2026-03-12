@@ -160,6 +160,18 @@ class GeneralManager:
         self.window.page_laser.sig_request_set_state.connect(self.laser.set_state)
         self.window.page_laser.sig_request_start_manual_locking.connect(self.laser.start_manual_locking)
 
+        # Optimization page signals
+        self.window.page_laser.page_optimization.sig_start.connect(self.laser.start_demod_phase_optimization)
+        self.window.page_laser.page_optimization.sig_stop.connect(self.laser.stop_scan)
+        self.window.page_laser.page_optimization.sig_back.connect(self.laser.start_sweep)
+        self.laser.sig_data_ready.connect(self.window.page_laser.page_optimization.handle_data)
+
+        def _on_set_phase(val):
+            self.laser.set_parameter_value("phase", val)
+            self.window.page_laser.page_parameters.update_parameter("phase", val)
+
+        self.window.page_laser.page_optimization.sig_set_phase.connect(_on_set_phase)
+
         # Connection for advanced settings
         #  - Direct to QWidget slot for GUI (auto-connection ensures GUI thread)
         self.services.sig_advanced_settings_loaded.connect(
@@ -250,6 +262,13 @@ class GeneralManager:
                 self.window.page_laser.page_scan.set_scan_finished()
                 self.window.page_laser.page_add_refline.set_scan_finished()
                 self.window.page_laser.page_centering.set_scan_finished()
+
+        if packet.get("mode") == "DEMOD_PHASE_OPTIMIZATION":
+            step = packet.get("step_index", 0)
+            phases = packet.get("phases", [])
+            total = len(phases) if phases is not None and hasattr(phases, '__len__') else 1
+            if step + 1 >= total:
+                self.window.page_laser.page_optimization.set_optimization_finished()
 
     def save_advanced_settings(self):
         """

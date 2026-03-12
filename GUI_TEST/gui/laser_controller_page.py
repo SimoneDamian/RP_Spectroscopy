@@ -1,8 +1,9 @@
 import numpy as np
+import pyqtgraph as pg
 from PySide6.QtWidgets import (QWidget, QVBoxLayout, QLabel, QSplitter, QStackedWidget,
                                QPushButton, QFrame, QHBoxLayout, QSizePolicy, QTableWidget,
                                QTableWidgetItem, QHeaderView, QMessageBox, QLineEdit,
-                               QFormLayout)
+                               QFormLayout, QScrollArea)
 from PySide6.QtCore import Qt, Slot, Signal
 from PySide6.QtGui import QDoubleValidator, QIntValidator
 from gui.plot_panel import PlotPanel
@@ -37,6 +38,7 @@ class MenuPage(QWidget):
     sig_go_centering = Signal()
     sig_go_manual = Signal()
     sig_go_auto = Signal()
+    sig_go_optimization = Signal()
 
     def __init__(self):
         super().__init__()
@@ -44,7 +46,7 @@ class MenuPage(QWidget):
         layout.setContentsMargins(10, 10, 10, 10)
         layout.setSpacing(10)
 
-        # 6 Buttons equidistant
+        # Buttons equidistant
         self.btn_params = MenuButton("Parameters", self.sig_go_parameters.emit)
         self.btn_advanced = MenuButton("Advanced settings", self.sig_go_advanced.emit)
         self.btn_reflines = MenuButton("Reference lines", self.sig_go_reflines.emit)
@@ -52,6 +54,7 @@ class MenuPage(QWidget):
         self.btn_centering = MenuButton("Line centering", self.sig_go_centering.emit)
         self.btn_manual = MenuButton("Manual lock", self.sig_go_manual.emit)
         self.btn_auto = MenuButton("Auto-lock", self.sig_go_auto.emit)
+        self.btn_optimization = MenuButton("Optimization", self.sig_go_optimization.emit)
 
         layout.addWidget(self.btn_params)
         layout.addWidget(self.btn_advanced)
@@ -60,6 +63,7 @@ class MenuPage(QWidget):
         layout.addWidget(self.btn_centering)
         layout.addWidget(self.btn_manual)
         layout.addWidget(self.btn_auto)
+        layout.addWidget(self.btn_optimization)
 
 class SubPageContainer(QWidget):
     """
@@ -445,6 +449,179 @@ class ManualLockPage(SubPageContainer):
             pass
 
 
+class OptimizationPage(QWidget):
+    """
+    Optimization sub-page with demodulation phase optimization controls.
+    """
+    sig_start = Signal()
+    sig_stop = Signal()
+    sig_back = Signal()
+    sig_set_phase = Signal(float)
+
+    def __init__(self):
+        super().__init__()
+
+        main_layout = QVBoxLayout(self)
+        main_layout.setContentsMargins(0, 0, 0, 0)
+
+        scroll = QScrollArea()
+        scroll.setWidgetResizable(True)
+        content_widget = QWidget()
+        layout = QVBoxLayout(content_widget)
+        layout.setSpacing(10)
+        layout.setContentsMargins(10, 10, 10, 10)
+
+        # --- Page Title ---
+        lbl_title = QLabel("Optimization page")
+        lbl_title.setAlignment(Qt.AlignCenter)
+        lbl_title.setStyleSheet("font-size: 18px; font-weight: bold; margin-bottom: 10px;")
+        layout.addWidget(lbl_title)
+
+        # --- Section separator ---
+        separator = QFrame()
+        separator.setFrameShape(QFrame.HLine)
+        separator.setFrameShadow(QFrame.Sunken)
+        layout.addWidget(separator)
+
+        # --- Section Title ---
+        lbl_section = QLabel("Demodulation phase optimization")
+        lbl_section.setAlignment(Qt.AlignCenter)
+        lbl_section.setStyleSheet("font-size: 14px; font-weight: bold; margin-top: 5px; margin-bottom: 5px;")
+        layout.addWidget(lbl_section)
+
+        # --- Start / Stop buttons ---
+        btn_row = QHBoxLayout()
+        self.btn_start = QPushButton("Start")
+        self.btn_stop = QPushButton("Stop")
+        self.btn_stop.setEnabled(False)
+        self.btn_start.setSizePolicy(
+            QSizePolicy.Expanding, QSizePolicy.Fixed
+        )
+        self.btn_stop.setSizePolicy(
+            QSizePolicy.Expanding, QSizePolicy.Fixed
+        )
+        btn_row.addWidget(self.btn_start)
+        btn_row.addWidget(self.btn_stop)
+        layout.addLayout(btn_row)
+
+        # --- Plot: ratio vs phase ---
+        self.plot_ratio = pg.PlotWidget(title="Ratio vs Phase")
+        self.plot_ratio.setBackground('w')
+        self.plot_ratio.showGrid(x=True, y=True)
+        self.plot_ratio.setMinimumHeight(200)
+        plot_item = self.plot_ratio.getPlotItem()
+        plot_item.setLabel('bottom', 'Phase', units='°')
+        plot_item.setLabel('left', 'Ratio')
+        plot_item.getAxis('bottom').enableAutoSIPrefix(False)
+        plot_item.getAxis('left').enableAutoSIPrefix(False)
+        self.curve_ratio = plot_item.plot(pen='g', symbol='o', symbolSize=5)
+        layout.addWidget(self.plot_ratio)
+
+        self.ratio_x = []  # phases
+        self.ratio_y = []  # ratios
+
+        # --- Phase set row ---
+        phase_row = QHBoxLayout()
+        lbl_set = QLabel("Set demodulation phase to")
+        self.input_phase = QLineEdit()
+        self.input_phase.setValidator(QDoubleValidator())
+        lbl_q = QLabel("?")
+        self.btn_plus90 = QPushButton("+90°")
+        self.btn_minus90 = QPushButton("-90°")
+        self.btn_set = QPushButton("Set")
+
+        phase_row.addWidget(lbl_set)
+        phase_row.addWidget(self.input_phase)
+        phase_row.addWidget(lbl_q)
+        phase_row.addWidget(self.btn_plus90)
+        phase_row.addWidget(self.btn_minus90)
+        phase_row.addWidget(self.btn_set)
+        layout.addLayout(phase_row)
+
+        layout.addStretch()
+
+        # --- Back button ---
+        self.btn_back = QPushButton("Back")
+        layout.addWidget(self.btn_back)
+
+        scroll.setWidget(content_widget)
+        main_layout.addWidget(scroll)
+
+        # --- Internal wiring ---
+        self.btn_start.clicked.connect(self._on_start_clicked)
+        self.btn_stop.clicked.connect(self._on_stop_clicked)
+        self.btn_back.clicked.connect(self.sig_back.emit)
+        self.btn_plus90.clicked.connect(self._on_plus90)
+        self.btn_minus90.clicked.connect(self._on_minus90)
+        self.btn_set.clicked.connect(self._on_set_clicked)
+
+    def _on_start_clicked(self):
+        self.btn_start.setEnabled(False)
+        self.btn_back.setEnabled(False)
+        self.btn_stop.setEnabled(True)
+
+        # Reset plot data
+        self.ratio_x = []
+        self.ratio_y = []
+        self.curve_ratio.setData([], [])
+
+        self.sig_start.emit()
+
+    def _on_stop_clicked(self):
+        self.sig_stop.emit()
+        self.set_optimization_finished()
+
+    @Slot()
+    def set_optimization_finished(self):
+        """Re-enable buttons after optimization completes or is stopped."""
+        self.btn_start.setEnabled(True)
+        self.btn_back.setEnabled(True)
+        self.btn_stop.setEnabled(False)
+
+    @Slot(dict)
+    def handle_data(self, packet):
+        """Process DEMOD_PHASE_OPTIMIZATION packets to update the ratio plot."""
+        if packet.get("mode") != "DEMOD_PHASE_OPTIMIZATION":
+            return
+
+        step = packet.get("step_index", 0)
+        if step == len(self.ratio_x):
+            current_phase = packet.get("current_phase", 0.0)
+            ratio = packet.get("ratio", 0.0)
+
+            self.ratio_x.append(current_phase)
+            self.ratio_y.append(ratio)
+            self.curve_ratio.setData(self.ratio_x, self.ratio_y)
+
+            # Update textbox with phase of greatest ratio
+            if len(self.ratio_y) > 0:
+                max_idx = np.argmax(self.ratio_y)
+                self.input_phase.setText(f"{self.ratio_x[max_idx]:.2f}")
+
+    def _on_plus90(self):
+        try:
+            val = float(self.input_phase.text())
+        except ValueError:
+            return
+        val = (val + 90) % 360
+        self.input_phase.setText(f"{val:.2f}")
+
+    def _on_minus90(self):
+        try:
+            val = float(self.input_phase.text())
+        except ValueError:
+            return
+        val = (val - 90) % 360
+        self.input_phase.setText(f"{val:.2f}")
+
+    def _on_set_clicked(self):
+        try:
+            phase_val = float(self.input_phase.text())
+            self.sig_set_phase.emit(phase_val)
+        except ValueError:
+            pass
+
+
 class LaserControllerPage(QWidget):
     sig_request_setup_manual_lock = Signal()
     sig_request_start_sweep = Signal()
@@ -481,6 +658,7 @@ class LaserControllerPage(QWidget):
         self.page_centering = LineCenteringPage(self.logger)
         self.page_manual = ManualLockPage()
         self.page_auto = SubPageContainer("Auto-lock")
+        self.page_optimization = OptimizationPage()
 
         
         self.left_stack.addWidget(self.page_parameters)
@@ -491,6 +669,7 @@ class LaserControllerPage(QWidget):
         self.left_stack.addWidget(self.page_centering)
         self.left_stack.addWidget(self.page_manual)
         self.left_stack.addWidget(self.page_auto)
+        self.left_stack.addWidget(self.page_optimization)
         
         splitter.addWidget(self.left_stack)
         
@@ -506,6 +685,7 @@ class LaserControllerPage(QWidget):
         self.menu_page.sig_go_centering.connect(lambda: self.left_stack.setCurrentWidget(self.page_centering))
         self.menu_page.sig_go_manual.connect(self.on_manual_clicked)
         self.menu_page.sig_go_auto.connect(lambda: self.left_stack.setCurrentWidget(self.page_auto))
+        self.menu_page.sig_go_optimization.connect(lambda: self.left_stack.setCurrentWidget(self.page_optimization))
 
         
         # Reference lines currently does nothing
@@ -529,6 +709,7 @@ class LaserControllerPage(QWidget):
         self.page_centering.sig_back.connect(self.go_to_menu)
         self.page_manual.sig_back.connect(self.on_manual_back)
         self.page_auto.sig_back.connect(self.go_to_menu)
+        self.page_optimization.sig_back.connect(self.on_optimization_back)
         
         # Manual Lock updates
         self.page_manual.sig_region_changed.connect(
@@ -562,6 +743,7 @@ class LaserControllerPage(QWidget):
         self.menu_page.btn_centering.setEnabled(enabled)
         self.menu_page.btn_manual.setEnabled(enabled)
         self.menu_page.btn_auto.setEnabled(enabled)
+        self.menu_page.btn_optimization.setEnabled(enabled)
 
     @Slot()
     def go_to_menu(self):
@@ -602,6 +784,12 @@ class LaserControllerPage(QWidget):
     @Slot()
     def on_manual_back(self):
         """Return to menu from manual lock page."""
+        self.left_stack.setCurrentWidget(self.menu_page)
+        self.sig_request_start_sweep.emit()
+
+    @Slot()
+    def on_optimization_back(self):
+        """Return to menu from optimization page."""
         self.left_stack.setCurrentWidget(self.menu_page)
         self.sig_request_start_sweep.emit()
 

@@ -496,6 +496,122 @@ class ScanPlotHandler(BasePlotHandler):
             self._scroll.verticalScrollBar().maximum()))
 
 
+class PhaseOptimizationPlotHandler(BasePlotHandler):
+    """
+    Handles the DEMOD_PHASE_OPTIMIZATION mode visualization.
+    Shows a scrollable column of plots, one per phase step,
+    and a progress bar at the bottom indicating overall progress.
+    Behaves like ScanPlotHandler but labels with demodulation phase.
+    """
+    PLOT_HEIGHT = 200
+
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        layout = QVBoxLayout(self)
+        layout.setContentsMargins(0, 0, 0, 0)
+        layout.setSpacing(4)
+
+        # --- Scrollable area for sweep plots ---
+        self._scroll = QScrollArea()
+        self._scroll.setWidgetResizable(True)
+        self._scroll_content = QWidget()
+        self._scroll_layout = QVBoxLayout(self._scroll_content)
+        self._scroll_layout.setContentsMargins(2, 2, 2, 2)
+        self._scroll_layout.setSpacing(4)
+        self._scroll_layout.addStretch()  # Keeps plots pushed to the top
+        self._scroll.setWidget(self._scroll_content)
+        layout.addWidget(self._scroll, 1)
+
+        # --- Progress bar ---
+        self._progress = QProgressBar()
+        self._progress.setMinimum(0)
+        self._progress.setMaximum(1)
+        self._progress.setValue(0)
+        self._progress.setFormat("Phase optimization progress: %p%")
+        self._progress.setFixedHeight(24)
+        layout.addWidget(self._progress)
+
+        self._plot_count = 0
+
+    def clear(self):
+        """Remove all existing plots and reset progress bar."""
+        while self._scroll_layout.count() > 1:
+            item = self._scroll_layout.takeAt(0)
+            w = item.widget()
+            if w:
+                w.deleteLater()
+        self._plot_count = 0
+        self._progress.setValue(0)
+        self._progress.setMaximum(1)
+
+    def update(self, packet: dict):
+        step_index = packet.get("step_index", 0)
+        current_phase = packet.get("current_phase", 0.0)
+        latest_sweep = packet.get("latest_sweep", {})
+        phases = packet.get("phases", [])
+        total_steps = len(phases) if phases is not None and hasattr(phases, '__len__') else 1
+
+        # If this is the first step of a new optimization, clear previous plots
+        if step_index == 0:
+            self.clear()
+
+        # Only add a new plot if we haven't plotted this index yet
+        if step_index < self._plot_count:
+            self._progress.setMaximum(total_steps)
+            self._progress.setValue(step_index + 1)
+            return
+
+        # --- Create new plot widget for this phase step ---
+        plot_widget = pg.PlotWidget(title=f"Phase = {current_phase:.2f}°")
+        plot_widget.setBackground('k')
+        plot_widget.showGrid(x=True, y=True, alpha=0.3)
+        plot_widget.getPlotItem().setLabel('left', 'Error Signal')
+        plot_widget.getPlotItem().setLabel('bottom', 'Voltage', units='V')
+        plot_widget.getPlotItem().getAxis('bottom').enableAutoSIPrefix(False)
+        plot_widget.getPlotItem().getAxis('left').enableAutoSIPrefix(False)
+        plot_widget.setFixedHeight(self.PLOT_HEIGHT)
+
+        zero_line = pg.InfiniteLine(pos=0, angle=0, pen=pg.mkPen(color=(128, 128, 128), width=2))
+        plot_widget.addItem(zero_line)
+        zero_line.setZValue(0)
+
+        x = latest_sweep.get("x")
+        error = latest_sweep.get("error_signal")
+        error_strength = latest_sweep.get("error_signal_strength")
+
+        if x is not None:
+            x_arr = np.asarray(x)
+            if error is not None:
+                curve_error = plot_widget.plot(x_arr, np.asarray(error),
+                                               pen=pg.mkPen('c', width=1.5))
+                curve_error.setZValue(20)
+
+            if error_strength is not None:
+                s_data = np.asarray(error_strength)
+                curve_strength_pos = pg.PlotDataItem(x_arr, s_data)
+                curve_strength_neg = pg.PlotDataItem(x_arr, -s_data)
+                fill_strength = pg.FillBetweenItem(
+                    curve_strength_pos,
+                    curve_strength_neg,
+                    brush=(0, 255, 255, 60)
+                )
+                plot_widget.addItem(fill_strength)
+                fill_strength.setZValue(-10)
+
+        # Insert before the trailing stretch
+        self._scroll_layout.insertWidget(self._scroll_layout.count() - 1,
+                                         plot_widget)
+        self._plot_count += 1
+
+        # Update progress bar
+        self._progress.setMaximum(total_steps)
+        self._progress.setValue(step_index + 1)
+
+        # Auto-scroll to bottom
+        QTimer.singleShot(50, lambda: self._scroll.verticalScrollBar().setValue(
+            self._scroll.verticalScrollBar().maximum()))
+
+
 class PlotPanel(QWidget):
     """
     Mode-aware plot container.
@@ -554,6 +670,7 @@ class PlotPanel(QWidget):
         self.register_handler("MANUAL_LOCKING", MessagePlotHandler())
         self.register_handler("TEXT", MessagePlotHandler())
         self.register_handler("LOCKED", LockingMonitorPlotHandler())
+        self.register_handler("DEMOD_PHASE_OPTIMIZATION", PhaseOptimizationPlotHandler())
 
     def register_handler(self, mode: str, handler: BasePlotHandler):
         """Register a plot handler for a given FSM mode."""

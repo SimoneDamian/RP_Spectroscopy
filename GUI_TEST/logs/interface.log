@@ -12867,3 +12867,186 @@
 2026-03-12 09:06:32 - HardwareInterface - INFO - Autolock mode set to ROBUST and determine offset set to False
 2026-03-12 09:06:32 - HardwareInterface - INFO - Loading parameters from dict...
 2026-03-12 09:06:33 - HardwareInterface - INFO - Parameters loaded: 42 writeable, 3 readable.
+2026-03-12 11:12:11 - HardwareInterface - INFO - Attempting connection via RedPitaya_K address (192.168.1.159:18862)
+2026-03-12 11:12:15 - HardwareInterface - INFO - Connected to device RedPitaya_K
+2026-03-12 11:12:15 - HardwareInterface - INFO - Basic configuration complete. Waiting for parameters from ServiceManager...
+2026-03-12 11:12:15 - HardwareInterface - INFO - HardwareInterface initialized.
+2026-03-12 11:12:15 - HardwareInterface - INFO - Autolock mode set to ROBUST and determine offset set to False
+2026-03-12 11:12:15 - HardwareInterface - INFO - Loading parameters from dict...
+2026-03-12 11:12:16 - HardwareInterface - INFO - Parameters loaded: 42 writeable, 3 readable.
+2026-03-12 11:18:01 - HardwareInterface - INFO - Attempting connection via RedPitaya_K address (192.168.1.159:18862)
+2026-03-12 11:18:04 - HardwareInterface - INFO - Connected to device RedPitaya_K
+2026-03-12 11:18:04 - HardwareInterface - INFO - Basic configuration complete. Waiting for parameters from ServiceManager...
+2026-03-12 11:18:04 - HardwareInterface - INFO - HardwareInterface initialized.
+2026-03-12 11:18:04 - HardwareInterface - INFO - Autolock mode set to ROBUST and determine offset set to False
+2026-03-12 11:18:04 - HardwareInterface - INFO - Loading parameters from dict...
+2026-03-12 11:18:06 - HardwareInterface - INFO - Parameters loaded: 42 writeable, 3 readable.
+2026-03-12 11:18:40 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 11:18:40 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 11:18:41 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 11:18:41 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 11:18:42 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 11:18:42 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 11:18:43 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 11:18:43 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 11:18:44 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 11:18:44 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 11:18:44 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 11:18:45 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 11:18:45 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 11:48:48 - HardwareInterface - INFO - Attempting connection via RedPitaya_K address (192.168.1.159:18862)
+2026-03-12 11:48:53 - HardwareInterface - INFO - Connected to device RedPitaya_K
+2026-03-12 11:48:53 - HardwareInterface - INFO - Basic configuration complete. Waiting for parameters from ServiceManager...
+2026-03-12 11:48:53 - HardwareInterface - INFO - HardwareInterface initialized.
+2026-03-12 11:48:53 - HardwareInterface - INFO - Autolock mode set to ROBUST and determine offset set to False
+2026-03-12 11:48:53 - HardwareInterface - INFO - Loading parameters from dict...
+2026-03-12 11:48:54 - HardwareInterface - INFO - Parameters loaded: 42 writeable, 3 readable.
+2026-03-12 15:09:31 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:09:32 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:09:33 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:09:35 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:09:36 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:09:37 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:09:38 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:09:39 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:09:40 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:09:41 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:09:42 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:09:44 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:09:45 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:09:46 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:09:47 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:09:48 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:09:49 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:09:50 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:09:51 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:09:52 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:09:53 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:09:55 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:09:56 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:09:57 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:09:58 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:09:59 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:10:00 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:10:01 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:10:02 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:10:03 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:10:05 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:10:06 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:10:07 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:10:08 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:10:09 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:10:10 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:10:11 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:10:12 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:10:13 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:10:14 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:10:16 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:10:17 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:10:18 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:10:19 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:10:20 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:10:21 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:10:22 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:10:23 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:10:25 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:10:26 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:10:27 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:10:28 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:10:29 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:10:30 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:10:31 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:10:32 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:10:33 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:10:34 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:10:36 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:10:37 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:10:38 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:10:39 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:10:40 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:10:41 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:10:42 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:10:43 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:10:44 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:10:45 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:10:46 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:10:47 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:10:49 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:10:50 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:10:51 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:10:52 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:10:53 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:10:54 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:10:55 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:10:56 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:10:58 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:10:59 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:11:00 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:11:01 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:11:02 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:11:03 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:11:04 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:11:05 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:11:07 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:11:08 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:11:09 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:11:10 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:11:11 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:41:18 - HardwareInterface - INFO - Attempting connection via RedPitaya_K address (192.168.1.159:18862)
+2026-03-12 15:41:23 - HardwareInterface - INFO - Connected to device RedPitaya_K
+2026-03-12 15:41:23 - HardwareInterface - INFO - Basic configuration complete. Waiting for parameters from ServiceManager...
+2026-03-12 15:41:23 - HardwareInterface - INFO - HardwareInterface initialized.
+2026-03-12 15:41:23 - HardwareInterface - INFO - Autolock mode set to ROBUST and determine offset set to False
+2026-03-12 15:41:23 - HardwareInterface - INFO - Loading parameters from dict...
+2026-03-12 15:41:24 - HardwareInterface - INFO - Parameters loaded: 42 writeable, 3 readable.
+2026-03-12 15:42:00 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:43:47 - HardwareInterface - INFO - Attempting connection via RedPitaya_K address (192.168.1.159:18862)
+2026-03-12 15:43:51 - HardwareInterface - INFO - Connected to device RedPitaya_K
+2026-03-12 15:43:51 - HardwareInterface - INFO - Basic configuration complete. Waiting for parameters from ServiceManager...
+2026-03-12 15:43:51 - HardwareInterface - INFO - HardwareInterface initialized.
+2026-03-12 15:43:51 - HardwareInterface - INFO - Autolock mode set to ROBUST and determine offset set to False
+2026-03-12 15:43:51 - HardwareInterface - INFO - Loading parameters from dict...
+2026-03-12 15:43:52 - HardwareInterface - INFO - Parameters loaded: 42 writeable, 3 readable.
+2026-03-12 15:44:35 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:44:35 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:44:36 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:44:36 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:44:37 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:44:37 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:44:38 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:47:41 - HardwareInterface - INFO - Attempting connection via RedPitaya_K address (192.168.1.159:18862)
+2026-03-12 15:47:45 - HardwareInterface - INFO - Connected to device RedPitaya_K
+2026-03-12 15:47:45 - HardwareInterface - INFO - Basic configuration complete. Waiting for parameters from ServiceManager...
+2026-03-12 15:47:45 - HardwareInterface - INFO - HardwareInterface initialized.
+2026-03-12 15:47:45 - HardwareInterface - INFO - Autolock mode set to ROBUST and determine offset set to False
+2026-03-12 15:47:45 - HardwareInterface - INFO - Loading parameters from dict...
+2026-03-12 15:47:46 - HardwareInterface - INFO - Parameters loaded: 42 writeable, 3 readable.
+2026-03-12 15:48:16 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:48:16 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:48:16 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:48:17 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:48:17 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:48:18 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:48:18 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 15:48:18 - HardwareInterface - ERROR - Parameter demodulation_phase_a not found among writeable parameters.
+2026-03-12 16:24:45 - HardwareInterface - INFO - Attempting connection via RedPitaya_K address (192.168.1.159:18862)
+2026-03-12 16:24:49 - HardwareInterface - INFO - Connected to device RedPitaya_K
+2026-03-12 16:24:49 - HardwareInterface - INFO - Basic configuration complete. Waiting for parameters from ServiceManager...
+2026-03-12 16:24:49 - HardwareInterface - INFO - HardwareInterface initialized.
+2026-03-12 16:24:49 - HardwareInterface - INFO - Autolock mode set to ROBUST and determine offset set to False
+2026-03-12 16:24:49 - HardwareInterface - INFO - Loading parameters from dict...
+2026-03-12 16:24:50 - HardwareInterface - INFO - Parameters loaded: 42 writeable, 3 readable.
+2026-03-12 16:43:34 - HardwareInterface - INFO - Attempting connection via RedPitaya_K address (192.168.1.159:18862)
+2026-03-12 16:43:38 - HardwareInterface - INFO - Connected to device RedPitaya_K
+2026-03-12 16:43:38 - HardwareInterface - INFO - Basic configuration complete. Waiting for parameters from ServiceManager...
+2026-03-12 16:43:38 - HardwareInterface - INFO - HardwareInterface initialized.
+2026-03-12 16:43:38 - HardwareInterface - INFO - Autolock mode set to ROBUST and determine offset set to False
+2026-03-12 16:43:38 - HardwareInterface - INFO - Loading parameters from dict...
+2026-03-12 16:43:40 - HardwareInterface - INFO - Parameters loaded: 42 writeable, 3 readable.
+2026-03-12 16:47:04 - HardwareInterface - INFO - Attempting connection via RedPitaya_K address (192.168.1.159:18862)
+2026-03-12 16:47:08 - HardwareInterface - INFO - Connected to device RedPitaya_K
+2026-03-12 16:47:08 - HardwareInterface - INFO - Basic configuration complete. Waiting for parameters from ServiceManager...
+2026-03-12 16:47:08 - HardwareInterface - INFO - HardwareInterface initialized.
+2026-03-12 16:47:09 - HardwareInterface - INFO - Autolock mode set to ROBUST and determine offset set to False
+2026-03-12 16:47:09 - HardwareInterface - INFO - Loading parameters from dict...
+2026-03-12 16:47:10 - HardwareInterface - INFO - Parameters loaded: 42 writeable, 3 readable.

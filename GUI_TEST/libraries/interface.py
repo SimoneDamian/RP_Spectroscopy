@@ -160,7 +160,7 @@ class HardwareInterface():
             self.logger.debug(f"Set parameter {param_name} to value {value}")
         else:
             self.logger.error(f"Parameter {param_name} not found among writeable parameters.")
-            raise KeyError(f"Parameter {param_name} not found among writeable parameters.")
+            raise KeyError(f"Parameter {param_name} not found among writeable parameters. Possible writeable parameters are: {list(self.writeable_params.keys())}")
 
     def set_advanced_settings(self, advanced_settings):
         """
