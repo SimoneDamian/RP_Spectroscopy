@@ -59,7 +59,8 @@ class GeneralManager:
         # Inject ServiceManager into ReferenceLinesPage
         self.window.page_reflines.set_service_manager(self.services)
         self.window.page_laser.page_centering.set_service_manager(self.services)
-        self.logger.info("ServiceManager injected into ReferenceLinesPage and LineCenteringPage.")
+        self.window.page_laser.page_auto.set_service_manager(self.services)
+        self.logger.info("ServiceManager injected into ReferenceLinesPage, LineCenteringPage, and AutoLockPage.")
 
         self.svc_thread.start()
         self.logger.info("ServiceManager thread started.")
@@ -172,6 +173,12 @@ class GeneralManager:
 
         self.window.page_laser.page_optimization.sig_set_phase.connect(_on_set_phase)
 
+        # Auto-lock page signals
+        self.window.page_laser.page_auto.sig_start_autolock.connect(self.laser.start_autolock)
+        self.window.page_laser.page_auto.sig_stop_scan.connect(self.laser.stop_scan)
+        self.window.page_laser.page_auto.sig_back.connect(self.laser.start_sweep)
+        self.laser.sig_data_ready.connect(self.window.page_laser.page_auto.handle_data)
+
         # Connection for advanced settings
         #  - Direct to QWidget slot for GUI (auto-connection ensures GUI thread)
         self.services.sig_advanced_settings_loaded.connect(
@@ -210,6 +217,7 @@ class GeneralManager:
         # Inject ServiceManager into laser controller's ReferenceLinesPage
         self.window.page_laser.page_reflines.set_service_manager(self.services)
         self.window.page_laser.page_centering.set_service_manager(self.services)
+        self.window.page_laser.page_auto.set_service_manager(self.services)
 
     @Slot()
     def on_laser_connected(self):
@@ -262,6 +270,7 @@ class GeneralManager:
                 self.window.page_laser.page_scan.set_scan_finished()
                 self.window.page_laser.page_add_refline.set_scan_finished()
                 self.window.page_laser.page_centering.set_scan_finished()
+                self.window.page_laser.page_auto.set_autolock_finished()
 
         if packet.get("mode") == "DEMOD_PHASE_OPTIMIZATION":
             step = packet.get("step_index", 0)

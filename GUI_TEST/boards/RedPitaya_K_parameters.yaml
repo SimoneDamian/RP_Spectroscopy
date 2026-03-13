@@ -249,7 +249,7 @@ writeable_parameters:
     description: The center of the sweep ramp in volts. (Pay attention to the 
       proportionality constant applied in the analog summator)
     type: float
-    initial_value: 0.95
+    initial_value: 0.9888888888888889
     min: 0
     max: 1.8
     scaling: 18204 # This is approx 1.0 / ANALOG_OUT_V

@@ -203,6 +203,7 @@ class LaserManager(QObject):
             if self.autolock:
                 self.set_optimal_scan_center()
                 self.start_center_for_jitter()
+                return
             else:
                 self.logger.info("Scan completed successfully.")
                 self.state = "IDLE"
@@ -405,14 +406,15 @@ class LaserManager(QObject):
         self.logger.info("Starting the jitter check loop...")
 
         #init vairables from the ones the user can find on the GUI
-        self.jitter_threshold = self.advanced_settings['jitter_threshold'].value()
-        self.threshold_count = self.advanced_settings['threshold_count'].value()
-        self.offset_big_jump = self.advanced_settings['offset_big_jump'].value() 
-        self.offset_small_jump = self.advanced_settings['offset_small_jump'].value()
-        self.offset_try_list = self.advanced_settings['offset_try_list'].value()
-        self.correlation_minimum = self.advanced_settings['correlation_minimum'].value()
-        self.length_match_minimum = self.advanced_settings['length_match_minimum'].value()
-        self.proportion_free_space_left = self.advanced_settings['proportion_free_space_left'].value()
+        #self.logger.info(f"All possible advanced settings: {list(self.advanced_settings.keys())}")
+        self.jitter_threshold = self.advanced_settings['autocenter_settings']['jitter_threshold']
+        self.threshold_count = self.advanced_settings['autocenter_settings']['threshold_count']
+        self.offset_big_jump = self.advanced_settings['autocenter_settings']['offset_big_jump']
+        self.offset_small_jump = self.advanced_settings['autocenter_settings']['offset_small_jump']
+        self.offset_try_list = self.advanced_settings['autocenter_settings']['offset_try_list']
+        self.correlation_minimum = self.advanced_settings['autocenter_settings']['correlation_minimum']
+        self.length_match_minimum = self.advanced_settings['autocenter_settings']['length_match_minimum']
+        self.proportion_free_space_left = self.advanced_settings['autocenter_settings']['proportion_free_space_left']
 
         #init the loop variables
 

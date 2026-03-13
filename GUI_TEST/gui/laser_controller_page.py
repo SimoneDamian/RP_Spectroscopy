@@ -3,7 +3,7 @@ import pyqtgraph as pg
 from PySide6.QtWidgets import (QWidget, QVBoxLayout, QLabel, QSplitter, QStackedWidget,
                                QPushButton, QFrame, QHBoxLayout, QSizePolicy, QTableWidget,
                                QTableWidgetItem, QHeaderView, QMessageBox, QLineEdit,
-                               QFormLayout, QScrollArea)
+                               QFormLayout, QScrollArea, QComboBox)
 from PySide6.QtCore import Qt, Slot, Signal
 from PySide6.QtGui import QDoubleValidator, QIntValidator
 from gui.plot_panel import PlotPanel
@@ -622,6 +622,217 @@ class OptimizationPage(QWidget):
             pass
 
 
+class AutoLockPage(QWidget):
+    """
+    Auto-lock sub-page: selects a reference line, scans a voltage range,
+    and triggers the autolock procedure on LaserManager.
+    """
+    sig_start_autolock = Signal(float, float, dict)
+    sig_stop_scan = Signal()
+    sig_back = Signal()
+
+    def __init__(self, logger=None):
+        super().__init__()
+        self.logger = logger
+        self.service_manager = None
+        self.current_reference_data = []
+
+        main_layout = QVBoxLayout(self)
+        main_layout.setContentsMargins(0, 0, 0, 0)
+
+        scroll = QScrollArea()
+        scroll.setWidgetResizable(True)
+        content_widget = QWidget()
+        layout = QVBoxLayout(content_widget)
+        layout.setSpacing(10)
+        layout.setContentsMargins(10, 10, 10, 10)
+
+        # --- 1. Title ---
+        lbl_title = QLabel("Automatic lock")
+        lbl_title.setAlignment(Qt.AlignCenter)
+        lbl_title.setStyleSheet("font-size: 18px; font-weight: bold; margin-bottom: 10px;")
+        layout.addWidget(lbl_title)
+
+        # --- 2. Reference Line Selection ---
+        ref_row = QHBoxLayout()
+        lbl_ref = QLabel("Select the line to lock to")
+        self.combo_refline = QComboBox()
+        ref_row.addWidget(lbl_ref)
+        ref_row.addWidget(self.combo_refline)
+        layout.addLayout(ref_row)
+
+        # --- 3. Plot: Reference Line Preview ---
+        self.plot_ref = pg.PlotWidget(title="Reference Line")
+        self.plot_ref.setBackground('w')
+        self.plot_ref.showGrid(x=True, y=True)
+        self.plot_ref.setMinimumHeight(200)
+        self.plot_ref_item = self.plot_ref.getPlotItem()
+        self.plot_ref_item.setLabel('bottom', 'V', units='V')
+        self.plot_ref_item.setLabel('left', 'Signal')
+        self.plot_ref_item.getAxis('bottom').enableAutoSIPrefix(False)
+        self.plot_ref_item.getAxis('left').enableAutoSIPrefix(False)
+        self.curve_ref = self.plot_ref_item.plot(pen='b')
+        layout.addWidget(self.plot_ref)
+
+        # --- 4. Voltage Range Inputs ---
+        lbl_voltage = QLabel("Select the voltage range within which look for the reference line")
+        lbl_voltage.setWordWrap(True)
+        layout.addWidget(lbl_voltage)
+
+        voltage_form = QFormLayout()
+        voltage_form.setHorizontalSpacing(12)
+        voltage_form.setVerticalSpacing(8)
+
+        self.input_start_v = QLineEdit("0.05")
+        self.input_start_v.setValidator(QDoubleValidator())
+        voltage_form.addRow("Start voltage:", self.input_start_v)
+
+        self.input_end_v = QLineEdit("1.75")
+        self.input_end_v.setValidator(QDoubleValidator())
+        voltage_form.addRow("Stop voltage:", self.input_end_v)
+
+        layout.addLayout(voltage_form)
+
+        # --- 5. Start / Stop Buttons ---
+        btn_row = QHBoxLayout()
+        self.btn_start = QPushButton("Start")
+        self.btn_stop = QPushButton("Stop")
+        self.btn_stop.setEnabled(False)
+
+        self.btn_start.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
+        self.btn_stop.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
+
+        btn_row.addWidget(self.btn_start)
+        btn_row.addWidget(self.btn_stop)
+        layout.addLayout(btn_row)
+
+        # --- 6. Plot: Scan / Correlation Results ---
+        self.plot_corr = pg.PlotWidget(title="Correlations")
+        self.plot_corr.setBackground('w')
+        self.plot_corr.showGrid(x=True, y=True)
+        self.plot_corr.setMinimumHeight(200)
+        self.plot_corr_item = self.plot_corr.getPlotItem()
+        self.plot_corr_item.setLabel('bottom', 'V', units='V')
+        self.plot_corr_item.setLabel('left', 'Correlation')
+        self.plot_corr_item.getAxis('bottom').enableAutoSIPrefix(False)
+        self.plot_corr_item.getAxis('left').enableAutoSIPrefix(False)
+        self.curve_corr = self.plot_corr_item.plot(pen='g', symbol='o', symbolSize=5)
+        layout.addWidget(self.plot_corr)
+
+        self.corr_x = []
+        self.corr_y = []
+
+        layout.addStretch()
+
+        # --- 7. Back Button (full width) ---
+        self.btn_back = QPushButton("Back")
+        layout.addWidget(self.btn_back)
+
+        scroll.setWidget(content_widget)
+        main_layout.addWidget(scroll)
+
+        # --- Wiring ---
+        self.btn_start.clicked.connect(self._on_start_clicked)
+        self.btn_stop.clicked.connect(self._on_stop_clicked)
+        self.btn_back.clicked.connect(self.sig_back.emit)
+        self.combo_refline.currentIndexChanged.connect(self._on_refline_selected)
+
+    # ---- ServiceManager integration (same pattern as LineCenteringPage) ----
+
+    def set_service_manager(self, sm):
+        self.service_manager = sm
+        if self.service_manager:
+            self.service_manager.sig_reflines_updated.connect(self._update_refline_combo)
+            self.service_manager.get_reference_lines()
+
+    @Slot(list)
+    def _update_refline_combo(self, data_list):
+        self.current_reference_data = data_list
+        self.combo_refline.blockSignals(True)
+        self.combo_refline.clear()
+        self.combo_refline.addItem("None")
+        for item in data_list:
+            self.combo_refline.addItem(item.get('name', 'Unknown'))
+        self.combo_refline.blockSignals(False)
+
+    @Slot(int)
+    def _on_refline_selected(self, index):
+        if index <= 0 or not self.service_manager:
+            self.curve_ref.clear()
+            return
+
+        selected_name = self.combo_refline.itemText(index)
+        item_data = next((i for i in self.current_reference_data if i['name'] == selected_name), None)
+
+        if item_data:
+            filename = item_data.get('file_name', item_data.get('file', item_data.get('name', '')))
+            x, y = self.service_manager.get_reference_line_data(filename)
+            if x is not None and y is not None:
+                self.curve_ref.setData(x, y)
+            else:
+                self.curve_ref.clear()
+        else:
+            self.curve_ref.clear()
+
+    # ---- Button handlers ----
+
+    def _on_start_clicked(self):
+        try:
+            start_v = float(self.input_start_v.text())
+            end_v = float(self.input_end_v.text())
+        except ValueError:
+            return
+
+        index = self.combo_refline.currentIndex()
+        if index <= 0 or not self.service_manager:
+            return
+
+        selected_name = self.combo_refline.itemText(index)
+        item_data = next((i for i in self.current_reference_data if i['name'] == selected_name), None)
+        if not item_data:
+            return
+        filename = item_data.get('file_name', item_data.get('file', item_data.get('name', '')))
+        x, y = self.service_manager.get_reference_line_data(filename)
+        if x is None or y is None:
+            return
+
+        # Disable Start & Back, enable Stop
+        self.btn_start.setEnabled(False)
+        self.btn_back.setEnabled(False)
+        self.btn_stop.setEnabled(True)
+
+        # Reset correlation plot
+        self.corr_x = []
+        self.corr_y = []
+        self.curve_corr.setData([], [])
+
+        self.sig_start_autolock.emit(start_v, end_v, {'x': x, 'y': y})
+
+    def _on_stop_clicked(self):
+        self.sig_stop_scan.emit()
+        self.set_autolock_finished()
+
+    @Slot()
+    def set_autolock_finished(self):
+        """Re-enable buttons after autolock completes or is stopped."""
+        self.btn_start.setEnabled(True)
+        self.btn_back.setEnabled(True)
+        self.btn_stop.setEnabled(False)
+
+    @Slot(dict)
+    def handle_data(self, packet):
+        """Process SCAN packets with correlations to update the correlation plot."""
+        if packet.get("mode") == "SCAN" and "correlations" in packet:
+            step = packet.get("step_index", 0)
+            if step == len(self.corr_x):
+                current_v = packet.get("current_voltage", 0.0)
+                corr_val = packet["correlations"][step]
+
+                self.corr_x.append(current_v)
+                self.corr_y.append(corr_val)
+                self.curve_corr.setData(self.corr_x, self.corr_y)
+
+
 class LaserControllerPage(QWidget):
     sig_request_setup_manual_lock = Signal()
     sig_request_start_sweep = Signal()
@@ -657,7 +868,7 @@ class LaserControllerPage(QWidget):
         self.page_scan = ScanPage()
         self.page_centering = LineCenteringPage(self.logger)
         self.page_manual = ManualLockPage()
-        self.page_auto = SubPageContainer("Auto-lock")
+        self.page_auto = AutoLockPage(self.logger)
         self.page_optimization = OptimizationPage()
 
         
@@ -708,7 +919,7 @@ class LaserControllerPage(QWidget):
         
         self.page_centering.sig_back.connect(self.go_to_menu)
         self.page_manual.sig_back.connect(self.on_manual_back)
-        self.page_auto.sig_back.connect(self.go_to_menu)
+        self.page_auto.sig_back.connect(self.on_auto_back)
         self.page_optimization.sig_back.connect(self.on_optimization_back)
         
         # Manual Lock updates
@@ -784,6 +995,12 @@ class LaserControllerPage(QWidget):
     @Slot()
     def on_manual_back(self):
         """Return to menu from manual lock page."""
+        self.left_stack.setCurrentWidget(self.menu_page)
+        self.sig_request_start_sweep.emit()
+
+    @Slot()
+    def on_auto_back(self):
+        """Return to menu from auto-lock page."""
         self.left_stack.setCurrentWidget(self.menu_page)
         self.sig_request_start_sweep.emit()
 
