@@ -612,6 +612,166 @@ class PhaseOptimizationPlotHandler(BasePlotHandler):
             self._scroll.verticalScrollBar().maximum()))
 
 
+class JitterCheckPlotHandler(BasePlotHandler):
+    """
+    Handles the JITTER_CHECK mode visualization.
+    Shows two vertically-stacked plots:
+      - Top:    Sweep signal (cyan) + shifted reference line (dashed orange),
+                with x-limits extended by 1.2×linewidth.
+                Title shows offset and correlation.
+      - Bottom: Shift vs time scatter (cyan dots).
+                When stability data is available: mean line (red solid),
+                ±jitter_threshold lines (red dashed), std fill (red alpha).
+    """
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        layout = QVBoxLayout(self)
+        layout.setContentsMargins(0, 0, 0, 0)
+        layout.setSpacing(4)
+
+        # --- Top plot: Sweep + Reference ---
+        self.plot_sweep = pg.PlotWidget(title="Sweep Signal")
+        self._setup_plot(self.plot_sweep, "Signal")
+        self.zero_line = pg.InfiniteLine(pos=0, angle=0,
+                                          pen=pg.mkPen(color=(128, 128, 128), width=2))
+        self.plot_sweep.addItem(self.zero_line)
+        self.zero_line.setZValue(0)
+
+        self.curve_sweep = self.plot_sweep.plot(pen=pg.mkPen('c', width=1.5))
+        self.curve_sweep.setZValue(20)
+        self.curve_ref = self.plot_sweep.plot(
+            pen=pg.mkPen(color=(255, 165, 0), width=1.5, style=Qt.DashLine)
+        )
+        self.curve_ref.setZValue(10)
+        layout.addWidget(self.plot_sweep)
+
+        # --- Bottom plot: Shift vs Time ---
+        self.plot_shift = pg.PlotWidget(title="Shift over Time")
+        self._setup_plot(self.plot_shift, "Shift [V]", "Time [s]")
+
+        self.scatter_shift = self.plot_shift.plot(
+            pen=None, symbol='o', symbolSize=5,
+            symbolBrush=pg.mkBrush('c'), symbolPen=None
+        )
+        # Stability overlay items
+        self.mean_line = pg.InfiniteLine(angle=0, pen=pg.mkPen('r', width=1.5))
+        self.thr_upper = pg.InfiniteLine(angle=0, pen=pg.mkPen('r', style=Qt.DashLine, width=1))
+        self.thr_lower = pg.InfiniteLine(angle=0, pen=pg.mkPen('r', style=Qt.DashLine, width=1))
+
+        self.plot_shift.addItem(self.mean_line, ignoreBounds=True)
+        self.plot_shift.addItem(self.thr_upper, ignoreBounds=True)
+        self.plot_shift.addItem(self.thr_lower, ignoreBounds=True)
+
+        self.mean_line.setVisible(False)
+        self.thr_upper.setVisible(False)
+        self.thr_lower.setVisible(False)
+
+        # Fill for std region
+        self.std_fill_upper = pg.PlotDataItem()
+        self.std_fill_lower = pg.PlotDataItem()
+        self.std_fill = pg.FillBetweenItem(
+            self.std_fill_upper, self.std_fill_lower,
+            brush=(255, 0, 0, 30)
+        )
+        self.plot_shift.addItem(self.std_fill)
+        self.std_fill.setVisible(False)
+
+        layout.addWidget(self.plot_shift)
+
+    @staticmethod
+    def _setup_plot(widget, left_label, bottom_label=None, units=None):
+        widget.setBackground('k')
+        widget.showGrid(x=True, y=True, alpha=0.3)
+        pi = widget.getPlotItem()
+        pi.setLabel('left', left_label)
+        if bottom_label:
+            pi.setLabel('bottom', bottom_label, units=units)
+        pi.getAxis('bottom').enableAutoSIPrefix(False)
+        pi.getAxis('left').enableAutoSIPrefix(False)
+
+    def update(self, packet: dict):
+        sweep_signal = packet.get("sweep_signal", {})
+        reference_signal = packet.get("reference_signal", {})
+        shift = packet.get("shift", 0.0)
+        corr = packet.get("correlation", 0.0)
+        len_match = packet.get("len_match", 0.0)
+        linewidth = packet.get("linewidth", 0.1)
+        offset = packet.get("offset", 0.0)
+        times = packet.get("times", [])
+        shifts = packet.get("shifts", [])
+        jitter_thr = packet.get("jitter_threshold", 0.05)
+        avg_shift = packet.get("avg_shift")
+        std_shift = packet.get("std_shift")
+
+        # --- Top plot: Sweep + shifted Reference ---
+        sweep_x = sweep_signal.get("x")
+        sweep_err = sweep_signal.get("error_signal")
+        ref_x = reference_signal.get("x")
+        ref_y = reference_signal.get("y")
+
+        if sweep_x is not None and sweep_err is not None:
+            sx = np.asarray(sweep_x)
+            sy = np.asarray(sweep_err)
+            self.curve_sweep.setData(sx, sy)
+
+            if ref_x is not None and ref_y is not None:
+                rx = np.asarray(ref_x) + shift
+                ry = np.asarray(ref_y)
+                self.curve_ref.setData(rx, ry)
+
+            # Set x-limits with padding
+            #x_min = sx[0] - 1.2 * linewidth
+            #x_max = sx[-1] + 1.2 * linewidth
+            #self.plot_sweep.setXRange(x_min, x_max)
+
+            # Set y-limits with padding
+            # all_y = [sy]
+            # if ref_y is not None:
+            #     all_y.append(np.asarray(ref_y))
+            # y_all = np.concatenate(all_y)
+            # y_min, y_max = float(np.min(y_all)), float(np.max(y_all))
+            # y_pad = (y_max - y_min) * 0.2
+            # self.plot_sweep.setYRange(y_min - y_pad, y_max + y_pad)
+
+            self.plot_sweep.setTitle(
+                f"Sweep (Offset = {offset:.2f} V) — Corr = {corr:.2f}, Match = {len_match:.2f} V"
+            )
+
+        # --- Bottom plot: Shift vs Time scatter ---
+        if len(times) > 0 and len(shifts) > 0:
+            t_arr = np.asarray(times)
+            s_arr = np.asarray(shifts)
+            self.scatter_shift.setData(t_arr, s_arr)
+
+            # X-axis: round up to next minute
+            x_max_t = (t_arr[-1] // 60 + 1) * 60
+            self.plot_shift.setXRange(0, max(x_max_t, 60))
+            self.plot_shift.setYRange(-1.1, 1.1)
+
+            self.plot_shift.setTitle(
+                f"Shift over Time (Jitter Threshold = {jitter_thr})"
+            )
+
+            # Stability overlay
+            if avg_shift is not None and std_shift is not None:
+                self.mean_line.setValue(avg_shift)
+                self.thr_upper.setValue(avg_shift + jitter_thr)
+                self.thr_lower.setValue(avg_shift - jitter_thr)
+                self.mean_line.setVisible(True)
+                self.thr_upper.setVisible(True)
+                self.thr_lower.setVisible(True)
+
+                # Std fill region
+                self.std_fill_upper.setData(t_arr, np.full_like(t_arr, avg_shift + std_shift))
+                self.std_fill_lower.setData(t_arr, np.full_like(t_arr, avg_shift - std_shift))
+                self.std_fill.setVisible(True)
+            else:
+                self.mean_line.setVisible(False)
+                self.thr_upper.setVisible(False)
+                self.thr_lower.setVisible(False)
+                self.std_fill.setVisible(False)
+
+
 class PlotPanel(QWidget):
     """
     Mode-aware plot container.
@@ -671,6 +831,7 @@ class PlotPanel(QWidget):
         self.register_handler("TEXT", MessagePlotHandler())
         self.register_handler("LOCKED", LockingMonitorPlotHandler())
         self.register_handler("DEMOD_PHASE_OPTIMIZATION", PhaseOptimizationPlotHandler())
+        self.register_handler("JITTER_CHECK", JitterCheckPlotHandler())
 
     def register_handler(self, mode: str, handler: BasePlotHandler):
         """Register a plot handler for a given FSM mode."""

@@ -8,6 +8,7 @@ import logging
 import numpy as np
 from linien_common.common import ANALOG_OUT_V, Vpp
 import pickle
+import time
 from time import sleep
 
 class LaserManager(QObject):
@@ -244,7 +245,7 @@ class LaserManager(QObject):
             self.amplitudes[self.scan_index] = amplitude
             self.len_matches[self.scan_index] = len_window
             self.offsets[self.scan_index] = offset
-            self.logger.debug(f"Correlation at {target_v}V: {r_coeff}, Length of match: {len_window}, offset with respect to the reference signal: {offset}")
+            self.logger.info(f"Correlation at {target_v}V: {r_coeff}, Length of match: {len_window}, offset with respect to the reference signal: {offset}")
             packet.update({
                 "correlations": self.correlations
             })
@@ -397,41 +398,169 @@ class LaserManager(QObject):
 
     def set_optimal_scan_center(self):
         self.logger.info("Setting the optimal scan center...")
-        self.optimal_scan_center = self.scan_voltages[np.argmax(self.correlations)]
+        best_idx = np.argmax(self.correlations)
+        self.optimal_scan_center = self.scan_voltages[best_idx]
         self.set_parameter_value('big_offset', self.optimal_scan_center)
+
+        # Set vertical offset to align zero-crossing with the reference line
+        vertical_offset = -self.offsets[best_idx] + self.interface.writeable_params['offset_a'].value
+        self.set_parameter_value('offset_a', vertical_offset)
+        self.logger.info(f"Set vertical offset (offset_a) to {vertical_offset}")
+
         sleep(1)
         return
 
     def start_center_for_jitter(self):
         self.logger.info("Starting the jitter check loop...")
 
-        #init vairables from the ones the user can find on the GUI
-        #self.logger.info(f"All possible advanced settings: {list(self.advanced_settings.keys())}")
-        self.jitter_threshold = self.advanced_settings['autocenter_settings']['jitter_threshold']
-        self.threshold_count = self.advanced_settings['autocenter_settings']['threshold_count']
-        self.offset_big_jump = self.advanced_settings['autocenter_settings']['offset_big_jump']
-        self.offset_small_jump = self.advanced_settings['autocenter_settings']['offset_small_jump']
-        self.offset_try_list = self.advanced_settings['autocenter_settings']['offset_try_list']
-        self.correlation_minimum = self.advanced_settings['autocenter_settings']['correlation_minimum']
-        self.length_match_minimum = self.advanced_settings['autocenter_settings']['length_match_minimum']
-        self.proportion_free_space_left = self.advanced_settings['autocenter_settings']['proportion_free_space_left']
+        # Init variables from advanced settings
+        self.jitter_threshold = self.advanced_settings['autocenter_settings']['jitter_threshold']['value']
+        self.threshold_count = self.advanced_settings['autocenter_settings']['threshold_count']['value']
+        self.offset_big_jump = self.advanced_settings['autocenter_settings']['offset_big_jump']['value']
+        self.offset_small_jump = self.advanced_settings['autocenter_settings']['offset_small_jump']['value']
+        self.offset_try_list = self.advanced_settings['autocenter_settings']['offset_try_list']['value']
+        self.correlation_minimum = self.advanced_settings['autocenter_settings']['correlation_minimum']['value']
+        self.length_match_minimum = self.advanced_settings['autocenter_settings']['length_match_minimum']['value']
+        self.proportion_free_space_left = self.advanced_settings['autocenter_settings']['proportion_free_space_left']['value']
 
-        #init the loop variables
+        # Init loop variables
+        self.jitter_time_0 = time.time()
+        self.jitter_time_last_retry = 0
+        self.jitter_offset = self.interface.writeable_params['big_offset'].value
+        self.jitter_offset_0 = self.jitter_offset
+        self.jitter_offset_try = np.array(self.offset_try_list) * self.offset_big_jump
+        self.jitter_ind_off_try = 0
+
+        # Reset accumulated lists (already initialised in start_autolock, but reset here for safety)
+        self.correlations = []
+        self.shifts = []
+        self.times = []
+        self.amplitudes = []
+        self.line_outside_arr = []
+        self.line_outside = True
+        self.frequence_stable = False
+        self.cnt = 0
 
         self.state = "JITTER_CHECK"
 
     def handle_center_for_jitter_step(self):
-        self.state = "SWEEP"
-        return
-
-        #get the sweep and find shift and correlation
+        """
+        Performs ONE iteration of the jitter/centering feedback loop.
+        Adapted from the notebook's center_and_lock_v1 while loop.
+        """
+        # 1. Acquire signal and compute correlation and shift
         sweep_signal = self.interface.get_sweep()
-        shift = SignalAnalysis.find_shift({'x' : sweep_signal['x'], 'y': sweep_signal['error_signal']} ,self.reference_signal)
-        corr, len_match, vertical_offset, amplitude = SignalAnalysis.find_correlation({'x' : sweep_signal['x'], 'y': sweep_signal['error_signal']}, self.reference_signal)
+        if sweep_signal is None:
+            return
 
+        shift = SignalAnalysis.find_shift(
+            {'x': sweep_signal['x'], 'y': sweep_signal['error_signal']},
+            self.reference_signal
+        )
+        corr, len_match, vertical_offset, amplitude = SignalAnalysis.find_correlation(
+            {'x': sweep_signal['x'], 'y': sweep_signal['error_signal']},
+            self.reference_signal
+        )
+
+        current_time = time.time() - self.jitter_time_0
+        self.times.append(current_time)
         self.shifts.append(shift)
         self.correlations.append(corr)
-        amplitudes.append(amplitude)
+        self.amplitudes.append(amplitude)
+
+        linewidth = self.reference_line_width
+
+        # 2. Detect if line is inside or outside
+        line_now_outside = (corr < self.correlation_minimum) or (len_match < self.length_match_minimum * linewidth)
+        self.line_outside_arr.append(line_now_outside)
+
+        if line_now_outside and not self.line_outside:
+            self.logger.info("Line has escaped")
+        elif not line_now_outside and self.line_outside:
+            self.logger.info("Line is now inside")
+
+        self.line_outside = line_now_outside
+        self.cnt = self.cnt + 1 if not self.line_outside else 0
+
+        # Prepare packet data for GUI
+        avg_shift = None
+        std_shift = None
+
+        # 3. If recent history suggests line is unstable, try different offset
+        recent_history = np.array(self.line_outside_arr[-self.threshold_count-1:])
+        if len(recent_history) >= self.threshold_count+1 and np.sum(recent_history) > 3 and (current_time - self.jitter_time_last_retry > 30):
+            self.jitter_ind_off_try += 1
+            if self.jitter_ind_off_try >= len(self.jitter_offset_try):
+                self.logger.info(f"Could not find good offset starting from {self.jitter_offset_0}. Giving up.")
+                self.state = "IDLE"
+                self._emit_jitter_packet(sweep_signal, shift, corr, len_match, avg_shift, std_shift)
+                return
+            self.jitter_offset = self.jitter_offset_0 + self.jitter_offset_try[self.jitter_ind_off_try]
+            self.jitter_time_last_retry = current_time
+            self.logger.info(f"Trying new offset = {self.jitter_offset}")
+            self.interface.set_value('big_offset', self.jitter_offset)
+            self._emit_jitter_packet(sweep_signal, shift, corr, len_match, avg_shift, std_shift)
+            return
+
+        # 4. When enough points collected, check stability and try to center
+        if self.cnt > self.threshold_count:
+            recent_shifts = self.shifts[-(self.threshold_count - 1):]
+            avg_shift = float(np.mean(recent_shifts))
+            std_shift = float(np.std(recent_shifts))
+            self.frequence_stable = std_shift < self.jitter_threshold
+
+            if self.frequence_stable:
+                self.logger.info("Frequency stable enough")
+                space_left = shift - sweep_signal['x'][0]
+                len_sweep_signal = sweep_signal['x'][-1] - sweep_signal['x'][0]
+                space_right = len_sweep_signal - linewidth - space_left
+                free_space = len_sweep_signal - linewidth
+                edge_space_thr = free_space / 3
+
+                self.logger.info(f"Shift: {shift}, space left: {space_left}, space right: {space_right}, free space: {free_space}, edge space threshold: {edge_space_thr}")
+
+                if space_left > free_space / 3 and space_right > edge_space_thr:
+                    # Line is centered and stable
+                    self.logger.info(f"Line is centered at offset {self.jitter_offset}. Jitter check complete.")
+                    self._emit_jitter_packet(sweep_signal, shift, corr, len_match, avg_shift, std_shift)
+                    self.state = "IDLE"
+                    return
+                elif space_left < free_space / 2:
+                    self.logger.info("Too far left: increase offset to decrease frequency")
+                    self.jitter_offset -= self.offset_small_jump
+                else:
+                    self.logger.info("Too far right: decrease offset to increase frequency")
+                    self.jitter_offset += self.offset_small_jump
+
+                self.interface.set_value('big_offset', self.jitter_offset)
+                self.cnt = 0
+                self.line_outside = True
+                self.frequence_stable = False
+            else:
+                self.logger.info("Frequency not stable enough")
+
+        # 5. Emit packet for GUI update
+        self._emit_jitter_packet(sweep_signal, shift, corr, len_match, avg_shift, std_shift)
+
+    def _emit_jitter_packet(self, sweep_signal, shift, corr, len_match, avg_shift, std_shift):
+        """Build and emit a JITTER_CHECK data packet for the GUI."""
+        packet = {
+            "mode": "JITTER_CHECK",
+            "sweep_signal": sweep_signal,
+            "reference_signal": self.reference_signal,
+            "shift": shift,
+            "correlation": corr,
+            "len_match": len_match,
+            "linewidth": self.reference_line_width,
+            "offset": self.jitter_offset,
+            "times": list(self.times),
+            "shifts": list(self.shifts),
+            "line_outside": self.line_outside,
+            "jitter_threshold": self.jitter_threshold,
+            "avg_shift": avg_shift,
+            "std_shift": std_shift,
+        }
+        self.sig_data_ready.emit(packet)
         
 
     @Slot(float)

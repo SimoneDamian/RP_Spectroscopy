@@ -30,12 +30,12 @@ lines:
   polarity: '-'
   scan_center: 0.93
 - board: RedPitaya_K
-  created: '2026-03-13 09:11:12'
-  file_name: TEST_RedPitaya_K_20260313_091112
+  created: '2026-03-13 11:51:09'
+  file_name: TEST_RedPitaya_K_20260313_115109
   lock_region:
-  - -0.2
   - -0.1
-  modified: '2026-03-13 09:11:12'
+  - 0.0
+  modified: '2026-03-13 11:51:09'
   name: TEST
-  polarity: ''
-  scan_center: 0.9778
+  polarity: '-'
+  scan_center: 1.06
