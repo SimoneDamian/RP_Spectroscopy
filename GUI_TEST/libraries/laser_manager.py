@@ -511,21 +511,24 @@ class LaserManager(QObject):
 
             if self.frequence_stable:
                 self.logger.info("Frequency stable enough")
-                space_left = shift - sweep_signal['x'][0]
+                # Reference line position in sweep coordinates
+                ref_left = self.reference_signal['x'][0] + shift
+                ref_right = self.reference_signal['x'][-1] + shift
+                space_left = ref_left - sweep_signal['x'][0]
+                space_right = sweep_signal['x'][-1] - ref_right
                 len_sweep_signal = sweep_signal['x'][-1] - sweep_signal['x'][0]
-                space_right = len_sweep_signal - linewidth - space_left
                 free_space = len_sweep_signal - linewidth
                 edge_space_thr = free_space / 3
 
                 self.logger.info(f"Shift: {shift}, space left: {space_left}, space right: {space_right}, free space: {free_space}, edge space threshold: {edge_space_thr}")
 
-                if space_left > free_space / 3 and space_right > edge_space_thr:
+                if space_left > edge_space_thr and space_right > edge_space_thr:
                     # Line is centered and stable
                     self.logger.info(f"Line is centered at offset {self.jitter_offset}. Jitter check complete.")
                     self._emit_jitter_packet(sweep_signal, shift, corr, len_match, avg_shift, std_shift)
                     self.state = "IDLE"
                     return
-                elif space_left < free_space / 2:
+                elif space_left < edge_space_thr:
                     self.logger.info("Too far left: increase offset to decrease frequency")
                     self.jitter_offset -= self.offset_small_jump
                 else:
