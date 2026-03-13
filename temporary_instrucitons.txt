@@ -1,16 +1,13 @@
------ Optimization page -----
-I want a new button in the MenuPage in @laser_controller_page.py with label "Optimization". When pressed, this has to open a new page in the left part of the @laser_controller_page.py that is structured as follows: 1) title "Optimization page". This will have different sections. For each one I want some sort of separation. Now I will implement the first one. This has 1) title "Demodulation phase optimization" 2) Two buttons: "Start" and "Stop", on the same row, together with a full width. 3) a plot. 4) In a row: "Set demodulation phase to", a textbox, "?" a button "+90°", a button "-90°" and a button "Set". 5) at the bottom of the page, a "Back" button.
-When the user enters in the page, the "Stop" button has to be disabled.
-When the "Start" button is pressed, it has to trigger the start_demod_phase_optimization method in @laser_manager.py. In addition it has to enable the "Stop" button and disable the "Back" one. When the loop it triggers ends, "Start" and "Back" buttons has to be renabled and the "Stop" one has to return to disabled.
-When the "Stop" button is pressed, it has to trigger the stop_scan method in @laser_manager.py.
-When the "Back" button is pressed, the page has to return to the MenuPage and has to trigger the start_sweep method in @laser_manager.py.
-The handle_demod_phase_optimization_step in @laser_manager.py sends to the GUI a packet that has to be used in 2 ways: 1) The PlotPanel in @plot_panel.py needs a new PhaseOptimizationPlotHandler that has to behave as the ScanPlotHandler but the different sweeps that are sent are at different values of the demodulation phase, not at different voltages. 2) The plot in the new page has to show the different "ratio" ad a function of the "current phase".
-The textbox I described in the point (4) has to contain the value of the phase related to the greatest "ratio" value.
-The "+90°" and "-90°", when pressed, have to add/subtract 90° to the number in the textbox (modulo 360 (the number inside must go from 0 to 360)).
-When the "Set" button is pressed, it has to change the demodulation phase as the @line_centering_page.py does with the _on_center_clicked with the venter_v.
-
 ----- Grafana embed implementation -----
 I want to add on every single page of the GUI, a vertical Qsplit. At the bottom of this, I want an implementation of grafana as in the @gui_grafana_embed.py. I don't know if it is better to use another thread to handle this or it can be handled by the GeneralManager (@general_manager.py).
 
 ----- GUI parameters division by field -----
+
+----- Automatic lock page -----
+I want to populate the page connected to the "Auto-lock" button in the @laser_controller_page.py. in the page I want (from the top to the bottom): 1) title "Automatic lock". 2) text "Select the line to lock to " and a drop-down menu with all the possible reference lines available as it is in the @line_centering_page.py. 3) a plot of the reference line selected as it is in the @line_centering_page.py. 4) text "Select the voltage range within which look for the reference line" and below this, two textboxes as it is in the lines 41-49 in the #line_centering_page.py. 5) Two buttons in the same row, that occupies the whole width of the page, one "Start" and one "Stop". 6) a plot with the same style as it is in the @line_centering_page.py. 7) a "Back" button at the bottom of the page that has a full width.
+When the page opens, the "Stop" button must be disabled.
+When the user clicks on the "Start" button, the "Back" button has to be disabled and the "Stop" one has to be enabled. In addition it has to trigger the start_autolock method in laser_manager.py.
+When the user clicks on the "Stop" button, it has to trigger the stop_scan method of the @laser_manager.py.
+When the user clicks on the "Back" button the page has to return to the menu page this has to trigger the start_sweep method of the @laser_manager.py.
+
 

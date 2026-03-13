@@ -375,7 +375,7 @@ class LaserManager(QObject):
 
         return ratio
 
-    @Slot()
+    @Slot(float, float, dict)
     def start_autolock(self, start_voltage=0.05, stop_voltage=1.75, reference_signal=None):
         self.logger.info("Starting autolock, scan for the line...")
 
@@ -400,7 +400,6 @@ class LaserManager(QObject):
         self.set_parameter_value('big_offset', self.optimal_scan_center)
         sleep(1)
         return
-        
 
     def start_center_for_jitter(self):
         self.logger.info("Starting the jitter check loop...")
@@ -445,7 +444,7 @@ class LaserManager(QObject):
 
     @Slot()
     def stop_scan(self):
-        if self.state == "SCAN":
+        if self.state == "SCAN" or self.state == "JITTER_CHECK":
             if self.initial_center is not None:
                 self.interface.set_value('big_offset', self.initial_center)
             self.state = "IDLE"
