@@ -17,6 +17,7 @@ class LaserManager(QObject):
     sig_data_ready = Signal(dict)
     sig_grafana_data_ready = Signal(dict)
     sig_trace_ready = Signal(dict)
+    sig_autolock_completed = Signal()
 
     def __init__(self, config, board):
         super().__init__()
@@ -494,6 +495,7 @@ class LaserManager(QObject):
                 self.logger.info(f"Could not find good offset starting from {self.jitter_offset_0}. Giving up.")
                 self.state = "SWEEP"
                 self._emit_jitter_packet(sweep_signal, shift, corr, len_match, avg_shift, std_shift)
+                self.sig_autolock_completed.emit()
                 return
             self.jitter_offset = self.jitter_offset_0 + self.jitter_offset_try[self.jitter_ind_off_try]
             self.jitter_time_last_retry = current_time
@@ -527,6 +529,7 @@ class LaserManager(QObject):
                     self.logger.info(f"Line is centered at offset {self.jitter_offset}. Jitter check complete.")
                     self._emit_jitter_packet(sweep_signal, shift, corr, len_match, avg_shift, std_shift)
                     self.state = "IDLE"
+                    self.sig_autolock_completed.emit()
                     return
                 elif space_left < edge_space_thr:
                     self.logger.info("Too far left: increase offset to decrease frequency")

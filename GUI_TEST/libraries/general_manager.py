@@ -178,6 +178,7 @@ class GeneralManager:
         self.window.page_laser.page_auto.sig_stop_scan.connect(self.laser.stop_scan)
         self.window.page_laser.page_auto.sig_back.connect(self.laser.start_sweep)
         self.laser.sig_data_ready.connect(self.window.page_laser.page_auto.handle_data)
+        self.laser.sig_autolock_completed.connect(self.window.page_laser.page_auto.set_autolock_finished)
 
         # Connection for advanced settings
         #  - Direct to QWidget slot for GUI (auto-connection ensures GUI thread)
@@ -270,7 +271,6 @@ class GeneralManager:
                 self.window.page_laser.page_scan.set_scan_finished()
                 self.window.page_laser.page_add_refline.set_scan_finished()
                 self.window.page_laser.page_centering.set_scan_finished()
-                self.window.page_laser.page_auto.set_autolock_finished()
 
         if packet.get("mode") == "DEMOD_PHASE_OPTIMIZATION":
             step = packet.get("step_index", 0)
