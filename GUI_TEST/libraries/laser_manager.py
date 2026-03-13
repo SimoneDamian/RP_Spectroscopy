@@ -423,6 +423,15 @@ class LaserManager(QObject):
     def handle_center_for_jitter_step(self):
         self.state = "SWEEP"
         return
+
+        #get the sweep and find shift and correlation
+        sweep_signal = self.interface.get_sweep()
+        shift = SignalAnalysis.find_shift({'x' : sweep_signal['x'], 'y': sweep_signal['error_signal']} ,self.reference_signal)
+        corr, len_match, vertical_offset, amplitude = SignalAnalysis.find_correlation({'x' : sweep_signal['x'], 'y': sweep_signal['error_signal']}, self.reference_signal)
+
+        self.shifts.append(shift)
+        self.correlations.append(corr)
+        amplitudes.append(amplitude)
         
 
     @Slot(float)
