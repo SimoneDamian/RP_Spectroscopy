@@ -492,7 +492,7 @@ class LaserManager(QObject):
             self.jitter_ind_off_try += 1
             if self.jitter_ind_off_try >= len(self.jitter_offset_try):
                 self.logger.info(f"Could not find good offset starting from {self.jitter_offset_0}. Giving up.")
-                self.state = "IDLE"
+                self.state = "SWEEP"
                 self._emit_jitter_packet(sweep_signal, shift, corr, len_match, avg_shift, std_shift)
                 return
             self.jitter_offset = self.jitter_offset_0 + self.jitter_offset_try[self.jitter_ind_off_try]
@@ -590,13 +590,15 @@ class LaserManager(QObject):
         if self.state == "SCAN" or self.state == "JITTER_CHECK":
             if self.initial_center is not None:
                 self.interface.set_value('big_offset', self.initial_center)
-            self.state = "IDLE"
+            self.state = "SWEEP"
             self.logger.info("Scan aborted by user.")
-        if self.state == "DEMOD_PHASE_OPTIMIZATION":
+        elif self.state == "DEMOD_PHASE_OPTIMIZATION":
             if self.initial_phase is not None:
                 self.set_parameter_value('phase', self.initial_phase)
             self.state = "IDLE"
             self.logger.info("Demod phase optimization aborted by user.")
+        #elif self.state == "JITTER_CHECK":
+        #    self.state = 
 
     @Slot()
     def start_sweep(self):

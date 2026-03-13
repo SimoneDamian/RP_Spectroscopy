@@ -3,11 +3,5 @@ I want to add on every single page of the GUI, a vertical Qsplit. At the bottom 
 
 ----- GUI parameters division by field -----
 
------ Automatic lock page -----
-I want to populate the page connected to the "Auto-lock" button in the @laser_controller_page.py. in the page I want (from the top to the bottom): 1) title "Automatic lock". 2) text "Select the line to lock to " and a drop-down menu with all the possible reference lines available as it is in the @line_centering_page.py. 3) a plot of the reference line selected as it is in the @line_centering_page.py. 4) text "Select the voltage range within which look for the reference line" and below this, two textboxes as it is in the lines 41-49 in the #line_centering_page.py. 5) Two buttons in the same row, that occupies the whole width of the page, one "Start" and one "Stop". 6) a plot with the same style as it is in the @line_centering_page.py. 7) a "Back" button at the bottom of the page that has a full width.
-When the page opens, the "Stop" button must be disabled.
-When the user clicks on the "Start" button, the "Back" button has to be disabled and the "Stop" one has to be enabled. In addition it has to trigger the start_autolock method in laser_manager.py.
-When the user clicks on the "Stop" button, it has to trigger the stop_scan method of the @laser_manager.py.
-When the user clicks on the "Back" button the page has to return to the menu page this has to trigger the start_sweep method of the @laser_manager.py.
 
 
