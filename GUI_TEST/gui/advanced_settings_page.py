@@ -142,6 +142,7 @@ class AdvancedSettingsPage(QWidget):
 
     def _build_unlock_detection_group(self, group_key, group_data):
         ui_label = group_data.get("ui_label", "Unlock Detection Logic")
+        #ui_label.setStyleSheet("font-weight: bold; margin-top: 5px;")
         group_box = QGroupBox(ui_label)
         gbox_layout = QVBoxLayout(group_box)
         gbox_layout.setSpacing(10)

@@ -827,5 +827,6 @@ class LaserManager(QObject):
         if self.locking_mode == "MANUAL" or (self.locking_mode == "AUTOMATIC" and self.advanced_settings['automatic_relock']['enabled'] == False):
             self.set_state("SWEEP")
         else:
+            pass
             #automatic mode and automatic relock enabled
             #AGGIUNGERE IL RELOCK

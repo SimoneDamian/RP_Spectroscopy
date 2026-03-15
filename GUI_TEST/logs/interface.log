@@ -13222,3 +13222,23 @@
 2026-03-15 14:23:57 - HardwareInterface - INFO - Autolock mode set to ROBUST and determine offset set to False
 2026-03-15 14:23:57 - HardwareInterface - INFO - Loading parameters from dict...
 2026-03-15 14:23:59 - HardwareInterface - INFO - Parameters loaded: 42 writeable, 3 readable.
+2026-03-15 17:03:59 - HardwareInterface - INFO - Attempting connection via RP_7020 address (192.168.1.100:18862)
+2026-03-15 17:04:08 - HardwareInterface - ERROR - Failed to connect to RP_7020: [Errno 64] Host is down
+2026-03-15 17:04:48 - HardwareInterface - INFO - Attempting connection via RP_7020 address (192.168.1.100:18862)
+2026-03-15 17:04:54 - HardwareInterface - ERROR - Failed to connect to RP_7020: [Errno 64] Host is down
+2026-03-15 17:07:19 - HardwareInterface - INFO - Attempting connection via RP_7020 address (192.168.1.100:18862)
+2026-03-15 17:07:25 - HardwareInterface - ERROR - Failed to connect to RP_7020: [Errno 64] Host is down
+2026-03-15 17:21:20 - HardwareInterface - INFO - Attempting connection via RP_7020 address (192.168.1.100:18862)
+2026-03-15 17:21:55 - HardwareInterface - INFO - Connected to device RP_7020
+2026-03-15 17:21:55 - HardwareInterface - INFO - Basic configuration complete. Waiting for parameters from ServiceManager...
+2026-03-15 17:21:55 - HardwareInterface - INFO - HardwareInterface initialized.
+2026-03-15 17:21:55 - HardwareInterface - INFO - Autolock mode set to ROBUST and determine offset set to False
+2026-03-15 17:21:55 - HardwareInterface - INFO - Loading parameters from dict...
+2026-03-15 17:21:57 - HardwareInterface - INFO - Parameters loaded: 42 writeable, 3 readable.
+2026-03-15 17:22:49 - HardwareInterface - INFO - Attempting connection via RP_7020 address (192.168.1.100:18862)
+2026-03-15 17:22:55 - HardwareInterface - INFO - Connected to device RP_7020
+2026-03-15 17:22:55 - HardwareInterface - INFO - Basic configuration complete. Waiting for parameters from ServiceManager...
+2026-03-15 17:22:55 - HardwareInterface - INFO - HardwareInterface initialized.
+2026-03-15 17:22:55 - HardwareInterface - INFO - Autolock mode set to ROBUST and determine offset set to False
+2026-03-15 17:22:55 - HardwareInterface - INFO - Loading parameters from dict...
+2026-03-15 17:22:57 - HardwareInterface - INFO - Parameters loaded: 42 writeable, 3 readable.
