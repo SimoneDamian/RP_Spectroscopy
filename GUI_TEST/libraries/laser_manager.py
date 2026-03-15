@@ -10,6 +10,7 @@ from linien_common.common import ANALOG_OUT_V, Vpp
 import pickle
 import time
 from time import sleep
+from scipy.signal import find_peaks
 
 class LaserManager(QObject):
     sig_connected = Signal()
@@ -759,4 +760,72 @@ class LaserManager(QObject):
         that are contained in the interface while the system is locked.
         """
         
+        if self.advanced_settings['unlock_detection']['detect_unlock']['enabled']:
+            #if the user wants the app to automatically detects an unlock event
+
+            #Fast control unlock detection
+            if self.advanced_settings['unlock_detection']['fast_control']['fluctuations']['enabled']:
+                #if the unlock detection via fast control fluctuations is enabled
+                self.check_for_fast_control_fluctuations(self.interface.history['d_fast_control_values'], self.advanced_settings['unlock_detection']['fast_control']['fluctuations']['threshold'])
+            if self.advanced_settings['unlock_detection']['fast_control']['saturation']['enabled']:
+                #if the unlock detection via fast control saturation is enabled
+                self.check_for_saturation(self.interface.history['fast_control_values'])
+            
+            #Slow control unlock detection
+            if self.advanced_settings['unlock_detection']['slow_control']['fluctuations']['enabled']:
+                #if the unlock detection via slow control fluctuations is enabled
+                self.check_for_slow_control_fluctuations(self.interface.history['d_slow_control_values'], self.advanced_settings['unlock_detection']['slow_control']['fluctuations']['threshold'])
+            if self.advanced_settings['unlock_detection']['slow_control']['saturation']['enabled']:
+                #if the unlock detection via slow control saturation is enabled
+                self.check_for_saturation(self.interface.history['slow_control_values'])
+
+            #MANCA IL DRIFT DEL SEGNALE DI MONITOR
+
+            #SE ALMENO UNO è TRUE, ALLORA STOP
+            if self.unlock_events['unlock_event_fast_control_signal'] or self.unlock_events['unlock_event_fast_control_signal_at_time'] or self.unlock_events['unlock_event_slow_control_signal'] or self.unlock_events['unlock_event_slow_control_signal_at_time']:
+                self.stop_locking = True
+
         return
+
+    def check_for_fast_control_fluctuations(self, d_fast_control_values, threshold):
+        """
+        Check for fast control fluctuations.
+        """
+        detected_peaks, _ = find_peaks(np.abs(d_fast_control_values), height=threshold)
+        detected_peaks = [i for i in detected_peaks if  i > int(len(d_fast_control_values)/2)] #only consider recent peaks
+
+        if len(detected_peaks) > 0:
+            fast_fluctuation_times = [self.interface.history['fast_control_times_unix'][i] for i in detected_peaks]
+            self.logger.warning(f"Fast variation of the fast control signal detected at time: {self.interface.history['fast_control_times_dt'][detected_peaks[0]].strftime('%Y-%m-%d %H:%M:%S')}")
+            #self.lock_unlock_logger.info(f"Fast variation of the fast control signal detected at time: {self.interface.history['fast_control_times_dt'][detected_peaks[0]].strftime('%Y-%m-%d %H:%M:%S')}")
+            self.unlock_events['unlock_event_fast_control_signal'] = True
+            self.unlock_events['unlock_event_fast_control_signal_at_time'] = fast_fluctuation_times
+        
+        return
+
+    def check_for_slow_control_fluctuations(self, d_slow_control_values, threshold):
+        """
+        Check for slow control fluctuations.
+        """
+        detected_peaks, _ = find_peaks(np.abs(d_slow_control_values), height=threshold)
+        detected_peaks = [i for i in detected_peaks if  i > int(len(d_slow_control_values)/2)] #only consider recent peaks
+
+        if len(detected_peaks) > 0:
+            slow_fluctuation_times = [self.interface.history['slow_control_times_unix'][i] for i in detected_peaks]
+            self.logger.warning(f"Slow variation of the slow control signal detected at time: {self.interface.history['slow_control_times_dt'][detected_peaks[0]].strftime('%Y-%m-%d %H:%M:%S')}")
+            #self.lock_unlock_logger.info(f"Slow variation of the slow control signal detected at time: {self.interface.history['slow_control_times_dt'][detected_peaks[0]].strftime('%Y-%m-%d %H:%M:%S')}")
+            self.unlock_events['unlock_event_slow_control_signal'] = True
+            self.unlock_events['unlock_event_slow_control_signal_at_time'] = slow_fluctuation_times
+
+        return
+
+    def unlock_or_relock(self):
+        """
+        Depending on the user's choice, unlock or relock the laser.
+        """
+
+        if self.locking_mode == "MANUAL" or (self.locking_mode == "AUTOMATIC" and self.advanced_settings['automatic_relock']['enabled'] == False):
+            self.set_state("SWEEP")
+        else:
+            #automatic mode and automatic relock enabled
+            #AGGIUNGERE IL RELOCK
