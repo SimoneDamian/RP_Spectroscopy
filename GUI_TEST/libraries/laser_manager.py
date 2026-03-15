@@ -752,3 +752,11 @@ class LaserManager(QObject):
             return [x0 + np.argmin(monitor_signal_selected_region), monitor_signal_selected_region[np.argmin(monitor_signal_selected_region)]]
         else:
             return [x0 + np.argmax(monitor_signal_selected_region), monitor_signal_selected_region[np.argmax(monitor_signal_selected_region)]]
+
+    def detect_unlock_event(self):
+        """
+        Detect unlock events looking at the monitor and control signals histories
+        that are contained in the interface while the system is locked.
+        """
+        
+        return

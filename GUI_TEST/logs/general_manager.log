@@ -4134,3 +4134,97 @@
 2026-03-13 14:53:16 - GeneralManager - INFO - GeneralManager shutting down...
 2026-03-13 14:53:17 - GeneralManager - INFO - Advanced settings saved to /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/RedPitaya_K_parameters.yaml
 2026-03-13 14:53:17 - GeneralManager - INFO - GeneralManager shut down.
+2026-03-15 11:25:20 - GeneralManager - INFO - GeneralManager starting up...
+2026-03-15 11:25:20 - GeneralManager - INFO - ServiceManager initialized.
+2026-03-15 11:25:20 - GeneralManager - INFO - ServiceManager moved to thread.
+2026-03-15 11:25:21 - GeneralManager - INFO - MainWindow initialized.
+2026-03-15 11:25:21 - GeneralManager - INFO - ServiceManager injected into ReferenceLinesPage, LineCenteringPage, and AutoLockPage.
+2026-03-15 11:25:21 - GeneralManager - INFO - ServiceManager thread started.
+2026-03-15 11:26:34 - GeneralManager - INFO - Connecting to RP_7020...
+2026-03-15 11:26:34 - GeneralManager - INFO - LaserManager initialized.
+2026-03-15 11:26:34 - GeneralManager - INFO - LaserManager moved to thread.
+2026-03-15 11:26:34 - GeneralManager - INFO - LaserManager thread started.
+2026-03-15 11:26:34 - GeneralManager - INFO - Advanced settings stored in GeneralManager.
+2026-03-15 11:26:34 - GeneralManager - INFO - Parameters loaded into GUI.
+2026-03-15 11:27:48 - GeneralManager - INFO - GeneralManager shutting down...
+2026-03-15 11:27:49 - GeneralManager - INFO - Advanced settings saved to /Users/simone/Desktop/Università/Trento/Master_theses/RP_Spectroscopy/GUI_TEST/boards/RP_7020_parameters.yaml
+2026-03-15 11:27:49 - GeneralManager - INFO - GeneralManager shut down.
+2026-03-15 11:29:17 - GeneralManager - INFO - GeneralManager starting up...
+2026-03-15 11:29:17 - GeneralManager - INFO - ServiceManager initialized.
+2026-03-15 11:29:17 - GeneralManager - INFO - ServiceManager moved to thread.
+2026-03-15 11:29:18 - GeneralManager - INFO - MainWindow initialized.
+2026-03-15 11:29:18 - GeneralManager - INFO - ServiceManager injected into ReferenceLinesPage, LineCenteringPage, and AutoLockPage.
+2026-03-15 11:29:18 - GeneralManager - INFO - ServiceManager thread started.
+2026-03-15 11:29:45 - GeneralManager - INFO - Connecting to RP_7020...
+2026-03-15 11:29:45 - GeneralManager - INFO - LaserManager initialized.
+2026-03-15 11:29:45 - GeneralManager - INFO - LaserManager moved to thread.
+2026-03-15 11:29:45 - GeneralManager - INFO - LaserManager thread started.
+2026-03-15 11:29:45 - GeneralManager - INFO - Advanced settings stored in GeneralManager.
+2026-03-15 11:29:45 - GeneralManager - INFO - Parameters loaded into GUI.
+2026-03-15 11:31:19 - GeneralManager - INFO - GeneralManager shutting down...
+2026-03-15 11:31:19 - GeneralManager - INFO - Advanced settings saved to /Users/simone/Desktop/Università/Trento/Master_theses/RP_Spectroscopy/GUI_TEST/boards/RP_7020_parameters.yaml
+2026-03-15 11:31:19 - GeneralManager - INFO - GeneralManager shut down.
+2026-03-15 11:40:07 - GeneralManager - INFO - GeneralManager starting up...
+2026-03-15 11:40:07 - GeneralManager - INFO - ServiceManager initialized.
+2026-03-15 11:40:07 - GeneralManager - INFO - ServiceManager moved to thread.
+2026-03-15 11:40:08 - GeneralManager - INFO - MainWindow initialized.
+2026-03-15 11:40:08 - GeneralManager - INFO - ServiceManager injected into ReferenceLinesPage, LineCenteringPage, and AutoLockPage.
+2026-03-15 11:40:08 - GeneralManager - INFO - ServiceManager thread started.
+2026-03-15 11:40:24 - GeneralManager - INFO - GeneralManager shutting down...
+2026-03-15 11:40:24 - GeneralManager - INFO - GeneralManager shut down.
+2026-03-15 11:40:49 - GeneralManager - INFO - GeneralManager starting up...
+2026-03-15 11:40:49 - GeneralManager - INFO - ServiceManager initialized.
+2026-03-15 11:40:49 - GeneralManager - INFO - ServiceManager moved to thread.
+2026-03-15 11:40:50 - GeneralManager - INFO - MainWindow initialized.
+2026-03-15 11:40:50 - GeneralManager - INFO - ServiceManager injected into ReferenceLinesPage, LineCenteringPage, and AutoLockPage.
+2026-03-15 11:40:50 - GeneralManager - INFO - ServiceManager thread started.
+2026-03-15 11:40:54 - GeneralManager - INFO - Connecting to RP_7020...
+2026-03-15 11:40:54 - GeneralManager - INFO - LaserManager initialized.
+2026-03-15 11:40:54 - GeneralManager - INFO - LaserManager moved to thread.
+2026-03-15 11:40:54 - GeneralManager - INFO - LaserManager thread started.
+2026-03-15 11:40:54 - GeneralManager - INFO - Advanced settings stored in GeneralManager.
+2026-03-15 11:40:54 - GeneralManager - INFO - Parameters loaded into GUI.
+2026-03-15 11:41:29 - GeneralManager - INFO - Laser connected. Parameters will arrive via sig_parameters_loaded.
+2026-03-15 11:42:10 - GeneralManager - INFO - GeneralManager shutting down...
+2026-03-15 11:42:10 - GeneralManager - INFO - Advanced settings saved to /Users/simone/Desktop/Università/Trento/Master_theses/RP_Spectroscopy/GUI_TEST/boards/RP_7020_parameters.yaml
+2026-03-15 11:42:10 - GeneralManager - INFO - GeneralManager shut down.
+2026-03-15 13:42:53 - GeneralManager - INFO - GeneralManager starting up...
+2026-03-15 13:42:53 - GeneralManager - INFO - ServiceManager initialized.
+2026-03-15 13:42:53 - GeneralManager - INFO - ServiceManager moved to thread.
+2026-03-15 13:42:53 - GeneralManager - INFO - MainWindow initialized.
+2026-03-15 13:42:53 - GeneralManager - INFO - ServiceManager injected into ReferenceLinesPage, LineCenteringPage, and AutoLockPage.
+2026-03-15 13:42:53 - GeneralManager - INFO - ServiceManager thread started.
+2026-03-15 13:42:57 - GeneralManager - INFO - Connecting to RP_7020...
+2026-03-15 13:42:57 - GeneralManager - INFO - LaserManager initialized.
+2026-03-15 13:42:57 - GeneralManager - INFO - LaserManager moved to thread.
+2026-03-15 13:42:57 - GeneralManager - INFO - LaserManager thread started.
+2026-03-15 13:42:58 - GeneralManager - INFO - Advanced settings stored in GeneralManager.
+2026-03-15 13:42:58 - GeneralManager - INFO - Parameters loaded into GUI.
+2026-03-15 13:43:03 - GeneralManager - INFO - Laser connected. Parameters will arrive via sig_parameters_loaded.
+2026-03-15 14:18:29 - GeneralManager - INFO - GeneralManager shutting down...
+2026-03-15 14:18:30 - GeneralManager - INFO - Advanced settings saved to /Users/simone/Desktop/Università/Trento/Master_theses/RP_Spectroscopy/GUI_TEST/boards/RP_7020_parameters.yaml
+2026-03-15 14:18:30 - GeneralManager - INFO - GeneralManager shut down.
+2026-03-15 14:21:19 - GeneralManager - INFO - GeneralManager starting up...
+2026-03-15 14:21:19 - GeneralManager - INFO - ServiceManager initialized.
+2026-03-15 14:21:19 - GeneralManager - INFO - ServiceManager moved to thread.
+2026-03-15 14:21:20 - GeneralManager - INFO - MainWindow initialized.
+2026-03-15 14:21:20 - GeneralManager - INFO - ServiceManager injected into ReferenceLinesPage, LineCenteringPage, and AutoLockPage.
+2026-03-15 14:21:20 - GeneralManager - INFO - ServiceManager thread started.
+2026-03-15 14:23:52 - GeneralManager - INFO - Connecting to RP_7020...
+2026-03-15 14:23:52 - GeneralManager - INFO - LaserManager initialized.
+2026-03-15 14:23:52 - GeneralManager - INFO - LaserManager moved to thread.
+2026-03-15 14:23:52 - GeneralManager - INFO - LaserManager thread started.
+2026-03-15 14:23:52 - GeneralManager - INFO - Advanced settings stored in GeneralManager.
+2026-03-15 14:23:52 - GeneralManager - INFO - Parameters loaded into GUI.
+2026-03-15 14:23:57 - GeneralManager - INFO - Laser connected. Parameters will arrive via sig_parameters_loaded.
+2026-03-15 14:24:30 - GeneralManager - INFO - GeneralManager shutting down...
+2026-03-15 14:24:30 - GeneralManager - INFO - Advanced settings saved to /Users/simone/Desktop/Università/Trento/Master_theses/RP_Spectroscopy/GUI_TEST/boards/RP_7020_parameters.yaml
+2026-03-15 14:24:30 - GeneralManager - INFO - GeneralManager shut down.
+2026-03-15 14:30:36 - GeneralManager - INFO - GeneralManager starting up...
+2026-03-15 14:30:36 - GeneralManager - INFO - ServiceManager initialized.
+2026-03-15 14:30:36 - GeneralManager - INFO - ServiceManager moved to thread.
+2026-03-15 14:30:37 - GeneralManager - INFO - MainWindow initialized.
+2026-03-15 14:30:37 - GeneralManager - INFO - ServiceManager injected into ReferenceLinesPage, LineCenteringPage, and AutoLockPage.
+2026-03-15 14:30:37 - GeneralManager - INFO - ServiceManager thread started.
+2026-03-15 14:31:07 - GeneralManager - INFO - GeneralManager shutting down...
+2026-03-15 14:31:07 - GeneralManager - INFO - GeneralManager shut down.
