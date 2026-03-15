@@ -302,6 +302,16 @@ class ScanPage(QWidget):
         lbl_title.setStyleSheet("font-size: 18px; font-weight: bold; margin-bottom: 20px;")
         layout.addWidget(lbl_title)
 
+        # --- Description Text ---
+        self.lbl_desc = QLabel(
+            "This feature allows you to perform a series of scans at"
+            " different voltage offsets. The minimum and maximum available"
+            " values are 0.05 and 1.75 respectively."
+        )
+        self.lbl_desc.setWordWrap(True)
+        self.lbl_desc.setStyleSheet("margin-bottom: 10px;")
+        layout.addWidget(self.lbl_desc)
+
         # --- Input row ---
         form_layout = QFormLayout()
         form_layout.setHorizontalSpacing(12)
@@ -489,6 +499,15 @@ class OptimizationPage(QWidget):
         lbl_section.setStyleSheet("font-size: 14px; font-weight: bold; margin-top: 5px; margin-bottom: 5px;")
         layout.addWidget(lbl_section)
 
+        # --- Description Text ---
+        self.lbl_desc = QLabel(
+            "This feature allows you to perform a demodulation phase optimization"
+            " in order to obtain a better demodulated signal."
+        )
+        self.lbl_desc.setWordWrap(True)
+        self.lbl_desc.setStyleSheet("margin-bottom: 10px;")
+        layout.addWidget(self.lbl_desc)
+
         # --- Start / Stop buttons ---
         btn_row = QHBoxLayout()
         self.btn_start = QPushButton("Start")
@@ -508,7 +527,7 @@ class OptimizationPage(QWidget):
         self.plot_ratio = pg.PlotWidget(title="Ratio vs Phase")
         self.plot_ratio.setBackground('w')
         self.plot_ratio.showGrid(x=True, y=True)
-        self.plot_ratio.setMinimumHeight(200)
+        self.plot_ratio.setMaximumHeight(200)
         plot_item = self.plot_ratio.getPlotItem()
         plot_item.setLabel('bottom', 'Phase', units='°')
         plot_item.setLabel('left', 'Ratio')
@@ -653,6 +672,16 @@ class AutoLockPage(QWidget):
         lbl_title.setStyleSheet("font-size: 18px; font-weight: bold; margin-bottom: 10px;")
         layout.addWidget(lbl_title)
 
+        # --- Description Text ---
+        self.lbl_desc = QLabel(
+            "This feature allows you to find a specific reference line across a voltage"
+            " scan range using a correlation based algorithm, stabilize it and then"
+            " automatically lock on the desired zero crossing."
+        )
+        self.lbl_desc.setWordWrap(True)
+        self.lbl_desc.setStyleSheet("margin-bottom: 10px;")
+        layout.addWidget(self.lbl_desc)
+
         # --- 2. Reference Line Selection ---
         ref_row = QHBoxLayout()
         lbl_ref = QLabel("Select the line to lock to")
@@ -665,7 +694,7 @@ class AutoLockPage(QWidget):
         self.plot_ref = pg.PlotWidget(title="Reference Line")
         self.plot_ref.setBackground('w')
         self.plot_ref.showGrid(x=True, y=True)
-        self.plot_ref.setMinimumHeight(200)
+        self.plot_ref.setMaximumHeight(200)
         self.plot_ref_item = self.plot_ref.getPlotItem()
         self.plot_ref_item.setLabel('bottom', 'V', units='V')
         self.plot_ref_item.setLabel('left', 'Signal')
@@ -710,7 +739,7 @@ class AutoLockPage(QWidget):
         self.plot_corr = pg.PlotWidget(title="Correlations")
         self.plot_corr.setBackground('w')
         self.plot_corr.showGrid(x=True, y=True)
-        self.plot_corr.setMinimumHeight(200)
+        self.plot_corr.setMaximumHeight(200)
         self.plot_corr_item = self.plot_corr.getPlotItem()
         self.plot_corr_item.setLabel('bottom', 'V', units='V')
         self.plot_corr_item.setLabel('left', 'Correlation')

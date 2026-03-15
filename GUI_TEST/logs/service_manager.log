@@ -10815,3 +10815,349 @@ HTTP response body: {"code":"not found","message":"bucket \"LockingAppFiniteStat
 2026-03-15 17:24:06 - ServiceManager - INFO - Updated sweep_speed to 10 in config.
 2026-03-15 17:24:06 - ServiceManager - INFO - Updated target_slope_rising to True in config.
 2026-03-15 17:24:06 - ServiceManager - INFO - Parameters saved successfully to /Users/simone/Desktop/Università/Trento/Master_theses/RP_Spectroscopy/GUI_TEST/boards/RP_7020_parameters.yaml
+2026-03-15 17:35:22 - ServiceManager - INFO - ServiceManager initializing...
+2026-03-15 17:35:22 - ServiceManager - INFO - ServiceManager looking for board list at: /Users/simone/Desktop/Università/Trento/Master_theses/RP_Spectroscopy/GUI_TEST/boards/board_list.yaml
+2026-03-15 17:35:22 - ServiceManager - INFO - ServiceManager looking for reference lines at: /Users/simone/Desktop/Università/Trento/Master_theses/RP_Spectroscopy/GUI_TEST/reference_lines/reference_lines_inventory.yaml
+2026-03-15 17:35:22 - ServiceManager - INFO - Grafana client initialized.
+2026-03-15 17:35:22 - ServiceManager - INFO - ServiceManager initialization completed.
+2026-03-15 17:35:23 - ServiceManager - INFO - Loading boards...
+2026-03-15 17:35:23 - ServiceManager - INFO - Found 4 devices.
+2026-03-15 17:35:27 - ServiceManager - INFO - Loaded advanced settings for 'RP_7020' (4 groups).
+2026-03-15 17:35:27 - ServiceManager - INFO - Loaded parameters for 'RP_7020' (42 writeable, 3 readable).
+2026-03-15 17:35:39 - ServiceManager - ERROR - Failed to send data to Grafana: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [Errno 61] Connection refused
+2026-03-15 17:35:39 - ServiceManager - ERROR - Failed to send data to Grafana: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [Errno 61] Connection refused
+2026-03-15 17:36:14 - ServiceManager - ERROR - Failed to send data to Grafana: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [Errno 61] Connection refused
+2026-03-15 17:36:14 - ServiceManager - ERROR - Failed to send data to Grafana: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [Errno 61] Connection refused
+2026-03-15 17:36:18 - ServiceManager - ERROR - Failed to send data to Grafana: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [Errno 61] Connection refused
+2026-03-15 17:36:18 - ServiceManager - ERROR - Failed to send data to Grafana: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [Errno 61] Connection refused
+2026-03-15 17:37:03 - ServiceManager - ERROR - Failed to send data to Grafana: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [Errno 61] Connection refused
+2026-03-15 17:37:03 - ServiceManager - ERROR - Failed to send data to Grafana: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [Errno 61] Connection refused
+2026-03-15 17:37:21 - ServiceManager - ERROR - Failed to send data to Grafana: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [Errno 61] Connection refused
+2026-03-15 17:37:21 - ServiceManager - ERROR - Failed to send data to Grafana: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [Errno 61] Connection refused
+2026-03-15 17:37:27 - ServiceManager - ERROR - Failed to send data to Grafana: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [Errno 61] Connection refused
+2026-03-15 17:37:27 - ServiceManager - INFO - Updated big_offset to 1.00091 in config.
+2026-03-15 17:37:27 - ServiceManager - INFO - Updated channel_mixing to -128 in config.
+2026-03-15 17:37:27 - ServiceManager - INFO - Updated control_channel to 1 in config.
+2026-03-15 17:37:27 - ServiceManager - INFO - Updated control_history_length to 60 in config.
+2026-03-15 17:37:27 - ServiceManager - INFO - Updated demodulation_multiplier_a to 1 in config.
+2026-03-15 17:37:27 - ServiceManager - INFO - Updated demodulation_multiplier_b to 0 in config.
+2026-03-15 17:37:27 - ServiceManager - INFO - Updated dual_channel to False in config.
+2026-03-15 17:37:27 - ServiceManager - INFO - Updated filter_1_enabled_a to True in config.
+2026-03-15 17:37:27 - ServiceManager - INFO - Updated filter_1_enabled_b to False in config.
+2026-03-15 17:37:27 - ServiceManager - INFO - Updated filter_1_frequency to 1000.0 in config.
+2026-03-15 17:37:27 - ServiceManager - INFO - Updated filter_1_type_a to 0 in config.
+2026-03-15 17:37:27 - ServiceManager - INFO - Updated filter_1_type_b to 0 in config.
+2026-03-15 17:37:27 - ServiceManager - INFO - Updated filter_2_enabled_a to False in config.
+2026-03-15 17:37:27 - ServiceManager - INFO - Updated filter_2_enabled_b to True in config.
+2026-03-15 17:37:27 - ServiceManager - INFO - Updated filter_2_frequency to 0.0 in config.
+2026-03-15 17:37:27 - ServiceManager - INFO - Updated filter_2_type_a to 0 in config.
+2026-03-15 17:37:27 - ServiceManager - INFO - Updated filter_2_type_b to 0 in config.
+2026-03-15 17:37:27 - ServiceManager - INFO - Updated filter_automatic_a to False in config.
+2026-03-15 17:37:27 - ServiceManager - INFO - Updated filter_automatic_b to False in config.
+2026-03-15 17:37:27 - ServiceManager - INFO - Updated invert_a to False in config.
+2026-03-15 17:37:27 - ServiceManager - INFO - Updated invert_b to False in config.
+2026-03-15 17:37:27 - ServiceManager - INFO - Updated modulation_amplitude to 0.3 in config.
+2026-03-15 17:37:27 - ServiceManager - INFO - Updated modulation_channel to 0 in config.
+2026-03-15 17:37:27 - ServiceManager - INFO - Updated modulation_frequency to 0.03 in config.
+2026-03-15 17:37:27 - ServiceManager - INFO - Updated offset_a to -0.0301236 in config.
+2026-03-15 17:37:27 - ServiceManager - INFO - Updated offset_b to 0.0 in config.
+2026-03-15 17:37:27 - ServiceManager - INFO - Updated phase to 223.45 in config.
+2026-03-15 17:37:27 - ServiceManager - INFO - Updated pid_d to 1 in config.
+2026-03-15 17:37:27 - ServiceManager - INFO - Updated pid_i to 100 in config.
+2026-03-15 17:37:27 - ServiceManager - INFO - Updated pid_on_slow_enabled to True in config.
+2026-03-15 17:37:27 - ServiceManager - INFO - Updated pid_p to 2000 in config.
+2026-03-15 17:37:27 - ServiceManager - INFO - Updated pid_slow_strength to 3 in config.
+2026-03-15 17:37:27 - ServiceManager - INFO - Updated polarity_analog_out0 to 0 in config.
+2026-03-15 17:37:27 - ServiceManager - INFO - Updated polarity_fast_out1 to 0 in config.
+2026-03-15 17:37:27 - ServiceManager - INFO - Updated polarity_fast_out2 to 0 in config.
+2026-03-15 17:37:27 - ServiceManager - INFO - Updated slow_control_channel to 2 in config.
+2026-03-15 17:37:27 - ServiceManager - INFO - Updated small_offset to 0.0 in config.
+2026-03-15 17:37:27 - ServiceManager - INFO - Updated sweep_amplitude to 1.0 in config.
+2026-03-15 17:37:27 - ServiceManager - INFO - Updated sweep_center to 0.0 in config.
+2026-03-15 17:37:27 - ServiceManager - INFO - Updated sweep_channel to 1 in config.
+2026-03-15 17:37:27 - ServiceManager - INFO - Updated sweep_speed to 10 in config.
+2026-03-15 17:37:27 - ServiceManager - INFO - Updated target_slope_rising to True in config.
+2026-03-15 17:37:27 - ServiceManager - INFO - Parameters saved successfully to /Users/simone/Desktop/Università/Trento/Master_theses/RP_Spectroscopy/GUI_TEST/boards/RP_7020_parameters.yaml
+2026-03-15 17:40:19 - ServiceManager - INFO - ServiceManager initializing...
+2026-03-15 17:40:19 - ServiceManager - INFO - ServiceManager looking for board list at: /Users/simone/Desktop/Università/Trento/Master_theses/RP_Spectroscopy/GUI_TEST/boards/board_list.yaml
+2026-03-15 17:40:19 - ServiceManager - INFO - ServiceManager looking for reference lines at: /Users/simone/Desktop/Università/Trento/Master_theses/RP_Spectroscopy/GUI_TEST/reference_lines/reference_lines_inventory.yaml
+2026-03-15 17:40:19 - ServiceManager - INFO - Grafana client initialized.
+2026-03-15 17:40:19 - ServiceManager - INFO - ServiceManager initialization completed.
+2026-03-15 17:40:20 - ServiceManager - INFO - Loading boards...
+2026-03-15 17:40:20 - ServiceManager - INFO - Found 4 devices.
+2026-03-15 17:40:24 - ServiceManager - INFO - Loaded advanced settings for 'RP_7020' (4 groups).
+2026-03-15 17:40:24 - ServiceManager - INFO - Loaded parameters for 'RP_7020' (42 writeable, 3 readable).
+2026-03-15 17:40:39 - ServiceManager - ERROR - Failed to send data to Grafana: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [Errno 61] Connection refused
+2026-03-15 17:40:39 - ServiceManager - ERROR - Failed to send data to Grafana: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [Errno 61] Connection refused
+2026-03-15 17:41:14 - ServiceManager - ERROR - Failed to send data to Grafana: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [Errno 61] Connection refused
+2026-03-15 17:41:14 - ServiceManager - INFO - Updated big_offset to 1.00091 in config.
+2026-03-15 17:41:14 - ServiceManager - INFO - Updated channel_mixing to -128 in config.
+2026-03-15 17:41:14 - ServiceManager - INFO - Updated control_channel to 1 in config.
+2026-03-15 17:41:14 - ServiceManager - INFO - Updated control_history_length to 60 in config.
+2026-03-15 17:41:14 - ServiceManager - INFO - Updated demodulation_multiplier_a to 1 in config.
+2026-03-15 17:41:14 - ServiceManager - INFO - Updated demodulation_multiplier_b to 0 in config.
+2026-03-15 17:41:14 - ServiceManager - INFO - Updated dual_channel to False in config.
+2026-03-15 17:41:14 - ServiceManager - INFO - Updated filter_1_enabled_a to True in config.
+2026-03-15 17:41:14 - ServiceManager - INFO - Updated filter_1_enabled_b to False in config.
+2026-03-15 17:41:14 - ServiceManager - INFO - Updated filter_1_frequency to 1000.0 in config.
+2026-03-15 17:41:14 - ServiceManager - INFO - Updated filter_1_type_a to 0 in config.
+2026-03-15 17:41:14 - ServiceManager - INFO - Updated filter_1_type_b to 0 in config.
+2026-03-15 17:41:14 - ServiceManager - INFO - Updated filter_2_enabled_a to False in config.
+2026-03-15 17:41:14 - ServiceManager - INFO - Updated filter_2_enabled_b to True in config.
+2026-03-15 17:41:14 - ServiceManager - INFO - Updated filter_2_frequency to 0.0 in config.
+2026-03-15 17:41:14 - ServiceManager - INFO - Updated filter_2_type_a to 0 in config.
+2026-03-15 17:41:14 - ServiceManager - INFO - Updated filter_2_type_b to 0 in config.
+2026-03-15 17:41:14 - ServiceManager - INFO - Updated filter_automatic_a to False in config.
+2026-03-15 17:41:14 - ServiceManager - INFO - Updated filter_automatic_b to False in config.
+2026-03-15 17:41:14 - ServiceManager - INFO - Updated invert_a to False in config.
+2026-03-15 17:41:14 - ServiceManager - INFO - Updated invert_b to False in config.
+2026-03-15 17:41:14 - ServiceManager - INFO - Updated modulation_amplitude to 0.3 in config.
+2026-03-15 17:41:14 - ServiceManager - INFO - Updated modulation_channel to 0 in config.
+2026-03-15 17:41:14 - ServiceManager - INFO - Updated modulation_frequency to 0.03 in config.
+2026-03-15 17:41:14 - ServiceManager - INFO - Updated offset_a to -0.0301236 in config.
+2026-03-15 17:41:14 - ServiceManager - INFO - Updated offset_b to 0.0 in config.
+2026-03-15 17:41:14 - ServiceManager - INFO - Updated phase to 223.45 in config.
+2026-03-15 17:41:14 - ServiceManager - INFO - Updated pid_d to 1 in config.
+2026-03-15 17:41:14 - ServiceManager - INFO - Updated pid_i to 100 in config.
+2026-03-15 17:41:14 - ServiceManager - INFO - Updated pid_on_slow_enabled to True in config.
+2026-03-15 17:41:14 - ServiceManager - INFO - Updated pid_p to 2000 in config.
+2026-03-15 17:41:14 - ServiceManager - INFO - Updated pid_slow_strength to 3 in config.
+2026-03-15 17:41:14 - ServiceManager - INFO - Updated polarity_analog_out0 to 0 in config.
+2026-03-15 17:41:14 - ServiceManager - INFO - Updated polarity_fast_out1 to 0 in config.
+2026-03-15 17:41:14 - ServiceManager - INFO - Updated polarity_fast_out2 to 0 in config.
+2026-03-15 17:41:14 - ServiceManager - INFO - Updated slow_control_channel to 2 in config.
+2026-03-15 17:41:14 - ServiceManager - INFO - Updated small_offset to 0.0 in config.
+2026-03-15 17:41:14 - ServiceManager - INFO - Updated sweep_amplitude to 1.0 in config.
+2026-03-15 17:41:14 - ServiceManager - INFO - Updated sweep_center to 0.0 in config.
+2026-03-15 17:41:14 - ServiceManager - INFO - Updated sweep_channel to 1 in config.
+2026-03-15 17:41:14 - ServiceManager - INFO - Updated sweep_speed to 10 in config.
+2026-03-15 17:41:14 - ServiceManager - INFO - Updated target_slope_rising to True in config.
+2026-03-15 17:41:15 - ServiceManager - INFO - Parameters saved successfully to /Users/simone/Desktop/Università/Trento/Master_theses/RP_Spectroscopy/GUI_TEST/boards/RP_7020_parameters.yaml
+2026-03-15 17:45:17 - ServiceManager - INFO - ServiceManager initializing...
+2026-03-15 17:45:17 - ServiceManager - INFO - ServiceManager looking for board list at: /Users/simone/Desktop/Università/Trento/Master_theses/RP_Spectroscopy/GUI_TEST/boards/board_list.yaml
+2026-03-15 17:45:17 - ServiceManager - INFO - ServiceManager looking for reference lines at: /Users/simone/Desktop/Università/Trento/Master_theses/RP_Spectroscopy/GUI_TEST/reference_lines/reference_lines_inventory.yaml
+2026-03-15 17:45:17 - ServiceManager - INFO - Grafana client initialized.
+2026-03-15 17:45:17 - ServiceManager - INFO - ServiceManager initialization completed.
+2026-03-15 17:45:18 - ServiceManager - INFO - Loading boards...
+2026-03-15 17:45:18 - ServiceManager - INFO - Found 4 devices.
+2026-03-15 17:45:23 - ServiceManager - INFO - Loaded advanced settings for 'RP_7020' (4 groups).
+2026-03-15 17:45:23 - ServiceManager - INFO - Loaded parameters for 'RP_7020' (42 writeable, 3 readable).
+2026-03-15 17:45:35 - ServiceManager - ERROR - Failed to send data to Grafana: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [Errno 61] Connection refused
+2026-03-15 17:45:35 - ServiceManager - ERROR - Failed to send data to Grafana: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [Errno 61] Connection refused
+2026-03-15 17:46:12 - ServiceManager - ERROR - Failed to send data to Grafana: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [Errno 61] Connection refused
+2026-03-15 17:46:12 - ServiceManager - ERROR - Failed to send data to Grafana: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [Errno 61] Connection refused
+2026-03-15 17:46:16 - ServiceManager - ERROR - Failed to send data to Grafana: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [Errno 61] Connection refused
+2026-03-15 17:46:16 - ServiceManager - ERROR - Failed to send data to Grafana: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [Errno 61] Connection refused
+2026-03-15 17:47:59 - ServiceManager - ERROR - Failed to send data to Grafana: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [Errno 61] Connection refused
+2026-03-15 17:48:00 - ServiceManager - INFO - Updated big_offset to 1.00091 in config.
+2026-03-15 17:48:00 - ServiceManager - INFO - Updated channel_mixing to -128 in config.
+2026-03-15 17:48:00 - ServiceManager - INFO - Updated control_channel to 1 in config.
+2026-03-15 17:48:00 - ServiceManager - INFO - Updated control_history_length to 60 in config.
+2026-03-15 17:48:00 - ServiceManager - INFO - Updated demodulation_multiplier_a to 1 in config.
+2026-03-15 17:48:00 - ServiceManager - INFO - Updated demodulation_multiplier_b to 0 in config.
+2026-03-15 17:48:00 - ServiceManager - INFO - Updated dual_channel to False in config.
+2026-03-15 17:48:00 - ServiceManager - INFO - Updated filter_1_enabled_a to True in config.
+2026-03-15 17:48:00 - ServiceManager - INFO - Updated filter_1_enabled_b to False in config.
+2026-03-15 17:48:00 - ServiceManager - INFO - Updated filter_1_frequency to 1000.0 in config.
+2026-03-15 17:48:00 - ServiceManager - INFO - Updated filter_1_type_a to 0 in config.
+2026-03-15 17:48:00 - ServiceManager - INFO - Updated filter_1_type_b to 0 in config.
+2026-03-15 17:48:00 - ServiceManager - INFO - Updated filter_2_enabled_a to False in config.
+2026-03-15 17:48:00 - ServiceManager - INFO - Updated filter_2_enabled_b to True in config.
+2026-03-15 17:48:00 - ServiceManager - INFO - Updated filter_2_frequency to 0.0 in config.
+2026-03-15 17:48:00 - ServiceManager - INFO - Updated filter_2_type_a to 0 in config.
+2026-03-15 17:48:00 - ServiceManager - INFO - Updated filter_2_type_b to 0 in config.
+2026-03-15 17:48:00 - ServiceManager - INFO - Updated filter_automatic_a to False in config.
+2026-03-15 17:48:00 - ServiceManager - INFO - Updated filter_automatic_b to False in config.
+2026-03-15 17:48:00 - ServiceManager - INFO - Updated invert_a to False in config.
+2026-03-15 17:48:00 - ServiceManager - INFO - Updated invert_b to False in config.
+2026-03-15 17:48:00 - ServiceManager - INFO - Updated modulation_amplitude to 0.3 in config.
+2026-03-15 17:48:00 - ServiceManager - INFO - Updated modulation_channel to 0 in config.
+2026-03-15 17:48:00 - ServiceManager - INFO - Updated modulation_frequency to 0.03 in config.
+2026-03-15 17:48:00 - ServiceManager - INFO - Updated offset_a to -0.0301236 in config.
+2026-03-15 17:48:00 - ServiceManager - INFO - Updated offset_b to 0.0 in config.
+2026-03-15 17:48:00 - ServiceManager - INFO - Updated phase to 223.45 in config.
+2026-03-15 17:48:00 - ServiceManager - INFO - Updated pid_d to 1 in config.
+2026-03-15 17:48:00 - ServiceManager - INFO - Updated pid_i to 100 in config.
+2026-03-15 17:48:00 - ServiceManager - INFO - Updated pid_on_slow_enabled to True in config.
+2026-03-15 17:48:00 - ServiceManager - INFO - Updated pid_p to 2000 in config.
+2026-03-15 17:48:00 - ServiceManager - INFO - Updated pid_slow_strength to 3 in config.
+2026-03-15 17:48:00 - ServiceManager - INFO - Updated polarity_analog_out0 to 0 in config.
+2026-03-15 17:48:00 - ServiceManager - INFO - Updated polarity_fast_out1 to 0 in config.
+2026-03-15 17:48:00 - ServiceManager - INFO - Updated polarity_fast_out2 to 0 in config.
+2026-03-15 17:48:00 - ServiceManager - INFO - Updated slow_control_channel to 2 in config.
+2026-03-15 17:48:00 - ServiceManager - INFO - Updated small_offset to 0.0 in config.
+2026-03-15 17:48:00 - ServiceManager - INFO - Updated sweep_amplitude to 1.0 in config.
+2026-03-15 17:48:00 - ServiceManager - INFO - Updated sweep_center to 0.0 in config.
+2026-03-15 17:48:00 - ServiceManager - INFO - Updated sweep_channel to 1 in config.
+2026-03-15 17:48:00 - ServiceManager - INFO - Updated sweep_speed to 10 in config.
+2026-03-15 17:48:00 - ServiceManager - INFO - Updated target_slope_rising to True in config.
+2026-03-15 17:48:00 - ServiceManager - INFO - Parameters saved successfully to /Users/simone/Desktop/Università/Trento/Master_theses/RP_Spectroscopy/GUI_TEST/boards/RP_7020_parameters.yaml
+2026-03-15 17:48:11 - ServiceManager - INFO - ServiceManager initializing...
+2026-03-15 17:48:11 - ServiceManager - INFO - ServiceManager looking for board list at: /Users/simone/Desktop/Università/Trento/Master_theses/RP_Spectroscopy/GUI_TEST/boards/board_list.yaml
+2026-03-15 17:48:11 - ServiceManager - INFO - ServiceManager looking for reference lines at: /Users/simone/Desktop/Università/Trento/Master_theses/RP_Spectroscopy/GUI_TEST/reference_lines/reference_lines_inventory.yaml
+2026-03-15 17:48:11 - ServiceManager - INFO - Grafana client initialized.
+2026-03-15 17:48:11 - ServiceManager - INFO - ServiceManager initialization completed.
+2026-03-15 17:48:12 - ServiceManager - INFO - Loading boards...
+2026-03-15 17:48:12 - ServiceManager - INFO - Found 4 devices.
+2026-03-15 17:48:17 - ServiceManager - INFO - Loaded advanced settings for 'RP_7020' (4 groups).
+2026-03-15 17:48:17 - ServiceManager - INFO - Loaded parameters for 'RP_7020' (42 writeable, 3 readable).
+2026-03-15 17:48:29 - ServiceManager - ERROR - Failed to send data to Grafana: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [Errno 61] Connection refused
+2026-03-15 17:48:29 - ServiceManager - ERROR - Failed to send data to Grafana: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [Errno 61] Connection refused
+2026-03-15 17:49:26 - ServiceManager - ERROR - Failed to send data to Grafana: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [Errno 61] Connection refused
+2026-03-15 17:49:26 - ServiceManager - INFO - Updated big_offset to 1.00091 in config.
+2026-03-15 17:49:26 - ServiceManager - INFO - Updated channel_mixing to -128 in config.
+2026-03-15 17:49:26 - ServiceManager - INFO - Updated control_channel to 1 in config.
+2026-03-15 17:49:26 - ServiceManager - INFO - Updated control_history_length to 60 in config.
+2026-03-15 17:49:26 - ServiceManager - INFO - Updated demodulation_multiplier_a to 1 in config.
+2026-03-15 17:49:26 - ServiceManager - INFO - Updated demodulation_multiplier_b to 0 in config.
+2026-03-15 17:49:26 - ServiceManager - INFO - Updated dual_channel to False in config.
+2026-03-15 17:49:26 - ServiceManager - INFO - Updated filter_1_enabled_a to True in config.
+2026-03-15 17:49:26 - ServiceManager - INFO - Updated filter_1_enabled_b to False in config.
+2026-03-15 17:49:26 - ServiceManager - INFO - Updated filter_1_frequency to 1000.0 in config.
+2026-03-15 17:49:26 - ServiceManager - INFO - Updated filter_1_type_a to 0 in config.
+2026-03-15 17:49:26 - ServiceManager - INFO - Updated filter_1_type_b to 0 in config.
+2026-03-15 17:49:26 - ServiceManager - INFO - Updated filter_2_enabled_a to False in config.
+2026-03-15 17:49:26 - ServiceManager - INFO - Updated filter_2_enabled_b to True in config.
+2026-03-15 17:49:26 - ServiceManager - INFO - Updated filter_2_frequency to 0.0 in config.
+2026-03-15 17:49:26 - ServiceManager - INFO - Updated filter_2_type_a to 0 in config.
+2026-03-15 17:49:26 - ServiceManager - INFO - Updated filter_2_type_b to 0 in config.
+2026-03-15 17:49:26 - ServiceManager - INFO - Updated filter_automatic_a to False in config.
+2026-03-15 17:49:26 - ServiceManager - INFO - Updated filter_automatic_b to False in config.
+2026-03-15 17:49:26 - ServiceManager - INFO - Updated invert_a to False in config.
+2026-03-15 17:49:26 - ServiceManager - INFO - Updated invert_b to False in config.
+2026-03-15 17:49:26 - ServiceManager - INFO - Updated modulation_amplitude to 0.3 in config.
+2026-03-15 17:49:26 - ServiceManager - INFO - Updated modulation_channel to 0 in config.
+2026-03-15 17:49:26 - ServiceManager - INFO - Updated modulation_frequency to 0.03 in config.
+2026-03-15 17:49:26 - ServiceManager - INFO - Updated offset_a to -0.0301236 in config.
+2026-03-15 17:49:26 - ServiceManager - INFO - Updated offset_b to 0.0 in config.
+2026-03-15 17:49:26 - ServiceManager - INFO - Updated phase to 223.45 in config.
+2026-03-15 17:49:26 - ServiceManager - INFO - Updated pid_d to 1 in config.
+2026-03-15 17:49:26 - ServiceManager - INFO - Updated pid_i to 100 in config.
+2026-03-15 17:49:26 - ServiceManager - INFO - Updated pid_on_slow_enabled to True in config.
+2026-03-15 17:49:26 - ServiceManager - INFO - Updated pid_p to 2000 in config.
+2026-03-15 17:49:26 - ServiceManager - INFO - Updated pid_slow_strength to 3 in config.
+2026-03-15 17:49:26 - ServiceManager - INFO - Updated polarity_analog_out0 to 0 in config.
+2026-03-15 17:49:26 - ServiceManager - INFO - Updated polarity_fast_out1 to 0 in config.
+2026-03-15 17:49:26 - ServiceManager - INFO - Updated polarity_fast_out2 to 0 in config.
+2026-03-15 17:49:26 - ServiceManager - INFO - Updated slow_control_channel to 2 in config.
+2026-03-15 17:49:26 - ServiceManager - INFO - Updated small_offset to 0.0 in config.
+2026-03-15 17:49:26 - ServiceManager - INFO - Updated sweep_amplitude to 1.0 in config.
+2026-03-15 17:49:26 - ServiceManager - INFO - Updated sweep_center to 0.0 in config.
+2026-03-15 17:49:26 - ServiceManager - INFO - Updated sweep_channel to 1 in config.
+2026-03-15 17:49:26 - ServiceManager - INFO - Updated sweep_speed to 10 in config.
+2026-03-15 17:49:26 - ServiceManager - INFO - Updated target_slope_rising to True in config.
+2026-03-15 17:49:26 - ServiceManager - INFO - Parameters saved successfully to /Users/simone/Desktop/Università/Trento/Master_theses/RP_Spectroscopy/GUI_TEST/boards/RP_7020_parameters.yaml
+2026-03-15 17:49:33 - ServiceManager - INFO - ServiceManager initializing...
+2026-03-15 17:49:33 - ServiceManager - INFO - ServiceManager looking for board list at: /Users/simone/Desktop/Università/Trento/Master_theses/RP_Spectroscopy/GUI_TEST/boards/board_list.yaml
+2026-03-15 17:49:33 - ServiceManager - INFO - ServiceManager looking for reference lines at: /Users/simone/Desktop/Università/Trento/Master_theses/RP_Spectroscopy/GUI_TEST/reference_lines/reference_lines_inventory.yaml
+2026-03-15 17:49:33 - ServiceManager - INFO - Grafana client initialized.
+2026-03-15 17:49:33 - ServiceManager - INFO - ServiceManager initialization completed.
+2026-03-15 17:49:33 - ServiceManager - INFO - Loading boards...
+2026-03-15 17:49:33 - ServiceManager - INFO - Found 4 devices.
+2026-03-15 17:49:38 - ServiceManager - INFO - Loaded advanced settings for 'RP_7020' (4 groups).
+2026-03-15 17:49:38 - ServiceManager - INFO - Loaded parameters for 'RP_7020' (42 writeable, 3 readable).
+2026-03-15 17:49:49 - ServiceManager - ERROR - Failed to send data to Grafana: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [Errno 61] Connection refused
+2026-03-15 17:49:49 - ServiceManager - ERROR - Failed to send data to Grafana: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [Errno 61] Connection refused
+2026-03-15 17:52:44 - ServiceManager - ERROR - Failed to send data to Grafana: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [Errno 61] Connection refused
+2026-03-15 17:52:44 - ServiceManager - INFO - Updated big_offset to 1.00091 in config.
+2026-03-15 17:52:44 - ServiceManager - INFO - Updated channel_mixing to -128 in config.
+2026-03-15 17:52:44 - ServiceManager - INFO - Updated control_channel to 1 in config.
+2026-03-15 17:52:44 - ServiceManager - INFO - Updated control_history_length to 60 in config.
+2026-03-15 17:52:44 - ServiceManager - INFO - Updated demodulation_multiplier_a to 1 in config.
+2026-03-15 17:52:44 - ServiceManager - INFO - Updated demodulation_multiplier_b to 0 in config.
+2026-03-15 17:52:44 - ServiceManager - INFO - Updated dual_channel to False in config.
+2026-03-15 17:52:44 - ServiceManager - INFO - Updated filter_1_enabled_a to True in config.
+2026-03-15 17:52:44 - ServiceManager - INFO - Updated filter_1_enabled_b to False in config.
+2026-03-15 17:52:44 - ServiceManager - INFO - Updated filter_1_frequency to 1000.0 in config.
+2026-03-15 17:52:44 - ServiceManager - INFO - Updated filter_1_type_a to 0 in config.
+2026-03-15 17:52:44 - ServiceManager - INFO - Updated filter_1_type_b to 0 in config.
+2026-03-15 17:52:44 - ServiceManager - INFO - Updated filter_2_enabled_a to False in config.
+2026-03-15 17:52:44 - ServiceManager - INFO - Updated filter_2_enabled_b to True in config.
+2026-03-15 17:52:44 - ServiceManager - INFO - Updated filter_2_frequency to 0.0 in config.
+2026-03-15 17:52:44 - ServiceManager - INFO - Updated filter_2_type_a to 0 in config.
+2026-03-15 17:52:44 - ServiceManager - INFO - Updated filter_2_type_b to 0 in config.
+2026-03-15 17:52:44 - ServiceManager - INFO - Updated filter_automatic_a to False in config.
+2026-03-15 17:52:44 - ServiceManager - INFO - Updated filter_automatic_b to False in config.
+2026-03-15 17:52:44 - ServiceManager - INFO - Updated invert_a to False in config.
+2026-03-15 17:52:44 - ServiceManager - INFO - Updated invert_b to False in config.
+2026-03-15 17:52:44 - ServiceManager - INFO - Updated modulation_amplitude to 0.3 in config.
+2026-03-15 17:52:44 - ServiceManager - INFO - Updated modulation_channel to 0 in config.
+2026-03-15 17:52:44 - ServiceManager - INFO - Updated modulation_frequency to 0.03 in config.
+2026-03-15 17:52:44 - ServiceManager - INFO - Updated offset_a to -0.0301236 in config.
+2026-03-15 17:52:44 - ServiceManager - INFO - Updated offset_b to 0.0 in config.
+2026-03-15 17:52:44 - ServiceManager - INFO - Updated phase to 223.45 in config.
+2026-03-15 17:52:44 - ServiceManager - INFO - Updated pid_d to 1 in config.
+2026-03-15 17:52:44 - ServiceManager - INFO - Updated pid_i to 100 in config.
+2026-03-15 17:52:44 - ServiceManager - INFO - Updated pid_on_slow_enabled to True in config.
+2026-03-15 17:52:44 - ServiceManager - INFO - Updated pid_p to 2000 in config.
+2026-03-15 17:52:44 - ServiceManager - INFO - Updated pid_slow_strength to 3 in config.
+2026-03-15 17:52:44 - ServiceManager - INFO - Updated polarity_analog_out0 to 0 in config.
+2026-03-15 17:52:44 - ServiceManager - INFO - Updated polarity_fast_out1 to 0 in config.
+2026-03-15 17:52:44 - ServiceManager - INFO - Updated polarity_fast_out2 to 0 in config.
+2026-03-15 17:52:44 - ServiceManager - INFO - Updated slow_control_channel to 2 in config.
+2026-03-15 17:52:44 - ServiceManager - INFO - Updated small_offset to 0.0 in config.
+2026-03-15 17:52:44 - ServiceManager - INFO - Updated sweep_amplitude to 1.0 in config.
+2026-03-15 17:52:44 - ServiceManager - INFO - Updated sweep_center to 0.0 in config.
+2026-03-15 17:52:44 - ServiceManager - INFO - Updated sweep_channel to 1 in config.
+2026-03-15 17:52:44 - ServiceManager - INFO - Updated sweep_speed to 10 in config.
+2026-03-15 17:52:44 - ServiceManager - INFO - Updated target_slope_rising to True in config.
+2026-03-15 17:52:44 - ServiceManager - INFO - Parameters saved successfully to /Users/simone/Desktop/Università/Trento/Master_theses/RP_Spectroscopy/GUI_TEST/boards/RP_7020_parameters.yaml
+2026-03-15 17:52:51 - ServiceManager - INFO - ServiceManager initializing...
+2026-03-15 17:52:51 - ServiceManager - INFO - ServiceManager looking for board list at: /Users/simone/Desktop/Università/Trento/Master_theses/RP_Spectroscopy/GUI_TEST/boards/board_list.yaml
+2026-03-15 17:52:51 - ServiceManager - INFO - ServiceManager looking for reference lines at: /Users/simone/Desktop/Università/Trento/Master_theses/RP_Spectroscopy/GUI_TEST/reference_lines/reference_lines_inventory.yaml
+2026-03-15 17:52:51 - ServiceManager - INFO - Grafana client initialized.
+2026-03-15 17:52:51 - ServiceManager - INFO - ServiceManager initialization completed.
+2026-03-15 17:52:52 - ServiceManager - INFO - Loading boards...
+2026-03-15 17:52:52 - ServiceManager - INFO - Found 4 devices.
+2026-03-15 17:52:56 - ServiceManager - INFO - Loaded advanced settings for 'RP_7020' (4 groups).
+2026-03-15 17:52:56 - ServiceManager - INFO - Loaded parameters for 'RP_7020' (42 writeable, 3 readable).
+2026-03-15 17:53:08 - ServiceManager - ERROR - Failed to send data to Grafana: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [Errno 61] Connection refused
+2026-03-15 17:53:08 - ServiceManager - ERROR - Failed to send data to Grafana: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [Errno 61] Connection refused
+2026-03-15 17:53:35 - ServiceManager - ERROR - Failed to send data to Grafana: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [Errno 61] Connection refused
+2026-03-15 17:53:35 - ServiceManager - ERROR - Failed to send data to Grafana: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [Errno 61] Connection refused
+2026-03-15 17:53:36 - ServiceManager - ERROR - Failed to send data to Grafana: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [Errno 61] Connection refused
+2026-03-15 17:53:36 - ServiceManager - ERROR - Failed to send data to Grafana: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [Errno 61] Connection refused
+2026-03-15 17:54:17 - ServiceManager - ERROR - Failed to send data to Grafana: HTTPConnection(host='localhost', port=8086): Failed to establish a new connection: [Errno 61] Connection refused
+2026-03-15 17:54:18 - ServiceManager - INFO - Updated big_offset to 1.00091 in config.
+2026-03-15 17:54:18 - ServiceManager - INFO - Updated channel_mixing to -128 in config.
+2026-03-15 17:54:18 - ServiceManager - INFO - Updated control_channel to 1 in config.
+2026-03-15 17:54:18 - ServiceManager - INFO - Updated control_history_length to 60 in config.
+2026-03-15 17:54:18 - ServiceManager - INFO - Updated demodulation_multiplier_a to 1 in config.
+2026-03-15 17:54:18 - ServiceManager - INFO - Updated demodulation_multiplier_b to 0 in config.
+2026-03-15 17:54:18 - ServiceManager - INFO - Updated dual_channel to False in config.
+2026-03-15 17:54:18 - ServiceManager - INFO - Updated filter_1_enabled_a to True in config.
+2026-03-15 17:54:18 - ServiceManager - INFO - Updated filter_1_enabled_b to False in config.
+2026-03-15 17:54:18 - ServiceManager - INFO - Updated filter_1_frequency to 1000.0 in config.
+2026-03-15 17:54:18 - ServiceManager - INFO - Updated filter_1_type_a to 0 in config.
+2026-03-15 17:54:18 - ServiceManager - INFO - Updated filter_1_type_b to 0 in config.
+2026-03-15 17:54:18 - ServiceManager - INFO - Updated filter_2_enabled_a to False in config.
+2026-03-15 17:54:18 - ServiceManager - INFO - Updated filter_2_enabled_b to True in config.
+2026-03-15 17:54:18 - ServiceManager - INFO - Updated filter_2_frequency to 0.0 in config.
+2026-03-15 17:54:18 - ServiceManager - INFO - Updated filter_2_type_a to 0 in config.
+2026-03-15 17:54:18 - ServiceManager - INFO - Updated filter_2_type_b to 0 in config.
+2026-03-15 17:54:18 - ServiceManager - INFO - Updated filter_automatic_a to False in config.
+2026-03-15 17:54:18 - ServiceManager - INFO - Updated filter_automatic_b to False in config.
+2026-03-15 17:54:18 - ServiceManager - INFO - Updated invert_a to False in config.
+2026-03-15 17:54:18 - ServiceManager - INFO - Updated invert_b to False in config.
+2026-03-15 17:54:18 - ServiceManager - INFO - Updated modulation_amplitude to 0.3 in config.
+2026-03-15 17:54:18 - ServiceManager - INFO - Updated modulation_channel to 0 in config.
+2026-03-15 17:54:18 - ServiceManager - INFO - Updated modulation_frequency to 0.03 in config.
+2026-03-15 17:54:18 - ServiceManager - INFO - Updated offset_a to -0.0301236 in config.
+2026-03-15 17:54:18 - ServiceManager - INFO - Updated offset_b to 0.0 in config.
+2026-03-15 17:54:18 - ServiceManager - INFO - Updated phase to 223.45 in config.
+2026-03-15 17:54:18 - ServiceManager - INFO - Updated pid_d to 1 in config.
+2026-03-15 17:54:18 - ServiceManager - INFO - Updated pid_i to 100 in config.
+2026-03-15 17:54:18 - ServiceManager - INFO - Updated pid_on_slow_enabled to True in config.
+2026-03-15 17:54:18 - ServiceManager - INFO - Updated pid_p to 2000 in config.
+2026-03-15 17:54:18 - ServiceManager - INFO - Updated pid_slow_strength to 3 in config.
+2026-03-15 17:54:18 - ServiceManager - INFO - Updated polarity_analog_out0 to 0 in config.
+2026-03-15 17:54:18 - ServiceManager - INFO - Updated polarity_fast_out1 to 0 in config.
+2026-03-15 17:54:18 - ServiceManager - INFO - Updated polarity_fast_out2 to 0 in config.
+2026-03-15 17:54:18 - ServiceManager - INFO - Updated slow_control_channel to 2 in config.
+2026-03-15 17:54:18 - ServiceManager - INFO - Updated small_offset to 0.0 in config.
+2026-03-15 17:54:18 - ServiceManager - INFO - Updated sweep_amplitude to 1.0 in config.
+2026-03-15 17:54:18 - ServiceManager - INFO - Updated sweep_center to 0.0 in config.
+2026-03-15 17:54:18 - ServiceManager - INFO - Updated sweep_channel to 1 in config.
+2026-03-15 17:54:18 - ServiceManager - INFO - Updated sweep_speed to 10 in config.
+2026-03-15 17:54:18 - ServiceManager - INFO - Updated target_slope_rising to True in config.
+2026-03-15 17:54:18 - ServiceManager - INFO - Parameters saved successfully to /Users/simone/Desktop/Università/Trento/Master_theses/RP_Spectroscopy/GUI_TEST/boards/RP_7020_parameters.yaml
