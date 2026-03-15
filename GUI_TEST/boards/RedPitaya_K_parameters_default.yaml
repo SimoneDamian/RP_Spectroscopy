@@ -52,7 +52,7 @@ writeable_parameters:
     gui_name: Offset CH1
     description: The vertical offset for CH1 in volts.
     type: float
-    initial_value: 0.0
+    initial_value: -0.030123578034101577
     min: -1
     max: 1
     scaling: 8191
@@ -249,7 +249,7 @@ writeable_parameters:
     description: The center of the sweep ramp in volts. (Pay attention to the 
       proportionality constant applied in the analog summator)
     type: float
-    initial_value: 0.95
+    initial_value: 1.0009090909090907
     min: 0
     max: 1.8
     scaling: 18204 # This is approx 1.0 / ANALOG_OUT_V
@@ -426,7 +426,7 @@ writeable_parameters:
     gui_name: Demodulation phase
     description: The demodulation phase for channel A in degree.
     type: float
-    initial_value: 180.0
+    initial_value: 223.45
     min: 0
     max: 360
     scaling: 1.0  # degrees
@@ -508,7 +508,7 @@ writeable_parameters:
     description: Strength of the slow PID. This strength corresponds to the 
       strength of the integrator. Maximum value is 8191.
     type: int
-    initial_value: 0
+    initial_value: 3
     min: 0
     max: 8191
     scaling: 1  # PID strength on slow control
@@ -624,7 +624,7 @@ advanced_settings:
       gui_name: History length
       description: The history length of the fast and slow control signals. You 
         see the history when the laser is locked.
-      fast: 10
+      fast: 600
       slow: 3600
       unit: "s"
 
@@ -633,14 +633,14 @@ advanced_settings:
       description: The program is able to show the derivative of the fast 
         control signal. You can choose to use this feature or not. Useful to 
         tune the threshold of the fast control signal fluctuations.
-      enabled: true
+      enabled: false
 
     slow_control_signal_derivative:
       gui_name: Show slow control signal derivative
       description: The program is able to show the derivative of the slow 
         control signal. You can choose to use this feature or not. Useful to 
         tune the threshold of the slow control signal fluctuations.
-      enabled: true
+      enabled: false
 
   # --- AUTOLOCK SETTINGS ---
   autolock_settings:
@@ -658,7 +658,7 @@ advanced_settings:
         may be used if you experience problems with jitter-tolerant mode. As it 
         requires some communication between CPU and FPGA which causes some 
         delay, it may have problems if the line jitters a lot.
-      value: SIMPLE
+      value: ROBUST
       options:
       - SIMPLE
       - ROBUST
@@ -676,27 +676,41 @@ advanced_settings:
 
     jitter_threshold:
       gui_name: Jitter threshold
-      description: JITTER THRESHOLD DESCRIPTION
+      description: In the automatic locking procedure, when the reference line is
+        found, the algorithm tries to center on it and to find a value of the center
+        of the sweep such that the line is stable, in order to favour the locking. 
+        This parameter defines the threshold to determine if the line is stable or not.
       value: 0.05 # Threshold for jitter detection
 
     threshold_count:
       gui_name: Threshold count
-      description: THRESHOLD COUNT DESCRIPTION
+      description: In the automatic locking procedure, when the reference line is
+        found, the algorithm tries to center on it and to find a value of the center
+        of the sweep such that the line is stable, in order to favour the locking.
+        This parameter defines the number of points used to determine, using their standard 
+        deviation, if the line is stable or not with respect to the "jitter threshold" parameter.
       value: 5
 
     offset_big_jump:
       gui_name: Offset big jump
-      description: OFFSET BIG JUMP DESCRIPTION
+      description: In the automatic locking procedure, when the reference line is
+        found, the algorithm tries to center on it and to find a value of the center
+        of the sweep such that the line is stable, in order to favour the locking.
+        If the line is not stable, the algorithm will move it by this value.
       value: 0.04
 
     offset_small_jump:
       gui_name: Offset small jump
-      description: OFFSET SMALL JUMP DESCRIPTION
+      description: NOT USED, FOR NOW
       value: 0.01
 
     offset_try_list:
       gui_name: Offset try list
-      description: OFFSET TRY LIST DESCRIPTION
+      description: In the automatic locking procedure, when the reference line is
+        found, the algorithm tries to center on it and to find a value of the center
+        of the sweep such that the line is stable, in order to favour the locking.
+        These are the values that, multiplied by the "offset big jump", are used in order
+        to find the one for which the line is stable enough.
       value:
       - 0.0
       - 1.0
@@ -707,17 +721,20 @@ advanced_settings:
       - -3.0
     correlation_minimum:
       gui_name: Correlation minimum
-      description: CORRELATION MINIMUM DESCRIPTION
+      description: The minimum correlation value between the sweep signal and the 
+        reference line in order to consider the line as "found".
       value: 0.5
 
     length_match_minimum:
       gui_name: Length match minimum
-      description: LENGTH MATCH MINIMUM DESCRIPTION
+      description: The minimum length of the match between the sweep signal and the 
+        reference line in order to consider the line as "found", relative to the length
+        of the reference line length.
       value: 0.5
 
     proportion_free_space_left:
       gui_name: Proportion free space left
-      description: PROPORTION FREE SPACE LEFT DESCRIPTION
+      description: NOT USED, FOR NOW
       value: 0.5
 
 ##########################################
