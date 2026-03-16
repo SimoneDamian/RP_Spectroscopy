@@ -1045,7 +1045,6 @@ class LaserControllerPage(QWidget):
     def on_auto_back(self):
         """Return to menu from auto-lock page."""
         self.left_stack.setCurrentWidget(self.menu_page)
-        self.sig_request_start_sweep.emit()
 
     @Slot()
     def on_optimization_back(self):

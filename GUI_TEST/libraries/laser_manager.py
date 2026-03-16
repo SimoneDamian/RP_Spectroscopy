@@ -622,7 +622,9 @@ class LaserManager(QObject):
 
     @Slot()
     def stop_scan(self):
-        if self.state == "SCAN" or self.state == "JITTER_CHECK":
+        if self.state == "SWEEP":
+            pass
+        elif self.state == "SCAN" or self.state == "JITTER_CHECK":
             if self.initial_center is not None:
                 self.interface.set_value('big_offset', self.initial_center)
             self.state = "SWEEP"

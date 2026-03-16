@@ -13565,3 +13565,42 @@
 2026-03-16 10:46:17 - HardwareInterface - WARNING - Failed to get sweep: 'error_signal_1'
 2026-03-16 10:46:18 - HardwareInterface - WARNING - Failed to get sweep: 'error_signal_1'
 2026-03-16 10:46:18 - HardwareInterface - WARNING - Failed to get sweep: 'error_signal_1'
+2026-03-16 11:06:04 - HardwareInterface - INFO - Attempting connection via RedPitaya_K address (192.168.1.159:18862)
+2026-03-16 11:06:33 - HardwareInterface - INFO - Connected to device RedPitaya_K
+2026-03-16 11:06:33 - HardwareInterface - INFO - Basic configuration complete. Waiting for parameters from ServiceManager...
+2026-03-16 11:06:33 - HardwareInterface - INFO - HardwareInterface initialized.
+2026-03-16 11:06:34 - HardwareInterface - INFO - Autolock mode set to ROBUST and determine offset set to False
+2026-03-16 11:06:34 - HardwareInterface - INFO - Loading parameters from dict...
+2026-03-16 11:06:35 - HardwareInterface - INFO - Parameters loaded: 42 writeable, 3 readable.
+2026-03-16 11:09:34 - HardwareInterface - INFO - Attempting connection via RedPitaya_K address (192.168.1.159:18862)
+2026-03-16 11:09:38 - HardwareInterface - INFO - Connected to device RedPitaya_K
+2026-03-16 11:09:38 - HardwareInterface - INFO - Basic configuration complete. Waiting for parameters from ServiceManager...
+2026-03-16 11:09:38 - HardwareInterface - INFO - HardwareInterface initialized.
+2026-03-16 11:09:38 - HardwareInterface - INFO - Autolock mode set to ROBUST and determine offset set to False
+2026-03-16 11:09:38 - HardwareInterface - INFO - Loading parameters from dict...
+2026-03-16 11:09:40 - HardwareInterface - INFO - Parameters loaded: 42 writeable, 3 readable.
+2026-03-16 11:11:17 - HardwareInterface - INFO - checking lock status...
+2026-03-16 11:11:17 - HardwareInterface - INFO - to_plot keys: ['error_signal_1', 'monitor_signal', 'slow_control_signal']
+2026-03-16 11:11:18 - HardwareInterface - INFO - checking lock status...
+2026-03-16 11:11:18 - HardwareInterface - INFO - to_plot keys: ['error_signal_1', 'monitor_signal', 'slow_control_signal']
+2026-03-16 11:11:19 - HardwareInterface - INFO - checking lock status...
+2026-03-16 11:11:20 - HardwareInterface - INFO - to_plot keys: ['error_signal_1', 'monitor_signal', 'slow_control_signal']
+2026-03-16 11:11:21 - HardwareInterface - INFO - checking lock status...
+2026-03-16 11:11:21 - HardwareInterface - INFO - to_plot keys: ['error_signal_1', 'monitor_signal', 'slow_control_signal']
+2026-03-16 11:11:22 - HardwareInterface - INFO - checking lock status...
+2026-03-16 11:11:22 - HardwareInterface - INFO - to_plot keys: ['error_signal_1', 'monitor_signal', 'slow_control_signal']
+2026-03-16 11:11:23 - HardwareInterface - INFO - checking lock status...
+2026-03-16 11:11:23 - HardwareInterface - INFO - to_plot keys: ['error_signal_1', 'monitor_signal', 'slow_control_signal']
+2026-03-16 11:11:24 - HardwareInterface - INFO - checking lock status...
+2026-03-16 11:11:24 - HardwareInterface - INFO - to_plot keys: ['error_signal_1', 'monitor_signal', 'slow_control_signal']
+2026-03-16 11:11:25 - HardwareInterface - INFO - checking lock status...
+2026-03-16 11:11:25 - HardwareInterface - INFO - to_plot keys: ['error_signal', 'control_signal', 'monitor_signal', 'slow_control_signal']
+2026-03-16 11:11:25 - HardwareInterface - INFO - History buffers initialized: fast=600s, slow=3600s
+2026-03-16 11:18:57 - HardwareInterface - INFO - Autolock task stopped.
+2026-03-16 11:18:58 - HardwareInterface - INFO - Lock stopped, sweep restarted.
+2026-03-16 11:18:58 - HardwareInterface - WARNING - Failed to get sweep: 'error_signal_1'
+2026-03-16 11:18:59 - HardwareInterface - WARNING - Failed to get sweep: 'error_signal_1'
+2026-03-16 11:18:59 - HardwareInterface - WARNING - Failed to get sweep: 'error_signal_1'
+2026-03-16 11:18:59 - HardwareInterface - WARNING - Failed to get sweep: 'error_signal_1'
+2026-03-16 11:19:00 - HardwareInterface - WARNING - Failed to get sweep: 'error_signal_1'
+2026-03-16 11:19:00 - HardwareInterface - WARNING - Failed to get sweep: 'error_signal_1'
