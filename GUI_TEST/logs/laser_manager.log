@@ -36765,3 +36765,119 @@
 2026-03-16 08:50:31 - LaserManager - INFO - Sweep started by user.
 2026-03-16 08:50:31 - LaserManager - INFO - Sweep started by user.
 2026-03-16 09:08:35 - LaserManager - INFO - Control loop timer stopped.
+2026-03-16 09:48:09 - LaserManager - INFO - LaserManager initialized.
+2026-03-16 09:48:12 - LaserManager - INFO - LaserManager setup complete. Control loop started.
+2026-03-16 09:48:13 - LaserManager - INFO - Advanced settings loaded into Interface.
+2026-03-16 09:48:14 - LaserManager - INFO - Parameters loaded into Interface.
+2026-03-16 09:48:15 - LaserManager - INFO - Set parameter big_offset to 1.00091
+2026-03-16 09:48:15 - LaserManager - INFO - Set parameter channel_mixing to -128
+2026-03-16 09:48:15 - LaserManager - INFO - Set parameter control_channel to 1
+2026-03-16 09:48:16 - LaserManager - INFO - Set parameter control_history_length to 60
+2026-03-16 09:48:16 - LaserManager - INFO - Set parameter demodulation_multiplier_a to 1
+2026-03-16 09:48:17 - LaserManager - INFO - Set parameter demodulation_multiplier_b to 0
+2026-03-16 09:48:17 - LaserManager - INFO - Set parameter dual_channel to False
+2026-03-16 09:48:18 - LaserManager - INFO - Set parameter filter_1_enabled_a to True
+2026-03-16 09:48:18 - LaserManager - INFO - Set parameter filter_1_enabled_b to False
+2026-03-16 09:48:19 - LaserManager - INFO - Set parameter filter_1_frequency to 1000.0
+2026-03-16 09:48:19 - LaserManager - INFO - Set parameter filter_1_type_a to 0
+2026-03-16 09:48:20 - LaserManager - INFO - Set parameter filter_1_type_b to 0
+2026-03-16 09:48:20 - LaserManager - INFO - Set parameter filter_2_enabled_a to False
+2026-03-16 09:48:20 - LaserManager - INFO - Set parameter filter_2_enabled_b to True
+2026-03-16 09:48:21 - LaserManager - INFO - Set parameter filter_2_frequency to 0.0
+2026-03-16 09:48:21 - LaserManager - INFO - Set parameter filter_2_type_a to 0
+2026-03-16 09:48:22 - LaserManager - INFO - Set parameter filter_2_type_b to 0
+2026-03-16 09:48:22 - LaserManager - INFO - Set parameter filter_automatic_a to False
+2026-03-16 09:48:23 - LaserManager - INFO - Set parameter filter_automatic_b to False
+2026-03-16 09:48:23 - LaserManager - INFO - Set parameter invert_a to False
+2026-03-16 09:48:23 - LaserManager - INFO - Set parameter invert_b to False
+2026-03-16 09:48:23 - LaserManager - INFO - Set parameter modulation_amplitude to 0.3
+2026-03-16 09:48:24 - LaserManager - INFO - Set parameter modulation_channel to 0
+2026-03-16 09:48:24 - LaserManager - INFO - Set parameter modulation_frequency to 0.03
+2026-03-16 09:48:25 - LaserManager - INFO - Set parameter offset_a to -0.0301236
+2026-03-16 09:48:25 - LaserManager - INFO - Set parameter offset_b to 0.0
+2026-03-16 09:48:26 - LaserManager - INFO - Set parameter phase to 223.45
+2026-03-16 09:48:26 - LaserManager - INFO - Set parameter pid_d to 1
+2026-03-16 09:48:27 - LaserManager - INFO - Set parameter pid_i to 100
+2026-03-16 09:48:27 - LaserManager - INFO - Set parameter pid_on_slow_enabled to True
+2026-03-16 09:48:28 - LaserManager - INFO - Set parameter pid_p to 2000
+2026-03-16 09:48:28 - LaserManager - INFO - Set parameter pid_slow_strength to 3
+2026-03-16 09:48:29 - LaserManager - INFO - Set parameter polarity_analog_out0 to 0
+2026-03-16 09:48:29 - LaserManager - INFO - Set parameter polarity_fast_out1 to 0
+2026-03-16 09:48:30 - LaserManager - INFO - Set parameter polarity_fast_out2 to 0
+2026-03-16 09:48:30 - LaserManager - INFO - Set parameter slow_control_channel to 2
+2026-03-16 09:48:30 - LaserManager - INFO - Set parameter small_offset to 0.0
+2026-03-16 09:48:31 - LaserManager - INFO - Set parameter sweep_amplitude to 1.0
+2026-03-16 09:48:31 - LaserManager - INFO - Set parameter sweep_center to 0.0
+2026-03-16 09:48:32 - LaserManager - INFO - Set parameter sweep_channel to 1
+2026-03-16 09:48:32 - LaserManager - INFO - Set parameter sweep_speed to 10
+2026-03-16 09:48:33 - LaserManager - INFO - Set parameter target_slope_rising to True
+2026-03-16 09:48:33 - LaserManager - INFO - State changed from OFF to SWEEP
+2026-03-16 09:48:47 - LaserManager - INFO - Sweep started by user.
+2026-03-16 09:48:47 - LaserManager - INFO - Sweep started by user.
+2026-03-16 09:49:02 - LaserManager - INFO - Starting autolock, scan for the line...
+2026-03-16 09:49:02 - LaserManager - INFO - Initiating scan: 0.9V -> 1.15V (12 pts)
+2026-03-16 09:49:02 - LaserManager - INFO - State changed from SWEEP to SCAN
+2026-03-16 09:49:04 - LaserManager - INFO - Correlation at 0.9V: 0.22169109622491476, Length of match: 0.4026666666666894, offset with respect to the reference signal: -0.0016637042996658351
+2026-03-16 09:49:05 - LaserManager - INFO - Correlation at 0.9227272727272727V: 0.5349885634021746, Length of match: 0.8000000000000453, offset with respect to the reference signal: 0.0035589374380541714
+2026-03-16 09:49:07 - LaserManager - INFO - Correlation at 0.9454545454545454V: 0.4726710079316153, Length of match: 0.9982222222222789, offset with respect to the reference signal: 0.0006842763329070328
+2026-03-16 09:49:08 - LaserManager - INFO - Correlation at 0.9681818181818181V: 0.47432700003374834, Length of match: 0.9982222222222789, offset with respect to the reference signal: -0.002098904051902562
+2026-03-16 09:49:10 - LaserManager - INFO - Correlation at 0.9909090909090909V: 0.4872053978471316, Length of match: 0.9982222222222789, offset with respect to the reference signal: -0.0019147484069500303
+2026-03-16 09:49:11 - LaserManager - INFO - Correlation at 1.0136363636363637V: 0.7712297684688223, Length of match: 0.15288888888889754, offset with respect to the reference signal: -0.0029541370402281536
+2026-03-16 09:49:12 - LaserManager - INFO - Correlation at 1.0363636363636364V: 0.4859998068398334, Length of match: 0.4817777777778049, offset with respect to the reference signal: -0.0010831229717489185
+2026-03-16 09:49:14 - LaserManager - INFO - Correlation at 1.059090909090909V: 0.560944411498639, Length of match: 0.48355555555558294, offset with respect to the reference signal: 0.00017221569350189825
+2026-03-16 09:49:15 - LaserManager - INFO - Correlation at 1.0818181818181818V: 0.49936589628607414, Length of match: 0.9982222222222789, offset with respect to the reference signal: -0.00342685664075398
+2026-03-16 09:49:17 - LaserManager - INFO - Correlation at 1.1045454545454545V: 0.4573017736190608, Length of match: 0.9982222222222789, offset with respect to the reference signal: -0.004829988910852472
+2026-03-16 09:49:18 - LaserManager - INFO - Correlation at 1.1272727272727272V: 0.45553772412171095, Length of match: 0.9982222222222789, offset with respect to the reference signal: -0.005351508485917268
+2026-03-16 09:49:20 - LaserManager - INFO - Correlation at 1.15V: 0.09195298152403909, Length of match: 0.28622222222223825, offset with respect to the reference signal: -0.010457778596878473
+2026-03-16 09:49:20 - LaserManager - INFO - Setting the optimal scan center...
+2026-03-16 09:49:21 - LaserManager - INFO - Set parameter big_offset to 1.0136363636363637
+2026-03-16 09:49:21 - LaserManager - INFO - Set parameter offset_a to -0.027169462959771847
+2026-03-16 09:49:21 - LaserManager - INFO - Set vertical offset (offset_a) to -0.027169462959771847
+2026-03-16 09:49:22 - LaserManager - INFO - Starting the jitter check loop...
+2026-03-16 09:49:22 - LaserManager - INFO - State changed from SCAN to JITTER_CHECK
+2026-03-16 09:49:23 - LaserManager - INFO - Scan aborted by user.
+2026-03-16 09:49:23 - LaserManager - INFO - State changed from JITTER_CHECK to SWEEP
+2026-03-16 09:49:28 - LaserManager - INFO - Sweep started by user.
+2026-03-16 09:49:28 - LaserManager - INFO - Sweep started by user.
+2026-03-16 09:49:40 - LaserManager - INFO - Set parameter big_offset to 1.01
+2026-03-16 09:49:47 - LaserManager - INFO - Set parameter big_offset to 1.03
+2026-03-16 09:50:02 - LaserManager - INFO - Set parameter big_offset to 1.0
+2026-03-16 09:52:09 - LaserManager - INFO - Starting autolock, scan for the line...
+2026-03-16 09:52:09 - LaserManager - INFO - Initiating scan: 0.9V -> 1.1V (10 pts)
+2026-03-16 09:52:09 - LaserManager - INFO - State changed from SWEEP to SCAN
+2026-03-16 09:52:11 - LaserManager - INFO - Correlation at 0.9V: 0.8928622818067549, Length of match: 0.9982222222222789, offset with respect to the reference signal: -0.00035872984772601906
+2026-03-16 09:52:13 - LaserManager - INFO - Correlation at 0.9222222222222223V: 0.48257533338703595, Length of match: 0.9982222222222789, offset with respect to the reference signal: -3.377953582839918e-05
+2026-03-16 09:52:14 - LaserManager - INFO - Correlation at 0.9444444444444445V: 0.4941650279822461, Length of match: 0.9982222222222789, offset with respect to the reference signal: -0.001081109768300172
+2026-03-16 09:52:15 - LaserManager - INFO - Correlation at 0.9666666666666667V: 0.8441467570059129, Length of match: 0.4800000000000272, offset with respect to the reference signal: 0.00042264726288651286
+2026-03-16 09:52:16 - LaserManager - INFO - Correlation at 0.9888888888888889V: 0.7644334373681266, Length of match: 0.8800000000000496, offset with respect to the reference signal: -0.0006260310466818448
+2026-03-16 09:52:18 - LaserManager - INFO - Correlation at 1.011111111111111V: 0.7869402221074675, Length of match: 0.9982222222222789, offset with respect to the reference signal: -0.0006471536844844914
+2026-03-16 09:52:18 - LaserManager - INFO - Scan aborted by user.
+2026-03-16 09:52:18 - LaserManager - INFO - Starting autolock, scan for the line...
+2026-03-16 09:52:18 - LaserManager - INFO - Initiating scan: 0.9V -> 1.1V (10 pts)
+2026-03-16 09:52:20 - LaserManager - INFO - Correlation at 0.9V: 0.6587510479614761, Length of match: 0.9982222222222789, offset with respect to the reference signal: 0.003567346750368283
+2026-03-16 09:52:22 - LaserManager - INFO - Correlation at 0.9222222222222223V: 0.46883340495967335, Length of match: 0.9982222222222789, offset with respect to the reference signal: -0.0001018698154048537
+2026-03-16 09:52:23 - LaserManager - INFO - Correlation at 0.9444444444444445V: 0.4919277167386666, Length of match: 0.9982222222222789, offset with respect to the reference signal: -0.0005259254164619641
+2026-03-16 09:52:25 - LaserManager - INFO - Correlation at 0.9666666666666667V: 0.8422541218421778, Length of match: 0.480888888888916, offset with respect to the reference signal: 0.000999489668838345
+2026-03-16 09:52:26 - LaserManager - INFO - Correlation at 0.9888888888888889V: 0.7457645996085704, Length of match: 0.878222222222272, offset with respect to the reference signal: -0.000498588301258049
+2026-03-16 09:52:28 - LaserManager - INFO - Correlation at 1.011111111111111V: 0.7984649700578234, Length of match: 0.9982222222222789, offset with respect to the reference signal: -0.0007248774647591709
+2026-03-16 09:52:29 - LaserManager - INFO - Correlation at 1.0333333333333334V: 0.9031909427297776, Length of match: 0.9982222222222789, offset with respect to the reference signal: -2.1390112549082504e-05
+2026-03-16 09:52:30 - LaserManager - INFO - Correlation at 1.0555555555555556V: 0.08771427875037519, Length of match: 0.2586666666666812, offset with respect to the reference signal: -0.00944264239750461
+2026-03-16 09:52:32 - LaserManager - INFO - Correlation at 1.077777777777778V: 0.09504811771976668, Length of match: 0.6773333333333715, offset with respect to the reference signal: -0.009837974538927026
+2026-03-16 09:52:33 - LaserManager - INFO - Correlation at 1.1V: 0.3577262677091415, Length of match: 0.48355555555558294, offset with respect to the reference signal: -0.009678764876221439
+2026-03-16 09:52:33 - LaserManager - INFO - Setting the optimal scan center...
+2026-03-16 09:52:33 - LaserManager - INFO - Set parameter big_offset to 1.0333333333333334
+2026-03-16 09:52:34 - LaserManager - INFO - Set parameter offset_a to -0.027148072847222766
+2026-03-16 09:52:34 - LaserManager - INFO - Set vertical offset (offset_a) to -0.027148072847222766
+2026-03-16 09:52:35 - LaserManager - INFO - Starting the jitter check loop...
+2026-03-16 09:52:35 - LaserManager - INFO - State changed from SCAN to JITTER_CHECK
+2026-03-16 09:53:05 - LaserManager - INFO - Trying new offset = 1.0733333333333335
+2026-03-16 09:53:35 - LaserManager - INFO - Trying new offset = 0.9933333333333334
+2026-03-16 09:53:39 - LaserManager - INFO - Line is now inside
+2026-03-16 09:53:42 - LaserManager - INFO - Frequency stable enough
+2026-03-16 09:53:42 - LaserManager - INFO - Shift: 0.0947728382999512, space left: 0.4943820224719101, space right: 0.40644846116267697, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-16 09:53:42 - LaserManager - INFO - Line is centered at offset 0.9933333333333334. Jitter check complete.
+2026-03-16 09:53:43 - LaserManager - INFO - Starting autolock from 1018 to 1121
+2026-03-16 09:53:49 - LaserManager - INFO - Locking the laser worked! \o/
+2026-03-16 09:53:49 - LaserManager - INFO - State changed from JITTER_CHECK to LOCKED
+2026-03-16 09:54:38 - LaserManager - INFO - State changed from LOCKED to SWEEP
+2026-03-16 10:04:21 - LaserManager - INFO - Control loop timer stopped.

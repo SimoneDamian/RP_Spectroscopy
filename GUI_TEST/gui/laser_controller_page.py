@@ -849,7 +849,7 @@ class AutoLockPage(QWidget):
         self.corr_y = []
         self.curve_corr.setData([], [])
 
-        self.sig_start_autolock.emit(start_v, end_v, {'x': x, 'y': y})
+        self.sig_start_autolock.emit(start_v, end_v, {'x': x, 'y': y, 'V_lock_start': item_data.get('lock_region', [0, 1])[0], 'V_lock_end': item_data.get('lock_region', [0, 1])[1]})
 
     def _on_stop_clicked(self):
         self.sig_stop_scan.emit()

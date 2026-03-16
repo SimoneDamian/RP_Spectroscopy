@@ -384,6 +384,8 @@ class LaserManager(QObject):
         self.logger.info("Starting autolock, scan for the line...")
 
         #init of the variables
+        self.V_lock_start = reference_signal['V_lock_start']
+        self.V_lock_end = reference_signal['V_lock_end']
         self.reference_line_width = reference_signal['x'][-1] - reference_signal['x'][0]
         self.index_sweep_center_try = 0
         self.correlations = []
@@ -529,9 +531,35 @@ class LaserManager(QObject):
                     # Line is centered and stable
                     self.logger.info(f"Line is centered at offset {self.jitter_offset}. Jitter check complete.")
                     self._emit_jitter_packet(sweep_signal, shift, corr, len_match, avg_shift, std_shift)
-                    self.state = "IDLE"
+                    #prepare the data for the locking
+                    sweep_signal_raw = sweep_signal['error_signal'] * 2 * Vpp #the algorithm requires integer (ADC) values
+                    #find the indices of the lock region
+                    lock_start = self.V_lock_start + shift
+                    lock_end = self.V_lock_end + shift
+                    lock_start_ind = np.argmin(np.abs(sweep_signal['x'] - lock_start))
+                    lock_end_ind = np.argmin(np.abs(sweep_signal['x'] - lock_end))
+                    expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
+                    self.expected_lock_monitor_signal_point = expected_lock_monitor_signal_point
                     self.sig_autolock_completed.emit()
-                    return
+                    self.interface.client.connection.root.start_autolock(lock_start_ind,lock_end_ind,pickle.dumps(sweep_signal_raw))
+                    self.logger.info(f"Starting autolock from {lock_start_ind} to {lock_end_ind}")
+                    try:
+                        self.interface.wait_for_lock_status(True)
+                        self.logger.info("Locking the laser worked! \\o/")
+
+                        # Initialize history buffers from advanced settings
+                        gui_vis = self.advanced_settings.get("gui_visualization", {})
+                        hist_cfg = gui_vis.get("history_length", {})
+                        fast_s = hist_cfg.get("fast", 600)
+                        slow_s = hist_cfg.get("slow", 3600)
+                        self.interface.init_history_buffers(fast_s, slow_s)
+
+                        self.state = "LOCKED"
+                        return
+                    except Exception:
+                        self.logger.warning("Locking the laser failed :(")
+                        self.set_state("SWEEP")
+                        return
                 elif space_left < edge_space_thr:
                     self.logger.info("Too far left: increase offset to decrease frequency")
                     self.jitter_offset -= self.offset_small_jump
@@ -703,6 +731,7 @@ class LaserManager(QObject):
                 "mode": self.state,
                 "show_fast_deriv": show_fast_deriv,
                 "show_slow_deriv": show_slow_deriv,
+                "expected_lock_monitor_signal_point": self.expected_lock_monitor_signal_point,
                 **history
             }
             self.sig_data_ready.emit(packet)
