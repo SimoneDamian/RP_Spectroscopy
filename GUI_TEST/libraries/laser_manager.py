@@ -11,6 +11,7 @@ import pickle
 import time
 from time import sleep
 from scipy.signal import find_peaks
+from datetime import datetime
 
 class LaserManager(QObject):
     sig_connected = Signal()
@@ -36,6 +37,7 @@ class LaserManager(QObject):
         self.state = "SWEEP"
         self.advanced_settings = {}
         self.old_state = "OFF"
+        self.locking_mode = None
         
         # Setup Logging
         log_path = self.cfg.get('paths', {}).get('logs', './logs')
@@ -385,6 +387,8 @@ class LaserManager(QObject):
     def start_autolock(self, start_voltage=0.05, stop_voltage=1.75, reference_signal=None):
         self.logger.info("Starting autolock, scan for the line...")
 
+        self.locking_mode = "AUTOMATIC"
+
         #init of the variables
         self.V_lock_start = reference_signal['V_lock_start']
         self.V_lock_end = reference_signal['V_lock_end']
@@ -398,6 +402,8 @@ class LaserManager(QObject):
         self.line_outside = True 
         self.frequence_stable = False
         self.cnt = 0
+
+        self.initialize_unlock_events()
 
         #call of a scan with the autolock option
         self.start_scan(start_voltage=start_voltage, stop_voltage=stop_voltage, reference_signal=reference_signal, calculate_correlation=True, autolock=True)
@@ -734,6 +740,12 @@ class LaserManager(QObject):
             show_fast_deriv = gui_vis.get("fast_control_signal_derivative", {}).get("enabled", False)
             show_slow_deriv = gui_vis.get("slow_control_signal_derivative", {}).get("enabled", False)
 
+            if self.advanced_settings.get("unlock_detection", {}).get("events", {}).get("detect_unlock", {}).get("enabled", False):
+                #self.logger.info("Looking for unlock event...")
+                self.detect_unlock_event()
+                if self.stop_locking:
+                    self.unlock_or_relock()
+
             packet = {
                 "mode": self.state,
                 "show_fast_deriv": show_fast_deriv,
@@ -753,6 +765,8 @@ class LaserManager(QObject):
     @Slot(int, int, dict)
     def start_manual_locking(self, x0, x1, sweep_data):
         self.logger.info("Starting manual locking...")
+        self.locking_mode = "MANUAL"
+        self.initialize_unlock_events()
         self.interface.wait_for_lock_status(False)
 
         expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_data['error_signal'], sweep_data['monitor_signal'], x0, x1)
@@ -785,13 +799,26 @@ class LaserManager(QObject):
 
         return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
 
+    def initialize_unlock_events(self):
+        self.unlock_events = {
+            "fast_control_fluctuations": False,
+            "fast_control_fluctuations_time": [],
+            "fast_control_saturation": False,
+            "fast_control_saturation_time": [],
+            "slow_control_fluctuations": False,
+            "slow_control_fluctuations_time": [],
+            "slow_control_saturation": False,
+            "slow_control_saturation_time": []
+        }
+        self.stop_locking = False
+
     def detect_unlock_event(self):
         """
         Detect unlock events looking at the monitor and control signals histories
         that are contained in the interface while the system is locked.
         """
         
-        if self.advanced_settings['unlock_detection']['detect_unlock']['enabled']:
+        if self.advanced_settings['unlock_detection']['events']['detect_unlock']['enabled']:
             #if the user wants the app to automatically detects an unlock event
 
             #Fast control unlock detection
@@ -812,8 +839,9 @@ class LaserManager(QObject):
 
             #MANCA IL DRIFT DEL SEGNALE DI MONITOR
 
-            #SE ALMENO UNO è TRUE, ALLORA STOP
-            if self.unlock_events['unlock_event_fast_control_signal'] or self.unlock_events['unlock_event_fast_control_signal_at_time'] or self.unlock_events['unlock_event_slow_control_signal'] or self.unlock_events['unlock_event_slow_control_signal_at_time']:
+            #SE ALMENO UNO È TRUE, ALLORA STOP
+            if self.unlock_events['fast_control_fluctuations'] or self.unlock_events['fast_control_saturation'] or self.unlock_events['slow_control_fluctuations'] or self.unlock_events['slow_control_saturation']:
+                self.logger.warning("Unlock event detected")
                 self.stop_locking = True
 
         return
@@ -827,10 +855,11 @@ class LaserManager(QObject):
 
         if len(detected_peaks) > 0:
             fast_fluctuation_times = [self.interface.history['fast_control_times_unix'][i] for i in detected_peaks]
-            self.logger.warning(f"Fast variation of the fast control signal detected at time: {self.interface.history['fast_control_times_dt'][detected_peaks[0]].strftime('%Y-%m-%d %H:%M:%S')}")
-            #self.lock_unlock_logger.info(f"Fast variation of the fast control signal detected at time: {self.interface.history['fast_control_times_dt'][detected_peaks[0]].strftime('%Y-%m-%d %H:%M:%S')}")
-            self.unlock_events['unlock_event_fast_control_signal'] = True
-            self.unlock_events['unlock_event_fast_control_signal_at_time'] = fast_fluctuation_times
+            dt = datetime.fromtimestamp(self.interface.history['fast_control_times_unix'][detected_peaks[0]])
+            self.logger.warning(f"Fast variation of the fast control signal detected at time: {dt.strftime('%Y-%m-%d %H:%M:%S')}")
+            #self.lock_unlock_logger.info(f"Fast variation of the fast control signal detected at time: {dt.strftime('%Y-%m-%d %H:%M:%S')}")
+            self.unlock_events['fast_control_fluctuations'] = True
+            self.unlock_events['fast_control_fluctuations_time'] = fast_fluctuation_times
         
         return
 
@@ -843,21 +872,23 @@ class LaserManager(QObject):
 
         if len(detected_peaks) > 0:
             slow_fluctuation_times = [self.interface.history['slow_control_times_unix'][i] for i in detected_peaks]
-            self.logger.warning(f"Slow variation of the slow control signal detected at time: {self.interface.history['slow_control_times_dt'][detected_peaks[0]].strftime('%Y-%m-%d %H:%M:%S')}")
-            #self.lock_unlock_logger.info(f"Slow variation of the slow control signal detected at time: {self.interface.history['slow_control_times_dt'][detected_peaks[0]].strftime('%Y-%m-%d %H:%M:%S')}")
-            self.unlock_events['unlock_event_slow_control_signal'] = True
-            self.unlock_events['unlock_event_slow_control_signal_at_time'] = slow_fluctuation_times
+            dt = datetime.fromtimestamp(self.interface.history['slow_control_times_unix'][detected_peaks[0]])
+            self.logger.warning(f"Slow variation of the slow control signal detected at time: {dt.strftime('%Y-%m-%d %H:%M:%S')}")
+            #self.lock_unlock_logger.info(f"Slow variation of the slow control signal detected at time: {dt.strftime('%Y-%m-%d %H:%M:%S')}")
+            self.unlock_events['slow_control_fluctuations'] = True
+            self.unlock_events['slow_control_fluctuations_time'] = slow_fluctuation_times
 
         return
 
     def unlock_or_relock(self):
         """
-        Depending on the user's choice, unlock or relock the laser.
+        Depending on the user's choice, unlock or relock the laser after an unlock event.
         """
 
-        if self.locking_mode == "MANUAL" or (self.locking_mode == "AUTOMATIC" and self.advanced_settings['automatic_relock']['enabled'] == False):
-            self.set_state("SWEEP")
-        else:
-            pass
-            #automatic mode and automatic relock enabled
+        if self.locking_mode == "MANUAL" or (self.locking_mode == "AUTOMATIC" and self.advanced_settings['unlock_detection']['events']['automatic_relock']['enabled'] == False):
+            self.logger.warning("Unlock event detected, unlocking the laser...")
+            self.set_state("SWEEP") #simply stops the lock and start sweeping
+        elif self.locking_mode == "AUTOMATIC" and self.advanced_settings['unlock_detection']['events']['automatic_relock']['enabled'] == True:
+            self.logger.warning("Unlock event detected, relocking the laser...")
+            self.set_state("SWEEP") #simply stops the lock and start sweeping
             #AGGIUNGERE IL RELOCK
