@@ -13284,3 +13284,17 @@
 2026-03-15 17:53:02 - HardwareInterface - INFO - Autolock mode set to ROBUST and determine offset set to False
 2026-03-15 17:53:02 - HardwareInterface - INFO - Loading parameters from dict...
 2026-03-15 17:53:04 - HardwareInterface - INFO - Parameters loaded: 42 writeable, 3 readable.
+2026-03-16 08:40:07 - HardwareInterface - INFO - Attempting connection via RedPitaya_K address (192.168.1.159:18862)
+2026-03-16 08:40:37 - HardwareInterface - INFO - Connected to device RedPitaya_K
+2026-03-16 08:40:37 - HardwareInterface - INFO - Basic configuration complete. Waiting for parameters from ServiceManager...
+2026-03-16 08:40:37 - HardwareInterface - INFO - HardwareInterface initialized.
+2026-03-16 08:40:37 - HardwareInterface - INFO - Autolock mode set to ROBUST and determine offset set to False
+2026-03-16 08:40:37 - HardwareInterface - INFO - Loading parameters from dict...
+2026-03-16 08:40:38 - HardwareInterface - INFO - Parameters loaded: 42 writeable, 3 readable.
+2026-03-16 08:49:08 - HardwareInterface - INFO - Attempting connection via RedPitaya_K address (192.168.1.159:18862)
+2026-03-16 08:49:13 - HardwareInterface - INFO - Connected to device RedPitaya_K
+2026-03-16 08:49:13 - HardwareInterface - INFO - Basic configuration complete. Waiting for parameters from ServiceManager...
+2026-03-16 08:49:13 - HardwareInterface - INFO - HardwareInterface initialized.
+2026-03-16 08:49:13 - HardwareInterface - INFO - Autolock mode set to ROBUST and determine offset set to False
+2026-03-16 08:49:13 - HardwareInterface - INFO - Loading parameters from dict...
+2026-03-16 08:49:14 - HardwareInterface - INFO - Parameters loaded: 42 writeable, 3 readable.

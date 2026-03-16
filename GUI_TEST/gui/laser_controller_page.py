@@ -701,6 +701,13 @@ class AutoLockPage(QWidget):
         self.plot_ref_item.getAxis('bottom').enableAutoSIPrefix(False)
         self.plot_ref_item.getAxis('left').enableAutoSIPrefix(False)
         self.curve_ref = self.plot_ref_item.plot(pen='b')
+        
+        # Red region for lock range
+        self.lock_region = pg.LinearRegionItem(values=[0, 1], orientation=pg.LinearRegionItem.Vertical, 
+                                               brush=pg.mkBrush(255, 0, 0, 50), movable=False)
+        self.plot_ref_item.addItem(self.lock_region)
+        self.lock_region.hide()
+        
         layout.addWidget(self.plot_ref)
 
         # --- 4. Voltage Range Inputs ---
@@ -788,6 +795,7 @@ class AutoLockPage(QWidget):
     def _on_refline_selected(self, index):
         if index <= 0 or not self.service_manager:
             self.curve_ref.clear()
+            self.lock_region.hide()
             return
 
         selected_name = self.combo_refline.itemText(index)
@@ -798,10 +806,16 @@ class AutoLockPage(QWidget):
             x, y = self.service_manager.get_reference_line_data(filename)
             if x is not None and y is not None:
                 self.curve_ref.setData(x, y)
+                region = item_data.get('lock_region', [0, 1])
+                if len(region) == 2:
+                    self.lock_region.setRegion(region)
+                self.lock_region.show()
             else:
                 self.curve_ref.clear()
+                self.lock_region.hide()
         else:
             self.curve_ref.clear()
+            self.lock_region.hide()
 
     # ---- Button handlers ----
 
