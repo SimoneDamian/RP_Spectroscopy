@@ -225,6 +225,15 @@ class LockingMonitorPlotHandler(BasePlotHandler):
         )
         self.mon_stats_text, self.mon_mean_line, self.mon_std_upper, self.mon_std_lower = self._add_stats_elements(self.plot_monitor)
 
+        self.expected_mon_line = pg.InfiniteLine(
+            angle=0, 
+            pen=pg.mkPen(color=(200, 200, 200), style=Qt.DashLine, width=1.5),
+            label="expected monitor signal",
+            labelOpts={'position': 0.1, 'color': (200, 200, 200), 'fill': (0, 0, 0, 100), 'movable': True}
+        )
+        self.plot_monitor.addItem(self.expected_mon_line)
+        self.expected_mon_line.setVisible(False)
+
         # --- Middle plot: Fast Control Signal ---
         self.plot_fast = pg.PlotWidget(title="Fast Control Signal")
         self._setup_plot(self.plot_fast, "Fast Control")
@@ -337,6 +346,13 @@ class LockingMonitorPlotHandler(BasePlotHandler):
             t_rel = np.asarray(mon_times) - now  # negative = seconds ago
             self.curve_monitor.setData(t_rel, mon_arr)
             self._update_stats_elements(t_rel, mon_arr, self.mon_stats_text, self.mon_mean_line, self.mon_std_upper, self.mon_std_lower)
+
+        expected_point = packet.get("expected_lock_monitor_signal_point")
+        if expected_point is not None and len(expected_point) >= 2:
+            self.expected_mon_line.setValue(expected_point[1])
+            self.expected_mon_line.setVisible(True)
+        else:
+            self.expected_mon_line.setVisible(False)
 
         # --- Fast Control ---
         fc_times = packet.get("fast_control_times_unix")

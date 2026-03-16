@@ -226,6 +226,8 @@ class LaserManager(QObject):
         if self.scan_index == 0:
             # Sometimes the last sweep remains in the buffer
             current_sweep = self.interface.get_sweep()
+            sleep(0.5)
+            current_sweep = self.interface.get_sweep()
         
         current_sweep = self.interface.get_sweep()
         
@@ -492,7 +494,7 @@ class LaserManager(QObject):
 
         # 3. If recent history suggests line is unstable, try different offset
         recent_history = np.array(self.line_outside_arr[-self.threshold_count-1:])
-        if len(recent_history) >= self.threshold_count+1 and np.sum(recent_history) > 3 and (current_time - self.jitter_time_last_retry > 30):
+        if len(recent_history) >= self.threshold_count+1 and np.sum(recent_history) > 3 and (current_time - self.jitter_time_last_retry > 20):
             self.jitter_ind_off_try += 1
             if self.jitter_ind_off_try >= len(self.jitter_offset_try):
                 self.logger.info(f"Could not find good offset starting from {self.jitter_offset_0}. Giving up.")
@@ -540,7 +542,6 @@ class LaserManager(QObject):
                     lock_end_ind = np.argmin(np.abs(sweep_signal['x'] - lock_end))
                     expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
                     self.expected_lock_monitor_signal_point = expected_lock_monitor_signal_point
-                    self.sig_autolock_completed.emit()
                     self.interface.client.connection.root.start_autolock(lock_start_ind,lock_end_ind,pickle.dumps(sweep_signal_raw))
                     self.logger.info(f"Starting autolock from {lock_start_ind} to {lock_end_ind}")
                     try:
@@ -555,10 +556,12 @@ class LaserManager(QObject):
                         self.interface.init_history_buffers(fast_s, slow_s)
 
                         self.state = "LOCKED"
+                        self.sig_autolock_completed.emit()
                         return
                     except Exception:
                         self.logger.warning("Locking the laser failed :(")
                         self.set_state("SWEEP")
+                        self.sig_autolock_completed.emit()
                         return
                 elif space_left < edge_space_thr:
                     self.logger.info("Too far left: increase offset to decrease frequency")
@@ -629,8 +632,10 @@ class LaserManager(QObject):
                 self.set_parameter_value('phase', self.initial_phase)
             self.state = "IDLE"
             self.logger.info("Demod phase optimization aborted by user.")
-        #elif self.state == "JITTER_CHECK":
-        #    self.state = 
+        elif self.state == "LOCKED":
+            pass
+        else:
+            self.logger.warning("Stop scan called in invalid state: " + self.state)
 
     @Slot()
     def start_sweep(self):
@@ -774,14 +779,9 @@ class LaserManager(QObject):
         error_signal_selected_region = error_signal[x0:x1]
         monitor_signal_selected_region = monitor_signal[x0:x1]
 
-        maximum_error_index = np.argmax(error_signal_selected_region)
-        minimum_error_index = np.argmin(error_signal_selected_region)
+        zero_crossing_index = np.where(np.diff(np.sign(error_signal_selected_region)))[0]
 
-        if minimum_error_index < maximum_error_index:
-            #slope is positive so I have to look for a minimum in the monitor signal
-            return [x0 + np.argmin(monitor_signal_selected_region), monitor_signal_selected_region[np.argmin(monitor_signal_selected_region)]]
-        else:
-            return [x0 + np.argmax(monitor_signal_selected_region), monitor_signal_selected_region[np.argmax(monitor_signal_selected_region)]]
+        return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
 
     def detect_unlock_event(self):
         """

@@ -176,7 +176,7 @@ class GeneralManager:
         # Auto-lock page signals
         self.window.page_laser.page_auto.sig_start_autolock.connect(self.laser.start_autolock)
         self.window.page_laser.page_auto.sig_stop_scan.connect(self.laser.stop_scan)
-        self.window.page_laser.page_auto.sig_back.connect(self.laser.start_sweep)
+        self.window.page_laser.page_auto.sig_back.connect(self.laser.stop_scan)
         self.laser.sig_data_ready.connect(self.window.page_laser.page_auto.handle_data)
         self.laser.sig_autolock_completed.connect(self.window.page_laser.page_auto.set_autolock_finished)
 
