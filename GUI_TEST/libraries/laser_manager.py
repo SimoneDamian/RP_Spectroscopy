@@ -38,6 +38,9 @@ class LaserManager(QObject):
         self.advanced_settings = {}
         self.old_state = "OFF"
         self.locking_mode = None
+
+        self.lock_trials = 0
+        self.max_lock_trials = 3
         
         # Setup Logging
         log_path = self.cfg.get('paths', {}).get('logs', './logs')
@@ -500,7 +503,7 @@ class LaserManager(QObject):
 
         # 3. If recent history suggests line is unstable, try different offset
         recent_history = np.array(self.line_outside_arr[-self.threshold_count-1:])
-        if len(recent_history) >= self.threshold_count+1 and np.sum(recent_history) > 3 and (current_time - self.jitter_time_last_retry > 20):
+        if len(recent_history) >= self.threshold_count+1 and np.sum(recent_history) > 3 and (current_time - self.jitter_time_last_retry > 10):
             self.jitter_ind_off_try += 1
             if self.jitter_ind_off_try >= len(self.jitter_offset_try):
                 self.logger.info(f"Could not find good offset starting from {self.jitter_offset_0}. Giving up.")
@@ -553,6 +556,7 @@ class LaserManager(QObject):
                     try:
                         self.interface.wait_for_lock_status(True)
                         self.logger.info("Locking the laser worked! \\o/")
+                        self.lock_trials = 0
 
                         # Initialize history buffers from advanced settings
                         gui_vis = self.advanced_settings.get("gui_visualization", {})
@@ -566,6 +570,7 @@ class LaserManager(QObject):
                         return
                     except Exception:
                         self.logger.warning("Locking the laser failed :(")
+                        self.lock_trials += 1
                         self.set_state("SWEEP")
                         self.sig_autolock_completed.emit()
                         return
@@ -891,4 +896,5 @@ class LaserManager(QObject):
         elif self.locking_mode == "AUTOMATIC" and self.advanced_settings['unlock_detection']['events']['automatic_relock']['enabled'] == True:
             self.logger.warning("Unlock event detected, relocking the laser...")
             self.set_state("SWEEP") #simply stops the lock and start sweeping
-            #AGGIUNGERE IL RELOCK
+            sleep(2)
+            self.start_autolock(self.interface.writeable_params['big_offset'].value - 0.05, self.interface.writeable_params['big_offset'].value + 0.05, self.reference_signal)
