@@ -1,7 +1,18 @@
 ----- Grafana embed implementation -----
 I want to add on every single page of the GUI, a vertical Qsplit. At the bottom of this, I want an implementation of grafana as in the @gui_grafana_embed.py. I don't know if it is better to use another thread to handle this or it can be handled by the GeneralManager (@general_manager.py).
 
------ GUI parameters division by field -----
+----- Save the history when unlocks -----
+When the state of my finite state machine is turned into LOCKED, the main loop in @laser_manager.py triggers the handle_locked_state method that, if requested by the user, checks if there are unlock events.
+I want that, when an unlock event is detected in the detect_unlock_event method, it waits 5 seconds (that you have to implement depending on how frequently the control loop ticks (decided in the @config.yaml file and used by the @laser_manager in the setup to create the control loop)) before triggering the unlock_or_relock method, so that the user can still see the plot on the GUI (look at the @plot_panel.py when the packet that is received has a "LOCKED" label) after the unlock event and recognize the problem that happened. Then, I want the @service_manager.py to save a screenshot of what the user can see in the plots (the histories) within the path "screenshots" entry of the @config.yaml (at which it has access). The name of the file has to be codified as follows: YYYYMMDDhhmmss. When the new method saves a new image checks also the number of images in the folder, if there are more then 20, it delates the oldest one before saving the new one.
 
+----- Maximum number of trials in the automatic lock/relock + minimum in the correlation -----
+Corr -> nulla -> sweep
+Corr -> found -> locked -> OK
+Corr -> found -> locking not working -> retry where you tried before starting from the jitter procedure (n times)
+Unlock -> relock: correl -> nothing -> corr with a bigger interval
+Unlock -> relock: corral -> found -> jitter -> locked -> OK
+Unlock -> relock: corral -> found -> jitter -> not working -> retry the jitter n times
+
+In the @laser_manager.py, when the user triggers the start_autolock method, 
 
 
