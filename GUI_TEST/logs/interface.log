@@ -14350,3 +14350,42 @@
 2026-03-17 13:37:52 - HardwareInterface - WARNING - Failed to get sweep: 'error_signal_1'
 2026-03-17 13:37:52 - HardwareInterface - WARNING - Failed to get sweep: 'error_signal_1'
 2026-03-17 13:37:53 - HardwareInterface - WARNING - Failed to get sweep: 'error_signal_1'
+2026-03-18 08:47:44 - HardwareInterface - INFO - Attempting connection via RedPitaya_K address (192.168.1.159:18862)
+2026-03-18 08:48:11 - HardwareInterface - ERROR - Failed to connect to RedPitaya_K: 
+2026-03-18 08:48:49 - HardwareInterface - INFO - Attempting connection via RedPitaya_K address (192.168.1.159:18862)
+2026-03-18 08:48:52 - HardwareInterface - INFO - Connected to device RedPitaya_K
+2026-03-18 08:48:52 - HardwareInterface - INFO - Basic configuration complete. Waiting for parameters from ServiceManager...
+2026-03-18 08:48:52 - HardwareInterface - INFO - HardwareInterface initialized.
+2026-03-18 08:48:52 - HardwareInterface - INFO - Autolock mode set to ROBUST and determine offset set to False
+2026-03-18 08:48:52 - HardwareInterface - INFO - Loading parameters from dict...
+2026-03-18 08:48:53 - HardwareInterface - INFO - Parameters loaded: 42 writeable, 3 readable.
+2026-03-18 13:53:13 - HardwareInterface - INFO - Attempting connection via RedPitaya_K address (192.168.1.159:18862)
+2026-03-18 13:53:17 - HardwareInterface - INFO - Connected to device RedPitaya_K
+2026-03-18 13:53:17 - HardwareInterface - INFO - Basic configuration complete. Waiting for parameters from ServiceManager...
+2026-03-18 13:53:17 - HardwareInterface - INFO - HardwareInterface initialized.
+2026-03-18 13:53:18 - HardwareInterface - INFO - Autolock mode set to ROBUST and determine offset set to False
+2026-03-18 13:53:18 - HardwareInterface - INFO - Loading parameters from dict...
+2026-03-18 13:53:19 - HardwareInterface - INFO - Parameters loaded: 42 writeable, 3 readable.
+2026-03-18 13:57:06 - HardwareInterface - INFO - checking lock status...
+2026-03-18 13:57:06 - HardwareInterface - INFO - to_plot keys: ['error_signal_1', 'error_signal_1_quadrature', 'monitor_signal', 'slow_control_signal']
+2026-03-18 13:57:07 - HardwareInterface - INFO - checking lock status...
+2026-03-18 13:57:07 - HardwareInterface - INFO - to_plot keys: ['error_signal_1', 'monitor_signal', 'slow_control_signal']
+2026-03-18 13:57:08 - HardwareInterface - INFO - checking lock status...
+2026-03-18 13:57:08 - HardwareInterface - INFO - to_plot keys: ['error_signal_1', 'monitor_signal', 'slow_control_signal']
+2026-03-18 13:57:09 - HardwareInterface - INFO - checking lock status...
+2026-03-18 13:57:09 - HardwareInterface - INFO - to_plot keys: ['error_signal_1', 'monitor_signal', 'slow_control_signal']
+2026-03-18 13:57:10 - HardwareInterface - INFO - checking lock status...
+2026-03-18 13:57:10 - HardwareInterface - INFO - to_plot keys: ['error_signal_1', 'monitor_signal', 'slow_control_signal']
+2026-03-18 13:57:11 - HardwareInterface - INFO - checking lock status...
+2026-03-18 13:57:11 - HardwareInterface - INFO - to_plot keys: ['error_signal_1', 'monitor_signal', 'slow_control_signal']
+2026-03-18 13:57:12 - HardwareInterface - INFO - checking lock status...
+2026-03-18 13:57:12 - HardwareInterface - INFO - to_plot keys: ['error_signal', 'control_signal', 'monitor_signal', 'slow_control_signal']
+2026-03-18 13:57:12 - HardwareInterface - INFO - History buffers initialized: fast=600s, slow=3600s
+2026-03-18 13:58:40 - HardwareInterface - INFO - Autolock task stopped.
+2026-03-18 13:58:40 - HardwareInterface - INFO - Lock stopped, sweep restarted.
+2026-03-18 13:58:41 - HardwareInterface - WARNING - Failed to get sweep: 'error_signal_1'
+2026-03-18 13:58:41 - HardwareInterface - WARNING - Failed to get sweep: 'error_signal_1'
+2026-03-18 13:58:42 - HardwareInterface - WARNING - Failed to get sweep: 'error_signal_1'
+2026-03-18 13:58:42 - HardwareInterface - WARNING - Failed to get sweep: 'error_signal_1'
+2026-03-18 13:58:42 - HardwareInterface - WARNING - Failed to get sweep: 'error_signal_1'
+2026-03-18 13:58:43 - HardwareInterface - WARNING - Failed to get sweep: 'error_signal_1'

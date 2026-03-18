@@ -325,7 +325,7 @@ class LockingMonitorPlotHandler(BasePlotHandler):
         mean_val = np.mean(vals_arr)
         std_val = np.std(vals_arr)
         
-        stats_text.setText(f"Mean: {mean_val:.4e}\nStd:  {std_val:.4e}")
+        stats_text.setText(f"Mean: {mean_val:.1e}\nStd:  {std_val:.1e}")
         
         # Position at the right edge, top of the current view
         xr, yr = stats_text.getViewBox().viewRange()

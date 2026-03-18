@@ -41,6 +41,7 @@ class LaserManager(QObject):
 
         self.lock_trials = 0
         self.max_lock_trials = 3
+        self.correlation_minimum = 0.7
         
         # Setup Logging
         log_path = self.cfg.get('paths', {}).get('logs', './logs')
@@ -209,8 +210,12 @@ class LaserManager(QObject):
         # 1. Check if we are done
         if self.scan_index >= len(self.scan_voltages):
             if self.autolock:
-                self.set_optimal_scan_center()
-                self.start_center_for_jitter()
+                if self.check_minimum_correlation():
+                    self.set_optimal_scan_center()
+                    self.start_center_for_jitter()
+                else:
+                    self.logger.info("Correlations are too low, start sweeping")
+                    self.set_state("SWEEP")
                 return
             else:
                 self.logger.info("Scan completed successfully.")
@@ -405,11 +410,18 @@ class LaserManager(QObject):
         self.line_outside = True 
         self.frequence_stable = False
         self.cnt = 0
+        self.lock_trials = 1
 
         self.initialize_unlock_events()
 
         #call of a scan with the autolock option
         self.start_scan(start_voltage=start_voltage, stop_voltage=stop_voltage, reference_signal=reference_signal, calculate_correlation=True, autolock=True)
+
+    def check_minimum_correlation(self):
+        if max(self.correlations) < self.correlation_minimum:
+            return False
+        else:
+            return True
 
     def set_optimal_scan_center(self):
         self.logger.info("Setting the optimal scan center...")
@@ -569,11 +581,17 @@ class LaserManager(QObject):
                         self.sig_autolock_completed.emit()
                         return
                     except Exception:
-                        self.logger.warning("Locking the laser failed :(")
+                        self.logger.warning(f"Attempt number {self.lock_trials} of laser locking failed :(")
                         self.lock_trials += 1
-                        self.set_state("SWEEP")
-                        self.sig_autolock_completed.emit()
-                        return
+                        if self.lock_trials > self.max_lock_trials:
+                            self.logger.info("Maximum number of lock trials reached, start sweeping")
+                            self.set_state("SWEEP")
+                            self.sig_autolock_completed.emit()
+                            return
+                        else:
+                            self.logger.info("Trying again the jitter check...")
+                            self.start_center_for_jitter()
+                            return
                 elif space_left < edge_space_thr:
                     self.logger.info("Too far left: increase offset to decrease frequency")
                     self.jitter_offset -= self.offset_small_jump

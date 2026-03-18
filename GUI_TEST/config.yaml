@@ -13,16 +13,16 @@ app:
 paths:
 
   # Where the application saves text logs (errors, events)
-  logs: "/Users/simone/Desktop/Università/Trento/Master_theses/RP_Spectroscopy/GUI_TEST/logs"
+  logs: "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/logs"
   
   # Where the application saves the reference lines
-  reference_lines: "/Users/simone/Desktop/Università/Trento/Master_theses/RP_Spectroscopy/GUI_TEST/reference_lines"
+  reference_lines: "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/reference_lines"
   
   # Path to hardware definitions
-  hardware: "/Users/simone/Desktop/Università/Trento/Master_theses/RP_Spectroscopy/GUI_TEST/boards"
+  hardware: "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards"
 
   # Path to save screenshots
-  screenshots: "/Users/simone/Desktop/Università/Trento/Master_theses/RP_Spectroscopy/GUI_TEST/images/screenshots"
+  screenshots: "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/images/screenshots"
 
 # --- NETWORK SERVICES ---
 services:
