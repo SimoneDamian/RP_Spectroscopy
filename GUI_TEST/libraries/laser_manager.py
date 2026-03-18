@@ -915,4 +915,7 @@ class LaserManager(QObject):
             self.logger.warning("Unlock event detected, relocking the laser...")
             self.set_state("SWEEP") #simply stops the lock and start sweeping
             sleep(2)
-            self.start_autolock(self.interface.writeable_params['big_offset'].value - 0.05, self.interface.writeable_params['big_offset'].value + 0.05, self.reference_signal)
+            self.start_autolock(self.interface.writeable_params['big_offset'].value - 0.06, self.interface.writeable_params['big_offset'].value + 0.06, self.reference_signal)
+        else:
+            self.logger.warning("Unlock event detected but in an unknown state, unlocking the laser...")
+            self.set_state("SWEEP") #simply stops the lock and start sweeping
