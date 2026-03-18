@@ -1,0 +1,623 @@
+Traceback (most recent call last):
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 138, in control_loop
+    self.handle_center_for_jitter_step()
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 564, in handle_center_for_jitter_step
+    expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 823, in find_monitor_signal_peak
+    return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
+IndexError: index 0 is out of bounds for axis 0 with size 0
+2026-03-18 15:42:58 - LaserManager - INFO - Frequency not stable enough
+2026-03-18 15:42:59 - LaserManager - INFO - Frequency not stable enough
+2026-03-18 15:42:59 - LaserManager - INFO - Frequency not stable enough
+2026-03-18 15:43:00 - LaserManager - INFO - Frequency not stable enough
+2026-03-18 15:43:01 - LaserManager - INFO - Frequency not stable enough
+2026-03-18 15:43:01 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:01 - LaserManager - INFO - Shift: 0.04689789936492428, space left: 0.4465070835368832, space right: 0.4543234000977039, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:01 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+Traceback (most recent call last):
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 138, in control_loop
+    self.handle_center_for_jitter_step()
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 564, in handle_center_for_jitter_step
+    expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 823, in find_monitor_signal_peak
+    return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
+IndexError: index 0 is out of bounds for axis 0 with size 0
+2026-03-18 15:43:02 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:02 - LaserManager - INFO - Shift: 0.04298974108451392, space left: 0.4425989252564728, space right: 0.45823155837811425, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:02 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+Traceback (most recent call last):
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 138, in control_loop
+    self.handle_center_for_jitter_step()
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 564, in handle_center_for_jitter_step
+    expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 823, in find_monitor_signal_peak
+    return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
+IndexError: index 0 is out of bounds for axis 0 with size 0
+2026-03-18 15:43:03 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:03 - LaserManager - INFO - Shift: 0.04298974108451392, space left: 0.4425989252564728, space right: 0.45823155837811425, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:03 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+Traceback (most recent call last):
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 138, in control_loop
+    self.handle_center_for_jitter_step()
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 564, in handle_center_for_jitter_step
+    expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 823, in find_monitor_signal_peak
+    return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
+IndexError: index 0 is out of bounds for axis 0 with size 0
+2026-03-18 15:43:03 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:03 - LaserManager - INFO - Shift: 0.043966780654616566, space left: 0.44357596482657546, space right: 0.4572545188080116, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:03 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+Traceback (most recent call last):
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 138, in control_loop
+    self.handle_center_for_jitter_step()
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 564, in handle_center_for_jitter_step
+    expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 823, in find_monitor_signal_peak
+    return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
+IndexError: index 0 is out of bounds for axis 0 with size 0
+2026-03-18 15:43:04 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:04 - LaserManager - INFO - Shift: 0.043966780654616566, space left: 0.44357596482657546, space right: 0.4572545188080116, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:04 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+Traceback (most recent call last):
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 138, in control_loop
+    self.handle_center_for_jitter_step()
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 564, in handle_center_for_jitter_step
+    expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 823, in find_monitor_signal_peak
+    return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
+IndexError: index 0 is out of bounds for axis 0 with size 0
+2026-03-18 15:43:05 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:05 - LaserManager - INFO - Shift: 0.04689789936492428, space left: 0.4465070835368832, space right: 0.4543234000977039, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:05 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+Traceback (most recent call last):
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 138, in control_loop
+    self.handle_center_for_jitter_step()
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 564, in handle_center_for_jitter_step
+    expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 823, in find_monitor_signal_peak
+    return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
+IndexError: index 0 is out of bounds for axis 0 with size 0
+2026-03-18 15:43:06 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:06 - LaserManager - INFO - Shift: 0.04689789936492428, space left: 0.4465070835368832, space right: 0.4543234000977039, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:06 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+Traceback (most recent call last):
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 138, in control_loop
+    self.handle_center_for_jitter_step()
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 564, in handle_center_for_jitter_step
+    expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 823, in find_monitor_signal_peak
+    return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
+IndexError: index 0 is out of bounds for axis 0 with size 0
+2026-03-18 15:43:06 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:06 - LaserManager - INFO - Shift: 0.04494382022471921, space left: 0.4445530043966781, space right: 0.45627747923790896, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:06 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+Traceback (most recent call last):
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 138, in control_loop
+    self.handle_center_for_jitter_step()
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 564, in handle_center_for_jitter_step
+    expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 823, in find_monitor_signal_peak
+    return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
+IndexError: index 0 is out of bounds for axis 0 with size 0
+2026-03-18 15:43:07 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:07 - LaserManager - INFO - Shift: 0.04494382022471921, space left: 0.4445530043966781, space right: 0.45627747923790896, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:07 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+Traceback (most recent call last):
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 138, in control_loop
+    self.handle_center_for_jitter_step()
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 564, in handle_center_for_jitter_step
+    expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 823, in find_monitor_signal_peak
+    return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
+IndexError: index 0 is out of bounds for axis 0 with size 0
+2026-03-18 15:43:08 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:08 - LaserManager - INFO - Shift: 0.045920859794821745, space left: 0.44553004396678064, space right: 0.4553004396678064, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:08 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+Traceback (most recent call last):
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 138, in control_loop
+    self.handle_center_for_jitter_step()
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 564, in handle_center_for_jitter_step
+    expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 823, in find_monitor_signal_peak
+    return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
+IndexError: index 0 is out of bounds for axis 0 with size 0
+2026-03-18 15:43:08 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:08 - LaserManager - INFO - Shift: 0.045920859794821745, space left: 0.44553004396678064, space right: 0.4553004396678064, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:08 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+Traceback (most recent call last):
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 138, in control_loop
+    self.handle_center_for_jitter_step()
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 564, in handle_center_for_jitter_step
+    expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 823, in find_monitor_signal_peak
+    return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
+IndexError: index 0 is out of bounds for axis 0 with size 0
+2026-03-18 15:43:09 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:09 - LaserManager - INFO - Shift: 0.04787493893502692, space left: 0.4474841231069858, space right: 0.45334636052760124, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:09 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+Traceback (most recent call last):
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 138, in control_loop
+    self.handle_center_for_jitter_step()
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 564, in handle_center_for_jitter_step
+    expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 823, in find_monitor_signal_peak
+    return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
+IndexError: index 0 is out of bounds for axis 0 with size 0
+2026-03-18 15:43:10 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:10 - LaserManager - INFO - Shift: 0.04787493893502692, space left: 0.4474841231069858, space right: 0.45334636052760124, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:10 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+Traceback (most recent call last):
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 138, in control_loop
+    self.handle_center_for_jitter_step()
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 564, in handle_center_for_jitter_step
+    expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 823, in find_monitor_signal_peak
+    return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
+IndexError: index 0 is out of bounds for axis 0 with size 0
+2026-03-18 15:43:11 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:11 - LaserManager - INFO - Shift: 0.04298974108451392, space left: 0.4425989252564728, space right: 0.45823155837811425, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:11 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+Traceback (most recent call last):
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 138, in control_loop
+    self.handle_center_for_jitter_step()
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 564, in handle_center_for_jitter_step
+    expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 823, in find_monitor_signal_peak
+    return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
+IndexError: index 0 is out of bounds for axis 0 with size 0
+2026-03-18 15:43:11 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:11 - LaserManager - INFO - Shift: 0.04298974108451392, space left: 0.4425989252564728, space right: 0.45823155837811425, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:11 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+Traceback (most recent call last):
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 138, in control_loop
+    self.handle_center_for_jitter_step()
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 564, in handle_center_for_jitter_step
+    expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 823, in find_monitor_signal_peak
+    return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
+IndexError: index 0 is out of bounds for axis 0 with size 0
+2026-03-18 15:43:12 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:12 - LaserManager - INFO - Shift: 0.04787493893502692, space left: 0.4474841231069858, space right: 0.45334636052760124, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:12 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+Traceback (most recent call last):
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 138, in control_loop
+    self.handle_center_for_jitter_step()
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 564, in handle_center_for_jitter_step
+    expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 823, in find_monitor_signal_peak
+    return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
+IndexError: index 0 is out of bounds for axis 0 with size 0
+2026-03-18 15:43:13 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:13 - LaserManager - INFO - Shift: 0.04787493893502692, space left: 0.4474841231069858, space right: 0.45334636052760124, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:13 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+Traceback (most recent call last):
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 138, in control_loop
+    self.handle_center_for_jitter_step()
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 564, in handle_center_for_jitter_step
+    expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 823, in find_monitor_signal_peak
+    return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
+IndexError: index 0 is out of bounds for axis 0 with size 0
+2026-03-18 15:43:13 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:13 - LaserManager - INFO - Shift: 0.0498290180752321, space left: 0.449438202247191, space right: 0.45139228138739607, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:13 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+Traceback (most recent call last):
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 138, in control_loop
+    self.handle_center_for_jitter_step()
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 564, in handle_center_for_jitter_step
+    expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 823, in find_monitor_signal_peak
+    return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
+IndexError: index 0 is out of bounds for axis 0 with size 0
+2026-03-18 15:43:14 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:14 - LaserManager - INFO - Shift: 0.0498290180752321, space left: 0.449438202247191, space right: 0.45139228138739607, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:14 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+Traceback (most recent call last):
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 138, in control_loop
+    self.handle_center_for_jitter_step()
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 564, in handle_center_for_jitter_step
+    expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 823, in find_monitor_signal_peak
+    return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
+IndexError: index 0 is out of bounds for axis 0 with size 0
+2026-03-18 15:43:15 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:15 - LaserManager - INFO - Shift: 0.05178309721543728, space left: 0.4513922813873962, space right: 0.4494382022471909, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:15 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+Traceback (most recent call last):
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 138, in control_loop
+    self.handle_center_for_jitter_step()
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 564, in handle_center_for_jitter_step
+    expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 823, in find_monitor_signal_peak
+    return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
+IndexError: index 0 is out of bounds for axis 0 with size 0
+2026-03-18 15:43:15 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:15 - LaserManager - INFO - Shift: 0.05178309721543728, space left: 0.4513922813873962, space right: 0.4494382022471909, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:15 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+Traceback (most recent call last):
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 138, in control_loop
+    self.handle_center_for_jitter_step()
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 564, in handle_center_for_jitter_step
+    expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 823, in find_monitor_signal_peak
+    return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
+IndexError: index 0 is out of bounds for axis 0 with size 0
+2026-03-18 15:43:16 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:16 - LaserManager - INFO - Shift: 0.05178309721543728, space left: 0.4513922813873962, space right: 0.4494382022471909, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:16 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+Traceback (most recent call last):
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 138, in control_loop
+    self.handle_center_for_jitter_step()
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 564, in handle_center_for_jitter_step
+    expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 823, in find_monitor_signal_peak
+    return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
+IndexError: index 0 is out of bounds for axis 0 with size 0
+2026-03-18 15:43:17 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:17 - LaserManager - INFO - Shift: 0.05178309721543728, space left: 0.4513922813873962, space right: 0.4494382022471909, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:17 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+Traceback (most recent call last):
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 138, in control_loop
+    self.handle_center_for_jitter_step()
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 564, in handle_center_for_jitter_step
+    expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 823, in find_monitor_signal_peak
+    return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
+IndexError: index 0 is out of bounds for axis 0 with size 0
+2026-03-18 15:43:18 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:18 - LaserManager - INFO - Shift: 0.05471421592574499, space left: 0.4543234000977039, space right: 0.4465070835368832, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:18 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+Traceback (most recent call last):
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 138, in control_loop
+    self.handle_center_for_jitter_step()
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 564, in handle_center_for_jitter_step
+    expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 823, in find_monitor_signal_peak
+    return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
+IndexError: index 0 is out of bounds for axis 0 with size 0
+2026-03-18 15:43:18 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:18 - LaserManager - INFO - Shift: 0.05471421592574499, space left: 0.4543234000977039, space right: 0.4465070835368832, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:18 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+Traceback (most recent call last):
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 138, in control_loop
+    self.handle_center_for_jitter_step()
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 564, in handle_center_for_jitter_step
+    expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 823, in find_monitor_signal_peak
+    return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
+IndexError: index 0 is out of bounds for axis 0 with size 0
+2026-03-18 15:43:19 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:19 - LaserManager - INFO - Shift: 0.052760136785539924, space left: 0.4523693209574988, space right: 0.44846116267708824, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:19 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+Traceback (most recent call last):
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 138, in control_loop
+    self.handle_center_for_jitter_step()
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 564, in handle_center_for_jitter_step
+    expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 823, in find_monitor_signal_peak
+    return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
+IndexError: index 0 is out of bounds for axis 0 with size 0
+2026-03-18 15:43:20 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:20 - LaserManager - INFO - Shift: 0.052760136785539924, space left: 0.4523693209574988, space right: 0.44846116267708824, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:20 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+Traceback (most recent call last):
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 138, in control_loop
+    self.handle_center_for_jitter_step()
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 564, in handle_center_for_jitter_step
+    expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 823, in find_monitor_signal_peak
+    return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
+IndexError: index 0 is out of bounds for axis 0 with size 0
+2026-03-18 15:43:20 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:20 - LaserManager - INFO - Shift: 0.055691255495847636, space left: 0.45530043966780653, space right: 0.44553004396678053, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:20 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+Traceback (most recent call last):
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 138, in control_loop
+    self.handle_center_for_jitter_step()
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 564, in handle_center_for_jitter_step
+    expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 823, in find_monitor_signal_peak
+    return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
+IndexError: index 0 is out of bounds for axis 0 with size 0
+2026-03-18 15:43:21 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:21 - LaserManager - INFO - Shift: 0.055691255495847636, space left: 0.45530043966780653, space right: 0.44553004396678053, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:21 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+Traceback (most recent call last):
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 138, in control_loop
+    self.handle_center_for_jitter_step()
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 564, in handle_center_for_jitter_step
+    expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 823, in find_monitor_signal_peak
+    return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
+IndexError: index 0 is out of bounds for axis 0 with size 0
+2026-03-18 15:43:21 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:21 - LaserManager - INFO - Shift: 0.0625305324865657, space left: 0.4621397166585246, space right: 0.43869076697606246, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:21 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+Traceback (most recent call last):
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 138, in control_loop
+    self.handle_center_for_jitter_step()
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 564, in handle_center_for_jitter_step
+    expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 823, in find_monitor_signal_peak
+    return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
+IndexError: index 0 is out of bounds for axis 0 with size 0
+2026-03-18 15:43:22 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:22 - LaserManager - INFO - Shift: 0.0625305324865657, space left: 0.4621397166585246, space right: 0.43869076697606246, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:22 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+Traceback (most recent call last):
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 138, in control_loop
+    self.handle_center_for_jitter_step()
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 564, in handle_center_for_jitter_step
+    expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 823, in find_monitor_signal_peak
+    return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
+IndexError: index 0 is out of bounds for axis 0 with size 0
+2026-03-18 15:43:23 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:23 - LaserManager - INFO - Shift: 0.06057645334636064, space left: 0.46018563751831953, space right: 0.44064484611626753, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:23 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+Traceback (most recent call last):
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 138, in control_loop
+    self.handle_center_for_jitter_step()
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 564, in handle_center_for_jitter_step
+    expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 823, in find_monitor_signal_peak
+    return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
+IndexError: index 0 is out of bounds for axis 0 with size 0
+2026-03-18 15:43:24 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:24 - LaserManager - INFO - Shift: 0.06057645334636064, space left: 0.46018563751831953, space right: 0.44064484611626753, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:24 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+Traceback (most recent call last):
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 138, in control_loop
+    self.handle_center_for_jitter_step()
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 564, in handle_center_for_jitter_step
+    expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 823, in find_monitor_signal_peak
+    return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
+IndexError: index 0 is out of bounds for axis 0 with size 0
+2026-03-18 15:43:24 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:24 - LaserManager - INFO - Shift: 0.05959941377625799, space left: 0.4592085979482169, space right: 0.4416218856863702, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:24 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+Traceback (most recent call last):
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 138, in control_loop
+    self.handle_center_for_jitter_step()
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 564, in handle_center_for_jitter_step
+    expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 823, in find_monitor_signal_peak
+    return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
+IndexError: index 0 is out of bounds for axis 0 with size 0
+2026-03-18 15:43:25 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:25 - LaserManager - INFO - Shift: 0.05959941377625799, space left: 0.4592085979482169, space right: 0.4416218856863702, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:25 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+Traceback (most recent call last):
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 138, in control_loop
+    self.handle_center_for_jitter_step()
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 564, in handle_center_for_jitter_step
+    expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 823, in find_monitor_signal_peak
+    return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
+IndexError: index 0 is out of bounds for axis 0 with size 0
+2026-03-18 15:43:26 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:26 - LaserManager - INFO - Shift: 0.06546165119687353, space left: 0.4650708353688324, space right: 0.43575964826575464, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:26 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+Traceback (most recent call last):
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 138, in control_loop
+    self.handle_center_for_jitter_step()
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 564, in handle_center_for_jitter_step
+    expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 823, in find_monitor_signal_peak
+    return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
+IndexError: index 0 is out of bounds for axis 0 with size 0
+2026-03-18 15:43:26 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:26 - LaserManager - INFO - Shift: 0.06546165119687353, space left: 0.4650708353688324, space right: 0.43575964826575464, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:26 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+Traceback (most recent call last):
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 138, in control_loop
+    self.handle_center_for_jitter_step()
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 564, in handle_center_for_jitter_step
+    expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 823, in find_monitor_signal_peak
+    return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
+IndexError: index 0 is out of bounds for axis 0 with size 0
+2026-03-18 15:43:27 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:27 - LaserManager - INFO - Shift: 0.05862237420615535, space left: 0.45823155837811425, space right: 0.4425989252564728, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:27 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+Traceback (most recent call last):
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 138, in control_loop
+    self.handle_center_for_jitter_step()
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 564, in handle_center_for_jitter_step
+    expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 823, in find_monitor_signal_peak
+    return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
+IndexError: index 0 is out of bounds for axis 0 with size 0
+2026-03-18 15:43:28 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:28 - LaserManager - INFO - Shift: 0.05862237420615535, space left: 0.45823155837811425, space right: 0.4425989252564728, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:28 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+Traceback (most recent call last):
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 138, in control_loop
+    self.handle_center_for_jitter_step()
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 564, in handle_center_for_jitter_step
+    expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 823, in find_monitor_signal_peak
+    return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
+IndexError: index 0 is out of bounds for axis 0 with size 0
+2026-03-18 15:43:29 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:29 - LaserManager - INFO - Shift: 0.05959941377625799, space left: 0.4592085979482169, space right: 0.4416218856863702, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:29 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+Traceback (most recent call last):
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 138, in control_loop
+    self.handle_center_for_jitter_step()
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 564, in handle_center_for_jitter_step
+    expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 823, in find_monitor_signal_peak
+    return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
+IndexError: index 0 is out of bounds for axis 0 with size 0
+2026-03-18 15:43:29 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:29 - LaserManager - INFO - Shift: 0.05959941377625799, space left: 0.4592085979482169, space right: 0.4416218856863702, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:29 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+Traceback (most recent call last):
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 138, in control_loop
+    self.handle_center_for_jitter_step()
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 564, in handle_center_for_jitter_step
+    expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 823, in find_monitor_signal_peak
+    return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
+IndexError: index 0 is out of bounds for axis 0 with size 0
+2026-03-18 15:43:30 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:30 - LaserManager - INFO - Shift: 0.0625305324865657, space left: 0.4621397166585246, space right: 0.43869076697606246, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:30 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+Traceback (most recent call last):
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 138, in control_loop
+    self.handle_center_for_jitter_step()
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 564, in handle_center_for_jitter_step
+    expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 823, in find_monitor_signal_peak
+    return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
+IndexError: index 0 is out of bounds for axis 0 with size 0
+2026-03-18 15:43:31 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:31 - LaserManager - INFO - Shift: 0.0625305324865657, space left: 0.4621397166585246, space right: 0.43869076697606246, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:31 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+Traceback (most recent call last):
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 138, in control_loop
+    self.handle_center_for_jitter_step()
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 564, in handle_center_for_jitter_step
+    expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 823, in find_monitor_signal_peak
+    return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
+IndexError: index 0 is out of bounds for axis 0 with size 0
+2026-03-18 15:43:31 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:31 - LaserManager - INFO - Shift: 0.06839276990718135, space left: 0.46800195407914025, space right: 0.4328285295554468, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:31 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+Traceback (most recent call last):
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 138, in control_loop
+    self.handle_center_for_jitter_step()
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 564, in handle_center_for_jitter_step
+    expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 823, in find_monitor_signal_peak
+    return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
+IndexError: index 0 is out of bounds for axis 0 with size 0
+2026-03-18 15:43:32 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:32 - LaserManager - INFO - Shift: 0.06839276990718135, space left: 0.46800195407914025, space right: 0.4328285295554468, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:32 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+Traceback (most recent call last):
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 138, in control_loop
+    self.handle_center_for_jitter_step()
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 564, in handle_center_for_jitter_step
+    expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 823, in find_monitor_signal_peak
+    return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
+IndexError: index 0 is out of bounds for axis 0 with size 0
+2026-03-18 15:43:33 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:33 - LaserManager - INFO - Shift: 0.064484611626771, space left: 0.4640937957987299, space right: 0.4367366878358572, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:33 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+Traceback (most recent call last):
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 138, in control_loop
+    self.handle_center_for_jitter_step()
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 564, in handle_center_for_jitter_step
+    expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 823, in find_monitor_signal_peak
+    return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
+IndexError: index 0 is out of bounds for axis 0 with size 0
+2026-03-18 15:43:33 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:33 - LaserManager - INFO - Shift: 0.064484611626771, space left: 0.4640937957987299, space right: 0.4367366878358572, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:33 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+Traceback (most recent call last):
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 138, in control_loop
+    self.handle_center_for_jitter_step()
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 564, in handle_center_for_jitter_step
+    expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 823, in find_monitor_signal_peak
+    return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
+IndexError: index 0 is out of bounds for axis 0 with size 0
+2026-03-18 15:43:34 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:34 - LaserManager - INFO - Shift: 0.0674157303370787, space left: 0.4670249145090376, space right: 0.43380556912554946, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:34 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+Traceback (most recent call last):
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 138, in control_loop
+    self.handle_center_for_jitter_step()
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 564, in handle_center_for_jitter_step
+    expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 823, in find_monitor_signal_peak
+    return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
+IndexError: index 0 is out of bounds for axis 0 with size 0
+2026-03-18 15:43:35 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:35 - LaserManager - INFO - Shift: 0.0674157303370787, space left: 0.4670249145090376, space right: 0.43380556912554946, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:35 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+Traceback (most recent call last):
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 138, in control_loop
+    self.handle_center_for_jitter_step()
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 564, in handle_center_for_jitter_step
+    expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 823, in find_monitor_signal_peak
+    return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
+IndexError: index 0 is out of bounds for axis 0 with size 0
+2026-03-18 15:43:36 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:36 - LaserManager - INFO - Shift: 0.06643869076697606, space left: 0.46604787493893496, space right: 0.4347826086956521, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:36 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+Traceback (most recent call last):
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 138, in control_loop
+    self.handle_center_for_jitter_step()
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 564, in handle_center_for_jitter_step
+    expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 823, in find_monitor_signal_peak
+    return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
+IndexError: index 0 is out of bounds for axis 0 with size 0
+2026-03-18 15:43:36 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:36 - LaserManager - INFO - Shift: 0.06643869076697606, space left: 0.46604787493893496, space right: 0.4347826086956521, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:36 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+Traceback (most recent call last):
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 138, in control_loop
+    self.handle_center_for_jitter_step()
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 564, in handle_center_for_jitter_step
+    expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 823, in find_monitor_signal_peak
+    return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
+IndexError: index 0 is out of bounds for axis 0 with size 0
+2026-03-18 15:43:37 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:37 - LaserManager - INFO - Shift: 0.06839276990718135, space left: 0.46800195407914025, space right: 0.4328285295554468, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:37 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+Traceback (most recent call last):
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 138, in control_loop
+    self.handle_center_for_jitter_step()
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 564, in handle_center_for_jitter_step
+    expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 823, in find_monitor_signal_peak
+    return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
+IndexError: index 0 is out of bounds for axis 0 with size 0
+2026-03-18 15:43:38 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:38 - LaserManager - INFO - Shift: 0.06839276990718135, space left: 0.46800195407914025, space right: 0.4328285295554468, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:38 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+Traceback (most recent call last):
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 138, in control_loop
+    self.handle_center_for_jitter_step()
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 564, in handle_center_for_jitter_step
+    expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 823, in find_monitor_signal_peak
+    return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
+IndexError: index 0 is out of bounds for axis 0 with size 0
+2026-03-18 15:43:38 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:38 - LaserManager - INFO - Shift: 0.06643869076697606, space left: 0.46604787493893496, space right: 0.4347826086956521, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:38 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+Traceback (most recent call last):
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 138, in control_loop
+    self.handle_center_for_jitter_step()
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 564, in handle_center_for_jitter_step
+    expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 823, in find_monitor_signal_peak
+    return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
+IndexError: index 0 is out of bounds for axis 0 with size 0
+2026-03-18 15:43:39 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:39 - LaserManager - INFO - Shift: 0.06643869076697606, space left: 0.46604787493893496, space right: 0.4347826086956521, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:39 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+Traceback (most recent call last):
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 138, in control_loop
+    self.handle_center_for_jitter_step()
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 564, in handle_center_for_jitter_step
+    expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
+  File "/home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/libraries/laser_manager.py", line 823, in find_monitor_signal_peak
+    return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
+IndexError: index 0 is out of bounds for axis 0 with size 0
+2026-03-18 15:43:39 - LaserManager - INFO - FSM switched to SETUP_MANUAL_LOCK.
+2026-03-18 15:43:39 - LaserManager - INFO - State changed from JITTER_CHECK to SETUP_MANUAL_LOCK
+2026-03-18 15:43:40 - LaserManager - INFO - Sweep started by user.
+2026-03-18 15:43:40 - LaserManager - INFO - State changed from SETUP_MANUAL_LOCK to SWEEP
+

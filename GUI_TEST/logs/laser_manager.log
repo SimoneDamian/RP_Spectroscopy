@@ -39397,3 +39397,484 @@
 2026-03-18 13:57:12 - LaserManager - INFO - State changed from JITTER_CHECK to LOCKED
 2026-03-18 13:58:40 - LaserManager - INFO - State changed from LOCKED to SWEEP
 2026-03-18 14:00:23 - LaserManager - INFO - Control loop timer stopped.
+2026-03-18 14:27:00 - LaserManager - INFO - LaserManager initialized.
+2026-03-18 14:27:04 - LaserManager - INFO - LaserManager setup complete. Control loop started.
+2026-03-18 14:27:05 - LaserManager - INFO - Advanced settings loaded into Interface.
+2026-03-18 14:27:06 - LaserManager - INFO - Parameters loaded into Interface.
+2026-03-18 14:27:06 - LaserManager - INFO - Set parameter big_offset to 0.976667
+2026-03-18 14:27:07 - LaserManager - INFO - Set parameter channel_mixing to -128
+2026-03-18 14:27:07 - LaserManager - INFO - Set parameter control_channel to 1
+2026-03-18 14:27:08 - LaserManager - INFO - Set parameter control_history_length to 60
+2026-03-18 14:27:08 - LaserManager - INFO - Set parameter demodulation_multiplier_a to 1
+2026-03-18 14:27:09 - LaserManager - INFO - Set parameter demodulation_multiplier_b to 0
+2026-03-18 14:27:09 - LaserManager - INFO - Set parameter dual_channel to False
+2026-03-18 14:27:10 - LaserManager - INFO - Set parameter filter_1_enabled_a to True
+2026-03-18 14:27:10 - LaserManager - INFO - Set parameter filter_1_enabled_b to False
+2026-03-18 14:27:11 - LaserManager - INFO - Set parameter filter_1_frequency to 1000.0
+2026-03-18 14:27:11 - LaserManager - INFO - Set parameter filter_1_type_a to 0
+2026-03-18 14:27:12 - LaserManager - INFO - Set parameter filter_1_type_b to 0
+2026-03-18 14:27:12 - LaserManager - INFO - Set parameter filter_2_enabled_a to False
+2026-03-18 14:27:13 - LaserManager - INFO - Set parameter filter_2_enabled_b to True
+2026-03-18 14:27:13 - LaserManager - INFO - Set parameter filter_2_frequency to 0.0
+2026-03-18 14:27:14 - LaserManager - INFO - Set parameter filter_2_type_a to 0
+2026-03-18 14:27:14 - LaserManager - INFO - Set parameter filter_2_type_b to 0
+2026-03-18 14:27:15 - LaserManager - INFO - Set parameter filter_automatic_a to False
+2026-03-18 14:27:15 - LaserManager - INFO - Set parameter filter_automatic_b to False
+2026-03-18 14:27:16 - LaserManager - INFO - Set parameter invert_a to False
+2026-03-18 14:27:16 - LaserManager - INFO - Set parameter invert_b to False
+2026-03-18 14:27:17 - LaserManager - INFO - Set parameter modulation_amplitude to 0.3
+2026-03-18 14:27:18 - LaserManager - INFO - Set parameter modulation_channel to 0
+2026-03-18 14:27:18 - LaserManager - INFO - Set parameter modulation_frequency to 0.03
+2026-03-18 14:27:18 - LaserManager - INFO - Set parameter offset_a to -0.0518731
+2026-03-18 14:27:19 - LaserManager - INFO - Set parameter offset_b to 0.0
+2026-03-18 14:27:19 - LaserManager - INFO - Set parameter phase to 223.45
+2026-03-18 14:27:20 - LaserManager - INFO - Set parameter pid_d to 1
+2026-03-18 14:27:20 - LaserManager - INFO - Set parameter pid_i to 100
+2026-03-18 14:27:21 - LaserManager - INFO - Set parameter pid_on_slow_enabled to True
+2026-03-18 14:27:21 - LaserManager - INFO - Set parameter pid_p to 2000
+2026-03-18 14:27:22 - LaserManager - INFO - Set parameter pid_slow_strength to 3
+2026-03-18 14:27:22 - LaserManager - INFO - Set parameter polarity_analog_out0 to 0
+2026-03-18 14:27:23 - LaserManager - INFO - Set parameter polarity_fast_out1 to 0
+2026-03-18 14:27:23 - LaserManager - INFO - Set parameter polarity_fast_out2 to 0
+2026-03-18 14:27:24 - LaserManager - INFO - Set parameter slow_control_channel to 2
+2026-03-18 14:27:24 - LaserManager - INFO - Set parameter small_offset to 0.0
+2026-03-18 14:27:25 - LaserManager - INFO - Set parameter sweep_amplitude to 1.0
+2026-03-18 14:27:25 - LaserManager - INFO - Set parameter sweep_center to 0.0
+2026-03-18 14:27:26 - LaserManager - INFO - Set parameter sweep_channel to 1
+2026-03-18 14:27:26 - LaserManager - INFO - Set parameter sweep_speed to 10
+2026-03-18 14:27:27 - LaserManager - INFO - Set parameter target_slope_rising to True
+2026-03-18 14:27:27 - LaserManager - INFO - State changed from OFF to SWEEP
+2026-03-18 14:27:52 - LaserManager - INFO - Starting autolock, scan for the line...
+2026-03-18 14:27:52 - LaserManager - INFO - Initiating scan: 0.9V -> 1.1V (10 pts)
+2026-03-18 14:27:52 - LaserManager - INFO - State changed from SWEEP to SCAN
+2026-03-18 14:27:56 - LaserManager - INFO - Correlation at 0.9V: 0.5828889902869709, Length of match: 0.5235555555555851, offset with respect to the reference signal: 0.00862052602453404
+2026-03-18 14:27:57 - LaserManager - INFO - Correlation at 0.9222222222222223V: 0.5638711968769504, Length of match: 0.4888888888889164, offset with respect to the reference signal: 0.007581256537559846
+2026-03-18 14:27:58 - LaserManager - INFO - Correlation at 0.9444444444444445V: 0.22731263241750843, Length of match: 0.5946666666667003, offset with respect to the reference signal: 0.005806461751599246
+2026-03-18 14:28:00 - LaserManager - INFO - Correlation at 0.9666666666666667V: 0.7658830077111687, Length of match: 0.6453333333333697, offset with respect to the reference signal: 0.00024187522586717426
+2026-03-18 14:28:01 - LaserManager - INFO - Correlation at 0.9888888888888889V: 0.5834227431430603, Length of match: 0.9982222222222789, offset with respect to the reference signal: -0.0031187784225844813
+2026-03-18 14:28:02 - LaserManager - INFO - Correlation at 1.011111111111111V: 0.5887620807326523, Length of match: 0.9982222222222786, offset with respect to the reference signal: -0.0028859515204309838
+2026-03-18 14:28:04 - LaserManager - INFO - Correlation at 1.0333333333333334V: 0.6601933734352061, Length of match: 0.9982222222222789, offset with respect to the reference signal: 0.001582770452695668
+2026-03-18 14:28:05 - LaserManager - INFO - Correlation at 1.0555555555555556V: 0.3722223927443969, Length of match: 0.4373333333333581, offset with respect to the reference signal: 0.020788234232362743
+2026-03-18 14:28:06 - LaserManager - INFO - Correlation at 1.077777777777778V: 0.0013043983773706636, Length of match: 0.5271111111111408, offset with respect to the reference signal: 0.0216851623916559
+2026-03-18 14:28:08 - LaserManager - INFO - Correlation at 1.1V: 0.36143282910428187, Length of match: 0.48355555555558294, offset with respect to the reference signal: 0.022369200515949962
+2026-03-18 14:28:08 - LaserManager - INFO - Setting the optimal scan center...
+2026-03-18 14:28:08 - LaserManager - INFO - Set parameter big_offset to 0.9666666666666667
+2026-03-18 14:28:08 - LaserManager - INFO - Set parameter offset_a to -0.05211497522586717
+2026-03-18 14:28:08 - LaserManager - INFO - Set vertical offset (offset_a) to -0.05211497522586717
+2026-03-18 14:28:09 - LaserManager - INFO - Starting the jitter check loop...
+2026-03-18 14:28:09 - LaserManager - INFO - State changed from SCAN to JITTER_CHECK
+2026-03-18 14:28:10 - LaserManager - INFO - Line is now inside
+2026-03-18 14:28:14 - LaserManager - INFO - Frequency stable enough
+2026-03-18 14:28:14 - LaserManager - INFO - Shift: 0.29311187103077674, space left: 0.6927210552027356, space right: 0.20810942843185143, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 14:28:14 - LaserManager - INFO - Too far right: decrease offset to increase frequency
+2026-03-18 14:28:15 - LaserManager - INFO - Line is now inside
+2026-03-18 14:28:18 - LaserManager - INFO - Frequency stable enough
+2026-03-18 14:28:18 - LaserManager - INFO - Shift: 0.22276502198339032, space left: 0.6223742061553492, space right: 0.27845627747923785, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 14:28:18 - LaserManager - INFO - Too far right: decrease offset to increase frequency
+2026-03-18 14:28:19 - LaserManager - INFO - Line is now inside
+2026-03-18 14:28:23 - LaserManager - INFO - Frequency not stable enough
+2026-03-18 14:28:23 - LaserManager - INFO - Frequency not stable enough
+2026-03-18 14:28:24 - LaserManager - INFO - Frequency stable enough
+2026-03-18 14:28:24 - LaserManager - INFO - Shift: 0.03321934538348814, space left: 0.43282852955544704, space right: 0.46800195407914, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 14:28:24 - LaserManager - INFO - Line is centered at offset 0.9866666666666667. Jitter check complete.
+2026-03-18 14:28:24 - LaserManager - INFO - Starting autolock from 955 to 1058
+2026-03-18 14:28:33 - LaserManager - INFO - Locking the laser worked! \o/
+2026-03-18 14:28:33 - LaserManager - INFO - State changed from JITTER_CHECK to LOCKED
+2026-03-18 15:40:55 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-03-18 15:40:54
+2026-03-18 15:40:55 - LaserManager - WARNING - Unlock event detected
+2026-03-18 15:40:55 - LaserManager - WARNING - Unlock event detected, relocking the laser...
+2026-03-18 15:40:57 - LaserManager - INFO - Starting autolock, scan for the line...
+2026-03-18 15:40:57 - LaserManager - INFO - Initiating scan: 0.9266666666666667V -> 1.0466666666666666V (5 pts)
+2026-03-18 15:40:57 - LaserManager - INFO - State changed from LOCKED to SCAN
+2026-03-18 15:41:01 - LaserManager - INFO - Correlation at 0.9266666666666667V: 0.5450077764000633, Length of match: 0.8506666666667148, offset with respect to the reference signal: 0.007817283672699309
+2026-03-18 15:41:03 - LaserManager - INFO - Correlation at 0.9566666666666668V: 0.5518117558491785, Length of match: 0.8408888888889363, offset with respect to the reference signal: 0.00683608245925478
+2026-03-18 15:41:04 - LaserManager - INFO - Correlation at 0.9866666666666667V: 0.6274376944349873, Length of match: 0.9982222222222786, offset with respect to the reference signal: -0.00012569420364670148
+2026-03-18 15:41:06 - LaserManager - INFO - Correlation at 1.0166666666666666V: 0.6243738828946213, Length of match: 0.9982222222222789, offset with respect to the reference signal: -0.0005029460077415361
+2026-03-18 15:41:07 - LaserManager - INFO - Correlation at 1.0466666666666666V: 0.22844577694717214, Length of match: 0.24622222222223608, offset with respect to the reference signal: 0.02096212215637344
+2026-03-18 15:41:07 - LaserManager - INFO - Setting the optimal scan center...
+2026-03-18 15:41:08 - LaserManager - INFO - Set parameter big_offset to 0.9866666666666667
+2026-03-18 15:41:08 - LaserManager - INFO - Set parameter offset_a to -0.051989281022220474
+2026-03-18 15:41:08 - LaserManager - INFO - Set vertical offset (offset_a) to -0.051989281022220474
+2026-03-18 15:41:09 - LaserManager - INFO - Starting the jitter check loop...
+2026-03-18 15:41:09 - LaserManager - INFO - State changed from SCAN to JITTER_CHECK
+2026-03-18 15:41:10 - LaserManager - INFO - Line is now inside
+2026-03-18 15:41:14 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:41:14 - LaserManager - INFO - Shift: -0.11919882755251576, space left: 0.28041035661944314, space right: 0.6204201270151439, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:41:14 - LaserManager - INFO - Too far left: increase offset to decrease frequency
+2026-03-18 15:41:15 - LaserManager - INFO - Line is now inside
+2026-03-18 15:41:18 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:41:18 - LaserManager - INFO - Shift: 0.07327796775769424, space left: 0.47288715192965314, space right: 0.4279433317049339, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:41:18 - LaserManager - INFO - Line is centered at offset 0.9766666666666667. Jitter check complete.
+2026-03-18 15:41:18 - LaserManager - INFO - Starting autolock from 996 to 1099
+2026-03-18 15:41:29 - LaserManager - WARNING - Attempt number 1 of laser locking failed :(
+2026-03-18 15:41:29 - LaserManager - INFO - Trying again the jitter check...
+2026-03-18 15:41:29 - LaserManager - INFO - Starting the jitter check loop...
+2026-03-18 15:41:30 - LaserManager - INFO - Line is now inside
+2026-03-18 15:41:33 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:41:33 - LaserManager - INFO - Shift: 0.07523204689789942, space left: 0.4748412310698583, space right: 0.42598925256472875, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:41:33 - LaserManager - INFO - Line is centered at offset 0.9766666666666667. Jitter check complete.
+2026-03-18 15:41:34 - LaserManager - INFO - Starting autolock from 998 to 1101
+2026-03-18 15:41:44 - LaserManager - WARNING - Attempt number 2 of laser locking failed :(
+2026-03-18 15:41:44 - LaserManager - INFO - Trying again the jitter check...
+2026-03-18 15:41:44 - LaserManager - INFO - Starting the jitter check loop...
+2026-03-18 15:41:45 - LaserManager - INFO - Line is now inside
+2026-03-18 15:41:49 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:41:49 - LaserManager - INFO - Shift: 0.0723009281875917, space left: 0.4719101123595506, space right: 0.42892037127503646, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:41:49 - LaserManager - INFO - Line is centered at offset 0.9766666666666667. Jitter check complete.
+2026-03-18 15:41:49 - LaserManager - INFO - Starting autolock from 995 to 1098
+2026-03-18 15:41:58 - LaserManager - INFO - Locking the laser worked! \o/
+2026-03-18 15:41:58 - LaserManager - INFO - State changed from JITTER_CHECK to LOCKED
+2026-03-18 15:41:58 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-03-18 15:41:58
+2026-03-18 15:41:58 - LaserManager - WARNING - Unlock event detected
+2026-03-18 15:41:58 - LaserManager - WARNING - Unlock event detected, relocking the laser...
+2026-03-18 15:42:01 - LaserManager - INFO - Starting autolock, scan for the line...
+2026-03-18 15:42:01 - LaserManager - INFO - Initiating scan: 0.9166666666666667V -> 1.0366666666666666V (5 pts)
+2026-03-18 15:42:01 - LaserManager - INFO - State changed from LOCKED to SCAN
+2026-03-18 15:42:05 - LaserManager - INFO - Correlation at 0.9166666666666667V: 0.6731179434812801, Length of match: 0.6773333333333715, offset with respect to the reference signal: 0.007871967730168534
+2026-03-18 15:42:06 - LaserManager - INFO - Correlation at 0.9466666666666668V: 0.644111623253519, Length of match: 0.6675555555555933, offset with respect to the reference signal: 0.008352226949349699
+2026-03-18 15:42:08 - LaserManager - INFO - Correlation at 0.9766666666666667V: 0.6140749878559052, Length of match: 0.8311111111111581, offset with respect to the reference signal: 0.0007319809176468888
+2026-03-18 15:42:09 - LaserManager - INFO - Correlation at 1.0066666666666666V: 0.6407765249045608, Length of match: 0.9982222222222789, offset with respect to the reference signal: -0.0003819774568646589
+2026-03-18 15:42:11 - LaserManager - INFO - Correlation at 1.0366666666666666V: 0.5915283288084685, Length of match: 0.9982222222222789, offset with respect to the reference signal: -0.003388641546410248
+2026-03-18 15:42:11 - LaserManager - INFO - Setting the optimal scan center...
+2026-03-18 15:42:11 - LaserManager - INFO - Set parameter big_offset to 0.9166666666666667
+2026-03-18 15:42:11 - LaserManager - INFO - Set parameter offset_a to -0.059861248752389004
+2026-03-18 15:42:11 - LaserManager - INFO - Set vertical offset (offset_a) to -0.059861248752389004
+2026-03-18 15:42:12 - LaserManager - INFO - Starting the jitter check loop...
+2026-03-18 15:42:12 - LaserManager - INFO - State changed from SCAN to JITTER_CHECK
+2026-03-18 15:42:13 - LaserManager - INFO - Line is now inside
+2026-03-18 15:42:17 - LaserManager - INFO - Line has escaped
+2026-03-18 15:42:18 - LaserManager - INFO - Line is now inside
+2026-03-18 15:42:21 - LaserManager - INFO - Line has escaped
+2026-03-18 15:42:22 - LaserManager - INFO - Line is now inside
+2026-03-18 15:42:26 - LaserManager - INFO - Frequency not stable enough
+2026-03-18 15:42:26 - LaserManager - INFO - Frequency not stable enough
+2026-03-18 15:42:27 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:42:27 - LaserManager - INFO - Shift: 0.8764044943820224, space left: 1.2760136785539813, space right: -0.3751831949193942, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:42:27 - LaserManager - INFO - Too far right: decrease offset to increase frequency
+2026-03-18 15:42:28 - LaserManager - INFO - Line is now inside
+2026-03-18 15:42:32 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:42:32 - LaserManager - INFO - Shift: 0.6917440156326331, space left: 1.091353199804592, space right: -0.19052271617000494, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:42:32 - LaserManager - INFO - Too far right: decrease offset to increase frequency
+2026-03-18 15:42:34 - LaserManager - INFO - Line is now inside
+2026-03-18 15:42:35 - LaserManager - INFO - Line has escaped
+2026-03-18 15:42:37 - LaserManager - INFO - Trying new offset = 0.9566666666666668
+2026-03-18 15:42:41 - LaserManager - INFO - Line is now inside
+2026-03-18 15:42:44 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:42:44 - LaserManager - INFO - Shift: 0.45041524181729364, space left: 0.8500244259892525, space right: 0.050806057645334524, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:42:44 - LaserManager - INFO - Too far right: decrease offset to increase frequency
+2026-03-18 15:42:46 - LaserManager - INFO - Line is now inside
+2026-03-18 15:42:49 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:42:49 - LaserManager - INFO - Shift: 0.25109916951636546, space left: 0.6507083536883244, space right: 0.2501221299462627, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:42:49 - LaserManager - INFO - Too far right: decrease offset to increase frequency
+2026-03-18 15:42:50 - LaserManager - INFO - Line is now inside
+2026-03-18 15:42:54 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:42:54 - LaserManager - INFO - Shift: 0.052760136785539924, space left: 0.4523693209574988, space right: 0.44846116267708824, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:42:54 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:42:55 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:42:55 - LaserManager - INFO - Shift: 0.052760136785539924, space left: 0.4523693209574988, space right: 0.44846116267708824, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:42:55 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:42:55 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:42:55 - LaserManager - INFO - Shift: 0.052760136785539924, space left: 0.4523693209574988, space right: 0.44846116267708824, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:42:55 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:42:56 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:42:56 - LaserManager - INFO - Shift: 0.052760136785539924, space left: 0.4523693209574988, space right: 0.44846116267708824, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:42:56 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:42:57 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:42:57 - LaserManager - INFO - Shift: 0.050806057645334635, space left: 0.45041524181729353, space right: 0.45041524181729353, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:42:57 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:42:57 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:42:57 - LaserManager - INFO - Shift: 0.050806057645334635, space left: 0.45041524181729353, space right: 0.45041524181729353, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:42:57 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:42:58 - LaserManager - INFO - Frequency not stable enough
+2026-03-18 15:42:59 - LaserManager - INFO - Frequency not stable enough
+2026-03-18 15:42:59 - LaserManager - INFO - Frequency not stable enough
+2026-03-18 15:43:00 - LaserManager - INFO - Frequency not stable enough
+2026-03-18 15:43:01 - LaserManager - INFO - Frequency not stable enough
+2026-03-18 15:43:01 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:01 - LaserManager - INFO - Shift: 0.04689789936492428, space left: 0.4465070835368832, space right: 0.4543234000977039, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:01 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:43:02 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:02 - LaserManager - INFO - Shift: 0.04298974108451392, space left: 0.4425989252564728, space right: 0.45823155837811425, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:02 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:43:03 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:03 - LaserManager - INFO - Shift: 0.04298974108451392, space left: 0.4425989252564728, space right: 0.45823155837811425, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:03 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:43:03 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:03 - LaserManager - INFO - Shift: 0.043966780654616566, space left: 0.44357596482657546, space right: 0.4572545188080116, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:03 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:43:04 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:04 - LaserManager - INFO - Shift: 0.043966780654616566, space left: 0.44357596482657546, space right: 0.4572545188080116, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:04 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:43:05 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:05 - LaserManager - INFO - Shift: 0.04689789936492428, space left: 0.4465070835368832, space right: 0.4543234000977039, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:05 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:43:06 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:06 - LaserManager - INFO - Shift: 0.04689789936492428, space left: 0.4465070835368832, space right: 0.4543234000977039, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:06 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:43:06 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:06 - LaserManager - INFO - Shift: 0.04494382022471921, space left: 0.4445530043966781, space right: 0.45627747923790896, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:06 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:43:07 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:07 - LaserManager - INFO - Shift: 0.04494382022471921, space left: 0.4445530043966781, space right: 0.45627747923790896, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:07 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:43:08 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:08 - LaserManager - INFO - Shift: 0.045920859794821745, space left: 0.44553004396678064, space right: 0.4553004396678064, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:08 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:43:08 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:08 - LaserManager - INFO - Shift: 0.045920859794821745, space left: 0.44553004396678064, space right: 0.4553004396678064, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:08 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:43:09 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:09 - LaserManager - INFO - Shift: 0.04787493893502692, space left: 0.4474841231069858, space right: 0.45334636052760124, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:09 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:43:10 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:10 - LaserManager - INFO - Shift: 0.04787493893502692, space left: 0.4474841231069858, space right: 0.45334636052760124, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:10 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:43:11 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:11 - LaserManager - INFO - Shift: 0.04298974108451392, space left: 0.4425989252564728, space right: 0.45823155837811425, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:11 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:43:11 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:11 - LaserManager - INFO - Shift: 0.04298974108451392, space left: 0.4425989252564728, space right: 0.45823155837811425, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:11 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:43:12 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:12 - LaserManager - INFO - Shift: 0.04787493893502692, space left: 0.4474841231069858, space right: 0.45334636052760124, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:12 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:43:13 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:13 - LaserManager - INFO - Shift: 0.04787493893502692, space left: 0.4474841231069858, space right: 0.45334636052760124, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:13 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:43:13 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:13 - LaserManager - INFO - Shift: 0.0498290180752321, space left: 0.449438202247191, space right: 0.45139228138739607, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:13 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:43:14 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:14 - LaserManager - INFO - Shift: 0.0498290180752321, space left: 0.449438202247191, space right: 0.45139228138739607, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:14 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:43:15 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:15 - LaserManager - INFO - Shift: 0.05178309721543728, space left: 0.4513922813873962, space right: 0.4494382022471909, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:15 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:43:15 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:15 - LaserManager - INFO - Shift: 0.05178309721543728, space left: 0.4513922813873962, space right: 0.4494382022471909, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:15 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:43:16 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:16 - LaserManager - INFO - Shift: 0.05178309721543728, space left: 0.4513922813873962, space right: 0.4494382022471909, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:16 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:43:17 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:17 - LaserManager - INFO - Shift: 0.05178309721543728, space left: 0.4513922813873962, space right: 0.4494382022471909, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:17 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:43:18 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:18 - LaserManager - INFO - Shift: 0.05471421592574499, space left: 0.4543234000977039, space right: 0.4465070835368832, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:18 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:43:18 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:18 - LaserManager - INFO - Shift: 0.05471421592574499, space left: 0.4543234000977039, space right: 0.4465070835368832, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:18 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:43:19 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:19 - LaserManager - INFO - Shift: 0.052760136785539924, space left: 0.4523693209574988, space right: 0.44846116267708824, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:19 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:43:20 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:20 - LaserManager - INFO - Shift: 0.052760136785539924, space left: 0.4523693209574988, space right: 0.44846116267708824, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:20 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:43:20 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:20 - LaserManager - INFO - Shift: 0.055691255495847636, space left: 0.45530043966780653, space right: 0.44553004396678053, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:20 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:43:21 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:21 - LaserManager - INFO - Shift: 0.055691255495847636, space left: 0.45530043966780653, space right: 0.44553004396678053, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:21 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:43:21 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:21 - LaserManager - INFO - Shift: 0.0625305324865657, space left: 0.4621397166585246, space right: 0.43869076697606246, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:21 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:43:22 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:22 - LaserManager - INFO - Shift: 0.0625305324865657, space left: 0.4621397166585246, space right: 0.43869076697606246, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:22 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:43:23 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:23 - LaserManager - INFO - Shift: 0.06057645334636064, space left: 0.46018563751831953, space right: 0.44064484611626753, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:23 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:43:24 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:24 - LaserManager - INFO - Shift: 0.06057645334636064, space left: 0.46018563751831953, space right: 0.44064484611626753, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:24 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:43:24 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:24 - LaserManager - INFO - Shift: 0.05959941377625799, space left: 0.4592085979482169, space right: 0.4416218856863702, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:24 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:43:25 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:25 - LaserManager - INFO - Shift: 0.05959941377625799, space left: 0.4592085979482169, space right: 0.4416218856863702, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:25 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:43:26 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:26 - LaserManager - INFO - Shift: 0.06546165119687353, space left: 0.4650708353688324, space right: 0.43575964826575464, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:26 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:43:26 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:26 - LaserManager - INFO - Shift: 0.06546165119687353, space left: 0.4650708353688324, space right: 0.43575964826575464, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:26 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:43:27 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:27 - LaserManager - INFO - Shift: 0.05862237420615535, space left: 0.45823155837811425, space right: 0.4425989252564728, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:27 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:43:28 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:28 - LaserManager - INFO - Shift: 0.05862237420615535, space left: 0.45823155837811425, space right: 0.4425989252564728, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:28 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:43:29 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:29 - LaserManager - INFO - Shift: 0.05959941377625799, space left: 0.4592085979482169, space right: 0.4416218856863702, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:29 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:43:29 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:29 - LaserManager - INFO - Shift: 0.05959941377625799, space left: 0.4592085979482169, space right: 0.4416218856863702, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:29 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:43:30 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:30 - LaserManager - INFO - Shift: 0.0625305324865657, space left: 0.4621397166585246, space right: 0.43869076697606246, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:30 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:43:31 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:31 - LaserManager - INFO - Shift: 0.0625305324865657, space left: 0.4621397166585246, space right: 0.43869076697606246, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:31 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:43:31 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:31 - LaserManager - INFO - Shift: 0.06839276990718135, space left: 0.46800195407914025, space right: 0.4328285295554468, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:31 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:43:32 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:32 - LaserManager - INFO - Shift: 0.06839276990718135, space left: 0.46800195407914025, space right: 0.4328285295554468, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:32 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:43:33 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:33 - LaserManager - INFO - Shift: 0.064484611626771, space left: 0.4640937957987299, space right: 0.4367366878358572, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:33 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:43:33 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:33 - LaserManager - INFO - Shift: 0.064484611626771, space left: 0.4640937957987299, space right: 0.4367366878358572, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:33 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:43:34 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:34 - LaserManager - INFO - Shift: 0.0674157303370787, space left: 0.4670249145090376, space right: 0.43380556912554946, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:34 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:43:35 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:35 - LaserManager - INFO - Shift: 0.0674157303370787, space left: 0.4670249145090376, space right: 0.43380556912554946, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:35 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:43:36 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:36 - LaserManager - INFO - Shift: 0.06643869076697606, space left: 0.46604787493893496, space right: 0.4347826086956521, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:36 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:43:36 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:36 - LaserManager - INFO - Shift: 0.06643869076697606, space left: 0.46604787493893496, space right: 0.4347826086956521, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:36 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:43:37 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:37 - LaserManager - INFO - Shift: 0.06839276990718135, space left: 0.46800195407914025, space right: 0.4328285295554468, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:37 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:43:38 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:38 - LaserManager - INFO - Shift: 0.06839276990718135, space left: 0.46800195407914025, space right: 0.4328285295554468, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:38 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:43:38 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:38 - LaserManager - INFO - Shift: 0.06643869076697606, space left: 0.46604787493893496, space right: 0.4347826086956521, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:38 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:43:39 - LaserManager - INFO - Frequency stable enough
+2026-03-18 15:43:39 - LaserManager - INFO - Shift: 0.06643869076697606, space left: 0.46604787493893496, space right: 0.4347826086956521, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 15:43:39 - LaserManager - INFO - Line is centered at offset 0.9766666666666668. Jitter check complete.
+2026-03-18 15:43:39 - LaserManager - INFO - FSM switched to SETUP_MANUAL_LOCK.
+2026-03-18 15:43:39 - LaserManager - INFO - State changed from JITTER_CHECK to SETUP_MANUAL_LOCK
+2026-03-18 15:43:40 - LaserManager - INFO - Sweep started by user.
+2026-03-18 15:43:40 - LaserManager - INFO - State changed from SETUP_MANUAL_LOCK to SWEEP
+2026-03-18 16:08:34 - LaserManager - INFO - Starting autolock, scan for the line...
+2026-03-18 16:08:34 - LaserManager - INFO - Initiating scan: 0.9V -> 1.1V (10 pts)
+2026-03-18 16:08:34 - LaserManager - INFO - State changed from SWEEP to SCAN
+2026-03-18 16:08:38 - LaserManager - INFO - Correlation at 0.9V: 0.5661638336977298, Length of match: 0.8151111111111572, offset with respect to the reference signal: 0.0032679817674904034
+2026-03-18 16:08:40 - LaserManager - INFO - Correlation at 0.9222222222222223V: 0.5760953292604827, Length of match: 0.8071111111111569, offset with respect to the reference signal: 0.002643519654325422
+2026-03-18 16:08:41 - LaserManager - INFO - Correlation at 0.9444444444444445V: 0.5262647054924956, Length of match: 0.9013333333333842, offset with respect to the reference signal: 5.3747754751727194e-05
+2026-03-18 16:08:43 - LaserManager - INFO - Correlation at 0.9666666666666667V: 0.5521337866230054, Length of match: 0.9582222222222763, offset with respect to the reference signal: -0.0069680502420404414
+2026-03-18 16:08:45 - LaserManager - INFO - Correlation at 0.9888888888888889V: 0.5440643463168955, Length of match: 0.9982222222222786, offset with respect to the reference signal: -0.010702504518798006
+2026-03-18 16:08:47 - LaserManager - INFO - Correlation at 1.011111111111111V: 0.5528245247303253, Length of match: 0.9982222222222786, offset with respect to the reference signal: -0.01087027797566287
+2026-03-18 16:08:49 - LaserManager - INFO - Correlation at 1.0333333333333334V: 0.10895330704497252, Length of match: 0.2080000000000116, offset with respect to the reference signal: 0.01329247163340817
+2026-03-18 16:08:51 - LaserManager - INFO - Correlation at 1.0555555555555556V: 0.3989727270112925, Length of match: 0.760000000000043, offset with respect to the reference signal: 0.013552360459179466
+2026-03-18 16:08:52 - LaserManager - INFO - Correlation at 1.077777777777778V: 0.02023327653021813, Length of match: 0.5715555555555878, offset with respect to the reference signal: 0.013059931856266253
+2026-03-18 16:08:54 - LaserManager - INFO - Correlation at 1.1V: 0.21121688225575447, Length of match: 0.48355555555558294, offset with respect to the reference signal: 0.012986397829060362
+2026-03-18 16:08:54 - LaserManager - INFO - Setting the optimal scan center...
+2026-03-18 16:08:55 - LaserManager - INFO - Set parameter big_offset to 0.9222222222222223
+2026-03-18 16:08:55 - LaserManager - INFO - Set parameter offset_a to -0.06250476840671443
+2026-03-18 16:08:55 - LaserManager - INFO - Set vertical offset (offset_a) to -0.06250476840671443
+2026-03-18 16:08:56 - LaserManager - INFO - Starting the jitter check loop...
+2026-03-18 16:08:56 - LaserManager - INFO - State changed from SCAN to JITTER_CHECK
+2026-03-18 16:09:03 - LaserManager - INFO - Line is now inside
+2026-03-18 16:09:07 - LaserManager - INFO - Frequency stable enough
+2026-03-18 16:09:07 - LaserManager - INFO - Shift: 0.5891548607718613, space left: 0.9887640449438202, space right: -0.08793356130923313, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 16:09:07 - LaserManager - INFO - Too far right: decrease offset to increase frequency
+2026-03-18 16:09:08 - LaserManager - INFO - Line is now inside
+2026-03-18 16:09:09 - LaserManager - INFO - Line has escaped
+2026-03-18 16:09:11 - LaserManager - INFO - Trying new offset = 0.9622222222222223
+2026-03-18 16:09:14 - LaserManager - INFO - Line is now inside
+2026-03-18 16:09:18 - LaserManager - INFO - Frequency stable enough
+2026-03-18 16:09:18 - LaserManager - INFO - Shift: 0.3419638495359063, space left: 0.7415730337078652, space right: 0.15925744992672186, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 16:09:18 - LaserManager - INFO - Too far right: decrease offset to increase frequency
+2026-03-18 16:09:18 - LaserManager - INFO - Line is now inside
+2026-03-18 16:09:22 - LaserManager - INFO - Frequency stable enough
+2026-03-18 16:09:22 - LaserManager - INFO - Shift: 0.14362481680508066, space left: 0.5432340009770396, space right: 0.3575964826575475, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 16:09:22 - LaserManager - INFO - Line is centered at offset 0.9722222222222223. Jitter check complete.
+2026-03-18 16:09:23 - LaserManager - INFO - Starting autolock from 1068 to 1171
+2026-03-18 16:09:31 - LaserManager - INFO - Locking the laser worked! \o/
+2026-03-18 16:09:31 - LaserManager - INFO - State changed from JITTER_CHECK to LOCKED
+2026-03-18 16:55:09 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-03-18 16:55:08
+2026-03-18 16:55:09 - LaserManager - WARNING - Unlock event detected
+2026-03-18 16:55:09 - LaserManager - WARNING - Unlock event detected, relocking the laser...
+2026-03-18 16:55:11 - LaserManager - INFO - Starting autolock, scan for the line...
+2026-03-18 16:55:11 - LaserManager - INFO - Initiating scan: 0.9122222222222223V -> 1.0322222222222224V (6 pts)
+2026-03-18 16:55:11 - LaserManager - INFO - State changed from LOCKED to SCAN
+2026-03-18 16:55:15 - LaserManager - INFO - Correlation at 0.9122222222222223V: 0.51032826294192, Length of match: 0.8826666666667166, offset with respect to the reference signal: 0.00023338571674113532
+2026-03-18 16:55:17 - LaserManager - INFO - Correlation at 0.9362222222222223V: 0.4905646415248105, Length of match: 0.8746666666667162, offset with respect to the reference signal: -0.000299912761693862
+2026-03-18 16:55:18 - LaserManager - INFO - Correlation at 0.9602222222222223V: 0.6227619988441824, Length of match: 0.9360000000000529, offset with respect to the reference signal: -0.007634261271987459
+2026-03-18 16:55:20 - LaserManager - INFO - Correlation at 0.9842222222222223V: 0.6497646220229978, Length of match: 0.9982222222222786, offset with respect to the reference signal: -0.008363647094656725
+2026-03-18 16:55:21 - LaserManager - INFO - Correlation at 1.0082222222222224V: 0.6756173094291917, Length of match: 0.9982222222222789, offset with respect to the reference signal: -0.007953226286292617
+2026-03-18 16:55:23 - LaserManager - INFO - Correlation at 1.0322222222222224V: 0.07555454990209187, Length of match: 0.3866666666666885, offset with respect to the reference signal: 0.010448799223178686
+2026-03-18 16:55:23 - LaserManager - INFO - Setting the optimal scan center...
+2026-03-18 16:55:23 - LaserManager - INFO - Set parameter big_offset to 1.0082222222222224
+2026-03-18 16:55:24 - LaserManager - INFO - Set parameter offset_a to -0.05455154212042181
+2026-03-18 16:55:24 - LaserManager - INFO - Set vertical offset (offset_a) to -0.05455154212042181
+2026-03-18 16:55:25 - LaserManager - INFO - Starting the jitter check loop...
+2026-03-18 16:55:25 - LaserManager - INFO - State changed from SCAN to JITTER_CHECK
+2026-03-18 16:55:35 - LaserManager - INFO - Trying new offset = 1.0482222222222224
+2026-03-18 16:55:45 - LaserManager - INFO - Trying new offset = 0.9682222222222223
+2026-03-18 16:55:47 - LaserManager - INFO - Line is now inside
+2026-03-18 16:55:50 - LaserManager - INFO - Frequency stable enough
+2026-03-18 16:55:50 - LaserManager - INFO - Shift: -0.09184171958964327, space left: 0.30776746458231563, space right: 0.5930630190522714, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 16:55:50 - LaserManager - INFO - Line is centered at offset 0.9682222222222223. Jitter check complete.
+2026-03-18 16:55:50 - LaserManager - INFO - Starting autolock from 827 to 930
+2026-03-18 16:55:58 - LaserManager - INFO - Locking the laser worked! \o/
+2026-03-18 16:55:58 - LaserManager - INFO - State changed from JITTER_CHECK to LOCKED
+2026-03-18 17:07:00 - LaserManager - ERROR - Failed to get history: result expired
+2026-03-18 17:07:30 - LaserManager - ERROR - Failed to get history: result expired
+2026-03-18 17:08:00 - LaserManager - ERROR - Failed to get history: result expired
+2026-03-18 17:08:30 - LaserManager - ERROR - Failed to get history: result expired
+2026-03-18 17:09:00 - LaserManager - ERROR - Failed to get history: result expired
+2026-03-18 17:31:32 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-03-18 17:31:31
+2026-03-18 17:31:32 - LaserManager - WARNING - Unlock event detected
+2026-03-18 17:31:32 - LaserManager - WARNING - Unlock event detected, relocking the laser...
+2026-03-18 17:31:34 - LaserManager - INFO - Starting autolock, scan for the line...
+2026-03-18 17:31:34 - LaserManager - INFO - Initiating scan: 0.9082222222222223V -> 1.0282222222222224V (6 pts)
+2026-03-18 17:31:34 - LaserManager - INFO - State changed from LOCKED to SCAN
+2026-03-18 17:31:38 - LaserManager - INFO - Correlation at 0.9082222222222223V: 0.11139406783491305, Length of match: 0.5244444444444739, offset with respect to the reference signal: 0.00737296050177514
+2026-03-18 17:31:39 - LaserManager - INFO - Correlation at 0.9322222222222223V: 0.4028580598724755, Length of match: 0.4880000000000276, offset with respect to the reference signal: 0.008862333878584969
+2026-03-18 17:31:41 - LaserManager - INFO - Correlation at 0.9562222222222223V: 0.6255239576041757, Length of match: 0.8631111111111599, offset with respect to the reference signal: 0.0027720287098447855
+2026-03-18 17:31:43 - LaserManager - INFO - Correlation at 0.9802222222222223V: 0.5668670983301495, Length of match: 0.9982222222222786, offset with respect to the reference signal: -0.002767736411060988
+2026-03-18 17:31:44 - LaserManager - INFO - Correlation at 1.0042222222222223V: 0.6143070555195244, Length of match: 0.9982222222222789, offset with respect to the reference signal: -0.0002919020899758691
+2026-03-18 17:31:46 - LaserManager - INFO - Correlation at 1.0282222222222224V: 0.0908182899915811, Length of match: 0.3137777777777955, offset with respect to the reference signal: 0.019542183021559967
+2026-03-18 17:31:46 - LaserManager - INFO - Setting the optimal scan center...
+2026-03-18 17:31:46 - LaserManager - INFO - Set parameter big_offset to 0.9562222222222223
+2026-03-18 17:31:46 - LaserManager - INFO - Set parameter offset_a to -0.057323570830266596
+2026-03-18 17:31:46 - LaserManager - INFO - Set vertical offset (offset_a) to -0.057323570830266596
+2026-03-18 17:31:47 - LaserManager - INFO - Starting the jitter check loop...
+2026-03-18 17:31:47 - LaserManager - INFO - State changed from SCAN to JITTER_CHECK
+2026-03-18 17:31:48 - LaserManager - INFO - Line is now inside
+2026-03-18 17:31:52 - LaserManager - INFO - Frequency stable enough
+2026-03-18 17:31:52 - LaserManager - INFO - Shift: 0.16414264777723497, space left: 0.5637518319491939, space right: 0.3370786516853932, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 17:31:52 - LaserManager - INFO - Line is centered at offset 0.9562222222222223. Jitter check complete.
+2026-03-18 17:31:52 - LaserManager - INFO - Starting autolock from 1089 to 1191
+2026-03-18 17:32:03 - LaserManager - WARNING - Attempt number 1 of laser locking failed :(
+2026-03-18 17:32:03 - LaserManager - INFO - Trying again the jitter check...
+2026-03-18 17:32:03 - LaserManager - INFO - Starting the jitter check loop...
+2026-03-18 17:32:03 - LaserManager - INFO - Line is now inside
+2026-03-18 17:32:07 - LaserManager - INFO - Frequency not stable enough
+2026-03-18 17:32:08 - LaserManager - INFO - Frequency stable enough
+2026-03-18 17:32:08 - LaserManager - INFO - Shift: 0.16511968734733762, space left: 0.5647288715192965, space right: 0.33610161211529055, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 17:32:08 - LaserManager - INFO - Line is centered at offset 0.9562222222222223. Jitter check complete.
+2026-03-18 17:32:08 - LaserManager - INFO - Frequency stable enough
+2026-03-18 17:32:08 - LaserManager - INFO - Shift: 0.16511968734733762, space left: 0.5647288715192965, space right: 0.33610161211529055, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 17:32:08 - LaserManager - INFO - Line is centered at offset 0.9562222222222223. Jitter check complete.
+2026-03-18 17:32:09 - LaserManager - INFO - Frequency stable enough
+2026-03-18 17:32:09 - LaserManager - INFO - Shift: 0.16805080605764533, space left: 0.5676599902296042, space right: 0.33317049340498284, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 17:32:09 - LaserManager - INFO - Line is centered at offset 0.9562222222222223. Jitter check complete.
+2026-03-18 17:32:09 - LaserManager - INFO - Starting autolock from 1093 to 1195
+2026-03-18 17:32:20 - LaserManager - WARNING - Attempt number 2 of laser locking failed :(
+2026-03-18 17:32:20 - LaserManager - INFO - Trying again the jitter check...
+2026-03-18 17:32:20 - LaserManager - INFO - Starting the jitter check loop...
+2026-03-18 17:32:21 - LaserManager - INFO - Line is now inside
+2026-03-18 17:32:24 - LaserManager - INFO - Frequency stable enough
+2026-03-18 17:32:24 - LaserManager - INFO - Shift: 0.17782120175867133, space left: 0.5774303859306302, space right: 0.32340009770395683, free space: 0.9008304836345871, edge space threshold: 0.3002768278781957
+2026-03-18 17:32:24 - LaserManager - INFO - Line is centered at offset 0.9562222222222223. Jitter check complete.
+2026-03-18 17:32:24 - LaserManager - INFO - Starting autolock from 1103 to 1206
+2026-03-18 17:32:35 - LaserManager - WARNING - Attempt number 3 of laser locking failed :(
+2026-03-18 17:32:35 - LaserManager - INFO - Maximum number of lock trials reached, start sweeping
+2026-03-18 17:32:35 - LaserManager - INFO - State changed from JITTER_CHECK to SWEEP
+2026-03-18 17:40:09 - LaserManager - INFO - Control loop timer stopped.
