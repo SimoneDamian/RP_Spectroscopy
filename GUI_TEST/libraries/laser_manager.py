@@ -820,7 +820,11 @@ class LaserManager(QObject):
 
         zero_crossing_index = np.where(np.diff(np.sign(error_signal_selected_region)))[0]
 
-        return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
+        if len(zero_crossing_index) == 0:
+            self.logger.warning("No zero crossing found in the selected region to find the expected monitor signal.")
+            return None
+        else:
+            return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
 
     def initialize_unlock_events(self):
         self.unlock_events = {
