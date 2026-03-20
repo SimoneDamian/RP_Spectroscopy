@@ -128,6 +128,9 @@ class GeneralManager:
         # Connection for Grafana
         self.laser.sig_grafana_data_ready.connect(self.services.send_point_to_grafana)
 
+        # Connection for unlock-event screenshot
+        self.laser.sig_save_screenshot.connect(self.services.save_history_screenshot)
+
         # Scan page signals
         self.window.page_laser.page_scan.sig_start_scan.connect(self.laser.start_scan)
         self.window.page_laser.page_scan.sig_stop_scan.connect(self.laser.stop_scan)

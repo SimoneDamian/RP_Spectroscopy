@@ -1,5 +1,3 @@
------ Save the history when unlocks -----
-When the state of my finite state machine is turned into LOCKED, the main loop in @laser_manager.py triggers the handle_locked_state method that, if requested by the user, checks if there are unlock events.
-I want that, when an unlock event is detected in the detect_unlock_event method, it waits 5 seconds (that you have to implement depending on how frequently the control loop ticks (decided in the @config.yaml file and used by the @laser_manager in the setup to create the control loop)) before triggering the unlock_or_relock method, so that the user can still see the plot on the GUI (look at the @plot_panel.py when the packet that is received has a "LOCKED" label) after the unlock event and recognize the problem that happened. Then, I want the @service_manager.py to save a screenshot of what the user can see in the plots (the histories) within the path "screenshots" entry of the @config.yaml (at which it has access). The name of the file has to be codified as follows: YYYYMMDDhhmmss. When the new method saves a new image checks also the number of images in the folder, if there are more then 20, it delates the oldest one before saving the new one.
+
 
 

@@ -20,6 +20,7 @@ class LaserManager(QObject):
     sig_grafana_data_ready = Signal(dict)
     sig_trace_ready = Signal(dict)
     sig_autolock_completed = Signal()
+    sig_save_screenshot = Signal(dict)
 
     def __init__(self, config, board):
         super().__init__()
@@ -42,6 +43,9 @@ class LaserManager(QObject):
         self.lock_trials = 0
         self.max_lock_trials = 3
         self.correlation_minimum = 0.7
+
+        # Compute number of control-loop ticks for 5s delay after unlock event
+        self._unlock_delay_ticks = int(5000 / self.cfg['app']['update_interval_ms'])
         
         # Setup Logging
         log_path = self.cfg.get('paths', {}).get('logs', './logs')
@@ -767,7 +771,16 @@ class LaserManager(QObject):
                 #self.logger.info("Looking for unlock event...")
                 self.detect_unlock_event()
                 if self.stop_locking:
-                    self.unlock_or_relock()
+                    if self._unlock_countdown is None:
+                        # First detection: start countdown and request screenshot
+                        self._unlock_countdown = self._unlock_delay_ticks
+                        self.logger.info(f"Unlock event detected — waiting {self._unlock_delay_ticks} ticks before acting.")
+                        self.sig_save_screenshot.emit(history)
+                    elif self._unlock_countdown > 0:
+                        self._unlock_countdown -= 1
+                    else:
+                        # Countdown finished
+                        self.unlock_or_relock()
 
             packet = {
                 "mode": self.state,
@@ -838,6 +851,7 @@ class LaserManager(QObject):
             "slow_control_saturation_time": []
         }
         self.stop_locking = False
+        self._unlock_countdown = None
 
     def detect_unlock_event(self):
         """
