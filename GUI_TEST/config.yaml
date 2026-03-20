@@ -38,3 +38,4 @@ services:
     org: "lab_bec"
     url: "http://localhost:8086"
     token: "VG0O9fEgoMWlKrn83VwaoU6w3IhfP3l-WJqF0kQCArYT2MdwPK-rgO68oH7_awXlnYyDYzCWDbOsbdY4kkJ0UA=="
+    state_monitor_url: "http://localhost:3001/d-solo/ads9vgq/lockingapp?orgId=1&from=now-3h&to=now&refresh=10s&timezone=browser&showCategory=State%20timeline&kiosk=true&theme=dark&panelId=panel-3&__feature.dashboardSceneSolo=true"

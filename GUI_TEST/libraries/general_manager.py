@@ -36,7 +36,8 @@ class GeneralManager:
         self.services.moveToThread(self.svc_thread)
         self.logger.info("ServiceManager moved to thread.")
 
-        self.window = MainWindow()
+        grafana_url = self.cfg.get('services', {}).get('grafana', {}).get('state_monitor_url', '')
+        self.window = MainWindow(grafana_url=grafana_url)
         self.logger.info("MainWindow initialized.")
 
         # Wiring
