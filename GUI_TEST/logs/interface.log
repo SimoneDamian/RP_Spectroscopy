@@ -14597,3 +14597,10 @@
 2026-03-18 17:32:37 - HardwareInterface - WARNING - Failed to get sweep: 'error_signal_1_quadrature'
 2026-03-18 17:32:37 - HardwareInterface - WARNING - Failed to get sweep: 'error_signal_1_quadrature'
 2026-03-18 17:32:38 - HardwareInterface - WARNING - Failed to get sweep: 'error_signal_1_quadrature'
+2026-03-20 08:48:18 - HardwareInterface - INFO - Attempting connection via RedPitaya_K address (192.168.1.159:18862)
+2026-03-20 08:48:49 - HardwareInterface - INFO - Connected to device RedPitaya_K
+2026-03-20 08:48:49 - HardwareInterface - INFO - Basic configuration complete. Waiting for parameters from ServiceManager...
+2026-03-20 08:48:49 - HardwareInterface - INFO - HardwareInterface initialized.
+2026-03-20 08:48:50 - HardwareInterface - INFO - Autolock mode set to ROBUST and determine offset set to False
+2026-03-20 08:48:50 - HardwareInterface - INFO - Loading parameters from dict...
+2026-03-20 08:48:50 - HardwareInterface - INFO - Parameters loaded: 42 writeable, 3 readable.
