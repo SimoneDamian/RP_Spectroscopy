@@ -33,6 +33,15 @@ class LineCenteringPage(QWidget):
         lbl_title.setStyleSheet("font-size: 18px; font-weight: bold; margin-bottom: 10px;")
         layout.addWidget(lbl_title)
 
+        # --- Description Text ---
+        self.lbl_desc = QLabel(
+            "This feature allows you to look for a specific reference line across a "
+            "voltage scan range using a correlation based algorithm."
+        )
+        self.lbl_desc.setWordWrap(True)
+        self.lbl_desc.setStyleSheet("margin-bottom: 10px;")
+        layout.addWidget(self.lbl_desc)
+
         # --- Scan Input settings ---
         scan_group = QWidget()
         scan_layout = QVBoxLayout(scan_group)
@@ -62,7 +71,7 @@ class LineCenteringPage(QWidget):
         self.plot_ref = pg.PlotWidget(title="Reference Line")
         self.plot_ref.setBackground('w')
         self.plot_ref.showGrid(x=True, y=True)
-        self.plot_ref.setMinimumHeight(200)
+        self.plot_ref.setMaximumHeight(200)
         self.plot_ref_item = self.plot_ref.getPlotItem()
         self.plot_ref_item.setLabel('bottom', 'V', units='V')
         self.plot_ref_item.setLabel('left', 'Signal')
@@ -90,7 +99,7 @@ class LineCenteringPage(QWidget):
         self.plot_corr = pg.PlotWidget(title="Correlations")
         self.plot_corr.setBackground('w')
         self.plot_corr.showGrid(x=True, y=True)
-        self.plot_corr.setMinimumHeight(200)
+        self.plot_corr.setMaximumHeight(200)
         self.plot_corr_item = self.plot_corr.getPlotItem()
         self.plot_corr_item.setLabel('bottom', 'V', units='V')
         self.plot_corr_item.setLabel('left', 'Correlation')

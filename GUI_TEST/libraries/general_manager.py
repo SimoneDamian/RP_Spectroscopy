@@ -36,7 +36,8 @@ class GeneralManager:
         self.services.moveToThread(self.svc_thread)
         self.logger.info("ServiceManager moved to thread.")
 
-        self.window = MainWindow()
+        grafana_url = self.cfg.get('services', {}).get('grafana', {}).get('state_monitor_url', '')
+        self.window = MainWindow(grafana_url=grafana_url)
         self.logger.info("MainWindow initialized.")
 
         # Wiring
@@ -59,7 +60,8 @@ class GeneralManager:
         # Inject ServiceManager into ReferenceLinesPage
         self.window.page_reflines.set_service_manager(self.services)
         self.window.page_laser.page_centering.set_service_manager(self.services)
-        self.logger.info("ServiceManager injected into ReferenceLinesPage and LineCenteringPage.")
+        self.window.page_laser.page_auto.set_service_manager(self.services)
+        self.logger.info("ServiceManager injected into ReferenceLinesPage, LineCenteringPage, and AutoLockPage.")
 
         self.svc_thread.start()
         self.logger.info("ServiceManager thread started.")
@@ -126,6 +128,9 @@ class GeneralManager:
         # Connection for Grafana
         self.laser.sig_grafana_data_ready.connect(self.services.send_point_to_grafana)
 
+        # Connection for unlock-event screenshot
+        self.laser.sig_save_screenshot.connect(self.services.save_history_screenshot)
+
         # Scan page signals
         self.window.page_laser.page_scan.sig_start_scan.connect(self.laser.start_scan)
         self.window.page_laser.page_scan.sig_stop_scan.connect(self.laser.stop_scan)
@@ -159,6 +164,25 @@ class GeneralManager:
         self.window.page_laser.sig_request_start_sweep.connect(self.laser.start_sweep)
         self.window.page_laser.sig_request_set_state.connect(self.laser.set_state)
         self.window.page_laser.sig_request_start_manual_locking.connect(self.laser.start_manual_locking)
+
+        # Optimization page signals
+        self.window.page_laser.page_optimization.sig_start.connect(self.laser.start_demod_phase_optimization)
+        self.window.page_laser.page_optimization.sig_stop.connect(self.laser.stop_scan)
+        self.window.page_laser.page_optimization.sig_back.connect(self.laser.start_sweep)
+        self.laser.sig_data_ready.connect(self.window.page_laser.page_optimization.handle_data)
+
+        def _on_set_phase(val):
+            self.laser.set_parameter_value("phase", val)
+            self.window.page_laser.page_parameters.update_parameter("phase", val)
+
+        self.window.page_laser.page_optimization.sig_set_phase.connect(_on_set_phase)
+
+        # Auto-lock page signals
+        self.window.page_laser.page_auto.sig_start_autolock.connect(self.laser.start_autolock)
+        self.window.page_laser.page_auto.sig_stop_scan.connect(self.laser.stop_scan)
+        self.window.page_laser.page_auto.sig_back.connect(self.laser.stop_scan)
+        self.laser.sig_data_ready.connect(self.window.page_laser.page_auto.handle_data)
+        self.laser.sig_autolock_completed.connect(self.window.page_laser.page_auto.set_autolock_finished)
 
         # Connection for advanced settings
         #  - Direct to QWidget slot for GUI (auto-connection ensures GUI thread)
@@ -198,6 +222,7 @@ class GeneralManager:
         # Inject ServiceManager into laser controller's ReferenceLinesPage
         self.window.page_laser.page_reflines.set_service_manager(self.services)
         self.window.page_laser.page_centering.set_service_manager(self.services)
+        self.window.page_laser.page_auto.set_service_manager(self.services)
 
     @Slot()
     def on_laser_connected(self):
@@ -250,6 +275,13 @@ class GeneralManager:
                 self.window.page_laser.page_scan.set_scan_finished()
                 self.window.page_laser.page_add_refline.set_scan_finished()
                 self.window.page_laser.page_centering.set_scan_finished()
+
+        if packet.get("mode") == "DEMOD_PHASE_OPTIMIZATION":
+            step = packet.get("step_index", 0)
+            phases = packet.get("phases", [])
+            total = len(phases) if phases is not None and hasattr(phases, '__len__') else 1
+            if step + 1 >= total:
+                self.window.page_laser.page_optimization.set_optimization_finished()
 
     def save_advanced_settings(self):
         """

@@ -1,0 +1,27 @@
+#Informations about the hardware (circuits)
+# - divided in circuits
+# - in each circuit is shown
+#   - hardware_name: the name of the port in the datasheet of the circuit
+#   - RedPitaya_connected_output: the name of the RedPitaya output that is connected to this port
+#   - RedPitaya_connected_parameter: the name of the RedPitaya parameter that is connected to this port. If
+#     None it means that there is no writeable parameter connected to this port, that is when the parameter is entirely
+#     controlled by the RP or if it has multiple parameters that control it that are not listed here.
+
+summator_circuit:
+  slow_in_1:
+    hardware_name: slow_in_1
+    RedPitaya_connected_output: analog_out_0
+    RedPitaya_connected_parameter: None
+    gain: 1.0
+
+  slow_in_2:
+    hardware_name: slow_in_2
+    RedPitaya_connected_output: analog_out_1
+    RedPitaya_connected_parameter: big_offset
+    gain: 2.0
+
+  fast_in:
+    hardware_name: fast_in
+    RedPitaya_connected_output: fast_out_1
+    RedPitaya_connected_parameter: None
+    gain: 1.0

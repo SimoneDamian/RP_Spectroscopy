@@ -630,6 +630,71 @@ class ServiceManager(QObject):
         except Exception as e:
             self.logger.error(f"Failed to send data to Grafana: {e}")
 
+    # -------------------------------------------------------------------------
+    # SCREENSHOT METHODS
+    # -------------------------------------------------------------------------
+
+    MAX_SCREENSHOTS = 20
+
+    @Slot(dict)
+    def save_history_screenshot(self, history_dict):
+        """
+        Plot the three history signals (Monitor, Fast Control, Slow Control)
+        using matplotlib and save as a timestamped PNG.
+        Keeps at most MAX_SCREENSHOTS images in the folder.
+        """
+        import matplotlib
+        matplotlib.use("Agg")  # thread-safe, no display needed
+        import matplotlib.pyplot as plt
+        import glob
+
+        screenshots_dir = self.config.get('paths', {}).get('screenshots', './screenshots')
+        os.makedirs(screenshots_dir, exist_ok=True)
+
+        # --- Build the plot ---
+        fig, axes = plt.subplots(3, 1, figsize=(12, 8), sharex=True)
+        now = time.time()
+
+        signal_specs = [
+            ("Monitor Signal",       "monitor_times_unix",       "monitor_values",        "tab:orange"),
+            ("Fast Control Signal",  "fast_control_times_unix",  "fast_control_values",   "tab:cyan"),
+            ("Slow Control Signal",  "slow_control_times_unix",  "slow_control_values",   "tab:green"),
+        ]
+
+        for ax, (title, time_key, val_key, color) in zip(axes, signal_specs):
+            t_arr = history_dict.get(time_key)
+            v_arr = history_dict.get(val_key)
+            if t_arr is not None and v_arr is not None and len(t_arr) > 0:
+                t_rel = np.asarray(t_arr) - now  # seconds ago (negative)
+                ax.plot(t_rel, np.asarray(v_arr), color=color, linewidth=0.8)
+            ax.set_title(title, fontsize=10)
+            ax.grid(True, alpha=0.3)
+
+        axes[-1].set_xlabel("Time [s ago]")
+        fig.tight_layout()
+
+        # --- Enforce max screenshot count (delete oldest first) ---
+        existing = sorted(glob.glob(os.path.join(screenshots_dir, "*.png")))
+        while len(existing) >= self.MAX_SCREENSHOTS:
+            oldest = existing.pop(0)
+            try:
+                os.remove(oldest)
+                self.logger.info(f"Deleted oldest screenshot: {oldest}")
+            except Exception as e:
+                self.logger.error(f"Failed to delete {oldest}: {e}")
+
+        # --- Save ---
+        from datetime import datetime as _dt
+        filename = _dt.now().strftime("%Y%m%d%H%M%S") + ".png"
+        filepath = os.path.join(screenshots_dir, filename)
+        try:
+            fig.savefig(filepath, dpi=150)
+            self.logger.info(f"Saved unlock screenshot: {filepath}")
+        except Exception as e:
+            self.logger.error(f"Failed to save screenshot: {e}")
+        finally:
+            plt.close(fig)
+
     def close_grafana_client(self):
         self.grafana_client.close()
         self.logger.info("Grafana client closed.")

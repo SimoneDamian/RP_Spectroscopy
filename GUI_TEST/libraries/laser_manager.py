@@ -8,7 +8,10 @@ import logging
 import numpy as np
 from linien_common.common import ANALOG_OUT_V, Vpp
 import pickle
+import time
 from time import sleep
+from scipy.signal import find_peaks
+from datetime import datetime
 
 class LaserManager(QObject):
     sig_connected = Signal()
@@ -16,6 +19,8 @@ class LaserManager(QObject):
     sig_data_ready = Signal(dict)
     sig_grafana_data_ready = Signal(dict)
     sig_trace_ready = Signal(dict)
+    sig_autolock_completed = Signal()
+    sig_save_screenshot = Signal(dict)
 
     def __init__(self, config, board):
         super().__init__()
@@ -33,6 +38,14 @@ class LaserManager(QObject):
         self.state = "SWEEP"
         self.advanced_settings = {}
         self.old_state = "OFF"
+        self.locking_mode = None
+
+        self.lock_trials = 0
+        self.max_lock_trials = 3
+        self.correlation_minimum = 0.7
+
+        # Compute number of control-loop ticks for 5s delay after unlock event
+        self._unlock_delay_ticks = int(5000 / self.cfg['app']['update_interval_ms'])
         
         # Setup Logging
         log_path = self.cfg.get('paths', {}).get('logs', './logs')
@@ -125,6 +138,8 @@ class LaserManager(QObject):
             self.handle_locked_state()
         elif self.state == "DEMOD_PHASE_OPTIMIZATION":
             self.handle_demod_phase_optimization_step()
+        elif self.state == "JITTER_CHECK":
+            self.handle_center_for_jitter_step()
         else:
             self.logger.warning(f"Unknown state: {self.state}")
 
@@ -160,13 +175,14 @@ class LaserManager(QObject):
 
 
     @Slot(float, float, int)
-    def start_scan(self, start_voltage=0.05, stop_voltage=1.75, num_points=40, calculate_correlation=False, reference_signal=None):
+    def start_scan(self, start_voltage=0.05, stop_voltage=1.75, num_points=40, calculate_correlation=False, reference_signal=None, autolock=False):
         """
         Initializes the scan variables and enters the SCAN state.
         This function returns immediately (Non-blocking).
         """
         self.reference_signal = reference_signal
         self.calculate_correlation = calculate_correlation
+        self.autolock = autolock
         if self.calculate_correlation:
             num_points = int((stop_voltage - start_voltage) / 0.02) #maybe sweep_amplitude/(ref_line_width*100)
             self.scan_voltages = np.linspace(start_voltage, stop_voltage, num_points)
@@ -197,10 +213,19 @@ class LaserManager(QObject):
 
         # 1. Check if we are done
         if self.scan_index >= len(self.scan_voltages):
-            self.logger.info("Scan completed successfully.")
-            self.state = "IDLE"
-            self.interface.set_value('big_offset', self.initial_center)
-            return
+            if self.autolock:
+                if self.check_minimum_correlation():
+                    self.set_optimal_scan_center()
+                    self.start_center_for_jitter()
+                else:
+                    self.logger.info("Correlations are too low, start sweeping")
+                    self.set_state("SWEEP")
+                return
+            else:
+                self.logger.info("Scan completed successfully.")
+                self.state = "IDLE"
+                self.interface.set_value('big_offset', self.initial_center)
+                return
 
         # 2. Get the target voltage for this step
         target_v = self.scan_voltages[self.scan_index]
@@ -211,6 +236,12 @@ class LaserManager(QObject):
 
         waiting_time = ((2.0**self.interface.writeable_params["sweep_speed"].get_remote_value())/(3.8e3))
         sleep(waiting_time)
+
+        if self.scan_index == 0:
+            # Sometimes the last sweep remains in the buffer
+            current_sweep = self.interface.get_sweep()
+            sleep(0.5)
+            current_sweep = self.interface.get_sweep()
         
         current_sweep = self.interface.get_sweep()
         
@@ -232,7 +263,7 @@ class LaserManager(QObject):
             self.amplitudes[self.scan_index] = amplitude
             self.len_matches[self.scan_index] = len_window
             self.offsets[self.scan_index] = offset
-            self.logger.debug(f"Correlation at {target_v}V: {r_coeff}, Length of match: {len_window}, offset with respect to the reference signal: {offset}")
+            self.logger.info(f"Correlation at {target_v}V: {r_coeff}, Length of match: {len_window}, offset with respect to the reference signal: {offset}")
             packet.update({
                 "correlations": self.correlations
             })
@@ -254,7 +285,7 @@ class LaserManager(QObject):
         self.logger.info(f"Initiating demod phase optimization...")
         
         self.phase_scan_index = 0
-        self.scan_phases = np.linspace(0, 180, 90)
+        self.scan_phases = np.linspace(0, 180, 30)
         self.phase_scan_results = [] # Buffer to store accumulated results
         #self.scan_phases = []
         self.phase_right_extreme = 180
@@ -273,7 +304,8 @@ class LaserManager(QObject):
 
         # 0. If it is the first scan, save the initial phase value, in order to return to that one if the optimization does not work
         if self.phase_scan_index == 0:
-            self.initial_phase = self.interface.writeable_params['demodulation_phase_a'].value
+            current_params = self.get_current_parameter_values()
+            self.initial_phase = current_params.get('phase', 0.0)
             #calculate the initial ratios for 0 and 180
             # for target_phase in [0, 180]:
             #     self.scan_phases.append(target_phase)
@@ -309,17 +341,21 @@ class LaserManager(QObject):
         if self.phase_scan_index >= len(self.scan_phases):
             self.logger.info("Phase scan completed successfully.")
             self.state = "IDLE"
-            self.interface.set_value('demodulation_phase_a', self.initial_phase)
+            self.set_parameter_value('phase', self.initial_phase)
             return
 
         # 2. Get the target voltage for this step
         target_phase = self.scan_phases[self.phase_scan_index]
         
         # 3. Hardware Interaction (Blocking only for this small step)
-        self.interface.set_value('demodulation_phase_a', target_phase)
+        self.set_parameter_value('phase', target_phase)
 
         waiting_time = ((2.0**self.interface.writeable_params["sweep_speed"].get_remote_value())/(3.8e3))
         sleep(waiting_time)
+
+        if self.phase_scan_index == 0:
+            # Sometimes the last sweep remains in the buffer
+            current_sweep = self.interface.get_sweep()
         
         current_sweep = self.interface.get_sweep()
         
@@ -359,6 +395,245 @@ class LaserManager(QObject):
 
         return ratio
 
+    @Slot(float, float, dict)
+    def start_autolock(self, start_voltage=0.05, stop_voltage=1.75, reference_signal=None):
+        self.logger.info("Starting autolock, scan for the line...")
+
+        self.locking_mode = "AUTOMATIC"
+
+        #init of the variables
+        self.V_lock_start = reference_signal['V_lock_start']
+        self.V_lock_end = reference_signal['V_lock_end']
+        self.reference_line_width = reference_signal['x'][-1] - reference_signal['x'][0]
+        self.index_sweep_center_try = 0
+        self.correlations = []
+        self.shifts = []
+        self.times = []
+        self.amplitudes = []
+        self.line_outside_arr = []
+        self.line_outside = True 
+        self.frequence_stable = False
+        self.cnt = 0
+        self.lock_trials = 1
+
+        self.initialize_unlock_events()
+
+        #call of a scan with the autolock option
+        self.start_scan(start_voltage=start_voltage, stop_voltage=stop_voltage, reference_signal=reference_signal, calculate_correlation=True, autolock=True)
+
+    def check_minimum_correlation(self):
+        if max(self.correlations) < self.correlation_minimum:
+            return False
+        else:
+            return True
+
+    def set_optimal_scan_center(self):
+        self.logger.info("Setting the optimal scan center...")
+        best_idx = np.argmax(self.correlations)
+        self.optimal_scan_center = self.scan_voltages[best_idx]
+        self.set_parameter_value('big_offset', self.optimal_scan_center)
+
+        # Set vertical offset to align zero-crossing with the reference line
+        vertical_offset = -self.offsets[best_idx] + self.interface.writeable_params['offset_a'].value
+        self.set_parameter_value('offset_a', vertical_offset)
+        self.logger.info(f"Set vertical offset (offset_a) to {vertical_offset}")
+
+        sleep(1)
+        return
+
+    def start_center_for_jitter(self):
+        self.logger.info("Starting the jitter check loop...")
+
+        # Init variables from advanced settings
+        self.jitter_threshold = self.advanced_settings['autocenter_settings']['jitter_threshold']['value']
+        self.threshold_count = self.advanced_settings['autocenter_settings']['threshold_count']['value']
+        self.offset_big_jump = self.advanced_settings['autocenter_settings']['offset_big_jump']['value']
+        self.offset_small_jump = self.advanced_settings['autocenter_settings']['offset_small_jump']['value']
+        self.offset_try_list = self.advanced_settings['autocenter_settings']['offset_try_list']['value']
+        self.correlation_minimum = self.advanced_settings['autocenter_settings']['correlation_minimum']['value']
+        self.length_match_minimum = self.advanced_settings['autocenter_settings']['length_match_minimum']['value']
+        self.proportion_free_space_left = self.advanced_settings['autocenter_settings']['proportion_free_space_left']['value']
+
+        # Init loop variables
+        self.jitter_time_0 = time.time()
+        self.jitter_time_last_retry = 0
+        self.jitter_offset = self.interface.writeable_params['big_offset'].value
+        self.jitter_offset_0 = self.jitter_offset
+        self.jitter_offset_try = np.array(self.offset_try_list) * self.offset_big_jump
+        self.jitter_ind_off_try = 0
+
+        # Reset accumulated lists (already initialised in start_autolock, but reset here for safety)
+        self.correlations = []
+        self.shifts = []
+        self.times = []
+        self.amplitudes = []
+        self.line_outside_arr = []
+        self.line_outside = True
+        self.frequence_stable = False
+        self.cnt = 0
+
+        self.state = "JITTER_CHECK"
+
+    def handle_center_for_jitter_step(self):
+        """
+        Performs ONE iteration of the jitter/centering feedback loop.
+        Adapted from the notebook's center_and_lock_v1 while loop.
+        """
+        # 1. Acquire signal and compute correlation and shift
+        sweep_signal = self.interface.get_sweep()
+        if sweep_signal is None:
+            return
+
+        shift = SignalAnalysis.find_shift(
+            {'x': sweep_signal['x'], 'y': sweep_signal['error_signal']},
+            self.reference_signal
+        )
+        corr, len_match, vertical_offset, amplitude = SignalAnalysis.find_correlation(
+            {'x': sweep_signal['x'], 'y': sweep_signal['error_signal']},
+            self.reference_signal
+        )
+
+        current_time = time.time() - self.jitter_time_0
+        self.times.append(current_time)
+        self.shifts.append(shift)
+        self.correlations.append(corr)
+        self.amplitudes.append(amplitude)
+
+        linewidth = self.reference_line_width
+
+        # 2. Detect if line is inside or outside
+        line_now_outside = (corr < self.correlation_minimum) or (len_match < self.length_match_minimum * linewidth)
+        self.line_outside_arr.append(line_now_outside)
+
+        if line_now_outside and not self.line_outside:
+            self.logger.info("Line has escaped")
+        elif not line_now_outside and self.line_outside:
+            self.logger.info("Line is now inside")
+
+        self.line_outside = line_now_outside
+        self.cnt = self.cnt + 1 if not self.line_outside else 0
+
+        # Prepare packet data for GUI
+        avg_shift = None
+        std_shift = None
+
+        # 3. If recent history suggests line is unstable, try different offset
+        recent_history = np.array(self.line_outside_arr[-self.threshold_count-1:])
+        if len(recent_history) >= self.threshold_count+1 and np.sum(recent_history) > 3 and (current_time - self.jitter_time_last_retry > 10):
+            self.jitter_ind_off_try += 1
+            if self.jitter_ind_off_try >= len(self.jitter_offset_try):
+                self.logger.info(f"Could not find good offset starting from {self.jitter_offset_0}. Giving up.")
+                self.state = "SWEEP"
+                self._emit_jitter_packet(sweep_signal, shift, corr, len_match, avg_shift, std_shift)
+                self.sig_autolock_completed.emit()
+                return
+            self.jitter_offset = self.jitter_offset_0 + self.jitter_offset_try[self.jitter_ind_off_try]
+            self.jitter_time_last_retry = current_time
+            self.logger.info(f"Trying new offset = {self.jitter_offset}")
+            self.interface.set_value('big_offset', self.jitter_offset)
+            self._emit_jitter_packet(sweep_signal, shift, corr, len_match, avg_shift, std_shift)
+            return
+
+        # 4. When enough points collected, check stability and try to center
+        if self.cnt > self.threshold_count:
+            recent_shifts = self.shifts[-(self.threshold_count - 1):]
+            avg_shift = float(np.mean(recent_shifts))
+            std_shift = float(np.std(recent_shifts))
+            self.frequence_stable = std_shift < self.jitter_threshold
+
+            if self.frequence_stable:
+                self.logger.info("Frequency stable enough")
+                # Reference line position in sweep coordinates
+                ref_left = self.reference_signal['x'][0] + shift
+                ref_right = self.reference_signal['x'][-1] + shift
+                space_left = ref_left - sweep_signal['x'][0]
+                space_right = sweep_signal['x'][-1] - ref_right
+                len_sweep_signal = sweep_signal['x'][-1] - sweep_signal['x'][0]
+                free_space = len_sweep_signal - linewidth
+                edge_space_thr = free_space / 3
+
+                self.logger.info(f"Shift: {shift}, space left: {space_left}, space right: {space_right}, free space: {free_space}, edge space threshold: {edge_space_thr}")
+
+                if space_left > edge_space_thr and space_right > edge_space_thr:
+                    # Line is centered and stable
+                    self.logger.info(f"Line is centered at offset {self.jitter_offset}. Jitter check complete.")
+                    self._emit_jitter_packet(sweep_signal, shift, corr, len_match, avg_shift, std_shift)
+                    #prepare the data for the locking
+                    sweep_signal_raw = sweep_signal['error_signal'] * 2 * Vpp #the algorithm requires integer (ADC) values
+                    #find the indices of the lock region
+                    lock_start = self.V_lock_start + shift
+                    lock_end = self.V_lock_end + shift
+                    lock_start_ind = np.argmin(np.abs(sweep_signal['x'] - lock_start))
+                    lock_end_ind = np.argmin(np.abs(sweep_signal['x'] - lock_end))
+                    expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_signal['error_signal'], sweep_signal['monitor_signal'], lock_start_ind, lock_end_ind)
+                    self.expected_lock_monitor_signal_point = expected_lock_monitor_signal_point
+                    self.interface.client.connection.root.start_autolock(lock_start_ind,lock_end_ind,pickle.dumps(sweep_signal_raw))
+                    self.logger.info(f"Starting autolock from {lock_start_ind} to {lock_end_ind}")
+                    try:
+                        self.interface.wait_for_lock_status(True)
+                        self.logger.info("Locking the laser worked! \\o/")
+                        self.lock_trials = 0
+
+                        # Initialize history buffers from advanced settings
+                        gui_vis = self.advanced_settings.get("gui_visualization", {})
+                        hist_cfg = gui_vis.get("history_length", {})
+                        fast_s = hist_cfg.get("fast", 600)
+                        slow_s = hist_cfg.get("slow", 3600)
+                        self.interface.init_history_buffers(fast_s, slow_s)
+
+                        self.state = "LOCKED"
+                        self.sig_autolock_completed.emit()
+                        return
+                    except Exception:
+                        self.logger.warning(f"Attempt number {self.lock_trials} of laser locking failed :(")
+                        self.lock_trials += 1
+                        if self.lock_trials > self.max_lock_trials:
+                            self.logger.info("Maximum number of lock trials reached, start sweeping")
+                            self.set_state("SWEEP")
+                            self.sig_autolock_completed.emit()
+                            return
+                        else:
+                            self.logger.info("Trying again the jitter check...")
+                            self.start_center_for_jitter()
+                            return
+                elif space_left < edge_space_thr:
+                    self.logger.info("Too far left: increase offset to decrease frequency")
+                    self.jitter_offset -= self.offset_small_jump
+                else:
+                    self.logger.info("Too far right: decrease offset to increase frequency")
+                    self.jitter_offset += self.offset_small_jump
+
+                self.interface.set_value('big_offset', self.jitter_offset)
+                self.cnt = 0
+                self.line_outside = True
+                self.frequence_stable = False
+            else:
+                self.logger.info("Frequency not stable enough")
+
+        # 5. Emit packet for GUI update
+        self._emit_jitter_packet(sweep_signal, shift, corr, len_match, avg_shift, std_shift)
+
+    def _emit_jitter_packet(self, sweep_signal, shift, corr, len_match, avg_shift, std_shift):
+        """Build and emit a JITTER_CHECK data packet for the GUI."""
+        packet = {
+            "mode": "JITTER_CHECK",
+            "sweep_signal": sweep_signal,
+            "reference_signal": self.reference_signal,
+            "shift": shift,
+            "correlation": corr,
+            "len_match": len_match,
+            "linewidth": self.reference_line_width,
+            "offset": self.jitter_offset,
+            "times": list(self.times),
+            "shifts": list(self.shifts),
+            "line_outside": self.line_outside,
+            "jitter_threshold": self.jitter_threshold,
+            "avg_shift": avg_shift,
+            "std_shift": std_shift,
+        }
+        self.sig_data_ready.emit(packet)
+        
+
     @Slot(float)
     def get_sweep_from_scan(self, v_center):
         """
@@ -380,16 +655,22 @@ class LaserManager(QObject):
 
     @Slot()
     def stop_scan(self):
-        if self.state == "SCAN":
+        if self.state == "SWEEP":
+            pass
+        elif self.state == "SCAN" or self.state == "JITTER_CHECK":
             if self.initial_center is not None:
                 self.interface.set_value('big_offset', self.initial_center)
-            self.state = "IDLE"
+            self.state = "SWEEP"
             self.logger.info("Scan aborted by user.")
-        if self.state == "DEMOD_PHASE_OPTIMIZATION":
+        elif self.state == "DEMOD_PHASE_OPTIMIZATION":
             if self.initial_phase is not None:
-                self.interface.set_value('demodulation_phase_a', self.initial_phase)
+                self.set_parameter_value('phase', self.initial_phase)
             self.state = "IDLE"
             self.logger.info("Demod phase optimization aborted by user.")
+        elif self.state == "LOCKED":
+            pass
+        else:
+            self.logger.warning("Stop scan called in invalid state: " + self.state)
 
     @Slot()
     def start_sweep(self):
@@ -486,10 +767,26 @@ class LaserManager(QObject):
             show_fast_deriv = gui_vis.get("fast_control_signal_derivative", {}).get("enabled", False)
             show_slow_deriv = gui_vis.get("slow_control_signal_derivative", {}).get("enabled", False)
 
+            if self.advanced_settings.get("unlock_detection", {}).get("events", {}).get("detect_unlock", {}).get("enabled", False):
+                #self.logger.info("Looking for unlock event...")
+                self.detect_unlock_event()
+                if self.stop_locking:
+                    if self._unlock_countdown is None:
+                        # First detection: start countdown and request screenshot
+                        self._unlock_countdown = self._unlock_delay_ticks
+                        self.logger.info(f"Unlock event detected — waiting {self._unlock_delay_ticks} ticks before acting.")
+                        self.sig_save_screenshot.emit(history)
+                    elif self._unlock_countdown > 0:
+                        self._unlock_countdown -= 1
+                    else:
+                        # Countdown finished
+                        self.unlock_or_relock()
+
             packet = {
                 "mode": self.state,
                 "show_fast_deriv": show_fast_deriv,
                 "show_slow_deriv": show_slow_deriv,
+                "expected_lock_monitor_signal_point": self.expected_lock_monitor_signal_point,
                 **history
             }
             self.sig_data_ready.emit(packet)
@@ -504,6 +801,8 @@ class LaserManager(QObject):
     @Slot(int, int, dict)
     def start_manual_locking(self, x0, x1, sweep_data):
         self.logger.info("Starting manual locking...")
+        self.locking_mode = "MANUAL"
+        self.initialize_unlock_events()
         self.interface.wait_for_lock_status(False)
 
         expected_lock_monitor_signal_point = self.find_monitor_signal_peak(sweep_data['error_signal'], sweep_data['monitor_signal'], x0, x1)
@@ -532,11 +831,109 @@ class LaserManager(QObject):
         error_signal_selected_region = error_signal[x0:x1]
         monitor_signal_selected_region = monitor_signal[x0:x1]
 
-        maximum_error_index = np.argmax(error_signal_selected_region)
-        minimum_error_index = np.argmin(error_signal_selected_region)
+        zero_crossing_index = np.where(np.diff(np.sign(error_signal_selected_region)))[0]
 
-        if minimum_error_index < maximum_error_index:
-            #slope is positive so I have to look for a minimum in the monitor signal
-            return [x0 + np.argmin(monitor_signal_selected_region), monitor_signal_selected_region[np.argmin(monitor_signal_selected_region)]]
+        if len(zero_crossing_index) == 0:
+            self.logger.warning("No zero crossing found in the selected region to find the expected monitor signal.")
+            return None
         else:
-            return [x0 + np.argmax(monitor_signal_selected_region), monitor_signal_selected_region[np.argmax(monitor_signal_selected_region)]]
+            return [x0 + zero_crossing_index[0], monitor_signal_selected_region[zero_crossing_index[0]]]
+
+    def initialize_unlock_events(self):
+        self.unlock_events = {
+            "fast_control_fluctuations": False,
+            "fast_control_fluctuations_time": [],
+            "fast_control_saturation": False,
+            "fast_control_saturation_time": [],
+            "slow_control_fluctuations": False,
+            "slow_control_fluctuations_time": [],
+            "slow_control_saturation": False,
+            "slow_control_saturation_time": []
+        }
+        self.stop_locking = False
+        self._unlock_countdown = None
+
+    def detect_unlock_event(self):
+        """
+        Detect unlock events looking at the monitor and control signals histories
+        that are contained in the interface while the system is locked.
+        """
+        
+        if self.advanced_settings['unlock_detection']['events']['detect_unlock']['enabled']:
+            #if the user wants the app to automatically detects an unlock event
+
+            #Fast control unlock detection
+            if self.advanced_settings['unlock_detection']['fast_control']['fluctuations']['enabled']:
+                #if the unlock detection via fast control fluctuations is enabled
+                self.check_for_fast_control_fluctuations(self.interface.history['d_fast_control_values'], self.advanced_settings['unlock_detection']['fast_control']['fluctuations']['threshold'])
+            if self.advanced_settings['unlock_detection']['fast_control']['saturation']['enabled']:
+                #if the unlock detection via fast control saturation is enabled
+                self.check_for_saturation(self.interface.history['fast_control_values'])
+            
+            #Slow control unlock detection
+            if self.advanced_settings['unlock_detection']['slow_control']['fluctuations']['enabled']:
+                #if the unlock detection via slow control fluctuations is enabled
+                self.check_for_slow_control_fluctuations(self.interface.history['d_slow_control_values'], self.advanced_settings['unlock_detection']['slow_control']['fluctuations']['threshold'])
+            if self.advanced_settings['unlock_detection']['slow_control']['saturation']['enabled']:
+                #if the unlock detection via slow control saturation is enabled
+                self.check_for_saturation(self.interface.history['slow_control_values'])
+
+            #MANCA IL DRIFT DEL SEGNALE DI MONITOR
+
+            #SE ALMENO UNO È TRUE, ALLORA STOP
+            if self.unlock_events['fast_control_fluctuations'] or self.unlock_events['fast_control_saturation'] or self.unlock_events['slow_control_fluctuations'] or self.unlock_events['slow_control_saturation']:
+                self.logger.warning("Unlock event detected")
+                self.stop_locking = True
+
+        return
+
+    def check_for_fast_control_fluctuations(self, d_fast_control_values, threshold):
+        """
+        Check for fast control fluctuations.
+        """
+        detected_peaks, _ = find_peaks(np.abs(d_fast_control_values), height=threshold)
+        detected_peaks = [i for i in detected_peaks if  i > int(len(d_fast_control_values)/2)] #only consider recent peaks
+
+        if len(detected_peaks) > 0:
+            fast_fluctuation_times = [self.interface.history['fast_control_times_unix'][i] for i in detected_peaks]
+            dt = datetime.fromtimestamp(self.interface.history['fast_control_times_unix'][detected_peaks[0]])
+            self.logger.warning(f"Fast variation of the fast control signal detected at time: {dt.strftime('%Y-%m-%d %H:%M:%S')}")
+            #self.lock_unlock_logger.info(f"Fast variation of the fast control signal detected at time: {dt.strftime('%Y-%m-%d %H:%M:%S')}")
+            self.unlock_events['fast_control_fluctuations'] = True
+            self.unlock_events['fast_control_fluctuations_time'] = fast_fluctuation_times
+        
+        return
+
+    def check_for_slow_control_fluctuations(self, d_slow_control_values, threshold):
+        """
+        Check for slow control fluctuations.
+        """
+        detected_peaks, _ = find_peaks(np.abs(d_slow_control_values), height=threshold)
+        detected_peaks = [i for i in detected_peaks if  i > int(len(d_slow_control_values)/2)] #only consider recent peaks
+
+        if len(detected_peaks) > 0:
+            slow_fluctuation_times = [self.interface.history['slow_control_times_unix'][i] for i in detected_peaks]
+            dt = datetime.fromtimestamp(self.interface.history['slow_control_times_unix'][detected_peaks[0]])
+            self.logger.warning(f"Slow variation of the slow control signal detected at time: {dt.strftime('%Y-%m-%d %H:%M:%S')}")
+            #self.lock_unlock_logger.info(f"Slow variation of the slow control signal detected at time: {dt.strftime('%Y-%m-%d %H:%M:%S')}")
+            self.unlock_events['slow_control_fluctuations'] = True
+            self.unlock_events['slow_control_fluctuations_time'] = slow_fluctuation_times
+
+        return
+
+    def unlock_or_relock(self):
+        """
+        Depending on the user's choice, unlock or relock the laser after an unlock event.
+        """
+
+        if self.locking_mode == "MANUAL" or (self.locking_mode == "AUTOMATIC" and self.advanced_settings['unlock_detection']['events']['automatic_relock']['enabled'] == False):
+            self.logger.warning("Unlock event detected, unlocking the laser...")
+            self.set_state("SWEEP") #simply stops the lock and start sweeping
+        elif self.locking_mode == "AUTOMATIC" and self.advanced_settings['unlock_detection']['events']['automatic_relock']['enabled'] == True:
+            self.logger.warning("Unlock event detected, relocking the laser...")
+            self.set_state("SWEEP") #simply stops the lock and start sweeping
+            sleep(2)
+            self.start_autolock(self.interface.writeable_params['big_offset'].value - 0.06, self.interface.writeable_params['big_offset'].value + 0.06, self.reference_signal)
+        else:
+            self.logger.warning("Unlock event detected but in an unknown state, unlocking the laser...")
+            self.set_state("SWEEP") #simply stops the lock and start sweeping
