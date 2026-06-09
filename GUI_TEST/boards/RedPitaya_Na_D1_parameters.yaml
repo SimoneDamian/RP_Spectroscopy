@@ -52,7 +52,7 @@ writeable_parameters:
     gui_name: Offset CH1
     description: The vertical offset for CH1 in volts.
     type: float
-    initial_value: -0.0301236
+    initial_value: 0.0
     min: -1
     max: 1
     scaling: 8191
@@ -361,7 +361,7 @@ writeable_parameters:
     gui_name: Modulation amplitude
     description: The amplitude of the modulation in Vpp.
     type: float
-    initial_value: 0.3
+    initial_value: 0.4
     min: 0
     max: 2
     scaling: 4095.75  # This is value of Vpp constant
@@ -372,7 +372,7 @@ writeable_parameters:
     gui_name: Modulation frequency
     description: Frequency of the modulation in MHz.
     type: float
-    initial_value: 0.03
+    initial_value: 0.05
     min: 0
     max: 50
     scaling: 33554432 # This is the value of MHz constant
@@ -426,7 +426,7 @@ writeable_parameters:
     gui_name: Demodulation phase
     description: The demodulation phase for channel A in degree.
     type: float
-    initial_value: 223.45
+    initial_value: 270.0
     min: 0
     max: 360
     scaling: 1.0  # degrees
@@ -437,7 +437,7 @@ writeable_parameters:
     gui_name: Filter 1 frequency
     description: The filter frequency in units of Hz.
     type: float
-    initial_value: 1000.0
+    initial_value: 500.0
     min:
     max:
     scaling: 1.0  # Hz
