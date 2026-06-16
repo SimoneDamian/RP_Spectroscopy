@@ -14964,3 +14964,24 @@
 2026-06-16 16:58:03 - HardwareInterface - INFO - Parameters loaded: 43 writeable, 3 readable.
 2026-06-16 16:58:03 - HardwareInterface - INFO - Autolock mode set to ROBUST and determine offset set to False
 2026-06-16 16:58:22 - HardwareInterface - INFO - GPIO bit 0 changed from 2 to 3
+2026-06-16 17:08:13 - HardwareInterface - INFO - Attempting connection via RedPitaya_Na_D1 address (192.168.1.112:18862)
+2026-06-16 17:08:17 - HardwareInterface - INFO - Connected to device RedPitaya_Na_D1
+2026-06-16 17:08:17 - HardwareInterface - INFO - Basic configuration complete. Waiting for parameters from ServiceManager...
+2026-06-16 17:08:17 - HardwareInterface - INFO - HardwareInterface initialized.
+2026-06-16 17:08:17 - HardwareInterface - INFO - Loading parameters from dict...
+2026-06-16 17:08:18 - HardwareInterface - INFO - Parameters loaded: 43 writeable, 3 readable.
+2026-06-16 17:08:18 - HardwareInterface - INFO - Autolock mode set to ROBUST and determine offset set to False
+2026-06-16 17:12:51 - HardwareInterface - INFO - Attempting connection via RedPitaya_Na_D1 address (192.168.1.112:18862)
+2026-06-16 17:12:55 - HardwareInterface - INFO - Connected to device RedPitaya_Na_D1
+2026-06-16 17:12:55 - HardwareInterface - INFO - Basic configuration complete. Waiting for parameters from ServiceManager...
+2026-06-16 17:12:55 - HardwareInterface - INFO - HardwareInterface initialized.
+2026-06-16 17:12:55 - HardwareInterface - INFO - Loading parameters from dict...
+2026-06-16 17:12:56 - HardwareInterface - INFO - Parameters loaded: 43 writeable, 3 readable.
+2026-06-16 17:12:56 - HardwareInterface - INFO - Autolock mode set to ROBUST and determine offset set to False
+2026-06-16 17:13:42 - HardwareInterface - INFO - Attempting connection via RedPitaya_Na_D1 address (192.168.1.112:18862)
+2026-06-16 17:13:46 - HardwareInterface - INFO - Connected to device RedPitaya_Na_D1
+2026-06-16 17:13:46 - HardwareInterface - INFO - Basic configuration complete. Waiting for parameters from ServiceManager...
+2026-06-16 17:13:46 - HardwareInterface - INFO - HardwareInterface initialized.
+2026-06-16 17:13:46 - HardwareInterface - INFO - Loading parameters from dict...
+2026-06-16 17:13:47 - HardwareInterface - INFO - Parameters loaded: 43 writeable, 3 readable.
+2026-06-16 17:13:47 - HardwareInterface - INFO - Autolock mode set to ROBUST and determine offset set to False

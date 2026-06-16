@@ -101,7 +101,7 @@ class LineCenteringPage(QWidget):
         self.plot_corr.showGrid(x=True, y=True)
         self.plot_corr.setMaximumHeight(200)
         self.plot_corr_item = self.plot_corr.getPlotItem()
-        self.plot_corr_item.setLabel('bottom', 'V', units='V')
+        self.plot_corr_item.setLabel('bottom', 'Scan centre', units='V')
         self.plot_corr_item.setLabel('left', 'Correlation')
         self.plot_corr_item.getAxis('bottom').enableAutoSIPrefix(False)
         self.plot_corr_item.getAxis('left').enableAutoSIPrefix(False)
