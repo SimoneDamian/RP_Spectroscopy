@@ -264,6 +264,7 @@ class GeneralManager:
         """
         self.advanced_settings = settings
         self.logger.info("Advanced settings stored in GeneralManager.")
+        self._update_add_ref_line_polarity()
 
     @Slot(dict)
     def on_advanced_setting_changed(self, settings):
@@ -274,6 +275,13 @@ class GeneralManager:
         """
         self.advanced_settings = settings
         self.logger.info("Advanced settings updated from GUI.")
+        self._update_add_ref_line_polarity()
+        
+    def _update_add_ref_line_polarity(self):
+        other = self.advanced_settings.get("Other_settings", {})
+        if "ramp_sign" in other:
+            polarity = str(other["ramp_sign"].get("value", True))
+            self.window.page_laser.page_add_refline.set_polarity(polarity)
 
     @Slot(dict)
     def on_data_ready(self, packet):

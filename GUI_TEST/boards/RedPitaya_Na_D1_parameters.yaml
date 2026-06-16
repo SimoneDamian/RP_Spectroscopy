@@ -546,7 +546,7 @@ writeable_parameters:
     description: Digital output for the P column. 0b01000000 to enable the 
       second pin and disable the others.
     type: int
-    initial_value: 2
+    initial_value: 3
     min:
     max:
     scaling:
@@ -760,7 +760,7 @@ advanced_settings:
     ramp_sign:
       gui_name: Ramp sign
       description: Sign of the slope of the sweep ramp. Either True or False.
-      value: false
+      value: true
 
     demux_switch:
       gui_name: Demultiplexer switch

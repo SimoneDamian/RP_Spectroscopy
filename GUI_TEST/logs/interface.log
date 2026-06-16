@@ -14901,3 +14901,33 @@
 2026-06-16 15:33:50 - HardwareInterface - INFO - GPIO bit 0 changed from 2 to 3
 2026-06-16 15:33:54 - HardwareInterface - INFO - Autolock mode set to ROBUST and determine offset set to False
 2026-06-16 15:33:54 - HardwareInterface - INFO - GPIO bit 0 changed from 3 to 2
+2026-06-16 15:56:49 - HardwareInterface - INFO - Attempting connection via RedPitaya_Na_D1 address (192.168.1.112:18862)
+2026-06-16 15:56:53 - HardwareInterface - INFO - Connected to device RedPitaya_Na_D1
+2026-06-16 15:56:53 - HardwareInterface - INFO - Basic configuration complete. Waiting for parameters from ServiceManager...
+2026-06-16 15:56:53 - HardwareInterface - INFO - HardwareInterface initialized.
+2026-06-16 15:56:53 - HardwareInterface - INFO - Loading parameters from dict...
+2026-06-16 15:56:53 - HardwareInterface - INFO - Parameters loaded: 43 writeable, 3 readable.
+2026-06-16 15:56:54 - HardwareInterface - INFO - Autolock mode set to ROBUST and determine offset set to False
+2026-06-16 16:05:06 - HardwareInterface - INFO - Attempting connection via RedPitaya_Na_D1 address (192.168.1.112:18862)
+2026-06-16 16:05:10 - HardwareInterface - INFO - Connected to device RedPitaya_Na_D1
+2026-06-16 16:05:10 - HardwareInterface - INFO - Basic configuration complete. Waiting for parameters from ServiceManager...
+2026-06-16 16:05:10 - HardwareInterface - INFO - HardwareInterface initialized.
+2026-06-16 16:05:10 - HardwareInterface - INFO - Loading parameters from dict...
+2026-06-16 16:05:11 - HardwareInterface - INFO - Parameters loaded: 43 writeable, 3 readable.
+2026-06-16 16:05:11 - HardwareInterface - INFO - Autolock mode set to ROBUST and determine offset set to False
+2026-06-16 16:06:08 - HardwareInterface - INFO - Attempting connection via RedPitaya_Na_D1 address (192.168.1.112:18862)
+2026-06-16 16:06:12 - HardwareInterface - INFO - Connected to device RedPitaya_Na_D1
+2026-06-16 16:06:12 - HardwareInterface - INFO - Basic configuration complete. Waiting for parameters from ServiceManager...
+2026-06-16 16:06:12 - HardwareInterface - INFO - HardwareInterface initialized.
+2026-06-16 16:06:12 - HardwareInterface - INFO - Loading parameters from dict...
+2026-06-16 16:06:13 - HardwareInterface - INFO - Parameters loaded: 43 writeable, 3 readable.
+2026-06-16 16:06:13 - HardwareInterface - INFO - Autolock mode set to ROBUST and determine offset set to False
+2026-06-16 16:18:11 - HardwareInterface - INFO - Attempting connection via RedPitaya_Na_D1 address (192.168.1.112:18862)
+2026-06-16 16:18:15 - HardwareInterface - INFO - Connected to device RedPitaya_Na_D1
+2026-06-16 16:18:15 - HardwareInterface - INFO - Basic configuration complete. Waiting for parameters from ServiceManager...
+2026-06-16 16:18:15 - HardwareInterface - INFO - HardwareInterface initialized.
+2026-06-16 16:18:15 - HardwareInterface - INFO - Loading parameters from dict...
+2026-06-16 16:18:16 - HardwareInterface - INFO - Parameters loaded: 43 writeable, 3 readable.
+2026-06-16 16:18:16 - HardwareInterface - INFO - Autolock mode set to ROBUST and determine offset set to False
+2026-06-16 16:18:44 - HardwareInterface - INFO - Autolock mode set to ROBUST and determine offset set to False
+2026-06-16 16:18:44 - HardwareInterface - INFO - GPIO bit 0 changed from 2 to 3
