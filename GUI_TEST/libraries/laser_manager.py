@@ -21,6 +21,8 @@ class LaserManager(QObject):
     sig_trace_ready = Signal(dict)
     sig_autolock_completed = Signal()
     sig_save_screenshot = Signal(dict)
+    sig_advanced_settings_updated = Signal(dict)
+    sig_parameter_updated_internally = Signal(str, object)
 
     def __init__(self, config, board):
         super().__init__()
@@ -710,6 +712,12 @@ class LaserManager(QObject):
             try:
                 self.interface.set_advanced_settings(settings_dict)
                 self.logger.info("Advanced settings loaded into Interface.")
+                
+                # Also emit signal to update the parameter page for gpio_p_out
+                if hasattr(self.interface, "writeable_params") and "gpio_p_out" in self.interface.writeable_params:
+                    gpio_val = self.interface.writeable_params["gpio_p_out"].value
+                    self.sig_parameter_updated_internally.emit("gpio_p_out", gpio_val)
+                    
             except Exception as e:
                 self.logger.error(f"Failed to load advanced settings into Interface: {e}")
         else:
@@ -724,8 +732,49 @@ class LaserManager(QObject):
             try:
                 self.interface.set_value(param_name, value)
                 self.logger.info(f"Set parameter {param_name} to {value}")
+                
+                # Sync GPIO bits to advanced settings
+                if param_name == "gpio_p_out":
+                    val = int(value)
+                    other_settings = self.advanced_settings.setdefault("Other_settings", {})
+                    
+                    ramp_state = bool(val & (1 << 0))
+                    demux_state = bool(val & (1 << 1))
+                    
+                    updated = False
+                    if "ramp_sign" in other_settings and other_settings["ramp_sign"].get("value") != ramp_state:
+                        other_settings["ramp_sign"]["value"] = ramp_state
+                        updated = True
+                    if "demux_switch" in other_settings and other_settings["demux_switch"].get("value") != demux_state:
+                        other_settings["demux_switch"]["value"] = demux_state
+                        updated = True
+                        
+                    if updated:
+                        self.sig_advanced_settings_updated.emit(self.advanced_settings)
+                        
             except Exception as e:
                 self.logger.error(f"Failed to set parameter {param_name}: {e}")
+
+    @Slot(int, bool)
+    def set_gpio_bit(self, bit, state):
+        """
+        Programmatically set a GPIO bit, update hardware, and update advanced settings GUI.
+        """
+        # 1. Update hardware
+        if self.interface:
+            self.interface.set_gpio_bit(bit, state)
+            
+        # 2. Update local advanced_settings dict
+        other_settings = self.advanced_settings.get("Other_settings", {})
+        if bit == 0:
+            if "ramp_sign" in other_settings:
+                other_settings["ramp_sign"]["value"] = state
+        elif bit == 1:
+            if "demux_switch" in other_settings:
+                other_settings["demux_switch"]["value"] = state
+                
+        # 3. Emit updated settings so GUI updates
+        self.sig_advanced_settings_updated.emit(self.advanced_settings)
 
     def get_current_parameter_values(self):
         """

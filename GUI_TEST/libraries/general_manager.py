@@ -120,6 +120,11 @@ class GeneralManager:
         self.window.page_laser.page_parameters.sig_parameter_changed.connect(
             self.laser.set_parameter_value
         )
+        
+        # Connection for internal parameter updates -> GUI
+        self.laser.sig_parameter_updated_internally.connect(
+            self.window.page_laser.page_parameters.update_parameter
+        )
 
         # Connection for live data plotting
         self.laser.sig_data_ready.connect(self.window.page_laser.handle_data)
@@ -201,6 +206,14 @@ class GeneralManager:
             self.laser.load_advanced_settings
         )
         
+        # Connection for programmatic GPIO edits -> GUI updates
+        self.laser.sig_advanced_settings_updated.connect(
+            self.window.page_laser.page_advanced.load_advanced_settings
+        )
+        self.laser.sig_advanced_settings_updated.connect(
+            self.on_advanced_settings_loaded
+        )
+        
         # Connection for Default Advanced Settings Button
         self._safe_disconnect(self.window.page_laser.page_advanced.sig_restore_defaults)
         self.window.page_laser.page_advanced.sig_restore_defaults.connect(
@@ -214,10 +227,10 @@ class GeneralManager:
         self.window.page_laser.set_connecting_state()
         self.window.go_to_laser_controller()
 
-        # Trigger loading advanced settings and parameters from YAML (via ServiceManager)
+        # Trigger loading parameters and then advanced settings from YAML (via ServiceManager)
         self.current_board = board
-        self.services.load_advanced_settings(board)
         self.services.load_parameters(board)
+        self.services.load_advanced_settings(board)
 
         # Inject ServiceManager into laser controller's ReferenceLinesPage
         self.window.page_laser.page_reflines.set_service_manager(self.services)

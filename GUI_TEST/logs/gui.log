@@ -14508,3 +14508,679 @@
 2026-06-16 10:56:22 - GUI - INFO - Parameter changed: Sweep channel = 1
 2026-06-16 10:56:22 - GUI - INFO - Parameter changed: Sweep speed = 10
 2026-06-16 10:56:22 - GUI - INFO - Parameter changed: Target slope rising = True
+2026-06-16 11:48:29 - GUI - INFO - GUI MainWindow initialized.
+2026-06-16 11:48:29 - GUI - INFO - InitialPage initialized.
+2026-06-16 11:48:29 - GUI - INFO - ConnectionPage initialized.
+2026-06-16 11:48:29 - GUI - INFO - AddBoardPage initialized.
+2026-06-16 11:48:29 - GUI - INFO - ReferenceLinesPage initialized.
+2026-06-16 11:48:29 - GUI - INFO - ReferenceLinesPage initialized.
+2026-06-16 11:48:30 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 11:48:30 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 11:48:30 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 11:48:31 - GUI - INFO - Connection button clicked. Starting transition...
+2026-06-16 11:48:32 - GUI - INFO - Transition complete. Requesting Connection Page.
+2026-06-16 11:48:34 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 11:48:34 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 11:48:34 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 11:48:34 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 11:48:34 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 11:48:34 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 11:48:34 - GUI - INFO - Parameter changed: Big offset = 1.00091
+2026-06-16 11:48:34 - GUI - INFO - Parameter changed: Channel Mixing = -128
+2026-06-16 11:48:34 - GUI - INFO - Parameter changed: Control channel = 1
+2026-06-16 11:48:34 - GUI - INFO - Parameter changed: Control history length = 60
+2026-06-16 11:48:34 - GUI - INFO - Parameter changed: Demodulation Multiplier CH1 = 1
+2026-06-16 11:48:34 - GUI - INFO - Parameter changed: Demodulation Multiplier CH2 = 0
+2026-06-16 11:48:34 - GUI - INFO - Parameter changed: Dual Channel = False
+2026-06-16 11:48:34 - GUI - INFO - Parameter changed: Filter 1 enabled on CH1 = True
+2026-06-16 11:48:34 - GUI - INFO - Parameter changed: Filter 1 enabled on CH2 = False
+2026-06-16 11:48:34 - GUI - INFO - Parameter changed: Filter 1 frequency = 500.0
+2026-06-16 11:48:34 - GUI - INFO - Parameter changed: Filter 1 type on CH1 = 0
+2026-06-16 11:48:34 - GUI - INFO - Parameter changed: Filter 1 type on CH2 = 0
+2026-06-16 11:48:34 - GUI - INFO - Parameter changed: Filter 2 enabled on CH1 = False
+2026-06-16 11:48:34 - GUI - INFO - Parameter changed: Filter 2 enabled on CH2 = True
+2026-06-16 11:48:34 - GUI - INFO - Parameter changed: Filter 2 frequency = 0.0
+2026-06-16 11:48:34 - GUI - INFO - Parameter changed: Filter 2 type on CH1 = 0
+2026-06-16 11:48:34 - GUI - INFO - Parameter changed: Filter 2 type on CH2 = 0
+2026-06-16 11:48:34 - GUI - INFO - Parameter changed: Automatic Filter CH1 = False
+2026-06-16 11:48:34 - GUI - INFO - Parameter changed: Automatic Filter CH2 = False
+2026-06-16 11:48:34 - GUI - INFO - Parameter changed: Invert CH1 = False
+2026-06-16 11:48:34 - GUI - INFO - Parameter changed: Invert CH2 = False
+2026-06-16 11:48:34 - GUI - INFO - Parameter changed: Modulation amplitude = 0.4
+2026-06-16 11:48:34 - GUI - INFO - Parameter changed: Modulation channel = 0
+2026-06-16 11:48:34 - GUI - INFO - Parameter changed: Modulation frequency = 0.05
+2026-06-16 11:48:34 - GUI - INFO - Parameter changed: Offset CH1 = 0.0
+2026-06-16 11:48:34 - GUI - INFO - Parameter changed: Offset CH2 = 0.0
+2026-06-16 11:48:34 - GUI - INFO - Parameter changed: Demodulation phase = 270.0
+2026-06-16 11:48:34 - GUI - INFO - Parameter changed: PID D = 1
+2026-06-16 11:48:34 - GUI - INFO - Parameter changed: PID I = 100
+2026-06-16 11:48:34 - GUI - INFO - Parameter changed: PID on slow enabled = True
+2026-06-16 11:48:34 - GUI - INFO - Parameter changed: PID P = 2000
+2026-06-16 11:48:34 - GUI - INFO - Parameter changed: PID slow strength = 3
+2026-06-16 11:48:34 - GUI - INFO - Parameter changed: Polarity analog out 0 = 0
+2026-06-16 11:48:34 - GUI - INFO - Parameter changed: Polarity fast out 1 = 0
+2026-06-16 11:48:34 - GUI - INFO - Parameter changed: Polarity fast out 2 = 0
+2026-06-16 11:48:34 - GUI - INFO - Parameter changed: Slow control channel = 2
+2026-06-16 11:48:34 - GUI - INFO - Parameter changed: Small offset = 0.0
+2026-06-16 11:48:34 - GUI - INFO - Parameter changed: Sweep amplitude = 1.0
+2026-06-16 11:48:34 - GUI - INFO - Parameter changed: Sweep center = 0.0
+2026-06-16 11:48:34 - GUI - INFO - Parameter changed: Sweep channel = 1
+2026-06-16 11:48:34 - GUI - INFO - Parameter changed: Sweep speed = 10
+2026-06-16 11:48:34 - GUI - INFO - Parameter changed: Target slope rising = True
+2026-06-16 13:52:20 - GUI - INFO - GUI MainWindow initialized.
+2026-06-16 13:52:20 - GUI - INFO - InitialPage initialized.
+2026-06-16 13:52:20 - GUI - INFO - ConnectionPage initialized.
+2026-06-16 13:52:20 - GUI - INFO - AddBoardPage initialized.
+2026-06-16 13:52:21 - GUI - INFO - ReferenceLinesPage initialized.
+2026-06-16 13:52:21 - GUI - INFO - ReferenceLinesPage initialized.
+2026-06-16 13:52:21 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 13:52:21 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 13:52:21 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 13:52:23 - GUI - INFO - Connection button clicked. Starting transition...
+2026-06-16 13:52:23 - GUI - INFO - Transition complete. Requesting Connection Page.
+2026-06-16 13:52:25 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 13:52:25 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 13:52:25 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 13:52:25 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 13:52:25 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 13:52:25 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 13:52:25 - GUI - INFO - Parameter changed: Big offset = 1.00091
+2026-06-16 13:52:25 - GUI - INFO - Parameter changed: Channel Mixing = -128
+2026-06-16 13:52:25 - GUI - INFO - Parameter changed: Control channel = 1
+2026-06-16 13:52:25 - GUI - INFO - Parameter changed: Control history length = 60
+2026-06-16 13:52:25 - GUI - INFO - Parameter changed: Demodulation Multiplier CH1 = 1
+2026-06-16 13:52:25 - GUI - INFO - Parameter changed: Demodulation Multiplier CH2 = 0
+2026-06-16 13:52:25 - GUI - INFO - Parameter changed: Dual Channel = False
+2026-06-16 13:52:25 - GUI - INFO - Parameter changed: Filter 1 enabled on CH1 = True
+2026-06-16 13:52:25 - GUI - INFO - Parameter changed: Filter 1 enabled on CH2 = False
+2026-06-16 13:52:25 - GUI - INFO - Parameter changed: Filter 1 frequency = 500.0
+2026-06-16 13:52:25 - GUI - INFO - Parameter changed: Filter 1 type on CH1 = 0
+2026-06-16 13:52:25 - GUI - INFO - Parameter changed: Filter 1 type on CH2 = 0
+2026-06-16 13:52:25 - GUI - INFO - Parameter changed: Filter 2 enabled on CH1 = False
+2026-06-16 13:52:25 - GUI - INFO - Parameter changed: Filter 2 enabled on CH2 = True
+2026-06-16 13:52:25 - GUI - INFO - Parameter changed: Filter 2 frequency = 0.0
+2026-06-16 13:52:25 - GUI - INFO - Parameter changed: Filter 2 type on CH1 = 0
+2026-06-16 13:52:25 - GUI - INFO - Parameter changed: Filter 2 type on CH2 = 0
+2026-06-16 13:52:25 - GUI - INFO - Parameter changed: Automatic Filter CH1 = False
+2026-06-16 13:52:25 - GUI - INFO - Parameter changed: Automatic Filter CH2 = False
+2026-06-16 13:52:25 - GUI - INFO - Parameter changed: Digital output N column = 0
+2026-06-16 13:52:25 - GUI - INFO - Parameter changed: Invert CH1 = False
+2026-06-16 13:52:25 - GUI - INFO - Parameter changed: Invert CH2 = False
+2026-06-16 13:52:25 - GUI - INFO - Parameter changed: Modulation amplitude = 0.4
+2026-06-16 13:52:25 - GUI - INFO - Parameter changed: Modulation channel = 0
+2026-06-16 13:52:25 - GUI - INFO - Parameter changed: Modulation frequency = 0.05
+2026-06-16 13:52:25 - GUI - INFO - Parameter changed: Offset CH1 = 0.0
+2026-06-16 13:52:25 - GUI - INFO - Parameter changed: Offset CH2 = 0.0
+2026-06-16 13:52:25 - GUI - INFO - Parameter changed: Demodulation phase = 270.0
+2026-06-16 13:52:25 - GUI - INFO - Parameter changed: PID D = 1
+2026-06-16 13:52:25 - GUI - INFO - Parameter changed: PID I = 100
+2026-06-16 13:52:25 - GUI - INFO - Parameter changed: PID on slow enabled = True
+2026-06-16 13:52:25 - GUI - INFO - Parameter changed: PID P = 2000
+2026-06-16 13:52:25 - GUI - INFO - Parameter changed: PID slow strength = 3
+2026-06-16 13:52:25 - GUI - INFO - Parameter changed: Polarity analog out 0 = 0
+2026-06-16 13:52:25 - GUI - INFO - Parameter changed: Polarity fast out 1 = 0
+2026-06-16 13:52:25 - GUI - INFO - Parameter changed: Polarity fast out 2 = 0
+2026-06-16 13:52:25 - GUI - INFO - Parameter changed: Slow control channel = 2
+2026-06-16 13:52:25 - GUI - INFO - Parameter changed: Small offset = 0.0
+2026-06-16 13:52:25 - GUI - INFO - Parameter changed: Sweep amplitude = 1.0
+2026-06-16 13:52:25 - GUI - INFO - Parameter changed: Sweep center = 0.0
+2026-06-16 13:52:25 - GUI - INFO - Parameter changed: Sweep channel = 1
+2026-06-16 13:52:25 - GUI - INFO - Parameter changed: Sweep speed = 10
+2026-06-16 13:52:25 - GUI - INFO - Parameter changed: Target slope rising = True
+2026-06-16 13:55:52 - GUI - INFO - GUI MainWindow initialized.
+2026-06-16 13:55:52 - GUI - INFO - InitialPage initialized.
+2026-06-16 13:55:52 - GUI - INFO - ConnectionPage initialized.
+2026-06-16 13:55:52 - GUI - INFO - AddBoardPage initialized.
+2026-06-16 13:55:52 - GUI - INFO - ReferenceLinesPage initialized.
+2026-06-16 13:55:52 - GUI - INFO - ReferenceLinesPage initialized.
+2026-06-16 13:55:52 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 13:55:52 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 13:55:52 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 13:55:54 - GUI - INFO - Connection button clicked. Starting transition...
+2026-06-16 13:55:54 - GUI - INFO - Transition complete. Requesting Connection Page.
+2026-06-16 13:55:57 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 13:55:57 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 13:55:57 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 13:55:57 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 13:55:57 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 13:55:57 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 13:55:57 - GUI - INFO - Parameter changed: Big offset = 1.00091
+2026-06-16 13:55:57 - GUI - INFO - Parameter changed: Channel Mixing = -128
+2026-06-16 13:55:57 - GUI - INFO - Parameter changed: Control channel = 1
+2026-06-16 13:55:57 - GUI - INFO - Parameter changed: Control history length = 60
+2026-06-16 13:55:57 - GUI - INFO - Parameter changed: Demodulation Multiplier CH1 = 1
+2026-06-16 13:55:57 - GUI - INFO - Parameter changed: Demodulation Multiplier CH2 = 0
+2026-06-16 13:55:57 - GUI - INFO - Parameter changed: Dual Channel = False
+2026-06-16 13:55:57 - GUI - INFO - Parameter changed: Filter 1 enabled on CH1 = True
+2026-06-16 13:55:57 - GUI - INFO - Parameter changed: Filter 1 enabled on CH2 = False
+2026-06-16 13:55:57 - GUI - INFO - Parameter changed: Filter 1 frequency = 500.0
+2026-06-16 13:55:57 - GUI - INFO - Parameter changed: Filter 1 type on CH1 = 0
+2026-06-16 13:55:57 - GUI - INFO - Parameter changed: Filter 1 type on CH2 = 0
+2026-06-16 13:55:57 - GUI - INFO - Parameter changed: Filter 2 enabled on CH1 = False
+2026-06-16 13:55:57 - GUI - INFO - Parameter changed: Filter 2 enabled on CH2 = True
+2026-06-16 13:55:57 - GUI - INFO - Parameter changed: Filter 2 frequency = 0.0
+2026-06-16 13:55:57 - GUI - INFO - Parameter changed: Filter 2 type on CH1 = 0
+2026-06-16 13:55:57 - GUI - INFO - Parameter changed: Filter 2 type on CH2 = 0
+2026-06-16 13:55:57 - GUI - INFO - Parameter changed: Automatic Filter CH1 = False
+2026-06-16 13:55:57 - GUI - INFO - Parameter changed: Automatic Filter CH2 = False
+2026-06-16 13:55:57 - GUI - INFO - Parameter changed: Digital output N column = 64
+2026-06-16 13:55:57 - GUI - INFO - Parameter changed: Invert CH1 = False
+2026-06-16 13:55:57 - GUI - INFO - Parameter changed: Invert CH2 = False
+2026-06-16 13:55:57 - GUI - INFO - Parameter changed: Modulation amplitude = 0.4
+2026-06-16 13:55:57 - GUI - INFO - Parameter changed: Modulation channel = 0
+2026-06-16 13:55:57 - GUI - INFO - Parameter changed: Modulation frequency = 0.05
+2026-06-16 13:55:57 - GUI - INFO - Parameter changed: Offset CH1 = 0.0
+2026-06-16 13:55:57 - GUI - INFO - Parameter changed: Offset CH2 = 0.0
+2026-06-16 13:55:57 - GUI - INFO - Parameter changed: Demodulation phase = 270.0
+2026-06-16 13:55:57 - GUI - INFO - Parameter changed: PID D = 1
+2026-06-16 13:55:57 - GUI - INFO - Parameter changed: PID I = 100
+2026-06-16 13:55:57 - GUI - INFO - Parameter changed: PID on slow enabled = True
+2026-06-16 13:55:57 - GUI - INFO - Parameter changed: PID P = 2000
+2026-06-16 13:55:57 - GUI - INFO - Parameter changed: PID slow strength = 3
+2026-06-16 13:55:57 - GUI - INFO - Parameter changed: Polarity analog out 0 = 0
+2026-06-16 13:55:57 - GUI - INFO - Parameter changed: Polarity fast out 1 = 0
+2026-06-16 13:55:57 - GUI - INFO - Parameter changed: Polarity fast out 2 = 0
+2026-06-16 13:55:57 - GUI - INFO - Parameter changed: Slow control channel = 2
+2026-06-16 13:55:57 - GUI - INFO - Parameter changed: Small offset = 0.0
+2026-06-16 13:55:57 - GUI - INFO - Parameter changed: Sweep amplitude = 1.0
+2026-06-16 13:55:57 - GUI - INFO - Parameter changed: Sweep center = 0.0
+2026-06-16 13:55:57 - GUI - INFO - Parameter changed: Sweep channel = 1
+2026-06-16 13:55:57 - GUI - INFO - Parameter changed: Sweep speed = 10
+2026-06-16 13:55:57 - GUI - INFO - Parameter changed: Target slope rising = True
+2026-06-16 14:00:48 - GUI - INFO - GUI MainWindow initialized.
+2026-06-16 14:00:48 - GUI - INFO - InitialPage initialized.
+2026-06-16 14:00:48 - GUI - INFO - ConnectionPage initialized.
+2026-06-16 14:00:48 - GUI - INFO - AddBoardPage initialized.
+2026-06-16 14:00:48 - GUI - INFO - ReferenceLinesPage initialized.
+2026-06-16 14:00:48 - GUI - INFO - ReferenceLinesPage initialized.
+2026-06-16 14:00:49 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 14:00:49 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 14:00:49 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 14:00:50 - GUI - INFO - Connection button clicked. Starting transition...
+2026-06-16 14:00:51 - GUI - INFO - Transition complete. Requesting Connection Page.
+2026-06-16 14:00:53 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 14:00:53 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 14:00:53 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 14:00:53 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 14:00:53 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 14:00:53 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 14:00:53 - GUI - INFO - Parameter changed: Big offset = 1.00091
+2026-06-16 14:00:53 - GUI - INFO - Parameter changed: Channel Mixing = -128
+2026-06-16 14:00:53 - GUI - INFO - Parameter changed: Control channel = 1
+2026-06-16 14:00:53 - GUI - INFO - Parameter changed: Control history length = 60
+2026-06-16 14:00:53 - GUI - INFO - Parameter changed: Demodulation Multiplier CH1 = 1
+2026-06-16 14:00:53 - GUI - INFO - Parameter changed: Demodulation Multiplier CH2 = 0
+2026-06-16 14:00:53 - GUI - INFO - Parameter changed: Dual Channel = False
+2026-06-16 14:00:53 - GUI - INFO - Parameter changed: Filter 1 enabled on CH1 = True
+2026-06-16 14:00:53 - GUI - INFO - Parameter changed: Filter 1 enabled on CH2 = False
+2026-06-16 14:00:53 - GUI - INFO - Parameter changed: Filter 1 frequency = 500.0
+2026-06-16 14:00:53 - GUI - INFO - Parameter changed: Filter 1 type on CH1 = 0
+2026-06-16 14:00:53 - GUI - INFO - Parameter changed: Filter 1 type on CH2 = 0
+2026-06-16 14:00:53 - GUI - INFO - Parameter changed: Filter 2 enabled on CH1 = False
+2026-06-16 14:00:53 - GUI - INFO - Parameter changed: Filter 2 enabled on CH2 = True
+2026-06-16 14:00:53 - GUI - INFO - Parameter changed: Filter 2 frequency = 0.0
+2026-06-16 14:00:53 - GUI - INFO - Parameter changed: Filter 2 type on CH1 = 0
+2026-06-16 14:00:53 - GUI - INFO - Parameter changed: Filter 2 type on CH2 = 0
+2026-06-16 14:00:53 - GUI - INFO - Parameter changed: Automatic Filter CH1 = False
+2026-06-16 14:00:53 - GUI - INFO - Parameter changed: Automatic Filter CH2 = False
+2026-06-16 14:00:53 - GUI - INFO - Parameter changed: Digital output N column = 64
+2026-06-16 14:00:53 - GUI - INFO - Parameter changed: Invert CH1 = False
+2026-06-16 14:00:53 - GUI - INFO - Parameter changed: Invert CH2 = False
+2026-06-16 14:00:53 - GUI - INFO - Parameter changed: Modulation amplitude = 0.4
+2026-06-16 14:00:53 - GUI - INFO - Parameter changed: Modulation channel = 0
+2026-06-16 14:00:53 - GUI - INFO - Parameter changed: Modulation frequency = 0.05
+2026-06-16 14:00:53 - GUI - INFO - Parameter changed: Offset CH1 = 0.0
+2026-06-16 14:00:53 - GUI - INFO - Parameter changed: Offset CH2 = 0.0
+2026-06-16 14:00:53 - GUI - INFO - Parameter changed: Demodulation phase = 270.0
+2026-06-16 14:00:53 - GUI - INFO - Parameter changed: PID D = 1
+2026-06-16 14:00:53 - GUI - INFO - Parameter changed: PID I = 100
+2026-06-16 14:00:53 - GUI - INFO - Parameter changed: PID on slow enabled = True
+2026-06-16 14:00:53 - GUI - INFO - Parameter changed: PID P = 2000
+2026-06-16 14:00:53 - GUI - INFO - Parameter changed: PID slow strength = 3
+2026-06-16 14:00:53 - GUI - INFO - Parameter changed: Polarity analog out 0 = 0
+2026-06-16 14:00:53 - GUI - INFO - Parameter changed: Polarity fast out 1 = 0
+2026-06-16 14:00:53 - GUI - INFO - Parameter changed: Polarity fast out 2 = 0
+2026-06-16 14:00:53 - GUI - INFO - Parameter changed: Slow control channel = 2
+2026-06-16 14:00:53 - GUI - INFO - Parameter changed: Small offset = 0.0
+2026-06-16 14:00:53 - GUI - INFO - Parameter changed: Sweep amplitude = 1.0
+2026-06-16 14:00:53 - GUI - INFO - Parameter changed: Sweep center = 0.0
+2026-06-16 14:00:53 - GUI - INFO - Parameter changed: Sweep channel = 1
+2026-06-16 14:00:53 - GUI - INFO - Parameter changed: Sweep speed = 10
+2026-06-16 14:00:53 - GUI - INFO - Parameter changed: Target slope rising = True
+2026-06-16 14:04:44 - GUI - INFO - GUI MainWindow initialized.
+2026-06-16 14:04:44 - GUI - INFO - InitialPage initialized.
+2026-06-16 14:04:44 - GUI - INFO - ConnectionPage initialized.
+2026-06-16 14:04:44 - GUI - INFO - AddBoardPage initialized.
+2026-06-16 14:04:44 - GUI - INFO - ReferenceLinesPage initialized.
+2026-06-16 14:04:44 - GUI - INFO - ReferenceLinesPage initialized.
+2026-06-16 14:04:45 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 14:04:45 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 14:04:45 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 14:04:46 - GUI - INFO - Connection button clicked. Starting transition...
+2026-06-16 14:04:47 - GUI - INFO - Transition complete. Requesting Connection Page.
+2026-06-16 14:04:48 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 14:04:48 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 14:04:48 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 14:04:48 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 14:04:48 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 14:04:48 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 14:04:48 - GUI - INFO - Parameter changed: Big offset = 1.00091
+2026-06-16 14:04:48 - GUI - INFO - Parameter changed: Channel Mixing = -128
+2026-06-16 14:04:48 - GUI - INFO - Parameter changed: Control channel = 1
+2026-06-16 14:04:48 - GUI - INFO - Parameter changed: Control history length = 60
+2026-06-16 14:04:48 - GUI - INFO - Parameter changed: Demodulation Multiplier CH1 = 1
+2026-06-16 14:04:48 - GUI - INFO - Parameter changed: Demodulation Multiplier CH2 = 0
+2026-06-16 14:04:48 - GUI - INFO - Parameter changed: Dual Channel = False
+2026-06-16 14:04:48 - GUI - INFO - Parameter changed: Filter 1 enabled on CH1 = True
+2026-06-16 14:04:48 - GUI - INFO - Parameter changed: Filter 1 enabled on CH2 = False
+2026-06-16 14:04:48 - GUI - INFO - Parameter changed: Filter 1 frequency = 500.0
+2026-06-16 14:04:48 - GUI - INFO - Parameter changed: Filter 1 type on CH1 = 0
+2026-06-16 14:04:48 - GUI - INFO - Parameter changed: Filter 1 type on CH2 = 0
+2026-06-16 14:04:48 - GUI - INFO - Parameter changed: Filter 2 enabled on CH1 = False
+2026-06-16 14:04:48 - GUI - INFO - Parameter changed: Filter 2 enabled on CH2 = True
+2026-06-16 14:04:48 - GUI - INFO - Parameter changed: Filter 2 frequency = 0.0
+2026-06-16 14:04:48 - GUI - INFO - Parameter changed: Filter 2 type on CH1 = 0
+2026-06-16 14:04:48 - GUI - INFO - Parameter changed: Filter 2 type on CH2 = 0
+2026-06-16 14:04:48 - GUI - INFO - Parameter changed: Automatic Filter CH1 = False
+2026-06-16 14:04:48 - GUI - INFO - Parameter changed: Automatic Filter CH2 = False
+2026-06-16 14:04:48 - GUI - INFO - Parameter changed: Digital output P column (internal) = 64
+2026-06-16 14:04:48 - GUI - INFO - Parameter changed: Invert CH1 = False
+2026-06-16 14:04:48 - GUI - INFO - Parameter changed: Invert CH2 = False
+2026-06-16 14:04:48 - GUI - INFO - Parameter changed: Modulation amplitude = 0.4
+2026-06-16 14:04:48 - GUI - INFO - Parameter changed: Modulation channel = 0
+2026-06-16 14:04:48 - GUI - INFO - Parameter changed: Modulation frequency = 0.05
+2026-06-16 14:04:48 - GUI - INFO - Parameter changed: Offset CH1 = 0.0
+2026-06-16 14:04:48 - GUI - INFO - Parameter changed: Offset CH2 = 0.0
+2026-06-16 14:04:48 - GUI - INFO - Parameter changed: Demodulation phase = 270.0
+2026-06-16 14:04:48 - GUI - INFO - Parameter changed: PID D = 1
+2026-06-16 14:04:48 - GUI - INFO - Parameter changed: PID I = 100
+2026-06-16 14:04:48 - GUI - INFO - Parameter changed: PID on slow enabled = True
+2026-06-16 14:04:48 - GUI - INFO - Parameter changed: PID P = 2000
+2026-06-16 14:04:48 - GUI - INFO - Parameter changed: PID slow strength = 3
+2026-06-16 14:04:48 - GUI - INFO - Parameter changed: Polarity analog out 0 = 0
+2026-06-16 14:04:48 - GUI - INFO - Parameter changed: Polarity fast out 1 = 0
+2026-06-16 14:04:48 - GUI - INFO - Parameter changed: Polarity fast out 2 = 0
+2026-06-16 14:04:48 - GUI - INFO - Parameter changed: Slow control channel = 2
+2026-06-16 14:04:48 - GUI - INFO - Parameter changed: Small offset = 0.0
+2026-06-16 14:04:48 - GUI - INFO - Parameter changed: Sweep amplitude = 1.0
+2026-06-16 14:04:48 - GUI - INFO - Parameter changed: Sweep center = 0.0
+2026-06-16 14:04:48 - GUI - INFO - Parameter changed: Sweep channel = 1
+2026-06-16 14:04:48 - GUI - INFO - Parameter changed: Sweep speed = 10
+2026-06-16 14:04:48 - GUI - INFO - Parameter changed: Target slope rising = True
+2026-06-16 14:06:24 - GUI - INFO - GUI MainWindow initialized.
+2026-06-16 14:06:24 - GUI - INFO - InitialPage initialized.
+2026-06-16 14:06:24 - GUI - INFO - ConnectionPage initialized.
+2026-06-16 14:06:24 - GUI - INFO - AddBoardPage initialized.
+2026-06-16 14:06:24 - GUI - INFO - ReferenceLinesPage initialized.
+2026-06-16 14:06:24 - GUI - INFO - ReferenceLinesPage initialized.
+2026-06-16 14:06:24 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 14:06:24 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 14:06:24 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 14:06:26 - GUI - INFO - Connection button clicked. Starting transition...
+2026-06-16 14:06:26 - GUI - INFO - Transition complete. Requesting Connection Page.
+2026-06-16 14:06:28 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 14:06:28 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 14:06:28 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 14:06:28 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 14:06:28 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 14:06:28 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 14:06:28 - GUI - INFO - Parameter changed: Big offset = 1.00091
+2026-06-16 14:06:28 - GUI - INFO - Parameter changed: Channel Mixing = -128
+2026-06-16 14:06:28 - GUI - INFO - Parameter changed: Control channel = 1
+2026-06-16 14:06:28 - GUI - INFO - Parameter changed: Control history length = 60
+2026-06-16 14:06:28 - GUI - INFO - Parameter changed: Demodulation Multiplier CH1 = 1
+2026-06-16 14:06:28 - GUI - INFO - Parameter changed: Demodulation Multiplier CH2 = 0
+2026-06-16 14:06:28 - GUI - INFO - Parameter changed: Dual Channel = False
+2026-06-16 14:06:28 - GUI - INFO - Parameter changed: Filter 1 enabled on CH1 = True
+2026-06-16 14:06:28 - GUI - INFO - Parameter changed: Filter 1 enabled on CH2 = False
+2026-06-16 14:06:28 - GUI - INFO - Parameter changed: Filter 1 frequency = 500.0
+2026-06-16 14:06:28 - GUI - INFO - Parameter changed: Filter 1 type on CH1 = 0
+2026-06-16 14:06:28 - GUI - INFO - Parameter changed: Filter 1 type on CH2 = 0
+2026-06-16 14:06:28 - GUI - INFO - Parameter changed: Filter 2 enabled on CH1 = False
+2026-06-16 14:06:28 - GUI - INFO - Parameter changed: Filter 2 enabled on CH2 = True
+2026-06-16 14:06:28 - GUI - INFO - Parameter changed: Filter 2 frequency = 0.0
+2026-06-16 14:06:28 - GUI - INFO - Parameter changed: Filter 2 type on CH1 = 0
+2026-06-16 14:06:28 - GUI - INFO - Parameter changed: Filter 2 type on CH2 = 0
+2026-06-16 14:06:28 - GUI - INFO - Parameter changed: Automatic Filter CH1 = False
+2026-06-16 14:06:28 - GUI - INFO - Parameter changed: Automatic Filter CH2 = False
+2026-06-16 14:06:28 - GUI - INFO - Parameter changed: Digital output P column (internal) = 1
+2026-06-16 14:06:28 - GUI - INFO - Parameter changed: Invert CH1 = False
+2026-06-16 14:06:28 - GUI - INFO - Parameter changed: Invert CH2 = False
+2026-06-16 14:06:28 - GUI - INFO - Parameter changed: Modulation amplitude = 0.4
+2026-06-16 14:06:28 - GUI - INFO - Parameter changed: Modulation channel = 0
+2026-06-16 14:06:28 - GUI - INFO - Parameter changed: Modulation frequency = 0.05
+2026-06-16 14:06:28 - GUI - INFO - Parameter changed: Offset CH1 = 0.0
+2026-06-16 14:06:28 - GUI - INFO - Parameter changed: Offset CH2 = 0.0
+2026-06-16 14:06:28 - GUI - INFO - Parameter changed: Demodulation phase = 270.0
+2026-06-16 14:06:28 - GUI - INFO - Parameter changed: PID D = 1
+2026-06-16 14:06:28 - GUI - INFO - Parameter changed: PID I = 100
+2026-06-16 14:06:28 - GUI - INFO - Parameter changed: PID on slow enabled = True
+2026-06-16 14:06:28 - GUI - INFO - Parameter changed: PID P = 2000
+2026-06-16 14:06:28 - GUI - INFO - Parameter changed: PID slow strength = 3
+2026-06-16 14:06:28 - GUI - INFO - Parameter changed: Polarity analog out 0 = 0
+2026-06-16 14:06:28 - GUI - INFO - Parameter changed: Polarity fast out 1 = 0
+2026-06-16 14:06:28 - GUI - INFO - Parameter changed: Polarity fast out 2 = 0
+2026-06-16 14:06:28 - GUI - INFO - Parameter changed: Slow control channel = 2
+2026-06-16 14:06:28 - GUI - INFO - Parameter changed: Small offset = 0.0
+2026-06-16 14:06:28 - GUI - INFO - Parameter changed: Sweep amplitude = 1.0
+2026-06-16 14:06:28 - GUI - INFO - Parameter changed: Sweep center = 0.0
+2026-06-16 14:06:28 - GUI - INFO - Parameter changed: Sweep channel = 1
+2026-06-16 14:06:28 - GUI - INFO - Parameter changed: Sweep speed = 10
+2026-06-16 14:06:28 - GUI - INFO - Parameter changed: Target slope rising = True
+2026-06-16 14:18:08 - GUI - INFO - GUI MainWindow initialized.
+2026-06-16 14:18:08 - GUI - INFO - InitialPage initialized.
+2026-06-16 14:18:08 - GUI - INFO - ConnectionPage initialized.
+2026-06-16 14:18:08 - GUI - INFO - AddBoardPage initialized.
+2026-06-16 14:18:08 - GUI - INFO - ReferenceLinesPage initialized.
+2026-06-16 14:18:08 - GUI - INFO - ReferenceLinesPage initialized.
+2026-06-16 14:18:08 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 14:18:08 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 14:18:08 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 14:18:09 - GUI - INFO - Connection button clicked. Starting transition...
+2026-06-16 14:18:10 - GUI - INFO - Transition complete. Requesting Connection Page.
+2026-06-16 14:18:12 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 14:18:12 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 14:18:12 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 14:18:12 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 14:18:12 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 14:18:12 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 14:18:12 - GUI - INFO - Parameter changed: Big offset = 1.00091
+2026-06-16 14:18:12 - GUI - INFO - Parameter changed: Channel Mixing = -128
+2026-06-16 14:18:12 - GUI - INFO - Parameter changed: Control channel = 1
+2026-06-16 14:18:12 - GUI - INFO - Parameter changed: Control history length = 60
+2026-06-16 14:18:12 - GUI - INFO - Parameter changed: Demodulation Multiplier CH1 = 1
+2026-06-16 14:18:12 - GUI - INFO - Parameter changed: Demodulation Multiplier CH2 = 0
+2026-06-16 14:18:12 - GUI - INFO - Parameter changed: Dual Channel = False
+2026-06-16 14:18:12 - GUI - INFO - Parameter changed: Filter 1 enabled on CH1 = True
+2026-06-16 14:18:12 - GUI - INFO - Parameter changed: Filter 1 enabled on CH2 = False
+2026-06-16 14:18:12 - GUI - INFO - Parameter changed: Filter 1 frequency = 500.0
+2026-06-16 14:18:12 - GUI - INFO - Parameter changed: Filter 1 type on CH1 = 0
+2026-06-16 14:18:12 - GUI - INFO - Parameter changed: Filter 1 type on CH2 = 0
+2026-06-16 14:18:12 - GUI - INFO - Parameter changed: Filter 2 enabled on CH1 = False
+2026-06-16 14:18:12 - GUI - INFO - Parameter changed: Filter 2 enabled on CH2 = True
+2026-06-16 14:18:12 - GUI - INFO - Parameter changed: Filter 2 frequency = 0.0
+2026-06-16 14:18:12 - GUI - INFO - Parameter changed: Filter 2 type on CH1 = 0
+2026-06-16 14:18:12 - GUI - INFO - Parameter changed: Filter 2 type on CH2 = 0
+2026-06-16 14:18:12 - GUI - INFO - Parameter changed: Automatic Filter CH1 = False
+2026-06-16 14:18:12 - GUI - INFO - Parameter changed: Automatic Filter CH2 = False
+2026-06-16 14:18:12 - GUI - INFO - Parameter changed: Digital output P column (internal) = 128.0
+2026-06-16 14:18:12 - GUI - INFO - Parameter changed: Invert CH1 = False
+2026-06-16 14:18:12 - GUI - INFO - Parameter changed: Invert CH2 = False
+2026-06-16 14:18:12 - GUI - INFO - Parameter changed: Modulation amplitude = 0.4
+2026-06-16 14:18:12 - GUI - INFO - Parameter changed: Modulation channel = 0
+2026-06-16 14:18:12 - GUI - INFO - Parameter changed: Modulation frequency = 0.05
+2026-06-16 14:18:12 - GUI - INFO - Parameter changed: Offset CH1 = 0.0
+2026-06-16 14:18:12 - GUI - INFO - Parameter changed: Offset CH2 = 0.0
+2026-06-16 14:18:12 - GUI - INFO - Parameter changed: Demodulation phase = 270.0
+2026-06-16 14:18:12 - GUI - INFO - Parameter changed: PID D = 1
+2026-06-16 14:18:12 - GUI - INFO - Parameter changed: PID I = 100
+2026-06-16 14:18:12 - GUI - INFO - Parameter changed: PID on slow enabled = True
+2026-06-16 14:18:12 - GUI - INFO - Parameter changed: PID P = 2000
+2026-06-16 14:18:12 - GUI - INFO - Parameter changed: PID slow strength = 3
+2026-06-16 14:18:12 - GUI - INFO - Parameter changed: Polarity analog out 0 = 0
+2026-06-16 14:18:12 - GUI - INFO - Parameter changed: Polarity fast out 1 = 0
+2026-06-16 14:18:12 - GUI - INFO - Parameter changed: Polarity fast out 2 = 0
+2026-06-16 14:18:12 - GUI - INFO - Parameter changed: Slow control channel = 2
+2026-06-16 14:18:12 - GUI - INFO - Parameter changed: Small offset = 0.0
+2026-06-16 14:18:12 - GUI - INFO - Parameter changed: Sweep amplitude = 1.0
+2026-06-16 14:18:12 - GUI - INFO - Parameter changed: Sweep center = 0.0
+2026-06-16 14:18:12 - GUI - INFO - Parameter changed: Sweep channel = 1
+2026-06-16 14:18:12 - GUI - INFO - Parameter changed: Sweep speed = 10
+2026-06-16 14:18:12 - GUI - INFO - Parameter changed: Target slope rising = True
+2026-06-16 14:19:17 - GUI - INFO - Parameter changed: Digital output P column (internal) = 1.0
+2026-06-16 15:13:49 - GUI - INFO - GUI MainWindow initialized.
+2026-06-16 15:13:49 - GUI - INFO - InitialPage initialized.
+2026-06-16 15:13:49 - GUI - INFO - ConnectionPage initialized.
+2026-06-16 15:13:49 - GUI - INFO - AddBoardPage initialized.
+2026-06-16 15:13:49 - GUI - INFO - ReferenceLinesPage initialized.
+2026-06-16 15:13:49 - GUI - INFO - ReferenceLinesPage initialized.
+2026-06-16 15:13:49 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 15:13:49 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 15:13:49 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 15:13:52 - GUI - INFO - Connection button clicked. Starting transition...
+2026-06-16 15:13:52 - GUI - INFO - Transition complete. Requesting Connection Page.
+2026-06-16 15:13:56 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 15:13:56 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 15:13:56 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 15:13:56 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 15:13:56 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 15:13:56 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 15:13:56 - GUI - INFO - Parameter changed: Big offset = 1.00091
+2026-06-16 15:13:56 - GUI - INFO - Parameter changed: Channel Mixing = -128
+2026-06-16 15:13:56 - GUI - INFO - Parameter changed: Control channel = 1
+2026-06-16 15:13:56 - GUI - INFO - Parameter changed: Control history length = 60
+2026-06-16 15:13:56 - GUI - INFO - Parameter changed: Demodulation Multiplier CH1 = 1
+2026-06-16 15:13:56 - GUI - INFO - Parameter changed: Demodulation Multiplier CH2 = 0
+2026-06-16 15:13:56 - GUI - INFO - Parameter changed: Dual Channel = False
+2026-06-16 15:13:56 - GUI - INFO - Parameter changed: Filter 1 enabled on CH1 = True
+2026-06-16 15:13:56 - GUI - INFO - Parameter changed: Filter 1 enabled on CH2 = False
+2026-06-16 15:13:56 - GUI - INFO - Parameter changed: Filter 1 frequency = 500.0
+2026-06-16 15:13:56 - GUI - INFO - Parameter changed: Filter 1 type on CH1 = 0
+2026-06-16 15:13:56 - GUI - INFO - Parameter changed: Filter 1 type on CH2 = 0
+2026-06-16 15:13:56 - GUI - INFO - Parameter changed: Filter 2 enabled on CH1 = False
+2026-06-16 15:13:56 - GUI - INFO - Parameter changed: Filter 2 enabled on CH2 = True
+2026-06-16 15:13:56 - GUI - INFO - Parameter changed: Filter 2 frequency = 0.0
+2026-06-16 15:13:56 - GUI - INFO - Parameter changed: Filter 2 type on CH1 = 0
+2026-06-16 15:13:56 - GUI - INFO - Parameter changed: Filter 2 type on CH2 = 0
+2026-06-16 15:13:56 - GUI - INFO - Parameter changed: Automatic Filter CH1 = False
+2026-06-16 15:13:56 - GUI - INFO - Parameter changed: Automatic Filter CH2 = False
+2026-06-16 15:13:56 - GUI - INFO - Parameter changed: Digital output P column (internal) = 1
+2026-06-16 15:13:56 - GUI - INFO - Parameter changed: Invert CH1 = False
+2026-06-16 15:13:56 - GUI - INFO - Parameter changed: Invert CH2 = False
+2026-06-16 15:13:56 - GUI - INFO - Parameter changed: Modulation amplitude = 0.4
+2026-06-16 15:13:56 - GUI - INFO - Parameter changed: Modulation channel = 0
+2026-06-16 15:13:56 - GUI - INFO - Parameter changed: Modulation frequency = 0.05
+2026-06-16 15:13:56 - GUI - INFO - Parameter changed: Offset CH1 = 0.0
+2026-06-16 15:13:56 - GUI - INFO - Parameter changed: Offset CH2 = 0.0
+2026-06-16 15:13:56 - GUI - INFO - Parameter changed: Demodulation phase = 270.0
+2026-06-16 15:13:56 - GUI - INFO - Parameter changed: PID D = 1
+2026-06-16 15:13:56 - GUI - INFO - Parameter changed: PID I = 100
+2026-06-16 15:13:56 - GUI - INFO - Parameter changed: PID on slow enabled = True
+2026-06-16 15:13:56 - GUI - INFO - Parameter changed: PID P = 2000
+2026-06-16 15:13:56 - GUI - INFO - Parameter changed: PID slow strength = 3
+2026-06-16 15:13:56 - GUI - INFO - Parameter changed: Polarity analog out 0 = 0
+2026-06-16 15:13:56 - GUI - INFO - Parameter changed: Polarity fast out 1 = 0
+2026-06-16 15:13:56 - GUI - INFO - Parameter changed: Polarity fast out 2 = 0
+2026-06-16 15:13:56 - GUI - INFO - Parameter changed: Slow control channel = 2
+2026-06-16 15:13:56 - GUI - INFO - Parameter changed: Small offset = 0.0
+2026-06-16 15:13:56 - GUI - INFO - Parameter changed: Sweep amplitude = 1.0
+2026-06-16 15:13:56 - GUI - INFO - Parameter changed: Sweep center = 0.0
+2026-06-16 15:13:56 - GUI - INFO - Parameter changed: Sweep channel = 1
+2026-06-16 15:13:56 - GUI - INFO - Parameter changed: Sweep speed = 10
+2026-06-16 15:13:56 - GUI - INFO - Parameter changed: Target slope rising = True
+2026-06-16 15:15:00 - GUI - INFO - Advanced setting changed (table): Ramp sign = False
+2026-06-16 15:15:07 - GUI - INFO - Advanced setting changed (table): Ramp sign = True
+2026-06-16 15:15:13 - GUI - INFO - Advanced setting changed (table): Ramp sign = False
+2026-06-16 15:17:52 - GUI - INFO - GUI MainWindow initialized.
+2026-06-16 15:17:52 - GUI - INFO - InitialPage initialized.
+2026-06-16 15:17:52 - GUI - INFO - ConnectionPage initialized.
+2026-06-16 15:17:52 - GUI - INFO - AddBoardPage initialized.
+2026-06-16 15:17:52 - GUI - INFO - ReferenceLinesPage initialized.
+2026-06-16 15:17:52 - GUI - INFO - ReferenceLinesPage initialized.
+2026-06-16 15:17:52 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 15:17:52 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 15:17:52 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 15:17:54 - GUI - INFO - Connection button clicked. Starting transition...
+2026-06-16 15:17:55 - GUI - INFO - Transition complete. Requesting Connection Page.
+2026-06-16 15:17:56 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 15:17:56 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 15:17:56 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 15:17:56 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 15:17:56 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 15:17:56 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 15:17:56 - GUI - INFO - Parameter changed: Big offset = 1.00091
+2026-06-16 15:17:56 - GUI - INFO - Parameter changed: Channel Mixing = -128
+2026-06-16 15:17:56 - GUI - INFO - Parameter changed: Control channel = 1
+2026-06-16 15:17:56 - GUI - INFO - Parameter changed: Control history length = 60
+2026-06-16 15:17:56 - GUI - INFO - Parameter changed: Demodulation Multiplier CH1 = 1
+2026-06-16 15:17:56 - GUI - INFO - Parameter changed: Demodulation Multiplier CH2 = 0
+2026-06-16 15:17:56 - GUI - INFO - Parameter changed: Dual Channel = False
+2026-06-16 15:17:56 - GUI - INFO - Parameter changed: Filter 1 enabled on CH1 = True
+2026-06-16 15:17:56 - GUI - INFO - Parameter changed: Filter 1 enabled on CH2 = False
+2026-06-16 15:17:56 - GUI - INFO - Parameter changed: Filter 1 frequency = 500.0
+2026-06-16 15:17:56 - GUI - INFO - Parameter changed: Filter 1 type on CH1 = 0
+2026-06-16 15:17:56 - GUI - INFO - Parameter changed: Filter 1 type on CH2 = 0
+2026-06-16 15:17:56 - GUI - INFO - Parameter changed: Filter 2 enabled on CH1 = False
+2026-06-16 15:17:56 - GUI - INFO - Parameter changed: Filter 2 enabled on CH2 = True
+2026-06-16 15:17:56 - GUI - INFO - Parameter changed: Filter 2 frequency = 0.0
+2026-06-16 15:17:56 - GUI - INFO - Parameter changed: Filter 2 type on CH1 = 0
+2026-06-16 15:17:56 - GUI - INFO - Parameter changed: Filter 2 type on CH2 = 0
+2026-06-16 15:17:56 - GUI - INFO - Parameter changed: Automatic Filter CH1 = False
+2026-06-16 15:17:56 - GUI - INFO - Parameter changed: Automatic Filter CH2 = False
+2026-06-16 15:17:56 - GUI - INFO - Parameter changed: Digital output P column (internal) = 3
+2026-06-16 15:17:56 - GUI - INFO - Parameter changed: Invert CH1 = False
+2026-06-16 15:17:56 - GUI - INFO - Parameter changed: Invert CH2 = False
+2026-06-16 15:17:56 - GUI - INFO - Parameter changed: Modulation amplitude = 0.4
+2026-06-16 15:17:56 - GUI - INFO - Parameter changed: Modulation channel = 0
+2026-06-16 15:17:56 - GUI - INFO - Parameter changed: Modulation frequency = 0.05
+2026-06-16 15:17:56 - GUI - INFO - Parameter changed: Offset CH1 = 0.0
+2026-06-16 15:17:56 - GUI - INFO - Parameter changed: Offset CH2 = 0.0
+2026-06-16 15:17:56 - GUI - INFO - Parameter changed: Demodulation phase = 270.0
+2026-06-16 15:17:56 - GUI - INFO - Parameter changed: PID D = 1
+2026-06-16 15:17:56 - GUI - INFO - Parameter changed: PID I = 100
+2026-06-16 15:17:56 - GUI - INFO - Parameter changed: PID on slow enabled = True
+2026-06-16 15:17:56 - GUI - INFO - Parameter changed: PID P = 2000
+2026-06-16 15:17:56 - GUI - INFO - Parameter changed: PID slow strength = 3
+2026-06-16 15:17:56 - GUI - INFO - Parameter changed: Polarity analog out 0 = 0
+2026-06-16 15:17:56 - GUI - INFO - Parameter changed: Polarity fast out 1 = 0
+2026-06-16 15:17:56 - GUI - INFO - Parameter changed: Polarity fast out 2 = 0
+2026-06-16 15:17:56 - GUI - INFO - Parameter changed: Slow control channel = 2
+2026-06-16 15:17:56 - GUI - INFO - Parameter changed: Small offset = 0.0
+2026-06-16 15:17:56 - GUI - INFO - Parameter changed: Sweep amplitude = 1.0
+2026-06-16 15:17:56 - GUI - INFO - Parameter changed: Sweep center = 0.0
+2026-06-16 15:17:56 - GUI - INFO - Parameter changed: Sweep channel = 1
+2026-06-16 15:17:56 - GUI - INFO - Parameter changed: Sweep speed = 10
+2026-06-16 15:17:56 - GUI - INFO - Parameter changed: Target slope rising = True
+2026-06-16 15:18:21 - GUI - INFO - Advanced setting changed (table): Ramp sign = True
+2026-06-16 15:18:29 - GUI - INFO - Advanced setting changed (table): Ramp sign = False
+2026-06-16 15:19:39 - GUI - INFO - Parameter changed: Digital output P column (internal) = 0
+2026-06-16 15:19:51 - GUI - INFO - Parameter changed: Digital output P column (internal) = 1
+2026-06-16 15:20:13 - GUI - INFO - Parameter changed: Digital output P column (internal) = 0
+2026-06-16 15:22:12 - GUI - INFO - Advanced setting changed (table): Ramp sign = True
+2026-06-16 15:31:26 - GUI - INFO - GUI MainWindow initialized.
+2026-06-16 15:31:26 - GUI - INFO - InitialPage initialized.
+2026-06-16 15:31:26 - GUI - INFO - ConnectionPage initialized.
+2026-06-16 15:31:26 - GUI - INFO - AddBoardPage initialized.
+2026-06-16 15:31:26 - GUI - INFO - ReferenceLinesPage initialized.
+2026-06-16 15:31:26 - GUI - INFO - ReferenceLinesPage initialized.
+2026-06-16 15:31:26 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 15:31:26 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 15:31:26 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 15:31:28 - GUI - INFO - Connection button clicked. Starting transition...
+2026-06-16 15:31:29 - GUI - INFO - Transition complete. Requesting Connection Page.
+2026-06-16 15:31:31 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 15:31:31 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 15:31:31 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 15:31:31 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 15:31:31 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 15:31:31 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 15:31:31 - GUI - INFO - Parameter changed: Big offset = 1.00091
+2026-06-16 15:31:31 - GUI - INFO - Parameter changed: Channel Mixing = -128
+2026-06-16 15:31:31 - GUI - INFO - Parameter changed: Control channel = 1
+2026-06-16 15:31:31 - GUI - INFO - Parameter changed: Control history length = 60
+2026-06-16 15:31:31 - GUI - INFO - Parameter changed: Demodulation Multiplier CH1 = 1
+2026-06-16 15:31:31 - GUI - INFO - Parameter changed: Demodulation Multiplier CH2 = 0
+2026-06-16 15:31:31 - GUI - INFO - Parameter changed: Dual Channel = False
+2026-06-16 15:31:31 - GUI - INFO - Parameter changed: Filter 1 enabled on CH1 = True
+2026-06-16 15:31:31 - GUI - INFO - Parameter changed: Filter 1 enabled on CH2 = False
+2026-06-16 15:31:31 - GUI - INFO - Parameter changed: Filter 1 frequency = 500.0
+2026-06-16 15:31:31 - GUI - INFO - Parameter changed: Filter 1 type on CH1 = 0
+2026-06-16 15:31:31 - GUI - INFO - Parameter changed: Filter 1 type on CH2 = 0
+2026-06-16 15:31:31 - GUI - INFO - Parameter changed: Filter 2 enabled on CH1 = False
+2026-06-16 15:31:31 - GUI - INFO - Parameter changed: Filter 2 enabled on CH2 = True
+2026-06-16 15:31:31 - GUI - INFO - Parameter changed: Filter 2 frequency = 0.0
+2026-06-16 15:31:31 - GUI - INFO - Parameter changed: Filter 2 type on CH1 = 0
+2026-06-16 15:31:31 - GUI - INFO - Parameter changed: Filter 2 type on CH2 = 0
+2026-06-16 15:31:31 - GUI - INFO - Parameter changed: Automatic Filter CH1 = False
+2026-06-16 15:31:31 - GUI - INFO - Parameter changed: Automatic Filter CH2 = False
+2026-06-16 15:31:31 - GUI - INFO - Parameter changed: Digital output P column (internal) = 2
+2026-06-16 15:31:31 - GUI - INFO - Parameter changed: Invert CH1 = False
+2026-06-16 15:31:31 - GUI - INFO - Parameter changed: Invert CH2 = False
+2026-06-16 15:31:31 - GUI - INFO - Parameter changed: Modulation amplitude = 0.4
+2026-06-16 15:31:31 - GUI - INFO - Parameter changed: Modulation channel = 0
+2026-06-16 15:31:31 - GUI - INFO - Parameter changed: Modulation frequency = 0.05
+2026-06-16 15:31:31 - GUI - INFO - Parameter changed: Offset CH1 = 0.0
+2026-06-16 15:31:31 - GUI - INFO - Parameter changed: Offset CH2 = 0.0
+2026-06-16 15:31:31 - GUI - INFO - Parameter changed: Demodulation phase = 270.0
+2026-06-16 15:31:31 - GUI - INFO - Parameter changed: PID D = 1
+2026-06-16 15:31:31 - GUI - INFO - Parameter changed: PID I = 100
+2026-06-16 15:31:31 - GUI - INFO - Parameter changed: PID on slow enabled = True
+2026-06-16 15:31:31 - GUI - INFO - Parameter changed: PID P = 2000
+2026-06-16 15:31:31 - GUI - INFO - Parameter changed: PID slow strength = 3
+2026-06-16 15:31:31 - GUI - INFO - Parameter changed: Polarity analog out 0 = 0
+2026-06-16 15:31:31 - GUI - INFO - Parameter changed: Polarity fast out 1 = 0
+2026-06-16 15:31:31 - GUI - INFO - Parameter changed: Polarity fast out 2 = 0
+2026-06-16 15:31:31 - GUI - INFO - Parameter changed: Slow control channel = 2
+2026-06-16 15:31:31 - GUI - INFO - Parameter changed: Small offset = 0.0
+2026-06-16 15:31:31 - GUI - INFO - Parameter changed: Sweep amplitude = 1.0
+2026-06-16 15:31:31 - GUI - INFO - Parameter changed: Sweep center = 0.0
+2026-06-16 15:31:31 - GUI - INFO - Parameter changed: Sweep channel = 1
+2026-06-16 15:31:31 - GUI - INFO - Parameter changed: Sweep speed = 10
+2026-06-16 15:31:31 - GUI - INFO - Parameter changed: Target slope rising = True
+2026-06-16 15:31:57 - GUI - INFO - Parameter changed: Digital output P column (internal) = 0
+2026-06-16 15:32:02 - GUI - INFO - Parameter changed: Digital output P column (internal) = 1
+2026-06-16 15:32:18 - GUI - INFO - Advanced setting changed (table): Ramp sign = False
+2026-06-16 15:32:30 - GUI - INFO - Parameter changed: Digital output P column (internal) = 3
+2026-06-16 15:32:59 - GUI - INFO - Parameter changed: Digital output P column (internal) = 2
+2026-06-16 15:33:12 - GUI - INFO - GUI MainWindow initialized.
+2026-06-16 15:33:12 - GUI - INFO - InitialPage initialized.
+2026-06-16 15:33:13 - GUI - INFO - ConnectionPage initialized.
+2026-06-16 15:33:13 - GUI - INFO - AddBoardPage initialized.
+2026-06-16 15:33:13 - GUI - INFO - ReferenceLinesPage initialized.
+2026-06-16 15:33:13 - GUI - INFO - ReferenceLinesPage initialized.
+2026-06-16 15:33:13 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 15:33:13 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 15:33:13 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 15:33:14 - GUI - INFO - Connection button clicked. Starting transition...
+2026-06-16 15:33:15 - GUI - INFO - Transition complete. Requesting Connection Page.
+2026-06-16 15:33:16 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 15:33:16 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 15:33:16 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 15:33:16 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 15:33:16 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 15:33:16 - GUI - INFO - Updating reference lines table with 4 items.
+2026-06-16 15:33:16 - GUI - INFO - Parameter changed: Big offset = 1.00091
+2026-06-16 15:33:16 - GUI - INFO - Parameter changed: Channel Mixing = -128
+2026-06-16 15:33:16 - GUI - INFO - Parameter changed: Control channel = 1
+2026-06-16 15:33:16 - GUI - INFO - Parameter changed: Control history length = 60
+2026-06-16 15:33:16 - GUI - INFO - Parameter changed: Demodulation Multiplier CH1 = 1
+2026-06-16 15:33:16 - GUI - INFO - Parameter changed: Demodulation Multiplier CH2 = 0
+2026-06-16 15:33:16 - GUI - INFO - Parameter changed: Dual Channel = False
+2026-06-16 15:33:16 - GUI - INFO - Parameter changed: Filter 1 enabled on CH1 = True
+2026-06-16 15:33:16 - GUI - INFO - Parameter changed: Filter 1 enabled on CH2 = False
+2026-06-16 15:33:16 - GUI - INFO - Parameter changed: Filter 1 frequency = 500.0
+2026-06-16 15:33:16 - GUI - INFO - Parameter changed: Filter 1 type on CH1 = 0
+2026-06-16 15:33:16 - GUI - INFO - Parameter changed: Filter 1 type on CH2 = 0
+2026-06-16 15:33:16 - GUI - INFO - Parameter changed: Filter 2 enabled on CH1 = False
+2026-06-16 15:33:16 - GUI - INFO - Parameter changed: Filter 2 enabled on CH2 = True
+2026-06-16 15:33:16 - GUI - INFO - Parameter changed: Filter 2 frequency = 0.0
+2026-06-16 15:33:16 - GUI - INFO - Parameter changed: Filter 2 type on CH1 = 0
+2026-06-16 15:33:16 - GUI - INFO - Parameter changed: Filter 2 type on CH2 = 0
+2026-06-16 15:33:16 - GUI - INFO - Parameter changed: Automatic Filter CH1 = False
+2026-06-16 15:33:16 - GUI - INFO - Parameter changed: Automatic Filter CH2 = False
+2026-06-16 15:33:16 - GUI - INFO - Parameter changed: Digital output P column (internal) = 2
+2026-06-16 15:33:16 - GUI - INFO - Parameter changed: Invert CH1 = False
+2026-06-16 15:33:16 - GUI - INFO - Parameter changed: Invert CH2 = False
+2026-06-16 15:33:16 - GUI - INFO - Parameter changed: Modulation amplitude = 0.4
+2026-06-16 15:33:16 - GUI - INFO - Parameter changed: Modulation channel = 0
+2026-06-16 15:33:16 - GUI - INFO - Parameter changed: Modulation frequency = 0.05
+2026-06-16 15:33:16 - GUI - INFO - Parameter changed: Offset CH1 = 0.0
+2026-06-16 15:33:16 - GUI - INFO - Parameter changed: Offset CH2 = 0.0
+2026-06-16 15:33:16 - GUI - INFO - Parameter changed: Demodulation phase = 270.0
+2026-06-16 15:33:16 - GUI - INFO - Parameter changed: PID D = 1
+2026-06-16 15:33:16 - GUI - INFO - Parameter changed: PID I = 100
+2026-06-16 15:33:16 - GUI - INFO - Parameter changed: PID on slow enabled = True
+2026-06-16 15:33:16 - GUI - INFO - Parameter changed: PID P = 2000
+2026-06-16 15:33:16 - GUI - INFO - Parameter changed: PID slow strength = 3
+2026-06-16 15:33:16 - GUI - INFO - Parameter changed: Polarity analog out 0 = 0
+2026-06-16 15:33:16 - GUI - INFO - Parameter changed: Polarity fast out 1 = 0
+2026-06-16 15:33:16 - GUI - INFO - Parameter changed: Polarity fast out 2 = 0
+2026-06-16 15:33:16 - GUI - INFO - Parameter changed: Slow control channel = 2
+2026-06-16 15:33:16 - GUI - INFO - Parameter changed: Small offset = 0.0
+2026-06-16 15:33:16 - GUI - INFO - Parameter changed: Sweep amplitude = 1.0
+2026-06-16 15:33:16 - GUI - INFO - Parameter changed: Sweep center = 0.0
+2026-06-16 15:33:16 - GUI - INFO - Parameter changed: Sweep channel = 1
+2026-06-16 15:33:16 - GUI - INFO - Parameter changed: Sweep speed = 10
+2026-06-16 15:33:16 - GUI - INFO - Parameter changed: Target slope rising = True
+2026-06-16 15:33:49 - GUI - INFO - Advanced setting changed (table): Ramp sign = True
+2026-06-16 15:33:53 - GUI - INFO - Advanced setting changed (table): Ramp sign = False

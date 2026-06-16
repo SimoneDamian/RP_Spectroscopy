@@ -539,6 +539,19 @@ writeable_parameters:
     scaling: 1 # Control signal history buffer size
     units: s
 
+  ### digital output ###
+  gpio_p_out:
+    hardware_name: gpio_p_out
+    gui_name: Digital output P column (internal)
+    description: Digital output for the P column. 0b01000000 to enable the 
+      second pin and disable the others.
+    type: int
+    initial_value: 2
+    min:
+    max:
+    scaling:
+    units:
+
 readable_parameters:
   sweep_signal:
     hardware_name: to_plot
@@ -739,6 +752,21 @@ advanced_settings:
       gui_name: Proportion free space left
       description: NOT USED, FOR NOW
       value: 0.5
+
+  ### OTHER SETTINGS ###    
+  Other_settings:
+    ui_label: "Other settings"
+
+    ramp_sign:
+      gui_name: Ramp sign
+      description: Sign of the slope of the sweep ramp. Either True or False.
+      value: false
+
+    demux_switch:
+      gui_name: Demultiplexer switch
+      description: Switch for the demultiplexer. Either True or False.
+      value: true
+
 
 ##########################################
 ########## HARDWARE INFORMATION ##########
