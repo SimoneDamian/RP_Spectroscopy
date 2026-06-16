@@ -403,6 +403,9 @@ class LaserManager(QObject):
 
         self.locking_mode = "AUTOMATIC"
 
+        # Check and update ramp polarity if needed
+        self._check_and_update_ramp_polarity(reference_signal)
+
         #init of the variables
         self.V_lock_start = reference_signal['V_lock_start']
         self.V_lock_end = reference_signal['V_lock_end']
@@ -422,6 +425,27 @@ class LaserManager(QObject):
 
         #call of a scan with the autolock option
         self.start_scan(start_voltage=start_voltage, stop_voltage=stop_voltage, reference_signal=reference_signal, calculate_correlation=True, autolock=True)
+
+    def _check_and_update_ramp_polarity(self, reference_signal):
+        """
+        Checks if the current ramp polarity matches the reference line's polarity 
+        and updates it if necessary.
+        """
+        self.logger.info("Checking ramp polarity...")
+        if reference_signal and 'polarity' in reference_signal:
+            expected_polarity_str = str(reference_signal['polarity']).strip().lower()
+            if expected_polarity_str in ("true", "false"):
+                expected_polarity = (expected_polarity_str == "true")
+                
+                other_settings = self.advanced_settings.get("Other_settings", {})
+                current_polarity = other_settings.get("ramp_sign", {}).get("value")
+                
+                if current_polarity != expected_polarity:
+                    self.logger.info(f"Changing ramp sign to {expected_polarity} to match reference line.")
+                    self.set_gpio_bit(0, expected_polarity)
+                    self.logger.info(f"Ramp signed changed to match the reference line one")
+                else:
+                    self.logger.info(f"Ramp signed is already matching the reference line one")
 
     def check_minimum_correlation(self):
         if max(self.correlations) < self.correlation_minimum:
