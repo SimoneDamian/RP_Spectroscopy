@@ -50,18 +50,29 @@ class SweepPlotHandler(BasePlotHandler):
         self.plot_monitor.setXLink(self.plot_error)
 
         # Merged plot (hidden initially)
-        self.plot_merged = pg.PlotWidget(title="Sweep (Merged)")
+        self.plot_merged = pg.PlotWidget(title="Monitor and error signals")
         self.setup_plot(self.plot_merged, "Error Signal", "Voltage", "V")
-        # Left axis for error signal
+        # Left axis for error signal (cyan)
+        self.plot_merged.getAxis('left').setPen(pg.mkPen('c'))
         self.curve_error_merged = self.plot_merged.plot(pen=pg.mkPen('c', width=1.5))
-        # Right axis for monitor signal
+        # Error strength shading (transparent cyan)
+        self.curve_error_strength_pos_merged = pg.PlotDataItem()
+        self.curve_error_strength_neg_merged = pg.PlotDataItem()
+        self.fill_error_merged = pg.FillBetweenItem(
+            self.curve_error_strength_pos_merged,
+            self.curve_error_strength_neg_merged,
+            brush=(0, 255, 255, 60)
+        )
+        self.plot_merged.addItem(self.fill_error_merged)
+        # Right axis for monitor signal (orange)
         self.plot_merged.showAxis('right')
         self.plot_merged.getPlotItem().setLabel('right', 'Monitor Signal', 'V')
+        self.plot_merged.getAxis('right').setPen(pg.mkPen((255, 165, 0)))
         self.monitor_vb = pg.ViewBox()
         self.plot_merged.scene().addItem(self.monitor_vb)
         self.plot_merged.getAxis('right').linkToView(self.monitor_vb)
         self.monitor_vb.setXLink(self.plot_merged.getViewBox())
-        self.curve_monitor_merged = pg.PlotDataItem()
+        self.curve_monitor_merged = pg.PlotDataItem(pen=pg.mkPen(color=(255, 165, 0), width=1.5))
         self.monitor_vb.addItem(self.curve_monitor_merged)
         # Ensure the right axis updates when the view changes
         def updateViewBox():
@@ -114,6 +125,14 @@ class SweepPlotHandler(BasePlotHandler):
                 self.curve_error_merged.setData(x, np.asarray(error))
             if monitor is not None:
                 self.curve_monitor_merged.setData(x, np.asarray(monitor))
+            # Add error strength shading if available
+            if error_strength is not None:
+                self.curve_error_strength_pos_merged.setData(x, np.asarray(error_strength))
+                self.curve_error_strength_neg_merged.setData(x, -np.asarray(error_strength))
+            else:
+                # Clear previous data
+                self.curve_error_strength_pos_merged.clear()
+                self.curve_error_strength_neg_merged.clear()
         else:
             # Separate mode (original behavior)
             if error is not None:
