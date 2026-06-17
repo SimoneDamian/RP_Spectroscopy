@@ -957,6 +957,8 @@ class LaserManager(QObject):
             if self.unlock_events['fast_control_fluctuations'] or self.unlock_events['fast_control_saturation'] or self.unlock_events['slow_control_fluctuations'] or self.unlock_events['slow_control_saturation']:
                 self.logger.warning("Unlock event detected")
                 self.stop_locking = True
+                self.avg_last_slow_PID_values = np.mean(self.interface.history['slow_control_values'][-20:-10])
+                self.logger.info(f"Average of the last stable slow control PID values: {self.avg_last_slow_PID_values}")
 
         return
 
@@ -1005,8 +1007,9 @@ class LaserManager(QObject):
         elif self.locking_mode == "AUTOMATIC" and self.advanced_settings['unlock_detection']['events']['automatic_relock']['enabled'] == True:
             self.logger.warning("Unlock event detected, relocking the laser...")
             self.set_state("SWEEP") #simply stops the lock and start sweeping
+            self.set_parameter_value('big_offset', self.interface.writeable_params['big_offset'].value + self.avg_last_slow_PID_values) #centres the sweep in the theoretical new position of the locking point
             sleep(2)
-            self.start_autolock(self.interface.writeable_params['big_offset'].value - 0.06, self.interface.writeable_params['big_offset'].value + 0.06, self.reference_signal)
+            self.start_autolock(self.interface.writeable_params['big_offset'].value - 0.06, self.interface.writeable_params['big_offset'].value + 0.06, self.reference_signal) #smaller sweep around the theoretical position of the locking point
         else:
             self.logger.warning("Unlock event detected but in an unknown state, unlocking the laser...")
             self.set_state("SWEEP") #simply stops the lock and start sweeping
