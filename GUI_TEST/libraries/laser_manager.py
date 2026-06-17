@@ -346,7 +346,7 @@ class LaserManager(QObject):
             self.set_parameter_value('phase', self.initial_phase)
             return
 
-        # 2. Get the target voltage for this step
+        # 2. Get the target phase for this step
         target_phase = self.scan_phases[self.phase_scan_index]
         
         # 3. Hardware Interaction (Blocking only for this small step)

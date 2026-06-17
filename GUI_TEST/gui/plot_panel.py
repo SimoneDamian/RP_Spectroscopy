@@ -1,7 +1,7 @@
 import pyqtgraph as pg
 import numpy as np
 from time import time
-from PySide6.QtWidgets import (QWidget, QVBoxLayout, QStackedWidget, QLabel,
+from PySide6.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QStackedWidget, QLabel,
                                 QScrollArea, QProgressBar, QPushButton)
 from PySide6.QtCore import Qt, Slot, QTimer, Signal
 
@@ -26,39 +26,54 @@ class SweepPlotHandler(BasePlotHandler):
     """
     def __init__(self, parent=None):
         super().__init__(parent)
+        self._merged = False  # start in separate mode
+        self._last_packet = None  # cache last packet for refresh
         layout = QVBoxLayout(self)
         layout.setContentsMargins(0, 0, 0, 0)
         layout.setSpacing(4)
 
-        # --- Top plot: Error Signal ---
+        # Separate plots (default)
         self.plot_error = pg.PlotWidget(title="Error Signal")
         self.setup_plot(self.plot_error, "Error Signal")
-
         self.zero_line = pg.InfiniteLine(pos=0, angle=0, pen=pg.mkPen(color=(128, 128, 128), width=2))
         self.plot_error.addItem(self.zero_line)
-        self.zero_line.setZValue(0) # Keep it above the fill but below the signal line
-        
+        self.zero_line.setZValue(0)
         self.curve_error = self.plot_error.plot(pen=pg.mkPen('c', width=1.5))
-        
-        self.curve_error_strength_pos = pg.PlotDataItem() 
-        self.curve_error_strength_neg = pg.PlotDataItem() 
-
-        # 3. Create the Fill between (+) and (-)
-        self.fill_error = pg.FillBetweenItem(
-            self.curve_error_strength_pos, 
-            self.curve_error_strength_neg, 
-            brush=(0, 255, 255, 60) # Semi-transparent Cyan
-        )
+        self.curve_error_strength_pos = pg.PlotDataItem()
+        self.curve_error_strength_neg = pg.PlotDataItem()
+        self.fill_error = pg.FillBetweenItem(self.curve_error_strength_pos, self.curve_error_strength_neg, brush=(0, 255, 255, 60))
         self.plot_error.addItem(self.fill_error)
 
-        # --- Bottom plot: Monitor Signal (Remains standard) ---
         self.plot_monitor = pg.PlotWidget(title="Monitor Signal")
         self.setup_plot(self.plot_monitor, "Monitor Signal", "Voltage", "V")
         self.curve_monitor = self.plot_monitor.plot(pen=pg.mkPen(color=(255, 165, 0), width=1.5))
-
         self.plot_monitor.setXLink(self.plot_error)
+
+        # Merged plot (hidden initially)
+        self.plot_merged = pg.PlotWidget(title="Sweep (Merged)")
+        self.setup_plot(self.plot_merged, "Error Signal", "Voltage", "V")
+        # Left axis for error signal
+        self.curve_error_merged = self.plot_merged.plot(pen=pg.mkPen('c', width=1.5))
+        # Right axis for monitor signal
+        self.plot_merged.showAxis('right')
+        self.plot_merged.getPlotItem().setLabel('right', 'Monitor Signal', 'V')
+        self.monitor_vb = pg.ViewBox()
+        self.plot_merged.scene().addItem(self.monitor_vb)
+        self.plot_merged.getAxis('right').linkToView(self.monitor_vb)
+        self.monitor_vb.setXLink(self.plot_merged.getViewBox())
+        self.curve_monitor_merged = pg.PlotDataItem()
+        self.monitor_vb.addItem(self.curve_monitor_merged)
+        # Ensure the right axis updates when the view changes
+        def updateViewBox():
+            self.monitor_vb.setGeometry(self.plot_merged.getViewBox().sceneBoundingRect())
+            self.monitor_vb.linkedViewChanged(self.plot_merged.getViewBox(), self.monitor_vb.XAxis)
+        self.plot_merged.getViewBox().sigResized.connect(updateViewBox)
+
+        # Add widgets to layout; merged hidden now
         layout.addWidget(self.plot_error)
         layout.addWidget(self.plot_monitor)
+        layout.addWidget(self.plot_merged)
+        self.plot_merged.setVisible(False)
 
     def setup_plot(self, widget, left_label, bottom_label=None, units=None):
         widget.setBackground('k')
@@ -70,25 +85,46 @@ class SweepPlotHandler(BasePlotHandler):
         pi.getAxis('bottom').enableAutoSIPrefix(False)
         pi.getAxis('left').enableAutoSIPrefix(False)
 
+    def _update_layout(self):
+        """Show either separate or merged layout based on self._merged flag."""
+        if self._merged:
+            # Hide separate plots, show merged
+            self.plot_error.setVisible(False)
+            self.plot_monitor.setVisible(False)
+            self.plot_merged.setVisible(True)
+        else:
+            # Show separate, hide merged
+            self.plot_error.setVisible(True)
+            self.plot_monitor.setVisible(True)
+            self.plot_merged.setVisible(False)
+
     def update(self, packet: dict):
+        """Update plots based on incoming packet and current mode (separate or merged)."""
+        self._last_packet = packet  # cache for refreshes
         x = packet.get("x")
         error = packet.get("error_signal")
         error_strength = packet.get("error_signal_strength")
         monitor = packet.get("monitor_signal")
-
         if x is None:
             return
-
         x = np.asarray(x)
+        if self._merged:
+            # Merged mode: use merged plot curves
+            if error is not None:
+                self.curve_error_merged.setData(x, np.asarray(error))
+            if monitor is not None:
+                self.curve_monitor_merged.setData(x, np.asarray(monitor))
+        else:
+            # Separate mode (original behavior)
+            if error is not None:
+                err_data = np.asarray(error)
+                self.curve_error.setData(x, err_data)
+                if error_strength is not None:
+                    self.curve_error_strength_pos.setData(x, error_strength)
+                    self.curve_error_strength_neg.setData(x, -error_strength)
+            if monitor is not None:
+                self.curve_monitor.setData(x, np.asarray(monitor))
 
-        if error is not None:
-            err_data = np.asarray(error)
-            self.curve_error.setData(x, err_data)
-            self.curve_error_strength_pos.setData(x, error_strength)
-            self.curve_error_strength_neg.setData(x, -error_strength)
-
-        if monitor is not None:
-            self.curve_monitor.setData(x, np.asarray(monitor))
 
 class ManualLockingPlotHandler(BasePlotHandler):
     """
@@ -827,8 +863,35 @@ class PlotPanel(QWidget):
             }
         """)
         self.btn_unlock.setVisible(False)
-        self.btn_unlock.clicked.connect(self.sig_unlock_requested.emit)
-        layout.addWidget(self.btn_unlock)
+
+
+        # --- Top bar with Sweep mode toggle button (hidden by default) ---
+        top_bar_layout = QHBoxLayout()
+        top_bar_layout.addStretch()
+        self.btn_toggle_sweep = QPushButton("Merge plots")
+        self.btn_toggle_sweep.setFixedHeight(30)
+        self.btn_toggle_sweep.setStyleSheet(
+            """
+            QPushButton {
+                background-color: #424242;
+                color: white;
+                font-weight: bold;
+                font-size: 14px;
+                border: none;
+                border-radius: 4px;
+                padding: 4px 8px;
+            }
+            QPushButton:hover {
+                background-color: #555555;
+            }
+            """
+        )
+        self.btn_toggle_sweep.setVisible(False)
+        self.btn_toggle_sweep.clicked.connect(self._toggle_sweep_mode)
+        top_bar_layout.addWidget(self.btn_toggle_sweep)
+        layout.insertLayout(0, top_bar_layout)
+
+
 
         self._handlers: dict[str, BasePlotHandler] = {}
 
@@ -862,7 +925,27 @@ class PlotPanel(QWidget):
         
         # Toggle Unlock button visibility
         self.btn_unlock.setVisible(mode == "LOCKED")
-
+        # Toggle Sweep merge/separate button visibility (only in SWEEP mode)
+        self.btn_toggle_sweep.setVisible(mode == "SWEEP")
+        
         if handler:
             self._stack.setCurrentWidget(handler)
             handler.update(packet)
+
+    def _toggle_sweep_mode(self):
+        """Toggle between separate and merged sweep visualizations."""
+        sweep_handler = self._handlers.get("SWEEP")
+        if isinstance(sweep_handler, SweepPlotHandler):
+            sweep_handler._merged = not sweep_handler._merged
+            # Update button label to reflect the *next* action
+            if sweep_handler._merged:
+                self.btn_toggle_sweep.setText("Separate plots")
+            else:
+                self.btn_toggle_sweep.setText("Merge plots")
+            sweep_handler._update_layout()
+            # Refresh with last packet if available
+            if hasattr(sweep_handler, "_last_packet"):
+                sweep_handler.update(sweep_handler._last_packet)
+        else:
+            # No sweep handler registered – do nothing
+            pass
