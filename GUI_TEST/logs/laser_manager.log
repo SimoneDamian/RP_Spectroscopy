@@ -44562,3 +44562,475 @@
 2026-07-09 12:24:41 - LaserManager - INFO - Set parameter filter_1_frequency to 300.0
 2026-07-09 12:24:58 - LaserManager - INFO - Set parameter filter_1_frequency to 400.0
 2026-07-09 13:21:15 - LaserManager - INFO - Control loop timer stopped.
+2026-07-09 13:29:27 - LaserManager - INFO - LaserManager initialized.
+2026-07-09 13:29:31 - LaserManager - INFO - LaserManager setup complete. Control loop started.
+2026-07-09 13:29:33 - LaserManager - INFO - Parameters loaded into Interface.
+2026-07-09 13:29:33 - LaserManager - INFO - Advanced settings loaded into Interface.
+2026-07-09 13:29:33 - LaserManager - INFO - Set parameter big_offset to 0.727679
+2026-07-09 13:29:33 - LaserManager - INFO - Set parameter channel_mixing to -128
+2026-07-09 13:29:33 - LaserManager - INFO - Set parameter control_channel to 1
+2026-07-09 13:29:33 - LaserManager - INFO - Set parameter control_history_length to 60
+2026-07-09 13:29:33 - LaserManager - INFO - Set parameter demodulation_multiplier_a to 1
+2026-07-09 13:29:33 - LaserManager - INFO - Set parameter demodulation_multiplier_b to 0
+2026-07-09 13:29:33 - LaserManager - INFO - Set parameter dual_channel to False
+2026-07-09 13:29:33 - LaserManager - INFO - Set parameter filter_1_enabled_a to True
+2026-07-09 13:29:33 - LaserManager - INFO - Set parameter filter_1_enabled_b to False
+2026-07-09 13:29:33 - LaserManager - INFO - Set parameter filter_1_frequency to 400.0
+2026-07-09 13:29:33 - LaserManager - INFO - Set parameter filter_1_type_a to 0
+2026-07-09 13:29:33 - LaserManager - INFO - Set parameter filter_1_type_b to 0
+2026-07-09 13:29:34 - LaserManager - INFO - Set parameter filter_2_enabled_a to False
+2026-07-09 13:29:34 - LaserManager - INFO - Set parameter filter_2_enabled_b to True
+2026-07-09 13:29:34 - LaserManager - INFO - Set parameter filter_2_frequency to 0.0
+2026-07-09 13:29:34 - LaserManager - INFO - Set parameter filter_2_type_a to 0
+2026-07-09 13:29:34 - LaserManager - INFO - Set parameter filter_2_type_b to 0
+2026-07-09 13:29:34 - LaserManager - INFO - Set parameter filter_automatic_a to False
+2026-07-09 13:29:34 - LaserManager - INFO - Set parameter filter_automatic_b to False
+2026-07-09 13:29:34 - LaserManager - INFO - Set parameter gpio_p_out to 1
+2026-07-09 13:29:34 - LaserManager - INFO - Set parameter invert_a to False
+2026-07-09 13:29:34 - LaserManager - INFO - Set parameter invert_b to False
+2026-07-09 13:29:34 - LaserManager - INFO - Set parameter modulation_amplitude to 0.2
+2026-07-09 13:29:34 - LaserManager - INFO - Set parameter modulation_channel to 0
+2026-07-09 13:29:34 - LaserManager - INFO - Set parameter modulation_frequency to 0.05
+2026-07-09 13:29:35 - LaserManager - INFO - Set parameter offset_a to 0.00214036
+2026-07-09 13:29:35 - LaserManager - INFO - Set parameter offset_b to 0.0
+2026-07-09 13:29:35 - LaserManager - INFO - Set parameter phase to 290.0
+2026-07-09 13:29:35 - LaserManager - INFO - Set parameter pid_d to 1
+2026-07-09 13:29:35 - LaserManager - INFO - Set parameter pid_i to 100
+2026-07-09 13:29:35 - LaserManager - INFO - Set parameter pid_on_slow_enabled to True
+2026-07-09 13:29:35 - LaserManager - INFO - Set parameter pid_p to 2000
+2026-07-09 13:29:35 - LaserManager - INFO - Set parameter pid_slow_strength to 3
+2026-07-09 13:29:35 - LaserManager - INFO - Set parameter polarity_analog_out0 to 0
+2026-07-09 13:29:35 - LaserManager - INFO - Set parameter polarity_fast_out1 to 0
+2026-07-09 13:29:35 - LaserManager - INFO - Set parameter polarity_fast_out2 to 0
+2026-07-09 13:29:35 - LaserManager - INFO - Set parameter slow_control_channel to 2
+2026-07-09 13:29:35 - LaserManager - INFO - Set parameter small_offset to 0.0
+2026-07-09 13:29:35 - LaserManager - INFO - Set parameter sweep_amplitude to 0.3
+2026-07-09 13:29:35 - LaserManager - INFO - Set parameter sweep_center to 0.0
+2026-07-09 13:29:36 - LaserManager - INFO - Set parameter sweep_channel to 1
+2026-07-09 13:29:36 - LaserManager - INFO - Set parameter sweep_speed to 10
+2026-07-09 13:29:36 - LaserManager - INFO - Set parameter target_slope_rising to True
+2026-07-09 13:29:36 - LaserManager - INFO - State changed from OFF to SWEEP
+2026-07-09 13:31:14 - LaserManager - INFO - Starting autolock, scan for the line...
+2026-07-09 13:31:14 - LaserManager - INFO - Checking ramp polarity...
+2026-07-09 13:31:14 - LaserManager - INFO - Ramp signed is already matching the reference line one
+2026-07-09 13:31:14 - LaserManager - INFO - Initiating scan: 0.5V -> 0.9V (20 pts)
+2026-07-09 13:31:14 - LaserManager - INFO - State changed from SWEEP to SCAN
+2026-07-09 13:31:17 - LaserManager - INFO - Correlation at 0.5V: 0.18909082851040745, Length of match: 0.994970662196276, offset with respect to the reference signal: -0.0020580866757243426
+2026-07-09 13:31:19 - LaserManager - INFO - Correlation at 0.5210526315789473V: 0.18909082851040745, Length of match: 0.994970662196276, offset with respect to the reference signal: -0.0020580866757243426
+2026-07-09 13:31:20 - LaserManager - INFO - Correlation at 0.5421052631578948V: 0.34761792310155065, Length of match: 0.890192791282599, offset with respect to the reference signal: -0.0028551485732374944
+2026-07-09 13:31:21 - LaserManager - INFO - Correlation at 0.5631578947368421V: 0.0893585604893673, Length of match: 0.9983235540655135, offset with respect to the reference signal: -0.003432428448070666
+2026-07-09 13:31:22 - LaserManager - INFO - Correlation at 0.5842105263157895V: 0.686695191219468, Length of match: 0.771165129924662, offset with respect to the reference signal: 0.002974350878617654
+2026-07-09 13:31:23 - LaserManager - INFO - Correlation at 0.6052631578947368V: 0.7047467506853414, Length of match: 0.8826487845768143, offset with respect to the reference signal: 0.0018323567753493562
+2026-07-09 13:31:24 - LaserManager - INFO - Correlation at 0.6263157894736842V: 0.7060791604420712, Length of match: 0.9647946353731369, offset with respect to the reference signal: 0.001959270257774046
+2026-07-09 13:31:26 - LaserManager - INFO - Correlation at 0.6473684210526316V: 0.7119943943223798, Length of match: 0.9983235540655135, offset with respect to the reference signal: 0.0019495402003517452
+2026-07-09 13:31:27 - LaserManager - INFO - Correlation at 0.6684210526315789V: 0.7119943943223798, Length of match: 0.9983235540655135, offset with respect to the reference signal: 0.0019495402003517452
+2026-07-09 13:31:28 - LaserManager - INFO - Correlation at 0.6894736842105263V: 0.6825808443010343, Length of match: 0.9983235540655138, offset with respect to the reference signal: 0.0010112722572616483
+2026-07-09 13:31:29 - LaserManager - INFO - Correlation at 0.7105263157894737V: 0.7930482814462566, Length of match: 0.7937971500420162, offset with respect to the reference signal: 0.0016656683807372095
+2026-07-09 13:31:30 - LaserManager - INFO - Correlation at 0.7315789473684211V: 0.8104864769826978, Length of match: 0.880134115674886, offset with respect to the reference signal: 0.00285560827621917
+2026-07-09 13:31:31 - LaserManager - INFO - Correlation at 0.7526315789473684V: 0.8960124459877348, Length of match: 0.9664710813077558, offset with respect to the reference signal: 0.00470512372723556
+2026-07-09 13:31:32 - LaserManager - INFO - Correlation at 0.7736842105263158V: 0.9039840882550852, Length of match: 0.9974853310982041, offset with respect to the reference signal: 0.00591821392689698
+2026-07-09 13:31:34 - LaserManager - INFO - Correlation at 0.7947368421052632V: 0.9039840882550852, Length of match: 0.9974853310982041, offset with respect to the reference signal: 0.00591821392689698
+2026-07-09 13:31:35 - LaserManager - INFO - Correlation at 0.8157894736842105V: 0.9109963850513272, Length of match: 0.9983235540655138, offset with respect to the reference signal: 0.006062488500853551
+2026-07-09 13:31:36 - LaserManager - INFO - Correlation at 0.8368421052631578V: 0.927297924972294, Length of match: 0.9983235540655139, offset with respect to the reference signal: 0.0073834851174891455
+2026-07-09 13:31:37 - LaserManager - INFO - Correlation at 0.8578947368421053V: 0.9283213466038405, Length of match: 0.9983235540655138, offset with respect to the reference signal: 0.007813675834970286
+2026-07-09 13:31:38 - LaserManager - INFO - Correlation at 0.8789473684210527V: 0.9447779335592443, Length of match: 0.9983235540655138, offset with respect to the reference signal: 0.008902963795023916
+2026-07-09 13:31:39 - LaserManager - INFO - Correlation at 0.9V: 0.9447779335592443, Length of match: 0.9983235540655138, offset with respect to the reference signal: 0.008902963795023916
+2026-07-09 13:31:39 - LaserManager - INFO - Setting the optimal scan center...
+2026-07-09 13:31:39 - LaserManager - INFO - Set parameter big_offset to 0.8789473684210527
+2026-07-09 13:31:39 - LaserManager - INFO - Set parameter offset_a to -0.006762603795023916
+2026-07-09 13:31:39 - LaserManager - INFO - Set vertical offset (offset_a) to -0.006762603795023916
+2026-07-09 13:31:40 - LaserManager - INFO - Starting the jitter check loop...
+2026-07-09 13:31:40 - LaserManager - INFO - State changed from SCAN to JITTER_CHECK
+2026-07-09 13:31:41 - LaserManager - INFO - Line is now inside
+2026-07-09 13:31:44 - LaserManager - INFO - Frequency stable enough
+2026-07-09 13:31:44 - LaserManager - INFO - Shift: 0.04660478749388819, space left: 0.096726917440151, space right: 0.15359062042013233, free space: 0.2503175378602833, edge space threshold: 0.0834391792867611
+2026-07-09 13:31:44 - LaserManager - INFO - Line is centered at offset 0.8789473684210527. Jitter check complete.
+2026-07-09 13:31:45 - LaserManager - INFO - Starting autolock from 1097 to 1218
+2026-07-09 13:31:55 - LaserManager - WARNING - Attempt number 1 of laser locking failed :(
+2026-07-09 13:31:55 - LaserManager - INFO - Trying again the jitter check...
+2026-07-09 13:31:55 - LaserManager - INFO - Starting the jitter check loop...
+2026-07-09 13:31:56 - LaserManager - INFO - Line is now inside
+2026-07-09 13:31:59 - LaserManager - INFO - Frequency stable enough
+2026-07-09 13:31:59 - LaserManager - INFO - Shift: 0.05744992672202631, space left: 0.10757205666828912, space right: 0.1427454811919942, free space: 0.2503175378602833, edge space threshold: 0.0834391792867611
+2026-07-09 13:31:59 - LaserManager - INFO - Line is centered at offset 0.8789473684210527. Jitter check complete.
+2026-07-09 13:31:59 - LaserManager - INFO - Starting autolock from 1134 to 1255
+2026-07-09 13:32:06 - LaserManager - INFO - Locking the laser worked! \o/
+2026-07-09 13:32:06 - LaserManager - INFO - State changed from JITTER_CHECK to LOCKED
+2026-07-09 13:32:37 - LaserManager - INFO - State changed from LOCKED to SWEEP
+2026-07-09 13:32:50 - LaserManager - INFO - Starting autolock, scan for the line...
+2026-07-09 13:32:50 - LaserManager - INFO - Checking ramp polarity...
+2026-07-09 13:32:50 - LaserManager - INFO - Ramp signed is already matching the reference line one
+2026-07-09 13:32:50 - LaserManager - INFO - Initiating scan: 0.5V -> 0.9V (20 pts)
+2026-07-09 13:32:50 - LaserManager - INFO - State changed from SWEEP to SCAN
+2026-07-09 13:32:53 - LaserManager - INFO - Correlation at 0.5V: 0.22385515015165824, Length of match: 0.9983235540655138, offset with respect to the reference signal: -0.010237386658928664
+2026-07-09 13:32:54 - LaserManager - INFO - Correlation at 0.5210526315789473V: 0.28056405974069637, Length of match: 0.9983235540655138, offset with respect to the reference signal: -0.009897211248208242
+2026-07-09 13:32:55 - LaserManager - INFO - Correlation at 0.5421052631578948V: 0.1084807780659858, Length of match: 0.9983235540655139, offset with respect to the reference signal: -0.012501115785561588
+2026-07-09 13:32:56 - LaserManager - INFO - Correlation at 0.5631578947368421V: 0.04255518419174345, Length of match: 0.9974853310982041, offset with respect to the reference signal: -0.011820022971083975
+2026-07-09 13:32:57 - LaserManager - INFO - Correlation at 0.5842105263157895V: 0.6734084805630126, Length of match: 0.771165129924662, offset with respect to the reference signal: -0.006517846506580174
+2026-07-09 13:32:59 - LaserManager - INFO - Correlation at 0.6052631578947368V: 0.6800750678674428, Length of match: 0.865884325230626, offset with respect to the reference signal: -0.006884523249680233
+2026-07-09 13:33:00 - LaserManager - INFO - Correlation at 0.6263157894736842V: 0.6800750678674428, Length of match: 0.865884325230626, offset with respect to the reference signal: -0.006884523249680233
+2026-07-09 13:33:01 - LaserManager - INFO - Correlation at 0.6473684210526316V: 0.7054625651107955, Length of match: 0.9438390611904016, offset with respect to the reference signal: -0.0062337372332269755
+2026-07-09 13:33:02 - LaserManager - INFO - Correlation at 0.6684210526315789V: 0.6807509366038301, Length of match: 0.9974853310982041, offset with respect to the reference signal: -0.00783998122349696
+2026-07-09 13:33:03 - LaserManager - INFO - Correlation at 0.6894736842105263V: 0.6744741166612801, Length of match: 0.9974853310982041, offset with respect to the reference signal: -0.0076169643669207355
+2026-07-09 13:33:04 - LaserManager - INFO - Correlation at 0.7105263157894737V: 0.8235369572174202, Length of match: 0.7862531433362314, offset with respect to the reference signal: -0.005761689429563104
+2026-07-09 13:33:06 - LaserManager - INFO - Correlation at 0.7315789473684211V: 0.8618014054312922, Length of match: 0.8625314333613883, offset with respect to the reference signal: -0.005637982391062023
+2026-07-09 13:33:07 - LaserManager - INFO - Correlation at 0.7526315789473684V: 0.8618014054312922, Length of match: 0.8625314333613883, offset with respect to the reference signal: -0.005637982391062023
+2026-07-09 13:33:08 - LaserManager - INFO - Correlation at 0.7736842105263158V: 0.8848928478580401, Length of match: 0.9455155071250204, offset with respect to the reference signal: -0.002565350525753341
+2026-07-09 13:33:09 - LaserManager - INFO - Correlation at 0.7947368421052632V: 0.8577837399420928, Length of match: 0.9983235540655138, offset with respect to the reference signal: -0.004592115342991258
+2026-07-09 13:33:10 - LaserManager - INFO - Correlation at 0.8157894736842105V: 0.9027182585666864, Length of match: 0.9983235540655139, offset with respect to the reference signal: -0.003362560173301183
+2026-07-09 13:33:12 - LaserManager - INFO - Correlation at 0.8368421052631578V: 0.9186106807924505, Length of match: 0.9974853310982041, offset with respect to the reference signal: -0.0035687699280522976
+2026-07-09 13:33:13 - LaserManager - INFO - Correlation at 0.8578947368421053V: 0.9368461910297191, Length of match: 0.9983235540655138, offset with respect to the reference signal: -0.00117413833753734
+2026-07-09 13:33:14 - LaserManager - INFO - Correlation at 0.8789473684210527V: 0.9368461910297191, Length of match: 0.9983235540655138, offset with respect to the reference signal: -0.00117413833753734
+2026-07-09 13:33:15 - LaserManager - INFO - Correlation at 0.9V: 0.9335314389487234, Length of match: 0.9983235540655138, offset with respect to the reference signal: -0.0018906912528138427
+2026-07-09 13:33:15 - LaserManager - INFO - Setting the optimal scan center...
+2026-07-09 13:33:15 - LaserManager - INFO - Set parameter big_offset to 0.8578947368421053
+2026-07-09 13:33:15 - LaserManager - INFO - Set parameter offset_a to -0.005588465457486576
+2026-07-09 13:33:15 - LaserManager - INFO - Set vertical offset (offset_a) to -0.005588465457486576
+2026-07-09 13:33:16 - LaserManager - INFO - Starting the jitter check loop...
+2026-07-09 13:33:16 - LaserManager - INFO - State changed from SCAN to JITTER_CHECK
+2026-07-09 13:33:17 - LaserManager - INFO - Line is now inside
+2026-07-09 13:33:20 - LaserManager - INFO - Frequency stable enough
+2026-07-09 13:33:20 - LaserManager - INFO - Shift: 0.07826086956521028, space left: 0.12838299951147308, space right: 0.12193453834881024, free space: 0.2503175378602833, edge space threshold: 0.0834391792867611
+2026-07-09 13:33:20 - LaserManager - INFO - Line is centered at offset 0.8578947368421053. Jitter check complete.
+2026-07-09 13:33:20 - LaserManager - INFO - Starting autolock from 1205 to 1326
+2026-07-09 13:33:27 - LaserManager - INFO - Locking the laser worked! \o/
+2026-07-09 13:33:27 - LaserManager - INFO - State changed from JITTER_CHECK to LOCKED
+2026-07-09 13:34:59 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-09 13:34:59
+2026-07-09 13:34:59 - LaserManager - WARNING - Unlock event detected
+2026-07-09 13:34:59 - LaserManager - INFO - Average of the last stable slow control PID values: 0.005746024964140751
+2026-07-09 13:34:59 - LaserManager - INFO - Unlock event detected — waiting 10 ticks before acting.
+2026-07-09 13:35:00 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-09 13:34:59
+2026-07-09 13:35:00 - LaserManager - WARNING - Unlock event detected
+2026-07-09 13:35:00 - LaserManager - INFO - Average of the last stable slow control PID values: 0.005773491622669149
+2026-07-09 13:35:00 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-09 13:34:59
+2026-07-09 13:35:00 - LaserManager - WARNING - Unlock event detected
+2026-07-09 13:35:00 - LaserManager - INFO - Average of the last stable slow control PID values: 0.005778984954374828
+2026-07-09 13:35:01 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-09 13:34:59
+2026-07-09 13:35:01 - LaserManager - WARNING - Unlock event detected
+2026-07-09 13:35:01 - LaserManager - INFO - Average of the last stable slow control PID values: 0.005526291695913571
+2026-07-09 13:35:01 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-09 13:34:59
+2026-07-09 13:35:01 - LaserManager - WARNING - Unlock event detected
+2026-07-09 13:35:01 - LaserManager - INFO - Average of the last stable slow control PID values: 0.005086825159459212
+2026-07-09 13:35:02 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-09 13:34:59
+2026-07-09 13:35:02 - LaserManager - WARNING - Unlock event detected
+2026-07-09 13:35:02 - LaserManager - INFO - Average of the last stable slow control PID values: 0.004471572008423108
+2026-07-09 13:35:02 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-09 13:34:59
+2026-07-09 13:35:02 - LaserManager - WARNING - Unlock event detected
+2026-07-09 13:35:02 - LaserManager - INFO - Average of the last stable slow control PID values: 0.003971678823206275
+2026-07-09 13:35:03 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-09 13:34:59
+2026-07-09 13:35:03 - LaserManager - WARNING - Unlock event detected
+2026-07-09 13:35:03 - LaserManager - INFO - Average of the last stable slow control PID values: 0.0033509323404644917
+2026-07-09 13:35:03 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-09 13:34:59
+2026-07-09 13:35:03 - LaserManager - WARNING - Unlock event detected
+2026-07-09 13:35:03 - LaserManager - INFO - Average of the last stable slow control PID values: 0.00271919919431135
+2026-07-09 13:35:04 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-09 13:34:59
+2026-07-09 13:35:04 - LaserManager - WARNING - Unlock event detected
+2026-07-09 13:35:04 - LaserManager - INFO - Average of the last stable slow control PID values: 0.0021039460432752464
+2026-07-09 13:35:04 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-09 13:34:59
+2026-07-09 13:35:04 - LaserManager - WARNING - Unlock event detected
+2026-07-09 13:35:04 - LaserManager - INFO - Average of the last stable slow control PID values: 0.0015051728873561815
+2026-07-09 13:35:05 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-09 13:34:59
+2026-07-09 13:35:05 - LaserManager - WARNING - Unlock event detected
+2026-07-09 13:35:05 - LaserManager - INFO - Average of the last stable slow control PID values: 0.0010162663655507065
+2026-07-09 13:35:05 - LaserManager - WARNING - Unlock event detected, relocking the laser...
+2026-07-09 13:35:05 - LaserManager - INFO - Set parameter big_offset to 0.858911003207656
+2026-07-09 13:35:07 - LaserManager - INFO - Starting autolock, scan for the line...
+2026-07-09 13:35:07 - LaserManager - INFO - Checking ramp polarity...
+2026-07-09 13:35:07 - LaserManager - INFO - Ramp signed is already matching the reference line one
+2026-07-09 13:35:07 - LaserManager - INFO - Initiating scan: 0.7989110032076561V -> 0.918911003207656V (5 pts)
+2026-07-09 13:35:07 - LaserManager - INFO - State changed from LOCKED to SCAN
+2026-07-09 13:35:10 - LaserManager - INFO - Correlation at 0.7989110032076561V: 0.9352906237757327, Length of match: 0.9983235540655138, offset with respect to the reference signal: 7.147530416394543e-05
+2026-07-09 13:35:12 - LaserManager - INFO - Correlation at 0.8289110032076561V: 0.9355752097407241, Length of match: 0.9983235540655138, offset with respect to the reference signal: -0.00043064096234054355
+2026-07-09 13:35:13 - LaserManager - INFO - Correlation at 0.858911003207656V: 0.7626560973300484, Length of match: 0.9983235540655139, offset with respect to the reference signal: -0.005379485473955281
+2026-07-09 13:35:14 - LaserManager - INFO - Correlation at 0.8889110032076559V: 0.9482980392022097, Length of match: 0.9983235540655138, offset with respect to the reference signal: 0.0014377153246095571
+2026-07-09 13:35:15 - LaserManager - INFO - Correlation at 0.918911003207656V: 0.9745395361844847, Length of match: 0.9983235540655138, offset with respect to the reference signal: 0.0024484174728713892
+2026-07-09 13:35:15 - LaserManager - INFO - Setting the optimal scan center...
+2026-07-09 13:35:15 - LaserManager - INFO - Set parameter big_offset to 0.918911003207656
+2026-07-09 13:35:15 - LaserManager - INFO - Set parameter offset_a to -0.008036882930357966
+2026-07-09 13:35:15 - LaserManager - INFO - Set vertical offset (offset_a) to -0.008036882930357966
+2026-07-09 13:35:16 - LaserManager - INFO - Starting the jitter check loop...
+2026-07-09 13:35:16 - LaserManager - INFO - State changed from SCAN to JITTER_CHECK
+2026-07-09 13:35:17 - LaserManager - INFO - Line is now inside
+2026-07-09 13:35:20 - LaserManager - INFO - Frequency stable enough
+2026-07-09 13:35:20 - LaserManager - INFO - Shift: -0.02110405471421739, space left: 0.029018075232045415, space right: 0.2212994626282379, free space: 0.2503175378602833, edge space threshold: 0.0834391792867611
+2026-07-09 13:35:20 - LaserManager - INFO - Too far left: increase offset to decrease frequency
+2026-07-09 13:35:21 - LaserManager - INFO - Line is now inside
+2026-07-09 13:35:25 - LaserManager - INFO - Frequency stable enough
+2026-07-09 13:35:25 - LaserManager - INFO - Shift: 0.012603810454320019, space left: 0.06272594040058282, space right: 0.1875915974597005, free space: 0.2503175378602833, edge space threshold: 0.0834391792867611
+2026-07-09 13:35:25 - LaserManager - INFO - Too far left: increase offset to decrease frequency
+2026-07-09 13:35:25 - LaserManager - INFO - Line is now inside
+2026-07-09 13:35:29 - LaserManager - INFO - Frequency stable enough
+2026-07-09 13:35:29 - LaserManager - INFO - Shift: 0.029018075232042584, space left: 0.07914020517830539, space right: 0.17117733268197793, free space: 0.2503175378602833, edge space threshold: 0.0834391792867611
+2026-07-09 13:35:29 - LaserManager - INFO - Too far left: increase offset to decrease frequency
+2026-07-09 13:35:30 - LaserManager - INFO - Line is now inside
+2026-07-09 13:35:33 - LaserManager - INFO - Frequency stable enough
+2026-07-09 13:35:33 - LaserManager - INFO - Shift: 0.04367366878358059, space left: 0.0937957987298434, space right: 0.15652173913043993, free space: 0.2503175378602833, edge space threshold: 0.0834391792867611
+2026-07-09 13:35:33 - LaserManager - INFO - Line is centered at offset 0.8889110032076559. Jitter check complete.
+2026-07-09 13:35:33 - LaserManager - INFO - Starting autolock from 1087 to 1208
+2026-07-09 13:35:39 - LaserManager - INFO - Locking the laser worked! \o/
+2026-07-09 13:35:39 - LaserManager - INFO - State changed from JITTER_CHECK to LOCKED
+2026-07-09 13:36:10 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-09 13:36:09
+2026-07-09 13:36:10 - LaserManager - WARNING - Unlock event detected
+2026-07-09 13:36:10 - LaserManager - INFO - Average of the last stable slow control PID values: 0.00054383983886227
+2026-07-09 13:36:10 - LaserManager - INFO - Unlock event detected — waiting 10 ticks before acting.
+2026-07-09 13:36:10 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-09 13:36:09
+2026-07-09 13:36:10 - LaserManager - WARNING - Unlock event detected
+2026-07-09 13:36:10 - LaserManager - INFO - Average of the last stable slow control PID values: 0.00054383983886227
+2026-07-09 13:36:11 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-09 13:36:09
+2026-07-09 13:36:11 - LaserManager - WARNING - Unlock event detected
+2026-07-09 13:36:11 - LaserManager - INFO - Average of the last stable slow control PID values: 0.000499893185216834
+2026-07-09 13:36:11 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-09 13:36:09
+2026-07-09 13:36:11 - LaserManager - WARNING - Unlock event detected
+2026-07-09 13:36:11 - LaserManager - INFO - Average of the last stable slow control PID values: 0.0004174932096316416
+2026-07-09 13:36:12 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-09 13:36:09
+2026-07-09 13:36:12 - LaserManager - WARNING - Unlock event detected
+2026-07-09 13:36:12 - LaserManager - INFO - Average of the last stable slow control PID values: 0.00035157322916348765
+2026-07-09 13:36:12 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-09 13:36:09
+2026-07-09 13:36:12 - LaserManager - WARNING - Unlock event detected
+2026-07-09 13:36:12 - LaserManager - INFO - Average of the last stable slow control PID values: 0.00027466658528397473
+2026-07-09 13:36:13 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-09 13:36:09
+2026-07-09 13:36:13 - LaserManager - WARNING - Unlock event detected
+2026-07-09 13:36:13 - LaserManager - INFO - Average of the last stable slow control PID values: 0.0002142399365215003
+2026-07-09 13:36:13 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-09 13:36:09
+2026-07-09 13:36:13 - LaserManager - WARNING - Unlock event detected
+2026-07-09 13:36:13 - LaserManager - INFO - Average of the last stable slow control PID values: 0.00015381328775902585
+2026-07-09 13:36:14 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-09 13:36:09
+2026-07-09 13:36:14 - LaserManager - WARNING - Unlock event detected
+2026-07-09 13:36:14 - LaserManager - INFO - Average of the last stable slow control PID values: 7.141331217383343e-05
+2026-07-09 13:36:14 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-09 13:36:09
+2026-07-09 13:36:14 - LaserManager - WARNING - Unlock event detected
+2026-07-09 13:36:14 - LaserManager - INFO - Average of the last stable slow control PID values: 5.493331705679495e-06
+2026-07-09 13:36:15 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-09 13:36:09
+2026-07-09 13:36:15 - LaserManager - WARNING - Unlock event detected
+2026-07-09 13:36:15 - LaserManager - INFO - Average of the last stable slow control PID values: -6.591998046815394e-05
+2026-07-09 13:36:15 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-09 13:36:09
+2026-07-09 13:36:15 - LaserManager - WARNING - Unlock event detected
+2026-07-09 13:36:15 - LaserManager - INFO - Average of the last stable slow control PID values: -0.00013183996093630787
+2026-07-09 13:36:15 - LaserManager - WARNING - Unlock event detected, relocking the laser...
+2026-07-09 13:36:16 - LaserManager - INFO - Set parameter big_offset to 0.8887791632467196
+2026-07-09 13:36:18 - LaserManager - INFO - Starting autolock, scan for the line...
+2026-07-09 13:36:18 - LaserManager - INFO - Checking ramp polarity...
+2026-07-09 13:36:18 - LaserManager - INFO - Ramp signed is already matching the reference line one
+2026-07-09 13:36:18 - LaserManager - INFO - Initiating scan: 0.8287791632467196V -> 0.9487791632467195V (5 pts)
+2026-07-09 13:36:18 - LaserManager - INFO - State changed from LOCKED to SCAN
+2026-07-09 13:36:21 - LaserManager - INFO - Correlation at 0.8287791632467196V: 0.9300991568095813, Length of match: 0.9983235540655135, offset with respect to the reference signal: -0.0015680762661378182
+2026-07-09 13:36:22 - LaserManager - INFO - Correlation at 0.8587791632467197V: 0.920556981347393, Length of match: 0.9983235540655139, offset with respect to the reference signal: -0.003797208325275827
+2026-07-09 13:36:23 - LaserManager - INFO - Correlation at 0.8887791632467196V: 0.923323900261378, Length of match: 0.9983235540655138, offset with respect to the reference signal: -0.0029135146247095643
+2026-07-09 13:36:24 - LaserManager - INFO - Correlation at 0.9187791632467195V: 0.9410585303705423, Length of match: 0.9983235540655138, offset with respect to the reference signal: -0.0006497742438688059
+2026-07-09 13:36:26 - LaserManager - INFO - Correlation at 0.9487791632467195V: 0.9717850030777844, Length of match: 0.9983235540655138, offset with respect to the reference signal: -0.00067458090668698
+2026-07-09 13:36:26 - LaserManager - INFO - Setting the optimal scan center...
+2026-07-09 13:36:26 - LaserManager - INFO - Set parameter big_offset to 0.9487791632467195
+2026-07-09 13:36:26 - LaserManager - INFO - Set parameter offset_a to -0.0073623020236709864
+2026-07-09 13:36:26 - LaserManager - INFO - Set vertical offset (offset_a) to -0.0073623020236709864
+2026-07-09 13:36:27 - LaserManager - INFO - Starting the jitter check loop...
+2026-07-09 13:36:27 - LaserManager - INFO - State changed from SCAN to JITTER_CHECK
+2026-07-09 13:36:27 - LaserManager - INFO - Line is now inside
+2026-07-09 13:36:31 - LaserManager - INFO - Frequency stable enough
+2026-07-09 13:36:31 - LaserManager - INFO - Shift: -0.035759648265755395, space left: 0.01436248168050741, space right: 0.2359550561797759, free space: 0.2503175378602833, edge space threshold: 0.0834391792867611
+2026-07-09 13:36:31 - LaserManager - INFO - Too far left: increase offset to decrease frequency
+2026-07-09 13:36:32 - LaserManager - INFO - Line is now inside
+2026-07-09 13:36:35 - LaserManager - INFO - Frequency stable enough
+2026-07-09 13:36:35 - LaserManager - INFO - Shift: -0.01670737664875599, space left: 0.033414753297506816, space right: 0.2169027845627765, free space: 0.2503175378602833, edge space threshold: 0.0834391792867611
+2026-07-09 13:36:35 - LaserManager - INFO - Too far left: increase offset to decrease frequency
+2026-07-09 13:36:36 - LaserManager - INFO - Line is now inside
+2026-07-09 13:36:39 - LaserManager - INFO - Frequency stable enough
+2026-07-09 13:36:39 - LaserManager - INFO - Shift: -0.001758671226187225, space left: 0.04836345872007558, space right: 0.20195407914020774, free space: 0.2503175378602833, edge space threshold: 0.0834391792867611
+2026-07-09 13:36:39 - LaserManager - INFO - Too far left: increase offset to decrease frequency
+2026-07-09 13:36:40 - LaserManager - INFO - Line is now inside
+2026-07-09 13:36:43 - LaserManager - INFO - Frequency stable enough
+2026-07-09 13:36:43 - LaserManager - INFO - Shift: 0.009965803615043178, space left: 0.060087933561305984, space right: 0.19022960429897734, free space: 0.2503175378602833, edge space threshold: 0.0834391792867611
+2026-07-09 13:36:43 - LaserManager - INFO - Too far left: increase offset to decrease frequency
+2026-07-09 13:36:44 - LaserManager - INFO - Line is now inside
+2026-07-09 13:36:47 - LaserManager - INFO - Frequency stable enough
+2026-07-09 13:36:47 - LaserManager - INFO - Shift: 0.0134831460674123, space left: 0.0636052760136751, space right: 0.18671226184660822, free space: 0.2503175378602833, edge space threshold: 0.0834391792867611
+2026-07-09 13:36:47 - LaserManager - INFO - Too far left: increase offset to decrease frequency
+2026-07-09 13:36:48 - LaserManager - INFO - Line is now inside
+2026-07-09 13:36:51 - LaserManager - INFO - Frequency stable enough
+2026-07-09 13:36:51 - LaserManager - INFO - Shift: 0.031362970200288665, space left: 0.08148510014655147, space right: 0.16883243771373185, free space: 0.2503175378602833, edge space threshold: 0.0834391792867611
+2026-07-09 13:36:51 - LaserManager - INFO - Too far left: increase offset to decrease frequency
+2026-07-09 13:36:52 - LaserManager - INFO - Line is now inside
+2026-07-09 13:36:55 - LaserManager - INFO - Frequency stable enough
+2026-07-09 13:36:55 - LaserManager - INFO - Shift: 0.05305324865656491, space left: 0.10317537860282772, space right: 0.1471421592574556, free space: 0.2503175378602833, edge space threshold: 0.0834391792867611
+2026-07-09 13:36:55 - LaserManager - INFO - Line is centered at offset 0.8887791632467195. Jitter check complete.
+2026-07-09 13:36:55 - LaserManager - INFO - Starting autolock from 1119 to 1240
+2026-07-09 13:37:03 - LaserManager - INFO - Locking the laser worked! \o/
+2026-07-09 13:37:03 - LaserManager - INFO - State changed from JITTER_CHECK to LOCKED
+2026-07-09 13:37:07 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-09 13:37:06
+2026-07-09 13:37:07 - LaserManager - WARNING - Unlock event detected
+2026-07-09 13:37:07 - LaserManager - INFO - Average of the last stable slow control PID values: 0.0
+2026-07-09 13:37:07 - LaserManager - INFO - Unlock event detected — waiting 10 ticks before acting.
+2026-07-09 13:37:07 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-09 13:37:06
+2026-07-09 13:37:07 - LaserManager - WARNING - Unlock event detected
+2026-07-09 13:37:07 - LaserManager - INFO - Average of the last stable slow control PID values: -5.4933317056794946e-05
+2026-07-09 13:37:08 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-09 13:37:06
+2026-07-09 13:37:08 - LaserManager - WARNING - Unlock event detected
+2026-07-09 13:37:08 - LaserManager - INFO - Average of the last stable slow control PID values: -0.00013183996093630787
+2026-07-09 13:37:08 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-09 13:37:06
+2026-07-09 13:37:08 - LaserManager - WARNING - Unlock event detected
+2026-07-09 13:37:08 - LaserManager - INFO - Average of the last stable slow control PID values: -0.0001922666096987823
+2026-07-09 13:37:09 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-09 13:37:06
+2026-07-09 13:37:09 - LaserManager - WARNING - Unlock event detected
+2026-07-09 13:37:09 - LaserManager - INFO - Average of the last stable slow control PID values: -0.00025269325846125675
+2026-07-09 13:37:09 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-09 13:37:06
+2026-07-09 13:37:09 - LaserManager - WARNING - Unlock event detected
+2026-07-09 13:37:09 - LaserManager - INFO - Average of the last stable slow control PID values: -0.0003295999023407697
+2026-07-09 13:37:10 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-09 13:37:06
+2026-07-09 13:37:10 - LaserManager - WARNING - Unlock event detected
+2026-07-09 13:37:10 - LaserManager - INFO - Average of the last stable slow control PID values: -0.0004065065462202826
+2026-07-09 13:37:10 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-09 13:37:06
+2026-07-09 13:37:10 - LaserManager - WARNING - Unlock event detected
+2026-07-09 13:37:10 - LaserManager - INFO - Average of the last stable slow control PID values: -0.00046693319498275704
+2026-07-09 13:37:11 - LaserManager - WARNING - Unlock event detected
+2026-07-09 13:37:11 - LaserManager - INFO - Average of the last stable slow control PID values: -0.0005383465071565905
+2026-07-09 13:37:11 - LaserManager - WARNING - Unlock event detected
+2026-07-09 13:37:11 - LaserManager - INFO - Average of the last stable slow control PID values: -0.0006042664876247444
+2026-07-09 13:37:12 - LaserManager - WARNING - Unlock event detected
+2026-07-09 13:37:12 - LaserManager - INFO - Average of the last stable slow control PID values: -0.0006701864680928983
+2026-07-09 13:37:12 - LaserManager - WARNING - Unlock event detected
+2026-07-09 13:37:12 - LaserManager - INFO - Average of the last stable slow control PID values: -0.0007415997802667318
+2026-07-09 13:37:12 - LaserManager - WARNING - Unlock event detected, relocking the laser...
+2026-07-09 13:37:13 - LaserManager - INFO - Set parameter big_offset to 0.8880375634664527
+2026-07-09 13:37:15 - LaserManager - INFO - Starting autolock, scan for the line...
+2026-07-09 13:37:15 - LaserManager - INFO - Checking ramp polarity...
+2026-07-09 13:37:15 - LaserManager - INFO - Ramp signed is already matching the reference line one
+2026-07-09 13:37:15 - LaserManager - INFO - Initiating scan: 0.8280375634664527V -> 0.9480375634664526V (5 pts)
+2026-07-09 13:37:15 - LaserManager - INFO - State changed from LOCKED to SCAN
+2026-07-09 13:37:18 - LaserManager - INFO - Correlation at 0.8280375634664527V: 0.9216210819163029, Length of match: 0.9983235540655139, offset with respect to the reference signal: -0.003273377275452013
+2026-07-09 13:37:19 - LaserManager - INFO - Correlation at 0.8580375634664528V: 0.9104638594172039, Length of match: 0.9983235540655138, offset with respect to the reference signal: -0.0034750455179056935
+2026-07-09 13:37:20 - LaserManager - INFO - Correlation at 0.8880375634664527V: 0.9204346698148625, Length of match: 0.9983235540655138, offset with respect to the reference signal: -0.0027480428489963862
+2026-07-09 13:37:21 - LaserManager - INFO - Correlation at 0.9180375634664526V: 0.9455371757238046, Length of match: 0.9983235540655138, offset with respect to the reference signal: -8.444162089867036e-05
+2026-07-09 13:37:22 - LaserManager - INFO - Correlation at 0.9480375634664526V: 0.9455371757238046, Length of match: 0.9983235540655138, offset with respect to the reference signal: -8.444162089867036e-05
+2026-07-09 13:37:22 - LaserManager - INFO - Setting the optimal scan center...
+2026-07-09 13:37:23 - LaserManager - INFO - Set parameter big_offset to 0.9180375634664526
+2026-07-09 13:37:23 - LaserManager - INFO - Set parameter offset_a to -0.007277860402772316
+2026-07-09 13:37:23 - LaserManager - INFO - Set vertical offset (offset_a) to -0.007277860402772316
+2026-07-09 13:37:24 - LaserManager - INFO - Starting the jitter check loop...
+2026-07-09 13:37:24 - LaserManager - INFO - State changed from SCAN to JITTER_CHECK
+2026-07-09 13:37:24 - LaserManager - INFO - Line is now inside
+2026-07-09 13:37:28 - LaserManager - INFO - Frequency stable enough
+2026-07-09 13:37:28 - LaserManager - INFO - Shift: 0.006741573033704817, space left: 0.05686370297996762, space right: 0.1934538348803157, free space: 0.2503175378602833, edge space threshold: 0.0834391792867611
+2026-07-09 13:37:28 - LaserManager - INFO - Too far left: increase offset to decrease frequency
+2026-07-09 13:37:28 - LaserManager - INFO - Line is now inside
+2026-07-09 13:37:32 - LaserManager - INFO - Frequency stable enough
+2026-07-09 13:37:32 - LaserManager - INFO - Shift: 0.01993160723008902, space left: 0.07005373717635183, space right: 0.1802638006839315, free space: 0.2503175378602833, edge space threshold: 0.0834391792867611
+2026-07-09 13:37:32 - LaserManager - INFO - Too far left: increase offset to decrease frequency
+2026-07-09 13:37:33 - LaserManager - INFO - Line is now inside
+2026-07-09 13:37:36 - LaserManager - INFO - Frequency stable enough
+2026-07-09 13:37:36 - LaserManager - INFO - Shift: 0.030483634587196384, space left: 0.08060576453345919, space right: 0.16971177332682413, free space: 0.2503175378602833, edge space threshold: 0.0834391792867611
+2026-07-09 13:37:36 - LaserManager - INFO - Too far left: increase offset to decrease frequency
+2026-07-09 13:37:37 - LaserManager - INFO - Line is now inside
+2026-07-09 13:37:40 - LaserManager - INFO - Frequency stable enough
+2026-07-09 13:37:40 - LaserManager - INFO - Shift: 0.04484611626770363, space left: 0.09496824621396643, space right: 0.1553492916463169, free space: 0.2503175378602833, edge space threshold: 0.0834391792867611
+2026-07-09 13:37:40 - LaserManager - INFO - Line is centered at offset 0.8880375634664526. Jitter check complete.
+2026-07-09 13:37:40 - LaserManager - INFO - Starting autolock from 1091 to 1212
+2026-07-09 13:37:50 - LaserManager - WARNING - Attempt number 1 of laser locking failed :(
+2026-07-09 13:37:50 - LaserManager - INFO - Trying again the jitter check...
+2026-07-09 13:37:50 - LaserManager - INFO - Starting the jitter check loop...
+2026-07-09 13:37:52 - LaserManager - INFO - Line is now inside
+2026-07-09 13:37:55 - LaserManager - INFO - Frequency stable enough
+2026-07-09 13:37:55 - LaserManager - INFO - Shift: 0.04308744504151907, space left: 0.09320957498778187, space right: 0.15710796287250145, free space: 0.2503175378602833, edge space threshold: 0.0834391792867611
+2026-07-09 13:37:55 - LaserManager - INFO - Line is centered at offset 0.8880375634664526. Jitter check complete.
+2026-07-09 13:37:55 - LaserManager - INFO - Starting autolock from 1085 to 1206
+2026-07-09 13:38:01 - LaserManager - INFO - Locking the laser worked! \o/
+2026-07-09 13:38:01 - LaserManager - INFO - State changed from JITTER_CHECK to LOCKED
+2026-07-09 13:38:17 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-09 13:38:16
+2026-07-09 13:38:17 - LaserManager - WARNING - Unlock event detected
+2026-07-09 13:38:17 - LaserManager - INFO - Average of the last stable slow control PID values: 0.0007141331217383343
+2026-07-09 13:38:17 - LaserManager - INFO - Unlock event detected — waiting 10 ticks before acting.
+2026-07-09 13:38:17 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-09 13:38:16
+2026-07-09 13:38:17 - LaserManager - WARNING - Unlock event detected
+2026-07-09 13:38:17 - LaserManager - INFO - Average of the last stable slow control PID values: 0.0007031464583269753
+2026-07-09 13:38:18 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-09 13:38:16
+2026-07-09 13:38:18 - LaserManager - WARNING - Unlock event detected
+2026-07-09 13:38:18 - LaserManager - INFO - Average of the last stable slow control PID values: 0.0006537064729758599
+2026-07-09 13:38:18 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-09 13:38:16
+2026-07-09 13:38:18 - LaserManager - WARNING - Unlock event detected
+2026-07-09 13:38:18 - LaserManager - INFO - Average of the last stable slow control PID values: 0.0005767998290963469
+2026-07-09 13:38:19 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-09 13:38:16
+2026-07-09 13:38:19 - LaserManager - WARNING - Unlock event detected
+2026-07-09 13:38:19 - LaserManager - INFO - Average of the last stable slow control PID values: 0.000510879848628193
+2026-07-09 13:38:19 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-09 13:38:16
+2026-07-09 13:38:19 - LaserManager - WARNING - Unlock event detected
+2026-07-09 13:38:19 - LaserManager - INFO - Average of the last stable slow control PID values: 0.00044495986816003906
+2026-07-09 13:38:20 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-09 13:38:16
+2026-07-09 13:38:20 - LaserManager - WARNING - Unlock event detected
+2026-07-09 13:38:20 - LaserManager - INFO - Average of the last stable slow control PID values: 0.00037354655598620563
+2026-07-09 13:38:20 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-09 13:38:16
+2026-07-09 13:38:20 - LaserManager - WARNING - Unlock event detected
+2026-07-09 13:38:20 - LaserManager - INFO - Average of the last stable slow control PID values: 0.0003131199072237312
+2026-07-09 13:38:21 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-09 13:38:16
+2026-07-09 13:38:21 - LaserManager - WARNING - Unlock event detected
+2026-07-09 13:38:21 - LaserManager - INFO - Average of the last stable slow control PID values: 0.00024170659504989776
+2026-07-09 13:38:21 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-09 13:38:16
+2026-07-09 13:38:21 - LaserManager - WARNING - Unlock event detected
+2026-07-09 13:38:21 - LaserManager - INFO - Average of the last stable slow control PID values: 0.00017029328287606433
+2026-07-09 13:38:22 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-09 13:38:16
+2026-07-09 13:38:22 - LaserManager - WARNING - Unlock event detected
+2026-07-09 13:38:22 - LaserManager - INFO - Average of the last stable slow control PID values: 0.0001043733024079104
+2026-07-09 13:38:22 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-09 13:38:16
+2026-07-09 13:38:22 - LaserManager - WARNING - Unlock event detected
+2026-07-09 13:38:22 - LaserManager - INFO - Average of the last stable slow control PID values: 3.845332193975646e-05
+2026-07-09 13:38:22 - LaserManager - WARNING - Unlock event detected, relocking the laser...
+2026-07-09 13:38:23 - LaserManager - INFO - Set parameter big_offset to 0.8880760167883923
+2026-07-09 13:38:25 - LaserManager - INFO - Starting autolock, scan for the line...
+2026-07-09 13:38:25 - LaserManager - INFO - Checking ramp polarity...
+2026-07-09 13:38:25 - LaserManager - INFO - Ramp signed is already matching the reference line one
+2026-07-09 13:38:25 - LaserManager - INFO - Initiating scan: 0.8280760167883923V -> 0.9480760167883924V (6 pts)
+2026-07-09 13:38:25 - LaserManager - INFO - State changed from LOCKED to SCAN
+2026-07-09 13:38:28 - LaserManager - INFO - Correlation at 0.8280760167883923V: 0.9212251544744959, Length of match: 0.9974853310982041, offset with respect to the reference signal: -0.00282561662046801
+2026-07-09 13:38:29 - LaserManager - INFO - Correlation at 0.8520760167883923V: 0.8398850058463099, Length of match: 0.9983235540655138, offset with respect to the reference signal: -0.004722013531701048
+2026-07-09 13:38:30 - LaserManager - INFO - Correlation at 0.8760760167883923V: 0.9032501789511792, Length of match: 0.9983235540655138, offset with respect to the reference signal: -0.002840602836886936
+2026-07-09 13:38:32 - LaserManager - INFO - Correlation at 0.9000760167883923V: 0.9043948508547349, Length of match: 0.9983235540655138, offset with respect to the reference signal: -0.0032756217467036046
+2026-07-09 13:38:33 - LaserManager - INFO - Correlation at 0.9240760167883924V: 0.9554640124695896, Length of match: 0.9983235540655138, offset with respect to the reference signal: 0.0011293206577194306
+2026-07-09 13:38:34 - LaserManager - INFO - Correlation at 0.9480760167883924V: 0.9577452347482662, Length of match: 0.9983235540655138, offset with respect to the reference signal: 0.0027559824751171406
+2026-07-09 13:38:34 - LaserManager - INFO - Setting the optimal scan center...
+2026-07-09 13:38:34 - LaserManager - INFO - Set parameter big_offset to 0.9480760167883924
+2026-07-09 13:38:34 - LaserManager - INFO - Set parameter offset_a to -0.010033842877889457
+2026-07-09 13:38:34 - LaserManager - INFO - Set vertical offset (offset_a) to -0.010033842877889457
+2026-07-09 13:38:35 - LaserManager - INFO - Starting the jitter check loop...
+2026-07-09 13:38:35 - LaserManager - INFO - State changed from SCAN to JITTER_CHECK
+2026-07-09 13:38:36 - LaserManager - INFO - Line is now inside
+2026-07-09 13:38:37 - LaserManager - INFO - Line has escaped
+2026-07-09 13:38:38 - LaserManager - INFO - Line is now inside
+2026-07-09 13:38:41 - LaserManager - INFO - Frequency stable enough
+2026-07-09 13:38:41 - LaserManager - INFO - Shift: -0.033707865168540074, space left: 0.01641426477772273, space right: 0.2339032730825606, free space: 0.2503175378602833, edge space threshold: 0.0834391792867611
+2026-07-09 13:38:41 - LaserManager - INFO - Too far left: increase offset to decrease frequency
+2026-07-09 13:38:42 - LaserManager - INFO - Line is now inside
+2026-07-09 13:38:45 - LaserManager - INFO - Frequency stable enough
+2026-07-09 13:38:45 - LaserManager - INFO - Shift: -0.01641426477772523, space left: 0.033707865168537576, space right: 0.21660967269174575, free space: 0.2503175378602833, edge space threshold: 0.0834391792867611
+2026-07-09 13:38:45 - LaserManager - INFO - Too far left: increase offset to decrease frequency
+2026-07-09 13:38:46 - LaserManager - INFO - Line is now inside
+2026-07-09 13:38:49 - LaserManager - INFO - Frequency stable enough
+2026-07-09 13:38:49 - LaserManager - INFO - Shift: 0.0008793356130896157, space left: 0.05100146555935242, space right: 0.1993160723009309, free space: 0.2503175378602833, edge space threshold: 0.0834391792867611
+2026-07-09 13:38:49 - LaserManager - INFO - Too far left: increase offset to decrease frequency
+2026-07-09 13:38:50 - LaserManager - INFO - Line is now inside
+2026-07-09 13:38:53 - LaserManager - INFO - Frequency stable enough
+2026-07-09 13:38:53 - LaserManager - INFO - Shift: 0.012603810454320019, space left: 0.06272594040058282, space right: 0.1875915974597005, free space: 0.2503175378602833, edge space threshold: 0.0834391792867611
+2026-07-09 13:38:53 - LaserManager - INFO - Too far left: increase offset to decrease frequency
+2026-07-09 13:38:54 - LaserManager - INFO - Line is now inside
+2026-07-09 13:38:58 - LaserManager - INFO - Frequency stable enough
+2026-07-09 13:38:58 - LaserManager - INFO - Shift: 0.023448949682458142, space left: 0.07357107962872095, space right: 0.17674645823156238, free space: 0.2503175378602833, edge space threshold: 0.0834391792867611
+2026-07-09 13:38:58 - LaserManager - INFO - Too far left: increase offset to decrease frequency
+2026-07-09 13:38:58 - LaserManager - INFO - Line is now inside
+2026-07-09 13:39:02 - LaserManager - INFO - Frequency stable enough
+2026-07-09 13:39:02 - LaserManager - INFO - Shift: 0.028724963361011824, space left: 0.07884709330727463, space right: 0.1714704445530087, free space: 0.2503175378602833, edge space threshold: 0.0834391792867611
+2026-07-09 13:39:02 - LaserManager - INFO - Too far left: increase offset to decrease frequency
+2026-07-09 13:39:02 - LaserManager - INFO - Line is now inside
+2026-07-09 13:39:06 - LaserManager - INFO - Frequency stable enough
+2026-07-09 13:39:06 - LaserManager - INFO - Shift: 0.04894968246213427, space left: 0.09907181240839708, space right: 0.15124572545188625, free space: 0.2503175378602833, edge space threshold: 0.0834391792867611
+2026-07-09 13:39:06 - LaserManager - INFO - Line is centered at offset 0.8880760167883923. Jitter check complete.
+2026-07-09 13:39:06 - LaserManager - INFO - Starting autolock from 1105 to 1226
+2026-07-09 13:39:17 - LaserManager - WARNING - Attempt number 1 of laser locking failed :(
+2026-07-09 13:39:17 - LaserManager - INFO - Trying again the jitter check...
+2026-07-09 13:39:17 - LaserManager - INFO - Starting the jitter check loop...
+2026-07-09 13:39:17 - LaserManager - INFO - Line is now inside
+2026-07-09 13:39:21 - LaserManager - INFO - Frequency stable enough
+2026-07-09 13:39:21 - LaserManager - INFO - Shift: 0.03927699071811919, space left: 0.08939912066438199, space right: 0.16091841719590133, free space: 0.2503175378602833, edge space threshold: 0.0834391792867611
+2026-07-09 13:39:21 - LaserManager - INFO - Line is centered at offset 0.8880760167883923. Jitter check complete.
+2026-07-09 13:39:21 - LaserManager - INFO - Starting autolock from 1072 to 1193
+2026-07-09 13:39:27 - LaserManager - INFO - Locking the laser worked! \o/
+2026-07-09 13:39:27 - LaserManager - INFO - State changed from JITTER_CHECK to LOCKED
+2026-07-09 13:39:32 - LaserManager - INFO - State changed from LOCKED to SWEEP
+2026-07-09 13:40:38 - LaserManager - INFO - Set parameter offset_a to 0.015
+2026-07-09 13:40:46 - LaserManager - INFO - Set parameter offset_a to 0.012
+2026-07-09 13:41:45 - LaserManager - INFO - Control loop timer stopped.

@@ -882,7 +882,8 @@ class PlotPanel(QWidget):
             }
         """)
         self.btn_unlock.setVisible(False)
-
+        self.btn_unlock.clicked.connect(self.sig_unlock_requested)
+        layout.addWidget(self.btn_unlock)
 
         # --- Top bar with Sweep mode toggle button (hidden by default) ---
         top_bar_layout = QHBoxLayout()
