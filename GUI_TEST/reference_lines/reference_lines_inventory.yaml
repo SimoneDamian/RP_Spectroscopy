@@ -39,3 +39,13 @@ lines:
   name: TEST
   polarity: 'True'
   scan_center: 1.055
+- board: RedPitaya_Na_D1
+  created: '2026-07-09 11:30:35'
+  file_name: TEST_Na_D1_RedPitaya_Na_D1_20260709_113035
+  lock_region:
+  - -0.025
+  - 0.0105
+  modified: '2026-07-09 11:30:35'
+  name: TEST_Na_D1
+  polarity: 'True'
+  scan_center: 0.5375

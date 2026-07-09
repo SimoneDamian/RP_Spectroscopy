@@ -15759,3 +15759,1034 @@ HTTP response body: {"code":"not found","message":"bucket \"LockingAppFiniteStat
 2026-06-17 14:16:47 - ServiceManager - INFO - Updated sweep_speed to 10 in config.
 2026-06-17 14:16:47 - ServiceManager - INFO - Updated target_slope_rising to True in config.
 2026-06-17 14:16:47 - ServiceManager - INFO - Parameters saved successfully to /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/RedPitaya_Na_D1_parameters.yaml
+2026-06-17 14:29:10 - ServiceManager - INFO - ServiceManager initializing...
+2026-06-17 14:29:10 - ServiceManager - INFO - ServiceManager looking for board list at: /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/board_list.yaml
+2026-06-17 14:29:10 - ServiceManager - INFO - ServiceManager looking for reference lines at: /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/reference_lines/reference_lines_inventory.yaml
+2026-06-17 14:29:10 - ServiceManager - INFO - Grafana client initialized.
+2026-06-17 14:29:10 - ServiceManager - INFO - ServiceManager initialization completed.
+2026-06-17 14:29:11 - ServiceManager - INFO - Loading boards...
+2026-06-17 14:29:11 - ServiceManager - INFO - Found 4 devices.
+2026-06-17 14:29:14 - ServiceManager - INFO - Loaded parameters for 'RedPitaya_Na_D1' (43 writeable, 3 readable).
+2026-06-17 14:29:14 - ServiceManager - INFO - Loaded advanced settings for 'RedPitaya_Na_D1' (5 groups).
+2026-06-17 14:30:23 - ServiceManager - INFO - Updated big_offset to 1.1 in config.
+2026-06-17 14:30:23 - ServiceManager - INFO - Updated channel_mixing to -128 in config.
+2026-06-17 14:30:23 - ServiceManager - INFO - Updated control_channel to 1 in config.
+2026-06-17 14:30:23 - ServiceManager - INFO - Updated control_history_length to 60 in config.
+2026-06-17 14:30:23 - ServiceManager - INFO - Updated demodulation_multiplier_a to 1 in config.
+2026-06-17 14:30:23 - ServiceManager - INFO - Updated demodulation_multiplier_b to 0 in config.
+2026-06-17 14:30:23 - ServiceManager - INFO - Updated dual_channel to False in config.
+2026-06-17 14:30:23 - ServiceManager - INFO - Updated filter_1_enabled_a to True in config.
+2026-06-17 14:30:23 - ServiceManager - INFO - Updated filter_1_enabled_b to False in config.
+2026-06-17 14:30:23 - ServiceManager - INFO - Updated filter_1_frequency to 500.0 in config.
+2026-06-17 14:30:23 - ServiceManager - INFO - Updated filter_1_type_a to 0 in config.
+2026-06-17 14:30:23 - ServiceManager - INFO - Updated filter_1_type_b to 0 in config.
+2026-06-17 14:30:23 - ServiceManager - INFO - Updated filter_2_enabled_a to False in config.
+2026-06-17 14:30:23 - ServiceManager - INFO - Updated filter_2_enabled_b to True in config.
+2026-06-17 14:30:23 - ServiceManager - INFO - Updated filter_2_frequency to 0.0 in config.
+2026-06-17 14:30:23 - ServiceManager - INFO - Updated filter_2_type_a to 0 in config.
+2026-06-17 14:30:23 - ServiceManager - INFO - Updated filter_2_type_b to 0 in config.
+2026-06-17 14:30:23 - ServiceManager - INFO - Updated filter_automatic_a to False in config.
+2026-06-17 14:30:23 - ServiceManager - INFO - Updated filter_automatic_b to False in config.
+2026-06-17 14:30:23 - ServiceManager - INFO - Updated gpio_p_out to 3 in config.
+2026-06-17 14:30:23 - ServiceManager - INFO - Updated invert_a to False in config.
+2026-06-17 14:30:23 - ServiceManager - INFO - Updated invert_b to False in config.
+2026-06-17 14:30:23 - ServiceManager - INFO - Updated modulation_amplitude to 0.4 in config.
+2026-06-17 14:30:23 - ServiceManager - INFO - Updated modulation_channel to 0 in config.
+2026-06-17 14:30:23 - ServiceManager - INFO - Updated modulation_frequency to 0.05 in config.
+2026-06-17 14:30:23 - ServiceManager - INFO - Updated offset_a to 0.0 in config.
+2026-06-17 14:30:23 - ServiceManager - INFO - Updated offset_b to 0.0 in config.
+2026-06-17 14:30:23 - ServiceManager - INFO - Updated phase to 270.0 in config.
+2026-06-17 14:30:23 - ServiceManager - INFO - Updated pid_d to 1 in config.
+2026-06-17 14:30:23 - ServiceManager - INFO - Updated pid_i to 100 in config.
+2026-06-17 14:30:23 - ServiceManager - INFO - Updated pid_on_slow_enabled to True in config.
+2026-06-17 14:30:23 - ServiceManager - INFO - Updated pid_p to 2000 in config.
+2026-06-17 14:30:23 - ServiceManager - INFO - Updated pid_slow_strength to 3 in config.
+2026-06-17 14:30:23 - ServiceManager - INFO - Updated polarity_analog_out0 to 0 in config.
+2026-06-17 14:30:23 - ServiceManager - INFO - Updated polarity_fast_out1 to 0 in config.
+2026-06-17 14:30:23 - ServiceManager - INFO - Updated polarity_fast_out2 to 0 in config.
+2026-06-17 14:30:23 - ServiceManager - INFO - Updated slow_control_channel to 2 in config.
+2026-06-17 14:30:23 - ServiceManager - INFO - Updated small_offset to 0.0 in config.
+2026-06-17 14:30:23 - ServiceManager - INFO - Updated sweep_amplitude to 1.0 in config.
+2026-06-17 14:30:23 - ServiceManager - INFO - Updated sweep_center to 0.0 in config.
+2026-06-17 14:30:23 - ServiceManager - INFO - Updated sweep_channel to 1 in config.
+2026-06-17 14:30:23 - ServiceManager - INFO - Updated sweep_speed to 10 in config.
+2026-06-17 14:30:23 - ServiceManager - INFO - Updated target_slope_rising to True in config.
+2026-06-17 14:30:23 - ServiceManager - INFO - Parameters saved successfully to /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/RedPitaya_Na_D1_parameters.yaml
+2026-06-18 14:47:47 - ServiceManager - INFO - ServiceManager initializing...
+2026-06-18 14:47:47 - ServiceManager - INFO - ServiceManager looking for board list at: /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/board_list.yaml
+2026-06-18 14:47:47 - ServiceManager - INFO - ServiceManager looking for reference lines at: /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/reference_lines/reference_lines_inventory.yaml
+2026-06-18 14:47:47 - ServiceManager - INFO - Grafana client initialized.
+2026-06-18 14:47:47 - ServiceManager - INFO - ServiceManager initialization completed.
+2026-06-18 14:47:48 - ServiceManager - INFO - Loading boards...
+2026-06-18 14:47:48 - ServiceManager - INFO - Found 4 devices.
+2026-06-18 15:05:57 - ServiceManager - INFO - Loaded parameters for 'RedPitaya_Na_D1' (43 writeable, 3 readable).
+2026-06-18 15:05:57 - ServiceManager - INFO - Loaded advanced settings for 'RedPitaya_Na_D1' (5 groups).
+2026-06-18 16:05:43 - ServiceManager - INFO - Updated big_offset to 1.1 in config.
+2026-06-18 16:05:43 - ServiceManager - INFO - Updated channel_mixing to -128 in config.
+2026-06-18 16:05:43 - ServiceManager - INFO - Updated control_channel to 1 in config.
+2026-06-18 16:05:43 - ServiceManager - INFO - Updated control_history_length to 60 in config.
+2026-06-18 16:05:43 - ServiceManager - INFO - Updated demodulation_multiplier_a to 1 in config.
+2026-06-18 16:05:43 - ServiceManager - INFO - Updated demodulation_multiplier_b to 0 in config.
+2026-06-18 16:05:43 - ServiceManager - INFO - Updated dual_channel to False in config.
+2026-06-18 16:05:43 - ServiceManager - INFO - Updated filter_1_enabled_a to True in config.
+2026-06-18 16:05:43 - ServiceManager - INFO - Updated filter_1_enabled_b to False in config.
+2026-06-18 16:05:43 - ServiceManager - INFO - Updated filter_1_frequency to 500.0 in config.
+2026-06-18 16:05:43 - ServiceManager - INFO - Updated filter_1_type_a to 0 in config.
+2026-06-18 16:05:43 - ServiceManager - INFO - Updated filter_1_type_b to 0 in config.
+2026-06-18 16:05:43 - ServiceManager - INFO - Updated filter_2_enabled_a to False in config.
+2026-06-18 16:05:43 - ServiceManager - INFO - Updated filter_2_enabled_b to True in config.
+2026-06-18 16:05:43 - ServiceManager - INFO - Updated filter_2_frequency to 0.0 in config.
+2026-06-18 16:05:43 - ServiceManager - INFO - Updated filter_2_type_a to 0 in config.
+2026-06-18 16:05:43 - ServiceManager - INFO - Updated filter_2_type_b to 0 in config.
+2026-06-18 16:05:43 - ServiceManager - INFO - Updated filter_automatic_a to False in config.
+2026-06-18 16:05:43 - ServiceManager - INFO - Updated filter_automatic_b to False in config.
+2026-06-18 16:05:43 - ServiceManager - INFO - Updated gpio_p_out to 3 in config.
+2026-06-18 16:05:43 - ServiceManager - INFO - Updated invert_a to False in config.
+2026-06-18 16:05:43 - ServiceManager - INFO - Updated invert_b to False in config.
+2026-06-18 16:05:43 - ServiceManager - INFO - Updated modulation_amplitude to 0.4 in config.
+2026-06-18 16:05:43 - ServiceManager - INFO - Updated modulation_channel to 0 in config.
+2026-06-18 16:05:43 - ServiceManager - INFO - Updated modulation_frequency to 0.05 in config.
+2026-06-18 16:05:43 - ServiceManager - INFO - Updated offset_a to 0.0 in config.
+2026-06-18 16:05:43 - ServiceManager - INFO - Updated offset_b to 0.0 in config.
+2026-06-18 16:05:43 - ServiceManager - INFO - Updated phase to 270.0 in config.
+2026-06-18 16:05:43 - ServiceManager - INFO - Updated pid_d to 1 in config.
+2026-06-18 16:05:43 - ServiceManager - INFO - Updated pid_i to 100 in config.
+2026-06-18 16:05:43 - ServiceManager - INFO - Updated pid_on_slow_enabled to True in config.
+2026-06-18 16:05:43 - ServiceManager - INFO - Updated pid_p to 2000 in config.
+2026-06-18 16:05:43 - ServiceManager - INFO - Updated pid_slow_strength to 3 in config.
+2026-06-18 16:05:43 - ServiceManager - INFO - Updated polarity_analog_out0 to 0 in config.
+2026-06-18 16:05:43 - ServiceManager - INFO - Updated polarity_fast_out1 to 0 in config.
+2026-06-18 16:05:43 - ServiceManager - INFO - Updated polarity_fast_out2 to 0 in config.
+2026-06-18 16:05:43 - ServiceManager - INFO - Updated slow_control_channel to 2 in config.
+2026-06-18 16:05:43 - ServiceManager - INFO - Updated small_offset to 0.0 in config.
+2026-06-18 16:05:43 - ServiceManager - INFO - Updated sweep_amplitude to 1.0 in config.
+2026-06-18 16:05:43 - ServiceManager - INFO - Updated sweep_center to 0.0 in config.
+2026-06-18 16:05:43 - ServiceManager - INFO - Updated sweep_channel to 1 in config.
+2026-06-18 16:05:43 - ServiceManager - INFO - Updated sweep_speed to 10 in config.
+2026-06-18 16:05:43 - ServiceManager - INFO - Updated target_slope_rising to True in config.
+2026-06-18 16:05:44 - ServiceManager - INFO - Parameters saved successfully to /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/RedPitaya_Na_D1_parameters.yaml
+2026-06-24 14:24:25 - ServiceManager - INFO - ServiceManager initializing...
+2026-06-24 14:24:25 - ServiceManager - INFO - ServiceManager looking for board list at: /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/board_list.yaml
+2026-06-24 14:24:25 - ServiceManager - INFO - ServiceManager looking for reference lines at: /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/reference_lines/reference_lines_inventory.yaml
+2026-06-24 14:24:25 - ServiceManager - INFO - Grafana client initialized.
+2026-06-24 14:24:25 - ServiceManager - INFO - ServiceManager initialization completed.
+2026-06-24 14:24:26 - ServiceManager - INFO - Loading boards...
+2026-06-24 14:24:26 - ServiceManager - INFO - Found 4 devices.
+2026-06-24 14:24:30 - ServiceManager - INFO - Loaded parameters for 'RedPitaya_Na_D1' (43 writeable, 3 readable).
+2026-06-24 14:24:30 - ServiceManager - INFO - Loaded advanced settings for 'RedPitaya_Na_D1' (5 groups).
+2026-06-24 15:36:43 - ServiceManager - INFO - Updated big_offset to 1.5 in config.
+2026-06-24 15:36:43 - ServiceManager - INFO - Updated channel_mixing to -128 in config.
+2026-06-24 15:36:43 - ServiceManager - INFO - Updated control_channel to 1 in config.
+2026-06-24 15:36:43 - ServiceManager - INFO - Updated control_history_length to 60 in config.
+2026-06-24 15:36:43 - ServiceManager - INFO - Updated demodulation_multiplier_a to 1 in config.
+2026-06-24 15:36:43 - ServiceManager - INFO - Updated demodulation_multiplier_b to 0 in config.
+2026-06-24 15:36:43 - ServiceManager - INFO - Updated dual_channel to False in config.
+2026-06-24 15:36:43 - ServiceManager - INFO - Updated filter_1_enabled_a to True in config.
+2026-06-24 15:36:43 - ServiceManager - INFO - Updated filter_1_enabled_b to False in config.
+2026-06-24 15:36:43 - ServiceManager - INFO - Updated filter_1_frequency to 500.0 in config.
+2026-06-24 15:36:43 - ServiceManager - INFO - Updated filter_1_type_a to 0 in config.
+2026-06-24 15:36:43 - ServiceManager - INFO - Updated filter_1_type_b to 0 in config.
+2026-06-24 15:36:43 - ServiceManager - INFO - Updated filter_2_enabled_a to False in config.
+2026-06-24 15:36:43 - ServiceManager - INFO - Updated filter_2_enabled_b to True in config.
+2026-06-24 15:36:43 - ServiceManager - INFO - Updated filter_2_frequency to 0.0 in config.
+2026-06-24 15:36:43 - ServiceManager - INFO - Updated filter_2_type_a to 0 in config.
+2026-06-24 15:36:43 - ServiceManager - INFO - Updated filter_2_type_b to 0 in config.
+2026-06-24 15:36:43 - ServiceManager - INFO - Updated filter_automatic_a to False in config.
+2026-06-24 15:36:43 - ServiceManager - INFO - Updated filter_automatic_b to False in config.
+2026-06-24 15:36:43 - ServiceManager - INFO - Updated gpio_p_out to 3 in config.
+2026-06-24 15:36:43 - ServiceManager - INFO - Updated invert_a to False in config.
+2026-06-24 15:36:43 - ServiceManager - INFO - Updated invert_b to False in config.
+2026-06-24 15:36:43 - ServiceManager - INFO - Updated modulation_amplitude to 0.4 in config.
+2026-06-24 15:36:43 - ServiceManager - INFO - Updated modulation_channel to 0 in config.
+2026-06-24 15:36:43 - ServiceManager - INFO - Updated modulation_frequency to 0.05 in config.
+2026-06-24 15:36:43 - ServiceManager - INFO - Updated offset_a to 0.0 in config.
+2026-06-24 15:36:43 - ServiceManager - INFO - Updated offset_b to 0.0 in config.
+2026-06-24 15:36:43 - ServiceManager - INFO - Updated phase to 270.0 in config.
+2026-06-24 15:36:43 - ServiceManager - INFO - Updated pid_d to 1 in config.
+2026-06-24 15:36:43 - ServiceManager - INFO - Updated pid_i to 100 in config.
+2026-06-24 15:36:43 - ServiceManager - INFO - Updated pid_on_slow_enabled to True in config.
+2026-06-24 15:36:43 - ServiceManager - INFO - Updated pid_p to 2000 in config.
+2026-06-24 15:36:43 - ServiceManager - INFO - Updated pid_slow_strength to 3 in config.
+2026-06-24 15:36:43 - ServiceManager - INFO - Updated polarity_analog_out0 to 0 in config.
+2026-06-24 15:36:43 - ServiceManager - INFO - Updated polarity_fast_out1 to 0 in config.
+2026-06-24 15:36:43 - ServiceManager - INFO - Updated polarity_fast_out2 to 0 in config.
+2026-06-24 15:36:43 - ServiceManager - INFO - Updated slow_control_channel to 2 in config.
+2026-06-24 15:36:43 - ServiceManager - INFO - Updated small_offset to 0.0 in config.
+2026-06-24 15:36:43 - ServiceManager - INFO - Updated sweep_amplitude to 1.0 in config.
+2026-06-24 15:36:43 - ServiceManager - INFO - Updated sweep_center to 0.0 in config.
+2026-06-24 15:36:43 - ServiceManager - INFO - Updated sweep_channel to 1 in config.
+2026-06-24 15:36:43 - ServiceManager - INFO - Updated sweep_speed to 10 in config.
+2026-06-24 15:36:43 - ServiceManager - INFO - Updated target_slope_rising to True in config.
+2026-06-24 15:36:43 - ServiceManager - INFO - Parameters saved successfully to /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/RedPitaya_Na_D1_parameters.yaml
+2026-06-24 15:41:35 - ServiceManager - INFO - ServiceManager initializing...
+2026-06-24 15:41:35 - ServiceManager - INFO - ServiceManager looking for board list at: /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/board_list.yaml
+2026-06-24 15:41:35 - ServiceManager - INFO - ServiceManager looking for reference lines at: /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/reference_lines/reference_lines_inventory.yaml
+2026-06-24 15:41:35 - ServiceManager - INFO - Grafana client initialized.
+2026-06-24 15:41:35 - ServiceManager - INFO - ServiceManager initialization completed.
+2026-06-24 15:41:35 - ServiceManager - INFO - Loading boards...
+2026-06-24 15:41:35 - ServiceManager - INFO - Found 4 devices.
+2026-06-24 15:41:41 - ServiceManager - INFO - Loaded parameters for 'RedPitaya_Na_D1' (43 writeable, 3 readable).
+2026-06-24 15:41:41 - ServiceManager - INFO - Loaded advanced settings for 'RedPitaya_Na_D1' (5 groups).
+2026-06-24 15:51:08 - ServiceManager - INFO - Updated big_offset to 1.5 in config.
+2026-06-24 15:51:08 - ServiceManager - INFO - Updated channel_mixing to -128 in config.
+2026-06-24 15:51:08 - ServiceManager - INFO - Updated control_channel to 1 in config.
+2026-06-24 15:51:08 - ServiceManager - INFO - Updated control_history_length to 60 in config.
+2026-06-24 15:51:08 - ServiceManager - INFO - Updated demodulation_multiplier_a to 1 in config.
+2026-06-24 15:51:08 - ServiceManager - INFO - Updated demodulation_multiplier_b to 0 in config.
+2026-06-24 15:51:08 - ServiceManager - INFO - Updated dual_channel to False in config.
+2026-06-24 15:51:08 - ServiceManager - INFO - Updated filter_1_enabled_a to True in config.
+2026-06-24 15:51:08 - ServiceManager - INFO - Updated filter_1_enabled_b to False in config.
+2026-06-24 15:51:08 - ServiceManager - INFO - Updated filter_1_frequency to 500.0 in config.
+2026-06-24 15:51:08 - ServiceManager - INFO - Updated filter_1_type_a to 0 in config.
+2026-06-24 15:51:08 - ServiceManager - INFO - Updated filter_1_type_b to 0 in config.
+2026-06-24 15:51:08 - ServiceManager - INFO - Updated filter_2_enabled_a to False in config.
+2026-06-24 15:51:08 - ServiceManager - INFO - Updated filter_2_enabled_b to True in config.
+2026-06-24 15:51:08 - ServiceManager - INFO - Updated filter_2_frequency to 0.0 in config.
+2026-06-24 15:51:08 - ServiceManager - INFO - Updated filter_2_type_a to 0 in config.
+2026-06-24 15:51:08 - ServiceManager - INFO - Updated filter_2_type_b to 0 in config.
+2026-06-24 15:51:08 - ServiceManager - INFO - Updated filter_automatic_a to False in config.
+2026-06-24 15:51:08 - ServiceManager - INFO - Updated filter_automatic_b to False in config.
+2026-06-24 15:51:08 - ServiceManager - INFO - Updated gpio_p_out to 3 in config.
+2026-06-24 15:51:08 - ServiceManager - INFO - Updated invert_a to False in config.
+2026-06-24 15:51:08 - ServiceManager - INFO - Updated invert_b to False in config.
+2026-06-24 15:51:08 - ServiceManager - INFO - Updated modulation_amplitude to 0.4 in config.
+2026-06-24 15:51:08 - ServiceManager - INFO - Updated modulation_channel to 0 in config.
+2026-06-24 15:51:08 - ServiceManager - INFO - Updated modulation_frequency to 0.05 in config.
+2026-06-24 15:51:08 - ServiceManager - INFO - Updated offset_a to 0.0 in config.
+2026-06-24 15:51:08 - ServiceManager - INFO - Updated offset_b to 0.0 in config.
+2026-06-24 15:51:08 - ServiceManager - INFO - Updated phase to 270.0 in config.
+2026-06-24 15:51:08 - ServiceManager - INFO - Updated pid_d to 1 in config.
+2026-06-24 15:51:08 - ServiceManager - INFO - Updated pid_i to 100 in config.
+2026-06-24 15:51:08 - ServiceManager - INFO - Updated pid_on_slow_enabled to True in config.
+2026-06-24 15:51:08 - ServiceManager - INFO - Updated pid_p to 2000 in config.
+2026-06-24 15:51:08 - ServiceManager - INFO - Updated pid_slow_strength to 3 in config.
+2026-06-24 15:51:08 - ServiceManager - INFO - Updated polarity_analog_out0 to 0 in config.
+2026-06-24 15:51:08 - ServiceManager - INFO - Updated polarity_fast_out1 to 0 in config.
+2026-06-24 15:51:08 - ServiceManager - INFO - Updated polarity_fast_out2 to 0 in config.
+2026-06-24 15:51:08 - ServiceManager - INFO - Updated slow_control_channel to 2 in config.
+2026-06-24 15:51:08 - ServiceManager - INFO - Updated small_offset to 0.0 in config.
+2026-06-24 15:51:08 - ServiceManager - INFO - Updated sweep_amplitude to 1.0 in config.
+2026-06-24 15:51:08 - ServiceManager - INFO - Updated sweep_center to 0.0 in config.
+2026-06-24 15:51:08 - ServiceManager - INFO - Updated sweep_channel to 1 in config.
+2026-06-24 15:51:08 - ServiceManager - INFO - Updated sweep_speed to 10 in config.
+2026-06-24 15:51:08 - ServiceManager - INFO - Updated target_slope_rising to True in config.
+2026-06-24 15:51:08 - ServiceManager - INFO - Parameters saved successfully to /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/RedPitaya_Na_D1_parameters.yaml
+2026-06-24 16:16:49 - ServiceManager - INFO - ServiceManager initializing...
+2026-06-24 16:16:49 - ServiceManager - INFO - ServiceManager looking for board list at: /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/board_list.yaml
+2026-06-24 16:16:49 - ServiceManager - INFO - ServiceManager looking for reference lines at: /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/reference_lines/reference_lines_inventory.yaml
+2026-06-24 16:16:49 - ServiceManager - INFO - Grafana client initialized.
+2026-06-24 16:16:49 - ServiceManager - INFO - ServiceManager initialization completed.
+2026-06-24 16:16:49 - ServiceManager - INFO - Loading boards...
+2026-06-24 16:16:49 - ServiceManager - INFO - Found 4 devices.
+2026-06-24 16:16:55 - ServiceManager - INFO - Loaded parameters for 'RedPitaya_Na_D1' (43 writeable, 3 readable).
+2026-06-24 16:16:55 - ServiceManager - INFO - Loaded advanced settings for 'RedPitaya_Na_D1' (5 groups).
+2026-06-24 18:04:23 - ServiceManager - INFO - Updated big_offset to 1.5 in config.
+2026-06-24 18:04:23 - ServiceManager - INFO - Updated channel_mixing to -128 in config.
+2026-06-24 18:04:23 - ServiceManager - INFO - Updated control_channel to 1 in config.
+2026-06-24 18:04:23 - ServiceManager - INFO - Updated control_history_length to 60 in config.
+2026-06-24 18:04:23 - ServiceManager - INFO - Updated demodulation_multiplier_a to 1 in config.
+2026-06-24 18:04:23 - ServiceManager - INFO - Updated demodulation_multiplier_b to 0 in config.
+2026-06-24 18:04:23 - ServiceManager - INFO - Updated dual_channel to False in config.
+2026-06-24 18:04:23 - ServiceManager - INFO - Updated filter_1_enabled_a to True in config.
+2026-06-24 18:04:23 - ServiceManager - INFO - Updated filter_1_enabled_b to False in config.
+2026-06-24 18:04:23 - ServiceManager - INFO - Updated filter_1_frequency to 500.0 in config.
+2026-06-24 18:04:23 - ServiceManager - INFO - Updated filter_1_type_a to 0 in config.
+2026-06-24 18:04:23 - ServiceManager - INFO - Updated filter_1_type_b to 0 in config.
+2026-06-24 18:04:23 - ServiceManager - INFO - Updated filter_2_enabled_a to False in config.
+2026-06-24 18:04:23 - ServiceManager - INFO - Updated filter_2_enabled_b to True in config.
+2026-06-24 18:04:23 - ServiceManager - INFO - Updated filter_2_frequency to 0.0 in config.
+2026-06-24 18:04:23 - ServiceManager - INFO - Updated filter_2_type_a to 0 in config.
+2026-06-24 18:04:23 - ServiceManager - INFO - Updated filter_2_type_b to 0 in config.
+2026-06-24 18:04:23 - ServiceManager - INFO - Updated filter_automatic_a to False in config.
+2026-06-24 18:04:23 - ServiceManager - INFO - Updated filter_automatic_b to False in config.
+2026-06-24 18:04:23 - ServiceManager - INFO - Updated gpio_p_out to 3 in config.
+2026-06-24 18:04:23 - ServiceManager - INFO - Updated invert_a to False in config.
+2026-06-24 18:04:23 - ServiceManager - INFO - Updated invert_b to False in config.
+2026-06-24 18:04:23 - ServiceManager - INFO - Updated modulation_amplitude to 0.4 in config.
+2026-06-24 18:04:23 - ServiceManager - INFO - Updated modulation_channel to 0 in config.
+2026-06-24 18:04:23 - ServiceManager - INFO - Updated modulation_frequency to 0.05 in config.
+2026-06-24 18:04:23 - ServiceManager - INFO - Updated offset_a to 0.0 in config.
+2026-06-24 18:04:23 - ServiceManager - INFO - Updated offset_b to 0.0 in config.
+2026-06-24 18:04:23 - ServiceManager - INFO - Updated phase to 270.0 in config.
+2026-06-24 18:04:23 - ServiceManager - INFO - Updated pid_d to 1 in config.
+2026-06-24 18:04:23 - ServiceManager - INFO - Updated pid_i to 100 in config.
+2026-06-24 18:04:23 - ServiceManager - INFO - Updated pid_on_slow_enabled to True in config.
+2026-06-24 18:04:23 - ServiceManager - INFO - Updated pid_p to 2000 in config.
+2026-06-24 18:04:23 - ServiceManager - INFO - Updated pid_slow_strength to 3 in config.
+2026-06-24 18:04:23 - ServiceManager - INFO - Updated polarity_analog_out0 to 0 in config.
+2026-06-24 18:04:23 - ServiceManager - INFO - Updated polarity_fast_out1 to 0 in config.
+2026-06-24 18:04:23 - ServiceManager - INFO - Updated polarity_fast_out2 to 0 in config.
+2026-06-24 18:04:23 - ServiceManager - INFO - Updated slow_control_channel to 2 in config.
+2026-06-24 18:04:23 - ServiceManager - INFO - Updated small_offset to 0.0 in config.
+2026-06-24 18:04:23 - ServiceManager - INFO - Updated sweep_amplitude to 1.0 in config.
+2026-06-24 18:04:23 - ServiceManager - INFO - Updated sweep_center to 0.0 in config.
+2026-06-24 18:04:23 - ServiceManager - INFO - Updated sweep_channel to 1 in config.
+2026-06-24 18:04:23 - ServiceManager - INFO - Updated sweep_speed to 10 in config.
+2026-06-24 18:04:23 - ServiceManager - INFO - Updated target_slope_rising to True in config.
+2026-06-24 18:04:23 - ServiceManager - INFO - Parameters saved successfully to /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/RedPitaya_Na_D1_parameters.yaml
+2026-06-24 18:14:32 - ServiceManager - INFO - ServiceManager initializing...
+2026-06-24 18:14:32 - ServiceManager - INFO - ServiceManager looking for board list at: /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/board_list.yaml
+2026-06-24 18:14:32 - ServiceManager - INFO - ServiceManager looking for reference lines at: /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/reference_lines/reference_lines_inventory.yaml
+2026-06-24 18:14:32 - ServiceManager - INFO - Grafana client initialized.
+2026-06-24 18:14:32 - ServiceManager - INFO - ServiceManager initialization completed.
+2026-06-24 18:14:33 - ServiceManager - INFO - Loading boards...
+2026-06-24 18:14:33 - ServiceManager - INFO - Found 4 devices.
+2026-06-24 18:15:09 - ServiceManager - INFO - Loaded parameters for 'RedPitaya_Na_D1' (43 writeable, 3 readable).
+2026-06-24 18:15:09 - ServiceManager - INFO - Loaded advanced settings for 'RedPitaya_Na_D1' (5 groups).
+2026-06-24 18:25:05 - ServiceManager - INFO - Updated big_offset to 1.5 in config.
+2026-06-24 18:25:05 - ServiceManager - INFO - Updated channel_mixing to -128 in config.
+2026-06-24 18:25:05 - ServiceManager - INFO - Updated control_channel to 1 in config.
+2026-06-24 18:25:05 - ServiceManager - INFO - Updated control_history_length to 60 in config.
+2026-06-24 18:25:05 - ServiceManager - INFO - Updated demodulation_multiplier_a to 1 in config.
+2026-06-24 18:25:05 - ServiceManager - INFO - Updated demodulation_multiplier_b to 0 in config.
+2026-06-24 18:25:05 - ServiceManager - INFO - Updated dual_channel to False in config.
+2026-06-24 18:25:05 - ServiceManager - INFO - Updated filter_1_enabled_a to True in config.
+2026-06-24 18:25:05 - ServiceManager - INFO - Updated filter_1_enabled_b to False in config.
+2026-06-24 18:25:05 - ServiceManager - INFO - Updated filter_1_frequency to 500.0 in config.
+2026-06-24 18:25:05 - ServiceManager - INFO - Updated filter_1_type_a to 0 in config.
+2026-06-24 18:25:05 - ServiceManager - INFO - Updated filter_1_type_b to 0 in config.
+2026-06-24 18:25:05 - ServiceManager - INFO - Updated filter_2_enabled_a to False in config.
+2026-06-24 18:25:05 - ServiceManager - INFO - Updated filter_2_enabled_b to True in config.
+2026-06-24 18:25:05 - ServiceManager - INFO - Updated filter_2_frequency to 0.0 in config.
+2026-06-24 18:25:05 - ServiceManager - INFO - Updated filter_2_type_a to 0 in config.
+2026-06-24 18:25:05 - ServiceManager - INFO - Updated filter_2_type_b to 0 in config.
+2026-06-24 18:25:05 - ServiceManager - INFO - Updated filter_automatic_a to False in config.
+2026-06-24 18:25:05 - ServiceManager - INFO - Updated filter_automatic_b to False in config.
+2026-06-24 18:25:05 - ServiceManager - INFO - Updated gpio_p_out to 3 in config.
+2026-06-24 18:25:05 - ServiceManager - INFO - Updated invert_a to False in config.
+2026-06-24 18:25:05 - ServiceManager - INFO - Updated invert_b to False in config.
+2026-06-24 18:25:05 - ServiceManager - INFO - Updated modulation_amplitude to 0.4 in config.
+2026-06-24 18:25:05 - ServiceManager - INFO - Updated modulation_channel to 0 in config.
+2026-06-24 18:25:05 - ServiceManager - INFO - Updated modulation_frequency to 0.05 in config.
+2026-06-24 18:25:05 - ServiceManager - INFO - Updated offset_a to 0.0 in config.
+2026-06-24 18:25:05 - ServiceManager - INFO - Updated offset_b to 0.0 in config.
+2026-06-24 18:25:05 - ServiceManager - INFO - Updated phase to 270.0 in config.
+2026-06-24 18:25:05 - ServiceManager - INFO - Updated pid_d to 1 in config.
+2026-06-24 18:25:05 - ServiceManager - INFO - Updated pid_i to 100 in config.
+2026-06-24 18:25:05 - ServiceManager - INFO - Updated pid_on_slow_enabled to True in config.
+2026-06-24 18:25:05 - ServiceManager - INFO - Updated pid_p to 2000 in config.
+2026-06-24 18:25:05 - ServiceManager - INFO - Updated pid_slow_strength to 3 in config.
+2026-06-24 18:25:05 - ServiceManager - INFO - Updated polarity_analog_out0 to 0 in config.
+2026-06-24 18:25:05 - ServiceManager - INFO - Updated polarity_fast_out1 to 0 in config.
+2026-06-24 18:25:05 - ServiceManager - INFO - Updated polarity_fast_out2 to 0 in config.
+2026-06-24 18:25:05 - ServiceManager - INFO - Updated slow_control_channel to 2 in config.
+2026-06-24 18:25:05 - ServiceManager - INFO - Updated small_offset to 0.0 in config.
+2026-06-24 18:25:05 - ServiceManager - INFO - Updated sweep_amplitude to 1.0 in config.
+2026-06-24 18:25:05 - ServiceManager - INFO - Updated sweep_center to 0.0 in config.
+2026-06-24 18:25:05 - ServiceManager - INFO - Updated sweep_channel to 1 in config.
+2026-06-24 18:25:05 - ServiceManager - INFO - Updated sweep_speed to 10 in config.
+2026-06-24 18:25:05 - ServiceManager - INFO - Updated target_slope_rising to True in config.
+2026-06-24 18:25:05 - ServiceManager - INFO - Parameters saved successfully to /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/RedPitaya_Na_D1_parameters.yaml
+2026-06-24 18:25:40 - ServiceManager - INFO - ServiceManager initializing...
+2026-06-24 18:25:40 - ServiceManager - INFO - ServiceManager looking for board list at: /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/board_list.yaml
+2026-06-24 18:25:40 - ServiceManager - INFO - ServiceManager looking for reference lines at: /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/reference_lines/reference_lines_inventory.yaml
+2026-06-24 18:25:40 - ServiceManager - INFO - Grafana client initialized.
+2026-06-24 18:25:40 - ServiceManager - INFO - ServiceManager initialization completed.
+2026-06-24 18:25:41 - ServiceManager - INFO - Loading boards...
+2026-06-24 18:25:41 - ServiceManager - INFO - Found 4 devices.
+2026-06-24 18:25:46 - ServiceManager - INFO - Loaded parameters for 'RedPitaya_Na_D1' (43 writeable, 3 readable).
+2026-06-24 18:25:46 - ServiceManager - INFO - Loaded advanced settings for 'RedPitaya_Na_D1' (5 groups).
+2026-06-24 18:25:59 - ServiceManager - INFO - Parameters saved successfully to /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/RedPitaya_Na_D1_parameters.yaml
+2026-06-24 18:26:04 - ServiceManager - INFO - ServiceManager initializing...
+2026-06-24 18:26:04 - ServiceManager - INFO - ServiceManager looking for board list at: /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/board_list.yaml
+2026-06-24 18:26:04 - ServiceManager - INFO - ServiceManager looking for reference lines at: /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/reference_lines/reference_lines_inventory.yaml
+2026-06-24 18:26:04 - ServiceManager - INFO - Grafana client initialized.
+2026-06-24 18:26:04 - ServiceManager - INFO - ServiceManager initialization completed.
+2026-06-24 18:26:05 - ServiceManager - INFO - Loading boards...
+2026-06-24 18:26:05 - ServiceManager - INFO - Found 4 devices.
+2026-06-24 18:26:10 - ServiceManager - INFO - Loaded parameters for 'RedPitaya_Na_D1' (43 writeable, 3 readable).
+2026-06-24 18:26:10 - ServiceManager - INFO - Loaded advanced settings for 'RedPitaya_Na_D1' (5 groups).
+2026-06-24 18:27:09 - ServiceManager - INFO - Parameters saved successfully to /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/RedPitaya_Na_D1_parameters.yaml
+2026-06-24 18:27:55 - ServiceManager - INFO - ServiceManager initializing...
+2026-06-24 18:27:55 - ServiceManager - INFO - ServiceManager looking for board list at: /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/board_list.yaml
+2026-06-24 18:27:55 - ServiceManager - INFO - ServiceManager looking for reference lines at: /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/reference_lines/reference_lines_inventory.yaml
+2026-06-24 18:27:55 - ServiceManager - INFO - Grafana client initialized.
+2026-06-24 18:27:55 - ServiceManager - INFO - ServiceManager initialization completed.
+2026-06-24 18:27:55 - ServiceManager - INFO - Loading boards...
+2026-06-24 18:27:55 - ServiceManager - INFO - Found 4 devices.
+2026-06-24 18:27:59 - ServiceManager - INFO - Loaded parameters for 'RedPitaya_Na_D1' (43 writeable, 3 readable).
+2026-06-24 18:28:00 - ServiceManager - INFO - Loaded advanced settings for 'RedPitaya_Na_D1' (5 groups).
+2026-06-24 18:39:38 - ServiceManager - INFO - Updated big_offset to 0.0 in config.
+2026-06-24 18:39:38 - ServiceManager - INFO - Updated channel_mixing to -128 in config.
+2026-06-24 18:39:38 - ServiceManager - INFO - Updated control_channel to 1 in config.
+2026-06-24 18:39:38 - ServiceManager - INFO - Updated control_history_length to 60 in config.
+2026-06-24 18:39:38 - ServiceManager - INFO - Updated demodulation_multiplier_a to 1 in config.
+2026-06-24 18:39:38 - ServiceManager - INFO - Updated demodulation_multiplier_b to 0 in config.
+2026-06-24 18:39:38 - ServiceManager - INFO - Updated dual_channel to False in config.
+2026-06-24 18:39:38 - ServiceManager - INFO - Updated filter_1_enabled_a to True in config.
+2026-06-24 18:39:38 - ServiceManager - INFO - Updated filter_1_enabled_b to False in config.
+2026-06-24 18:39:38 - ServiceManager - INFO - Updated filter_1_frequency to 500.0 in config.
+2026-06-24 18:39:38 - ServiceManager - INFO - Updated filter_1_type_a to 0 in config.
+2026-06-24 18:39:38 - ServiceManager - INFO - Updated filter_1_type_b to 0 in config.
+2026-06-24 18:39:38 - ServiceManager - INFO - Updated filter_2_enabled_a to False in config.
+2026-06-24 18:39:38 - ServiceManager - INFO - Updated filter_2_enabled_b to True in config.
+2026-06-24 18:39:38 - ServiceManager - INFO - Updated filter_2_frequency to 0.0 in config.
+2026-06-24 18:39:38 - ServiceManager - INFO - Updated filter_2_type_a to 0 in config.
+2026-06-24 18:39:38 - ServiceManager - INFO - Updated filter_2_type_b to 0 in config.
+2026-06-24 18:39:38 - ServiceManager - INFO - Updated filter_automatic_a to False in config.
+2026-06-24 18:39:38 - ServiceManager - INFO - Updated filter_automatic_b to False in config.
+2026-06-24 18:39:38 - ServiceManager - INFO - Updated gpio_p_out to 3 in config.
+2026-06-24 18:39:38 - ServiceManager - INFO - Updated invert_a to False in config.
+2026-06-24 18:39:38 - ServiceManager - INFO - Updated invert_b to False in config.
+2026-06-24 18:39:38 - ServiceManager - INFO - Updated modulation_amplitude to 0.4 in config.
+2026-06-24 18:39:38 - ServiceManager - INFO - Updated modulation_channel to 0 in config.
+2026-06-24 18:39:38 - ServiceManager - INFO - Updated modulation_frequency to 0.05 in config.
+2026-06-24 18:39:38 - ServiceManager - INFO - Updated offset_a to 0.0 in config.
+2026-06-24 18:39:38 - ServiceManager - INFO - Updated offset_b to 0.0 in config.
+2026-06-24 18:39:38 - ServiceManager - INFO - Updated phase to 270.0 in config.
+2026-06-24 18:39:38 - ServiceManager - INFO - Updated pid_d to 1 in config.
+2026-06-24 18:39:38 - ServiceManager - INFO - Updated pid_i to 100 in config.
+2026-06-24 18:39:38 - ServiceManager - INFO - Updated pid_on_slow_enabled to True in config.
+2026-06-24 18:39:38 - ServiceManager - INFO - Updated pid_p to 2000 in config.
+2026-06-24 18:39:38 - ServiceManager - INFO - Updated pid_slow_strength to 3 in config.
+2026-06-24 18:39:38 - ServiceManager - INFO - Updated polarity_analog_out0 to 0 in config.
+2026-06-24 18:39:38 - ServiceManager - INFO - Updated polarity_fast_out1 to 0 in config.
+2026-06-24 18:39:38 - ServiceManager - INFO - Updated polarity_fast_out2 to 0 in config.
+2026-06-24 18:39:38 - ServiceManager - INFO - Updated slow_control_channel to 2 in config.
+2026-06-24 18:39:38 - ServiceManager - INFO - Updated small_offset to 0.0 in config.
+2026-06-24 18:39:38 - ServiceManager - INFO - Updated sweep_amplitude to 1.0 in config.
+2026-06-24 18:39:38 - ServiceManager - INFO - Updated sweep_center to 0.0 in config.
+2026-06-24 18:39:38 - ServiceManager - INFO - Updated sweep_channel to 1 in config.
+2026-06-24 18:39:38 - ServiceManager - INFO - Updated sweep_speed to 10 in config.
+2026-06-24 18:39:38 - ServiceManager - INFO - Updated target_slope_rising to True in config.
+2026-06-24 18:39:38 - ServiceManager - INFO - Parameters saved successfully to /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/RedPitaya_Na_D1_parameters.yaml
+2026-06-25 09:23:53 - ServiceManager - INFO - ServiceManager initializing...
+2026-06-25 09:23:53 - ServiceManager - INFO - ServiceManager looking for board list at: /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/board_list.yaml
+2026-06-25 09:23:53 - ServiceManager - INFO - ServiceManager looking for reference lines at: /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/reference_lines/reference_lines_inventory.yaml
+2026-06-25 09:23:53 - ServiceManager - INFO - Grafana client initialized.
+2026-06-25 09:23:53 - ServiceManager - INFO - ServiceManager initialization completed.
+2026-06-25 09:23:53 - ServiceManager - INFO - Loading boards...
+2026-06-25 09:23:53 - ServiceManager - INFO - Found 4 devices.
+2026-06-25 09:23:58 - ServiceManager - INFO - Loaded parameters for 'RedPitaya_Na_D1' (43 writeable, 3 readable).
+2026-06-25 09:23:59 - ServiceManager - INFO - Loaded advanced settings for 'RedPitaya_Na_D1' (5 groups).
+2026-06-25 09:54:35 - ServiceManager - INFO - Updated big_offset to 1.0 in config.
+2026-06-25 09:54:35 - ServiceManager - INFO - Updated channel_mixing to -128 in config.
+2026-06-25 09:54:35 - ServiceManager - INFO - Updated control_channel to 1 in config.
+2026-06-25 09:54:35 - ServiceManager - INFO - Updated control_history_length to 60 in config.
+2026-06-25 09:54:35 - ServiceManager - INFO - Updated demodulation_multiplier_a to 1 in config.
+2026-06-25 09:54:35 - ServiceManager - INFO - Updated demodulation_multiplier_b to 0 in config.
+2026-06-25 09:54:35 - ServiceManager - INFO - Updated dual_channel to False in config.
+2026-06-25 09:54:35 - ServiceManager - INFO - Updated filter_1_enabled_a to True in config.
+2026-06-25 09:54:35 - ServiceManager - INFO - Updated filter_1_enabled_b to False in config.
+2026-06-25 09:54:35 - ServiceManager - INFO - Updated filter_1_frequency to 500.0 in config.
+2026-06-25 09:54:35 - ServiceManager - INFO - Updated filter_1_type_a to 0 in config.
+2026-06-25 09:54:35 - ServiceManager - INFO - Updated filter_1_type_b to 0 in config.
+2026-06-25 09:54:35 - ServiceManager - INFO - Updated filter_2_enabled_a to False in config.
+2026-06-25 09:54:35 - ServiceManager - INFO - Updated filter_2_enabled_b to True in config.
+2026-06-25 09:54:35 - ServiceManager - INFO - Updated filter_2_frequency to 0.0 in config.
+2026-06-25 09:54:35 - ServiceManager - INFO - Updated filter_2_type_a to 0 in config.
+2026-06-25 09:54:35 - ServiceManager - INFO - Updated filter_2_type_b to 0 in config.
+2026-06-25 09:54:35 - ServiceManager - INFO - Updated filter_automatic_a to False in config.
+2026-06-25 09:54:35 - ServiceManager - INFO - Updated filter_automatic_b to False in config.
+2026-06-25 09:54:35 - ServiceManager - INFO - Updated gpio_p_out to 3 in config.
+2026-06-25 09:54:35 - ServiceManager - INFO - Updated invert_a to False in config.
+2026-06-25 09:54:35 - ServiceManager - INFO - Updated invert_b to False in config.
+2026-06-25 09:54:35 - ServiceManager - INFO - Updated modulation_amplitude to 0.4 in config.
+2026-06-25 09:54:35 - ServiceManager - INFO - Updated modulation_channel to 0 in config.
+2026-06-25 09:54:35 - ServiceManager - INFO - Updated modulation_frequency to 0.05 in config.
+2026-06-25 09:54:35 - ServiceManager - INFO - Updated offset_a to 0.0 in config.
+2026-06-25 09:54:35 - ServiceManager - INFO - Updated offset_b to 0.0 in config.
+2026-06-25 09:54:35 - ServiceManager - INFO - Updated phase to 270.0 in config.
+2026-06-25 09:54:35 - ServiceManager - INFO - Updated pid_d to 1 in config.
+2026-06-25 09:54:35 - ServiceManager - INFO - Updated pid_i to 100 in config.
+2026-06-25 09:54:35 - ServiceManager - INFO - Updated pid_on_slow_enabled to True in config.
+2026-06-25 09:54:35 - ServiceManager - INFO - Updated pid_p to 2000 in config.
+2026-06-25 09:54:35 - ServiceManager - INFO - Updated pid_slow_strength to 3 in config.
+2026-06-25 09:54:35 - ServiceManager - INFO - Updated polarity_analog_out0 to 0 in config.
+2026-06-25 09:54:35 - ServiceManager - INFO - Updated polarity_fast_out1 to 0 in config.
+2026-06-25 09:54:35 - ServiceManager - INFO - Updated polarity_fast_out2 to 0 in config.
+2026-06-25 09:54:35 - ServiceManager - INFO - Updated slow_control_channel to 2 in config.
+2026-06-25 09:54:35 - ServiceManager - INFO - Updated small_offset to 0.0 in config.
+2026-06-25 09:54:35 - ServiceManager - INFO - Updated sweep_amplitude to 1.0 in config.
+2026-06-25 09:54:35 - ServiceManager - INFO - Updated sweep_center to 0.0 in config.
+2026-06-25 09:54:35 - ServiceManager - INFO - Updated sweep_channel to 1 in config.
+2026-06-25 09:54:35 - ServiceManager - INFO - Updated sweep_speed to 10 in config.
+2026-06-25 09:54:35 - ServiceManager - INFO - Updated target_slope_rising to True in config.
+2026-06-25 09:54:35 - ServiceManager - INFO - Parameters saved successfully to /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/RedPitaya_Na_D1_parameters.yaml
+2026-06-25 10:41:27 - ServiceManager - INFO - ServiceManager initializing...
+2026-06-25 10:41:27 - ServiceManager - INFO - ServiceManager looking for board list at: /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/board_list.yaml
+2026-06-25 10:41:27 - ServiceManager - INFO - ServiceManager looking for reference lines at: /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/reference_lines/reference_lines_inventory.yaml
+2026-06-25 10:41:27 - ServiceManager - INFO - Grafana client initialized.
+2026-06-25 10:41:27 - ServiceManager - INFO - ServiceManager initialization completed.
+2026-06-25 10:41:28 - ServiceManager - INFO - Loading boards...
+2026-06-25 10:41:28 - ServiceManager - INFO - Found 4 devices.
+2026-06-25 10:41:31 - ServiceManager - INFO - Loaded parameters for 'RedPitaya_Na_D1' (43 writeable, 3 readable).
+2026-06-25 10:41:31 - ServiceManager - INFO - Loaded advanced settings for 'RedPitaya_Na_D1' (5 groups).
+2026-06-25 14:07:10 - ServiceManager - INFO - Updated big_offset to 1.0 in config.
+2026-06-25 14:07:10 - ServiceManager - INFO - Updated channel_mixing to -128 in config.
+2026-06-25 14:07:10 - ServiceManager - INFO - Updated control_channel to 1 in config.
+2026-06-25 14:07:10 - ServiceManager - INFO - Updated control_history_length to 60 in config.
+2026-06-25 14:07:10 - ServiceManager - INFO - Updated demodulation_multiplier_a to 1 in config.
+2026-06-25 14:07:10 - ServiceManager - INFO - Updated demodulation_multiplier_b to 0 in config.
+2026-06-25 14:07:10 - ServiceManager - INFO - Updated dual_channel to False in config.
+2026-06-25 14:07:10 - ServiceManager - INFO - Updated filter_1_enabled_a to True in config.
+2026-06-25 14:07:10 - ServiceManager - INFO - Updated filter_1_enabled_b to False in config.
+2026-06-25 14:07:10 - ServiceManager - INFO - Updated filter_1_frequency to 500.0 in config.
+2026-06-25 14:07:10 - ServiceManager - INFO - Updated filter_1_type_a to 0 in config.
+2026-06-25 14:07:10 - ServiceManager - INFO - Updated filter_1_type_b to 0 in config.
+2026-06-25 14:07:10 - ServiceManager - INFO - Updated filter_2_enabled_a to False in config.
+2026-06-25 14:07:10 - ServiceManager - INFO - Updated filter_2_enabled_b to True in config.
+2026-06-25 14:07:10 - ServiceManager - INFO - Updated filter_2_frequency to 0.0 in config.
+2026-06-25 14:07:10 - ServiceManager - INFO - Updated filter_2_type_a to 0 in config.
+2026-06-25 14:07:10 - ServiceManager - INFO - Updated filter_2_type_b to 0 in config.
+2026-06-25 14:07:10 - ServiceManager - INFO - Updated filter_automatic_a to False in config.
+2026-06-25 14:07:10 - ServiceManager - INFO - Updated filter_automatic_b to False in config.
+2026-06-25 14:07:10 - ServiceManager - INFO - Updated gpio_p_out to 1 in config.
+2026-06-25 14:07:10 - ServiceManager - INFO - Updated invert_a to False in config.
+2026-06-25 14:07:10 - ServiceManager - INFO - Updated invert_b to False in config.
+2026-06-25 14:07:10 - ServiceManager - INFO - Updated modulation_amplitude to 0.2 in config.
+2026-06-25 14:07:10 - ServiceManager - INFO - Updated modulation_channel to 0 in config.
+2026-06-25 14:07:10 - ServiceManager - INFO - Updated modulation_frequency to 0.05 in config.
+2026-06-25 14:07:10 - ServiceManager - INFO - Updated offset_a to 0.0 in config.
+2026-06-25 14:07:10 - ServiceManager - INFO - Updated offset_b to 0.0 in config.
+2026-06-25 14:07:10 - ServiceManager - INFO - Updated phase to 270.0 in config.
+2026-06-25 14:07:10 - ServiceManager - INFO - Updated pid_d to 1 in config.
+2026-06-25 14:07:10 - ServiceManager - INFO - Updated pid_i to 100 in config.
+2026-06-25 14:07:10 - ServiceManager - INFO - Updated pid_on_slow_enabled to True in config.
+2026-06-25 14:07:10 - ServiceManager - INFO - Updated pid_p to 2000 in config.
+2026-06-25 14:07:10 - ServiceManager - INFO - Updated pid_slow_strength to 3 in config.
+2026-06-25 14:07:10 - ServiceManager - INFO - Updated polarity_analog_out0 to 0 in config.
+2026-06-25 14:07:10 - ServiceManager - INFO - Updated polarity_fast_out1 to 0 in config.
+2026-06-25 14:07:10 - ServiceManager - INFO - Updated polarity_fast_out2 to 0 in config.
+2026-06-25 14:07:10 - ServiceManager - INFO - Updated slow_control_channel to 2 in config.
+2026-06-25 14:07:10 - ServiceManager - INFO - Updated small_offset to 0.0 in config.
+2026-06-25 14:07:10 - ServiceManager - INFO - Updated sweep_amplitude to 0.2 in config.
+2026-06-25 14:07:10 - ServiceManager - INFO - Updated sweep_center to 0.0 in config.
+2026-06-25 14:07:10 - ServiceManager - INFO - Updated sweep_channel to 1 in config.
+2026-06-25 14:07:10 - ServiceManager - INFO - Updated sweep_speed to 10 in config.
+2026-06-25 14:07:10 - ServiceManager - INFO - Updated target_slope_rising to True in config.
+2026-06-25 14:07:10 - ServiceManager - INFO - Parameters saved successfully to /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/RedPitaya_Na_D1_parameters.yaml
+2026-06-25 14:17:14 - ServiceManager - INFO - ServiceManager initializing...
+2026-06-25 14:17:14 - ServiceManager - INFO - ServiceManager looking for board list at: /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/board_list.yaml
+2026-06-25 14:17:14 - ServiceManager - INFO - ServiceManager looking for reference lines at: /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/reference_lines/reference_lines_inventory.yaml
+2026-06-25 14:17:14 - ServiceManager - INFO - Grafana client initialized.
+2026-06-25 14:17:14 - ServiceManager - INFO - ServiceManager initialization completed.
+2026-06-25 14:17:15 - ServiceManager - INFO - Loading boards...
+2026-06-25 14:17:15 - ServiceManager - INFO - Found 4 devices.
+2026-06-25 14:17:19 - ServiceManager - INFO - Loaded parameters for 'RedPitaya_Na_D1' (43 writeable, 3 readable).
+2026-06-25 14:17:19 - ServiceManager - INFO - Loaded advanced settings for 'RedPitaya_Na_D1' (5 groups).
+2026-06-25 14:53:10 - ServiceManager - INFO - Updated big_offset to 1.0 in config.
+2026-06-25 14:53:10 - ServiceManager - INFO - Updated channel_mixing to -128 in config.
+2026-06-25 14:53:10 - ServiceManager - INFO - Updated control_channel to 1 in config.
+2026-06-25 14:53:10 - ServiceManager - INFO - Updated control_history_length to 60 in config.
+2026-06-25 14:53:10 - ServiceManager - INFO - Updated demodulation_multiplier_a to 1 in config.
+2026-06-25 14:53:10 - ServiceManager - INFO - Updated demodulation_multiplier_b to 0 in config.
+2026-06-25 14:53:10 - ServiceManager - INFO - Updated dual_channel to False in config.
+2026-06-25 14:53:10 - ServiceManager - INFO - Updated filter_1_enabled_a to True in config.
+2026-06-25 14:53:10 - ServiceManager - INFO - Updated filter_1_enabled_b to False in config.
+2026-06-25 14:53:10 - ServiceManager - INFO - Updated filter_1_frequency to 500.0 in config.
+2026-06-25 14:53:10 - ServiceManager - INFO - Updated filter_1_type_a to 0 in config.
+2026-06-25 14:53:10 - ServiceManager - INFO - Updated filter_1_type_b to 0 in config.
+2026-06-25 14:53:10 - ServiceManager - INFO - Updated filter_2_enabled_a to False in config.
+2026-06-25 14:53:10 - ServiceManager - INFO - Updated filter_2_enabled_b to True in config.
+2026-06-25 14:53:10 - ServiceManager - INFO - Updated filter_2_frequency to 0.0 in config.
+2026-06-25 14:53:10 - ServiceManager - INFO - Updated filter_2_type_a to 0 in config.
+2026-06-25 14:53:10 - ServiceManager - INFO - Updated filter_2_type_b to 0 in config.
+2026-06-25 14:53:10 - ServiceManager - INFO - Updated filter_automatic_a to False in config.
+2026-06-25 14:53:10 - ServiceManager - INFO - Updated filter_automatic_b to False in config.
+2026-06-25 14:53:10 - ServiceManager - INFO - Updated gpio_p_out to 3 in config.
+2026-06-25 14:53:10 - ServiceManager - INFO - Updated invert_a to False in config.
+2026-06-25 14:53:10 - ServiceManager - INFO - Updated invert_b to False in config.
+2026-06-25 14:53:10 - ServiceManager - INFO - Updated modulation_amplitude to 0.2 in config.
+2026-06-25 14:53:10 - ServiceManager - INFO - Updated modulation_channel to 0 in config.
+2026-06-25 14:53:10 - ServiceManager - INFO - Updated modulation_frequency to 0.05 in config.
+2026-06-25 14:53:10 - ServiceManager - INFO - Updated offset_a to 0.0 in config.
+2026-06-25 14:53:10 - ServiceManager - INFO - Updated offset_b to 0.0 in config.
+2026-06-25 14:53:10 - ServiceManager - INFO - Updated phase to 270.0 in config.
+2026-06-25 14:53:10 - ServiceManager - INFO - Updated pid_d to 1 in config.
+2026-06-25 14:53:10 - ServiceManager - INFO - Updated pid_i to 100 in config.
+2026-06-25 14:53:10 - ServiceManager - INFO - Updated pid_on_slow_enabled to True in config.
+2026-06-25 14:53:10 - ServiceManager - INFO - Updated pid_p to 2000 in config.
+2026-06-25 14:53:10 - ServiceManager - INFO - Updated pid_slow_strength to 3 in config.
+2026-06-25 14:53:10 - ServiceManager - INFO - Updated polarity_analog_out0 to 0 in config.
+2026-06-25 14:53:10 - ServiceManager - INFO - Updated polarity_fast_out1 to 0 in config.
+2026-06-25 14:53:10 - ServiceManager - INFO - Updated polarity_fast_out2 to 0 in config.
+2026-06-25 14:53:10 - ServiceManager - INFO - Updated slow_control_channel to 2 in config.
+2026-06-25 14:53:10 - ServiceManager - INFO - Updated small_offset to 0.0 in config.
+2026-06-25 14:53:10 - ServiceManager - INFO - Updated sweep_amplitude to 0.2 in config.
+2026-06-25 14:53:10 - ServiceManager - INFO - Updated sweep_center to 0.0 in config.
+2026-06-25 14:53:10 - ServiceManager - INFO - Updated sweep_channel to 1 in config.
+2026-06-25 14:53:10 - ServiceManager - INFO - Updated sweep_speed to 10 in config.
+2026-06-25 14:53:10 - ServiceManager - INFO - Updated target_slope_rising to True in config.
+2026-06-25 14:53:10 - ServiceManager - INFO - Parameters saved successfully to /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/RedPitaya_Na_D1_parameters.yaml
+2026-06-25 15:33:50 - ServiceManager - INFO - ServiceManager initializing...
+2026-06-25 15:33:50 - ServiceManager - INFO - ServiceManager looking for board list at: /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/board_list.yaml
+2026-06-25 15:33:50 - ServiceManager - INFO - ServiceManager looking for reference lines at: /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/reference_lines/reference_lines_inventory.yaml
+2026-06-25 15:33:50 - ServiceManager - INFO - Grafana client initialized.
+2026-06-25 15:33:50 - ServiceManager - INFO - ServiceManager initialization completed.
+2026-06-25 15:33:51 - ServiceManager - INFO - Loading boards...
+2026-06-25 15:33:51 - ServiceManager - INFO - Found 4 devices.
+2026-06-25 15:33:55 - ServiceManager - INFO - Loaded parameters for 'RedPitaya_Na_D1' (43 writeable, 3 readable).
+2026-06-25 15:33:55 - ServiceManager - INFO - Loaded advanced settings for 'RedPitaya_Na_D1' (5 groups).
+2026-06-25 16:02:39 - ServiceManager - INFO - Updated big_offset to 0.0 in config.
+2026-06-25 16:02:39 - ServiceManager - INFO - Updated channel_mixing to -128 in config.
+2026-06-25 16:02:39 - ServiceManager - INFO - Updated control_channel to 1 in config.
+2026-06-25 16:02:39 - ServiceManager - INFO - Updated control_history_length to 60 in config.
+2026-06-25 16:02:39 - ServiceManager - INFO - Updated demodulation_multiplier_a to 1 in config.
+2026-06-25 16:02:39 - ServiceManager - INFO - Updated demodulation_multiplier_b to 0 in config.
+2026-06-25 16:02:39 - ServiceManager - INFO - Updated dual_channel to False in config.
+2026-06-25 16:02:39 - ServiceManager - INFO - Updated filter_1_enabled_a to True in config.
+2026-06-25 16:02:39 - ServiceManager - INFO - Updated filter_1_enabled_b to False in config.
+2026-06-25 16:02:39 - ServiceManager - INFO - Updated filter_1_frequency to 500.0 in config.
+2026-06-25 16:02:39 - ServiceManager - INFO - Updated filter_1_type_a to 0 in config.
+2026-06-25 16:02:39 - ServiceManager - INFO - Updated filter_1_type_b to 0 in config.
+2026-06-25 16:02:39 - ServiceManager - INFO - Updated filter_2_enabled_a to False in config.
+2026-06-25 16:02:39 - ServiceManager - INFO - Updated filter_2_enabled_b to True in config.
+2026-06-25 16:02:39 - ServiceManager - INFO - Updated filter_2_frequency to 0.0 in config.
+2026-06-25 16:02:39 - ServiceManager - INFO - Updated filter_2_type_a to 0 in config.
+2026-06-25 16:02:39 - ServiceManager - INFO - Updated filter_2_type_b to 0 in config.
+2026-06-25 16:02:39 - ServiceManager - INFO - Updated filter_automatic_a to False in config.
+2026-06-25 16:02:39 - ServiceManager - INFO - Updated filter_automatic_b to False in config.
+2026-06-25 16:02:39 - ServiceManager - INFO - Updated gpio_p_out to 3 in config.
+2026-06-25 16:02:39 - ServiceManager - INFO - Updated invert_a to False in config.
+2026-06-25 16:02:39 - ServiceManager - INFO - Updated invert_b to False in config.
+2026-06-25 16:02:39 - ServiceManager - INFO - Updated modulation_amplitude to 0.2 in config.
+2026-06-25 16:02:39 - ServiceManager - INFO - Updated modulation_channel to 0 in config.
+2026-06-25 16:02:39 - ServiceManager - INFO - Updated modulation_frequency to 0.05 in config.
+2026-06-25 16:02:39 - ServiceManager - INFO - Updated offset_a to 0.0 in config.
+2026-06-25 16:02:39 - ServiceManager - INFO - Updated offset_b to 0.0 in config.
+2026-06-25 16:02:39 - ServiceManager - INFO - Updated phase to 270.0 in config.
+2026-06-25 16:02:39 - ServiceManager - INFO - Updated pid_d to 1 in config.
+2026-06-25 16:02:39 - ServiceManager - INFO - Updated pid_i to 100 in config.
+2026-06-25 16:02:39 - ServiceManager - INFO - Updated pid_on_slow_enabled to True in config.
+2026-06-25 16:02:39 - ServiceManager - INFO - Updated pid_p to 2000 in config.
+2026-06-25 16:02:39 - ServiceManager - INFO - Updated pid_slow_strength to 3 in config.
+2026-06-25 16:02:39 - ServiceManager - INFO - Updated polarity_analog_out0 to 0 in config.
+2026-06-25 16:02:39 - ServiceManager - INFO - Updated polarity_fast_out1 to 0 in config.
+2026-06-25 16:02:39 - ServiceManager - INFO - Updated polarity_fast_out2 to 0 in config.
+2026-06-25 16:02:39 - ServiceManager - INFO - Updated slow_control_channel to 2 in config.
+2026-06-25 16:02:39 - ServiceManager - INFO - Updated small_offset to 0.0 in config.
+2026-06-25 16:02:39 - ServiceManager - INFO - Updated sweep_amplitude to 0.2 in config.
+2026-06-25 16:02:39 - ServiceManager - INFO - Updated sweep_center to 0.0 in config.
+2026-06-25 16:02:39 - ServiceManager - INFO - Updated sweep_channel to 1 in config.
+2026-06-25 16:02:39 - ServiceManager - INFO - Updated sweep_speed to 10 in config.
+2026-06-25 16:02:39 - ServiceManager - INFO - Updated target_slope_rising to True in config.
+2026-06-25 16:02:39 - ServiceManager - INFO - Parameters saved successfully to /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/RedPitaya_Na_D1_parameters.yaml
+2026-06-25 16:35:43 - ServiceManager - INFO - ServiceManager initializing...
+2026-06-25 16:35:43 - ServiceManager - INFO - ServiceManager looking for board list at: /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/board_list.yaml
+2026-06-25 16:35:43 - ServiceManager - INFO - ServiceManager looking for reference lines at: /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/reference_lines/reference_lines_inventory.yaml
+2026-06-25 16:35:43 - ServiceManager - INFO - Grafana client initialized.
+2026-06-25 16:35:43 - ServiceManager - INFO - ServiceManager initialization completed.
+2026-06-25 16:35:43 - ServiceManager - INFO - Loading boards...
+2026-06-25 16:35:43 - ServiceManager - INFO - Found 4 devices.
+2026-06-25 16:35:47 - ServiceManager - INFO - Loaded parameters for 'RedPitaya_Na_D1' (43 writeable, 3 readable).
+2026-06-25 16:35:47 - ServiceManager - INFO - Loaded advanced settings for 'RedPitaya_Na_D1' (5 groups).
+2026-06-25 16:55:07 - ServiceManager - INFO - Updated big_offset to 0.0 in config.
+2026-06-25 16:55:07 - ServiceManager - INFO - Updated channel_mixing to -128 in config.
+2026-06-25 16:55:07 - ServiceManager - INFO - Updated control_channel to 1 in config.
+2026-06-25 16:55:07 - ServiceManager - INFO - Updated control_history_length to 60 in config.
+2026-06-25 16:55:07 - ServiceManager - INFO - Updated demodulation_multiplier_a to 1 in config.
+2026-06-25 16:55:07 - ServiceManager - INFO - Updated demodulation_multiplier_b to 0 in config.
+2026-06-25 16:55:07 - ServiceManager - INFO - Updated dual_channel to False in config.
+2026-06-25 16:55:07 - ServiceManager - INFO - Updated filter_1_enabled_a to True in config.
+2026-06-25 16:55:07 - ServiceManager - INFO - Updated filter_1_enabled_b to False in config.
+2026-06-25 16:55:07 - ServiceManager - INFO - Updated filter_1_frequency to 500.0 in config.
+2026-06-25 16:55:07 - ServiceManager - INFO - Updated filter_1_type_a to 0 in config.
+2026-06-25 16:55:07 - ServiceManager - INFO - Updated filter_1_type_b to 0 in config.
+2026-06-25 16:55:07 - ServiceManager - INFO - Updated filter_2_enabled_a to False in config.
+2026-06-25 16:55:07 - ServiceManager - INFO - Updated filter_2_enabled_b to True in config.
+2026-06-25 16:55:07 - ServiceManager - INFO - Updated filter_2_frequency to 0.0 in config.
+2026-06-25 16:55:07 - ServiceManager - INFO - Updated filter_2_type_a to 0 in config.
+2026-06-25 16:55:07 - ServiceManager - INFO - Updated filter_2_type_b to 0 in config.
+2026-06-25 16:55:07 - ServiceManager - INFO - Updated filter_automatic_a to False in config.
+2026-06-25 16:55:07 - ServiceManager - INFO - Updated filter_automatic_b to False in config.
+2026-06-25 16:55:07 - ServiceManager - INFO - Updated gpio_p_out to 1 in config.
+2026-06-25 16:55:07 - ServiceManager - INFO - Updated invert_a to False in config.
+2026-06-25 16:55:07 - ServiceManager - INFO - Updated invert_b to False in config.
+2026-06-25 16:55:07 - ServiceManager - INFO - Updated modulation_amplitude to 0.2 in config.
+2026-06-25 16:55:07 - ServiceManager - INFO - Updated modulation_channel to 0 in config.
+2026-06-25 16:55:07 - ServiceManager - INFO - Updated modulation_frequency to 0.05 in config.
+2026-06-25 16:55:07 - ServiceManager - INFO - Updated offset_a to 0.0 in config.
+2026-06-25 16:55:07 - ServiceManager - INFO - Updated offset_b to 0.0 in config.
+2026-06-25 16:55:07 - ServiceManager - INFO - Updated phase to 270.0 in config.
+2026-06-25 16:55:07 - ServiceManager - INFO - Updated pid_d to 1 in config.
+2026-06-25 16:55:07 - ServiceManager - INFO - Updated pid_i to 100 in config.
+2026-06-25 16:55:07 - ServiceManager - INFO - Updated pid_on_slow_enabled to True in config.
+2026-06-25 16:55:07 - ServiceManager - INFO - Updated pid_p to 2000 in config.
+2026-06-25 16:55:07 - ServiceManager - INFO - Updated pid_slow_strength to 3 in config.
+2026-06-25 16:55:07 - ServiceManager - INFO - Updated polarity_analog_out0 to 0 in config.
+2026-06-25 16:55:07 - ServiceManager - INFO - Updated polarity_fast_out1 to 0 in config.
+2026-06-25 16:55:07 - ServiceManager - INFO - Updated polarity_fast_out2 to 0 in config.
+2026-06-25 16:55:07 - ServiceManager - INFO - Updated slow_control_channel to 2 in config.
+2026-06-25 16:55:07 - ServiceManager - INFO - Updated small_offset to 0.0 in config.
+2026-06-25 16:55:07 - ServiceManager - INFO - Updated sweep_amplitude to 0.2 in config.
+2026-06-25 16:55:07 - ServiceManager - INFO - Updated sweep_center to 0.0 in config.
+2026-06-25 16:55:07 - ServiceManager - INFO - Updated sweep_channel to 1 in config.
+2026-06-25 16:55:07 - ServiceManager - INFO - Updated sweep_speed to 10 in config.
+2026-06-25 16:55:07 - ServiceManager - INFO - Updated target_slope_rising to True in config.
+2026-06-25 16:55:08 - ServiceManager - INFO - Parameters saved successfully to /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/RedPitaya_Na_D1_parameters.yaml
+2026-06-25 17:07:56 - ServiceManager - INFO - ServiceManager initializing...
+2026-06-25 17:07:56 - ServiceManager - INFO - ServiceManager looking for board list at: /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/board_list.yaml
+2026-06-25 17:07:56 - ServiceManager - INFO - ServiceManager looking for reference lines at: /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/reference_lines/reference_lines_inventory.yaml
+2026-06-25 17:07:56 - ServiceManager - INFO - Grafana client initialized.
+2026-06-25 17:07:56 - ServiceManager - INFO - ServiceManager initialization completed.
+2026-06-25 17:07:57 - ServiceManager - INFO - Loading boards...
+2026-06-25 17:07:57 - ServiceManager - INFO - Found 4 devices.
+2026-06-25 17:08:03 - ServiceManager - INFO - Loaded parameters for 'RedPitaya_Na_D1' (43 writeable, 3 readable).
+2026-06-25 17:08:03 - ServiceManager - INFO - Loaded advanced settings for 'RedPitaya_Na_D1' (5 groups).
+2026-06-25 17:29:27 - ServiceManager - INFO - Updated big_offset to 0.0 in config.
+2026-06-25 17:29:27 - ServiceManager - INFO - Updated channel_mixing to -128 in config.
+2026-06-25 17:29:27 - ServiceManager - INFO - Updated control_channel to 1 in config.
+2026-06-25 17:29:27 - ServiceManager - INFO - Updated control_history_length to 60 in config.
+2026-06-25 17:29:27 - ServiceManager - INFO - Updated demodulation_multiplier_a to 1 in config.
+2026-06-25 17:29:27 - ServiceManager - INFO - Updated demodulation_multiplier_b to 0 in config.
+2026-06-25 17:29:27 - ServiceManager - INFO - Updated dual_channel to False in config.
+2026-06-25 17:29:27 - ServiceManager - INFO - Updated filter_1_enabled_a to True in config.
+2026-06-25 17:29:27 - ServiceManager - INFO - Updated filter_1_enabled_b to False in config.
+2026-06-25 17:29:27 - ServiceManager - INFO - Updated filter_1_frequency to 500.0 in config.
+2026-06-25 17:29:27 - ServiceManager - INFO - Updated filter_1_type_a to 0 in config.
+2026-06-25 17:29:27 - ServiceManager - INFO - Updated filter_1_type_b to 0 in config.
+2026-06-25 17:29:27 - ServiceManager - INFO - Updated filter_2_enabled_a to False in config.
+2026-06-25 17:29:27 - ServiceManager - INFO - Updated filter_2_enabled_b to True in config.
+2026-06-25 17:29:27 - ServiceManager - INFO - Updated filter_2_frequency to 0.0 in config.
+2026-06-25 17:29:27 - ServiceManager - INFO - Updated filter_2_type_a to 0 in config.
+2026-06-25 17:29:27 - ServiceManager - INFO - Updated filter_2_type_b to 0 in config.
+2026-06-25 17:29:27 - ServiceManager - INFO - Updated filter_automatic_a to False in config.
+2026-06-25 17:29:27 - ServiceManager - INFO - Updated filter_automatic_b to False in config.
+2026-06-25 17:29:27 - ServiceManager - INFO - Updated gpio_p_out to 1 in config.
+2026-06-25 17:29:27 - ServiceManager - INFO - Updated invert_a to False in config.
+2026-06-25 17:29:27 - ServiceManager - INFO - Updated invert_b to False in config.
+2026-06-25 17:29:27 - ServiceManager - INFO - Updated modulation_amplitude to 0.2 in config.
+2026-06-25 17:29:27 - ServiceManager - INFO - Updated modulation_channel to 0 in config.
+2026-06-25 17:29:27 - ServiceManager - INFO - Updated modulation_frequency to 0.05 in config.
+2026-06-25 17:29:27 - ServiceManager - INFO - Updated offset_a to 0.0 in config.
+2026-06-25 17:29:27 - ServiceManager - INFO - Updated offset_b to 0.0 in config.
+2026-06-25 17:29:27 - ServiceManager - INFO - Updated phase to 270.0 in config.
+2026-06-25 17:29:27 - ServiceManager - INFO - Updated pid_d to 1 in config.
+2026-06-25 17:29:27 - ServiceManager - INFO - Updated pid_i to 100 in config.
+2026-06-25 17:29:27 - ServiceManager - INFO - Updated pid_on_slow_enabled to True in config.
+2026-06-25 17:29:27 - ServiceManager - INFO - Updated pid_p to 2000 in config.
+2026-06-25 17:29:27 - ServiceManager - INFO - Updated pid_slow_strength to 3 in config.
+2026-06-25 17:29:27 - ServiceManager - INFO - Updated polarity_analog_out0 to 0 in config.
+2026-06-25 17:29:27 - ServiceManager - INFO - Updated polarity_fast_out1 to 0 in config.
+2026-06-25 17:29:27 - ServiceManager - INFO - Updated polarity_fast_out2 to 0 in config.
+2026-06-25 17:29:27 - ServiceManager - INFO - Updated slow_control_channel to 2 in config.
+2026-06-25 17:29:27 - ServiceManager - INFO - Updated small_offset to 0.0 in config.
+2026-06-25 17:29:27 - ServiceManager - INFO - Updated sweep_amplitude to 0.2 in config.
+2026-06-25 17:29:27 - ServiceManager - INFO - Updated sweep_center to 0.0 in config.
+2026-06-25 17:29:27 - ServiceManager - INFO - Updated sweep_channel to 1 in config.
+2026-06-25 17:29:27 - ServiceManager - INFO - Updated sweep_speed to 10 in config.
+2026-06-25 17:29:27 - ServiceManager - INFO - Updated target_slope_rising to True in config.
+2026-06-25 17:29:27 - ServiceManager - INFO - Parameters saved successfully to /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/RedPitaya_Na_D1_parameters.yaml
+2026-06-25 18:14:18 - ServiceManager - INFO - ServiceManager initializing...
+2026-06-25 18:14:18 - ServiceManager - INFO - ServiceManager looking for board list at: /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/board_list.yaml
+2026-06-25 18:14:18 - ServiceManager - INFO - ServiceManager looking for reference lines at: /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/reference_lines/reference_lines_inventory.yaml
+2026-06-25 18:14:18 - ServiceManager - INFO - Grafana client initialized.
+2026-06-25 18:14:18 - ServiceManager - INFO - ServiceManager initialization completed.
+2026-06-25 18:14:19 - ServiceManager - INFO - Loading boards...
+2026-06-25 18:14:19 - ServiceManager - INFO - Found 4 devices.
+2026-06-25 18:14:22 - ServiceManager - INFO - Loaded parameters for 'RedPitaya_Na_D1' (43 writeable, 3 readable).
+2026-06-25 18:14:22 - ServiceManager - INFO - Loaded advanced settings for 'RedPitaya_Na_D1' (5 groups).
+2026-06-25 19:26:36 - ServiceManager - INFO - Updated big_offset to 1.0 in config.
+2026-06-25 19:26:36 - ServiceManager - INFO - Updated channel_mixing to -128 in config.
+2026-06-25 19:26:36 - ServiceManager - INFO - Updated control_channel to 1 in config.
+2026-06-25 19:26:36 - ServiceManager - INFO - Updated control_history_length to 60 in config.
+2026-06-25 19:26:36 - ServiceManager - INFO - Updated demodulation_multiplier_a to 1 in config.
+2026-06-25 19:26:36 - ServiceManager - INFO - Updated demodulation_multiplier_b to 0 in config.
+2026-06-25 19:26:36 - ServiceManager - INFO - Updated dual_channel to False in config.
+2026-06-25 19:26:36 - ServiceManager - INFO - Updated filter_1_enabled_a to True in config.
+2026-06-25 19:26:36 - ServiceManager - INFO - Updated filter_1_enabled_b to False in config.
+2026-06-25 19:26:36 - ServiceManager - INFO - Updated filter_1_frequency to 500.0 in config.
+2026-06-25 19:26:36 - ServiceManager - INFO - Updated filter_1_type_a to 0 in config.
+2026-06-25 19:26:36 - ServiceManager - INFO - Updated filter_1_type_b to 0 in config.
+2026-06-25 19:26:36 - ServiceManager - INFO - Updated filter_2_enabled_a to False in config.
+2026-06-25 19:26:36 - ServiceManager - INFO - Updated filter_2_enabled_b to True in config.
+2026-06-25 19:26:36 - ServiceManager - INFO - Updated filter_2_frequency to 0.0 in config.
+2026-06-25 19:26:36 - ServiceManager - INFO - Updated filter_2_type_a to 0 in config.
+2026-06-25 19:26:36 - ServiceManager - INFO - Updated filter_2_type_b to 0 in config.
+2026-06-25 19:26:36 - ServiceManager - INFO - Updated filter_automatic_a to False in config.
+2026-06-25 19:26:36 - ServiceManager - INFO - Updated filter_automatic_b to False in config.
+2026-06-25 19:26:36 - ServiceManager - INFO - Updated gpio_p_out to 1 in config.
+2026-06-25 19:26:36 - ServiceManager - INFO - Updated invert_a to False in config.
+2026-06-25 19:26:36 - ServiceManager - INFO - Updated invert_b to False in config.
+2026-06-25 19:26:36 - ServiceManager - INFO - Updated modulation_amplitude to 0.2 in config.
+2026-06-25 19:26:36 - ServiceManager - INFO - Updated modulation_channel to 0 in config.
+2026-06-25 19:26:36 - ServiceManager - INFO - Updated modulation_frequency to 0.05 in config.
+2026-06-25 19:26:36 - ServiceManager - INFO - Updated offset_a to 0.0 in config.
+2026-06-25 19:26:36 - ServiceManager - INFO - Updated offset_b to 0.0 in config.
+2026-06-25 19:26:36 - ServiceManager - INFO - Updated phase to 270.0 in config.
+2026-06-25 19:26:36 - ServiceManager - INFO - Updated pid_d to 1 in config.
+2026-06-25 19:26:36 - ServiceManager - INFO - Updated pid_i to 100 in config.
+2026-06-25 19:26:36 - ServiceManager - INFO - Updated pid_on_slow_enabled to True in config.
+2026-06-25 19:26:36 - ServiceManager - INFO - Updated pid_p to 2000 in config.
+2026-06-25 19:26:36 - ServiceManager - INFO - Updated pid_slow_strength to 3 in config.
+2026-06-25 19:26:36 - ServiceManager - INFO - Updated polarity_analog_out0 to 0 in config.
+2026-06-25 19:26:36 - ServiceManager - INFO - Updated polarity_fast_out1 to 0 in config.
+2026-06-25 19:26:36 - ServiceManager - INFO - Updated polarity_fast_out2 to 0 in config.
+2026-06-25 19:26:36 - ServiceManager - INFO - Updated slow_control_channel to 2 in config.
+2026-06-25 19:26:36 - ServiceManager - INFO - Updated small_offset to 0.0 in config.
+2026-06-25 19:26:36 - ServiceManager - INFO - Updated sweep_amplitude to 0.2 in config.
+2026-06-25 19:26:36 - ServiceManager - INFO - Updated sweep_center to 0.0 in config.
+2026-06-25 19:26:36 - ServiceManager - INFO - Updated sweep_channel to 1 in config.
+2026-06-25 19:26:36 - ServiceManager - INFO - Updated sweep_speed to 10 in config.
+2026-06-25 19:26:36 - ServiceManager - INFO - Updated target_slope_rising to True in config.
+2026-06-25 19:26:36 - ServiceManager - INFO - Parameters saved successfully to /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/RedPitaya_Na_D1_parameters.yaml
+2026-07-08 17:01:04 - ServiceManager - INFO - ServiceManager initializing...
+2026-07-08 17:01:04 - ServiceManager - INFO - ServiceManager looking for board list at: /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/board_list.yaml
+2026-07-08 17:01:04 - ServiceManager - INFO - ServiceManager looking for reference lines at: /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/reference_lines/reference_lines_inventory.yaml
+2026-07-08 17:01:04 - ServiceManager - INFO - Grafana client initialized.
+2026-07-08 17:01:04 - ServiceManager - INFO - ServiceManager initialization completed.
+2026-07-08 17:01:05 - ServiceManager - INFO - Loading boards...
+2026-07-08 17:01:05 - ServiceManager - INFO - Found 4 devices.
+2026-07-08 17:01:25 - ServiceManager - INFO - Loaded parameters for 'RedPitaya_Na_D1' (43 writeable, 3 readable).
+2026-07-08 17:01:26 - ServiceManager - INFO - Loaded advanced settings for 'RedPitaya_Na_D1' (5 groups).
+2026-07-08 18:50:56 - ServiceManager - INFO - Updated big_offset to 1.0 in config.
+2026-07-08 18:50:56 - ServiceManager - INFO - Updated channel_mixing to -128 in config.
+2026-07-08 18:50:56 - ServiceManager - INFO - Updated control_channel to 1 in config.
+2026-07-08 18:50:56 - ServiceManager - INFO - Updated control_history_length to 60 in config.
+2026-07-08 18:50:56 - ServiceManager - INFO - Updated demodulation_multiplier_a to 1 in config.
+2026-07-08 18:50:56 - ServiceManager - INFO - Updated demodulation_multiplier_b to 0 in config.
+2026-07-08 18:50:56 - ServiceManager - INFO - Updated dual_channel to False in config.
+2026-07-08 18:50:56 - ServiceManager - INFO - Updated filter_1_enabled_a to True in config.
+2026-07-08 18:50:56 - ServiceManager - INFO - Updated filter_1_enabled_b to False in config.
+2026-07-08 18:50:56 - ServiceManager - INFO - Updated filter_1_frequency to 500.0 in config.
+2026-07-08 18:50:56 - ServiceManager - INFO - Updated filter_1_type_a to 0 in config.
+2026-07-08 18:50:56 - ServiceManager - INFO - Updated filter_1_type_b to 0 in config.
+2026-07-08 18:50:56 - ServiceManager - INFO - Updated filter_2_enabled_a to False in config.
+2026-07-08 18:50:56 - ServiceManager - INFO - Updated filter_2_enabled_b to True in config.
+2026-07-08 18:50:56 - ServiceManager - INFO - Updated filter_2_frequency to 0.0 in config.
+2026-07-08 18:50:56 - ServiceManager - INFO - Updated filter_2_type_a to 0 in config.
+2026-07-08 18:50:56 - ServiceManager - INFO - Updated filter_2_type_b to 0 in config.
+2026-07-08 18:50:56 - ServiceManager - INFO - Updated filter_automatic_a to False in config.
+2026-07-08 18:50:56 - ServiceManager - INFO - Updated filter_automatic_b to False in config.
+2026-07-08 18:50:56 - ServiceManager - INFO - Updated gpio_p_out to 1 in config.
+2026-07-08 18:50:56 - ServiceManager - INFO - Updated invert_a to False in config.
+2026-07-08 18:50:56 - ServiceManager - INFO - Updated invert_b to False in config.
+2026-07-08 18:50:56 - ServiceManager - INFO - Updated modulation_amplitude to 0.2 in config.
+2026-07-08 18:50:56 - ServiceManager - INFO - Updated modulation_channel to 0 in config.
+2026-07-08 18:50:56 - ServiceManager - INFO - Updated modulation_frequency to 0.05 in config.
+2026-07-08 18:50:56 - ServiceManager - INFO - Updated offset_a to 0.002 in config.
+2026-07-08 18:50:56 - ServiceManager - INFO - Updated offset_b to 0.0 in config.
+2026-07-08 18:50:56 - ServiceManager - INFO - Updated phase to 120.0 in config.
+2026-07-08 18:50:56 - ServiceManager - INFO - Updated pid_d to 1 in config.
+2026-07-08 18:50:56 - ServiceManager - INFO - Updated pid_i to 100 in config.
+2026-07-08 18:50:56 - ServiceManager - INFO - Updated pid_on_slow_enabled to True in config.
+2026-07-08 18:50:56 - ServiceManager - INFO - Updated pid_p to 2000 in config.
+2026-07-08 18:50:56 - ServiceManager - INFO - Updated pid_slow_strength to 3 in config.
+2026-07-08 18:50:56 - ServiceManager - INFO - Updated polarity_analog_out0 to 0 in config.
+2026-07-08 18:50:56 - ServiceManager - INFO - Updated polarity_fast_out1 to 0 in config.
+2026-07-08 18:50:56 - ServiceManager - INFO - Updated polarity_fast_out2 to 0 in config.
+2026-07-08 18:50:56 - ServiceManager - INFO - Updated slow_control_channel to 2 in config.
+2026-07-08 18:50:56 - ServiceManager - INFO - Updated small_offset to 0.0 in config.
+2026-07-08 18:50:56 - ServiceManager - INFO - Updated sweep_amplitude to 0.3 in config.
+2026-07-08 18:50:56 - ServiceManager - INFO - Updated sweep_center to 0.0 in config.
+2026-07-08 18:50:56 - ServiceManager - INFO - Updated sweep_channel to 1 in config.
+2026-07-08 18:50:56 - ServiceManager - INFO - Updated sweep_speed to 10 in config.
+2026-07-08 18:50:56 - ServiceManager - INFO - Updated target_slope_rising to True in config.
+2026-07-08 18:50:56 - ServiceManager - INFO - Parameters saved successfully to /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/RedPitaya_Na_D1_parameters.yaml
+2026-07-09 10:51:20 - ServiceManager - INFO - ServiceManager initializing...
+2026-07-09 10:51:20 - ServiceManager - INFO - ServiceManager looking for board list at: /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/board_list.yaml
+2026-07-09 10:51:20 - ServiceManager - INFO - ServiceManager looking for reference lines at: /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/reference_lines/reference_lines_inventory.yaml
+2026-07-09 10:51:20 - ServiceManager - INFO - Grafana client initialized.
+2026-07-09 10:51:20 - ServiceManager - INFO - ServiceManager initialization completed.
+2026-07-09 10:51:21 - ServiceManager - INFO - Loading boards...
+2026-07-09 10:51:21 - ServiceManager - INFO - Found 4 devices.
+2026-07-09 10:51:25 - ServiceManager - INFO - Loaded parameters for 'RedPitaya_Na_D1' (43 writeable, 3 readable).
+2026-07-09 10:51:25 - ServiceManager - INFO - Loaded advanced settings for 'RedPitaya_Na_D1' (5 groups).
+2026-07-09 11:30:35 - ServiceManager - INFO - Adding new reference line 'TEST_Na_D1'...
+2026-07-09 11:30:35 - ServiceManager - INFO - Saved numpy data to /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/reference_lines/TEST_Na_D1_RedPitaya_Na_D1_20260709_113035.npy
+2026-07-09 11:30:35 - ServiceManager - INFO - reference_lines_inventory.yaml saved.
+2026-07-09 11:49:24 - ServiceManager - INFO - Saved unlock screenshot: /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/images/images/unlock_events/20260709114924.png
+2026-07-09 11:50:38 - ServiceManager - INFO - Updated big_offset to 0.5223686612468923 in config.
+2026-07-09 11:50:38 - ServiceManager - INFO - Updated channel_mixing to -128 in config.
+2026-07-09 11:50:38 - ServiceManager - INFO - Updated control_channel to 1 in config.
+2026-07-09 11:50:38 - ServiceManager - INFO - Updated control_history_length to 60 in config.
+2026-07-09 11:50:38 - ServiceManager - INFO - Updated demodulation_multiplier_a to 1 in config.
+2026-07-09 11:50:38 - ServiceManager - INFO - Updated demodulation_multiplier_b to 0 in config.
+2026-07-09 11:50:38 - ServiceManager - INFO - Updated dual_channel to False in config.
+2026-07-09 11:50:38 - ServiceManager - INFO - Updated filter_1_enabled_a to True in config.
+2026-07-09 11:50:38 - ServiceManager - INFO - Updated filter_1_enabled_b to False in config.
+2026-07-09 11:50:38 - ServiceManager - INFO - Updated filter_1_frequency to 500.0 in config.
+2026-07-09 11:50:38 - ServiceManager - INFO - Updated filter_1_type_a to 0 in config.
+2026-07-09 11:50:38 - ServiceManager - INFO - Updated filter_1_type_b to 0 in config.
+2026-07-09 11:50:38 - ServiceManager - INFO - Updated filter_2_enabled_a to False in config.
+2026-07-09 11:50:38 - ServiceManager - INFO - Updated filter_2_enabled_b to True in config.
+2026-07-09 11:50:38 - ServiceManager - INFO - Updated filter_2_frequency to 0.0 in config.
+2026-07-09 11:50:38 - ServiceManager - INFO - Updated filter_2_type_a to 0 in config.
+2026-07-09 11:50:38 - ServiceManager - INFO - Updated filter_2_type_b to 0 in config.
+2026-07-09 11:50:38 - ServiceManager - INFO - Updated filter_automatic_a to False in config.
+2026-07-09 11:50:38 - ServiceManager - INFO - Updated filter_automatic_b to False in config.
+2026-07-09 11:50:38 - ServiceManager - INFO - Updated gpio_p_out to 1 in config.
+2026-07-09 11:50:38 - ServiceManager - INFO - Updated invert_a to False in config.
+2026-07-09 11:50:38 - ServiceManager - INFO - Updated invert_b to False in config.
+2026-07-09 11:50:38 - ServiceManager - INFO - Updated modulation_amplitude to 0.2 in config.
+2026-07-09 11:50:38 - ServiceManager - INFO - Updated modulation_channel to 0 in config.
+2026-07-09 11:50:38 - ServiceManager - INFO - Updated modulation_frequency to 0.05 in config.
+2026-07-09 11:50:38 - ServiceManager - INFO - Updated offset_a to 0.0019505479810414984 in config.
+2026-07-09 11:50:38 - ServiceManager - INFO - Updated offset_b to 0.0 in config.
+2026-07-09 11:50:38 - ServiceManager - INFO - Updated phase to 290.0 in config.
+2026-07-09 11:50:38 - ServiceManager - INFO - Updated pid_d to 1 in config.
+2026-07-09 11:50:38 - ServiceManager - INFO - Updated pid_i to 100 in config.
+2026-07-09 11:50:38 - ServiceManager - INFO - Updated pid_on_slow_enabled to True in config.
+2026-07-09 11:50:38 - ServiceManager - INFO - Updated pid_p to 2000 in config.
+2026-07-09 11:50:38 - ServiceManager - INFO - Updated pid_slow_strength to 3 in config.
+2026-07-09 11:50:38 - ServiceManager - INFO - Updated polarity_analog_out0 to 0 in config.
+2026-07-09 11:50:38 - ServiceManager - INFO - Updated polarity_fast_out1 to 0 in config.
+2026-07-09 11:50:38 - ServiceManager - INFO - Updated polarity_fast_out2 to 0 in config.
+2026-07-09 11:50:38 - ServiceManager - INFO - Updated slow_control_channel to 2 in config.
+2026-07-09 11:50:38 - ServiceManager - INFO - Updated small_offset to 0.0 in config.
+2026-07-09 11:50:38 - ServiceManager - INFO - Updated sweep_amplitude to 0.3 in config.
+2026-07-09 11:50:38 - ServiceManager - INFO - Updated sweep_center to 0.0 in config.
+2026-07-09 11:50:38 - ServiceManager - INFO - Updated sweep_channel to 1 in config.
+2026-07-09 11:50:38 - ServiceManager - INFO - Updated sweep_speed to 10 in config.
+2026-07-09 11:50:38 - ServiceManager - INFO - Updated target_slope_rising to True in config.
+2026-07-09 11:50:38 - ServiceManager - INFO - Parameters saved successfully to /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/RedPitaya_Na_D1_parameters.yaml
+2026-07-09 12:05:49 - ServiceManager - INFO - ServiceManager initializing...
+2026-07-09 12:05:49 - ServiceManager - INFO - ServiceManager looking for board list at: /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/board_list.yaml
+2026-07-09 12:05:49 - ServiceManager - INFO - ServiceManager looking for reference lines at: /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/reference_lines/reference_lines_inventory.yaml
+2026-07-09 12:05:49 - ServiceManager - INFO - Grafana client initialized.
+2026-07-09 12:05:49 - ServiceManager - INFO - ServiceManager initialization completed.
+2026-07-09 12:05:49 - ServiceManager - INFO - Loading boards...
+2026-07-09 12:05:49 - ServiceManager - INFO - Found 4 devices.
+2026-07-09 12:05:53 - ServiceManager - INFO - Loaded parameters for 'RedPitaya_Na_D1' (43 writeable, 3 readable).
+2026-07-09 12:05:53 - ServiceManager - INFO - Loaded advanced settings for 'RedPitaya_Na_D1' (5 groups).
+2026-07-09 12:06:12 - ServiceManager - INFO - Updated big_offset to 0.522369 in config.
+2026-07-09 12:06:12 - ServiceManager - INFO - Updated channel_mixing to -128 in config.
+2026-07-09 12:06:12 - ServiceManager - INFO - Updated control_channel to 1 in config.
+2026-07-09 12:06:12 - ServiceManager - INFO - Updated control_history_length to 60 in config.
+2026-07-09 12:06:12 - ServiceManager - INFO - Updated demodulation_multiplier_a to 1 in config.
+2026-07-09 12:06:12 - ServiceManager - INFO - Updated demodulation_multiplier_b to 0 in config.
+2026-07-09 12:06:12 - ServiceManager - INFO - Updated dual_channel to False in config.
+2026-07-09 12:06:12 - ServiceManager - INFO - Updated filter_1_enabled_a to True in config.
+2026-07-09 12:06:12 - ServiceManager - INFO - Updated filter_1_enabled_b to False in config.
+2026-07-09 12:06:12 - ServiceManager - INFO - Updated filter_1_frequency to 500.0 in config.
+2026-07-09 12:06:12 - ServiceManager - INFO - Updated filter_1_type_a to 0 in config.
+2026-07-09 12:06:12 - ServiceManager - INFO - Updated filter_1_type_b to 0 in config.
+2026-07-09 12:06:12 - ServiceManager - INFO - Updated filter_2_enabled_a to False in config.
+2026-07-09 12:06:12 - ServiceManager - INFO - Updated filter_2_enabled_b to True in config.
+2026-07-09 12:06:12 - ServiceManager - INFO - Updated filter_2_frequency to 0.0 in config.
+2026-07-09 12:06:12 - ServiceManager - INFO - Updated filter_2_type_a to 0 in config.
+2026-07-09 12:06:12 - ServiceManager - INFO - Updated filter_2_type_b to 0 in config.
+2026-07-09 12:06:12 - ServiceManager - INFO - Updated filter_automatic_a to False in config.
+2026-07-09 12:06:12 - ServiceManager - INFO - Updated filter_automatic_b to False in config.
+2026-07-09 12:06:12 - ServiceManager - INFO - Updated gpio_p_out to 1 in config.
+2026-07-09 12:06:12 - ServiceManager - INFO - Updated invert_a to False in config.
+2026-07-09 12:06:12 - ServiceManager - INFO - Updated invert_b to False in config.
+2026-07-09 12:06:12 - ServiceManager - INFO - Updated modulation_amplitude to 0.2 in config.
+2026-07-09 12:06:12 - ServiceManager - INFO - Updated modulation_channel to 0 in config.
+2026-07-09 12:06:12 - ServiceManager - INFO - Updated modulation_frequency to 0.05 in config.
+2026-07-09 12:06:12 - ServiceManager - INFO - Updated offset_a to 0.00195055 in config.
+2026-07-09 12:06:12 - ServiceManager - INFO - Updated offset_b to 0.0 in config.
+2026-07-09 12:06:12 - ServiceManager - INFO - Updated phase to 290.0 in config.
+2026-07-09 12:06:12 - ServiceManager - INFO - Updated pid_d to 1 in config.
+2026-07-09 12:06:12 - ServiceManager - INFO - Updated pid_i to 100 in config.
+2026-07-09 12:06:12 - ServiceManager - INFO - Updated pid_on_slow_enabled to True in config.
+2026-07-09 12:06:12 - ServiceManager - INFO - Updated pid_p to 2000 in config.
+2026-07-09 12:06:12 - ServiceManager - INFO - Updated pid_slow_strength to 3 in config.
+2026-07-09 12:06:12 - ServiceManager - INFO - Updated polarity_analog_out0 to 0 in config.
+2026-07-09 12:06:12 - ServiceManager - INFO - Updated polarity_fast_out1 to 0 in config.
+2026-07-09 12:06:12 - ServiceManager - INFO - Updated polarity_fast_out2 to 0 in config.
+2026-07-09 12:06:12 - ServiceManager - INFO - Updated slow_control_channel to 2 in config.
+2026-07-09 12:06:12 - ServiceManager - INFO - Updated small_offset to 0.0 in config.
+2026-07-09 12:06:12 - ServiceManager - INFO - Updated sweep_amplitude to 0.3 in config.
+2026-07-09 12:06:12 - ServiceManager - INFO - Updated sweep_center to 0.0 in config.
+2026-07-09 12:06:12 - ServiceManager - INFO - Updated sweep_channel to 1 in config.
+2026-07-09 12:06:12 - ServiceManager - INFO - Updated sweep_speed to 10 in config.
+2026-07-09 12:06:12 - ServiceManager - INFO - Updated target_slope_rising to True in config.
+2026-07-09 12:06:12 - ServiceManager - INFO - Parameters saved successfully to /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/RedPitaya_Na_D1_parameters.yaml
+2026-07-09 12:06:36 - ServiceManager - INFO - ServiceManager initializing...
+2026-07-09 12:06:36 - ServiceManager - INFO - ServiceManager looking for board list at: /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/board_list.yaml
+2026-07-09 12:06:36 - ServiceManager - INFO - ServiceManager looking for reference lines at: /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/reference_lines/reference_lines_inventory.yaml
+2026-07-09 12:06:36 - ServiceManager - INFO - Grafana client initialized.
+2026-07-09 12:06:36 - ServiceManager - INFO - ServiceManager initialization completed.
+2026-07-09 12:06:37 - ServiceManager - INFO - Loading boards...
+2026-07-09 12:06:37 - ServiceManager - INFO - Found 4 devices.
+2026-07-09 12:06:41 - ServiceManager - INFO - Loaded parameters for 'RedPitaya_Na_D1' (43 writeable, 3 readable).
+2026-07-09 12:06:41 - ServiceManager - INFO - Loaded advanced settings for 'RedPitaya_Na_D1' (5 groups).
+2026-07-09 12:10:51 - ServiceManager - INFO - Updated big_offset to 0.7276785714285715 in config.
+2026-07-09 12:10:51 - ServiceManager - INFO - Updated channel_mixing to -128 in config.
+2026-07-09 12:10:51 - ServiceManager - INFO - Updated control_channel to 1 in config.
+2026-07-09 12:10:51 - ServiceManager - INFO - Updated control_history_length to 60 in config.
+2026-07-09 12:10:51 - ServiceManager - INFO - Updated demodulation_multiplier_a to 1 in config.
+2026-07-09 12:10:51 - ServiceManager - INFO - Updated demodulation_multiplier_b to 0 in config.
+2026-07-09 12:10:51 - ServiceManager - INFO - Updated dual_channel to False in config.
+2026-07-09 12:10:51 - ServiceManager - INFO - Updated filter_1_enabled_a to True in config.
+2026-07-09 12:10:51 - ServiceManager - INFO - Updated filter_1_enabled_b to False in config.
+2026-07-09 12:10:51 - ServiceManager - INFO - Updated filter_1_frequency to 500.0 in config.
+2026-07-09 12:10:51 - ServiceManager - INFO - Updated filter_1_type_a to 0 in config.
+2026-07-09 12:10:51 - ServiceManager - INFO - Updated filter_1_type_b to 0 in config.
+2026-07-09 12:10:51 - ServiceManager - INFO - Updated filter_2_enabled_a to False in config.
+2026-07-09 12:10:51 - ServiceManager - INFO - Updated filter_2_enabled_b to True in config.
+2026-07-09 12:10:51 - ServiceManager - INFO - Updated filter_2_frequency to 0.0 in config.
+2026-07-09 12:10:51 - ServiceManager - INFO - Updated filter_2_type_a to 0 in config.
+2026-07-09 12:10:51 - ServiceManager - INFO - Updated filter_2_type_b to 0 in config.
+2026-07-09 12:10:51 - ServiceManager - INFO - Updated filter_automatic_a to False in config.
+2026-07-09 12:10:51 - ServiceManager - INFO - Updated filter_automatic_b to False in config.
+2026-07-09 12:10:51 - ServiceManager - INFO - Updated gpio_p_out to 1 in config.
+2026-07-09 12:10:51 - ServiceManager - INFO - Updated invert_a to False in config.
+2026-07-09 12:10:51 - ServiceManager - INFO - Updated invert_b to False in config.
+2026-07-09 12:10:51 - ServiceManager - INFO - Updated modulation_amplitude to 0.2 in config.
+2026-07-09 12:10:51 - ServiceManager - INFO - Updated modulation_channel to 0 in config.
+2026-07-09 12:10:51 - ServiceManager - INFO - Updated modulation_frequency to 0.05 in config.
+2026-07-09 12:10:51 - ServiceManager - INFO - Updated offset_a to 0.0021403614684105563 in config.
+2026-07-09 12:10:51 - ServiceManager - INFO - Updated offset_b to 0.0 in config.
+2026-07-09 12:10:51 - ServiceManager - INFO - Updated phase to 290.0 in config.
+2026-07-09 12:10:51 - ServiceManager - INFO - Updated pid_d to 1 in config.
+2026-07-09 12:10:51 - ServiceManager - INFO - Updated pid_i to 100 in config.
+2026-07-09 12:10:51 - ServiceManager - INFO - Updated pid_on_slow_enabled to True in config.
+2026-07-09 12:10:51 - ServiceManager - INFO - Updated pid_p to 2000 in config.
+2026-07-09 12:10:51 - ServiceManager - INFO - Updated pid_slow_strength to 3 in config.
+2026-07-09 12:10:51 - ServiceManager - INFO - Updated polarity_analog_out0 to 0 in config.
+2026-07-09 12:10:51 - ServiceManager - INFO - Updated polarity_fast_out1 to 0 in config.
+2026-07-09 12:10:51 - ServiceManager - INFO - Updated polarity_fast_out2 to 0 in config.
+2026-07-09 12:10:51 - ServiceManager - INFO - Updated slow_control_channel to 2 in config.
+2026-07-09 12:10:51 - ServiceManager - INFO - Updated small_offset to 0.0 in config.
+2026-07-09 12:10:51 - ServiceManager - INFO - Updated sweep_amplitude to 0.3 in config.
+2026-07-09 12:10:51 - ServiceManager - INFO - Updated sweep_center to 0.0 in config.
+2026-07-09 12:10:51 - ServiceManager - INFO - Updated sweep_channel to 1 in config.
+2026-07-09 12:10:51 - ServiceManager - INFO - Updated sweep_speed to 10 in config.
+2026-07-09 12:10:51 - ServiceManager - INFO - Updated target_slope_rising to True in config.
+2026-07-09 12:10:51 - ServiceManager - INFO - Parameters saved successfully to /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/RedPitaya_Na_D1_parameters.yaml
+2026-07-09 12:18:37 - ServiceManager - INFO - ServiceManager initializing...
+2026-07-09 12:18:37 - ServiceManager - INFO - ServiceManager looking for board list at: /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/board_list.yaml
+2026-07-09 12:18:37 - ServiceManager - INFO - ServiceManager looking for reference lines at: /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/reference_lines/reference_lines_inventory.yaml
+2026-07-09 12:18:37 - ServiceManager - INFO - Grafana client initialized.
+2026-07-09 12:18:37 - ServiceManager - INFO - ServiceManager initialization completed.
+2026-07-09 12:18:38 - ServiceManager - INFO - Loading boards...
+2026-07-09 12:18:38 - ServiceManager - INFO - Found 4 devices.
+2026-07-09 12:18:45 - ServiceManager - INFO - Loaded parameters for 'RedPitaya_Na_D1' (43 writeable, 3 readable).
+2026-07-09 12:18:45 - ServiceManager - INFO - Loaded advanced settings for 'RedPitaya_Na_D1' (5 groups).
+2026-07-09 13:21:14 - ServiceManager - INFO - Updated big_offset to 0.727679 in config.
+2026-07-09 13:21:14 - ServiceManager - INFO - Updated channel_mixing to -128 in config.
+2026-07-09 13:21:14 - ServiceManager - INFO - Updated control_channel to 1 in config.
+2026-07-09 13:21:14 - ServiceManager - INFO - Updated control_history_length to 60 in config.
+2026-07-09 13:21:14 - ServiceManager - INFO - Updated demodulation_multiplier_a to 1 in config.
+2026-07-09 13:21:14 - ServiceManager - INFO - Updated demodulation_multiplier_b to 0 in config.
+2026-07-09 13:21:14 - ServiceManager - INFO - Updated dual_channel to False in config.
+2026-07-09 13:21:14 - ServiceManager - INFO - Updated filter_1_enabled_a to True in config.
+2026-07-09 13:21:14 - ServiceManager - INFO - Updated filter_1_enabled_b to False in config.
+2026-07-09 13:21:14 - ServiceManager - INFO - Updated filter_1_frequency to 400.0 in config.
+2026-07-09 13:21:14 - ServiceManager - INFO - Updated filter_1_type_a to 0 in config.
+2026-07-09 13:21:14 - ServiceManager - INFO - Updated filter_1_type_b to 0 in config.
+2026-07-09 13:21:14 - ServiceManager - INFO - Updated filter_2_enabled_a to False in config.
+2026-07-09 13:21:14 - ServiceManager - INFO - Updated filter_2_enabled_b to True in config.
+2026-07-09 13:21:14 - ServiceManager - INFO - Updated filter_2_frequency to 0.0 in config.
+2026-07-09 13:21:14 - ServiceManager - INFO - Updated filter_2_type_a to 0 in config.
+2026-07-09 13:21:14 - ServiceManager - INFO - Updated filter_2_type_b to 0 in config.
+2026-07-09 13:21:14 - ServiceManager - INFO - Updated filter_automatic_a to False in config.
+2026-07-09 13:21:14 - ServiceManager - INFO - Updated filter_automatic_b to False in config.
+2026-07-09 13:21:14 - ServiceManager - INFO - Updated gpio_p_out to 1 in config.
+2026-07-09 13:21:14 - ServiceManager - INFO - Updated invert_a to False in config.
+2026-07-09 13:21:14 - ServiceManager - INFO - Updated invert_b to False in config.
+2026-07-09 13:21:14 - ServiceManager - INFO - Updated modulation_amplitude to 0.2 in config.
+2026-07-09 13:21:14 - ServiceManager - INFO - Updated modulation_channel to 0 in config.
+2026-07-09 13:21:14 - ServiceManager - INFO - Updated modulation_frequency to 0.05 in config.
+2026-07-09 13:21:14 - ServiceManager - INFO - Updated offset_a to 0.00214036 in config.
+2026-07-09 13:21:14 - ServiceManager - INFO - Updated offset_b to 0.0 in config.
+2026-07-09 13:21:14 - ServiceManager - INFO - Updated phase to 290.0 in config.
+2026-07-09 13:21:14 - ServiceManager - INFO - Updated pid_d to 1 in config.
+2026-07-09 13:21:14 - ServiceManager - INFO - Updated pid_i to 100 in config.
+2026-07-09 13:21:14 - ServiceManager - INFO - Updated pid_on_slow_enabled to True in config.
+2026-07-09 13:21:14 - ServiceManager - INFO - Updated pid_p to 2000 in config.
+2026-07-09 13:21:14 - ServiceManager - INFO - Updated pid_slow_strength to 3 in config.
+2026-07-09 13:21:14 - ServiceManager - INFO - Updated polarity_analog_out0 to 0 in config.
+2026-07-09 13:21:14 - ServiceManager - INFO - Updated polarity_fast_out1 to 0 in config.
+2026-07-09 13:21:14 - ServiceManager - INFO - Updated polarity_fast_out2 to 0 in config.
+2026-07-09 13:21:14 - ServiceManager - INFO - Updated slow_control_channel to 2 in config.
+2026-07-09 13:21:14 - ServiceManager - INFO - Updated small_offset to 0.0 in config.
+2026-07-09 13:21:14 - ServiceManager - INFO - Updated sweep_amplitude to 0.3 in config.
+2026-07-09 13:21:14 - ServiceManager - INFO - Updated sweep_center to 0.0 in config.
+2026-07-09 13:21:14 - ServiceManager - INFO - Updated sweep_channel to 1 in config.
+2026-07-09 13:21:14 - ServiceManager - INFO - Updated sweep_speed to 10 in config.
+2026-07-09 13:21:14 - ServiceManager - INFO - Updated target_slope_rising to True in config.
+2026-07-09 13:21:14 - ServiceManager - INFO - Parameters saved successfully to /home/bec3/Desktop/Simone_Damian/RP_Spectroscopy/GUI_TEST/boards/RedPitaya_Na_D1_parameters.yaml
