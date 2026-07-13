@@ -2,7 +2,7 @@ import pyqtgraph as pg
 import numpy as np
 from time import time
 from PySide6.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QStackedWidget, QLabel,
-                                QScrollArea, QProgressBar, QPushButton)
+                                QScrollArea, QProgressBar, QPushButton, QSlider)
 from PySide6.QtCore import Qt, Slot, QTimer, Signal
 
 
@@ -856,6 +856,13 @@ class PlotPanel(QWidget):
     To add a new mode, create a BasePlotHandler subclass and register it.
     """
     sig_unlock_requested = Signal()
+    sig_big_offset_changed = Signal(float)  # emitted when the user moves the big_offset slider
+
+    # Slider integer range: maps to [0.0 V, +1.8 V]
+    _SLIDER_MIN = 0
+    _SLIDER_MAX = 18000
+    _SLIDER_OFFSET = 0.0      # lower bound in volts
+    _SLIDER_SCALE = 10000.0   # integer units per volt
 
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -884,6 +891,68 @@ class PlotPanel(QWidget):
         self.btn_unlock.setVisible(False)
         self.btn_unlock.clicked.connect(self.sig_unlock_requested)
         layout.addWidget(self.btn_unlock)
+
+        # --- Big-offset Slider (visible only in SWEEP mode) ---
+        self._slider_container = QWidget()
+        slider_layout = QHBoxLayout(self._slider_container)
+        slider_layout.setContentsMargins(8, 4, 8, 4)
+
+        self._lbl_slider_min = QLabel("0 V")
+        self._lbl_slider_min.setStyleSheet("color: #aaa; font-size: 12px;")
+        slider_layout.addWidget(self._lbl_slider_min)
+
+        self.slider_big_offset = QSlider(Qt.Horizontal)
+        self.slider_big_offset.setMinimum(self._SLIDER_MIN)
+        self.slider_big_offset.setMaximum(self._SLIDER_MAX)
+        self.slider_big_offset.setValue(0)
+        self.slider_big_offset.setTickPosition(QSlider.TicksBelow)
+        self.slider_big_offset.setTickInterval(self._SLIDER_MAX // 4)
+        self.slider_big_offset.setStyleSheet("""
+            QSlider::groove:horizontal {
+                height: 6px;
+                background: #424242;
+                border-radius: 3px;
+            }
+            QSlider::handle:horizontal {
+                background: #42a5f5;
+                border: 1px solid #1565c0;
+                width: 18px;
+                height: 18px;
+                margin: -6px 0;
+                border-radius: 9px;
+            }
+            QSlider::handle:horizontal:hover {
+                background: #64b5f6;
+            }
+            QSlider::sub-page:horizontal {
+                background: #1976d2;
+                border-radius: 3px;
+            }
+        """)
+        slider_layout.addWidget(self.slider_big_offset, 1)
+
+        self._lbl_slider_max = QLabel("+1.8 V")
+        self._lbl_slider_max.setStyleSheet("color: #aaa; font-size: 12px;")
+        slider_layout.addWidget(self._lbl_slider_max)
+
+        self._lbl_slider_val = QLabel("0.000 V")
+        self._lbl_slider_val.setFixedWidth(70)
+        self._lbl_slider_val.setAlignment(Qt.AlignCenter)
+        self._lbl_slider_val.setStyleSheet(
+            "color: #42a5f5; font-size: 13px; font-weight: bold;"
+        )
+        slider_layout.addWidget(self._lbl_slider_val)
+
+        lbl_slider_title = QLabel("Big Offset:")
+        lbl_slider_title.setStyleSheet("color: #ccc; font-size: 12px;")
+        slider_layout.insertWidget(0, lbl_slider_title)
+
+        self._slider_container.setVisible(False)
+        layout.addWidget(self._slider_container)
+
+        # Internal flag to prevent feedback loop when updating slider programmatically
+        self._slider_updating = False
+        self.slider_big_offset.valueChanged.connect(self._on_slider_value_changed)
 
         # --- Top bar with Sweep mode toggle button (hidden by default) ---
         top_bar_layout = QHBoxLayout()
@@ -937,6 +1006,28 @@ class PlotPanel(QWidget):
         self._handlers[mode] = handler
         self._stack.addWidget(handler)
 
+    def _on_slider_value_changed(self, int_val: int):
+        """Called when the user drags the big_offset slider."""
+        if self._slider_updating:
+            return
+        volts = self._SLIDER_OFFSET + int_val / self._SLIDER_SCALE
+        self._lbl_slider_val.setText(f"{volts:.4f} V")
+        self.sig_big_offset_changed.emit(volts)
+
+    def set_big_offset_slider(self, value: float):
+        """
+        Update the slider position to reflect `value` (in Volts).
+        Clamps to [0, +1.8] V. Does NOT emit sig_big_offset_changed.
+        """
+        self._slider_updating = True
+        lo = self._SLIDER_OFFSET
+        hi = self._SLIDER_OFFSET + self._SLIDER_MAX / self._SLIDER_SCALE
+        clamped = max(lo, min(hi, float(value)))
+        int_val = int(round((clamped - self._SLIDER_OFFSET) * self._SLIDER_SCALE))
+        self.slider_big_offset.setValue(int_val)
+        self._lbl_slider_val.setText(f"{clamped:.4f} V")
+        self._slider_updating = False
+
     @Slot(dict)
     def update_plot(self, packet: dict):
         """Route a data packet to the appropriate handler."""
@@ -947,6 +1038,8 @@ class PlotPanel(QWidget):
         self.btn_unlock.setVisible(mode == "LOCKED")
         # Toggle Sweep merge/separate button visibility (only in SWEEP mode)
         self.btn_toggle_sweep.setVisible(mode == "SWEEP")
+        # Toggle big_offset slider (only in SWEEP mode)
+        self._slider_container.setVisible(mode == "SWEEP")
         
         if handler:
             self._stack.setCurrentWidget(handler)
