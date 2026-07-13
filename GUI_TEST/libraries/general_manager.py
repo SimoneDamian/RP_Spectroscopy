@@ -121,10 +121,14 @@ class GeneralManager:
             self.laser.set_parameter_value
         )
 
-        # When the parameter table changes big_offset -> also update the slider
+        # When the parameter table changes one of these parameters -> also update the sliders
         def _on_param_changed_for_slider(param_name, value):
             if param_name == "big_offset":
                 self.window.page_laser.plot_panel.set_big_offset_slider(value)
+            elif param_name == "sweep_amplitude":
+                self.window.page_laser.plot_panel.set_sweep_amplitude_slider(value)
+            elif param_name == "phase":
+                self.window.page_laser.plot_panel.set_phase_slider(value)
 
         self.window.page_laser.page_parameters.sig_parameter_changed.connect(
             _on_param_changed_for_slider
@@ -138,16 +142,38 @@ class GeneralManager:
         self.window.page_laser.plot_panel.sig_big_offset_changed.connect(
             _on_slider_big_offset
         )
+
+        # sweep_amplitude slider -> hardware + parameter table
+        def _on_slider_sweep_amplitude(value: float):
+            self.laser.set_parameter_value("sweep_amplitude", value)
+            self.window.page_laser.page_parameters.update_parameter("sweep_amplitude", value)
+
+        self.window.page_laser.plot_panel.sig_sweep_amplitude_changed.connect(
+            _on_slider_sweep_amplitude
+        )
+
+        # phase slider -> hardware + parameter table
+        def _on_slider_phase(value: float):
+            self.laser.set_parameter_value("phase", value)
+            self.window.page_laser.page_parameters.update_parameter("phase", value)
+
+        self.window.page_laser.plot_panel.sig_phase_changed.connect(
+            _on_slider_phase
+        )
         
         # Connection for internal parameter updates -> GUI
         self.laser.sig_parameter_updated_internally.connect(
             self.window.page_laser.page_parameters.update_parameter
         )
 
-        # Also sync slider when LaserManager internally changes big_offset (e.g. after scan)
+        # Also sync slider when LaserManager internally changes parameters (e.g. after scan)
         def _on_internal_param_update_for_slider(param_name, value):
             if param_name == "big_offset":
                 self.window.page_laser.plot_panel.set_big_offset_slider(value)
+            elif param_name == "sweep_amplitude":
+                self.window.page_laser.plot_panel.set_sweep_amplitude_slider(value)
+            elif param_name == "phase":
+                self.window.page_laser.plot_panel.set_phase_slider(value)
 
         self.laser.sig_parameter_updated_internally.connect(
             _on_internal_param_update_for_slider
@@ -280,11 +306,17 @@ class GeneralManager:
         """
         self.parameters = params_dict
         self.window.page_laser.page_parameters.load_parameters(params_dict)
-        # Initialise the big_offset slider to the loaded initial value
+        # Initialise the sliders to their loaded initial values
         writeable = params_dict.get("writeable_parameters", {})
         if "big_offset" in writeable:
             initial_val = writeable["big_offset"].get("initial_value", 0.0)
             self.window.page_laser.plot_panel.set_big_offset_slider(initial_val)
+        if "sweep_amplitude" in writeable:
+            initial_val = writeable["sweep_amplitude"].get("initial_value", 0.001)
+            self.window.page_laser.plot_panel.set_sweep_amplitude_slider(initial_val)
+        if "phase" in writeable:
+            initial_val = writeable["phase"].get("initial_value", 0.0)
+            self.window.page_laser.plot_panel.set_phase_slider(initial_val)
         self.logger.info("Parameters loaded into GUI.")
 
     @Slot(dict)
