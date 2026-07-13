@@ -233,7 +233,7 @@ class ReferenceLinesPage(QWidget):
         self.btn_modify.setVisible(not active)
         self.btn_delete.setVisible(not active)
         self.btn_duplicate.setVisible(not active)
-        self.btn_add.setVisible(False) # Always hide add in edit mode
+        self.btn_add.setVisible(not active)  # Hide in edit mode, restore when done
         self.table_list.setEnabled(not active) # Lock list selection
         
         self.btn_save.setVisible(active)

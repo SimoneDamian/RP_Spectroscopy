@@ -52,7 +52,7 @@ writeable_parameters:
     gui_name: Offset CH1
     description: The vertical offset for CH1 in volts.
     type: float
-    initial_value: 0.012
+    initial_value: 0.0157804
     min: -1
     max: 1
     scaling: 8191
@@ -249,7 +249,7 @@ writeable_parameters:
     description: The center of the sweep ramp in volts. (Pay attention to the 
       proportionality constant applied in the analog summator)
     type: float
-    initial_value: 0.8880760167883923
+    initial_value: 0.814211
     min: 0
     max: 1.8
     scaling: 18204 # This is approx 1.0 / ANALOG_OUT_V
@@ -739,7 +739,7 @@ advanced_settings:
       gui_name: Correlation minimum
       description: The minimum correlation value between the sweep signal and 
         the reference line in order to consider the line as "found".
-      value: 0.5
+      value: 0.6
 
     length_match_minimum:
       gui_name: Length match minimum

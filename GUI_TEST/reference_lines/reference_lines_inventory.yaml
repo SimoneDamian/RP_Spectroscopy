@@ -49,3 +49,13 @@ lines:
   name: TEST_Na_D1
   polarity: 'True'
   scan_center: 0.5375
+- board: RedPitaya_Na_D1
+  created: '2026-07-09 14:05:34'
+  file_name: NaD1offset_RedPitaya_Na_D1_20260709_140534
+  lock_region:
+  - 0.165
+  - 0.185
+  modified: '2026-07-09 14:05:34'
+  name: NaD1offset
+  polarity: 'True'
+  scan_center: 0.7778
