@@ -45902,3 +45902,1112 @@
 2026-07-13 14:09:35 - LaserManager - INFO - Set parameter sweep_amplitude to 0.361
 2026-07-13 14:11:55 - LaserManager - INFO - Advanced settings loaded into Interface.
 2026-07-13 14:18:28 - LaserManager - INFO - Control loop timer stopped.
+2026-07-21 09:02:02 - LaserManager - INFO - LaserManager initialized.
+2026-07-21 09:02:35 - LaserManager - INFO - LaserManager setup complete. Control loop started.
+2026-07-21 09:02:35 - LaserManager - INFO - Parameters loaded into Interface.
+2026-07-21 09:02:35 - LaserManager - INFO - Advanced settings loaded into Interface.
+2026-07-21 09:02:36 - LaserManager - INFO - Set parameter big_offset to 0.5491
+2026-07-21 09:02:36 - LaserManager - INFO - Set parameter channel_mixing to -128
+2026-07-21 09:02:36 - LaserManager - INFO - Set parameter control_channel to 1
+2026-07-21 09:02:36 - LaserManager - INFO - Set parameter control_history_length to 60
+2026-07-21 09:02:36 - LaserManager - INFO - Set parameter demodulation_multiplier_a to 1
+2026-07-21 09:02:36 - LaserManager - INFO - Set parameter demodulation_multiplier_b to 0
+2026-07-21 09:02:36 - LaserManager - INFO - Set parameter dual_channel to False
+2026-07-21 09:02:36 - LaserManager - INFO - Set parameter filter_1_enabled_a to True
+2026-07-21 09:02:36 - LaserManager - INFO - Set parameter filter_1_enabled_b to False
+2026-07-21 09:02:37 - LaserManager - INFO - Set parameter filter_1_frequency to 400.0
+2026-07-21 09:02:37 - LaserManager - INFO - Set parameter filter_1_type_a to 0
+2026-07-21 09:02:37 - LaserManager - INFO - Set parameter filter_1_type_b to 0
+2026-07-21 09:02:37 - LaserManager - INFO - Set parameter filter_2_enabled_a to False
+2026-07-21 09:02:37 - LaserManager - INFO - Set parameter filter_2_enabled_b to True
+2026-07-21 09:02:37 - LaserManager - INFO - Set parameter filter_2_frequency to 0.0
+2026-07-21 09:02:37 - LaserManager - INFO - Set parameter filter_2_type_a to 0
+2026-07-21 09:02:37 - LaserManager - INFO - Set parameter filter_2_type_b to 0
+2026-07-21 09:02:37 - LaserManager - INFO - Set parameter filter_automatic_a to False
+2026-07-21 09:02:37 - LaserManager - INFO - Set parameter filter_automatic_b to False
+2026-07-21 09:02:37 - LaserManager - INFO - Set parameter gpio_p_out to 0
+2026-07-21 09:02:37 - LaserManager - INFO - Set parameter invert_a to False
+2026-07-21 09:02:37 - LaserManager - INFO - Set parameter invert_b to False
+2026-07-21 09:02:37 - LaserManager - INFO - Set parameter modulation_amplitude to 0.2
+2026-07-21 09:02:38 - LaserManager - INFO - Set parameter modulation_channel to 0
+2026-07-21 09:02:38 - LaserManager - INFO - Set parameter modulation_frequency to 0.05
+2026-07-21 09:02:38 - LaserManager - INFO - Set parameter offset_a to 0.0157804
+2026-07-21 09:02:38 - LaserManager - INFO - Set parameter offset_b to 0.0
+2026-07-21 09:02:38 - LaserManager - INFO - Set parameter phase to 290.0
+2026-07-21 09:02:38 - LaserManager - INFO - Set parameter pid_d to 1
+2026-07-21 09:02:38 - LaserManager - INFO - Set parameter pid_i to 100
+2026-07-21 09:02:38 - LaserManager - INFO - Set parameter pid_on_slow_enabled to True
+2026-07-21 09:02:38 - LaserManager - INFO - Set parameter pid_p to 2000
+2026-07-21 09:02:38 - LaserManager - INFO - Set parameter pid_slow_strength to 3
+2026-07-21 09:02:38 - LaserManager - INFO - Set parameter polarity_analog_out0 to 0
+2026-07-21 09:02:38 - LaserManager - INFO - Set parameter polarity_fast_out1 to 0
+2026-07-21 09:02:38 - LaserManager - INFO - Set parameter polarity_fast_out2 to 0
+2026-07-21 09:02:38 - LaserManager - INFO - Set parameter slow_control_channel to 2
+2026-07-21 09:02:39 - LaserManager - INFO - Set parameter small_offset to 0.0
+2026-07-21 09:02:39 - LaserManager - INFO - Set parameter sweep_amplitude to 0.361
+2026-07-21 09:02:39 - LaserManager - INFO - Set parameter sweep_center to 0.0
+2026-07-21 09:02:39 - LaserManager - INFO - Set parameter sweep_channel to 1
+2026-07-21 09:02:39 - LaserManager - INFO - Set parameter sweep_speed to 10
+2026-07-21 09:02:39 - LaserManager - INFO - Set parameter target_slope_rising to True
+2026-07-21 09:02:39 - LaserManager - INFO - State changed from OFF to SWEEP
+2026-07-21 09:02:58 - LaserManager - INFO - Set parameter big_offset to 1.0
+2026-07-21 09:03:04 - LaserManager - INFO - Set parameter sweep_amplitude to 0.366
+2026-07-21 09:03:04 - LaserManager - INFO - Set parameter sweep_amplitude to 0.482
+2026-07-21 09:03:04 - LaserManager - INFO - Set parameter sweep_amplitude to 0.637
+2026-07-21 09:03:05 - LaserManager - INFO - Set parameter sweep_amplitude to 0.742
+2026-07-21 09:03:05 - LaserManager - INFO - Set parameter sweep_amplitude to 0.859
+2026-07-21 09:03:05 - LaserManager - INFO - Set parameter sweep_amplitude to 0.938
+2026-07-21 09:03:05 - LaserManager - INFO - Set parameter sweep_amplitude to 0.985
+2026-07-21 09:03:05 - LaserManager - INFO - Set parameter sweep_amplitude to 0.994
+2026-07-21 09:03:06 - LaserManager - INFO - Set parameter sweep_amplitude to 1.0
+2026-07-21 09:23:04 - LaserManager - INFO - Set parameter big_offset to 1.002
+2026-07-21 09:23:04 - LaserManager - INFO - Set parameter big_offset to 1.0567
+2026-07-21 09:23:04 - LaserManager - INFO - Set parameter big_offset to 1.0877
+2026-07-21 09:23:05 - LaserManager - INFO - Set parameter big_offset to 1.0968
+2026-07-21 09:23:08 - LaserManager - INFO - Set parameter big_offset to 1.1004
+2026-07-21 09:23:09 - LaserManager - INFO - Set parameter big_offset to 1.3737
+2026-07-21 09:23:16 - LaserManager - INFO - Set parameter big_offset to 1.3682
+2026-07-21 09:23:16 - LaserManager - INFO - Set parameter big_offset to 1.3063
+2026-07-21 09:23:16 - LaserManager - INFO - Set parameter big_offset to 1.2844
+2026-07-21 09:23:17 - LaserManager - INFO - Set parameter big_offset to 1.1951
+2026-07-21 09:23:17 - LaserManager - INFO - Set parameter big_offset to 1.135
+2026-07-21 09:23:17 - LaserManager - INFO - Set parameter big_offset to 1.0968
+2026-07-21 09:23:17 - LaserManager - INFO - Set parameter big_offset to 1.0403
+2026-07-21 09:23:18 - LaserManager - INFO - Set parameter big_offset to 1.0312
+2026-07-21 09:23:18 - LaserManager - INFO - Set parameter big_offset to 1.0294
+2026-07-21 09:23:18 - LaserManager - INFO - Set parameter big_offset to 1.0221
+2026-07-21 09:23:18 - LaserManager - INFO - Set parameter big_offset to 1.0202
+2026-07-21 09:23:19 - LaserManager - INFO - Set parameter big_offset to 1.0184
+2026-07-21 09:25:53 - LaserManager - INFO - Set parameter sweep_amplitude to 0.999
+2026-07-21 09:25:53 - LaserManager - INFO - Set parameter sweep_amplitude to 0.974
+2026-07-21 09:25:53 - LaserManager - INFO - Set parameter sweep_amplitude to 0.964
+2026-07-21 09:25:54 - LaserManager - INFO - Set parameter sweep_amplitude to 0.95
+2026-07-21 09:25:54 - LaserManager - INFO - Set parameter sweep_amplitude to 0.914
+2026-07-21 09:25:54 - LaserManager - INFO - Set parameter sweep_amplitude to 0.87
+2026-07-21 09:25:54 - LaserManager - INFO - Set parameter sweep_amplitude to 0.867
+2026-07-21 09:25:55 - LaserManager - INFO - Set parameter sweep_amplitude to 0.866
+2026-07-21 09:25:55 - LaserManager - INFO - Set parameter sweep_amplitude to 0.861
+2026-07-21 09:25:55 - LaserManager - INFO - Set parameter sweep_amplitude to 0.819
+2026-07-21 09:25:56 - LaserManager - INFO - Set parameter sweep_amplitude to 0.818
+2026-07-21 09:25:56 - LaserManager - INFO - Set parameter sweep_amplitude to 0.817
+2026-07-21 09:25:56 - LaserManager - INFO - Set parameter sweep_amplitude to 0.792
+2026-07-21 09:25:57 - LaserManager - INFO - Set parameter sweep_amplitude to 0.782
+2026-07-21 09:25:57 - LaserManager - INFO - Set parameter sweep_amplitude to 0.765
+2026-07-21 09:25:57 - LaserManager - INFO - Set parameter sweep_amplitude to 0.764
+2026-07-21 09:25:57 - LaserManager - INFO - Set parameter sweep_amplitude to 0.762
+2026-07-21 09:25:58 - LaserManager - INFO - Set parameter sweep_amplitude to 0.761
+2026-07-21 09:25:58 - LaserManager - INFO - Set parameter sweep_amplitude to 0.71
+2026-07-21 09:25:58 - LaserManager - INFO - Set parameter sweep_amplitude to 0.709
+2026-07-21 09:25:58 - LaserManager - INFO - Set parameter sweep_amplitude to 0.707
+2026-07-21 09:25:59 - LaserManager - INFO - Set parameter sweep_amplitude to 0.69
+2026-07-21 09:25:59 - LaserManager - INFO - Set parameter sweep_amplitude to 0.662
+2026-07-21 09:25:59 - LaserManager - INFO - Set parameter sweep_amplitude to 0.661
+2026-07-21 09:25:59 - LaserManager - INFO - Set parameter sweep_amplitude to 0.66
+2026-07-21 09:25:59 - LaserManager - INFO - Set parameter sweep_amplitude to 0.655
+2026-07-21 09:26:00 - LaserManager - INFO - Set parameter sweep_amplitude to 0.632
+2026-07-21 09:26:00 - LaserManager - INFO - Set parameter sweep_amplitude to 0.622
+2026-07-21 09:26:00 - LaserManager - INFO - Set parameter sweep_amplitude to 0.621
+2026-07-21 09:26:01 - LaserManager - INFO - Set parameter sweep_amplitude to 0.619
+2026-07-21 09:26:01 - LaserManager - INFO - Set parameter sweep_amplitude to 0.617
+2026-07-21 09:26:01 - LaserManager - INFO - Set parameter sweep_amplitude to 0.599
+2026-07-21 09:26:01 - LaserManager - INFO - Set parameter sweep_amplitude to 0.574
+2026-07-21 09:26:01 - LaserManager - INFO - Set parameter sweep_amplitude to 0.565
+2026-07-21 09:26:02 - LaserManager - INFO - Set parameter sweep_amplitude to 0.559
+2026-07-21 09:26:02 - LaserManager - INFO - Set parameter sweep_amplitude to 0.558
+2026-07-21 09:26:02 - LaserManager - INFO - Set parameter sweep_amplitude to 0.557
+2026-07-21 09:26:02 - LaserManager - INFO - Set parameter sweep_amplitude to 0.55
+2026-07-21 09:26:02 - LaserManager - INFO - Set parameter sweep_amplitude to 0.546
+2026-07-21 09:26:03 - LaserManager - INFO - Set parameter sweep_amplitude to 0.544
+2026-07-21 09:26:09 - LaserManager - INFO - Set parameter big_offset to 1.0221
+2026-07-21 09:26:09 - LaserManager - INFO - Set parameter big_offset to 1.0585
+2026-07-21 09:26:09 - LaserManager - INFO - Set parameter big_offset to 1.0785
+2026-07-21 09:26:09 - LaserManager - INFO - Set parameter big_offset to 1.0858
+2026-07-21 09:26:10 - LaserManager - INFO - Set parameter big_offset to 1.1095
+2026-07-21 09:26:10 - LaserManager - INFO - Set parameter big_offset to 1.1296
+2026-07-21 09:26:10 - LaserManager - INFO - Set parameter big_offset to 1.1332
+2026-07-21 09:26:10 - LaserManager - INFO - Set parameter big_offset to 1.1441
+2026-07-21 09:26:11 - LaserManager - INFO - Set parameter big_offset to 1.1532
+2026-07-21 09:26:11 - LaserManager - INFO - Set parameter big_offset to 1.1569
+2026-07-21 09:26:11 - LaserManager - INFO - Set parameter big_offset to 1.1696
+2026-07-21 09:26:11 - LaserManager - INFO - Set parameter big_offset to 1.1787
+2026-07-21 09:26:11 - LaserManager - INFO - Set parameter big_offset to 1.1806
+2026-07-21 09:26:12 - LaserManager - INFO - Set parameter big_offset to 1.1824
+2026-07-21 09:26:14 - LaserManager - INFO - Set parameter big_offset to 1.1806
+2026-07-21 09:26:14 - LaserManager - INFO - Set parameter big_offset to 1.1223
+2026-07-21 09:26:14 - LaserManager - INFO - Set parameter big_offset to 1.0731
+2026-07-21 09:26:14 - LaserManager - INFO - Set parameter big_offset to 1.0512
+2026-07-21 09:26:14 - LaserManager - INFO - Set parameter big_offset to 1.0166
+2026-07-21 09:26:16 - LaserManager - INFO - Set parameter big_offset to 1.013
+2026-07-21 09:26:16 - LaserManager - INFO - Set parameter big_offset to 1.0002
+2026-07-21 09:26:16 - LaserManager - INFO - Set parameter big_offset to 0.9984
+2026-07-21 09:26:16 - LaserManager - INFO - Set parameter big_offset to 0.9929
+2026-07-21 09:32:20 - LaserManager - INFO - Set parameter big_offset to 0.9947
+2026-07-21 09:32:20 - LaserManager - INFO - Set parameter big_offset to 1.0202
+2026-07-21 09:32:21 - LaserManager - INFO - Set parameter big_offset to 1.0239
+2026-07-21 09:32:21 - LaserManager - INFO - Set parameter big_offset to 1.0275
+2026-07-21 09:32:21 - LaserManager - INFO - Set parameter big_offset to 1.0421
+2026-07-21 09:32:21 - LaserManager - INFO - Set parameter big_offset to 1.0877
+2026-07-21 09:32:21 - LaserManager - INFO - Set parameter big_offset to 1.1059
+2026-07-21 09:32:22 - LaserManager - INFO - Set parameter big_offset to 1.1077
+2026-07-21 09:32:22 - LaserManager - INFO - Set parameter big_offset to 1.1787
+2026-07-21 09:32:22 - LaserManager - INFO - Set parameter big_offset to 1.1915
+2026-07-21 09:32:22 - LaserManager - INFO - Set parameter big_offset to 1.2316
+2026-07-21 09:32:23 - LaserManager - INFO - Set parameter big_offset to 1.237
+2026-07-21 09:32:23 - LaserManager - INFO - Set parameter big_offset to 1.2862
+2026-07-21 09:32:23 - LaserManager - INFO - Set parameter big_offset to 1.3391
+2026-07-21 09:32:23 - LaserManager - INFO - Set parameter big_offset to 1.3609
+2026-07-21 09:32:24 - LaserManager - INFO - Set parameter big_offset to 1.3646
+2026-07-21 09:32:24 - LaserManager - INFO - Set parameter big_offset to 1.4174
+2026-07-21 09:32:24 - LaserManager - INFO - Set parameter big_offset to 1.4611
+2026-07-21 09:32:24 - LaserManager - INFO - Set parameter big_offset to 1.4921
+2026-07-21 09:32:24 - LaserManager - INFO - Set parameter big_offset to 1.5231
+2026-07-21 09:32:25 - LaserManager - INFO - Set parameter big_offset to 1.5249
+2026-07-21 09:32:25 - LaserManager - INFO - Set parameter big_offset to 1.585
+2026-07-21 09:32:25 - LaserManager - INFO - Set parameter big_offset to 1.6069
+2026-07-21 09:32:25 - LaserManager - INFO - Set parameter big_offset to 1.6251
+2026-07-21 09:32:26 - LaserManager - INFO - Set parameter big_offset to 1.6269
+2026-07-21 09:32:27 - LaserManager - INFO - Set parameter big_offset to 1.7326
+2026-07-21 09:32:27 - LaserManager - INFO - Set parameter big_offset to 1.7891
+2026-07-21 09:32:27 - LaserManager - INFO - Set parameter big_offset to 1.8
+2026-07-21 09:32:31 - LaserManager - INFO - Set parameter big_offset to 1.7982
+2026-07-21 09:32:32 - LaserManager - INFO - Set parameter big_offset to 1.6798
+2026-07-21 09:32:32 - LaserManager - INFO - Set parameter big_offset to 1.6779
+2026-07-21 09:32:32 - LaserManager - INFO - Set parameter big_offset to 1.6379
+2026-07-21 09:32:33 - LaserManager - INFO - Set parameter big_offset to 1.6123
+2026-07-21 09:32:33 - LaserManager - INFO - Set parameter big_offset to 1.5504
+2026-07-21 09:32:33 - LaserManager - INFO - Set parameter big_offset to 1.5085
+2026-07-21 09:32:33 - LaserManager - INFO - Set parameter big_offset to 1.4848
+2026-07-21 09:32:33 - LaserManager - INFO - Set parameter big_offset to 1.4302
+2026-07-21 09:32:34 - LaserManager - INFO - Set parameter big_offset to 1.3628
+2026-07-21 09:32:34 - LaserManager - INFO - Set parameter big_offset to 1.3026
+2026-07-21 09:32:34 - LaserManager - INFO - Set parameter big_offset to 1.2753
+2026-07-21 09:32:34 - LaserManager - INFO - Set parameter big_offset to 1.2225
+2026-07-21 09:32:35 - LaserManager - INFO - Set parameter big_offset to 1.1951
+2026-07-21 09:32:35 - LaserManager - INFO - Set parameter big_offset to 1.1696
+2026-07-21 09:32:35 - LaserManager - INFO - Set parameter big_offset to 1.1077
+2026-07-21 09:32:35 - LaserManager - INFO - Set parameter big_offset to 1.0822
+2026-07-21 09:32:35 - LaserManager - INFO - Set parameter big_offset to 1.0512
+2026-07-21 09:32:36 - LaserManager - INFO - Set parameter big_offset to 0.9966
+2026-07-21 09:32:36 - LaserManager - INFO - Set parameter big_offset to 0.9783
+2026-07-21 09:32:36 - LaserManager - INFO - Set parameter big_offset to 0.9455
+2026-07-21 09:32:36 - LaserManager - INFO - Set parameter big_offset to 0.9219
+2026-07-21 09:32:37 - LaserManager - INFO - Set parameter big_offset to 0.9091
+2026-07-21 09:32:37 - LaserManager - INFO - Set parameter big_offset to 0.8982
+2026-07-21 09:32:37 - LaserManager - INFO - Set parameter big_offset to 0.8636
+2026-07-21 09:32:37 - LaserManager - INFO - Set parameter big_offset to 0.8344
+2026-07-21 09:32:38 - LaserManager - INFO - Set parameter big_offset to 0.8198
+2026-07-21 09:32:38 - LaserManager - INFO - Set parameter big_offset to 0.7834
+2026-07-21 09:32:38 - LaserManager - INFO - Set parameter big_offset to 0.7761
+2026-07-21 09:32:38 - LaserManager - INFO - Set parameter big_offset to 0.7706
+2026-07-21 09:32:38 - LaserManager - INFO - Set parameter big_offset to 0.7543
+2026-07-21 09:32:39 - LaserManager - INFO - Set parameter big_offset to 0.7524
+2026-07-21 09:32:39 - LaserManager - INFO - Set parameter big_offset to 0.7287
+2026-07-21 09:32:39 - LaserManager - INFO - Set parameter big_offset to 0.7233
+2026-07-21 09:32:39 - LaserManager - INFO - Set parameter big_offset to 0.6868
+2026-07-21 09:32:40 - LaserManager - INFO - Set parameter big_offset to 0.6504
+2026-07-21 09:32:40 - LaserManager - INFO - Set parameter big_offset to 0.6158
+2026-07-21 09:32:40 - LaserManager - INFO - Set parameter big_offset to 0.5192
+2026-07-21 09:32:40 - LaserManager - INFO - Set parameter big_offset to 0.4901
+2026-07-21 09:32:41 - LaserManager - INFO - Set parameter big_offset to 0.4591
+2026-07-21 09:32:41 - LaserManager - INFO - Set parameter big_offset to 0.4172
+2026-07-21 09:32:41 - LaserManager - INFO - Set parameter big_offset to 0.3899
+2026-07-21 09:32:41 - LaserManager - INFO - Set parameter big_offset to 0.3844
+2026-07-21 09:32:41 - LaserManager - INFO - Set parameter big_offset to 0.3534
+2026-07-21 09:32:42 - LaserManager - INFO - Set parameter big_offset to 0.3188
+2026-07-21 09:32:42 - LaserManager - INFO - Set parameter big_offset to 0.3079
+2026-07-21 09:32:42 - LaserManager - INFO - Set parameter big_offset to 0.3006
+2026-07-21 09:32:42 - LaserManager - INFO - Set parameter big_offset to 0.2806
+2026-07-21 09:32:43 - LaserManager - INFO - Set parameter big_offset to 0.266
+2026-07-21 09:32:43 - LaserManager - INFO - Set parameter big_offset to 0.235
+2026-07-21 09:32:43 - LaserManager - INFO - Set parameter big_offset to 0.184
+2026-07-21 09:32:43 - LaserManager - INFO - Set parameter big_offset to 0.1785
+2026-07-21 09:32:44 - LaserManager - INFO - Set parameter big_offset to 0.1694
+2026-07-21 09:32:44 - LaserManager - INFO - Set parameter big_offset to 0.153
+2026-07-21 09:32:44 - LaserManager - INFO - Set parameter big_offset to 0.1385
+2026-07-21 09:32:44 - LaserManager - INFO - Set parameter big_offset to 0.1111
+2026-07-21 09:32:44 - LaserManager - INFO - Set parameter big_offset to 0.0984
+2026-07-21 09:32:45 - LaserManager - INFO - Set parameter big_offset to 0.0929
+2026-07-21 09:32:45 - LaserManager - INFO - Set parameter big_offset to 0.0565
+2026-07-21 09:32:45 - LaserManager - INFO - Set parameter big_offset to 0.0128
+2026-07-21 09:32:45 - LaserManager - INFO - Set parameter big_offset to 0.0073
+2026-07-21 09:32:46 - LaserManager - INFO - Set parameter big_offset to 0.0
+2026-07-21 09:32:46 - LaserManager - INFO - Set parameter big_offset to 0.0036
+2026-07-21 09:32:46 - LaserManager - INFO - Set parameter big_offset to 0.1385
+2026-07-21 09:32:46 - LaserManager - INFO - Set parameter big_offset to 0.2696
+2026-07-21 09:32:47 - LaserManager - INFO - Set parameter big_offset to 0.4573
+2026-07-21 09:32:47 - LaserManager - INFO - Set parameter big_offset to 0.5138
+2026-07-21 09:32:47 - LaserManager - INFO - Set parameter big_offset to 0.7142
+2026-07-21 09:32:47 - LaserManager - INFO - Set parameter big_offset to 0.8745
+2026-07-21 09:32:47 - LaserManager - INFO - Set parameter big_offset to 1.0038
+2026-07-21 09:32:48 - LaserManager - INFO - Set parameter big_offset to 0.8472
+2026-07-21 09:32:48 - LaserManager - INFO - Set parameter big_offset to 0.869
+2026-07-21 09:32:48 - LaserManager - INFO - Set parameter big_offset to 0.9128
+2026-07-21 09:32:48 - LaserManager - INFO - Set parameter big_offset to 0.9383
+2026-07-21 09:32:49 - LaserManager - INFO - Set parameter big_offset to 0.951
+2026-07-21 09:32:49 - LaserManager - INFO - Set parameter big_offset to 0.9547
+2026-07-21 09:32:49 - LaserManager - INFO - Set parameter big_offset to 0.9674
+2026-07-21 09:32:49 - LaserManager - INFO - Set parameter big_offset to 0.9692
+2026-07-21 09:32:49 - LaserManager - INFO - Set parameter big_offset to 0.9765
+2026-07-21 09:32:50 - LaserManager - INFO - Set parameter big_offset to 0.9929
+2026-07-21 09:37:45 - LaserManager - INFO - Set parameter big_offset to 0.9947
+2026-07-21 09:37:45 - LaserManager - INFO - Set parameter big_offset to 1.0202
+2026-07-21 09:37:45 - LaserManager - INFO - Set parameter big_offset to 1.0312
+2026-07-21 09:37:46 - LaserManager - INFO - Set parameter big_offset to 1.033
+2026-07-21 09:37:46 - LaserManager - INFO - Set parameter big_offset to 1.0348
+2026-07-21 09:37:47 - LaserManager - INFO - Set parameter big_offset to 1.0585
+2026-07-21 09:37:47 - LaserManager - INFO - Set parameter big_offset to 1.0603
+2026-07-21 09:37:47 - LaserManager - INFO - Set parameter big_offset to 1.0621
+2026-07-21 09:37:48 - LaserManager - INFO - Set parameter big_offset to 1.0931
+2026-07-21 09:37:48 - LaserManager - INFO - Set parameter big_offset to 1.104
+2026-07-21 09:37:48 - LaserManager - INFO - Set parameter big_offset to 1.1223
+2026-07-21 09:37:48 - LaserManager - INFO - Set parameter big_offset to 1.1241
+2026-07-21 09:37:49 - LaserManager - INFO - Set parameter big_offset to 1.1387
+2026-07-21 09:37:49 - LaserManager - INFO - Set parameter big_offset to 1.146
+2026-07-21 09:37:49 - LaserManager - INFO - Set parameter big_offset to 1.1514
+2026-07-21 09:37:49 - LaserManager - INFO - Set parameter big_offset to 1.1569
+2026-07-21 09:37:49 - LaserManager - INFO - Set parameter big_offset to 1.1642
+2026-07-21 09:37:50 - LaserManager - INFO - Set parameter big_offset to 1.1769
+2026-07-21 09:37:50 - LaserManager - INFO - Set parameter big_offset to 1.1787
+2026-07-21 09:37:50 - LaserManager - INFO - Set parameter big_offset to 1.1806
+2026-07-21 09:37:50 - LaserManager - INFO - Set parameter big_offset to 1.1824
+2026-07-21 09:37:51 - LaserManager - INFO - Set parameter big_offset to 1.2225
+2026-07-21 09:37:51 - LaserManager - INFO - Set parameter big_offset to 1.2243
+2026-07-21 09:37:51 - LaserManager - INFO - Set parameter big_offset to 1.2279
+2026-07-21 09:37:51 - LaserManager - INFO - Set parameter big_offset to 1.2571
+2026-07-21 09:37:52 - LaserManager - INFO - Set parameter big_offset to 1.2589
+2026-07-21 09:37:52 - LaserManager - INFO - Set parameter big_offset to 1.2717
+2026-07-21 09:37:52 - LaserManager - INFO - Set parameter big_offset to 1.2735
+2026-07-21 09:37:52 - LaserManager - INFO - Set parameter big_offset to 1.2789
+2026-07-21 09:37:52 - LaserManager - INFO - Set parameter big_offset to 1.2899
+2026-07-21 09:37:53 - LaserManager - INFO - Set parameter big_offset to 1.299
+2026-07-21 09:37:53 - LaserManager - INFO - Set parameter big_offset to 1.3081
+2026-07-21 09:37:53 - LaserManager - INFO - Set parameter big_offset to 1.3154
+2026-07-21 09:37:53 - LaserManager - INFO - Set parameter big_offset to 1.3354
+2026-07-21 09:37:54 - LaserManager - INFO - Set parameter big_offset to 1.3372
+2026-07-21 09:37:54 - LaserManager - INFO - Set parameter big_offset to 1.3391
+2026-07-21 09:37:54 - LaserManager - INFO - Set parameter big_offset to 1.3646
+2026-07-21 09:37:54 - LaserManager - INFO - Set parameter big_offset to 1.3791
+2026-07-21 09:37:55 - LaserManager - INFO - Set parameter big_offset to 1.3864
+2026-07-21 09:37:55 - LaserManager - INFO - Set parameter big_offset to 1.401
+2026-07-21 09:37:55 - LaserManager - INFO - Set parameter big_offset to 1.4101
+2026-07-21 09:37:55 - LaserManager - INFO - Set parameter big_offset to 1.4174
+2026-07-21 09:37:56 - LaserManager - INFO - Set parameter big_offset to 1.4265
+2026-07-21 09:37:56 - LaserManager - INFO - Set parameter big_offset to 1.4283
+2026-07-21 09:37:56 - LaserManager - INFO - Set parameter big_offset to 1.4484
+2026-07-21 09:37:56 - LaserManager - INFO - Set parameter big_offset to 1.4611
+2026-07-21 09:37:57 - LaserManager - INFO - Set parameter big_offset to 1.4666
+2026-07-21 09:37:57 - LaserManager - INFO - Set parameter big_offset to 1.4848
+2026-07-21 09:37:57 - LaserManager - INFO - Set parameter big_offset to 1.5085
+2026-07-21 09:37:57 - LaserManager - INFO - Set parameter big_offset to 1.5121
+2026-07-21 09:37:58 - LaserManager - INFO - Set parameter big_offset to 1.5176
+2026-07-21 09:37:58 - LaserManager - INFO - Set parameter big_offset to 1.5194
+2026-07-21 09:37:59 - LaserManager - INFO - Set parameter big_offset to 1.5686
+2026-07-21 09:37:59 - LaserManager - INFO - Set parameter big_offset to 1.5796
+2026-07-21 09:37:59 - LaserManager - INFO - Set parameter big_offset to 1.5996
+2026-07-21 09:37:59 - LaserManager - INFO - Set parameter big_offset to 1.6051
+2026-07-21 09:38:00 - LaserManager - INFO - Set parameter big_offset to 1.6069
+2026-07-21 09:38:00 - LaserManager - INFO - Set parameter big_offset to 1.6087
+2026-07-21 09:38:00 - LaserManager - INFO - Set parameter big_offset to 1.6433
+2026-07-21 09:38:00 - LaserManager - INFO - Set parameter big_offset to 1.6579
+2026-07-21 09:38:00 - LaserManager - INFO - Set parameter big_offset to 1.6725
+2026-07-21 09:38:01 - LaserManager - INFO - Set parameter big_offset to 1.6889
+2026-07-21 09:38:01 - LaserManager - INFO - Set parameter big_offset to 1.698
+2026-07-21 09:38:01 - LaserManager - INFO - Set parameter big_offset to 1.7089
+2026-07-21 09:38:01 - LaserManager - INFO - Set parameter big_offset to 1.7235
+2026-07-21 09:38:02 - LaserManager - INFO - Set parameter big_offset to 1.7326
+2026-07-21 09:38:02 - LaserManager - INFO - Set parameter big_offset to 1.7453
+2026-07-21 09:38:02 - LaserManager - INFO - Set parameter big_offset to 1.7508
+2026-07-21 09:38:02 - LaserManager - INFO - Set parameter big_offset to 1.7599
+2026-07-21 09:38:02 - LaserManager - INFO - Set parameter big_offset to 1.769
+2026-07-21 09:38:03 - LaserManager - INFO - Set parameter big_offset to 1.7781
+2026-07-21 09:38:03 - LaserManager - INFO - Set parameter big_offset to 1.7854
+2026-07-21 09:38:03 - LaserManager - INFO - Set parameter big_offset to 1.7945
+2026-07-21 09:38:03 - LaserManager - INFO - Set parameter big_offset to 1.7982
+2026-07-21 09:38:04 - LaserManager - INFO - Set parameter big_offset to 1.7964
+2026-07-21 09:38:04 - LaserManager - INFO - Set parameter big_offset to 1.7636
+2026-07-21 09:38:04 - LaserManager - INFO - Set parameter big_offset to 1.7617
+2026-07-21 09:38:05 - LaserManager - INFO - Set parameter big_offset to 1.7289
+2026-07-21 09:38:06 - LaserManager - INFO - Set parameter big_offset to 1.6816
+2026-07-21 09:38:06 - LaserManager - INFO - Set parameter big_offset to 1.6342
+2026-07-21 09:38:06 - LaserManager - INFO - Set parameter big_offset to 1.5868
+2026-07-21 09:38:06 - LaserManager - INFO - Set parameter big_offset to 1.5213
+2026-07-21 09:38:06 - LaserManager - INFO - Set parameter big_offset to 1.4575
+2026-07-21 09:38:07 - LaserManager - INFO - Set parameter big_offset to 1.3573
+2026-07-21 09:38:07 - LaserManager - INFO - Set parameter big_offset to 1.2789
+2026-07-21 09:38:07 - LaserManager - INFO - Set parameter big_offset to 1.248
+2026-07-21 09:38:07 - LaserManager - INFO - Set parameter big_offset to 1.197
+2026-07-21 09:38:07 - LaserManager - INFO - Set parameter big_offset to 1.1332
+2026-07-21 09:38:08 - LaserManager - INFO - Set parameter big_offset to 1.1241
+2026-07-21 09:38:08 - LaserManager - INFO - Set parameter big_offset to 1.0822
+2026-07-21 09:38:08 - LaserManager - INFO - Set parameter big_offset to 1.0549
+2026-07-21 09:38:08 - LaserManager - INFO - Set parameter big_offset to 1.0457
+2026-07-21 09:38:09 - LaserManager - INFO - Set parameter big_offset to 1.0312
+2026-07-21 09:38:09 - LaserManager - INFO - Set parameter big_offset to 1.013
+2026-07-21 09:38:09 - LaserManager - INFO - Set parameter big_offset to 1.0093
+2026-07-21 09:38:09 - LaserManager - INFO - Set parameter big_offset to 0.9838
+2026-07-21 09:38:10 - LaserManager - INFO - Set parameter big_offset to 0.982
+2026-07-21 09:38:10 - LaserManager - INFO - Set parameter big_offset to 0.9656
+2026-07-21 09:38:10 - LaserManager - INFO - Set parameter big_offset to 0.9492
+2026-07-21 09:38:10 - LaserManager - INFO - Set parameter big_offset to 0.9419
+2026-07-21 09:38:11 - LaserManager - INFO - Set parameter big_offset to 0.9401
+2026-07-21 09:38:11 - LaserManager - INFO - Set parameter big_offset to 0.9328
+2026-07-21 09:38:11 - LaserManager - INFO - Set parameter big_offset to 0.931
+2026-07-21 09:38:11 - LaserManager - INFO - Set parameter big_offset to 0.9018
+2026-07-21 09:38:12 - LaserManager - INFO - Set parameter big_offset to 0.8982
+2026-07-21 09:38:12 - LaserManager - INFO - Set parameter big_offset to 0.8872
+2026-07-21 09:38:12 - LaserManager - INFO - Set parameter big_offset to 0.8781
+2026-07-21 09:38:12 - LaserManager - INFO - Set parameter big_offset to 0.8672
+2026-07-21 09:38:13 - LaserManager - INFO - Set parameter big_offset to 0.8417
+2026-07-21 09:38:13 - LaserManager - INFO - Set parameter big_offset to 0.8144
+2026-07-21 09:38:13 - LaserManager - INFO - Set parameter big_offset to 0.8126
+2026-07-21 09:38:13 - LaserManager - INFO - Set parameter big_offset to 0.8107
+2026-07-21 09:38:14 - LaserManager - INFO - Set parameter big_offset to 0.7761
+2026-07-21 09:38:14 - LaserManager - INFO - Set parameter big_offset to 0.7688
+2026-07-21 09:38:14 - LaserManager - INFO - Set parameter big_offset to 0.767
+2026-07-21 09:38:14 - LaserManager - INFO - Set parameter big_offset to 0.7561
+2026-07-21 09:38:15 - LaserManager - INFO - Set parameter big_offset to 0.736
+2026-07-21 09:38:15 - LaserManager - INFO - Set parameter big_offset to 0.7269
+2026-07-21 09:38:15 - LaserManager - INFO - Set parameter big_offset to 0.7142
+2026-07-21 09:38:15 - LaserManager - INFO - Set parameter big_offset to 0.696
+2026-07-21 09:38:16 - LaserManager - INFO - Set parameter big_offset to 0.6905
+2026-07-21 09:38:16 - LaserManager - INFO - Set parameter big_offset to 0.6814
+2026-07-21 09:38:16 - LaserManager - INFO - Set parameter big_offset to 0.6741
+2026-07-21 09:38:16 - LaserManager - INFO - Set parameter big_offset to 0.6723
+2026-07-21 09:38:16 - LaserManager - INFO - Set parameter big_offset to 0.6632
+2026-07-21 09:38:17 - LaserManager - INFO - Set parameter big_offset to 0.6395
+2026-07-21 09:38:17 - LaserManager - INFO - Set parameter big_offset to 0.6121
+2026-07-21 09:38:17 - LaserManager - INFO - Set parameter big_offset to 0.5976
+2026-07-21 09:38:17 - LaserManager - INFO - Set parameter big_offset to 0.5794
+2026-07-21 09:38:17 - LaserManager - INFO - Set parameter big_offset to 0.5721
+2026-07-21 09:38:18 - LaserManager - INFO - Set parameter big_offset to 0.5702
+2026-07-21 09:38:18 - LaserManager - INFO - Set parameter big_offset to 0.563
+2026-07-21 09:38:18 - LaserManager - INFO - Set parameter big_offset to 0.5411
+2026-07-21 09:38:18 - LaserManager - INFO - Set parameter big_offset to 0.5374
+2026-07-21 09:38:19 - LaserManager - INFO - Set parameter big_offset to 0.5302
+2026-07-21 09:38:19 - LaserManager - INFO - Set parameter big_offset to 0.5247
+2026-07-21 09:38:19 - LaserManager - INFO - Set parameter big_offset to 0.5211
+2026-07-21 09:38:19 - LaserManager - INFO - Set parameter big_offset to 0.5192
+2026-07-21 09:38:20 - LaserManager - INFO - Set parameter big_offset to 0.5174
+2026-07-21 09:38:20 - LaserManager - INFO - Set parameter big_offset to 0.5119
+2026-07-21 09:38:20 - LaserManager - INFO - Set parameter big_offset to 0.5065
+2026-07-21 09:38:20 - LaserManager - INFO - Set parameter big_offset to 0.4883
+2026-07-21 09:38:20 - LaserManager - INFO - Set parameter big_offset to 0.4518
+2026-07-21 09:38:21 - LaserManager - INFO - Set parameter big_offset to 0.45
+2026-07-21 09:38:21 - LaserManager - INFO - Set parameter big_offset to 0.4409
+2026-07-21 09:38:21 - LaserManager - INFO - Set parameter big_offset to 0.4391
+2026-07-21 09:38:21 - LaserManager - INFO - Set parameter big_offset to 0.4354
+2026-07-21 09:38:22 - LaserManager - INFO - Set parameter big_offset to 0.43
+2026-07-21 09:38:22 - LaserManager - INFO - Set parameter big_offset to 0.4209
+2026-07-21 09:38:22 - LaserManager - INFO - Set parameter big_offset to 0.4081
+2026-07-21 09:38:22 - LaserManager - INFO - Set parameter big_offset to 0.4063
+2026-07-21 09:38:23 - LaserManager - INFO - Set parameter big_offset to 0.4045
+2026-07-21 09:38:23 - LaserManager - INFO - Set parameter big_offset to 0.4008
+2026-07-21 09:38:23 - LaserManager - INFO - Set parameter big_offset to 0.3753
+2026-07-21 09:38:23 - LaserManager - INFO - Set parameter big_offset to 0.3644
+2026-07-21 09:38:23 - LaserManager - INFO - Set parameter big_offset to 0.3462
+2026-07-21 09:38:24 - LaserManager - INFO - Set parameter big_offset to 0.3352
+2026-07-21 09:38:24 - LaserManager - INFO - Set parameter big_offset to 0.2933
+2026-07-21 09:38:24 - LaserManager - INFO - Set parameter big_offset to 0.2897
+2026-07-21 09:38:24 - LaserManager - INFO - Set parameter big_offset to 0.2824
+2026-07-21 09:38:24 - LaserManager - INFO - Set parameter big_offset to 0.266
+2026-07-21 09:38:25 - LaserManager - INFO - Set parameter big_offset to 0.2551
+2026-07-21 09:38:25 - LaserManager - INFO - Set parameter big_offset to 0.2241
+2026-07-21 09:38:25 - LaserManager - INFO - Set parameter big_offset to 0.2022
+2026-07-21 09:38:25 - LaserManager - INFO - Set parameter big_offset to 0.1931
+2026-07-21 09:38:26 - LaserManager - INFO - Set parameter big_offset to 0.1785
+2026-07-21 09:38:26 - LaserManager - INFO - Set parameter big_offset to 0.1658
+2026-07-21 09:38:26 - LaserManager - INFO - Set parameter big_offset to 0.1603
+2026-07-21 09:38:26 - LaserManager - INFO - Set parameter big_offset to 0.1476
+2026-07-21 09:38:26 - LaserManager - INFO - Set parameter big_offset to 0.1385
+2026-07-21 09:38:27 - LaserManager - INFO - Set parameter big_offset to 0.1239
+2026-07-21 09:38:27 - LaserManager - INFO - Set parameter big_offset to 0.1166
+2026-07-21 09:38:27 - LaserManager - INFO - Set parameter big_offset to 0.1093
+2026-07-21 09:38:27 - LaserManager - INFO - Set parameter big_offset to 0.102
+2026-07-21 09:38:28 - LaserManager - INFO - Set parameter big_offset to 0.0947
+2026-07-21 09:38:28 - LaserManager - INFO - Set parameter big_offset to 0.0711
+2026-07-21 09:38:28 - LaserManager - INFO - Set parameter big_offset to 0.0583
+2026-07-21 09:38:28 - LaserManager - INFO - Set parameter big_offset to 0.051
+2026-07-21 09:38:28 - LaserManager - INFO - Set parameter big_offset to 0.0455
+2026-07-21 09:38:29 - LaserManager - INFO - Set parameter big_offset to 0.0346
+2026-07-21 09:38:29 - LaserManager - INFO - Set parameter big_offset to 0.0255
+2026-07-21 09:38:29 - LaserManager - INFO - Set parameter big_offset to 0.0036
+2026-07-21 09:38:29 - LaserManager - INFO - Set parameter big_offset to 0.0
+2026-07-21 09:38:35 - LaserManager - INFO - Set parameter big_offset to 0.0018
+2026-07-21 09:38:36 - LaserManager - INFO - Set parameter big_offset to 0.1822
+2026-07-21 09:38:36 - LaserManager - INFO - Set parameter big_offset to 0.4755
+2026-07-21 09:38:36 - LaserManager - INFO - Set parameter big_offset to 0.6686
+2026-07-21 09:38:36 - LaserManager - INFO - Set parameter big_offset to 0.7943
+2026-07-21 09:38:37 - LaserManager - INFO - Set parameter big_offset to 0.8545
+2026-07-21 09:38:37 - LaserManager - INFO - Set parameter big_offset to 0.88
+2026-07-21 09:38:38 - LaserManager - INFO - Set parameter big_offset to 0.8818
+2026-07-21 09:38:39 - LaserManager - INFO - Set parameter big_offset to 0.9073
+2026-07-21 09:39:10 - LaserManager - INFO - Set parameter big_offset to 0.9
+2026-07-21 09:39:10 - LaserManager - INFO - Set parameter big_offset to 0.8872
+2026-07-21 09:39:10 - LaserManager - INFO - Set parameter big_offset to 0.8818
+2026-07-21 09:39:12 - LaserManager - INFO - Set parameter big_offset to 0.88
+2026-07-21 09:39:13 - LaserManager - INFO - Set parameter big_offset to 0.8581
+2026-07-21 09:39:14 - LaserManager - INFO - Set parameter big_offset to 0.8599
+2026-07-21 09:39:14 - LaserManager - INFO - Set parameter big_offset to 0.8654
+2026-07-21 09:39:15 - LaserManager - INFO - Set parameter big_offset to 0.8891
+2026-07-21 09:39:15 - LaserManager - INFO - Set parameter big_offset to 0.8909
+2026-07-21 09:39:15 - LaserManager - INFO - Set parameter big_offset to 0.8945
+2026-07-21 09:39:16 - LaserManager - INFO - Set parameter big_offset to 0.8964
+2026-07-21 09:39:16 - LaserManager - INFO - Set parameter big_offset to 0.9
+2026-07-21 09:39:16 - LaserManager - INFO - Set parameter big_offset to 0.9036
+2026-07-21 09:39:17 - LaserManager - INFO - Set parameter big_offset to 0.9091
+2026-07-21 09:39:17 - LaserManager - INFO - Set parameter big_offset to 0.9109
+2026-07-21 09:39:17 - LaserManager - INFO - Set parameter big_offset to 0.9164
+2026-07-21 09:39:17 - LaserManager - INFO - Set parameter big_offset to 0.92
+2026-07-21 09:39:18 - LaserManager - INFO - Set parameter big_offset to 0.9219
+2026-07-21 09:39:18 - LaserManager - INFO - Set parameter big_offset to 0.9273
+2026-07-21 09:39:18 - LaserManager - INFO - Set parameter big_offset to 0.9291
+2026-07-21 09:39:18 - LaserManager - INFO - Set parameter big_offset to 0.9401
+2026-07-21 09:39:19 - LaserManager - INFO - Set parameter big_offset to 0.9474
+2026-07-21 09:39:19 - LaserManager - INFO - Set parameter big_offset to 0.9528
+2026-07-21 09:39:19 - LaserManager - INFO - Set parameter big_offset to 0.9565
+2026-07-21 09:39:19 - LaserManager - INFO - Set parameter big_offset to 0.9583
+2026-07-21 09:39:19 - LaserManager - INFO - Set parameter big_offset to 0.9601
+2026-07-21 09:39:20 - LaserManager - INFO - Set parameter big_offset to 0.9729
+2026-07-21 09:39:20 - LaserManager - INFO - Set parameter big_offset to 0.9747
+2026-07-21 09:39:20 - LaserManager - INFO - Set parameter big_offset to 0.9783
+2026-07-21 09:39:21 - LaserManager - INFO - Set parameter big_offset to 0.9838
+2026-07-21 09:39:21 - LaserManager - INFO - Set parameter big_offset to 0.9911
+2026-07-21 09:39:21 - LaserManager - INFO - Set parameter big_offset to 0.9929
+2026-07-21 09:39:22 - LaserManager - INFO - Set parameter big_offset to 1.0148
+2026-07-21 09:39:22 - LaserManager - INFO - Set parameter big_offset to 1.0166
+2026-07-21 09:39:22 - LaserManager - INFO - Set parameter big_offset to 1.0202
+2026-07-21 09:39:22 - LaserManager - INFO - Set parameter big_offset to 1.0221
+2026-07-21 09:39:22 - LaserManager - INFO - Set parameter big_offset to 1.0366
+2026-07-21 09:39:25 - LaserManager - INFO - Set parameter big_offset to 1.0385
+2026-07-21 09:39:26 - LaserManager - INFO - Set parameter big_offset to 1.0403
+2026-07-21 09:39:26 - LaserManager - INFO - Set parameter big_offset to 1.0476
+2026-07-21 09:39:28 - LaserManager - INFO - Set parameter sweep_amplitude to 0.546
+2026-07-21 09:39:29 - LaserManager - INFO - Set parameter sweep_amplitude to 0.561
+2026-07-21 09:39:29 - LaserManager - INFO - Set parameter sweep_amplitude to 0.57
+2026-07-21 09:39:29 - LaserManager - INFO - Set parameter sweep_amplitude to 0.575
+2026-07-21 09:39:29 - LaserManager - INFO - Set parameter sweep_amplitude to 0.581
+2026-07-21 09:39:30 - LaserManager - INFO - Set parameter sweep_amplitude to 0.591
+2026-07-21 09:39:30 - LaserManager - INFO - Set parameter sweep_amplitude to 0.592
+2026-07-21 09:39:30 - LaserManager - INFO - Set parameter sweep_amplitude to 0.593
+2026-07-21 09:39:30 - LaserManager - INFO - Set parameter sweep_amplitude to 0.594
+2026-07-21 09:39:31 - LaserManager - INFO - Set parameter sweep_amplitude to 0.604
+2026-07-21 09:39:31 - LaserManager - INFO - Set parameter sweep_amplitude to 0.605
+2026-07-21 09:39:31 - LaserManager - INFO - Set parameter sweep_amplitude to 0.615
+2026-07-21 09:39:31 - LaserManager - INFO - Set parameter sweep_amplitude to 0.617
+2026-07-21 09:39:32 - LaserManager - INFO - Set parameter sweep_amplitude to 0.629
+2026-07-21 09:39:32 - LaserManager - INFO - Set parameter sweep_amplitude to 0.632
+2026-07-21 09:39:32 - LaserManager - INFO - Set parameter sweep_amplitude to 0.633
+2026-07-21 09:39:32 - LaserManager - INFO - Set parameter sweep_amplitude to 0.635
+2026-07-21 09:39:33 - LaserManager - INFO - Set parameter sweep_amplitude to 0.638
+2026-07-21 09:39:33 - LaserManager - INFO - Set parameter sweep_amplitude to 0.641
+2026-07-21 09:39:33 - LaserManager - INFO - Set parameter sweep_amplitude to 0.642
+2026-07-21 09:39:33 - LaserManager - INFO - Set parameter sweep_amplitude to 0.643
+2026-07-21 09:39:33 - LaserManager - INFO - Set parameter sweep_amplitude to 0.644
+2026-07-21 09:39:33 - LaserManager - INFO - Set parameter sweep_amplitude to 0.648
+2026-07-21 09:39:34 - LaserManager - INFO - Set parameter sweep_amplitude to 0.649
+2026-07-21 09:39:50 - LaserManager - INFO - FSM switched to SETUP_MANUAL_LOCK.
+2026-07-21 09:39:50 - LaserManager - INFO - State changed from SWEEP to SETUP_MANUAL_LOCK
+2026-07-21 09:40:41 - LaserManager - INFO - Starting manual locking...
+2026-07-21 09:40:48 - LaserManager - INFO - Locking the laser worked! \o/
+2026-07-21 09:40:48 - LaserManager - INFO - State changed from SETUP_MANUAL_LOCK to LOCKED
+2026-07-21 09:41:09 - LaserManager - WARNING - Slow variation of the slow control signal detected at time: 2026-07-21 09:41:08
+2026-07-21 09:41:09 - LaserManager - WARNING - Unlock event detected
+2026-07-21 09:41:09 - LaserManager - INFO - Average of the last stable slow control PID values: -0.0023126926480910672
+2026-07-21 09:41:09 - LaserManager - INFO - Unlock event detected — waiting 10 ticks before acting.
+2026-07-21 09:41:09 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-21 09:41:09
+2026-07-21 09:41:09 - LaserManager - WARNING - Slow variation of the slow control signal detected at time: 2026-07-21 09:41:09
+2026-07-21 09:41:10 - LaserManager - WARNING - Unlock event detected
+2026-07-21 09:41:10 - LaserManager - INFO - Average of the last stable slow control PID values: -0.0023786126285592216
+2026-07-21 09:41:10 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-21 09:41:09
+2026-07-21 09:41:10 - LaserManager - WARNING - Slow variation of the slow control signal detected at time: 2026-07-21 09:41:09
+2026-07-21 09:41:10 - LaserManager - WARNING - Unlock event detected
+2026-07-21 09:41:10 - LaserManager - INFO - Average of the last stable slow control PID values: 0.13270790734580523
+2026-07-21 09:41:10 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-21 09:41:09
+2026-07-21 09:41:10 - LaserManager - WARNING - Slow variation of the slow control signal detected at time: 2026-07-21 09:41:09
+2026-07-21 09:41:10 - LaserManager - WARNING - Unlock event detected
+2026-07-21 09:41:10 - LaserManager - INFO - Average of the last stable slow control PID values: 0.4031775872066408
+2026-07-21 09:41:11 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-21 09:41:09
+2026-07-21 09:41:11 - LaserManager - WARNING - Slow variation of the slow control signal detected at time: 2026-07-21 09:41:09
+2026-07-21 09:41:11 - LaserManager - WARNING - Unlock event detected
+2026-07-21 09:41:11 - LaserManager - INFO - Average of the last stable slow control PID values: 0.44859645374919876
+2026-07-21 09:41:11 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-21 09:41:09
+2026-07-21 09:41:11 - LaserManager - WARNING - Slow variation of the slow control signal detected at time: 2026-07-21 09:41:09
+2026-07-21 09:41:11 - LaserManager - WARNING - Unlock event detected
+2026-07-21 09:41:11 - LaserManager - INFO - Average of the last stable slow control PID values: 0.44896450697347945
+2026-07-21 09:41:12 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-21 09:41:09
+2026-07-21 09:41:12 - LaserManager - WARNING - Slow variation of the slow control signal detected at time: 2026-07-21 09:41:09
+2026-07-21 09:41:12 - LaserManager - WARNING - Unlock event detected
+2026-07-21 09:41:12 - LaserManager - INFO - Average of the last stable slow control PID values: 0.44933256019775997
+2026-07-21 09:41:12 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-21 09:41:09
+2026-07-21 09:41:12 - LaserManager - WARNING - Slow variation of the slow control signal detected at time: 2026-07-21 09:41:09
+2026-07-21 09:41:12 - LaserManager - WARNING - Unlock event detected
+2026-07-21 09:41:12 - LaserManager - INFO - Average of the last stable slow control PID values: 0.44970061342204043
+2026-07-21 09:41:13 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-21 09:41:09
+2026-07-21 09:41:13 - LaserManager - WARNING - Slow variation of the slow control signal detected at time: 2026-07-21 09:41:09
+2026-07-21 09:41:13 - LaserManager - WARNING - Unlock event detected
+2026-07-21 09:41:13 - LaserManager - INFO - Average of the last stable slow control PID values: 0.44992584002197333
+2026-07-21 09:41:13 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-21 09:41:09
+2026-07-21 09:41:13 - LaserManager - WARNING - Slow variation of the slow control signal detected at time: 2026-07-21 09:41:09
+2026-07-21 09:41:13 - LaserManager - WARNING - Unlock event detected
+2026-07-21 09:41:13 - LaserManager - INFO - Average of the last stable slow control PID values: 0.4499588000122074
+2026-07-21 09:41:14 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-21 09:41:09
+2026-07-21 09:41:14 - LaserManager - WARNING - Slow variation of the slow control signal detected at time: 2026-07-21 09:41:09
+2026-07-21 09:41:14 - LaserManager - WARNING - Unlock event detected
+2026-07-21 09:41:14 - LaserManager - INFO - Average of the last stable slow control PID values: 0.4499588000122074
+2026-07-21 09:41:14 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-21 09:41:09
+2026-07-21 09:41:14 - LaserManager - WARNING - Slow variation of the slow control signal detected at time: 2026-07-21 09:41:09
+2026-07-21 09:41:14 - LaserManager - WARNING - Unlock event detected
+2026-07-21 09:41:14 - LaserManager - INFO - Average of the last stable slow control PID values: 0.4499588000122074
+2026-07-21 09:41:14 - LaserManager - WARNING - Unlock event detected, unlocking the laser...
+2026-07-21 09:41:15 - LaserManager - INFO - State changed from LOCKED to SWEEP
+2026-07-21 09:41:33 - LaserManager - INFO - FSM switched to SETUP_MANUAL_LOCK.
+2026-07-21 09:41:33 - LaserManager - INFO - State changed from SWEEP to SETUP_MANUAL_LOCK
+2026-07-21 09:41:50 - LaserManager - INFO - Starting manual locking...
+2026-07-21 09:41:57 - LaserManager - INFO - Locking the laser worked! \o/
+2026-07-21 09:41:57 - LaserManager - INFO - State changed from SETUP_MANUAL_LOCK to LOCKED
+2026-07-21 09:42:02 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-21 09:42:02
+2026-07-21 09:42:02 - LaserManager - WARNING - Unlock event detected
+2026-07-21 09:42:02 - LaserManager - INFO - Average of the last stable slow control PID values: -0.0006482131412701804
+2026-07-21 09:42:02 - LaserManager - INFO - Unlock event detected — waiting 10 ticks before acting.
+2026-07-21 09:42:03 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-21 09:42:02
+2026-07-21 09:42:03 - LaserManager - WARNING - Unlock event detected
+2026-07-21 09:42:03 - LaserManager - INFO - Average of the last stable slow control PID values: -0.0007196264534440138
+2026-07-21 09:42:03 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-21 09:42:02
+2026-07-21 09:42:03 - LaserManager - WARNING - Unlock event detected
+2026-07-21 09:42:03 - LaserManager - INFO - Average of the last stable slow control PID values: -0.0008459730826746422
+2026-07-21 09:42:04 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-21 09:42:02
+2026-07-21 09:42:04 - LaserManager - WARNING - Unlock event detected
+2026-07-21 09:42:04 - LaserManager - INFO - Average of the last stable slow control PID values: -0.0010162663655507065
+2026-07-21 09:42:04 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-21 09:42:02
+2026-07-21 09:42:04 - LaserManager - WARNING - Unlock event detected
+2026-07-21 09:42:04 - LaserManager - INFO - Average of the last stable slow control PID values: -0.0011865596484267708
+2026-07-21 09:42:05 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-21 09:42:02
+2026-07-21 09:42:05 - LaserManager - WARNING - Unlock event detected
+2026-07-21 09:42:05 - LaserManager - INFO - Average of the last stable slow control PID values: -0.0013403729361857967
+2026-07-21 09:42:05 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-21 09:42:02
+2026-07-21 09:42:05 - LaserManager - WARNING - Unlock event detected
+2026-07-21 09:42:05 - LaserManager - INFO - Average of the last stable slow control PID values: -0.0015051728873561813
+2026-07-21 09:42:06 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-21 09:42:02
+2026-07-21 09:42:06 - LaserManager - WARNING - Unlock event detected
+2026-07-21 09:42:06 - LaserManager - INFO - Average of the last stable slow control PID values: -0.0016479995117038484
+2026-07-21 09:42:06 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-21 09:42:02
+2026-07-21 09:42:06 - LaserManager - WARNING - Unlock event detected
+2026-07-21 09:42:06 - LaserManager - INFO - Average of the last stable slow control PID values: -0.001812799462874233
+2026-07-21 09:42:07 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-21 09:42:02
+2026-07-21 09:42:07 - LaserManager - WARNING - Unlock event detected
+2026-07-21 09:42:07 - LaserManager - INFO - Average of the last stable slow control PID values: -0.0019556260872219
+2026-07-21 09:42:07 - LaserManager - WARNING - Fast variation of the fast control signal detected at time: 2026-07-21 09:42:02
+2026-07-21 09:42:07 - LaserManager - WARNING - Unlock event detected
+2026-07-21 09:42:07 - LaserManager - INFO - Average of the last stable slow control PID values: -0.002103946043275246
+2026-07-21 09:42:08 - LaserManager - WARNING - Unlock event detected
+2026-07-21 09:42:08 - LaserManager - INFO - Average of the last stable slow control PID values: -0.0022467726676229137
+2026-07-21 09:42:08 - LaserManager - WARNING - Unlock event detected, unlocking the laser...
+2026-07-21 09:42:08 - LaserManager - INFO - State changed from LOCKED to SWEEP
+2026-07-21 09:44:03 - LaserManager - INFO - Set parameter big_offset to 1.0494
+2026-07-21 09:44:03 - LaserManager - INFO - Set parameter big_offset to 1.1022
+2026-07-21 09:44:04 - LaserManager - INFO - Set parameter big_offset to 1.104
+2026-07-21 09:44:04 - LaserManager - INFO - Set parameter big_offset to 1.1368
+2026-07-21 09:44:04 - LaserManager - INFO - Set parameter big_offset to 1.1587
+2026-07-21 09:44:04 - LaserManager - INFO - Set parameter big_offset to 1.1842
+2026-07-21 09:44:05 - LaserManager - INFO - Set parameter big_offset to 1.2115
+2026-07-21 09:44:05 - LaserManager - INFO - Set parameter big_offset to 1.217
+2026-07-21 09:44:05 - LaserManager - INFO - Set parameter big_offset to 1.237
+2026-07-21 09:44:05 - LaserManager - INFO - Set parameter big_offset to 1.2589
+2026-07-21 09:44:06 - LaserManager - INFO - Set parameter big_offset to 1.2789
+2026-07-21 09:44:06 - LaserManager - INFO - Set parameter big_offset to 1.2899
+2026-07-21 09:44:06 - LaserManager - INFO - Set parameter big_offset to 1.2953
+2026-07-21 09:44:06 - LaserManager - INFO - Set parameter big_offset to 1.3117
+2026-07-21 09:44:06 - LaserManager - INFO - Set parameter big_offset to 1.3318
+2026-07-21 09:44:07 - LaserManager - INFO - Set parameter big_offset to 1.35
+2026-07-21 09:44:07 - LaserManager - INFO - Set parameter big_offset to 1.3555
+2026-07-21 09:44:07 - LaserManager - INFO - Set parameter big_offset to 1.4338
+2026-07-21 09:44:07 - LaserManager - INFO - Set parameter big_offset to 1.4374
+2026-07-21 09:44:08 - LaserManager - INFO - Set parameter big_offset to 1.4666
+2026-07-21 09:44:08 - LaserManager - INFO - Set parameter big_offset to 1.4684
+2026-07-21 09:44:08 - LaserManager - INFO - Set parameter big_offset to 1.4994
+2026-07-21 09:44:08 - LaserManager - INFO - Set parameter big_offset to 1.514
+2026-07-21 09:44:09 - LaserManager - INFO - Set parameter big_offset to 1.5158
+2026-07-21 09:44:09 - LaserManager - INFO - Set parameter big_offset to 1.5559
+2026-07-21 09:44:09 - LaserManager - INFO - Set parameter big_offset to 1.5796
+2026-07-21 09:44:09 - LaserManager - INFO - Set parameter big_offset to 1.5996
+2026-07-21 09:44:09 - LaserManager - INFO - Set parameter big_offset to 1.6597
+2026-07-21 09:44:10 - LaserManager - INFO - Set parameter big_offset to 1.6706
+2026-07-21 09:44:10 - LaserManager - INFO - Set parameter big_offset to 1.6725
+2026-07-21 09:44:11 - LaserManager - INFO - Set parameter big_offset to 1.6706
+2026-07-21 09:44:11 - LaserManager - INFO - Set parameter big_offset to 1.5067
+2026-07-21 09:44:11 - LaserManager - INFO - Set parameter big_offset to 1.2862
+2026-07-21 09:44:11 - LaserManager - INFO - Set parameter big_offset to 1.2607
+2026-07-21 09:44:12 - LaserManager - INFO - Set parameter big_offset to 1.1405
+2026-07-21 09:44:12 - LaserManager - INFO - Set parameter big_offset to 1.053
+2026-07-21 09:44:12 - LaserManager - INFO - Set parameter big_offset to 0.9984
+2026-07-21 09:44:12 - LaserManager - INFO - Set parameter big_offset to 0.9656
+2026-07-21 09:44:12 - LaserManager - INFO - Set parameter big_offset to 0.9565
+2026-07-21 09:44:13 - LaserManager - INFO - Set parameter big_offset to 0.9547
+2026-07-21 09:44:13 - LaserManager - INFO - Set parameter big_offset to 0.9528
+2026-07-21 09:44:14 - LaserManager - INFO - Set parameter big_offset to 0.951
+2026-07-21 09:44:14 - LaserManager - INFO - Set parameter big_offset to 0.9437
+2026-07-21 09:45:22 - LaserManager - INFO - Set parameter big_offset to 0.9455
+2026-07-21 09:45:23 - LaserManager - INFO - Set parameter big_offset to 0.9729
+2026-07-21 09:45:23 - LaserManager - INFO - Set parameter big_offset to 1.0038
+2026-07-21 09:45:23 - LaserManager - INFO - Set parameter big_offset to 1.0075
+2026-07-21 09:45:23 - LaserManager - INFO - Set parameter big_offset to 1.064
+2026-07-21 09:45:24 - LaserManager - INFO - Set parameter big_offset to 1.1004
+2026-07-21 09:45:24 - LaserManager - INFO - Set parameter big_offset to 1.1022
+2026-07-21 09:45:24 - LaserManager - INFO - Set parameter big_offset to 1.1077
+2026-07-21 09:45:24 - LaserManager - INFO - Set parameter big_offset to 1.1204
+2026-07-21 09:45:25 - LaserManager - INFO - Set parameter big_offset to 1.1241
+2026-07-21 09:45:25 - LaserManager - INFO - Set parameter big_offset to 1.1405
+2026-07-21 09:45:25 - LaserManager - INFO - Set parameter big_offset to 1.1423
+2026-07-21 09:45:25 - LaserManager - INFO - Set parameter big_offset to 1.2006
+2026-07-21 09:45:26 - LaserManager - INFO - Set parameter big_offset to 1.2097
+2026-07-21 09:45:26 - LaserManager - INFO - Set parameter big_offset to 1.2225
+2026-07-21 09:45:26 - LaserManager - INFO - Set parameter big_offset to 1.268
+2026-07-21 09:45:26 - LaserManager - INFO - Set parameter big_offset to 1.3136
+2026-07-21 09:45:27 - LaserManager - INFO - Set parameter big_offset to 1.3354
+2026-07-21 09:45:27 - LaserManager - INFO - Set parameter big_offset to 1.401
+2026-07-21 09:45:27 - LaserManager - INFO - Set parameter big_offset to 1.4229
+2026-07-21 09:45:27 - LaserManager - INFO - Set parameter big_offset to 1.4757
+2026-07-21 09:45:28 - LaserManager - INFO - Set parameter big_offset to 1.4775
+2026-07-21 09:45:28 - LaserManager - INFO - Set parameter big_offset to 1.4994
+2026-07-21 09:45:28 - LaserManager - INFO - Set parameter big_offset to 1.5121
+2026-07-21 09:45:28 - LaserManager - INFO - Set parameter big_offset to 1.5158
+2026-07-21 09:45:28 - LaserManager - INFO - Set parameter big_offset to 1.5194
+2026-07-21 09:45:29 - LaserManager - INFO - Set parameter big_offset to 1.5285
+2026-07-21 09:45:29 - LaserManager - INFO - Set parameter big_offset to 1.585
+2026-07-21 09:45:29 - LaserManager - INFO - Set parameter big_offset to 1.6051
+2026-07-21 09:45:29 - LaserManager - INFO - Set parameter big_offset to 1.6579
+2026-07-21 09:45:29 - LaserManager - INFO - Set parameter big_offset to 1.6615
+2026-07-21 09:45:30 - LaserManager - INFO - Set parameter big_offset to 1.6816
+2026-07-21 09:45:30 - LaserManager - INFO - Set parameter big_offset to 1.7162
+2026-07-21 09:45:30 - LaserManager - INFO - Set parameter big_offset to 1.7362
+2026-07-21 09:45:30 - LaserManager - INFO - Set parameter big_offset to 1.7508
+2026-07-21 09:45:31 - LaserManager - INFO - Set parameter big_offset to 1.7563
+2026-07-21 09:45:31 - LaserManager - INFO - Set parameter big_offset to 1.7581
+2026-07-21 09:45:31 - LaserManager - INFO - Set parameter big_offset to 1.7945
+2026-07-21 09:45:32 - LaserManager - INFO - Set parameter big_offset to 1.8
+2026-07-21 09:45:35 - LaserManager - INFO - Set parameter big_offset to 1.7982
+2026-07-21 09:45:35 - LaserManager - INFO - Set parameter big_offset to 1.7126
+2026-07-21 09:45:35 - LaserManager - INFO - Set parameter big_offset to 1.6852
+2026-07-21 09:45:35 - LaserManager - INFO - Set parameter big_offset to 1.6415
+2026-07-21 09:45:36 - LaserManager - INFO - Set parameter big_offset to 1.6324
+2026-07-21 09:45:36 - LaserManager - INFO - Set parameter big_offset to 1.596
+2026-07-21 09:45:36 - LaserManager - INFO - Set parameter big_offset to 1.5941
+2026-07-21 09:45:36 - LaserManager - INFO - Set parameter big_offset to 1.5522
+2026-07-21 09:45:37 - LaserManager - INFO - Set parameter big_offset to 1.5285
+2026-07-21 09:45:37 - LaserManager - INFO - Set parameter big_offset to 1.4794
+2026-07-21 09:45:37 - LaserManager - INFO - Set parameter big_offset to 1.4757
+2026-07-21 09:45:37 - LaserManager - INFO - Set parameter big_offset to 1.4739
+2026-07-21 09:45:38 - LaserManager - INFO - Set parameter big_offset to 1.4484
+2026-07-21 09:45:38 - LaserManager - INFO - Set parameter big_offset to 1.4192
+2026-07-21 09:45:38 - LaserManager - INFO - Set parameter big_offset to 1.4083
+2026-07-21 09:45:38 - LaserManager - INFO - Set parameter big_offset to 1.4065
+2026-07-21 09:45:38 - LaserManager - INFO - Set parameter big_offset to 1.3992
+2026-07-21 09:45:39 - LaserManager - INFO - Set parameter big_offset to 1.3937
+2026-07-21 09:45:39 - LaserManager - INFO - Set parameter big_offset to 1.3773
+2026-07-21 09:45:39 - LaserManager - INFO - Set parameter big_offset to 1.3719
+2026-07-21 09:45:39 - LaserManager - INFO - Set parameter big_offset to 1.3464
+2026-07-21 09:45:40 - LaserManager - INFO - Set parameter big_offset to 1.3409
+2026-07-21 09:45:40 - LaserManager - INFO - Set parameter big_offset to 1.3336
+2026-07-21 09:45:40 - LaserManager - INFO - Set parameter big_offset to 1.3263
+2026-07-21 09:45:40 - LaserManager - INFO - Set parameter big_offset to 1.3099
+2026-07-21 09:45:40 - LaserManager - INFO - Set parameter big_offset to 1.2917
+2026-07-21 09:45:41 - LaserManager - INFO - Set parameter big_offset to 1.2789
+2026-07-21 09:45:41 - LaserManager - INFO - Set parameter big_offset to 1.2753
+2026-07-21 09:45:41 - LaserManager - INFO - Set parameter big_offset to 1.2698
+2026-07-21 09:45:41 - LaserManager - INFO - Set parameter big_offset to 1.2425
+2026-07-21 09:45:42 - LaserManager - INFO - Set parameter big_offset to 1.2225
+2026-07-21 09:45:42 - LaserManager - INFO - Set parameter big_offset to 1.1824
+2026-07-21 09:45:42 - LaserManager - INFO - Set parameter big_offset to 1.1751
+2026-07-21 09:45:42 - LaserManager - INFO - Set parameter big_offset to 1.1587
+2026-07-21 09:45:43 - LaserManager - INFO - Set parameter big_offset to 1.1569
+2026-07-21 09:45:43 - LaserManager - INFO - Set parameter big_offset to 1.146
+2026-07-21 09:45:43 - LaserManager - INFO - Set parameter big_offset to 1.1223
+2026-07-21 09:45:43 - LaserManager - INFO - Set parameter big_offset to 1.1095
+2026-07-21 09:45:43 - LaserManager - INFO - Set parameter big_offset to 1.0621
+2026-07-21 09:45:44 - LaserManager - INFO - Set parameter big_offset to 1.0257
+2026-07-21 09:45:44 - LaserManager - INFO - Set parameter big_offset to 1.013
+2026-07-21 09:45:44 - LaserManager - INFO - Set parameter big_offset to 0.982
+2026-07-21 09:45:44 - LaserManager - INFO - Set parameter big_offset to 0.9711
+2026-07-21 09:45:44 - LaserManager - INFO - Set parameter big_offset to 0.9383
+2026-07-21 09:45:45 - LaserManager - INFO - Set parameter big_offset to 0.8872
+2026-07-21 09:45:45 - LaserManager - INFO - Set parameter big_offset to 0.8709
+2026-07-21 09:45:45 - LaserManager - INFO - Set parameter big_offset to 0.8581
+2026-07-21 09:45:45 - LaserManager - INFO - Set parameter big_offset to 0.8526
+2026-07-21 09:45:46 - LaserManager - INFO - Set parameter big_offset to 0.8508
+2026-07-21 09:45:46 - LaserManager - INFO - Set parameter big_offset to 0.8472
+2026-07-21 09:45:48 - LaserManager - INFO - Set parameter big_offset to 0.8453
+2026-07-21 09:45:48 - LaserManager - INFO - Set parameter big_offset to 0.8344
+2026-07-21 09:45:48 - LaserManager - INFO - Set parameter big_offset to 0.8289
+2026-07-21 09:45:48 - LaserManager - INFO - Set parameter big_offset to 0.8198
+2026-07-21 09:45:49 - LaserManager - INFO - Set parameter big_offset to 0.8107
+2026-07-21 09:45:49 - LaserManager - INFO - Set parameter big_offset to 0.8034
+2026-07-21 09:45:49 - LaserManager - INFO - Set parameter big_offset to 0.8016
+2026-07-21 09:45:49 - LaserManager - INFO - Set parameter big_offset to 0.7998
+2026-07-21 09:45:50 - LaserManager - INFO - Set parameter big_offset to 0.798
+2026-07-21 09:45:50 - LaserManager - INFO - Set parameter big_offset to 0.7962
+2026-07-21 09:45:51 - LaserManager - INFO - Set parameter big_offset to 0.7943
+2026-07-21 09:45:51 - LaserManager - INFO - Set parameter big_offset to 0.767
+2026-07-21 09:45:51 - LaserManager - INFO - Set parameter big_offset to 0.7652
+2026-07-21 09:45:51 - LaserManager - INFO - Set parameter big_offset to 0.7524
+2026-07-21 09:45:51 - LaserManager - INFO - Set parameter big_offset to 0.7451
+2026-07-21 09:45:52 - LaserManager - INFO - Set parameter big_offset to 0.7215
+2026-07-21 09:45:52 - LaserManager - INFO - Set parameter big_offset to 0.6832
+2026-07-21 09:45:52 - LaserManager - INFO - Set parameter big_offset to 0.6595
+2026-07-21 09:45:52 - LaserManager - INFO - Set parameter big_offset to 0.5684
+2026-07-21 09:45:53 - LaserManager - INFO - Set parameter big_offset to 0.4919
+2026-07-21 09:45:53 - LaserManager - INFO - Set parameter big_offset to 0.419
+2026-07-21 09:45:53 - LaserManager - INFO - Set parameter big_offset to 0.3079
+2026-07-21 09:45:53 - LaserManager - INFO - Set parameter big_offset to 0.2532
+2026-07-21 09:45:53 - LaserManager - INFO - Set parameter big_offset to 0.1931
+2026-07-21 09:45:54 - LaserManager - INFO - Set parameter big_offset to 0.1567
+2026-07-21 09:45:54 - LaserManager - INFO - Set parameter big_offset to 0.133
+2026-07-21 09:45:54 - LaserManager - INFO - Set parameter big_offset to 0.1038
+2026-07-21 09:45:54 - LaserManager - INFO - Set parameter big_offset to 0.0874
+2026-07-21 09:45:55 - LaserManager - INFO - Set parameter big_offset to 0.0455
+2026-07-21 09:45:55 - LaserManager - INFO - Set parameter big_offset to 0.031
+2026-07-21 09:45:55 - LaserManager - INFO - Set parameter big_offset to 0.0255
+2026-07-21 09:45:55 - LaserManager - INFO - Set parameter big_offset to 0.0182
+2026-07-21 09:45:55 - LaserManager - INFO - Set parameter big_offset to 0.0
+2026-07-21 09:45:57 - LaserManager - INFO - Set parameter big_offset to 0.0018
+2026-07-21 09:45:57 - LaserManager - INFO - Set parameter big_offset to 0.2988
+2026-07-21 09:45:58 - LaserManager - INFO - Set parameter big_offset to 0.6704
+2026-07-21 09:45:58 - LaserManager - INFO - Set parameter big_offset to 0.8235
+2026-07-21 09:45:58 - LaserManager - INFO - Set parameter big_offset to 0.8818
+2026-07-21 09:45:58 - LaserManager - INFO - Set parameter big_offset to 0.9036
+2026-07-21 09:45:59 - LaserManager - INFO - Set parameter big_offset to 0.9055
+2026-07-21 09:46:00 - LaserManager - INFO - Set parameter big_offset to 0.9109
+2026-07-21 09:46:00 - LaserManager - INFO - Set parameter big_offset to 0.9128
+2026-07-21 09:46:00 - LaserManager - INFO - Set parameter big_offset to 0.92
+2026-07-21 09:46:01 - LaserManager - INFO - Set parameter big_offset to 0.9219
+2026-07-21 09:49:29 - LaserManager - INFO - Set parameter big_offset to 0.9237
+2026-07-21 09:49:29 - LaserManager - INFO - Set parameter big_offset to 0.9401
+2026-07-21 09:49:29 - LaserManager - INFO - Set parameter big_offset to 0.9729
+2026-07-21 09:49:29 - LaserManager - INFO - Set parameter big_offset to 0.9802
+2026-07-21 09:49:30 - LaserManager - INFO - Set parameter big_offset to 0.982
+2026-07-21 09:49:30 - LaserManager - INFO - Set parameter big_offset to 1.0093
+2026-07-21 09:49:30 - LaserManager - INFO - Set parameter big_offset to 1.0202
+2026-07-21 09:49:30 - LaserManager - INFO - Set parameter big_offset to 1.0221
+2026-07-21 09:49:31 - LaserManager - INFO - Set parameter big_offset to 1.064
+2026-07-21 09:49:31 - LaserManager - INFO - Set parameter big_offset to 1.0658
+2026-07-21 09:49:31 - LaserManager - INFO - Set parameter big_offset to 1.0694
+2026-07-21 09:49:31 - LaserManager - INFO - Set parameter big_offset to 1.0822
+2026-07-21 09:49:31 - LaserManager - INFO - Set parameter big_offset to 1.0913
+2026-07-21 09:49:32 - LaserManager - INFO - Set parameter big_offset to 1.1168
+2026-07-21 09:49:32 - LaserManager - INFO - Set parameter big_offset to 1.1296
+2026-07-21 09:49:32 - LaserManager - INFO - Set parameter big_offset to 1.1314
+2026-07-21 09:49:32 - LaserManager - INFO - Set parameter big_offset to 1.1569
+2026-07-21 09:49:32 - LaserManager - INFO - Set parameter big_offset to 1.1824
+2026-07-21 09:49:33 - LaserManager - INFO - Set parameter big_offset to 1.2115
+2026-07-21 09:49:33 - LaserManager - INFO - Set parameter big_offset to 1.2152
+2026-07-21 09:49:33 - LaserManager - INFO - Set parameter big_offset to 1.217
+2026-07-21 09:49:33 - LaserManager - INFO - Set parameter big_offset to 1.2316
+2026-07-21 09:49:34 - LaserManager - INFO - Set parameter big_offset to 1.2462
+2026-07-21 09:49:34 - LaserManager - INFO - Set parameter big_offset to 1.2589
+2026-07-21 09:49:34 - LaserManager - INFO - Set parameter big_offset to 1.299
+2026-07-21 09:49:34 - LaserManager - INFO - Set parameter big_offset to 1.3227
+2026-07-21 09:49:34 - LaserManager - INFO - Set parameter big_offset to 1.3391
+2026-07-21 09:49:35 - LaserManager - INFO - Set parameter big_offset to 1.3409
+2026-07-21 09:49:35 - LaserManager - INFO - Set parameter big_offset to 1.3427
+2026-07-21 09:49:35 - LaserManager - INFO - Set parameter big_offset to 1.3445
+2026-07-21 09:49:35 - LaserManager - INFO - Set parameter big_offset to 1.37
+2026-07-21 09:49:36 - LaserManager - INFO - Set parameter big_offset to 1.3755
+2026-07-21 09:49:36 - LaserManager - INFO - Set parameter big_offset to 1.3974
+2026-07-21 09:49:36 - LaserManager - INFO - Set parameter big_offset to 1.4083
+2026-07-21 09:49:36 - LaserManager - INFO - Set parameter big_offset to 1.432
+2026-07-21 09:49:36 - LaserManager - INFO - Set parameter big_offset to 1.4393
+2026-07-21 09:49:37 - LaserManager - INFO - Set parameter big_offset to 1.4466
+2026-07-21 09:49:37 - LaserManager - INFO - Set parameter big_offset to 1.4484
+2026-07-21 09:49:38 - LaserManager - INFO - Set parameter big_offset to 1.4466
+2026-07-21 09:49:38 - LaserManager - INFO - Set parameter big_offset to 1.35
+2026-07-21 09:49:38 - LaserManager - INFO - Set parameter big_offset to 1.3482
+2026-07-21 09:49:38 - LaserManager - INFO - Set parameter big_offset to 1.3045
+2026-07-21 09:49:39 - LaserManager - INFO - Set parameter big_offset to 1.2917
+2026-07-21 09:49:39 - LaserManager - INFO - Set parameter big_offset to 1.2826
+2026-07-21 09:49:39 - LaserManager - INFO - Set parameter big_offset to 1.2498
+2026-07-21 09:49:39 - LaserManager - INFO - Set parameter big_offset to 1.2462
+2026-07-21 09:49:39 - LaserManager - INFO - Set parameter big_offset to 1.2352
+2026-07-21 09:49:40 - LaserManager - INFO - Set parameter big_offset to 1.2298
+2026-07-21 09:49:40 - LaserManager - INFO - Set parameter big_offset to 1.2243
+2026-07-21 09:49:40 - LaserManager - INFO - Set parameter big_offset to 1.2079
+2026-07-21 09:49:40 - LaserManager - INFO - Set parameter big_offset to 1.2006
+2026-07-21 09:49:41 - LaserManager - INFO - Set parameter big_offset to 1.186
+2026-07-21 09:49:41 - LaserManager - INFO - Set parameter big_offset to 1.1824
+2026-07-21 09:49:41 - LaserManager - INFO - Set parameter big_offset to 1.1806
+2026-07-21 09:49:41 - LaserManager - INFO - Set parameter big_offset to 1.1787
+2026-07-21 09:49:41 - LaserManager - INFO - Set parameter big_offset to 1.1769
+2026-07-21 09:49:42 - LaserManager - INFO - Set parameter big_offset to 1.1751
+2026-07-21 09:49:42 - LaserManager - INFO - Set parameter big_offset to 1.1623
+2026-07-21 09:49:42 - LaserManager - INFO - Set parameter big_offset to 1.1551
+2026-07-21 09:49:43 - LaserManager - INFO - Set parameter big_offset to 1.1532
+2026-07-21 09:49:43 - LaserManager - INFO - Set parameter big_offset to 1.1514
+2026-07-21 09:49:43 - LaserManager - INFO - Set parameter big_offset to 1.1496
+2026-07-21 09:49:43 - LaserManager - INFO - Set parameter big_offset to 1.1478
+2026-07-21 09:49:43 - LaserManager - INFO - Set parameter big_offset to 1.1423
+2026-07-21 09:49:44 - LaserManager - INFO - Set parameter big_offset to 1.1059
+2026-07-21 09:49:44 - LaserManager - INFO - Set parameter big_offset to 1.0804
+2026-07-21 09:49:44 - LaserManager - INFO - Set parameter big_offset to 1.0749
+2026-07-21 09:49:44 - LaserManager - INFO - Set parameter big_offset to 1.0713
+2026-07-21 09:49:45 - LaserManager - INFO - Set parameter big_offset to 1.0621
+2026-07-21 09:49:45 - LaserManager - INFO - Set parameter big_offset to 1.0075
+2026-07-21 09:49:45 - LaserManager - INFO - Set parameter big_offset to 1.0057
+2026-07-21 09:49:45 - LaserManager - INFO - Set parameter big_offset to 1.002
+2026-07-21 09:49:45 - LaserManager - INFO - Set parameter big_offset to 0.9929
+2026-07-21 09:49:46 - LaserManager - INFO - Set parameter big_offset to 0.9893
+2026-07-21 09:49:46 - LaserManager - INFO - Set parameter big_offset to 0.9711
+2026-07-21 09:49:46 - LaserManager - INFO - Set parameter big_offset to 0.9455
+2026-07-21 09:49:46 - LaserManager - INFO - Set parameter big_offset to 0.9419
+2026-07-21 09:49:47 - LaserManager - INFO - Set parameter big_offset to 0.9383
+2026-07-21 09:49:47 - LaserManager - INFO - Set parameter big_offset to 0.9237
+2026-07-21 09:49:47 - LaserManager - INFO - Set parameter big_offset to 0.9036
+2026-07-21 09:49:47 - LaserManager - INFO - Set parameter big_offset to 0.8982
+2026-07-21 09:49:47 - LaserManager - INFO - Set parameter big_offset to 0.8891
+2026-07-21 09:49:48 - LaserManager - INFO - Set parameter big_offset to 0.8836
+2026-07-21 09:49:48 - LaserManager - INFO - Set parameter big_offset to 0.849
+2026-07-21 09:49:48 - LaserManager - INFO - Set parameter big_offset to 0.8326
+2026-07-21 09:49:48 - LaserManager - INFO - Set parameter big_offset to 0.8253
+2026-07-21 09:49:49 - LaserManager - INFO - Set parameter big_offset to 0.8235
+2026-07-21 09:49:49 - LaserManager - INFO - Set parameter big_offset to 0.798
+2026-07-21 09:49:49 - LaserManager - INFO - Set parameter big_offset to 0.7816
+2026-07-21 09:49:49 - LaserManager - INFO - Set parameter big_offset to 0.7579
+2026-07-21 09:49:49 - LaserManager - INFO - Set parameter big_offset to 0.7524
+2026-07-21 09:49:50 - LaserManager - INFO - Set parameter big_offset to 0.7397
+2026-07-21 09:49:50 - LaserManager - INFO - Set parameter big_offset to 0.7306
+2026-07-21 09:49:50 - LaserManager - INFO - Set parameter big_offset to 0.7178
+2026-07-21 09:49:50 - LaserManager - INFO - Set parameter big_offset to 0.6887
+2026-07-21 09:49:51 - LaserManager - INFO - Set parameter big_offset to 0.6796
+2026-07-21 09:49:51 - LaserManager - INFO - Set parameter big_offset to 0.6686
+2026-07-21 09:49:51 - LaserManager - INFO - Set parameter big_offset to 0.6231
+2026-07-21 09:49:51 - LaserManager - INFO - Set parameter big_offset to 0.6085
+2026-07-21 09:49:51 - LaserManager - INFO - Set parameter big_offset to 0.5921
+2026-07-21 09:49:52 - LaserManager - INFO - Set parameter big_offset to 0.5538
+2026-07-21 09:49:52 - LaserManager - INFO - Set parameter big_offset to 0.532
+2026-07-21 09:49:52 - LaserManager - INFO - Set parameter big_offset to 0.5211
+2026-07-21 09:49:52 - LaserManager - INFO - Set parameter big_offset to 0.5192
+2026-07-21 09:49:53 - LaserManager - INFO - Set parameter big_offset to 0.5229
+2026-07-21 09:49:53 - LaserManager - INFO - Set parameter big_offset to 0.5775
+2026-07-21 09:49:54 - LaserManager - INFO - Set parameter big_offset to 0.614
+2026-07-21 09:49:54 - LaserManager - INFO - Set parameter big_offset to 0.6668
+2026-07-21 09:49:54 - LaserManager - INFO - Set parameter big_offset to 0.6759
+2026-07-21 09:49:54 - LaserManager - INFO - Set parameter big_offset to 0.685
+2026-07-21 09:49:54 - LaserManager - INFO - Set parameter big_offset to 0.7251
+2026-07-21 09:49:55 - LaserManager - INFO - Set parameter big_offset to 0.7615
+2026-07-21 09:49:55 - LaserManager - INFO - Set parameter big_offset to 0.7706
+2026-07-21 09:49:55 - LaserManager - INFO - Set parameter big_offset to 0.7779
+2026-07-21 09:49:55 - LaserManager - INFO - Set parameter big_offset to 0.7798
+2026-07-21 09:49:56 - LaserManager - INFO - Set parameter big_offset to 0.8399
+2026-07-21 09:49:56 - LaserManager - INFO - Set parameter big_offset to 0.849
+2026-07-21 09:49:56 - LaserManager - INFO - Set parameter big_offset to 0.8526
+2026-07-21 09:49:56 - LaserManager - INFO - Set parameter big_offset to 0.8636
+2026-07-21 09:49:59 - LaserManager - INFO - Set parameter big_offset to 0.8581
+2026-07-21 09:49:59 - LaserManager - INFO - Set parameter big_offset to 0.8435
+2026-07-21 09:50:01 - LaserManager - INFO - Set parameter big_offset to 0.8417
+2026-07-21 09:50:01 - LaserManager - INFO - Set parameter big_offset to 0.8399
+2026-07-21 09:50:01 - LaserManager - INFO - Set parameter big_offset to 0.8271
+2026-07-21 09:50:02 - LaserManager - INFO - Set parameter big_offset to 0.8253
+2026-07-21 09:50:02 - LaserManager - INFO - Set parameter big_offset to 0.8235
+2026-07-21 09:50:02 - LaserManager - INFO - Set parameter big_offset to 0.8144
+2026-07-21 09:50:02 - LaserManager - INFO - Set parameter big_offset to 0.8107
+2026-07-21 09:50:03 - LaserManager - INFO - Set parameter big_offset to 0.8089
+2026-07-21 09:50:03 - LaserManager - INFO - Set parameter big_offset to 0.8034
+2026-07-21 09:50:03 - LaserManager - INFO - Set parameter big_offset to 0.8016
+2026-07-21 09:50:04 - LaserManager - INFO - Set parameter big_offset to 0.7852
+2026-07-21 09:50:04 - LaserManager - INFO - Set parameter big_offset to 0.7834
+2026-07-21 09:50:04 - LaserManager - INFO - Set parameter big_offset to 0.7725
+2026-07-21 09:50:04 - LaserManager - INFO - Set parameter big_offset to 0.7652
+2026-07-21 09:50:04 - LaserManager - INFO - Set parameter big_offset to 0.7561
+2026-07-21 09:50:05 - LaserManager - INFO - Set parameter big_offset to 0.7488
+2026-07-21 09:50:32 - LaserManager - INFO - FSM switched to SETUP_MANUAL_LOCK.
+2026-07-21 09:50:32 - LaserManager - INFO - State changed from SWEEP to SETUP_MANUAL_LOCK
+2026-07-21 09:51:26 - LaserManager - INFO - Starting manual locking...
+2026-07-21 09:51:32 - LaserManager - INFO - Locking the laser worked! \o/
+2026-07-21 09:51:32 - LaserManager - INFO - State changed from SETUP_MANUAL_LOCK to LOCKED
+2026-07-21 09:52:12 - LaserManager - INFO - State changed from LOCKED to SWEEP
+2026-07-21 09:53:25 - LaserManager - INFO - Control loop timer stopped.
+2026-07-21 09:53:34 - LaserManager - INFO - LaserManager initialized.
+2026-07-21 09:53:39 - LaserManager - INFO - LaserManager setup complete. Control loop started.
+2026-07-21 09:53:40 - LaserManager - INFO - Parameters loaded into Interface.
+2026-07-21 09:53:40 - LaserManager - INFO - Advanced settings loaded into Interface.
+2026-07-21 09:53:40 - LaserManager - INFO - Set parameter big_offset to 0.7488
+2026-07-21 09:53:40 - LaserManager - INFO - Set parameter channel_mixing to -128
+2026-07-21 09:53:40 - LaserManager - INFO - Set parameter control_channel to 1
+2026-07-21 09:53:40 - LaserManager - INFO - Set parameter control_history_length to 60
+2026-07-21 09:53:40 - LaserManager - INFO - Set parameter demodulation_multiplier_a to 1
+2026-07-21 09:53:40 - LaserManager - INFO - Set parameter demodulation_multiplier_b to 0
+2026-07-21 09:53:40 - LaserManager - INFO - Set parameter dual_channel to False
+2026-07-21 09:53:40 - LaserManager - INFO - Set parameter filter_1_enabled_a to True
+2026-07-21 09:53:41 - LaserManager - INFO - Set parameter filter_1_enabled_b to False
+2026-07-21 09:53:41 - LaserManager - INFO - Set parameter filter_1_frequency to 400.0
+2026-07-21 09:53:41 - LaserManager - INFO - Set parameter filter_1_type_a to 0
+2026-07-21 09:53:41 - LaserManager - INFO - Set parameter filter_1_type_b to 0
+2026-07-21 09:53:41 - LaserManager - INFO - Set parameter filter_2_enabled_a to False
+2026-07-21 09:53:41 - LaserManager - INFO - Set parameter filter_2_enabled_b to True
+2026-07-21 09:53:41 - LaserManager - INFO - Set parameter filter_2_frequency to 0.0
+2026-07-21 09:53:41 - LaserManager - INFO - Set parameter filter_2_type_a to 0
+2026-07-21 09:53:41 - LaserManager - INFO - Set parameter filter_2_type_b to 0
+2026-07-21 09:53:41 - LaserManager - INFO - Set parameter filter_automatic_a to False
+2026-07-21 09:53:41 - LaserManager - INFO - Set parameter filter_automatic_b to False
+2026-07-21 09:53:41 - LaserManager - INFO - Set parameter gpio_p_out to 0
+2026-07-21 09:53:41 - LaserManager - INFO - Set parameter invert_a to False
+2026-07-21 09:53:41 - LaserManager - INFO - Set parameter invert_b to False
+2026-07-21 09:53:42 - LaserManager - INFO - Set parameter modulation_amplitude to 0.2
+2026-07-21 09:53:42 - LaserManager - INFO - Set parameter modulation_channel to 0
+2026-07-21 09:53:42 - LaserManager - INFO - Set parameter modulation_frequency to 0.05
+2026-07-21 09:53:42 - LaserManager - INFO - Set parameter offset_a to 0.0157804
+2026-07-21 09:53:42 - LaserManager - INFO - Set parameter offset_b to 0.0
+2026-07-21 09:53:42 - LaserManager - INFO - Set parameter phase to 290.0
+2026-07-21 09:53:42 - LaserManager - INFO - Set parameter pid_d to 1
+2026-07-21 09:53:42 - LaserManager - INFO - Set parameter pid_i to 100
+2026-07-21 09:53:42 - LaserManager - INFO - Set parameter pid_on_slow_enabled to True
+2026-07-21 09:53:42 - LaserManager - INFO - Set parameter pid_p to 2000
+2026-07-21 09:53:42 - LaserManager - INFO - Set parameter pid_slow_strength to 3
+2026-07-21 09:53:43 - LaserManager - INFO - Set parameter polarity_analog_out0 to 0
+2026-07-21 09:53:43 - LaserManager - INFO - Set parameter polarity_fast_out1 to 0
+2026-07-21 09:53:43 - LaserManager - INFO - Set parameter polarity_fast_out2 to 0
+2026-07-21 09:53:43 - LaserManager - INFO - Set parameter slow_control_channel to 2
+2026-07-21 09:53:43 - LaserManager - INFO - Set parameter small_offset to 0.0
+2026-07-21 09:53:43 - LaserManager - INFO - Set parameter sweep_amplitude to 0.649
+2026-07-21 09:53:43 - LaserManager - INFO - Set parameter sweep_center to 0.0
+2026-07-21 09:53:43 - LaserManager - INFO - Set parameter sweep_channel to 1
+2026-07-21 09:53:43 - LaserManager - INFO - Set parameter sweep_speed to 10
+2026-07-21 09:53:43 - LaserManager - INFO - Set parameter target_slope_rising to True
+2026-07-21 09:53:43 - LaserManager - INFO - State changed from OFF to SWEEP
+2026-07-21 09:54:39 - LaserManager - INFO - Set parameter phase to 290.44
+2026-07-21 09:54:39 - LaserManager - INFO - Set parameter phase to 294.74
+2026-07-21 09:54:39 - LaserManager - INFO - Set parameter phase to 297.25
+2026-07-21 09:54:39 - LaserManager - INFO - Set parameter phase to 299.76
+2026-07-21 09:54:40 - LaserManager - INFO - Set parameter phase to 305.14
+2026-07-21 09:54:40 - LaserManager - INFO - Set parameter phase to 311.24
+2026-07-21 09:54:40 - LaserManager - INFO - Set parameter phase to 311.59
+2026-07-21 09:54:40 - LaserManager - INFO - Set parameter phase to 316.61
+2026-07-21 09:54:40 - LaserManager - INFO - Set parameter phase to 318.05
+2026-07-21 09:54:41 - LaserManager - INFO - Set parameter phase to 321.27
+2026-07-21 09:54:41 - LaserManager - INFO - Set parameter phase to 325.94
+2026-07-21 09:54:41 - LaserManager - INFO - Set parameter phase to 328.8
+2026-07-21 09:54:41 - LaserManager - INFO - Set parameter phase to 329.52
+2026-07-21 09:54:42 - LaserManager - INFO - Set parameter phase to 329.88
+2026-07-21 09:54:42 - LaserManager - INFO - Set parameter phase to 330.24
+2026-07-21 09:54:42 - LaserManager - INFO - Set parameter phase to 332.75
+2026-07-21 09:54:43 - LaserManager - INFO - Set parameter phase to 333.82
+2026-07-21 09:54:43 - LaserManager - INFO - Set parameter phase to 334.18
+2026-07-21 09:54:44 - LaserManager - INFO - Set parameter phase to 335.98
+2026-07-21 09:54:44 - LaserManager - INFO - Set parameter phase to 336.33
+2026-07-21 09:54:45 - LaserManager - INFO - Set parameter phase to 338.13
+2026-07-21 09:54:45 - LaserManager - INFO - Set parameter phase to 340.28
+2026-07-21 09:54:46 - LaserManager - INFO - Set parameter phase to 340.64
+2026-07-21 09:54:46 - LaserManager - INFO - Set parameter phase to 341.0
+2026-07-21 09:54:46 - LaserManager - INFO - Set parameter phase to 341.35
+2026-07-21 09:54:50 - LaserManager - INFO - Set parameter phase to 342.43
+2026-07-21 09:54:50 - LaserManager - INFO - Set parameter phase to 344.94
+2026-07-21 09:54:50 - LaserManager - INFO - Set parameter phase to 347.09
+2026-07-21 09:54:50 - LaserManager - INFO - Set parameter phase to 348.17
+2026-07-21 09:54:50 - LaserManager - INFO - Set parameter phase to 349.6
+2026-07-21 09:54:51 - LaserManager - INFO - Set parameter phase to 351.39
+2026-07-21 09:54:51 - LaserManager - INFO - Set parameter phase to 355.7
+2026-07-21 09:54:51 - LaserManager - INFO - Set parameter phase to 356.41
+2026-07-21 09:54:51 - LaserManager - INFO - Set parameter phase to 360.0
+2026-07-21 09:54:54 - LaserManager - INFO - Set parameter phase to 359.64
+2026-07-21 09:54:54 - LaserManager - INFO - Set parameter phase to 352.83
+2026-07-21 09:54:54 - LaserManager - INFO - Set parameter phase to 344.22
+2026-07-21 09:54:55 - LaserManager - INFO - Set parameter phase to 338.13
+2026-07-21 09:54:55 - LaserManager - INFO - Set parameter phase to 330.96
+2026-07-21 09:54:55 - LaserManager - INFO - Set parameter phase to 321.27
+2026-07-21 09:54:55 - LaserManager - INFO - Set parameter phase to 311.24
+2026-07-21 09:54:56 - LaserManager - INFO - Set parameter phase to 310.52
+2026-07-21 09:54:56 - LaserManager - INFO - Set parameter phase to 309.08
+2026-07-21 09:54:56 - LaserManager - INFO - Set parameter phase to 296.18
+2026-07-21 09:54:56 - LaserManager - INFO - Set parameter phase to 295.82
+2026-07-21 09:54:57 - LaserManager - INFO - Set parameter phase to 290.8
+2026-07-21 09:54:57 - LaserManager - INFO - Set parameter phase to 282.55
+2026-07-21 09:54:57 - LaserManager - INFO - Set parameter phase to 281.12
+2026-07-21 09:54:57 - LaserManager - INFO - Set parameter phase to 272.87
+2026-07-21 09:54:57 - LaserManager - INFO - Set parameter phase to 264.26
+2026-07-21 09:54:58 - LaserManager - INFO - Set parameter phase to 259.6
+2026-07-21 09:54:58 - LaserManager - INFO - Set parameter phase to 249.92
+2026-07-21 09:54:58 - LaserManager - INFO - Set parameter phase to 247.05
+2026-07-21 09:54:58 - LaserManager - INFO - Set parameter phase to 241.67
+2026-07-21 09:54:58 - LaserManager - INFO - Set parameter phase to 239.88
+2026-07-21 09:54:59 - LaserManager - INFO - Set parameter phase to 239.52
+2026-07-21 09:54:59 - LaserManager - INFO - Set parameter phase to 238.8
+2026-07-21 09:54:59 - LaserManager - INFO - Set parameter phase to 235.94
+2026-07-21 09:54:59 - LaserManager - INFO - Set parameter phase to 234.14
+2026-07-21 09:54:59 - LaserManager - INFO - Set parameter phase to 233.43
+2026-07-21 09:55:00 - LaserManager - INFO - Set parameter phase to 233.07
+2026-07-21 09:55:00 - LaserManager - INFO - Set parameter phase to 232.35
+2026-07-21 09:55:00 - LaserManager - INFO - Set parameter phase to 231.27
+2026-07-21 09:55:01 - LaserManager - INFO - Set parameter phase to 229.48
+2026-07-21 09:55:01 - LaserManager - INFO - Set parameter phase to 226.97
+2026-07-21 09:55:01 - LaserManager - INFO - Set parameter phase to 224.82
+2026-07-21 09:55:01 - LaserManager - INFO - Set parameter phase to 223.75
+2026-07-21 09:55:01 - LaserManager - INFO - Set parameter phase to 221.24
+2026-07-21 09:55:02 - LaserManager - INFO - Set parameter phase to 215.86
+2026-07-21 09:55:02 - LaserManager - INFO - Set parameter phase to 215.14
+2026-07-21 09:55:02 - LaserManager - INFO - Set parameter phase to 213.71
+2026-07-21 09:55:02 - LaserManager - INFO - Set parameter phase to 211.55
+2026-07-21 09:55:02 - LaserManager - INFO - Set parameter phase to 206.89
+2026-07-21 09:55:03 - LaserManager - INFO - Set parameter phase to 205.1
+2026-07-21 09:55:03 - LaserManager - INFO - Set parameter phase to 199.0
+2026-07-21 09:55:03 - LaserManager - INFO - Set parameter phase to 192.19
+2026-07-21 09:55:03 - LaserManager - INFO - Set parameter phase to 185.02
+2026-07-21 09:55:04 - LaserManager - INFO - Set parameter phase to 177.85
+2026-07-21 09:55:04 - LaserManager - INFO - Set parameter phase to 171.75
+2026-07-21 09:55:04 - LaserManager - INFO - Set parameter phase to 167.81
+2026-07-21 09:55:04 - LaserManager - INFO - Set parameter phase to 158.84
+2026-07-21 09:55:05 - LaserManager - INFO - Set parameter phase to 143.78
+2026-07-21 09:55:05 - LaserManager - INFO - Set parameter phase to 138.05
+2026-07-21 09:55:05 - LaserManager - INFO - Set parameter phase to 131.95
+2026-07-21 09:55:05 - LaserManager - INFO - Set parameter phase to 124.06
+2026-07-21 09:55:05 - LaserManager - INFO - Set parameter phase to 119.76
+2026-07-21 09:55:06 - LaserManager - INFO - Set parameter phase to 117.25
+2026-07-21 09:55:06 - LaserManager - INFO - Set parameter phase to 101.47
+2026-07-21 09:55:06 - LaserManager - INFO - Set parameter phase to 88.21
+2026-07-21 09:55:06 - LaserManager - INFO - Set parameter phase to 82.83
+2026-07-21 09:55:06 - LaserManager - INFO - Set parameter phase to 82.47
+2026-07-21 09:55:07 - LaserManager - INFO - Set parameter phase to 135.54
+2026-07-21 09:55:07 - LaserManager - INFO - Set parameter phase to 175.34
+2026-07-21 09:55:07 - LaserManager - INFO - Set parameter phase to 197.57
+2026-07-21 09:55:07 - LaserManager - INFO - Set parameter phase to 209.4
+2026-07-21 09:55:08 - LaserManager - INFO - Set parameter phase to 224.82
+2026-07-21 09:55:08 - LaserManager - INFO - Set parameter phase to 233.07
+2026-07-21 09:55:08 - LaserManager - INFO - Set parameter phase to 237.73
+2026-07-21 09:55:08 - LaserManager - INFO - Set parameter phase to 238.09
+2026-07-21 09:55:09 - LaserManager - INFO - Set parameter phase to 241.31
+2026-07-21 09:55:09 - LaserManager - INFO - Set parameter phase to 241.67
+2026-07-21 09:55:09 - LaserManager - INFO - Set parameter phase to 242.75
+2026-07-21 09:55:10 - LaserManager - INFO - Set parameter phase to 251.71
+2026-07-21 09:55:10 - LaserManager - INFO - Set parameter phase to 252.43
+2026-07-21 09:55:11 - LaserManager - INFO - Set parameter phase to 252.79
+2026-07-21 09:55:11 - LaserManager - INFO - Set parameter phase to 255.66
+2026-07-21 09:55:11 - LaserManager - INFO - Set parameter phase to 257.45
+2026-07-21 09:55:11 - LaserManager - INFO - Set parameter phase to 258.17
+2026-07-21 09:55:12 - LaserManager - INFO - Set parameter phase to 258.53
+2026-07-21 09:55:12 - LaserManager - INFO - Set parameter phase to 267.13
+2026-07-21 09:55:12 - LaserManager - INFO - Set parameter phase to 267.49
+2026-07-21 09:55:13 - LaserManager - INFO - Set parameter phase to 267.85
+2026-07-21 09:55:13 - LaserManager - INFO - Set parameter phase to 269.28
+2026-07-21 09:55:13 - LaserManager - INFO - Set parameter phase to 271.79
+2026-07-21 09:55:13 - LaserManager - INFO - Set parameter phase to 275.38
+2026-07-21 09:55:14 - LaserManager - INFO - Set parameter phase to 277.89
+2026-07-21 09:55:14 - LaserManager - INFO - Set parameter phase to 282.19
+2026-07-21 09:55:14 - LaserManager - INFO - Set parameter phase to 286.14
+2026-07-21 09:55:14 - LaserManager - INFO - Set parameter phase to 287.57
+2026-07-21 09:55:15 - LaserManager - INFO - Set parameter phase to 288.29
+2026-07-21 09:55:15 - LaserManager - INFO - Set parameter phase to 292.95
+2026-07-21 09:55:15 - LaserManager - INFO - Set parameter phase to 294.02
+2026-07-21 09:55:15 - LaserManager - INFO - Set parameter phase to 296.18
+2026-07-21 09:55:15 - LaserManager - INFO - Set parameter phase to 299.76
+2026-07-21 09:55:16 - LaserManager - INFO - Set parameter phase to 301.55
+2026-07-21 09:55:16 - LaserManager - INFO - Set parameter phase to 305.86
+2026-07-21 09:55:16 - LaserManager - INFO - Set parameter phase to 306.57
+2026-07-21 09:55:16 - LaserManager - INFO - Set parameter phase to 306.93
+2026-07-21 09:55:17 - LaserManager - INFO - Set parameter phase to 307.29
+2026-07-21 09:55:17 - LaserManager - INFO - Set parameter phase to 312.67
+2026-07-21 09:55:17 - LaserManager - INFO - Set parameter phase to 313.75
+2026-07-21 09:55:18 - LaserManager - INFO - Set parameter phase to 314.1
+2026-07-21 09:55:18 - LaserManager - INFO - Set parameter phase to 314.82
+2026-07-21 09:55:18 - LaserManager - INFO - Set parameter phase to 317.69
+2026-07-21 09:55:19 - LaserManager - INFO - Set parameter phase to 318.05
+2026-07-21 09:55:32 - LaserManager - INFO - Set parameter filter_1_frequency to 300.0
+2026-07-21 09:55:43 - LaserManager - INFO - Set parameter filter_1_frequency to 500.0
+2026-07-21 09:55:50 - LaserManager - INFO - Set parameter filter_1_frequency to 400.0
+2026-07-21 09:55:57 - LaserManager - INFO - Set parameter filter_1_frequency to 300.0
+2026-07-21 09:57:09 - LaserManager - INFO - Control loop timer stopped.
