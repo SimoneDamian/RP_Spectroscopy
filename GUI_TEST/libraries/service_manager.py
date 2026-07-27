@@ -669,6 +669,7 @@ class ServiceManager(QObject):
                 ax.plot(t_rel, np.asarray(v_arr), color=color, linewidth=0.8)
             ax.set_title(title, fontsize=10)
             ax.grid(True, alpha=0.3)
+            ax.set_ylabel("Voltage [V]")
 
         axes[-1].set_xlabel("Time [s ago]")
         fig.tight_layout()

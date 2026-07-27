@@ -1,8 +1,8 @@
 import pyqtgraph as pg
 import numpy as np
 from time import time
-from PySide6.QtWidgets import (QWidget, QVBoxLayout, QStackedWidget, QLabel,
-                                QScrollArea, QProgressBar, QPushButton)
+from PySide6.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QStackedWidget, QLabel,
+                                QScrollArea, QProgressBar, QPushButton, QSlider)
 from PySide6.QtCore import Qt, Slot, QTimer, Signal
 
 
@@ -26,39 +26,65 @@ class SweepPlotHandler(BasePlotHandler):
     """
     def __init__(self, parent=None):
         super().__init__(parent)
+        self._merged = False  # start in separate mode
+        self._last_packet = None  # cache last packet for refresh
         layout = QVBoxLayout(self)
         layout.setContentsMargins(0, 0, 0, 0)
         layout.setSpacing(4)
 
-        # --- Top plot: Error Signal ---
+        # Separate plots (default)
         self.plot_error = pg.PlotWidget(title="Error Signal")
         self.setup_plot(self.plot_error, "Error Signal")
-
         self.zero_line = pg.InfiniteLine(pos=0, angle=0, pen=pg.mkPen(color=(128, 128, 128), width=2))
         self.plot_error.addItem(self.zero_line)
-        self.zero_line.setZValue(0) # Keep it above the fill but below the signal line
-        
+        self.zero_line.setZValue(0)
         self.curve_error = self.plot_error.plot(pen=pg.mkPen('c', width=1.5))
-        
-        self.curve_error_strength_pos = pg.PlotDataItem() 
-        self.curve_error_strength_neg = pg.PlotDataItem() 
-
-        # 3. Create the Fill between (+) and (-)
-        self.fill_error = pg.FillBetweenItem(
-            self.curve_error_strength_pos, 
-            self.curve_error_strength_neg, 
-            brush=(0, 255, 255, 60) # Semi-transparent Cyan
-        )
+        self.curve_error_strength_pos = pg.PlotDataItem()
+        self.curve_error_strength_neg = pg.PlotDataItem()
+        self.fill_error = pg.FillBetweenItem(self.curve_error_strength_pos, self.curve_error_strength_neg, brush=(0, 255, 255, 60))
         self.plot_error.addItem(self.fill_error)
 
-        # --- Bottom plot: Monitor Signal (Remains standard) ---
         self.plot_monitor = pg.PlotWidget(title="Monitor Signal")
         self.setup_plot(self.plot_monitor, "Monitor Signal", "Voltage", "V")
         self.curve_monitor = self.plot_monitor.plot(pen=pg.mkPen(color=(255, 165, 0), width=1.5))
-
         self.plot_monitor.setXLink(self.plot_error)
+
+        # Merged plot (hidden initially)
+        self.plot_merged = pg.PlotWidget(title="Monitor and error signals")
+        self.setup_plot(self.plot_merged, "Error Signal", "Voltage", "V")
+        # Left axis for error signal (cyan)
+        self.plot_merged.getAxis('left').setPen(pg.mkPen('c'))
+        self.curve_error_merged = self.plot_merged.plot(pen=pg.mkPen('c', width=1.5))
+        # Error strength shading (transparent cyan)
+        self.curve_error_strength_pos_merged = pg.PlotDataItem()
+        self.curve_error_strength_neg_merged = pg.PlotDataItem()
+        self.fill_error_merged = pg.FillBetweenItem(
+            self.curve_error_strength_pos_merged,
+            self.curve_error_strength_neg_merged,
+            brush=(0, 255, 255, 60)
+        )
+        self.plot_merged.addItem(self.fill_error_merged)
+        # Right axis for monitor signal (orange)
+        self.plot_merged.showAxis('right')
+        self.plot_merged.getPlotItem().setLabel('right', 'Monitor Signal', 'V')
+        self.plot_merged.getAxis('right').setPen(pg.mkPen((255, 165, 0)))
+        self.monitor_vb = pg.ViewBox()
+        self.plot_merged.scene().addItem(self.monitor_vb)
+        self.plot_merged.getAxis('right').linkToView(self.monitor_vb)
+        self.monitor_vb.setXLink(self.plot_merged.getViewBox())
+        self.curve_monitor_merged = pg.PlotDataItem(pen=pg.mkPen(color=(255, 165, 0), width=1.5))
+        self.monitor_vb.addItem(self.curve_monitor_merged)
+        # Ensure the right axis updates when the view changes
+        def updateViewBox():
+            self.monitor_vb.setGeometry(self.plot_merged.getViewBox().sceneBoundingRect())
+            self.monitor_vb.linkedViewChanged(self.plot_merged.getViewBox(), self.monitor_vb.XAxis)
+        self.plot_merged.getViewBox().sigResized.connect(updateViewBox)
+
+        # Add widgets to layout; merged hidden now
         layout.addWidget(self.plot_error)
         layout.addWidget(self.plot_monitor)
+        layout.addWidget(self.plot_merged)
+        self.plot_merged.setVisible(False)
 
     def setup_plot(self, widget, left_label, bottom_label=None, units=None):
         widget.setBackground('k')
@@ -70,25 +96,54 @@ class SweepPlotHandler(BasePlotHandler):
         pi.getAxis('bottom').enableAutoSIPrefix(False)
         pi.getAxis('left').enableAutoSIPrefix(False)
 
+    def _update_layout(self):
+        """Show either separate or merged layout based on self._merged flag."""
+        if self._merged:
+            # Hide separate plots, show merged
+            self.plot_error.setVisible(False)
+            self.plot_monitor.setVisible(False)
+            self.plot_merged.setVisible(True)
+        else:
+            # Show separate, hide merged
+            self.plot_error.setVisible(True)
+            self.plot_monitor.setVisible(True)
+            self.plot_merged.setVisible(False)
+
     def update(self, packet: dict):
+        """Update plots based on incoming packet and current mode (separate or merged)."""
+        self._last_packet = packet  # cache for refreshes
         x = packet.get("x")
         error = packet.get("error_signal")
         error_strength = packet.get("error_signal_strength")
         monitor = packet.get("monitor_signal")
-
         if x is None:
             return
-
         x = np.asarray(x)
+        if self._merged:
+            # Merged mode: use merged plot curves
+            if error is not None:
+                self.curve_error_merged.setData(x, np.asarray(error))
+            if monitor is not None:
+                self.curve_monitor_merged.setData(x, np.asarray(monitor))
+            # Add error strength shading if available
+            if error_strength is not None:
+                self.curve_error_strength_pos_merged.setData(x, np.asarray(error_strength))
+                self.curve_error_strength_neg_merged.setData(x, -np.asarray(error_strength))
+            else:
+                # Clear previous data
+                self.curve_error_strength_pos_merged.clear()
+                self.curve_error_strength_neg_merged.clear()
+        else:
+            # Separate mode (original behavior)
+            if error is not None:
+                err_data = np.asarray(error)
+                self.curve_error.setData(x, err_data)
+                if error_strength is not None:
+                    self.curve_error_strength_pos.setData(x, error_strength)
+                    self.curve_error_strength_neg.setData(x, -error_strength)
+            if monitor is not None:
+                self.curve_monitor.setData(x, np.asarray(monitor))
 
-        if error is not None:
-            err_data = np.asarray(error)
-            self.curve_error.setData(x, err_data)
-            self.curve_error_strength_pos.setData(x, error_strength)
-            self.curve_error_strength_neg.setData(x, -error_strength)
-
-        if monitor is not None:
-            self.curve_monitor.setData(x, np.asarray(monitor))
 
 class ManualLockingPlotHandler(BasePlotHandler):
     """
@@ -801,6 +856,25 @@ class PlotPanel(QWidget):
     To add a new mode, create a BasePlotHandler subclass and register it.
     """
     sig_unlock_requested = Signal()
+    sig_big_offset_changed = Signal(float)  # emitted when the user moves the big_offset slider
+    sig_sweep_amplitude_changed = Signal(float)  # emitted when the user moves the sweep_amplitude slider
+    sig_phase_changed = Signal(float)  # emitted when the user moves the demodulation phase slider
+
+    # Big Offset Slider: maps to [0.0 V, +1.8 V]
+    _SLIDER_MIN = 0
+    _SLIDER_MAX = 18000
+    _SLIDER_OFFSET = 0.0      # lower bound in volts
+    _SLIDER_SCALE = 10000.0   # integer units per volt
+
+    # Sweep Amplitude Slider: maps to [0.001 Vpp, +1.0 Vpp]
+    _SWEEP_AMP_MIN = 1
+    _SWEEP_AMP_MAX = 1000
+    _SWEEP_AMP_SCALE = 1000.0
+
+    # Demodulation Phase Slider: maps to [0.0 deg, 360.0 deg]
+    _PHASE_MIN = 0
+    _PHASE_MAX = 36000
+    _PHASE_SCALE = 100.0
 
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -827,8 +901,168 @@ class PlotPanel(QWidget):
             }
         """)
         self.btn_unlock.setVisible(False)
-        self.btn_unlock.clicked.connect(self.sig_unlock_requested.emit)
+        self.btn_unlock.clicked.connect(self.sig_unlock_requested)
         layout.addWidget(self.btn_unlock)
+
+        # --- Slider Container (visible only in SWEEP mode) ---
+        self._slider_container = QWidget()
+        container_layout = QVBoxLayout(self._slider_container)
+        container_layout.setContentsMargins(8, 4, 8, 4)
+        container_layout.setSpacing(6)
+
+        # Common QSlider stylesheet
+        slider_stylesheet = """
+            QSlider::groove:horizontal {
+                height: 6px;
+                background: #424242;
+                border-radius: 3px;
+            }
+            QSlider::handle:horizontal {
+                background: #42a5f5;
+                border: 1px solid #1565c0;
+                width: 18px;
+                height: 18px;
+                margin: -6px 0;
+                border-radius: 9px;
+            }
+            QSlider::handle:horizontal:hover {
+                background: #64b5f6;
+            }
+            QSlider::sub-page:horizontal {
+                background: #1976d2;
+                border-radius: 3px;
+            }
+        """
+
+        # 1. Big Offset Slider row
+        row_offset = QHBoxLayout()
+        lbl_offset_title = QLabel("Big Offset:")
+        lbl_offset_title.setStyleSheet("color: #ccc; font-size: 12px;")
+        lbl_offset_title.setFixedWidth(120)
+        row_offset.addWidget(lbl_offset_title)
+
+        self._lbl_slider_min = QLabel("0 V")
+        self._lbl_slider_min.setStyleSheet("color: #aaa; font-size: 12px;")
+        row_offset.addWidget(self._lbl_slider_min)
+
+        self.slider_big_offset = QSlider(Qt.Horizontal)
+        self.slider_big_offset.setMinimum(self._SLIDER_MIN)
+        self.slider_big_offset.setMaximum(self._SLIDER_MAX)
+        self.slider_big_offset.setValue(0)
+        self.slider_big_offset.setTickPosition(QSlider.TicksBelow)
+        self.slider_big_offset.setTickInterval(self._SLIDER_MAX // 4)
+        self.slider_big_offset.setStyleSheet(slider_stylesheet)
+        row_offset.addWidget(self.slider_big_offset, 1)
+
+        self._lbl_slider_max = QLabel("+1.8 V")
+        self._lbl_slider_max.setStyleSheet("color: #aaa; font-size: 12px;")
+        row_offset.addWidget(self._lbl_slider_max)
+
+        self._lbl_slider_val = QLabel("0.000 V")
+        self._lbl_slider_val.setFixedWidth(70)
+        self._lbl_slider_val.setAlignment(Qt.AlignCenter)
+        self._lbl_slider_val.setStyleSheet("color: #42a5f5; font-size: 13px; font-weight: bold;")
+        row_offset.addWidget(self._lbl_slider_val)
+        container_layout.addLayout(row_offset)
+
+        # 2. Sweep Amplitude Slider row
+        row_amp = QHBoxLayout()
+        lbl_amp_title = QLabel("Sweep Amplitude:")
+        lbl_amp_title.setStyleSheet("color: #ccc; font-size: 12px;")
+        lbl_amp_title.setFixedWidth(120)
+        row_amp.addWidget(lbl_amp_title)
+
+        self._lbl_amp_min = QLabel("0.001 Vpp")
+        self._lbl_amp_min.setStyleSheet("color: #aaa; font-size: 12px;")
+        row_amp.addWidget(self._lbl_amp_min)
+
+        self.slider_sweep_amplitude = QSlider(Qt.Horizontal)
+        self.slider_sweep_amplitude.setMinimum(self._SWEEP_AMP_MIN)
+        self.slider_sweep_amplitude.setMaximum(self._SWEEP_AMP_MAX)
+        self.slider_sweep_amplitude.setValue(1)
+        self.slider_sweep_amplitude.setTickPosition(QSlider.TicksBelow)
+        self.slider_sweep_amplitude.setTickInterval(self._SWEEP_AMP_MAX // 4)
+        self.slider_sweep_amplitude.setStyleSheet(slider_stylesheet)
+        row_amp.addWidget(self.slider_sweep_amplitude, 1)
+
+        self._lbl_amp_max = QLabel("1 Vpp")
+        self._lbl_amp_max.setStyleSheet("color: #aaa; font-size: 12px;")
+        row_amp.addWidget(self._lbl_amp_max)
+
+        self._lbl_amp_val = QLabel("0.001 Vpp")
+        self._lbl_amp_val.setFixedWidth(70)
+        self._lbl_amp_val.setAlignment(Qt.AlignCenter)
+        self._lbl_amp_val.setStyleSheet("color: #42a5f5; font-size: 13px; font-weight: bold;")
+        row_amp.addWidget(self._lbl_amp_val)
+        container_layout.addLayout(row_amp)
+
+        # 3. Demodulation Phase Slider row
+        row_phase = QHBoxLayout()
+        lbl_phase_title = QLabel("Demod. Phase:")
+        lbl_phase_title.setStyleSheet("color: #ccc; font-size: 12px;")
+        lbl_phase_title.setFixedWidth(120)
+        row_phase.addWidget(lbl_phase_title)
+
+        self._lbl_phase_min = QLabel("0°")
+        self._lbl_phase_min.setStyleSheet("color: #aaa; font-size: 12px;")
+        row_phase.addWidget(self._lbl_phase_min)
+
+        self.slider_phase = QSlider(Qt.Horizontal)
+        self.slider_phase.setMinimum(self._PHASE_MIN)
+        self.slider_phase.setMaximum(self._PHASE_MAX)
+        self.slider_phase.setValue(0)
+        self.slider_phase.setTickPosition(QSlider.TicksBelow)
+        self.slider_phase.setTickInterval(self._PHASE_MAX // 4)
+        self.slider_phase.setStyleSheet(slider_stylesheet)
+        row_phase.addWidget(self.slider_phase, 1)
+
+        self._lbl_phase_max = QLabel("360°")
+        self._lbl_phase_max.setStyleSheet("color: #aaa; font-size: 12px;")
+        row_phase.addWidget(self._lbl_phase_max)
+
+        self._lbl_phase_val = QLabel("0.00°")
+        self._lbl_phase_val.setFixedWidth(70)
+        self._lbl_phase_val.setAlignment(Qt.AlignCenter)
+        self._lbl_phase_val.setStyleSheet("color: #42a5f5; font-size: 13px; font-weight: bold;")
+        row_phase.addWidget(self._lbl_phase_val)
+        container_layout.addLayout(row_phase)
+
+        self._slider_container.setVisible(False)
+        layout.addWidget(self._slider_container)
+
+        # Internal flag to prevent feedback loop when updating slider programmatically
+        self._slider_updating = False
+        self.slider_big_offset.valueChanged.connect(self._on_slider_value_changed)
+        self.slider_sweep_amplitude.valueChanged.connect(self._on_sweep_amp_value_changed)
+        self.slider_phase.valueChanged.connect(self._on_phase_value_changed)
+
+        # --- Top bar with Sweep mode toggle button (hidden by default) ---
+        top_bar_layout = QHBoxLayout()
+        top_bar_layout.addStretch()
+        self.btn_toggle_sweep = QPushButton("Merge plots")
+        self.btn_toggle_sweep.setFixedHeight(30)
+        self.btn_toggle_sweep.setStyleSheet(
+            """
+            QPushButton {
+                background-color: #424242;
+                color: white;
+                font-weight: bold;
+                font-size: 14px;
+                border: none;
+                border-radius: 4px;
+                padding: 4px 8px;
+            }
+            QPushButton:hover {
+                background-color: #555555;
+            }
+            """
+        )
+        self.btn_toggle_sweep.setVisible(False)
+        self.btn_toggle_sweep.clicked.connect(self._toggle_sweep_mode)
+        top_bar_layout.addWidget(self.btn_toggle_sweep)
+        layout.insertLayout(0, top_bar_layout)
+
+
 
         self._handlers: dict[str, BasePlotHandler] = {}
 
@@ -854,6 +1088,68 @@ class PlotPanel(QWidget):
         self._handlers[mode] = handler
         self._stack.addWidget(handler)
 
+    def _on_slider_value_changed(self, int_val: int):
+        """Called when the user drags the big_offset slider."""
+        if self._slider_updating:
+            return
+        volts = self._SLIDER_OFFSET + int_val / self._SLIDER_SCALE
+        self._lbl_slider_val.setText(f"{volts:.4f} V")
+        self.sig_big_offset_changed.emit(volts)
+
+    def set_big_offset_slider(self, value: float):
+        """
+        Update the slider position to reflect `value` (in Volts).
+        Clamps to [0, +1.8] V. Does NOT emit sig_big_offset_changed.
+        """
+        self._slider_updating = True
+        lo = self._SLIDER_OFFSET
+        hi = self._SLIDER_OFFSET + self._SLIDER_MAX / self._SLIDER_SCALE
+        clamped = max(lo, min(hi, float(value)))
+        int_val = int(round((clamped - self._SLIDER_OFFSET) * self._SLIDER_SCALE))
+        self.slider_big_offset.setValue(int_val)
+        self._lbl_slider_val.setText(f"{clamped:.4f} V")
+        self._slider_updating = False
+
+    def _on_sweep_amp_value_changed(self, int_val: int):
+        """Called when the user drags the sweep_amplitude slider."""
+        if self._slider_updating:
+            return
+        vpp = int_val / self._SWEEP_AMP_SCALE
+        self._lbl_amp_val.setText(f"{vpp:.3f} Vpp")
+        self.sig_sweep_amplitude_changed.emit(vpp)
+
+    def set_sweep_amplitude_slider(self, value: float):
+        """
+        Update the sweep_amplitude slider position.
+        Clamps to [0.001, 1.0] Vpp. Does NOT emit sig_sweep_amplitude_changed.
+        """
+        self._slider_updating = True
+        clamped = max(0.001, min(1.0, float(value)))
+        int_val = int(round(clamped * self._SWEEP_AMP_SCALE))
+        self.slider_sweep_amplitude.setValue(int_val)
+        self._lbl_amp_val.setText(f"{clamped:.3f} Vpp")
+        self._slider_updating = False
+
+    def _on_phase_value_changed(self, int_val: int):
+        """Called when the user drags the phase slider."""
+        if self._slider_updating:
+            return
+        deg = int_val / self._PHASE_SCALE
+        self._lbl_phase_val.setText(f"{deg:.2f}°")
+        self.sig_phase_changed.emit(deg)
+
+    def set_phase_slider(self, value: float):
+        """
+        Update the phase slider position.
+        Clamps to [0.0, 360.0] degrees. Does NOT emit sig_phase_changed.
+        """
+        self._slider_updating = True
+        clamped = max(0.0, min(360.0, float(value)))
+        int_val = int(round(clamped * self._PHASE_SCALE))
+        self.slider_phase.setValue(int_val)
+        self._lbl_phase_val.setText(f"{clamped:.2f}°")
+        self._slider_updating = False
+
     @Slot(dict)
     def update_plot(self, packet: dict):
         """Route a data packet to the appropriate handler."""
@@ -862,7 +1158,29 @@ class PlotPanel(QWidget):
         
         # Toggle Unlock button visibility
         self.btn_unlock.setVisible(mode == "LOCKED")
-
+        # Toggle Sweep merge/separate button visibility (only in SWEEP mode)
+        self.btn_toggle_sweep.setVisible(mode == "SWEEP")
+        # Toggle big_offset slider (only in SWEEP mode)
+        self._slider_container.setVisible(mode == "SWEEP")
+        
         if handler:
             self._stack.setCurrentWidget(handler)
             handler.update(packet)
+
+    def _toggle_sweep_mode(self):
+        """Toggle between separate and merged sweep visualizations."""
+        sweep_handler = self._handlers.get("SWEEP")
+        if isinstance(sweep_handler, SweepPlotHandler):
+            sweep_handler._merged = not sweep_handler._merged
+            # Update button label to reflect the *next* action
+            if sweep_handler._merged:
+                self.btn_toggle_sweep.setText("Separate plots")
+            else:
+                self.btn_toggle_sweep.setText("Merge plots")
+            sweep_handler._update_layout()
+            # Refresh with last packet if available
+            if hasattr(sweep_handler, "_last_packet"):
+                sweep_handler.update(sweep_handler._last_packet)
+        else:
+            # No sweep handler registered – do nothing
+            pass

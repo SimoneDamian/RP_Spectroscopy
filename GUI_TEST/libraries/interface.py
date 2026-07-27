@@ -162,6 +162,26 @@ class HardwareInterface():
             self.logger.error(f"Parameter {param_name} not found among writeable parameters.")
             raise KeyError(f"Parameter {param_name} not found among writeable parameters. Possible writeable parameters are: {list(self.writeable_params.keys())}")
 
+    def set_gpio_bit(self, bit, state):
+        """
+        Safely sets or clears a single bit of the gpio_p_out parameter 
+        using the local value to avoid race conditions with remote caching.
+        """
+        try:
+            gpio = int(self.writeable_params["gpio_p_out"].value)
+            old_gpio = gpio
+            
+            if state:
+                gpio |= (1 << bit)
+            else:
+                gpio &= ~(1 << bit)
+                
+            if gpio != old_gpio:
+                self.logger.info(f"GPIO bit {bit} changed from {old_gpio} to {gpio}")
+                self.set_value("gpio_p_out", gpio)
+        except Exception as e:
+            self.logger.error(f"Failed to set GPIO bit {bit}: {e}")
+
     def set_advanced_settings(self, advanced_settings):
         """
         Sets the advanced settings for the autolock.
@@ -182,6 +202,13 @@ class HardwareInterface():
         self.client.parameters.autolock_determine_offset.value = determine_offset
         self.client.connection.root.write_registers()
         self.logger.info(f"Autolock mode set to {mode_str} and determine offset set to {determine_offset}")
+
+        # Apply GPIO settings safely
+        other = advanced_settings.get("Other_settings", {})
+        if "ramp_sign" in other:
+            self.set_gpio_bit(0, other["ramp_sign"]["value"])
+        if "demux_switch" in other:
+            self.set_gpio_bit(1, other["demux_switch"]["value"])
 
     def wait_for_lock_status(self, should_be_locked):
         """

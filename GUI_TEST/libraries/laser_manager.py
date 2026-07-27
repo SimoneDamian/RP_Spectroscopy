@@ -21,6 +21,8 @@ class LaserManager(QObject):
     sig_trace_ready = Signal(dict)
     sig_autolock_completed = Signal()
     sig_save_screenshot = Signal(dict)
+    sig_advanced_settings_updated = Signal(dict)
+    sig_parameter_updated_internally = Signal(str, object)
 
     def __init__(self, config, board):
         super().__init__()
@@ -344,7 +346,7 @@ class LaserManager(QObject):
             self.set_parameter_value('phase', self.initial_phase)
             return
 
-        # 2. Get the target voltage for this step
+        # 2. Get the target phase for this step
         target_phase = self.scan_phases[self.phase_scan_index]
         
         # 3. Hardware Interaction (Blocking only for this small step)
@@ -401,6 +403,9 @@ class LaserManager(QObject):
 
         self.locking_mode = "AUTOMATIC"
 
+        # Check and update ramp polarity if needed
+        self._check_and_update_ramp_polarity(reference_signal)
+
         #init of the variables
         self.V_lock_start = reference_signal['V_lock_start']
         self.V_lock_end = reference_signal['V_lock_end']
@@ -420,6 +425,27 @@ class LaserManager(QObject):
 
         #call of a scan with the autolock option
         self.start_scan(start_voltage=start_voltage, stop_voltage=stop_voltage, reference_signal=reference_signal, calculate_correlation=True, autolock=True)
+
+    def _check_and_update_ramp_polarity(self, reference_signal):
+        """
+        Checks if the current ramp polarity matches the reference line's polarity 
+        and updates it if necessary.
+        """
+        self.logger.info("Checking ramp polarity...")
+        if reference_signal and 'polarity' in reference_signal:
+            expected_polarity_str = str(reference_signal['polarity']).strip().lower()
+            if expected_polarity_str in ("true", "false"):
+                expected_polarity = (expected_polarity_str == "true")
+                
+                other_settings = self.advanced_settings.get("Other_settings", {})
+                current_polarity = other_settings.get("ramp_sign", {}).get("value")
+                
+                if current_polarity != expected_polarity:
+                    self.logger.info(f"Changing ramp sign to {expected_polarity} to match reference line.")
+                    self.set_gpio_bit(0, expected_polarity)
+                    self.logger.info(f"Ramp signed changed to match the reference line one")
+                else:
+                    self.logger.info(f"Ramp signed is already matching the reference line one")
 
     def check_minimum_correlation(self):
         if max(self.correlations) < self.correlation_minimum:
@@ -710,6 +736,12 @@ class LaserManager(QObject):
             try:
                 self.interface.set_advanced_settings(settings_dict)
                 self.logger.info("Advanced settings loaded into Interface.")
+                
+                # Also emit signal to update the parameter page for gpio_p_out
+                if hasattr(self.interface, "writeable_params") and "gpio_p_out" in self.interface.writeable_params:
+                    gpio_val = self.interface.writeable_params["gpio_p_out"].value
+                    self.sig_parameter_updated_internally.emit("gpio_p_out", gpio_val)
+                    
             except Exception as e:
                 self.logger.error(f"Failed to load advanced settings into Interface: {e}")
         else:
@@ -724,8 +756,49 @@ class LaserManager(QObject):
             try:
                 self.interface.set_value(param_name, value)
                 self.logger.info(f"Set parameter {param_name} to {value}")
+                
+                # Sync GPIO bits to advanced settings
+                if param_name == "gpio_p_out":
+                    val = int(value)
+                    other_settings = self.advanced_settings.setdefault("Other_settings", {})
+                    
+                    ramp_state = bool(val & (1 << 0))
+                    demux_state = bool(val & (1 << 1))
+                    
+                    updated = False
+                    if "ramp_sign" in other_settings and other_settings["ramp_sign"].get("value") != ramp_state:
+                        other_settings["ramp_sign"]["value"] = ramp_state
+                        updated = True
+                    if "demux_switch" in other_settings and other_settings["demux_switch"].get("value") != demux_state:
+                        other_settings["demux_switch"]["value"] = demux_state
+                        updated = True
+                        
+                    if updated:
+                        self.sig_advanced_settings_updated.emit(self.advanced_settings)
+                        
             except Exception as e:
                 self.logger.error(f"Failed to set parameter {param_name}: {e}")
+
+    @Slot(int, bool)
+    def set_gpio_bit(self, bit, state):
+        """
+        Programmatically set a GPIO bit, update hardware, and update advanced settings GUI.
+        """
+        # 1. Update hardware
+        if self.interface:
+            self.interface.set_gpio_bit(bit, state)
+            
+        # 2. Update local advanced_settings dict
+        other_settings = self.advanced_settings.get("Other_settings", {})
+        if bit == 0:
+            if "ramp_sign" in other_settings:
+                other_settings["ramp_sign"]["value"] = state
+        elif bit == 1:
+            if "demux_switch" in other_settings:
+                other_settings["demux_switch"]["value"] = state
+                
+        # 3. Emit updated settings so GUI updates
+        self.sig_advanced_settings_updated.emit(self.advanced_settings)
 
     def get_current_parameter_values(self):
         """
@@ -884,6 +957,8 @@ class LaserManager(QObject):
             if self.unlock_events['fast_control_fluctuations'] or self.unlock_events['fast_control_saturation'] or self.unlock_events['slow_control_fluctuations'] or self.unlock_events['slow_control_saturation']:
                 self.logger.warning("Unlock event detected")
                 self.stop_locking = True
+                self.avg_last_slow_PID_values = np.mean(self.interface.history['slow_control_values'][-20:-10])
+                self.logger.info(f"Average of the last stable slow control PID values: {self.avg_last_slow_PID_values}")
 
         return
 
@@ -932,8 +1007,9 @@ class LaserManager(QObject):
         elif self.locking_mode == "AUTOMATIC" and self.advanced_settings['unlock_detection']['events']['automatic_relock']['enabled'] == True:
             self.logger.warning("Unlock event detected, relocking the laser...")
             self.set_state("SWEEP") #simply stops the lock and start sweeping
+            self.set_parameter_value('big_offset', self.interface.writeable_params['big_offset'].value + self.avg_last_slow_PID_values) #centres the sweep in the theoretical new position of the locking point
             sleep(2)
-            self.start_autolock(self.interface.writeable_params['big_offset'].value - 0.06, self.interface.writeable_params['big_offset'].value + 0.06, self.reference_signal)
+            self.start_autolock(self.interface.writeable_params['big_offset'].value - 0.06, self.interface.writeable_params['big_offset'].value + 0.06, self.reference_signal) #smaller sweep around the theoretical position of the locking point
         else:
             self.logger.warning("Unlock event detected but in an unknown state, unlocking the laser...")
             self.set_state("SWEEP") #simply stops the lock and start sweeping

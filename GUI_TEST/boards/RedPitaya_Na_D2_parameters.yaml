@@ -249,7 +249,7 @@ writeable_parameters:
     description: The center of the sweep ramp in volts. (Pay attention to the 
       proportionality constant applied in the analog summator)
     type: float
-    initial_value: 0.5491
+    initial_value: 0.7488
     min: 0
     max: 1.8
     scaling: 18204 # This is approx 1.0 / ANALOG_OUT_V
@@ -387,7 +387,7 @@ writeable_parameters:
       for slow outputs (range 0 V to 1.8 V)). That means an amplitude of 1.0 
       corresponds to the full sweep range in both cases.
     type: float
-    initial_value: 0.361
+    initial_value: 0.649
     min: 0.001
     max: 1
     scaling: 1.0
@@ -426,7 +426,7 @@ writeable_parameters:
     gui_name: Demodulation phase
     description: The demodulation phase for channel A in degree.
     type: float
-    initial_value: 290.0
+    initial_value: 318.05
     min: 0
     max: 360
     scaling: 1.0  # degrees
@@ -437,7 +437,7 @@ writeable_parameters:
     gui_name: Filter 1 frequency
     description: The filter frequency in units of Hz.
     type: float
-    initial_value: 400.0
+    initial_value: 300.0
     min:
     max:
     scaling: 1.0  # Hz

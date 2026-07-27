@@ -748,7 +748,7 @@ class AutoLockPage(QWidget):
         self.plot_corr.showGrid(x=True, y=True)
         self.plot_corr.setMaximumHeight(200)
         self.plot_corr_item = self.plot_corr.getPlotItem()
-        self.plot_corr_item.setLabel('bottom', 'V', units='V')
+        self.plot_corr_item.setLabel('bottom', 'Scan centre', units='V')
         self.plot_corr_item.setLabel('left', 'Correlation')
         self.plot_corr_item.getAxis('bottom').enableAutoSIPrefix(False)
         self.plot_corr_item.getAxis('left').enableAutoSIPrefix(False)
@@ -849,7 +849,13 @@ class AutoLockPage(QWidget):
         self.corr_y = []
         self.curve_corr.setData([], [])
 
-        self.sig_start_autolock.emit(start_v, end_v, {'x': x, 'y': y, 'V_lock_start': item_data.get('lock_region', [0, 1])[0], 'V_lock_end': item_data.get('lock_region', [0, 1])[1]})
+        self.sig_start_autolock.emit(start_v, end_v, {
+            'x': x, 
+            'y': y, 
+            'V_lock_start': item_data.get('lock_region', [0, 1])[0], 
+            'V_lock_end': item_data.get('lock_region', [0, 1])[1],
+            'polarity': item_data.get('polarity', '')
+        })
 
     def _on_stop_clicked(self):
         self.sig_stop_scan.emit()

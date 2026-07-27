@@ -121,6 +121,64 @@ class GeneralManager:
             self.laser.set_parameter_value
         )
 
+        # When the parameter table changes one of these parameters -> also update the sliders
+        def _on_param_changed_for_slider(param_name, value):
+            if param_name == "big_offset":
+                self.window.page_laser.plot_panel.set_big_offset_slider(value)
+            elif param_name == "sweep_amplitude":
+                self.window.page_laser.plot_panel.set_sweep_amplitude_slider(value)
+            elif param_name == "phase":
+                self.window.page_laser.plot_panel.set_phase_slider(value)
+
+        self.window.page_laser.page_parameters.sig_parameter_changed.connect(
+            _on_param_changed_for_slider
+        )
+
+        # big_offset slider -> hardware + parameter table
+        def _on_slider_big_offset(value: float):
+            self.laser.set_parameter_value("big_offset", value)
+            self.window.page_laser.page_parameters.update_parameter("big_offset", value)
+
+        self.window.page_laser.plot_panel.sig_big_offset_changed.connect(
+            _on_slider_big_offset
+        )
+
+        # sweep_amplitude slider -> hardware + parameter table
+        def _on_slider_sweep_amplitude(value: float):
+            self.laser.set_parameter_value("sweep_amplitude", value)
+            self.window.page_laser.page_parameters.update_parameter("sweep_amplitude", value)
+
+        self.window.page_laser.plot_panel.sig_sweep_amplitude_changed.connect(
+            _on_slider_sweep_amplitude
+        )
+
+        # phase slider -> hardware + parameter table
+        def _on_slider_phase(value: float):
+            self.laser.set_parameter_value("phase", value)
+            self.window.page_laser.page_parameters.update_parameter("phase", value)
+
+        self.window.page_laser.plot_panel.sig_phase_changed.connect(
+            _on_slider_phase
+        )
+        
+        # Connection for internal parameter updates -> GUI
+        self.laser.sig_parameter_updated_internally.connect(
+            self.window.page_laser.page_parameters.update_parameter
+        )
+
+        # Also sync slider when LaserManager internally changes parameters (e.g. after scan)
+        def _on_internal_param_update_for_slider(param_name, value):
+            if param_name == "big_offset":
+                self.window.page_laser.plot_panel.set_big_offset_slider(value)
+            elif param_name == "sweep_amplitude":
+                self.window.page_laser.plot_panel.set_sweep_amplitude_slider(value)
+            elif param_name == "phase":
+                self.window.page_laser.plot_panel.set_phase_slider(value)
+
+        self.laser.sig_parameter_updated_internally.connect(
+            _on_internal_param_update_for_slider
+        )
+
         # Connection for live data plotting
         self.laser.sig_data_ready.connect(self.window.page_laser.handle_data)
         self.laser.sig_data_ready.connect(self.on_data_ready)
@@ -201,6 +259,14 @@ class GeneralManager:
             self.laser.load_advanced_settings
         )
         
+        # Connection for programmatic GPIO edits -> GUI updates
+        self.laser.sig_advanced_settings_updated.connect(
+            self.window.page_laser.page_advanced.load_advanced_settings
+        )
+        self.laser.sig_advanced_settings_updated.connect(
+            self.on_advanced_settings_loaded
+        )
+        
         # Connection for Default Advanced Settings Button
         self._safe_disconnect(self.window.page_laser.page_advanced.sig_restore_defaults)
         self.window.page_laser.page_advanced.sig_restore_defaults.connect(
@@ -214,10 +280,10 @@ class GeneralManager:
         self.window.page_laser.set_connecting_state()
         self.window.go_to_laser_controller()
 
-        # Trigger loading advanced settings and parameters from YAML (via ServiceManager)
+        # Trigger loading parameters and then advanced settings from YAML (via ServiceManager)
         self.current_board = board
-        self.services.load_advanced_settings(board)
         self.services.load_parameters(board)
+        self.services.load_advanced_settings(board)
 
         # Inject ServiceManager into laser controller's ReferenceLinesPage
         self.window.page_laser.page_reflines.set_service_manager(self.services)
@@ -240,6 +306,17 @@ class GeneralManager:
         """
         self.parameters = params_dict
         self.window.page_laser.page_parameters.load_parameters(params_dict)
+        # Initialise the sliders to their loaded initial values
+        writeable = params_dict.get("writeable_parameters", {})
+        if "big_offset" in writeable:
+            initial_val = writeable["big_offset"].get("initial_value", 0.0)
+            self.window.page_laser.plot_panel.set_big_offset_slider(initial_val)
+        if "sweep_amplitude" in writeable:
+            initial_val = writeable["sweep_amplitude"].get("initial_value", 0.001)
+            self.window.page_laser.plot_panel.set_sweep_amplitude_slider(initial_val)
+        if "phase" in writeable:
+            initial_val = writeable["phase"].get("initial_value", 0.0)
+            self.window.page_laser.plot_panel.set_phase_slider(initial_val)
         self.logger.info("Parameters loaded into GUI.")
 
     @Slot(dict)
@@ -251,6 +328,7 @@ class GeneralManager:
         """
         self.advanced_settings = settings
         self.logger.info("Advanced settings stored in GeneralManager.")
+        self._update_add_ref_line_polarity()
 
     @Slot(dict)
     def on_advanced_setting_changed(self, settings):
@@ -261,6 +339,13 @@ class GeneralManager:
         """
         self.advanced_settings = settings
         self.logger.info("Advanced settings updated from GUI.")
+        self._update_add_ref_line_polarity()
+        
+    def _update_add_ref_line_polarity(self):
+        other = self.advanced_settings.get("Other_settings", {})
+        if "ramp_sign" in other:
+            polarity = str(other["ramp_sign"].get("value", True))
+            self.window.page_laser.page_add_refline.set_polarity(polarity)
 
     @Slot(dict)
     def on_data_ready(self, packet):
